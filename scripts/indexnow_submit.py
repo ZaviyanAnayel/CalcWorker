@@ -14,7 +14,12 @@ import os
 INDEXNOW_KEY = "f63b4b8a25c14e13b821a7df84e622b1"
 HOST = "calcworker.com"
 KEY_LOCATION = f"https://{HOST}/{INDEXNOW_KEY}.txt"
-INDEXNOW_ENDPOINT = "https://api.indexnow.org/indexnow"
+
+ENDPOINTS = [
+    "https://api.indexnow.org/indexnow",
+    "https://yandex.com/indexnow",
+    "https://www.bing.com/indexnow"
+]
 
 def get_sitemap_urls():
     sitemap_path = os.path.join(os.path.dirname(__file__), "..", "sitemap.xml")
@@ -38,31 +43,34 @@ def submit_urls(urls):
     }
 
     data = json.dumps(payload).encode("utf-8")
-    req = urllib.request.Request(
-        INDEXNOW_ENDPOINT,
-        data=data,
-        headers={"Content-Type": "application/json; charset=utf-8"},
-        method="POST"
-    )
+    success = False
 
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            code = resp.getcode()
-            if code in (200, 202):
-                print(f"[SUCCESS] Successfully submitted {len(urls)} URLs to IndexNow! (HTTP {code})")
-                return True
+    for endpoint in ENDPOINTS:
+        try:
+            req = urllib.request.Request(
+                endpoint,
+                data=data,
+                headers={"Content-Type": "application/json; charset=utf-8"},
+                method="POST"
+            )
+            with urllib.request.urlopen(req, timeout=15) as resp:
+                code = resp.getcode()
+                if code in (200, 202):
+                    print(f"[SUCCESS] {endpoint} accepted {len(urls)} URLs! (HTTP {code})")
+                    success = True
+                    break
+        except urllib.error.HTTPError as e:
+            if e.code in (200, 202):
+                print(f"[SUCCESS] {endpoint} accepted {len(urls)} URLs! (HTTP {e.code})")
+                success = True
+                break
             else:
-                print(f"[INFO] IndexNow responded with HTTP {code}")
-                return True
-    except urllib.error.HTTPError as e:
-        if e.code in (200, 202):
-            print(f"[SUCCESS] IndexNow accepted {len(urls)} URLs (HTTP {e.code})")
-            return True
-        print(f"[ERROR] IndexNow submission HTTP error: {e.code} - {e.reason}")
-        return False
-    except Exception as e:
-        print(f"[ERROR] IndexNow submission failed: {e}")
-        return False
+                err_body = e.read().decode('utf-8', errors='ignore')
+                print(f"[INFO] {endpoint} returned {e.code}: {err_body[:100]}... Trying next endpoint...")
+        except Exception as e:
+            print(f"[INFO] {endpoint} error: {e}. Trying next...")
+
+    return success
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
