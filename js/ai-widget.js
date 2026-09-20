@@ -1,0 +1,868 @@
+/**
+ * CalcWorker AI — Master Knowledge & Autonomous Assistant
+ * 100% Client-Side Private, Zero-Latency, Conversational NLP & Mathematical Solver
+ * 
+ * OWNER: Zaviyan
+ * OPERATED BY: Zaviyan LLC
+ * OFFICIAL CONTACT: business@zaviyanllc.com
+ * TRAINED ON: All 102+ CalcWorker Tools, Formulas, Usages, and US Regulations
+ */
+(function () {
+  "use strict";
+
+  if (document.getElementById("cw-ai-root")) return;
+
+  // 1. Company, Owner & Contact Registry
+  const CW_INFO = {
+    owner: "Zaviyan",
+    company: "Zaviyan LLC",
+    email: "business@zaviyanllc.com",
+    website: "https://calcworker.com",
+    year: 2026,
+    mission: "CalcWorker was founded and built by Zaviyan (Zaviyan LLC) to provide the world with 100% private, zero-latency, client-side financial, creator, business, and health calculators with full offline capabilities."
+  };
+
+  // 2. Complete 102-Tool Database (Formulas, Step-by-Step Usage, Inputs, and Pro Tips)
+  const TOOLS_DB = [{"url": "/tools/age-calculator.html", "title": "Exact Age & Date Calculator", "keywords": ["age", "date of birth", "dob", "birthday", "how old", "exact age", "years months days", "umar"], "formula": "Chronological Age = Target Date - Date of Birth (accounting for leap years and variable month days: 28, 29, 30, 31).", "how_to_use": "1. Select your Date of Birth (Day, Month, Year). 2. Choose 'Age at Date' (defaults to today). 3. Click 'Calculate Age'. The tool instantly calculates your chronological age down to completed years, months, days, total hours, minutes, and seconds.", "inputs": "Birth Date (YYYY-MM-DD), Comparison Date (defaults to today)", "pro_tip": "Check the 'Next Birthday Countdown' section to see the exact day of the week your upcoming birthday falls on."}, {"url": "/tools/amazon-fba-calculator.html", "title": "Amazon FBA Profit & Fee Calculator (2026)", "keywords": ["amazon", "amazon fba", "fba", "fba fees", "fba calculator", "referral fee", "fba profit", "fba vs fbm", "amazon seller", "amazon profit"], "formula": "Net Margin = Selling Price - Landed Cost - Referral Fee (8%-15%) - FBA Fulfillment Fee - Monthly Storage Fee.", "how_to_use": "1. Select your fulfillment method: 'Fulfillment by Amazon (FBA)' or 'Merchant Fulfilled (FBM)'. 2. Enter your Item Selling Price ($). 3. Enter Landed Cost (Manufacturing cost + Inbound shipping to warehouse). 4. Enter Package Weight and Dimensions. 5. View your net profit margin, Amazon referral fee (typically 15%), and FBA pick-and-pack fee.", "inputs": "Selling Price ($), Cost of Goods ($), Shipping to Amazon ($), Weight & Dimensions", "pro_tip": "Keep box dimensions within 'Standard Size' (under 18x14x8 inches and 20 lbs). Stepping into 'Oversize' triples fulfillment costs."}, {"url": "/tools/auto-loan.html", "title": "Auto Loan & Car Finance Calculator", "keywords": ["auto loan", "car loan", "car finance", "vehicle loan", "gaari ka loan", "car interest", "dealer fee", "auto financing", "car payment"], "formula": "Monthly Payment = [ Principal × (APR ÷ 12) ] ÷ [ 1 - (1 + APR ÷ 12)^(-months) ]", "how_to_use": "1. Enter Vehicle Purchase Price. 2. Enter Cash Down Payment and Trade-In Allowance (if any). 3. Enter Interest Rate (APR %) and Loan Term (36, 48, 60, or 72 months). 4. Enter local sales tax rate and dealer documentation fees. 5. View your exact monthly payment, total interest paid, and amortization schedule.", "inputs": "Vehicle Price ($), Down Payment ($), Trade-in Value ($), Loan Term (months), Interest Rate (APR %)", "pro_tip": "Follow the 20/4/10 Rule: Put down 20%, finance for no more than 48 months, and keep total car expenses under 10% of gross monthly income."}, {"url": "/tools/bench-press-calculator.html", "title": "Bench Press & One-Rep Max (1RM) Calculator", "keywords": ["bench press", "1rm", "one rep max", "max bench", "epley", "brzycki", "powerlifting", "gym weight"], "formula": "Epley Formula: 1RM = Weight × (1 + Reps ÷ 30) | Brzycki Formula: 1RM = Weight × (36 ÷ (37 - Reps))", "how_to_use": "1. Enter the weight you lifted (lbs or kg). 2. Enter the number of repetitions completed with good form (between 1 and 10 reps). 3. Click 'Calculate 1RM'. 4. View your estimated 1-Rep Maximum across verified formulas (Epley, Brzycki, Lombardi) and your percentage training load chart (90%, 80%, 70%).", "inputs": "Weight Lifted (lbs/kg), Repetitions Completed (1-10)", "pro_tip": "Formulas are most accurate when using test sets between 3 and 6 reps. Sets above 10 reps measure muscular endurance rather than true maximal strength."}, {"url": "/tools/bmi-calculator.html", "title": "Body Mass Index (BMI) & CDC Health Standards", "keywords": ["bmi", "body mass index", "healthy weight", "overweight", "obese", "underweight", "cdc bmi", "vazan"], "formula": "Imperial: BMI = [ Weight (lbs) × 703 ] ÷ Height (inches)^2 | Metric: BMI = Weight (kg) ÷ Height (meters)^2", "how_to_use": "1. Select Imperial (lbs/inches) or Metric (kg/cm). 2. Enter your current body weight. 3. Enter your height. 4. View your exact BMI score, CDC classification category, and healthy weight range for your height.", "inputs": "Height (feet/inches or cm), Weight (lbs or kg)", "pro_tip": "BMI is a general population screening metric. Athletes with high muscle mass should pair BMI with body fat percentage for true physiological assessment."}, {"url": "/tools/break-even.html", "title": "Business Break-Even Analysis Calculator", "keywords": ["break even", "breakeven", "fixed cost", "variable cost", "contribution margin", "business profit", "break even point"], "formula": "Break-Even Units = Fixed Costs ÷ (Unit Selling Price - Unit Variable Cost)", "how_to_use": "1. Enter Total Monthly/Annual Fixed Costs (rent, insurance, salaries, software). 2. Enter Unit Selling Price. 3. Enter Unit Variable Cost (materials, production, direct labor). 4. View required Break-Even Unit Volume and Dollar Revenue needed to cover costs.", "inputs": "Fixed Costs ($), Selling Price per Unit ($), Variable Cost per Unit ($)", "pro_tip": "Increasing your selling price or lowering unit material costs expands contribution margin, drastically reducing the units needed to reach profitability."}, {"url": "/tools/calorie-calculator.html", "title": "Daily Calorie & TDEE Deficit Calculator", "keywords": ["calorie", "tdee", "bmr", "calorie deficit", "weight loss calories", "diet", "maintenance calories", "mifflin st jeor"], "formula": "Mifflin-St Jeor: BMR (Men) = 10W + 6.25H - 5A + 5 | BMR (Women) = 10W + 6.25H - 5A - 161. TDEE = BMR × Activity Multiplier.", "how_to_use": "1. Enter Age, Gender, Height, and Weight. 2. Select Activity Level (Sedentary, Light, Moderate, Active). 3. Choose your Goal: Maintenance, Mild Weight Loss (-0.5 lb/wk), Weight Loss (-1.0 lb/wk), or Muscle Gain. 4. View target daily calories and macronutrient breakdown.", "inputs": "Age, Gender, Weight, Height, Activity Multiplier", "pro_tip": "1 pound of body fat equals approximately 3,500 calories. A consistent 500 kcal daily deficit yields roughly 1 lb of fat loss per week without crashing metabolism."}, {"url": "/tools/car-lease-calculator.html", "title": "Car Lease vs Purchase Payment Calculator", "keywords": ["car lease", "lease payment", "money factor", "residual value", "depreciation fee", "rent charge", "lease vs buy"], "formula": "Monthly Payment = [ (Net Cap Cost - Residual) ÷ Months ] + [ (Net Cap Cost + Residual) × Money Factor ] + Monthly Tax", "how_to_use": "1. Enter MSRP and Negotiated Selling Price (Cap Cost). 2. Enter Down Payment and Trade-in Equity. 3. Enter Residual Value percentage (typically 50-60%) and Lease Term (36 months). 4. Enter Money Factor (e.g. 0.0025). 5. View exact Monthly Lease Payment broken into Depreciation, Rent Charge, and Taxes.", "inputs": "MSRP, Selling Price, Down Payment, Residual Value %, Money Factor, Lease Term", "pro_tip": "Convert dealer Money Factor to APR by multiplying by 2,400 (e.g., 0.0025 × 2400 = 6.0% APR). Always negotiate selling price before discussing lease terms."}, {"url": "/tools/channel-growth-calculator.html", "title": "YouTube & Social Channel Growth Simulator", "keywords": ["channel growth", "subscriber growth", "youtube growth", "tiktok growth", "followers forecast", "channel projection"], "formula": "Future Followers = Current Followers × (1 + Monthly Growth Rate)^Months", "how_to_use": "1. Enter Current Subscriber / Follower Count. 2. Enter Average Monthly Growth Rate (%) or New Followers per Month. 3. Enter Target Goal. 4. View projected timeline and compound expansion charts over 6, 12, and 24 months.", "inputs": "Current Subscribers, Monthly Growth Rate (%), Time Horizon (months)", "pro_tip": "Consistency and viewer retention matter most: channels publishing 2-3 optimized videos weekly grow 2.5x faster than irregular uploads."}, {"url": "/tools/compound-interest.html", "title": "Compound Interest & Wealth Accumulator", "keywords": ["compound interest", "compound growth", "exponential growth", "investing", "future value", "wealth", "rule of 72"], "formula": "Future Balance = P(1 + r/n)^(nt) + PMT × [ ((1 + r/n)^(nt) - 1) ÷ (r/n) ]", "how_to_use": "1. Enter Initial Investment Principal ($). 2. Enter Regular Monthly Contribution ($). 3. Enter Annual Expected Return (Interest Rate %). 4. Enter Investment Horizon in Years. 5. Select Compounding Frequency (Monthly, Annually). 6. View total future balance and interest earned vs principal invested.", "inputs": "Initial Deposit ($), Monthly Contribution ($), Annual Return (%), Years", "pro_tip": "Use the Rule of 72 for quick mental math: 72 ÷ Annual Return = Years to double your capital (e.g. 72 ÷ 8% = 9 years to double)."}, {"url": "/tools/credit-card-payoff.html", "title": "Credit Card Payoff & Interest Trap Calculator", "keywords": ["credit card", "credit card payoff", "debt payoff", "minimum payment", "apr", "card balance", "avalanche method"], "formula": "Payoff Months = -log(1 - (Balance × Monthly Rate) ÷ Payment) ÷ log(1 + Monthly Rate)", "how_to_use": "1. Enter Current Credit Card Balance ($). 2. Enter Card APR (Annual Percentage Rate %). 3. Select Payment Strategy: 'Fixed Monthly Payment' or 'Target Payoff Months'. 4. View total interest charges and exact months to debt freedom.", "inputs": "Current Balance ($), APR (%), Monthly Payment ($)", "pro_tip": "Paying only the minimum 2% balance fee stretches a $5,000 balance at 22% APR over 18 years and costs over $6,500 in pure interest charges."}, {"url": "/tools/crypto-profit-calculator.html", "title": "Cryptocurrency Profit & ROI Calculator", "keywords": ["crypto", "bitcoin", "crypto profit", "ethereum", "crypto roi", "crypto tax", "buy price sell price"], "formula": "Net Profit = (Selling Price × Quantity) - (Purchase Price × Quantity) - Total Exchange Fees", "how_to_use": "1. Enter Investment Amount ($) or Quantity of Coins. 2. Enter Purchase Price per Coin. 3. Enter Selling Price per Coin. 4. Enter Exchange Trading Fees (%). 5. View Net Profit, Total Return on Investment (ROI %), and net proceeds.", "inputs": "Buy Price ($), Sell Price ($), Investment Amount ($), Trading Fee (%)", "pro_tip": "Always account for short-term capital gains tax in the US (taxed as ordinary income if held under 365 days)."}, {"url": "/tools/currency-converter.html", "title": "Currency Converter (150+ Live Global Rates)", "keywords": ["currency", "exchange rate", "forex", "convert money", "usd to eur", "usd to gbp", "usd to inr", "usd to pkr", "dollar rate", "crancy"], "formula": "Converted Amount = Base Amount × Real-Time Mid-Market Interbank Exchange Rate", "how_to_use": "1. Select Base Currency (e.g. USD, EUR, GBP, CAD, INR, PKR). 2. Select Target Currency. 3. Enter Amount. 4. The tool instantly computes conversion using live institutional mid-market rates with 0 bank markup.", "inputs": "Base Currency, Target Currency, Amount", "pro_tip": "Airport exchange booths and retail credit cards charge 3% to 7% in hidden spreads. Always verify against our mid-market benchmark."}, {"url": "/tools/date-calculator.html", "title": "Date Difference & Calendar Duration Calculator", "keywords": ["date calculator", "days between dates", "calendar difference", "how many days", "workdays", "business days"], "formula": "Elapsed Days = End Date - Start Date (with calendar leap year adjustment).", "how_to_use": "1. Enter Start Date. 2. Enter End Date. 3. Optional: Check 'Exclude Weekends' for business days. 4. View total days, weeks, months, and working business days between the dates.", "inputs": "Start Date (YYYY-MM-DD), End Date (YYYY-MM-DD), Include/Exclude Weekends", "pro_tip": "Useful for project deadlines, statutory legal notice periods, and contractual lease terms."}, {"url": "/tools/debt-payoff.html", "title": "Debt Payoff Strategy Calculator (Snowball vs Avalanche)", "keywords": ["debt payoff", "snowball", "avalanche", "multiple debts", "debt free", "eliminate debt"], "formula": "Avalanche mathematically minimizes interest by targeting highest APR; Snowball provides behavioral psychological momentum by clearing small debts first.", "how_to_use": "1. Add each of your debts (Credit Cards, Personal Loans, Auto Loans) with Balance, APR, and Minimum Payment. 2. Enter extra monthly budget you can apply. 3. Choose 'Snowball' (lowest balance first) or 'Avalanche' (highest interest first). 4. Compare total interest saved and payoff date.", "inputs": "Debt Name, Balance ($), Interest Rate (%), Minimum Payment ($), Extra Monthly Budget ($)", "pro_tip": "Debt Avalanche saves the most money mathematically, but Debt Snowball has a higher psychological completion rate among consumers."}, {"url": "/tools/ebay-fee-calculator.html", "title": "eBay Seller Fee & Profit Margin Calculator", "keywords": ["ebay", "ebay fees", "ebay calculator", "final value fee", "ebay profit", "ebay seller"], "formula": "Net Profit = Total Buyer Payment - Item Cost - Actual Shipping - (Total Buyer Payment × Category Fee Rate + $0.30)", "how_to_use": "1. Enter Item Sold Price. 2. Enter Shipping Charged to Buyer. 3. Enter Item Acquisition Cost and Actual Shipping Cost. 4. Select Store Subscription tier and Category (e.g. Electronics, Clothing). 5. View eBay Final Value Fee (typically 13.25% + $0.30) and net profit.", "inputs": "Sold Price ($), Shipping Charged ($), Item Cost ($), Actual Shipping ($), Category", "pro_tip": "Promoted Listings Standard fees are only charged if an item sells within 30 days of an ad click. Monitor your ad rate to avoid eating into margins."}, {"url": "/tools/ecommerce-profit-comparator.html", "title": "Multi-Platform E-Commerce Profit Comparator", "keywords": ["ecommerce comparator", "amazon vs ebay", "shopify vs etsy", "platform comparison", "seller comparison"], "formula": "Compares take-home margins after factoring in platform referral fees, subscription tiers, and payment processing charges.", "how_to_use": "1. Enter Product Cost and Retail Price. 2. Enter Monthly Sales Volume. 3. View instant side-by-side comparison of net profits across Amazon FBA, Shopify, eBay, and Etsy.", "inputs": "Item Cost ($), Retail Price ($), Monthly Units", "pro_tip": "Shopify offers highest margins (no marketplace referral fee), but requires spending capital on paid ads (CAC). Marketplaces provide built-in organic search traffic."}, {"url": "/tools/etsy-profit.html", "title": "Etsy Seller Fee & Net Profit Calculator", "keywords": ["etsy", "etsy fees", "etsy profit", "etsy calculator", "handmade profit", "listing fee"], "formula": "Net Profit = Sale Price + Shipping - Item Cost - Postage - Listing Fee ($0.20) - 6.5% Transaction Fee - (3% + $0.25 Processing Fee)", "how_to_use": "1. Enter Item Sale Price and Shipping Charged. 2. Enter Materials / Production Cost and Postage Cost. 3. Optional: Enter Etsy Offsite Ads participation (12% or 15%). 4. View net profit after $0.20 listing fee, 6.5% transaction fee, and 3% + $0.25 payment processing.", "inputs": "Item Price ($), Shipping Charged ($), Materials Cost ($), Postage Cost ($)", "pro_tip": "Listing fees renew every 4 months ($0.20) or each time an item sells. Price your goods with at least a 60% gross margin to absorb fees comfortably."}, {"url": "/tools/freelance-tax-calculator.html", "title": "1099 Freelance & Self-Employment Tax Calculator", "keywords": ["freelance tax", "1099", "1099 tax", "self employment tax", "schedule c", "write off", "deductions", "freelancer tax"], "formula": "SE Tax = Net Schedule C Profit × 0.9235 × 15.3%. 50% of SE Tax is deductible from AGI for federal income taxes.", "how_to_use": "1. Enter Gross 1099 / Freelance Revenue. 2. Enter Legitimate Business Expenses (software, home office, gear, mileage). 3. Select Tax Filing Status (Single, Married). 4. View exact Self-Employment Tax (15.3% on 92.35% of net profit), estimated Federal Income Tax, and Quarterly Estimated Payments.", "inputs": "Gross 1099 Income ($), Business Deductions ($), Filing Status", "pro_tip": "Every $1,000 in eligible business expenses saves approximately $153 in self-employment tax alone plus additional income tax."}, {"url": "/tools/fuel-cost-calculator.html", "title": "Road Trip & Daily Commute Fuel Cost Calculator", "keywords": ["fuel cost", "gas calculator", "petrol cost", "road trip gas", "commute cost", "fuel consumption"], "formula": "Fuel Cost = (Distance ÷ Fuel Efficiency) × Fuel Price per Unit", "how_to_use": "1. Enter Trip Distance (miles or km). 2. Enter Vehicle Fuel Efficiency (MPG or L/100km). 3. Enter Gas Price per Gallon / Liter. 4. View Total Fuel Expense, Cost per Mile, and Cost per Passenger if splitting.", "inputs": "Distance, Vehicle MPG, Gas Price ($/gal), Passengers", "pro_tip": "Maintaining recommended tire pressure and avoiding aggressive highway acceleration improves highway fuel economy by up to 10-15%."}, {"url": "/tools/gig-profit.html", "title": "Uber, Lyft, DoorDash & Gig Driver Profit Calculator", "keywords": ["gig profit", "uber driver", "lyft profit", "doordash calculator", "instacart driver", "rideshare profit"], "formula": "Net Hourly Pay = [ Gross Earnings - (Miles × Operating Cost per Mile) ] ÷ Total Shift Hours", "how_to_use": "1. Enter Total Weekly Gig Gross Earnings. 2. Enter Total Miles Driven. 3. Enter Fuel and Vehicle Maintenance expenses (or apply standard IRS mileage rate). 4. View True Hourly Net Earnings and self-employment tax obligations.", "inputs": "Gross Payout ($), Miles Driven, Gas Cost ($), Shift Hours", "pro_tip": "The standard IRS mileage deduction (typically ~67 cents per mile) often exceeds actual gas expenses, providing substantial tax shielding for gig drivers."}, {"url": "/tools/gpa-calculator.html", "title": "Collegiate & High School GPA Calculator", "keywords": ["gpa", "grade point average", "college gpa", "weighted gpa", "cum laude", "quality points", "gpa scale"], "formula": "Cumulative GPA = [ ∑ (Grade Points_i × Credit Hours_i) ] ÷ Total Credit Hours Attempted", "how_to_use": "1. Select Scale: 4.0 Standard Unweighted or Weighted (Honors +0.5, AP/IB +1.0). 2. Enter Course Names, select Letter Grades (A, A-, B+, etc.), and Credit Hours (typically 3-4 credits). 3. Optional: Enter Prior Cumulative GPA and Credits to compute updated Cumulative GPA. 4. View Semester GPA, Total Quality Points, and Latin Honors status.", "inputs": "Course Grade, Course Credit Hours, Regular/Honors/AP Type, Prior GPA & Credits", "pro_tip": "To raise your GPA faster, focus on achieving top grades in high-credit courses (like 4-credit lab sciences) because they carry more weight in the quality points numerator."}, {"url": "/tools/heloc-calculator.html", "title": "Home Equity Line of Credit (HELOC) Calculator", "keywords": ["heloc", "home equity line", "draw period", "prime rate", "interest only heloc", "repayment period"], "formula": "Draw Payment = Drawn Balance × (Rate ÷ 12). Repayment Payment = Amortized P&I over 240 months.", "how_to_use": "1. Enter Home Market Value and Current 1st Mortgage Balance. 2. Enter HELOC Line Amount Drawn. 3. Enter Interest Rate (Prime Rate + Margin). 4. View Monthly Interest-Only Payment during Draw Period (10 years) and subsequent Amortized Payment during Repayment Period (20 years).", "inputs": "Home Value ($), Mortgage Balance ($), Drawn Amount ($), HELOC Rate (%)", "pro_tip": "Prepare for payment shock: when the 10-year interest-only draw window closes, your monthly payment will jump significantly to amortize principal."}, {"url": "/tools/hourly-rate.html", "title": "Hourly Wage to Salary & Annual Compensation Calculator", "keywords": ["hourly rate", "salary to hourly", "hourly to salary", "annual pay", "wage calculator", "2080 hours"], "formula": "Annual Salary = Hourly Wage × Hours per Week × Weeks Worked per Year (Standard: 40 hrs × 52 weeks = 2,080 hours)", "how_to_use": "1. Enter Hourly Wage ($/hr). 2. Enter Hours Worked per Week (default 40). 3. Enter Paid Vacation / Holidays weeks. 4. View Total Annual Salary, Monthly Gross, Bi-Weekly Pay, and Daily Earnings.", "inputs": "Hourly Wage ($), Hours per Week, Weeks per Year", "pro_tip": "Quick mental conversion: Multiply hourly wage by 2 and add three zeros to get approximate annual salary ($35/hr × 2 = ~$70,000/yr)."}, {"url": "/tools/inflation-calculator.html", "title": "US CPI Inflation & Purchasing Power Calculator", "keywords": ["inflation", "cpi", "purchasing power", "historical inflation", "bls inflation", "cost of living"], "formula": "Adjusted Value = Starting Amount × (Target Year CPI ÷ Starting Year CPI)", "how_to_use": "1. Enter Starting Dollar Amount. 2. Select Starting Year (e.g. 1990). 3. Select Comparison Year (e.g. 2026). 4. View equivalent purchasing power based on official Bureau of Labor Statistics (BLS) Consumer Price Index (CPI-U) data.", "inputs": "Dollar Amount ($), Start Year, End Year", "pro_tip": "If your annual salary raises do not match or exceed the CPI inflation rate (historically 2.5% to 3.5%), your real purchasing power is declining."}, {"url": "/tools/instagram-money-calculator.html", "title": "Instagram Sponsored Post & Reel Pricing Calculator", "keywords": ["instagram", "instagram money", "sponsored post", "instagram reel", "brand deal", "influencer rate", "instagram calculator"], "formula": "Estimated Reel Rate = Base Fee + (Followers × Engagement Rate × Industry Multiplier) + Usage Rights Surcharge", "how_to_use": "1. Enter your Instagram Follower Count. 2. Enter your Average Engagement Rate (%) or recent average likes/comments. 3. Select Content Format: Static Post, Reel, or Story Set. 4. View estimated brand deal pricing range and suggested usage rights fees.", "inputs": "Followers, Engagement Rate (%), Content Format", "pro_tip": "Charge an additional 30% to 50% licensing fee if the brand intends to use your Reel as a paid dark ad (Spark Ad / Whitelisting) for 30-90 days."}, {"url": "/tools/mortgage-calculator.html", "title": "Mortgage Payment (PITI) & Amortization Calculator", "keywords": ["mortgage", "piti", "home loan", "mortgage calculator", "amortization", "down payment", "ghar ka loan", "property tax", "pmi"], "formula": "Monthly P&I = P × [ r(1 + r)^n ] ÷ [ (1 + r)^n - 1 ] + (Annual Taxes ÷ 12) + (Annual Insurance ÷ 12) + Monthly PMI", "how_to_use": "1. Enter Home Purchase Price ($). 2. Enter Down Payment ($ or %). 3. Enter Interest Rate (APR %) and Loan Term (15 or 30 Years). 4. Enter Annual Property Tax rate, Homeowners Insurance, and HOA fees. 5. View exact Monthly PITI payment, total interest paid, and full amortization schedule.", "inputs": "Home Price ($), Down Payment ($), Interest Rate (%), Loan Term (years), Annual Taxes ($), Annual Insurance ($)", "pro_tip": "Making just 1 extra monthly principal payment per year on a 30-year loan cuts roughly 6 to 7 years off your payoff date and saves tens of thousands in interest."}, {"url": "/tools/omnicalc.html", "title": "OmniCalc Universal Multi-Function Scientific Engine", "keywords": ["omnicalc", "scientific calculator", "math", "universal calculator", "scientific engine", "trig", "algebra"], "formula": "Evaluates arbitrary-precision mathematical expressions following standard Order of Operations (PEMDAS).", "how_to_use": "1. Use keypad or type directly on keyboard to enter mathematical, trigonometric (sin, cos, tan), logarithmic, or exponential equations. 2. Supports multi-parenthetical algebra, memory recall (M+, M-, MR), and percentage calculations. 3. View instant evaluation with live syntax check.", "inputs": "Keyboard or on-screen keypad inputs for arithmetic, scientific functions, and powers", "pro_tip": "You can use keyboard shortcuts: Enter for '=', Esc for 'Clear', and backspace for 'Delete'."}, {"url": "/tools/overtime-calculator.html", "title": "Overtime & Time-and-a-Half Calculator (FLSA)", "keywords": ["overtime", "time and a half", "flsa", "40 hours", "overtime pay", "overtime calculator", "double time"], "formula": "Total Pay = (Regular Hours × Rate) + (Overtime Hours × Rate × 1.5) + (Double Time Hours × Rate × 2.0)", "how_to_use": "1. Enter Regular Hourly Pay Rate ($/hr). 2. Enter Regular Hours worked (up to 40). 3. Enter Overtime Hours worked (>40) and any Double Time hours. 4. View Gross Regular Pay, Gross Overtime Pay, and Total Paycheck.", "inputs": "Regular Hourly Rate ($), Regular Hours (max 40), Overtime Hours", "pro_tip": "Under the federal Fair Labor Standards Act (FLSA), overtime is calculated on a 7-day workweek basis, not averaged across pay periods."}, {"url": "/tools/paycheck-calculator.html", "title": "Take-Home Pay & Salary Paycheck Calculator (2026)", "keywords": ["paycheck", "take home pay", "net pay", "salary after tax", "payroll", "fica", "paycheck calculator"], "formula": "Take-Home Pay = Gross Pay - Pre-Tax Benefits - Federal Withholding - State Withholding - FICA (7.65%)", "how_to_use": "1. Enter Gross Pay per period or Annual Salary. 2. Select Pay Frequency (Weekly, Bi-Weekly, Semi-Monthly, Monthly). 3. Enter Federal Filing Status and W-4 allowances. 4. Enter Pre-Tax Deductions (401k, HSA, Health Insurance). 5. View exact Net Take-Home Pay and itemized tax deductions (Federal, State, Social Security, Medicare).", "inputs": "Gross Salary ($), Pay Frequency, Filing Status, Pre-tax Deductions ($)", "pro_tip": "Increasing pre-tax contributions to an HSA or 401(k) lowers your adjusted gross income, directly reducing federal and state taxes."}, {"url": "/tools/percentage-calculator.html", "title": "Percentage Calculator & Proportion Solver", "keywords": ["percentage", "percent", "percentage change", "markup", "discount", "percent of", "percentage calculator"], "formula": "Percentage of Value = (X ÷ 100) × Y | Percentage Change = [ (New - Old) ÷ Old ] × 100", "how_to_use": "1. Choose problem type: 'What is X% of Y?', 'X is what % of Y?', or 'Percentage Increase/Decrease between X and Y'. 2. Enter your numbers. 3. The tool instantly solves the percentage with step-by-step arithmetic shown.", "inputs": "Number 1, Number 2, Mode Selection", "pro_tip": "Remember that percentage changes are asymmetrical: a 50% loss requires a 100% gain to break even."}, {"url": "/tools/podcast-sponsorship-calculator.html", "title": "Podcast Ad Sponsorship & CPM Calculator", "keywords": ["podcast", "podcast sponsorship", "podcast cpm", "podcast money", "ad read", "pre roll post roll"], "formula": "Episode Ad Revenue = (Downloads ÷ 1,000) × Negotiated CPM Rate", "how_to_use": "1. Enter Average Episode Downloads (measured over 30-45 days). 2. Select Ad Placement: Pre-Roll ($15-$20 CPM), Mid-Roll ($25-$35 CPM), or Post-Roll ($10-$15 CPM). 3. Enter Number of Episodes per Month. 4. View estimated monthly sponsorship revenue.", "inputs": "Episode Downloads, Ad Placement Type, Episodes per Month", "pro_tip": "Host-read mid-rolls command premium CPMs (up to $40+) because listeners trust personal creator endorsements over automated programmatic ads."}, {"url": "/tools/prorated-rent-calculator.html", "title": "Prorated Rent Calculator (Move-In / Move-Out)", "keywords": ["prorated rent", "prorate", "move in rent", "move out rent", "partial month rent", "rental calculation"], "formula": "Prorated Rent = (Monthly Rent ÷ Days in Month) × Number of Days Occupied", "how_to_use": "1. Enter Full Monthly Rent ($). 2. Select Move-In or Move-Out Date. 3. Select Month or enter days in month (30, 31, 28). 4. View exact daily rental rate and prorated payment due for the partial residency period.", "inputs": "Monthly Rent ($), Move-in Date, Days in Month", "pro_tip": "Confirm with your landlord whether they calculate daily rent using the exact days in that specific month (e.g. 31 in January) or the banking standard 30-day average."}, {"url": "/tools/rent-vs-buy.html", "title": "Rent vs. Buy Housing Investment Analyzer", "keywords": ["rent vs buy", "renting vs buying", "unrecoverable cost", "5 percent rule", "home ownership", "rent or buy"], "formula": "Compares unrecoverable ownership costs (mortgage interest, property tax, maintenance, cost of capital) against unrecoverable rent plus investment returns on down payment savings.", "how_to_use": "1. Enter Home Purchase Price and Equivalent Monthly Rent for similar home. 2. Enter expected residency duration (years). 3. Enter expected home appreciation and investment return rates. 4. View detailed 10-year comparative net worth trajectory.", "inputs": "Target Home Price ($), Monthly Rent ($), Down Payment ($), Horizon (years)", "pro_tip": "If you plan to live in an area for less than 5 years, transaction closing costs (realtor fees, title, transfer taxes) virtually always make renting cheaper."}, {"url": "/tools/retirement-401k.html", "title": "401(k) Retirement & Employer Match Simulator", "keywords": ["401k", "401(k)", "employer match", "retirement", "secure act", "401 k match", "retirement calculator"], "formula": "Future Balance = Compound growth of (Employee Contributions + 100% Guaranteed Employer Match) over investment lifecycle.", "how_to_use": "1. Enter Current Age and Target Retirement Age. 2. Enter Current 401(k) Balance. 3. Enter Annual Salary and Employee Contribution (%). 4. Enter Employer Match terms (e.g. 50% match up to 6%). 5. Enter Expected Annual Investment Return (default 7-8%). 6. View projected retirement balance and annual retirement income.", "inputs": "Current Age, Retirement Age, Salary ($), Contribution %, Employer Match %, Current Balance ($)", "pro_tip": "Always contribute at least enough to capture your full company match — it is an immediate 50% to 100% guaranteed risk-free return on your money."}, {"url": "/tools/roth-ira-calculator.html", "title": "Roth IRA Tax-Free Wealth Accumulator", "keywords": ["roth ira", "traditional ira", "tax free growth", "roth contribution limits", "roth calculator", "retirement"], "formula": "Future Balance = PMT × [ ((1 + r)^t - 1) ÷ r ] with 0% capital gains tax on qualified distributions after age 59½.", "how_to_use": "1. Enter Current Age and Retirement Age. 2. Enter Starting Balance ($). 3. Enter Annual Contribution (up to IRS limit of $7,000/yr or $8,000 for age 50+). 4. Enter Expected Annual Return (e.g. 8%). 5. View total future wealth and total tax savings upon qualified retirement withdrawals.", "inputs": "Current Age, Retirement Age, Current Balance ($), Annual Contribution ($)", "pro_tip": "If your income exceeds Roth IRA limits, you can use the legal 'Backdoor Roth IRA' strategy by contributing to a Traditional IRA and immediately converting it."}, {"url": "/tools/sales-tax-calculator.html", "title": "Sales Tax & Total Purchase Price Calculator", "keywords": ["sales tax", "tax rate", "sales tax calculator", "state tax", "local tax", "retail tax", "subtotal"], "formula": "Sales Tax = Subtotal × (Tax Rate ÷ 100) | Final Checkout Price = Subtotal + Sales Tax", "how_to_use": "1. Enter Item Price / Subtotal ($). 2. Enter Combined Sales Tax Rate (% from state, county, city). 3. Or select state for automatic standard rates. 4. View Total Sales Tax Due and Final Checkout Price.", "inputs": "Item Subtotal ($), Sales Tax Rate (%)", "pro_tip": "Five US states have no statewide sales tax: Alaska, Delaware, Montana, New Hampshire, and Oregon."}, {"url": "/tools/shopify-fee-calculator.html", "title": "Shopify Store Profit & Payment Fee Calculator", "keywords": ["shopify", "shopify fees", "shopify profit", "shopify calculator", "ecommerce store", "shopify payments"], "formula": "Net Margin = Revenue - Cost of Goods - Ad Spend - Shopify Plan Fee - Payment Gateway Processing Fees", "how_to_use": "1. Enter Monthly Revenue ($). 2. Select Shopify Plan: Basic, Shopify, or Advanced. 3. Enter Product Cost of Goods and Paid Ad Spend (CAC). 4. View Net Take-Home Profit after Shopify subscription fees, payment processing (2.4%-2.9% + 30¢), and operational costs.", "inputs": "Monthly Revenue ($), Cost of Goods ($), Ad Spend ($), Shopify Plan Tier", "pro_tip": "Upgrading from Basic Shopify to the Shopify plan lowers payment processing fees from 2.9% to 2.6%, which pays for itself if monthly sales exceed $16,000."}, {"url": "/tools/solar-roi.html", "title": "Residential Solar Panel ROI & Payback Calculator", "keywords": ["solar", "solar roi", "solar panel", "solar payback", "clean energy", "federal solar tax credit", "electric bill"], "formula": "Payback Period = (System Gross Cost - 30% Federal Tax Credit - State Rebates) ÷ Annual Avoided Electric Bills", "how_to_use": "1. Enter Current Average Monthly Electric Bill ($). 2. Enter Total Solar System Cost (before incentives). 3. Apply Federal Solar Tax Credit (30% residential clean energy credit). 4. Enter Annual Electricity Rate Inflation (default ~3-4%). 5. View exact Payback Period in Years and 25-Year Net Utility Savings.", "inputs": "Monthly Electric Bill ($), System Cost ($), Federal Credit (30%), Rate Inflation (%)", "pro_tip": "The Federal Residential Clean Energy Credit (Section 25D) provides a nonrefundable 30% tax credit on the full equipment and installation cost."}, {"url": "/tools/steps-to-miles.html", "title": "Steps to Miles & Calorie Walking Calculator", "keywords": ["steps to miles", "step calculator", "pedometer", "walking miles", "10000 steps", "how many miles is steps"], "formula": "Distance (miles) = (Step Count × Stride Length in inches) ÷ 63,360 inches per mile. Average adult stride ≈ 2.2 to 2.5 feet (roughly 2,000 to 2,400 steps per mile).", "how_to_use": "1. Enter Total Step Count (e.g. 10,000 steps). 2. Enter Height or Custom Stride Length. 3. Select Gender. 4. View total Distance Walked in Miles and Kilometers, plus estimated calories burned.", "inputs": "Step Count, Height (feet/inches), Walking Pace", "pro_tip": "10,000 steps equals approximately 4.5 to 5.0 miles for most adults and burns between 350 and 500 calories depending on body weight."}, {"url": "/tools/student-loan.html", "title": "Student Loan Repayment & Refinance Calculator", "keywords": ["student loan", "college loan", "student debt", "idr", "student loan payment", "student loan interest"], "formula": "Monthly Payment = [ Principal × r ] ÷ [ 1 - (1 + r)^(-months) ]", "how_to_use": "1. Enter Total Student Debt Balance ($). 2. Enter Weighted Average Interest Rate (%). 3. Select Repayment Term (Standard 10-year or Extended 20/25-year). 4. View monthly installment, total interest over life of loan, and savings from extra monthly prepayments.", "inputs": "Loan Balance ($), Interest Rate (%), Term in Years", "pro_tip": "Target high-interest private student loans first; federal loans offer safety features like income-driven repayment (IDR) and disability discharge."}, {"url": "/tools/tax-withholding.html", "title": "IRS W-4 Tax Withholding & Refund Estimator", "keywords": ["tax withholding", "w4", "w-4", "irs withholding", "tax refund", "w4 calculator", "withholding allowance"], "formula": "Computes exact paycheck withholding following IRS Publication 15-T percentage method tables.", "how_to_use": "1. Enter Annual Gross Salary. 2. Select Filing Status (Single, Married, Head of Household). 3. Enter Child Tax Credits ($2,000 per child) and other deductions. 4. View recommended per-paycheck withholding to ensure you neither owe a large tax bill nor give the IRS an interest-free loan via huge refunds.", "inputs": "Annual Wages ($), Filing Status, Dependent Credits ($), Additional Withholding", "pro_tip": "Getting a huge tax refund of $4,000+ means you overpaid taxes by $330/month. Adjust your W-4 to keep that cash in your monthly paycheck."}, {"url": "/tools/tiktok-coins-calculator.html", "title": "TikTok Coins, Recharge & Diamond Cashout Converter", "keywords": ["tiktok coins", "tiktok coin", "tiktok gifts", "tiktok diamonds", "tiktok recharge", "tiktok paise", "universe gift", "lion gift"], "formula": "Recharge: 100 Coins ≈ $1.05 USD on Web. Creator Payout: 2 Diamonds = 1 Coin. Creator receives 50% split (1 Diamond ≈ $0.005 USD upon PayPal cashout).", "how_to_use": "1. Enter number of TikTok Coins or select a Gift (e.g. Rose = 1 coin, Lion = 29,999 coins, Universe = 44,999 coins). 2. Choose Mode: 'Recharge Cost (Buyer)' or 'Creator Payout (Diamonds to USD)'. 3. View exact real dollar cost and creator take-home earnings.", "inputs": "Number of Coins or Gift Selection, Mode (Buyer Cost vs Creator Cashout)", "pro_tip": "Always buy coins via the desktop web browser at tiktok.com/coin to bypass Apple and Google's 30% in-app commission, saving 25-30%!"}, {"url": "/tools/tiktok-money-calculator.html", "title": "TikTok Creator Rewards & Video Earnings Calculator", "keywords": ["tiktok money", "tiktok creator rewards", "tiktok earnings", "tiktok fund", "tiktok cpm", "tiktok views money"], "formula": "Estimated Creator Pay = (Qualified Views ÷ 1,000) × Video RPM", "how_to_use": "1. Enter Qualified Video Views (views exceeding 5 seconds). 2. Enter RPM Rate ($0.40 to $1.20 average for US creators). 3. Enter percentage of US / Tier-1 audience. 4. View estimated earnings from the TikTok Creator Rewards Program.", "inputs": "Total Views, Qualified View %, Estimated RPM ($)", "pro_tip": "Under the Creator Rewards Program, videos must be longer than 1 minute (60 seconds) with high completion rates to qualify for RPM payouts."}, {"url": "/tools/tiktok-shop-affiliate-calculator.html", "title": "TikTok Shop Affiliate Commission & Profit Calculator", "keywords": ["tiktok shop", "tiktok affiliate", "tiktok commission", "tiktok shop seller", "tiktok creator affiliate"], "formula": "Affiliate Earnings = Product Price × Commission Rate (%) × Units Sold", "how_to_use": "1. Enter Product Selling Price ($). 2. Enter Seller Commission Rate (% offered by merchant, typically 10%-20%). 3. Enter projected or actual video sales volume. 4. View Gross Affiliate Commission, platform deductions, and net creator earnings.", "inputs": "Product Price ($), Commission Rate (%), Units Sold", "pro_tip": "Choose TikTok Shop products with at least 15% commission that already have high-converting organic video momentum and free samples available."}, {"url": "/tools/tip-calculator.html", "title": "Tip & Restaurant Bill Split Calculator", "keywords": ["tip", "tip calculator", "gratuity", "bill split", "restaurant tip", "split bill", "tipping etiquette"], "formula": "Tip Amount = Subtotal × Tip % | Total Bill = Subtotal + Tip + Tax | Per Person = Total Bill ÷ Guests", "how_to_use": "1. Enter Bill Subtotal ($). 2. Select Tip Percentage: 15% (Fair), 18% (Standard), 20% (Great), 25% (Exceptional) or Custom. 3. Enter Number of People to Split. 4. View Total Tip Amount, Final Total Bill, and Exact Amount per person.", "inputs": "Bill Subtotal ($), Tip Percentage (%), Number of Guests", "pro_tip": "In the United States, standard tipping etiquette recommends calculating the tip percentage on the pre-tax food and beverage subtotal."}, {"url": "/tools/usd-to-cad.html", "title": "USD to CAD (Canadian Dollar) Live Converter", "keywords": ["usd to cad", "cad to usd", "canadian dollar", "us dollar to canadian dollar", "canada exchange rate"], "formula": "CAD Amount = USD Amount × Live USD/CAD Mid-Market Rate", "how_to_use": "Enter US Dollar amount to instantly convert to Canadian Dollars using live interbank mid-market exchange rates with historical charts.", "inputs": "Amount in USD ($)", "pro_tip": "Track Bank of Canada and Federal Reserve interest rate announcements for major swing catalysts in the USD/CAD exchange pair."}, {"url": "/tools/usd-to-eur.html", "title": "USD to EUR (Euro) Live Converter", "keywords": ["usd to eur", "eur to usd", "euro", "us dollar to euro", "european exchange rate"], "formula": "EUR Amount = USD Amount × Live USD/EUR Mid-Market Rate", "how_to_use": "Enter US Dollar amount to instantly convert to Euros using real-time interbank foreign exchange rates with 0 bank markup.", "inputs": "Amount in USD ($)", "pro_tip": "EUR/USD is the most traded currency pair globally, offering the tightest spreads and highest liquidity in global finance."}, {"url": "/tools/usd-to-gbp.html", "title": "USD to GBP (British Pound Sterling) Live Converter", "keywords": ["usd to gbp", "gbp to usd", "british pound", "pound sterling", "uk exchange rate"], "formula": "GBP Amount = USD Amount × Live USD/GBP Mid-Market Rate", "how_to_use": "Enter US Dollar amount to instantly convert to British Pounds using live interbank mid-market foreign exchange rates.", "inputs": "Amount in USD ($)", "pro_tip": "Watch Bank of England monetary policy releases for sudden movement in cable (GBP/USD) exchange rates."}, {"url": "/tools/usd-to-inr.html", "title": "USD to INR (Indian Rupee) Live Converter", "keywords": ["usd to inr", "inr to usd", "indian rupee", "us dollar to rupee", "india exchange rate", "rupee rate"], "formula": "INR Amount = USD Amount × Live USD/INR Mid-Market Rate", "how_to_use": "Enter US Dollar amount to instantly convert to Indian Rupees with live exchange rates and remittance fee comparison.", "inputs": "Amount in USD ($)", "pro_tip": "Remittance companies often advertise 'zero fee' transfers while marking up the USD/INR exchange rate by 1.5% to 3.0%. Always compare against mid-market."}, {"url": "/tools/usd-to-jpy.html", "title": "USD to JPY (Japanese Yen) Live Converter", "keywords": ["usd to jpy", "jpy to usd", "japanese yen", "yen exchange rate", "us dollar to yen"], "formula": "JPY Amount = USD Amount × Live USD/JPY Mid-Market Rate", "how_to_use": "Enter US Dollar amount to convert to Japanese Yen with live real-time interbank rates.", "inputs": "Amount in USD ($)", "pro_tip": "The Bank of Japan's yield curve control policies heavily influence short-term volatility in USD/JPY."}, {"url": "/tools/usd-to-mxn.html", "title": "USD to MXN (Mexican Peso) Live Converter", "keywords": ["usd to mxn", "mxn to usd", "mexican peso", "peso exchange rate", "mexico exchange rate"], "formula": "MXN Amount = USD Amount × Live USD/MXN Mid-Market Rate", "how_to_use": "Enter US Dollar amount to convert to Mexican Pesos using live mid-market rates.", "inputs": "Amount in USD ($)", "pro_tip": "Cross-border trade and remittances make USD/MXN one of the highest-volume emerging market currency pairs."}, {"url": "/tools/usd-to-pkr.html", "title": "USD to PKR (Pakistani Rupee) Live Converter", "keywords": ["usd to pkr", "pkr to usd", "pakistani rupee", "dollar rate pakistan", "open market dollar pkr", "interbank pkr"], "formula": "PKR Amount = USD Amount × Live USD/PKR Mid-Market Rate", "how_to_use": "Enter US Dollar amount to convert to Pakistani Rupees using live verified interbank rates.", "inputs": "Amount in USD ($)", "pro_tip": "Compare interbank rates against open market retail exchange rates for overseas worker remittances."}, {"url": "/tools/water-intake-calculator.html", "title": "Daily Water Intake & Hydration Calculator", "keywords": ["water intake", "hydration", "how much water", "glasses of water", "water calculator", "daily water"], "formula": "Base Hydration = Body Weight (lbs) × 0.5 oz + (Exercise Minutes ÷ 30 × 12 oz) + Climate Adjustment", "how_to_use": "1. Enter Body Weight (lbs or kg). 2. Enter Daily Exercise Duration (minutes). 3. Select Climate (Normal, Warm/Humid, Hot/Dry). 4. View recommended daily water intake in Ounces, Liters, and 8-oz Glasses.", "inputs": "Weight (lbs/kg), Exercise Minutes, Climate Condition", "pro_tip": "Drink an additional 12 to 16 ounces of water for every 30 minutes of intense physical training."}, {"url": "/tools/youtube-money-calculator.html", "title": "YouTube Money & AdSense RPM Calculator", "keywords": ["youtube money", "youtube rpm", "youtube cpm", "youtube earnings", "youtube calculator", "adsense revenue"], "formula": "Earnings = (Total Views ÷ 1,000) × Video RPM (after YouTube's 45% platform split)", "how_to_use": "1. Enter Average Daily or Monthly Video Views. 2. Select Niche (Personal Finance, Tech, Gaming, Lifestyle). 3. Enter Estimated RPM ($1.50 to $18.00). 4. View projected Monthly and Annual AdSense Revenue.", "inputs": "Video Views, Niche / Category, Estimated RPM ($)", "pro_tip": "Videos exceeding 8 minutes in length allow mid-roll ad placements, which typically double or triple effective video RPM."}, {"url": "/tools/mortgage-refinance-calculator.html", "title": "Mortgage Refinance Break-Even & Savings Calculator", "keywords": ["mortgage refinance", "refi break even", "refinance calculator", "refinance closing costs", "mortgage payment savings", "refi savings", "refinance home", "refi"], "formula": "Break-Even Horizon (Months) = Total Refinance Closing Costs ÷ (Old Monthly P&I Payment - New Monthly P&I Payment)", "how_to_use": "1. Enter Remaining Loan Balance ($). 2. Enter Current APR Interest Rate (%) and remaining years. 3. Enter New Refinance Rate (%) and Term (15, 20, or 30 Years). 4. Enter Total Closing Costs (- typical). 5. The tool instantly computes your monthly payment savings, break-even point in months, 5-year net savings, and lifetime interest saved.", "inputs": "Current Balance ($), Current APR (%), Years Left, New APR (%), New Term (Years), Closing Costs ($)", "pro_tip": "Watch out for the Reset Trap! If you already paid 7 years on a 30-year loan, refinancing into another 30-year term lowers your payment partly by extending your debt. Consider a 20-year or 15-year term to lock in true lifetime savings."}, {"url": "/tools/state-tax-relocation-calculator.html", "title": "US State-to-State Tax Relocation & Moving Calculator", "keywords": ["state tax relocation", "moving state tax", "relocation calculator", "moving to texas", "moving to florida", "california to texas", "zero state tax", "state income tax comparison", "relocation tax"], "formula": "Net Relocation Impact = (Origin State Tax - Destination State Tax) + (12 × Monthly Housing Differential)", "how_to_use": "1. Enter Annual Gross Household Income ($). 2. Select IRS Filing Status (Single, Married, HOH). 3. Select your Current Origin State (e.g. CA, NY, NJ). 4. Select your Destination State (e.g. TX, FL, WA, NV). 5. Enter monthly housing cost change (negative if cheaper). 6. View exact annual state tax savings, monthly take-home boost, and 5-year wealth accumulation.", "inputs": "Gross Household Income ($), Filing Status, Current State, Destination State, Monthly Housing Delta ($)", "pro_tip": "States with 0% income tax often fund municipal services with higher property taxes or local sales taxes. Check effective property tax rates if purchasing a high-value home."}, {"url": "/tools/life-insurance-calculator.html", "title": "Life Insurance Needs Calculator (DIME Method)", "keywords": ["life insurance", "dime method", "how much life insurance", "term life calculator", "life insurance coverage", "term vs whole life", "insurance needs", "bima"], "formula": "Recommended Coverage = Debt & Final Expenses + (Annual Income × Years) + Mortgage Balance + Education Fund - Existing Liquid Assets", "how_to_use": "1. Enter Annual Gross Salary ($) and desired years of income replacement (10 years standard). 2. Enter Remaining Mortgage Balance ($). 3. Enter Other Debts and Funeral Expenses (,000 standard). 4. Enter Children's Future College Education Fund. 5. Enter Existing Liquid Savings to deduct. 6. View recommended Term Life policy face value and estimated monthly premium.", "inputs": "Annual Income ($), Replacement Years, Mortgage Balance ($), Other Debts ($), Education Fund ($), Liquid Savings ($)", "pro_tip": "Always Buy Term and Invest the Difference. A 20-year level term policy costs 85% to 90% less than Whole Life for the same death benefit, allowing you to invest the surplus into an S&P 500 index fund to become self-insured."}, {"url": "/tools/cd-ladder-calculator.html", "title": "Certificate of Deposit (CD) Ladder Yield Calculator", "keywords": ["cd ladder", "certificate of deposit", "cd calculator", "cd yield", "bank cd", "5 year cd ladder", "fdic savings", "cd apy", "laddering"], "formula": "Compound Maturity A = P × (1 + r/n)^(n × t) | Total Interest = ∑ [ A_t - P_t ] across all rungs", "how_to_use": "1. Enter Total Capital to Invest ($). 2. Select Number of Ladder Rungs (3, 4, or 5 years). 3. Enter Average Expected CD APY (%). 4. Select Compounding Frequency. 5. View total guaranteed interest earned, annual maturing liquidity schedule, and blended portfolio yield.", "inputs": "Total Capital ($), Number of Rungs (Years), Expected APY (%), Compounding Frequency", "pro_tip": "A CD ladder locks in guaranteed yields, protecting you if the Federal Reserve cuts interest rates, while ensuring that 20% of your capital unlocks penalty-free every single year."}, {"url": "/tools/substack-calculator.html", "title": "Substack Newsletter Revenue & Creator MRR Calculator", "keywords": ["substack", "substack calculator", "paid newsletter", "newsletter revenue", "substack mrr", "creator earnings", "email newsletter money", "substack fees"], "formula": "Net Creator Take-Home = Gross ARR - (10% Substack Fee) - [ Stripe 2.9% + .30/transaction ]", "how_to_use": "1. Enter Total Free Email Subscribers. 2. Enter Free-to-Paid Conversion Rate (typically 2% to 5%). 3. Enter Monthly and Annual Subscription Prices. 4. Select % of subscribers on annual plans. 5. View exact paid subscriber count, Monthly Recurring Revenue (MRR), Annual Recurring Revenue (ARR), and net creator payout.", "inputs": "Free Subscribers, Conversion Rate (%), Monthly Price ($), Annual Price ($), % Annual Plan", "pro_tip": "Use the Paywall Teaser strategy: send weekly posts free to your entire list, placing the paid paywall divider just before actionable conclusions or proprietary investment picks to boost conversions by up to 40%."}, {"url": "/tools/flooring-calculator.html", "title": "Flooring & Tile Square Footage Cost Calculator", "keywords": ["flooring calculator", "tile calculator", "square footage calculator", "lvp flooring", "hardwood cost", "tile cost", "flooring waste", "flooring boxes"], "formula": "Gross Sq Ft = [ (Length × Width) + Extra Area ] × (1 + Waste Factor) | Boxes = Ceiling(Gross Sq Ft ÷ Box Coverage)", "how_to_use": "1. Enter Room Length and Width (in feet). 2. Add extra area for closets/hallways. 3. Select Waste Allowance (10% standard, 15% diagonal, 20% herringbone). 4. Select Material Type or enter custom price per sq ft and box coverage. 5. Enter Labor Cost per sq ft ( for DIY). 6. View total project cost, square footage needed with waste, and exact number of boxes to purchase.", "inputs": "Room Length (ft), Room Width (ft), Extra Sq Ft, Waste % (10%-20%), Material $/sq ft, Box Coverage (sq ft), Labor $/sq ft", "pro_tip": "Always store one unopened box of your flooring in a closet after installation. If a plank gets scratched or damaged by a plumbing leak years later, matching dye lots and discontinued patterns will be impossible to find without an original spare box."}, {"url": "/tools/ai-prompt-cost-calculator.html", "title": "AI Prompt Engineering & Cost Calculator (2026)", "keywords": ["ai", "prompt", "prompt cost", "llm cost", "token calculator", "openai cost", "gpt-4o", "claude 3.5 sonnet", "gemini", "deepseek", "api pricing", "prompt engineering", "tokens to usd", "token counter", "ai prompt", "prompt optimizer", "tokens", "token count", "llm pricing", "ai tool", "ai calculator", "prompt token", "bpe"], "formula": "Cost = [(System Tokens × SysRate) + (User Tokens × UserRate) + (Output Tokens × OutRate)] ÷ 1,000,000. With Prompt Caching: System Prompt receives up to 90% discount. With Batch API: Flat 50% discount applies.", "how_to_use": "1. Enter System Prompt & User Prompt (tokens are estimated in real time using calibrated BPE heuristics). 2. Choose expected output completion tokens (slider 50 to 4,000). 3. Select Target Model (GPT-4o, Claude 3.5 Sonnet, Gemini 1.5 Pro, DeepSeek-V3, Llama 3.3). 4. Toggle Prompt Caching or Batch API to see instant dollar savings. 5. View live cost per call, per 1,000 calls, monthly bills, prompt compression ROI, and copy the full summary with one click.", "inputs": "System Prompt text, User Prompt text, Output tokens slider, Daily request volume, Model selection, Prompt Caching toggle, Batch API toggle", "pro_tip": "Output tokens cost 3x to 5x more than input tokens across all major providers. Enforce strict JSON schemas or concise bullet constraints to minimize output tokens and save up to 70% on monthly LLM bills."}, {"url": "/tools/capital-gains-tax-calculator.html", "title": "Capital Gains Tax Calculator 2026", "keywords": ["capital gains tax calculator", "long term capital gains 2026", "short term capital gains", "niit tax", "stock sale tax", "irs capital gains rates"], "formula": "Long-Term: 0% / 15% / 20% bracket thresholds based on taxable income + 3.8% NIIT for high earners. Short-Term: Taxed at ordinary federal income tax rates (10% to 37%).", "how_to_use": "1. Enter your specific numerical inputs (Initial Purchase Price (Cost Basis), Final Asset Sale Price, Holding Duration). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Initial Purchase Price (Cost Basis), Final Asset Sale Price, Holding Duration, Annual Taxable Income (Excl. Gain), Tax Filing Status, State Capital Gains Tax Rate (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/social-security-calculator.html", "title": "Social Security Benefits Calculator 2026", "keywords": ["social security calculator", "ssa benefit estimate 2026", "early retirement age 62", "full retirement age 67", "delayed retirement credits age 70"], "formula": "Claiming at 62 reduces monthly FRA benefits by 30%. Delaying past FRA up to age 70 yields an 8% per year delayed retirement credit (+24% maximum increase).", "how_to_use": "1. Enter your specific numerical inputs (Estimated Monthly Benefit at Full Retirement Age (67), Target Claiming Age, Expected Longevity Horizon). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Estimated Monthly Benefit at Full Retirement Age (67), Target Claiming Age, Expected Longevity Horizon", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/401k-rmd-calculator.html", "title": "401(k) & IRA RMD Calculator 2026", "keywords": ["rmd calculator 2026", "required minimum distribution", "secure 2.0 act rmd age", "ira rmd formula", "401k distribution table"], "formula": "Annual RMD = Prior Year-End Account Balance ÷ IRS Uniform Lifetime Table Life Expectancy Factor.", "how_to_use": "1. Enter your specific numerical inputs (Total Pre-Tax Balance (Prior Dec 31), Owner Age in Distribution Year, Estimated Federal Tax Bracket (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Total Pre-Tax Balance (Prior Dec 31), Owner Age in Distribution Year, Estimated Federal Tax Bracket (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/dti-calculator.html", "title": "Debt-to-Income (DTI) Calculator", "keywords": ["dti calculator", "debt to income ratio", "mortgage qualifying ratio", "fannie mae dti limit", "front end dti", "back end dti 2026"], "formula": "Front-End DTI = Proposed Housing Payment (PITI) ÷ Gross Monthly Income. Back-End DTI = (Housing PITI + All Monthly Debt Obligations) ÷ Gross Monthly Income.", "how_to_use": "1. Enter your specific numerical inputs (Gross Pre-Tax Monthly Income, Proposed Mortgage Payment (PITI), Monthly Auto Loan Payments). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Gross Pre-Tax Monthly Income, Proposed Mortgage Payment (PITI), Monthly Auto Loan Payments, Monthly Student Loan Payments, Minimum Credit Card Monthly Payments, Other Monthly Debts (Alimony/Personal)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/roth-conversion-calculator.html", "title": "Roth Conversion Tax & Break-Even Calculator 2026", "keywords": ["roth conversion calculator", "traditional to roth ira conversion", "backdoor roth tax", "roth conversion break even 2026"], "formula": "Upfront Conversion Tax = Converted Amount × Marginal Federal/State Tax Bracket. Future Tax Savings = Tax-Free Compounded Growth minus Upfront Tax Paid.", "how_to_use": "1. Enter your specific numerical inputs (Amount to Convert to Roth, Current Marginal Tax Rate (%), Expected Retirement Tax Rate (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Amount to Convert to Roth, Current Marginal Tax Rate (%), Expected Retirement Tax Rate (%), Years Until Retirement Withdrawals, Expected Annual Portfolio Growth (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/child-tax-credit-calculator.html", "title": "Child Tax Credit (CTC) & EITC Calculator 2026", "keywords": ["child tax credit calculator 2026", "actc refundable credit", "eitc calculator", "child tax credit income limits", "irs family credits"], "formula": "CTC = $2,000 per qualifying child under age 17. Phased out at $50 per $1,000 of MAGI above $400,000 (married) or $200,000 (single). Up to $1,700 is refundable ACTC.", "how_to_use": "1. Enter your specific numerical inputs (Qualifying Children Under Age 17, Filing Status, Annual Earned Income (W-2 / 1099)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Qualifying Children Under Age 17, Filing Status, Annual Earned Income (W-2 / 1099), Adjusted Gross Income (AGI)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/estate-tax-calculator.html", "title": "Federal Estate & Lifetime Gift Tax Calculator 2026", "keywords": ["estate tax calculator 2026", "federal gift tax exemption", "unified lifetime credit", "inheritance tax rates", "tcja sunset estate tax"], "formula": "Estate Tax = (Gross Estate - Applicable Exemption Limit) × 40% top federal estate tax bracket.", "how_to_use": "1. Enter your specific numerical inputs (Total Estimated Gross Estate Value, Prior Lifetime Taxable Gifts Made, Marital Status & Portability). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Total Estimated Gross Estate Value, Prior Lifetime Taxable Gifts Made, Marital Status & Portability, Charitable Bequests & Deductions", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/hsa-fsa-calculator.html", "title": "HSA vs FSA Tax Savings & Healthcare Wealth Calculator 2026", "keywords": ["hsa vs fsa calculator", "health savings account 2026", "flexible spending account rollover", "triple tax advantage hsa", "hsa contribution limits 2026"], "formula": "HSA Triple Tax Shield = Tax-Deductible Contributions + Tax-Free Growth + Tax-Free Qualified Medical Withdrawals. FSA = Use-it-or-lose-it with limited rollover.", "how_to_use": "1. Enter your specific numerical inputs (Annual Healthcare Contribution ($), Combined Federal & State Bracket (%), Estimated Annual Out-of-Pocket Spend). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Annual Healthcare Contribution ($), Combined Federal & State Bracket (%), Estimated Annual Out-of-Pocket Spend, HSA Investment Horizon (Years), HSA Investment Growth Rate (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/closing-costs-calculator.html", "title": "Home Purchase Closing Costs Estimator 2026", "keywords": ["closing costs calculator", "home purchase closing fees", "buyer closing costs 2026", "title insurance cost", "lender origination fee estimator"], "formula": "Buyer Closing Costs typically range from 2% to 5% of purchase price: Origination (0.5%-1%) + Appraisal + Title & Escrow + State Transfer Taxes + Prepaid Escrows.", "how_to_use": "1. Enter your specific numerical inputs (Home Purchase Price, Down Payment Percentage (%), Lender Origination & Points (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Home Purchase Price, Down Payment Percentage (%), Lender Origination & Points (%), Annual Property Tax Rate (%), Annual Homeowners Insurance ($)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/extra-mortgage-payment-calculator.html", "title": "Extra Mortgage Principal Payment & Early Payoff Calculator", "keywords": ["extra mortgage payment calculator", "early mortgage payoff", "pay off 30 year mortgage early", "mortgage amortization extra principal", "interest savings"], "formula": "Applying additional principal reduces loan balance immediately, accelerating amortization curves and compressing overall term.", "how_to_use": "1. Enter your specific numerical inputs (Current Remaining Mortgage Balance, Mortgage Interest Rate (APR %), Remaining Amortization Term (Years)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Current Remaining Mortgage Balance, Mortgage Interest Rate (APR %), Remaining Amortization Term (Years), Extra Monthly Principal Contribution, Extra Annual Lump-Sum Contribution", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/property-tax-calculator.html", "title": "US Property Tax & Mill Rate Assessment Calculator 2026", "keywords": ["property tax calculator", "mill rate calculator", "county property tax", "millage rate formula", "homestead exemption tax savings 2026"], "formula": "Annual Property Tax = [ (Assessed Value - Homestead Exemption) × Millage Rate ] ÷ 1,000.", "how_to_use": "1. Enter your specific numerical inputs (County Assessed Property Value, Total Local Millage Rate (Mills), State/County Homestead Exemption). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "County Assessed Property Value, Total Local Millage Rate (Mills), State/County Homestead Exemption, County Assessment Ratio (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/fha-vs-conventional-calculator.html", "title": "FHA vs Conventional Loan Calculator 2026", "keywords": ["fha vs conventional calculator", "fha mip vs pmi", "fha 3.5 down vs conventional 3", "mortgage insurance removal", "fha loan limits 2026"], "formula": "FHA = 3.5% down + 1.75% Upfront MIP + 0.55% Annual Life-of-Loan MIP. Conventional = 3-20% down + cancellable PMI once loan reaches 78-80% LTV.", "how_to_use": "1. Enter your specific numerical inputs (Home Purchase Price, Down Payment Percentage (%), Borrower Credit Score Tier). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Home Purchase Price, Down Payment Percentage (%), Borrower Credit Score Tier, Conventional Interest Rate (APR %), FHA Interest Rate (APR %)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/home-equity-loan-calculator.html", "title": "Home Equity Loan vs HELOC Calculator 2026", "keywords": ["home equity loan calculator", "heloc vs home equity loan", "second mortgage payment", "ltv 85 percent limit", "home equity interest rates 2026"], "formula": "Maximum Equity Line = (Current Appraised Value × Max CLTV 80-85%) - Outstanding 1st Mortgage Balance.", "how_to_use": "1. Enter your specific numerical inputs (Estimated Current Home Market Value, Remaining 1st Mortgage Balance, Target Equity Borrowing Amount). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Estimated Current Home Market Value, Remaining 1st Mortgage Balance, Target Equity Borrowing Amount, Fixed-Rate Home Equity Loan APR (%), HELOC Variable Rate (Prime + Margin %), Fixed Loan Term", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/personal-loan-calculator.html", "title": "Personal Loan Calculator 2026", "keywords": ["personal loan calculator", "unsecured loan monthly payment", "debt consolidation loan", "personal loan origination fee", "loan amortization 2026"], "formula": "Monthly Payment = [ Principal × (APR ÷ 12) ] ÷ [ 1 - (1 + APR ÷ 12)^(-months) ]. Net Disbursed = Loan Amount - Origination Fee.", "how_to_use": "1. Enter your specific numerical inputs (Requested Personal Loan Amount, Annual Percentage Rate (APR %), Loan Repayment Term). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Requested Personal Loan Amount, Annual Percentage Rate (APR %), Loan Repayment Term, Lender Origination Fee (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/apr-to-apy-calculator.html", "title": "APR vs APY Calculator 2026", "keywords": ["apr to apy calculator", "apy to apr converter", "compounding interest formula", "effective annual rate", "nominal vs effective rate 2026"], "formula": "APY = (1 + APR ÷ n)^n - 1 | APR = n × [ (1 + APY)^(1 ÷ n) - 1 ] where n is compounding periods per year.", "how_to_use": "1. Enter your specific numerical inputs (Nominal Interest Rate / APR (%), Compounding Frequency, Illustrative Account Deposit ($)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Nominal Interest Rate / APR (%), Compounding Frequency, Illustrative Account Deposit ($)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/savings-goal-calculator.html", "title": "Savings Goal & Sinking Fund Calculator 2026", "keywords": ["savings goal calculator", "sinking fund calculator", "how much to save monthly", "financial milestone planner", "compound savings calculator 2026"], "formula": "Monthly Deposit = [ Target - (Starting Balance × (1 + r)^n) ] × [ r ÷ ((1 + r)^n - 1) ] where r is monthly interest rate and n is total months.", "how_to_use": "1. Enter your specific numerical inputs (Target Savings Milestone ($), Current Starting Balance ($), Time Horizon to Reach Goal). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Target Savings Milestone ($), Current Starting Balance ($), Time Horizon to Reach Goal, High-Yield Savings APY (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/emergency-fund-calculator.html", "title": "Emergency Fund Calculator 2026", "keywords": ["emergency fund calculator", "3 to 6 months savings", "baseline survival budget", "financial safety net 2026", "rainy day fund"], "formula": "Emergency Reserve = Essential Monthly Expenses (Housing + Food + Healthcare + Debt + Utilities + Transport) × Recommended Coverage Months (3-6).", "how_to_use": "1. Enter your specific numerical inputs (Monthly Housing (Rent / Mortgage PITI), Essential Groceries & Household Needs, Essential Utilities (Electric, Water, Internet, Phone)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Monthly Housing (Rent / Mortgage PITI), Essential Groceries & Household Needs, Essential Utilities (Electric, Water, Internet, Phone), Healthcare & Prescriptions Out-of-Pocket, Minimum Debt Obligations (Car, Cards, Student Loans), Target Safety Duration, Current Emergency Cash in Bank", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/payday-loan-calculator.html", "title": "Payday Loan Real APR & Debt Trap Calculator 2026", "keywords": ["payday loan calculator", "true payday loan apr", "cash advance fee calculator", "predatory lending trap", "cfpb payday loan rules 2026"], "formula": "Real APR = (Fee ÷ Loan Amount) × (365 ÷ Loan Term in Days) × 100.", "how_to_use": "1. Enter your specific numerical inputs (Cash Advance Principal Borrowed, Flat Finance Charge Fee (e.g. $15 per $100), Term Until Payday (Days)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Cash Advance Principal Borrowed, Flat Finance Charge Fee (e.g. $15 per $100), Term Until Payday (Days), Expected Rollovers / Renewals", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/net-worth-calculator.html", "title": "Personal Net Worth Calculator 2026", "keywords": ["net worth calculator", "personal balance sheet", "assets minus liabilities", "liquid net worth 2026", "calculate net worth formula"], "formula": "Net Worth = Total Assets (Cash + Investments + Real Estate + Vehicles) - Total Liabilities (Mortgages + Auto Loans + Credit Cards + Student Loans).", "how_to_use": "1. Enter your specific numerical inputs (Cash & Checking / Savings Accounts, Retirement Accounts (401k, IRA, Roth), Taxable Brokerage & Crypto Holdings). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Cash & Checking / Savings Accounts, Retirement Accounts (401k, IRA, Roth), Taxable Brokerage & Crypto Holdings, Primary Home & Real Estate Market Value, Vehicle Resale Value (KBB / Private), Total Outstanding Mortgage Debt, Total Auto Loan Debt, Student Loans & Credit Card Balances", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/529-college-savings-calculator.html", "title": "529 College Savings Plan Calculator 2026", "keywords": ["529 college savings calculator", "529 plan tax benefits", "college tuition inflation calculator", "state tax deduction 529", "secure 2.0 529 roth rollover"], "formula": "Future Balance = P(1 + r)^t + PMT × [ ((1 + r)^t - 1) ÷ r ] with 100% federal and state tax exemption on qualified education distributions.", "how_to_use": "1. Enter your specific numerical inputs (Child's Current Age, College Enrollment Age, Initial Account Deposit). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Child's Current Age, College Enrollment Age, Initial Account Deposit, Monthly Contribution, Expected Annual Investment Return (%), State Income Tax Rate for Deduction (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/student-loan-pslf-calculator.html", "title": "PSLF vs Standard Repayment Calculator 2026", "keywords": ["pslf calculator 2026", "public service loan forgiveness", "save plan student loans", "pslf vs standard repayment", "120 qualifying payments"], "formula": "PSLF Forgiveness = Remaining Principal + Interest after 120 certified on-time monthly income-driven payments (IDR/SAVE). 100% Tax-Free under federal law.", "how_to_use": "1. Enter your specific numerical inputs (Federal Direct Loan Balance, Weighted Average Interest Rate (%), Current Annual Adjusted Gross Income (AGI)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Federal Direct Loan Balance, Weighted Average Interest Rate (%), Current Annual Adjusted Gross Income (AGI), Household Family Size, Certified Payments Already Completed", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/cost-of-living-calculator.html", "title": "US City Cost of Living & Salary Relocation Calculator 2026", "keywords": ["cost of living calculator", "us city relocation salary", "nyc vs austin cost of living", "moving salary equivalent 2026", "purchasing power index"], "formula": "Equivalent Target Salary = Origin Salary × (Target City Cost of Living Index ÷ Origin City Index).", "how_to_use": "1. Enter your specific numerical inputs (Current Annual Gross Salary, Current Origin Metro Area, Target Relocation Metro Area). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Current Annual Gross Salary, Current Origin Metro Area, Target Relocation Metro Area", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/job-offer-comparison-calculator.html", "title": "Job Offer Total Compensation Comparator 2026", "keywords": ["job offer comparison calculator", "total compensation calculator", "rsu bonus 401k match", "compare two job offers 2026", "evaluate salary offers"], "formula": "Total Compensation (TC) = Base Salary + Performance Bonus + 401(k) Employer Match + Annual Equity Vesting + Health Subsidy Value + PTO Dollar Equivalent.", "how_to_use": "1. Enter your specific numerical inputs (Offer A: Annual Base Salary ($), Offer A: Target Annual Bonus ($), Offer A: 401(k) Match Percentage (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Offer A: Annual Base Salary ($), Offer A: Target Annual Bonus ($), Offer A: 401(k) Match Percentage (%), Offer A: Annual Equity / RSU Vest ($), Offer B: Annual Base Salary ($), Offer B: Target Annual Bonus ($), Offer B: 401(k) Match Percentage (%), Offer B: Annual Equity / RSU Vest ($)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/hdhp-out-of-pocket-calculator.html", "title": "HDHP vs PPO Out-of-Pocket Maximum Calculator 2026", "keywords": ["hdhp calculator", "out of pocket max 2026", "aca out of pocket limits", "hdhp vs ppo cost", "coinsurance deductible calculator"], "formula": "Total Patient Expense = Annual Premium + Min(Deductible + [ (Claims - Deductible) × Coinsurance % ], Out-of-Pocket Max).", "how_to_use": "1. Enter your specific numerical inputs (Annual Payroll Health Premium Paid, Individual Annual Deductible, Patient Coinsurance Share (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Annual Payroll Health Premium Paid, Individual Annual Deductible, Patient Coinsurance Share (%), Plan Out-of-Pocket Maximum, Projected Gross Medical Bills", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/cobra-insurance-calculator.html", "title": "COBRA Health Insurance Cost Estimator 2026", "keywords": ["cobra insurance calculator", "cobra cost estimator 2026", "cobra vs aca marketplace", "employer health insurance continuation", "cobra 102 percent rule"], "formula": "COBRA Monthly Premium = (Employee Prior Share + Employer Prior Share) × 102% statutory administrative fee.", "how_to_use": "1. Enter your specific numerical inputs (Your Prior Monthly Payroll Deduction, Estimated Employer Health Subsidy (%), Coverage Continuation Duration). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Your Prior Monthly Payroll Deduction, Estimated Employer Health Subsidy (%), Coverage Continuation Duration", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/llc-vs-scorp-calculator.html", "title": "LLC vs S-Corp Tax Savings Calculator 2026", "keywords": ["llc vs scorp calculator", "s corp tax savings 2026", "reasonable compensation s corp", "self employment tax savings", "form 2553 election"], "formula": "Self-Employment Tax Savings = (Net Business Profit - Reasonable W-2 Salary) × 15.3% FICA minus S-Corp Payroll/Accounting Overhead ($2,500).", "how_to_use": "1. Enter your specific numerical inputs (Annual Net Business Profit (Revenue - Expenses), Reasonable W-2 Officer Salary ($), Annual S-Corp Admin Costs (Payroll + 1120-S)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Annual Net Business Profit (Revenue - Expenses), Reasonable W-2 Officer Salary ($), Annual S-Corp Admin Costs (Payroll + 1120-S)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/nnn-lease-calculator.html", "title": "Commercial Triple Net (NNN) Lease Calculator 2026", "keywords": ["nnn lease calculator", "commercial triple net lease", "cam fee calculator", "gross lease vs nnn", "square footage rental rate 2026"], "formula": "Total Rent = (Base Rent per SF × Square Footage) + Tenant Pro-Rata Share of Property Taxes + Building Insurance + Common Area Maintenance (CAM).", "how_to_use": "1. Enter your specific numerical inputs (Leased Square Footage (RSF), Annual Base Rent per Sq. Ft ($/SF/Yr), Building Property Taxes ($/SF/Yr)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Leased Square Footage (RSF), Annual Base Rent per Sq. Ft ($/SF/Yr), Building Property Taxes ($/SF/Yr), Building Hazard/Liability ($/SF/Yr), Common Area Maintenance (CAM $/SF/Yr)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/markup-vs-margin-calculator.html", "title": "Markup vs Margin Calculator", "keywords": ["markup vs margin calculator", "profit margin formula", "cost markup calculator", "retail pricing calculator", "gross margin percentage"], "formula": "Gross Margin % = (Profit ÷ Selling Price) × 100 | Markup % = (Profit ÷ Cost) × 100. A 50% markup equals a 33.3% margin.", "how_to_use": "1. Enter your specific numerical inputs (Cost of Goods Sold (COGS), Target Cost Markup (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Cost of Goods Sold (COGS), Target Cost Markup (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/cac-ltv-calculator.html", "title": "Customer Acquisition Cost (CAC) to LTV Ratio Calculator", "keywords": ["cac to ltv calculator", "customer acquisition cost formula", "ltv cac ratio benchmark", "saas unit economics 2026", "customer lifetime value"], "formula": "CAC = Total Sales & Marketing Spend ÷ New Customers Acquired. LTV = (Average Order Value × Purchase Frequency × Gross Margin %) ÷ Churn Rate.", "how_to_use": "1. Enter your specific numerical inputs (Monthly Sales & Marketing Spend ($), New Customers Acquired per Month, Average Revenue per User / Order (ARPU)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Monthly Sales & Marketing Spend ($), New Customers Acquired per Month, Average Revenue per User / Order (ARPU), Gross Profit Margin (%), Monthly Customer Churn Rate (%)", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/invoice-factoring-calculator.html", "title": "Invoice Factoring & 2/10 Net 30 Calculator 2026", "keywords": ["invoice factoring calculator", "2 10 net 30 calculator", "accounts receivable factoring fees", "annualized cost of early payment discount", "working capital 2026"], "formula": "2/10 Net 30 Annualized APR = [ Discount % ÷ (100% - Discount %) ] × [ 365 ÷ (Full Term - Discount Days) ].", "how_to_use": "1. Enter your specific numerical inputs (Accounts Receivable Invoice Amount, Lender Advance Rate (%), Factoring Fee per 30 Days (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Accounts Receivable Invoice Amount, Lender Advance Rate (%), Factoring Fee per 30 Days (%), Expected Days Until Customer Pays", "pro_tip": "Verified for 2026 calculations with 100% client-side precision and zero telemetry."}, {"url": "/tools/sales-commission-calculator.html", "title": "Sales Commission & Quota Accelerator Calculator 2026", "keywords": ["sales commission calculator 2026", "quota accelerator calculator", "ote calculator b2b", "tiered sales commission", "commission split calculator"], "formula": "Commission = Base Revenue × Base Rate + max(0, Revenue - Quota) × Accelerated Rate. OTE = Base Salary + Total Commission.", "how_to_use": "1. Enter your specific numerical inputs (Annual Base Salary ($), Annual Quota Target ($), Actual Closed Revenue ($)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Annual Base Salary ($), Annual Quota Target ($), Actual Closed Revenue ($), Standard Commission Rate (%), Over-Quota Accelerator Rate (%)", "pro_tip": "In contemporary enterprise sales, variable compensation plans are engineered to motivate account executives (AEs) to exceed annual or quarterly quotas. Rather t..."}, {"url": "/tools/ev-vs-gas-calculator.html", "title": "EV vs Gas Car True Cost Calculator 2026", "keywords": ["ev vs gas calculator 2026", "electric vehicle fuel savings", "cost per mile ev vs gas", "charging cost vs gasoline", "tesla vs gas car savings"], "formula": "Gas Cost = (Annual Miles / MPG) × $/Gallon. EV Cost = (Annual Miles × (kWh/100mi / 100)) × $/kWh. Net Savings = Gas Total - EV Total.", "how_to_use": "1. Enter your specific numerical inputs (Annual Miles Driven, Gas Vehicle Fuel Economy (MPG), Gasoline Price ($/Gallon)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Annual Miles Driven, Gas Vehicle Fuel Economy (MPG), Gasoline Price ($/Gallon), EV Consumption (kWh per 100 miles), Home Electric Utility Rate ($/kWh), Estimated EV Maintenance & Brake Savings ($/yr)", "pro_tip": "While gas-powered vehicles quantify economy in Miles Per Gallon (MPG), EV fuel economy is standardized by the US Environmental Protection Agency (EPA) as kWh pe..."}, {"url": "/tools/commute-cost-calculator.html", "title": "Commute Cost & Work-From-Home (WFH) Savings Calculator", "keywords": ["commute cost calculator 2026", "wfh savings calculator", "daily commute driving cost", "true cost of commuting to work", "hybrid work expense calculator"], "formula": "Annual Cost = (Daily Round-Trip Miles × IRS Cost/Mile + Daily Tolls & Parking) × Working Days Per Year. Time Spent = (Daily Minutes / 60) × Working Days.", "how_to_use": "1. Enter your specific numerical inputs (Round-Trip Commute Distance (Miles), In-Office Days Per Week, Vehicle Operating Cost ($/mile or IRS 67¢)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Round-Trip Commute Distance (Miles), In-Office Days Per Week, Vehicle Operating Cost ($/mile or IRS 67¢), Daily Parking & Highway Tolls ($), Daily Commute Transit Time (Minutes), Your Hourly Rate / Value of Time ($/hr)", "pro_tip": "Most commuters only calculate gasoline costs when evaluating their transit expenses. In reality, fuel represents less than 35% of total operating expenses. The ..."}, {"url": "/tools/unit-price-calculator.html", "title": "Grocery Unit Price Comparison Calculator", "keywords": ["unit price calculator", "grocery price comparison", "cost per ounce calculator", "bulk buying savings calculator", "supermarket price per pound"], "formula": "Unit Price = Total Price / Package Quantity. Savings % = ((Higher Unit Price - Lower Unit Price) / Higher Unit Price) × 100.", "how_to_use": "1. Enter your specific numerical inputs (Item A Name / Size (e.g. Regular 16 oz), Item A Total Price ($), Item B Name / Size (e.g. Bulk 48 oz)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Item A Name / Size (e.g. Regular 16 oz), Item A Total Price ($), Item B Name / Size (e.g. Bulk 48 oz), Item B Total Price ($)", "pro_tip": "Consumer packaged goods manufacturers frequently adjust net contents down while maintaining the same shelf price—a practice known as shrinkflation. Calculating ..."}, {"url": "/tools/tire-size-calculator.html", "title": "Tire Size Comparison & Speedometer Calculator", "keywords": ["tire size calculator", "speedometer error calculator", "tire comparison tool", "aftermarket wheel fitment", "tire diameter difference"], "formula": "Diameter = Wheel Dia + 2 × (Width × Aspect Ratio / 2540). Revs/Mile = 63360 / (Diameter × π). Speed Error = (New Dia / Stock Dia - 1) × 100%.", "how_to_use": "1. Enter your specific numerical inputs (Stock Tire Width (mm), Stock Aspect Ratio (%), Stock Wheel Rim Diameter (in)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Stock Tire Width (mm), Stock Aspect Ratio (%), Stock Wheel Rim Diameter (in), New Tire Width (mm), New Aspect Ratio (%), New Wheel Rim Diameter (in), Indicated Speedometer Reading (MPH)", "pro_tip": "Tire sidewall markings communicate three critical engineering specifications: the section width across the tread in millimeters (225 mm), the aspect ratio which..."}, {"url": "/tools/dog-cat-age-calculator.html", "title": "Dog & Cat Age to Human Years Biological Calculator", "keywords": ["dog age calculator", "cat age in human years", "pet biological age", "dog years to human years chart", "avma veterinary pet life stage"], "formula": "First year = ~15 human years. Second year = +9 years (~24 total). Subsequent years scale at 4 to 8 human years per calendar year depending on breed weight class.", "how_to_use": "1. Enter your specific numerical inputs (Species, Dog Size / Weight Class, Pet Age (Calendar Years)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Species, Dog Size / Weight Class, Pet Age (Calendar Years), Additional Months", "pro_tip": "The traditional rule of thumb multiplying a pet's age by seven is biologically inaccurate. Domestic dogs and cats mature sexually and skeletally far faster duri..."}, {"url": "/tools/kitchen-recipe-converter.html", "title": "Kitchen Recipe Measurement & Scaling Converter", "keywords": ["recipe scaling calculator", "kitchen measurement converter", "cups to grams converter", "baking recipe multiplier", "ingredient portion converter"], "formula": "Scaling Factor = Desired Servings / Original Servings. Scaled Quantity = Original Quantity × Scaling Factor. Weight (g) = Volume (cups) × Ingredient Density Factor.", "how_to_use": "1. Enter your specific numerical inputs (Original Recipe Yield / Servings, Desired Target Servings, Ingredient Quantity). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Original Recipe Yield / Servings, Desired Target Servings, Ingredient Quantity, Measurement Unit, Ingredient Density (For Gram Weight)", "pro_tip": "Volumetric measuring cups are notoriously inconsistent in baking. Scooping all-purpose flour directly from a bag can pack anywhere from 115 grams to 160 grams i..."}, {"url": "/tools/electricity-cost-calculator.html", "title": "Appliance Electricity Cost & Power Calculator 2026", "keywords": ["electricity cost calculator 2026", "appliance kwh calculator", "power consumption cost", "cost to run air conditioner", "home energy bill calculator"], "formula": "Daily kWh = (Watts × Hours Used) / 1000. Monthly Cost = Daily kWh × Days per Month × ($ / kWh).", "how_to_use": "1. Enter your specific numerical inputs (Appliance Power Rating (Watts), Hours Used Per Day, Electric Utility Rate ($/kWh)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Appliance Power Rating (Watts), Hours Used Per Day, Electric Utility Rate ($/kWh), Days Operating Per Month", "pro_tip": "In average American residential households, heating, ventilation, and central air conditioning (HVAC) systems represent over 45% of total electric utility expen..."}, {"url": "/tools/simple-interest-calculator.html", "title": "Simple vs Compound Interest Calculator", "keywords": ["simple interest calculator", "simple vs compound interest", "compounding interest formula", "bank loan simple interest", "wealth accumulation growth"], "formula": "Simple Interest = P × r × t. Compound Interest = P × (1 + r/n)^(n×t) - P. Compound Advantage = Compound Interest - Simple Interest.", "how_to_use": "1. Enter your specific numerical inputs (Initial Principal ($), Annual Interest Rate (%), Time Period (Years)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Initial Principal ($), Annual Interest Rate (%), Time Period (Years), Compounding Frequency", "pro_tip": "Simple interest produces linear growth: interest is only calculated against the initial principal deposit and never re-invested. Compound interest, famously ter..."}, {"url": "/tools/inflation-retirement-calculator.html", "title": "Inflation & Retirement Purchasing Power Calculator", "keywords": ["inflation retirement calculator 2026", "purchasing power calculator", "4 percent rule nest egg", "future dollar value calculator", "retirement cpi inflation erosion"], "formula": "Future Dollar Need = Today's Income × (1 + Inflation)^Years. Nest Egg Needed = Future Need × 25 (under 4% Safe Withdrawal Rule).", "how_to_use": "1. Enter your specific numerical inputs (Today's Desired Annual Retirement Spending ($), Years Until Retirement, Expected Long-Term Inflation Rate (%)). 2. Results update dynamically in real time. 3. Review the breakdown table and click 'Copy Calculation Summary' to share your results.", "inputs": "Today's Desired Annual Retirement Spending ($), Years Until Retirement, Expected Long-Term Inflation Rate (%), Safe Withdrawal Rate (SWR %)", "pro_tip": "Even modest historical inflation of 2.5% to 3.5% dramatically erodes cash savings over retirement horizons. At 3.0% compound annual inflation, prices double eve..."}];
+
+  // 3. Embedded Styling
+  const css = `
+    #cw-ai-root {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 999999;
+      font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', Roboto, sans-serif;
+    }
+    .cw-ai-launcher {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      border: 2px solid rgba(255, 255, 255, 0.28);
+      box-shadow: 0 6px 20px rgba(2, 132, 199, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+      overflow: hidden;
+      user-select: none;
+    }
+    .cw-ai-launcher:hover {
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 10px 26px rgba(14, 165, 233, 0.6), 0 4px 10px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+    }
+    .cw-ai-launcher:active { transform: scale(0.95); }
+    .cw-ai-icon-svg {
+      width: 26px !important;
+      height: 26px !important;
+      display: block;
+      filter: drop-shadow(0 1px 3px rgba(0,0,0,0.3));
+    }
+    .cw-ai-tooltip {
+      position: absolute;
+      right: 64px;
+      background: #090e1a;
+      color: #f8fafc;
+      padding: 6px 12px;
+      border-radius: 8px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+      pointer-events: none;
+      opacity: 0;
+      transform: translateX(6px);
+      transition: opacity 0.2s, transform 0.2s;
+    }
+    .cw-ai-launcher:hover .cw-ai-tooltip {
+      opacity: 1;
+      transform: translateX(0);
+    }
+    .cw-ai-window {
+      position: absolute;
+      bottom: 64px;
+      right: 0;
+      width: 390px;
+      max-width: calc(100vw - 32px);
+      height: 530px;
+      max-height: calc(100vh - 90px);
+      background: #090d16;
+      border: 1px solid rgba(56, 189, 248, 0.28);
+      border-radius: 16px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.75), 0 0 24px rgba(2, 132, 199, 0.25);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      animation: cw-fade-in 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .cw-ai-window.open { display: flex !important; }
+    @keyframes cw-fade-in {
+      from { opacity: 0; transform: translateY(12px) scale(0.96); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    .cw-ai-header {
+      padding: 12px 16px;
+      background: linear-gradient(90deg, #0f172a, #1e293b);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .cw-ai-brand { display: flex; align-items: center; gap: 10px; }
+    .cw-ai-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
+    }
+    .cw-ai-title-wrap { display: flex; flex-direction: column; }
+    .cw-ai-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .cw-ai-status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+    }
+    .cw-ai-subtitle { font-size: 0.7rem; color: #94a3b8; }
+    .cw-ai-close-btn {
+      background: transparent;
+      border: none;
+      color: #94a3b8;
+      font-size: 1.3rem;
+      cursor: pointer;
+      padding: 2px 8px;
+      line-height: 1;
+      border-radius: 6px;
+      transition: all 0.15s;
+    }
+    .cw-ai-close-btn:hover { background: rgba(255, 255, 255, 0.1); color: #ffffff; }
+    .cw-ai-chips {
+      display: flex;
+      gap: 6px;
+      padding: 8px 12px;
+      background: #070a12;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .cw-ai-chips::-webkit-scrollbar { display: none; }
+    .cw-ai-chip {
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #cbd5e1;
+      font-size: 0.72rem;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cw-ai-chip:hover {
+      background: #0284c7;
+      border-color: #38bdf8;
+      color: #ffffff;
+      transform: translateY(-1px);
+    }
+    .cw-ai-messages {
+      flex: 1;
+      padding: 14px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 0.84rem;
+    }
+    .cw-msg {
+      max-width: 90%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      line-height: 1.55;
+      word-break: break-word;
+    }
+    .cw-msg.user {
+      align-self: flex-end;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      border-bottom-right-radius: 2px;
+      font-weight: 500;
+    }
+    .cw-msg.bot {
+      align-self: flex-start;
+      background: #131b2e;
+      color: #f1f5f9;
+      border-bottom-left-radius: 2px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
+    }
+    .cw-msg.bot strong { color: #38bdf8; }
+    .cw-msg.bot a {
+      color: #38bdf8;
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .cw-msg-card {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(56, 189, 248, 0.22);
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 8px 0;
+    }
+    .cw-msg-formula {
+      font-family: monospace;
+      font-size: 0.82rem;
+      color: #38bdf8;
+      background: rgba(0, 0, 0, 0.45);
+      padding: 5px 8px;
+      border-radius: 4px;
+      margin: 6px 0;
+      overflow-x: auto;
+      line-height: 1.4;
+    }
+    .cw-msg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 8px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff !important;
+      font-size: 0.76rem;
+      font-weight: 700;
+      text-decoration: none !important;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.45);
+      transition: transform 0.15s;
+    }
+    .cw-msg-btn:hover { transform: translateY(-1px); }
+    .cw-ai-typing {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 8px 14px;
+      background: #131b2e;
+      border-radius: 12px;
+      width: fit-content;
+      border: 1px solid rgba(56, 189, 248, 0.18);
+    }
+    .cw-ai-dot {
+      width: 5px;
+      height: 5px;
+      background: #94a3b8;
+      border-radius: 50%;
+      animation: cw-dot-pulse 1.3s infinite ease-in-out;
+    }
+    .cw-ai-dot:nth-child(2) { animation-delay: 0.2s; }
+    .cw-ai-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes cw-dot-pulse {
+      0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+      40% { transform: scale(1); opacity: 1; background: #38bdf8; }
+    }
+    .cw-ai-input-bar {
+      padding: 10px 12px;
+      background: #070b14;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    .cw-ai-input {
+      flex: 1;
+      background: #131c2e;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 8px;
+      padding: 9px 12px;
+      color: #ffffff;
+      font-size: 0.84rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+    .cw-ai-input:focus { border-color: #0284c7; }
+    .cw-ai-send-btn {
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 9px 14px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+    .cw-ai-send-btn:hover { opacity: 0.9; }
+  `;
+
+  const styleEl = document.createElement("style");
+  styleEl.textContent = css;
+  document.head.appendChild(styleEl);
+
+  function renderMarkdown(text) {
+    if (!text) return "";
+    let safe = text
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+
+    safe = safe.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>');
+    safe = safe.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    safe = safe.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    safe = safe.replace(/`([^`]+)`/g, '<code>$1</code>');
+
+    const lines = safe.split('\n');
+    let inList = false;
+    let htmlLines = [];
+
+    for (let line of lines) {
+      const trimmed = line.trim();
+      if (trimmed.startsWith('• ') || trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+        if (!inList) {
+          htmlLines.push('<ul>');
+          inList = true;
+        }
+        htmlLines.push(`<li>${trimmed.substring(2)}</li>`);
+      } else {
+        if (inList) {
+          htmlLines.push('</ul>');
+          inList = false;
+        }
+        if (trimmed.length > 0) {
+          htmlLines.push(`<p>${line}</p>`);
+        }
+      }
+    }
+    if (inList) htmlLines.push('</ul>');
+    return htmlLines.join('');
+  }
+
+  // 4. Mathematical Arithmetic Solver (e.g. "20% of 500", "5000 / 12", "120 * 15")
+  function solveSimpleMath(query) {
+    const q = query.toLowerCase().trim();
+    
+    // Percentage pattern: "what is X% of Y" or "X% of Y"
+    const pctMatch = q.match(/(\d+(?:\.\d+)?)\s*%\s*(?:of)\s*(\d+(?:\.\d+)?)/i);
+    if (pctMatch) {
+      const p = parseFloat(pctMatch[1]);
+      const v = parseFloat(pctMatch[2]);
+      const res = (p / 100) * v;
+      return `<strong>Mathematical Result:</strong><br><br>• <strong>${p}%</strong> of <strong>${v}</strong> is <strong>${res.toLocaleString()}</strong><br><br>Formula: <code>(${p} ÷ 100) × ${v} = ${res}</code><br><br><a href="/tools/percentage-calculator.html" class="cw-msg-btn">Open Percentage Calculator →</a>`;
+    }
+
+    // Basic arithmetic: "500 * 20", "5000 / 12", "450 + 120"
+    const arithMatch = q.match(/^(\d+(?:\.\d+)?)\s*([\+\-\*\/])\s*(\d+(?:\.\d+)?)$/);
+    if (arithMatch) {
+      const a = parseFloat(arithMatch[1]);
+      const op = arithMatch[2];
+      const b = parseFloat(arithMatch[3]);
+      let ans = 0;
+      let opName = "";
+      if (op === "+") { ans = a + b; opName = "Addition"; }
+      else if (op === "-") { ans = a - b; opName = "Subtraction"; }
+      else if (op === "*") { ans = a * b; opName = "Multiplication"; }
+      else if (op === "/") { ans = b !== 0 ? (a / b) : "Undefined (division by 0)"; opName = "Division"; }
+      return `<strong>${opName} Result:</strong><br><br><code>${a} ${op} ${b} = ${ans.toLocaleString ? ans.toLocaleString() : ans}</code><br><br><a href="/tools/omnicalc.html" class="cw-msg-btn">Open OmniCalc Scientific Engine →</a>`;
+    }
+
+    return null;
+  }
+
+  // 5. Deep Knowledge & Entity Resolver
+  function resolveKnowledge(query) {
+    // 1. Sanitize & Normalize Punctuation and Common Typos
+    const rawQ = (query || "").toLowerCase().trim();
+    const cleanQ = rawQ.replace(/[\?\!\,\.\:\;\(\)\[\]\*\_]/g, " ").replace(/\s+/g, " ").trim();
+    
+    // Normalize phonetic & typing variations
+    const q = cleanQ
+      .replace(/\b(tottal|totle|totl|totall|totel)\b/g, "total")
+      .replace(/\b(calclator|calculater|calculaters|calculators|calc|calcs)\b/g, "calculator")
+      .replace(/\b(toosl|toool|toools|tol|tolls|toos)\b/g, "tools")
+      .replace(/\b(kitnay|kitna)\b/g, "kitne")
+      .replace(/\b(saaray|saare|saray)\b/g, "sare")
+      .replace(/\b(dikhao|dekhao|batao|btao)\b/g, "show");
+
+    // 5.1 Owner & Founder Queries (English + Roman Urdu)
+    if (q.includes("owner") || q.includes("zaviyan") || q.includes("founder") || q.includes("who made") || 
+        q.includes("who created") || q.includes("who owns") || q.includes("kisne banaya") || 
+        q.includes("owner kaun") || q.includes("malik") || q.includes("company") || q.includes("about calcworker")) {
+      return `<strong>Owner &amp; Founder Information:</strong><br><br>` +
+        `CalcWorker is founded, engineered, and owned by <strong>${CW_INFO.owner}</strong> and operated by <strong>${CW_INFO.company}</strong>.<br><br>` +
+        `• <strong>Founder:</strong> Zaviyan<br>` +
+        `• <strong>Operating Entity:</strong> Zaviyan LLC (United States)<br>` +
+        `• <strong>Official Inquiries:</strong> <a href="mailto:${CW_INFO.email}">${CW_INFO.email}</a><br>` +
+        `• <strong>Platform Architecture:</strong> 100% Client-Side Sandbox, zero tracking, zero data storage, and certified offline PWA execution across all 102 tools.`;
+    }
+
+    // 5.2 Contact & Support Queries
+    if (q.includes("contact") || q.includes("email") || q.includes("support") || q.includes("reach out") || 
+        q.includes("rabta") || q.includes("help email")) {
+      return `<strong>Contact &amp; Executive Support:</strong><br><br>` +
+        `For enterprise licensing, custom mathematical modeling, or developer integrations, reach out directly to the executive office:<br><br>` +
+        `📧 <strong>Official Email:</strong> <a href="mailto:${CW_INFO.email}">${CW_INFO.email}</a><br>` +
+        `🏢 <strong>Entity:</strong> Zaviyan LLC<br>` +
+        `🌐 <strong>Support Portal:</strong> <a href="/contact.html">CalcWorker Contact Center</a><br>` +
+        `⏱️ <strong>Response Guarantee:</strong> Inquiries receive prioritized responses within 24 business hours.`;
+    }
+
+    // 5.3 Privacy, Telemetry & Security (Client-Side Guarantee)
+    if (q.includes("privacy") || q.includes("safe") || q.includes("telemetry") || q.includes("data") || 
+        q.includes("server") || q.includes("offline") || q.includes("pwa") || q.includes("mahfooz") || q.includes("security")) {
+      return `🔒 <strong>Privacy &amp; Security Architecture:</strong><br><br>` +
+        `CalcWorker operates with a <strong>Zero-Telemetry, Client-Side Only</strong> security model:<br><br>` +
+        `1. <strong>Local Sandbox:</strong> Every mathematical formula executes 100% inside your browser's V8/JavaScript engine.<br>` +
+        `2. <strong>Zero Data Ingestion:</strong> Your salaries, tax returns, debt balances, and mortgage amounts NEVER transmit over the wire.<br>` +
+        `3. <strong>PWA Offline Engine:</strong> Once loaded, you can disconnect Wi-Fi or cellular service and every one of the 102 calculators remains fully functional.`;
+    }
+
+    // 5.4 Tool Count & Verification Queries
+    if (q.includes("total tools") || q.includes("how many") || q.includes("tool count") || 
+        q.includes("count") || q.includes("102") || q.includes("kitne tools") || q.includes("kitne calculator") || 
+        q.includes("total calculator") || q === "tools" || q === "total" || q === "total tools" || 
+        q.includes("all tools count") || q.includes("kitne tools hain") || q.includes("total kitne")) {
+      return `📊 <strong>Total Calculator Suite: Exactly 102 Tools!</strong><br><br>` +
+        `CalcWorker features <strong>102 distinct, production-grade calculators</strong> divided across 8 core disciplines:<br><br>` +
+        `• 🏠 <strong>Mortgages &amp; Real Estate:</strong> 10 specialized calculators<br>` +
+        `• 💳 <strong>Personal Finance &amp; Loans:</strong> 16 calculators<br>` +
+        `• 🏛️ <strong>Taxes &amp; Government Benefits:</strong> 10 calculators<br>` +
+        `• 📈 <strong>Retirement &amp; Investing:</strong> 12 calculators<br>` +
+        `• 💼 <strong>Small Business &amp; E-Commerce:</strong> 12 calculators<br>` +
+        `• 🎬 <strong>Creator Economy:</strong> 8 calculators<br>` +
+        `• 🏋️ <strong>Health, Fitness &amp; Lifestyle:</strong> 10 calculators<br>` +
+        `• 🌐 <strong>Currencies &amp; Everyday Math:</strong> 24 calculators<br><br>` +
+        `Type <em>"show all tools"</em> or <em>"sare tools dikhao"</em> to explore the full directory!`;
+    }
+
+    // 5.5 Complete 102 Tools Directory Intent (English + Roman Urdu)
+    if (q.includes("all tools") || q.includes("sare tools") || q.includes("saare tools") || 
+        q.includes("list of tools") || q.includes("show tools") || q.includes("directory") || 
+        q.includes("tamam tools") || q.includes("sabhi tools") || q.includes("list tools") ||
+        q === "tools" || q === "list" || q === "menu") {
+      return `📚 <strong>Master Directory: All 102 CalcWorker Tools</strong><br><br>` +
+        `<strong>🏠 Mortgages &amp; Real Estate:</strong><br>` +
+        `• <a href="/tools/mortgage-calculator.html">Mortgage Payment</a> | <a href="/tools/mortgage-refinance-calculator.html">Refinance Break-Even</a> | <a href="/tools/fha-vs-conventional-calculator.html">FHA vs Conv</a> | <a href="/tools/heloc-calculator.html">HELOC</a> | <a href="/tools/home-equity-loan-calculator.html">Home Equity</a> | <a href="/tools/closing-costs-calculator.html">Closing Costs</a> | <a href="/tools/rent-vs-buy.html">Rent vs Buy</a> | <a href="/tools/extra-mortgage-payment-calculator.html">Extra Payments</a> | <a href="/tools/property-tax-calculator.html">Property Tax</a> | <a href="/tools/prorated-rent-calculator.html">Prorated Rent</a><br><br>` +
+        `<strong>💳 Personal Finance &amp; Loans:</strong><br>` +
+        `• <a href="/tools/auto-loan.html">Auto Loan</a> | <a href="/tools/car-lease-calculator.html">Car Lease</a> | <a href="/tools/personal-loan-calculator.html">Personal Loan</a> | <a href="/tools/credit-card-payoff.html">Credit Card Payoff</a> | <a href="/tools/debt-payoff.html">Debt Avalanche/Snowball</a> | <a href="/tools/student-loan.html">Student Loan</a> | <a href="/tools/student-loan-pslf-calculator.html">PSLF / SAVE</a> | <a href="/tools/payday-loan-calculator.html">Payday APR</a> | <a href="/tools/emergency-fund-calculator.html">Emergency Fund</a> | <a href="/tools/savings-goal-calculator.html">Savings Goal</a> | <a href="/tools/cd-ladder-calculator.html">CD Ladder</a> | <a href="/tools/dti-calculator.html">DTI Ratio</a> | <a href="/tools/apr-to-apy-calculator.html">APR to APY</a> | <a href="/tools/simple-interest-calculator.html">Simple Interest</a> | <a href="/tools/compound-interest.html">Compound Interest</a> | <a href="/tools/life-insurance-calculator.html">Life Insurance (DIME)</a><br><br>` +
+        `<strong>🏛️ Taxes &amp; Payroll:</strong><br>` +
+        `• <a href="/tools/paycheck-calculator.html">Paycheck Take-Home</a> | <a href="/tools/tax-withholding.html">W-4 Withholding</a> | <a href="/tools/state-tax-relocation-calculator.html">State Tax Relocation</a> | <a href="/tools/freelance-tax-calculator.html">1099 Self-Employment</a> | <a href="/tools/capital-gains-tax-calculator.html">Capital Gains</a> | <a href="/tools/child-tax-credit-calculator.html">Child Tax Credit</a> | <a href="/tools/estate-tax-calculator.html">Estate Tax</a> | <a href="/tools/sales-tax-calculator.html">Sales Tax</a> | <a href="/tools/overtime-calculator.html">FLSA Overtime</a> | <a href="/tools/job-offer-comparison-calculator.html">Job Offer Comparison</a><br><br>` +
+        `<strong>📈 Retirement &amp; Wealth:</strong><br>` +
+        `• <a href="/tools/retirement-401k.html">401(k) Growth</a> | <a href="/tools/401k-rmd-calculator.html">401(k) RMD</a> | <a href="/tools/roth-ira-calculator.html">Roth IRA</a> | <a href="/tools/roth-conversion-calculator.html">Roth Conversion</a> | <a href="/tools/social-security-calculator.html">Social Security (PIA/FRA)</a> | <a href="/tools/net-worth-calculator.html">Net Worth</a> | <a href="/tools/529-college-savings-calculator.html">529 College Savings</a> | <a href="/tools/hsa-fsa-calculator.html">HSA vs FSA</a> | <a href="/tools/inflation-calculator.html">CPI Inflation</a> | <a href="/tools/inflation-retirement-calculator.html">Inflation Retirement</a> | <a href="/tools/crypto-profit-calculator.html">Crypto ROI</a> | <a href="/tools/solar-roi.html">Solar ROI</a><br><br>` +
+        `<strong>💼 Business, E-Commerce &amp; Creator Economy:</strong><br>` +
+        `• <a href="/tools/ai-prompt-cost-calculator.html">AI Prompt &amp; Token Cost</a> | <a href="/tools/llc-vs-scorp-calculator.html">LLC vs S-Corp</a> | <a href="/tools/break-even.html">Break-Even Point</a> | <a href="/tools/amazon-fba-calculator.html">Amazon FBA</a> | <a href="/tools/shopify-fee-calculator.html">Shopify Fees</a> | <a href="/tools/ebay-fee-calculator.html">eBay Fees</a> | <a href="/tools/etsy-profit.html">Etsy Profit</a> | <a href="/tools/ecommerce-profit-comparator.html">E-Commerce Comparator</a> | <a href="/tools/cac-ltv-calculator.html">CAC / LTV</a> | <a href="/tools/invoice-factoring-calculator.html">Invoice Factoring</a> | <a href="/tools/nnn-lease-calculator.html">Triple Net (NNN) Lease</a> | <a href="/tools/sales-commission-calculator.html">Sales Commission</a> | <a href="/tools/markup-vs-margin-calculator.html">Markup vs Margin</a> | <a href="/tools/youtube-money-calculator.html">YouTube Money</a> | <a href="/tools/tiktok-money-calculator.html">TikTok Rewards</a> | <a href="/tools/tiktok-coins-calculator.html">TikTok Coins</a> | <a href="/tools/tiktok-shop-affiliate-calculator.html">TikTok Shop</a> | <a href="/tools/instagram-money-calculator.html">Instagram Deals</a> | <a href="/tools/podcast-sponsorship-calculator.html">Podcast CPM</a> | <a href="/tools/substack-calculator.html">Substack MRR</a> | <a href="/tools/channel-growth-calculator.html">Channel Growth</a> | <a href="/tools/gig-profit.html">Gig Delivery Profit</a><br><br>` +
+        `<em>Click any tool name above to launch immediately!</em>`;
+    }
+
+    // 5.6 Category-Specific Guidance Intents
+    if (q.includes("mortgage") || q.includes("home loan") || q.includes("ghr ka loan") || q.includes("makan")) {
+      return `🏠 <strong>Mortgage &amp; Real Estate Calculators:</strong><br><br>` +
+        `We provide 10 precision real estate calculators tailored to 2026 lending standards:<br>` +
+        `• <a href="/tools/mortgage-calculator.html">Mortgage Payment &amp; Amortization</a> — Full PITI breakdown.<br>` +
+        `• <a href="/tools/mortgage-refinance-calculator.html">Mortgage Refinance Break-Even</a> — Exact month recovery.<br>` +
+        `• <a href="/tools/fha-vs-conventional-calculator.html">FHA vs Conventional</a> — Compare PMI vs MIP.<br>` +
+        `• <a href="/tools/heloc-calculator.html">HELOC Payment</a> — Draw &amp; repayment calculations.<br>` +
+        `• <a href="/tools/home-equity-loan-calculator.html">Home Equity Loan</a> — Lump-sum equity borrowing.<br>` +
+        `• <a href="/tools/closing-costs-calculator.html">Closing Costs Calculator</a> — Buyer &amp; seller fee estimates.<br>` +
+        `• <a href="/tools/rent-vs-buy.html">Rent vs Buy Analysis</a> — Long-term equity comparison.<br>` +
+        `• <a href="/tools/extra-mortgage-payment-calculator.html">Extra Mortgage Payments</a> — Save thousands in interest.`;
+    }
+
+    if (q.includes("tax") || q.includes("taxes") || q.includes("irs") || q.includes("tax bachane") || q.includes("tax calculator")) {
+      return `🏛️ <strong>US Tax &amp; Payroll Calculators:</strong><br><br>` +
+        `Comprehensive calculators compliant with 2026 IRS tax brackets and state revenue statutes:<br>` +
+        `• <a href="/tools/paycheck-calculator.html">Paycheck Take-Home Calculator</a> — Federal, State &amp; FICA taxes.<br>` +
+        `• <a href="/tools/state-tax-relocation-calculator.html">State Tax Relocation (50 States)</a> — Compare take-home pay boost.<br>` +
+        `• <a href="/tools/freelance-tax-calculator.html">1099 Freelance &amp; Self-Employment Tax</a> — Schedule C deductions.<br>` +
+        `• <a href="/tools/capital-gains-tax-calculator.html">Capital Gains Tax</a> — Short-term vs long-term rates.<br>` +
+        `• <a href="/tools/child-tax-credit-calculator.html">Child Tax Credit (CTC &amp; ACTC)</a> — Form 8812 refunds.<br>` +
+        `• <a href="/tools/tax-withholding.html">W-4 Tax Withholding Estimator</a> — Avoid penalties or large refunds.<br>` +
+        `• <a href="/tools/estate-tax-calculator.html">Federal Estate &amp; Gift Tax</a> — Exemption thresholds.<br>` +
+        `• <a href="/tools/llc-vs-scorp-calculator.html">LLC vs S-Corp Tax Savings</a> — FICA savings via reasonable salary.`;
+    }
+
+    if (q.includes("creator") || q.includes("youtube") || q.includes("tiktok") || q.includes("instagram") || q.includes("podcast")) {
+      return `🎬 <strong>Creator Economy &amp; Social Monetization:</strong><br><br>` +
+        `Real-world earnings calculators calibrated to current 2026 monetization algorithms:<br>` +
+        `• <a href="/tools/ai-prompt-cost-calculator.html">AI Prompt &amp; Token Cost Calculator</a> — Live LLM pricing &amp; prompt optimization.<br>` +
+        `• <a href="/tools/youtube-money-calculator.html">YouTube Ad Revenue &amp; RPM</a> — Long-form &amp; Shorts earnings.<br>` +
+        `• <a href="/tools/tiktok-money-calculator.html">TikTok Creator Rewards Program</a> — RPM &amp; view multipliers.<br>` +
+        `• <a href="/tools/tiktok-coins-calculator.html">TikTok Coins &amp; Diamonds Cashout</a> — Live stream diamond payouts.<br>` +
+        `• <a href="/tools/tiktok-shop-affiliate-calculator.html">TikTok Shop Affiliate Commission</a> — GMV commission forecasting.<br>` +
+        `• <a href="/tools/instagram-money-calculator.html">Instagram Sponsored Post &amp; Reels</a> — Engagement-based pricing.<br>` +
+        `• <a href="/tools/podcast-sponsorship-calculator.html">Podcast Sponsorship CPM</a> — Pre/mid/post-roll ad revenue.<br>` +
+        `• <a href="/tools/substack-calculator.html">Substack Newsletter MRR</a> — Subscriber churn &amp; net take-home.`;
+    }
+
+    // 5.7 Roman Urdu General Question Intent
+    if (q.includes("kaise use") || q.includes("tareeqa") || q.includes("tareeqe") || q.includes("batao") || 
+        q.includes("madad") || q.includes("kese use") || q.includes("kaise chale")) {
+      return `💡 <strong>CalcWorker Ko Use Karne Ka Tareeqa:</strong><br><br>` +
+        `1. <strong>Tool Select Karein:</strong> Search bar ya upar diye gaye category tabs me kisi bhi calculator ka naam likhein.<br>` +
+        `2. <strong>Values Enter Karein:</strong> Left side ke form me apni required details (maslan amount, interest rate, saal wagera) enter karein.<br>` +
+        `3. <strong>Instant Results:</strong> Calculate button par click karein ya slider move karein — result zero-latency me aapke samne hoga.<br>` +
+        `4. <strong>Copy &amp; Share:</strong> Result card ke upar diye gaye <em>"Copy Summary"</em> button se poora result ek click me clipboard me copy karein.<br>` +
+        `5. <strong>Offline Ready:</strong> Aap site ko PWA ke tor par install kar ke bina internet ke bhi use kar sakte hain!`;
+    }
+
+    // 5.8 AI Prompt Engineering, Token Estimation & LLM API Cost Intent
+    if (q.includes("prompt") || q.includes("token") || q.includes("llm") || q.includes("ai cost") || 
+        q.includes("openai cost") || q.includes("claude cost") || q.includes("deepseek") || 
+        q.includes("gpt-4o") || q.includes("api cost") || q.includes("prompt engineering") ||
+        q.includes("bpe") || q.includes("token calculator") || q.includes("ai prompt") ||
+        q.includes("gemini cost") || q.includes("tokens to usd") || q.includes("prompt compression")) {
+      return `🤖 <strong>AI Prompt Engineering &amp; Cost Calculator (2026 Live Benchmark)</strong><br><br>` +
+        `Engineered by <strong>Zaviyan</strong> (${CW_INFO.company}), this workstation estimates token consumption and benchmarks live API pricing across 12+ industry LLMs (OpenAI GPT-4o / o1, Anthropic Claude 3.5 Sonnet / Haiku, Google Gemini 1.5 / 2.0 Flash, DeepSeek-V3 / R1, and Meta Llama 3.3).<br><br>` +
+        `• <strong>Token Estimation:</strong> Calibrated BPE tokenizer heuristic (~4 chars/token for prose, ~3.1 chars/token for code/JSON).<br>` +
+        `• <strong>Cost Equation:</strong> Total Cost = [(System Tokens × SysRate) + (User Tokens × UserRate) + (Output Tokens × OutRate)] ÷ 1,000,000.<br>` +
+        `• <strong>Prompt Caching:</strong> Saves up to 90% on cached system prompts and repetitive contexts.<br>` +
+        `• <strong>Batch API Mode:</strong> Automatic flat 50% discount for non-realtime async batch jobs.<br>` +
+        `• <strong>One-Click Copy:</strong> Instantly copies your calculation summary or prompt text to clipboard.<br><br>` +
+        `<div class="cw-msg-card">` +
+          `<strong>AI Prompt Engineering &amp; Cost Calculator</strong><br>` +
+          `Benchmark prompt compression, token counts, and live 2026 API pricing with 100% zero-telemetry privacy.<br>` +
+          `<a href="/tools/ai-prompt-cost-calculator.html" class="cw-msg-btn">Launch AI Cost Calculator →</a>` +
+        `</div>`;
+    }
+
+    // 5.9 Simple Arithmetic Expression Check
+    const mathAns = solveSimpleMath(q);
+    if (mathAns) return mathAns;
+
+    // 5.10 Dense NLP Matching Across All 102 Tools
+    const SYN_MAP = {
+      'car': ['auto', 'vehicle', 'lease', 'loan'],
+      'auto': ['car', 'vehicle', 'lease', 'loan'],
+      'house': ['home', 'mortgage', 'refinance', 'equity', 'property'],
+      'home': ['house', 'mortgage', 'refinance', 'equity'],
+      'salary': ['paycheck', 'wages', 'hourly', 'income'],
+      'pay': ['paycheck', 'salary', 'wages', 'hourly'],
+      'gym': ['bench press', 'fitness', '1rm'],
+      'diet': ['calorie', 'tdee', 'weight loss'],
+      'bachat': ['savings goal', 'emergency fund', 'compound interest'],
+      'gari': ['auto loan', 'car lease', 'fuel cost'],
+      'kist': ['mortgage', 'auto loan', 'personal loan', 'debt payoff']
+    };
+
+    let bestTool = null;
+    let maxScore = 0;
+    const tokens = q.split(/\s+/).filter(t => t.length > 1);
+
+    for (const tool of TOOLS_DB) {
+      let score = 0;
+      const titleLower = (tool.title || '').toLowerCase();
+      const urlLower = (tool.url || '').toLowerCase();
+      const inputsLower = (tool.inputs || '').toLowerCase();
+      const formulaLower = (tool.formula || '').toLowerCase();
+      const proTipLower = (tool.pro_tip || '').toLowerCase();
+      const kwList = tool.keywords || [];
+
+      // Token matching
+      for (const t of tokens) {
+        if (titleLower.includes(t)) score += 35;
+        if (urlLower.includes(t)) score += 25;
+        if (inputsLower.includes(t)) score += 10;
+        if (formulaLower.includes(t)) score += 10;
+        if (proTipLower.includes(t)) score += 5;
+
+        // Keyword list
+        for (const kw of kwList) {
+          if (kw === t) score += 20;
+          else if (kw.includes(t)) score += 8;
+        }
+
+        // Check synonyms
+        const syns = SYN_MAP[t] || [];
+        for (const s of syns) {
+          if (titleLower.includes(s) || urlLower.includes(s)) score += 18;
+          for (const kw of kwList) {
+            if (kw.includes(s)) score += 6;
+          }
+        }
+      }
+
+      if (score > maxScore) {
+        maxScore = score;
+        bestTool = tool;
+      }
+    }
+
+    if (maxScore >= 12 && bestTool) {
+      return `<strong>${bestTool.title}</strong><br><br>` +
+        `<strong>📋 How to Use This Tool:</strong><br>${bestTool.how_to_use}<br><br>` +
+        `<div class="cw-msg-card">` +
+          `<strong>📐 Mathematical Formula:</strong>` +
+          `<div class="cw-msg-formula">${bestTool.formula}</div>` +
+          `<div style="font-size:0.75rem; color:#94a3b8;"><strong>Required Inputs:</strong> ${bestTool.inputs}</div>` +
+        `</div>` +
+        `<div style="font-size:0.78rem; color:#cbd5e1; margin:6px 0;">💡 <strong>Pro Tip:</strong> ${bestTool.pro_tip}</div>` +
+        `<a href="${bestTool.url}" class="cw-msg-btn">Open ${bestTool.title.split('&')[0].trim()} →</a>`;
+    }
+
+    // 5.11 General Heuristic Directory Recommendation (102 Tools)
+    return `I can help you calculate that! CalcWorker features <strong>102 precision financial, creator, and business calculators</strong> engineered by Zaviyan (${CW_INFO.company}).<br><br>` +
+      `Here are popular tools you can explore right now:<br>` +
+      `• <a href="/tools/mortgage-calculator.html">Mortgage Payment &amp; Amortization</a><br>` +
+      `• <a href="/tools/ai-prompt-cost-calculator.html">AI Prompt Engineering &amp; Token Cost</a><br>` +
+      `• <a href="/tools/paycheck-calculator.html">Paycheck Take-Home (2026 Brackets)</a><br>` +
+      `• <a href="/tools/state-tax-relocation-calculator.html">50-State Relocation Tax Comparison</a><br>` +
+      `• <a href="/tools/cd-ladder-calculator.html">CD Ladder Yield Structure</a><br>` +
+      `• <a href="/tools/tiktok-money-calculator.html">TikTok Creator Rewards &amp; RPM</a><br><br>` +
+      `You can ask me for formulas, step-by-step instructions for any of the 102 tools, or type <em>"show all tools"</em> to see the complete directory!`;
+  }
+
+  // 6. Dynamic Context Chips
+  function getContextChips() {
+    const path = window.location.pathname.toLowerCase();
+    if (path.includes('amazon') || path.includes('fba') || path.includes('ecommerce')) {
+      return [
+        { label: "📦 Amazon FBA Fees", q: "How to use Amazon FBA calculator and reduce fees?" },
+        { label: "💰 FBA vs FBM", q: "What is the difference between Amazon FBA and FBM?" },
+        { label: "👤 Owner Info", q: "Who is the owner of CalcWorker?" },
+        { label: "📧 Contact Email", q: "What is the business contact email for CalcWorker?" }
+      ];
+    } else if (path.includes('tax') || path.includes('salary') || path.includes('hourly') || path.includes('relocation')) {
+      return [
+        { label: "🚚 Relocation Tax", q: "How to compare state taxes before moving?" },
+        { label: "💼 1099 Tax Formula", q: "How to use 1099 freelance tax calculator?" },
+        { label: "📊 Tax Brackets", q: "How do federal marginal tax brackets work?" },
+        { label: "👤 Owner Info", q: "Who created CalcWorker?" }
+      ];
+    } else if (path.includes('mortgage') || path.includes('loan') || path.includes('refinance')) {
+      return [
+        { label: "🔄 Mortgage Refi", q: "How to calculate mortgage refinance break even?" },
+        { label: "🛡️ Eliminate PMI", q: "How do I eliminate Private Mortgage Insurance (PMI) early?" },
+        { label: "📐 PITI Formula", q: "What is the PITI mortgage formula?" },
+        { label: "👤 Owner Info", q: "Who is the owner of this site?" }
+      ];
+    } else if (path.includes('tiktok') || path.includes('youtube') || path.includes('instagram') || path.includes('substack')) {
+      return [
+        { label: "📰 Substack MRR", q: "How to calculate Substack newsletter revenue?" },
+        { label: "🪙 TikTok Diamonds", q: "How to use TikTok coin calculator and convert diamonds to USD?" },
+        { label: "🎥 YouTube RPM", q: "How to calculate YouTube AdSense RPM?" },
+        { label: "👤 Owner Info", q: "Who owns CalcWorker?" }
+      ];
+    }
+    return [
+      { label: "✨ 6 New Tools (2026)", q: "What are the new tools added to CalcWorker?" },
+      { label: "👤 Owner Info", q: "Who is the owner of CalcWorker?" },
+      { label: "📧 Contact Email", q: "What is the official contact email?" },
+      { label: "🔄 Mortgage Refi", q: "How to calculate mortgage refinance break even?" },
+      { label: "🚚 Relocation Tax", q: "How to compare state taxes before moving?" },
+      { label: "📦 Amazon FBA Fees", q: "How to use Amazon FBA calculator?" }
+    ];
+  }
+
+  function initAIWidget() {
+    const root = document.createElement("div");
+    root.id = "cw-ai-root";
+
+    const chips = getContextChips();
+    let chipsHtml = "";
+    chips.forEach(c => {
+      chipsHtml += `<button type="button" class="cw-ai-chip" data-q="${c.q}">${c.label}</button>`;
+    });
+
+    root.innerHTML = `
+      <div class="cw-ai-launcher" id="cwAiLauncher" role="button" aria-label="Open CalcWorker AI" tabindex="0">
+        <svg class="cw-ai-icon-svg" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="5" y="4" width="26" height="28" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8"/>
+          <rect x="8" y="7" width="20" height="6" rx="2" fill="#1e293b"/>
+          <rect x="19" y="9" width="7" height="2" rx="1" fill="#38bdf8"/>
+          <rect x="8" y="15" width="4" height="4" rx="1" fill="#38bdf8"/>
+          <rect x="14" y="15" width="4" height="4" rx="1" fill="#38bdf8"/>
+          <rect x="8" y="21" width="4" height="4" rx="1" fill="#38bdf8"/>
+          <rect x="14" y="21" width="4" height="4" rx="1" fill="#38bdf8"/>
+          <path d="M26 17 C26 20 28 22 31 22 C28 22 26 24 26 27 C26 24 24 22 21 22 C24 22 26 20 26 17 Z" fill="#38bdf8"/>
+        </svg>
+        <div class="cw-ai-tooltip">Ask CalcWorker AI ✨</div>
+      </div>
+
+      <div class="cw-ai-window" id="cwAiWindow" role="dialog" aria-modal="true">
+        <div class="cw-ai-header">
+          <div class="cw-ai-brand">
+            <div class="cw-ai-avatar">🧮</div>
+            <div class="cw-ai-title-wrap">
+              <span class="cw-ai-title">CalcWorker AI <span class="cw-ai-status-dot"></span></span>
+              <span class="cw-ai-subtitle">Owned by Zaviyan (Zaviyan LLC)</span>
+            </div>
+          </div>
+          <button type="button" class="cw-ai-close-btn" id="cwAiCloseBtn" title="Close Chat">&times;</button>
+        </div>
+
+        <div class="cw-ai-chips" id="cwAiChips">
+          ${chipsHtml}
+        </div>
+
+        <div class="cw-ai-messages" id="cwAiMessages">
+          <div class="cw-msg bot">
+            👋 <strong>Hello! I am CalcWorker AI.</strong><br><br>
+            Owned and built by <strong>Zaviyan</strong> (${CW_INFO.company}). I am fully trained on all 55+ calculators, formulas, step-by-step usages, and business details.<br><br>
+            Ask me how to use any tool, for formulas, owner info, or contact email!
+          </div>
+        </div>
+
+        <form class="cw-ai-input-bar" id="cwAiForm">
+          <input type="text" class="cw-ai-input" id="cwAiInput" placeholder="Ask how to use any tool, formulas, owner..." autocomplete="off">
+          <button type="submit" class="cw-ai-send-btn" id="cwAiSendBtn">Send</button>
+        </form>
+      </div>
+    `;
+
+    document.body.appendChild(root);
+
+    const launcher = document.getElementById("cwAiLauncher");
+    const windowEl = document.getElementById("cwAiWindow");
+    const closeBtn = document.getElementById("cwAiCloseBtn");
+    const form = document.getElementById("cwAiForm");
+    const input = document.getElementById("cwAiInput");
+    const messagesBox = document.getElementById("cwAiMessages");
+
+    let chatHistory = [];
+    try {
+      const saved = sessionStorage.getItem("cw_ai_chat");
+      if (saved) {
+        messagesBox.innerHTML = saved;
+        messagesBox.scrollTop = messagesBox.scrollHeight;
+      }
+    } catch(e) {}
+
+    function toggleChat(open) {
+      if (typeof open === "boolean") {
+        windowEl.classList.toggle("open", open);
+      } else {
+        windowEl.classList.toggle("open");
+      }
+      if (windowEl.classList.contains("open")) {
+        input.focus();
+      }
+    }
+
+    launcher.addEventListener("click", () => toggleChat());
+    launcher.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") toggleChat(); });
+    closeBtn.addEventListener("click", () => toggleChat(false));
+
+    function bindChips() {
+      document.querySelectorAll(".cw-ai-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          const query = chip.getAttribute("data-q");
+          if (query) {
+            input.value = query;
+            sendMessage(query);
+          }
+        });
+      });
+    }
+    bindChips();
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const text = input.value.trim();
+      if (!text) return;
+      sendMessage(text);
+    });
+
+    async function sendMessage(userText) {
+      input.value = "";
+      appendMessage(userText, "user");
+
+      const typingEl = document.createElement("div");
+      typingEl.className = "cw-ai-typing";
+      typingEl.id = "cwAiTyping";
+      typingEl.innerHTML = '<span class="cw-ai-dot"></span><span class="cw-ai-dot"></span><span class="cw-ai-dot"></span>';
+      messagesBox.appendChild(typingEl);
+      messagesBox.scrollTop = messagesBox.scrollHeight;
+
+      // 1. Resolve through Master Knowledge Engine (Instant 0ms, Zero Server Dependency)
+      const directAnswer = resolveKnowledge(userText);
+      if (directAnswer) {
+        setTimeout(() => {
+          if (document.getElementById("cwAiTyping")) document.getElementById("cwAiTyping").remove();
+          appendHtmlMessage(directAnswer, "bot");
+          chatHistory.push({ role: "user", content: userText });
+          chatHistory.push({ role: "assistant", content: directAnswer });
+        }, 300);
+        return;
+      }
+
+      // 2. Query server gateway if available
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 4000);
+
+        const response = await fetch("/ai-handler.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          signal: controller.signal,
+          body: JSON.stringify({
+            prompt: userText,
+            history: chatHistory.slice(-6)
+          })
+        });
+        clearTimeout(timeoutId);
+
+        if (!response.ok) throw new Error("Status " + response.status);
+
+        const data = await response.json();
+        if (document.getElementById("cwAiTyping")) document.getElementById("cwAiTyping").remove();
+
+        const botReply = data.reply || "I can help you solve that calculation! What specific numbers or variables do you have?";
+        appendHtmlMessage(botReply, "bot");
+        chatHistory.push({ role: "user", content: userText });
+        chatHistory.push({ role: "assistant", content: botReply });
+      } catch (err) {
+        if (document.getElementById("cwAiTyping")) document.getElementById("cwAiTyping").remove();
+        const fallback = resolveKnowledge(userText);
+        appendHtmlMessage(fallback, "bot");
+      }
+    }
+
+    function appendMessage(text, sender) {
+      const msg = document.createElement("div");
+      msg.className = "cw-msg " + sender;
+      if (sender === "bot") {
+        msg.innerHTML = renderMarkdown(text);
+      } else {
+        msg.textContent = text;
+      }
+      messagesBox.appendChild(msg);
+      messagesBox.scrollTop = messagesBox.scrollHeight;
+      saveChat();
+    }
+
+    function appendHtmlMessage(html, sender) {
+      const msg = document.createElement("div");
+      msg.className = "cw-msg " + sender;
+      msg.innerHTML = html;
+      messagesBox.appendChild(msg);
+      messagesBox.scrollTop = messagesBox.scrollHeight;
+      saveChat();
+    }
+
+    function saveChat() {
+      try {
+        sessionStorage.setItem("cw_ai_chat", messagesBox.innerHTML);
+      } catch(e) {}
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initAIWidget);
+  } else {
+    initAIWidget();
+  }
+})();

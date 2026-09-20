@@ -1,0 +1,1020 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- ===== Primary SEO ===== -->
+<title>Freelance Tax Calculator 2026 — 1099 Self-Employment</title>
+<meta content="Estimate 2026 1099 self-employment taxes (15.3% Social Security & Medicare) and quarterly Form 1040-ES payments after business expenses and deductions." name="description"/>
+<meta content="1099 tax calculator, freelance tax estimator 2026, self employment tax calculator, quarterly estimated tax calculator, 1099 write offs, calcworker" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/freelance-tax-calculator.html" rel="canonical"/>
+<!-- ===== Open Graph ===== -->
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/freelance-tax-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Freelance Tax Calculator 2026 — 1099 Self-Employment" property="og:title"/>
+<meta content="Estimate 2026 1099 self-employment taxes (15.3% Social Security & Medicare) and quarterly Form 1040-ES payments after business expenses and deductions." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- Google tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<style>
+    .tax-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .tax-kpi-box {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .tax-kpi-box:hover {
+      border-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    .tax-kpi-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted, #94a3b8);
+      margin-bottom: 6px;
+    }
+    .tax-kpi-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main, #f8fafc);
+    }
+    .tax-kpi-value.payout-green { color: #10b981; }
+    .tax-kpi-value.payout-red { color: #f87171; }
+    .tax-kpi-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted, #94a3b8);
+      margin-top: 4px;
+    }
+
+    .preset-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 10px 0 16px 0;
+    }
+    .preset-chip {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.05));
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.12));
+      color: var(--text-main, #f8fafc);
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .preset-chip:hover, .preset-chip.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #ffffff;
+    }
+
+    .faq-item details {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main, #f8fafc);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "▼";
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }
+    .faq-item details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      padding: 0 18px 16px 18px;
+      color: var(--text-muted, #cbd5e1);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+<!-- FAQPage Schema for Search Rich Snippets -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Freelance 1099 Tax & Quarterly Estimator 2026",
+    "url": "https://calcworker.com/tools/freelance-tax-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much is the 1099 self-employment tax rate in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The self-employment tax rate is 15.3% on 92.35% of your net freelance earnings. This covers 12.4% for Social Security (capped at $176,100 of earnings for 2026) and 2.9% for Medicare (uncapped). When filing, you can deduct half of your self-employment tax (7.65%) from your gross income for income tax calculation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When are quarterly estimated taxes due in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The four quarterly IRS payment deadlines for 2026 are: Q1 (April 15, 2026), Q2 (June 15, 2026), Q3 (September 15, 2026), and Q4 (January 15, 2027). If you owe more than $1,000 in federal taxes at year-end, failing to pay quarterly estimates can incur IRS underpayment penalties."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 20% Qualified Business Income (QBI) deduction?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under Section 199A, eligible sole proprietors, single-member LLCs, and independent contractors can deduct up to 20% of their net qualified business income from their federal taxable income, provided their taxable income falls below the statutory threshold."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What can freelancers write off to lower their 1099 taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Common legitimate business deductions include: home office expenses (simplified or actual method), business software and SaaS tools, computer equipment (Section 179 expensing), mobile phone bills, professional insurance, legal/accounting fees, and business vehicle mileage at the 2026 IRS standard rate ($0.67/mile)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much should a 1099 independent contractor set aside for taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "As a rule of thumb, freelancers and 1099 contractors should set aside 25% to 35% of their gross earnings in a separate high-yield business savings account. This covers both self-employment tax (15.3%) and state/federal income taxes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do I need to pay state income taxes on 1099 freelance income?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, unless you live in one of the 9 states with no state income tax (Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming). In states like California or New York, state tax brackets range from 4% to over 10%."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the IRS Safe Harbor rule for quarterly taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "To avoid IRS underpayment penalties, you must pay at least 90% of your current year's tax liability or 100% of your previous year's tax liability (110% if your previous year's AGI was over $150,000) through quarterly estimated payments."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between W-2 and 1099 taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "W-2 employees split FICA taxes with their employer (7.65% employee, 7.65% employer). 1099 independent contractors are responsible for both portions (15.3% self-employment tax), but can write off business expenses to reduce their taxable net profit."
+        }
+      }
+    ]
+  }
+]
+</script>
+<meta content="#090d16" name="theme-color"/>
+<script defer="" src="../js/analytics.js"></script>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link active" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<!-- Main Viewport -->
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn" title="Toggle Navigation Menu">☰</button>
+<span class="topbar-title">Freelance 1099 Tax Estimator</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" style="margin-bottom: 12px; font-size: 0.8rem; color: var(--text-dim);">
+<a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Dashboard</a> / 
+          <span>Taxes &amp; Business</span> / 
+          <span style="color: var(--brand-primary); font-weight: 600;">1099 Tax Estimator</span>
+</nav>
+<!-- Tool Header Block -->
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>💼</span> Freelance 1099 Tax &amp; Quarterly Estimator (2026)</h1>
+<p class="tool-header-desc">
+            Calculate your self-employment tax (15.3%), federal income tax brackets, QBI 20% deductions, and exact quarterly estimated tax payments (IRS Form 1040-ES).
+          </p>
+</div>
+<!-- Tool Body / Calculator Content -->
+<div class="tool-page-layout">
+<!-- LEFT: INPUTS -->
+<div class="tool-form-card" style="padding: 24px;">
+<h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+            1. Freelance Gross Income &amp; Expenses
+          </h2>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="annualGross" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Annual 1099 Gross Earnings ($)</label>
+<input class="form-input" id="annualGross" min="1000" oninput="calculateTaxes()" step="2500" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="85000"/>
+</div>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="businessExpenses" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Schedule C Business Deductions ($)</label>
+<input class="form-input" id="businessExpenses" min="0" oninput="calculateTaxes()" step="500" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="12000"/>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Software, computer equipment, home office, mileage (67¢/mi)</span>
+</div>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="filingStatus" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">IRS Filing Status</label>
+<select class="form-select" id="filingStatus" onchange="calculateTaxes()" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 0.95rem;">
+<option selected="" value="single">Single ($15,000 Standard Deduction)</option>
+<option value="married">Married Filing Jointly ($30,000 Standard Deduction)</option>
+<option value="hoh">Head of Household ($22,500 Standard Deduction)</option>
+</select>
+</div>
+<h2 style="font-size: 1.15rem; font-weight: 700; margin: 24px 0 16px 0; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+            2. State Tax &amp; Retirement Deductions
+          </h2>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="stateSelect" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">State of Residence</label>
+<select class="form-select" id="stateSelect" onchange="calculateTaxes()" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 0.95rem;">
+<option value="0.0">No State Income Tax (TX, FL, WA, NV, TN, WY, AK, SD)</option>
+<option selected="" value="0.05">Average State Tax (~5.0% - OH, IL, CO, PA)</option>
+<option value="0.08">High State Tax (~8.0% - NY, NJ, MN, OR)</option>
+<option value="0.093">California Top Brackets (~9.3%)</option>
+</select>
+</div>
+<div class="form-group" style="margin-bottom: 8px;">
+<label for="retirementDeduction" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">SEP-IRA / Solo 401(k) Pre-Tax Contribution ($)</label>
+<input class="form-input" id="retirementDeduction" min="0" oninput="calculateTaxes()" step="500" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="6000"/>
+</div>
+</div>
+<!-- RIGHT: RESULTS PANEL (SIDE ME) -->
+<div class="tool-results-card" style="padding: 24px; position: sticky; top: 80px; align-self: start;">
+<div style="text-align: center; margin-bottom: 16px;">
+<span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">Quarterly Payment (Form 1040-ES)</span>
+<div id="kpiQuarterly" style="font-size: 2.2rem; font-weight: 900; color: #2563eb; font-family: monospace; margin: 4px 0;">$4,604.50</div>
+<div class="cw-disclaimer-card" style="margin-top: 18px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary); font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">
+  <strong style="color: var(--text-main);">Financial Estimate Disclaimer:</strong> Calculations produced by this tool are mathematical estimates designed for planning and comparison purposes only. Final loan payments, interest charges, tax liabilities, and payroll withholdings vary according to your lender terms, tax filing status, and applicable federal, state, and local laws. Consult a certified financial planner or CPA for professional advice.
+</div>
+<div id="effectiveSub" style="font-size: 0.82rem; color: var(--text-muted);">Effective Total Tax Rate: 25.2%</div>
+</div>
+<!-- Smart One-Click Copy Calculation Summary -->
+<div style="margin: 0 0 16px 0;">
+<button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; margin-top: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);" type="button"><span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span></button>
+</div>
+<!-- KPI Mini Grid -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">15.3% SE Tax</div>
+<div id="kpiSETax" style="font-size: 1.15rem; font-weight: 700; color: #ef4444; font-family: monospace;">$10,314</div>
+</div>
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Federal Income</div>
+<div id="kpiFedTax" style="font-size: 1.15rem; font-weight: 700; color: #ef4444; font-family: monospace;">$4,939</div>
+</div>
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">20% QBI Savings</div>
+<div id="kpiQBI" style="font-size: 1.15rem; font-weight: 700; color: #10b981; font-family: monospace;">$13,568</div>
+</div>
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Net Take-Home</div>
+<div id="kpiTakeHome" style="font-size: 1.15rem; font-weight: 700; color: #10b981; font-family: monospace;">$54,582</div>
+</div>
+</div>
+<!-- Tax Schedule Table -->
+<h3 style="font-size: 0.92rem; font-weight: 700; margin-bottom: 8px;">2026 Annual Tax Breakdown</h3>
+<table class="fba-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+<tbody>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Schedule C Net Profit</td><td class="amount" id="rowNetProfit" style="text-align: right; font-weight: 700;">$73,000</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Self-Employment Tax (15.3%)</td><td class="amount" id="rowSE" style="text-align: right; color: #ef4444;">$10,314</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Federal Income Tax (Brackets)</td><td class="amount" id="rowFed" style="text-align: right; color: #ef4444;">$4,939</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">State Income Tax</td><td class="amount" id="rowState" style="text-align: right; color: #ef4444;">$3,165</td></tr>
+<tr style="font-weight: 700;"><td style="padding: 6px 0; color: var(--text-main); border-bottom: 1px solid var(--border);">Total Combined Taxes</td><td class="amount" id="rowTotalTax" style="text-align: right; color: #ef4444;">$18,418</td></tr>
+<tr style="font-weight: 700;"><td style="padding: 8px 0; color: var(--text-main);">Net Take-Home Profit</td><td class="amount" id="rowTakeHome" style="text-align: right; color: #10b981;">$54,582</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+<h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+<span>🔗</span> Related Precision Calculators
+          </h3>
+<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+</div>
+<div class="related-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px;">
+<a class="related-tool-link" href="/tools/hourly-rate.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">💼</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">INCOME</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Hourly Rate Calculator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Back-calculate your billable hourly rate based on target take-home and overhead.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/paycheck-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">💵</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">2026 TAX</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Paycheck Calculator 2026</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Calculate exact paycheck deductions across all 50 US states and federal tax brackets.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/gig-profit.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🚗</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">GIG</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Gig Worker Profit Calculator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Calculate net rideshare profits comparing standard mileage deduction vs actual gas.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+</div>
+</section>
+<!-- FAQ Section -->
+<section style="margin-top: 48px;">
+<h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 20px;">
+            Frequently Asked Questions (1099 Freelance Taxes)
+          </h2>
+<div class="faq-item">
+<details open="">
+<summary>How much is the 1099 self-employment tax rate in 2026?</summary>
+<p>The self-employment tax rate is 15.3% on 92.35% of your net freelance earnings. This covers 12.4% for Social Security (capped at $176,100 of earnings for 2026) and 2.9% for Medicare (uncapped). When filing, you can deduct half of your self-employment tax (7.65%) from your gross income for income tax calculation.</p>
+</details>
+<details>
+<summary>When are quarterly estimated taxes due in 2026?</summary>
+<p>The four quarterly IRS payment deadlines for 2026 are: Q1 (April 15, 2026), Q2 (June 15, 2026), Q3 (September 15, 2026), and Q4 (January 15, 2027). If you owe more than $1,000 in federal taxes at year-end, failing to pay quarterly estimates can incur IRS underpayment penalties.</p>
+</details>
+<details>
+<summary>What is the 20% Qualified Business Income (QBI) deduction?</summary>
+<p>Under Section 199A, eligible sole proprietors, single-member LLCs, and independent contractors can deduct up to 20% of their net qualified business income from their federal taxable income, provided their taxable income falls below the statutory threshold.</p>
+</details>
+<details>
+<summary>What can freelancers write off to lower their 1099 taxes?</summary>
+<p>Common legitimate business deductions include: home office expenses (simplified or actual method), business software and SaaS tools, computer equipment (Section 179 expensing), mobile phone bills, professional insurance, legal/accounting fees, and business vehicle mileage at the 2026 IRS standard rate ($0.67/mile).</p>
+</details>
+<details>
+<summary>How much should a 1099 independent contractor set aside for taxes?</summary>
+<p>As a rule of thumb, freelancers and 1099 contractors should set aside 25% to 35% of their gross earnings in a separate high-yield business savings account. This covers both self-employment tax (15.3%) and state/federal income taxes.</p>
+</details>
+<details>
+<summary>Do I need to pay state income taxes on 1099 freelance income?</summary>
+<p>Yes, unless you live in one of the 9 states with no state income tax (Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington, Wyoming). In states like California or New York, state tax brackets range from 4% to over 10%.</p>
+</details>
+<details>
+<summary>What is the IRS Safe Harbor rule for quarterly taxes?</summary>
+<p>To avoid IRS underpayment penalties, you must pay at least 90% of your current year's tax liability or 100% of your previous year's tax liability (110% if your previous year's AGI was over $150,000) through quarterly estimated payments.</p>
+</details>
+<details>
+<summary>What is the difference between W-2 and 1099 taxes?</summary>
+<p>W-2 employees split FICA taxes with their employer (7.65% employee, 7.65% employer). 1099 independent contractors are responsible for both portions (15.3% self-employment tax), but can write off business expenses to reduce their taxable net profit.</p>
+</details>
+</div>
+</section>
+<!-- Footer -->
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">1099 Self-Employment & Schedule C Tax Algorithm</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">Total Tax = Self-Employment Tax (SECA) + Federal Income Tax + State Income Tax, | SECA = (Net Profit × 0.9235) × 15.3%</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Applies standard mathematical and statistical rules to calculate 1099 Self-Employment & Schedule C Tax Algorithm accurately with real-world variable adjustments.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Net Profit:</span> <span>Gross 1099 Revenue minus Ordinary & Necessary Business Deductions (Schedule C)</span></li>
+      <li><span class="cw-var-symbol">0.9235 Multiplier:</span> <span>IRS Statutory Equivalent factor allowing deduction of the employer portion of SE tax</span></li>
+      <li><span class="cw-var-symbol">15.3% SECA Rate:</span> <span>12.4% Social Security (up to annual cap) + 2.9% Medicare</span></li>
+      <li><span class="cw-var-symbol">Above-the-Line Deduction:</span> <span>50% of total Self-Employment Tax deducted from Gross Income before Income Tax brackets apply</span></li>
+      <li><span class="cw-var-symbol">QBI Deduction:</span> <span>Section 199A Qualified Business Income deduction (up to 20% of net qualified trade income)</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Gross 1099 Revenue: $120,000. Legitimate Schedule C Expenses (software, hardware, mileage, home office): $20,000. Net Profit: $100,000.</li>
+      <li>Subject to SECA Tax: $100,000 × 0.9235 = $92,350.</li>
+      <li>Self-Employment Tax: $92,350 × 15.3% = $14,129.55 ($11,451.40 Social Security + $2,678.15 Medicare).</li>
+      <li>Federal AGI Adjustment: Subtract 50% of SE tax ($7,064.78). Adjusted Net Income = $92,935.22.</li>
+      <li>Section 199A QBI Deduction (20% of eligible profit): $18,587.04 tax shield.</li>
+      <li>Federal & State Income Tax: Computed on remaining taxable income after standard deduction. Estimated Quarterly Payment (Form 1040-ES) = $5,850.00 / quarter.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Break down complicated multi-step calculations by solving inner parentheses first, converting all time units to the same scale (e.g. annual to monthly), and checking your result with this tool.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Internal Revenue Code Section 1402 governs self-employment tax obligations. Freelancers, independent contractors, and single-member LLC owners earning more than $400 net annually are required to make quarterly estimated tax payments (Form 1040-ES deadlines: April 15, June 15, September 15, January 15). The IRS 'Safe Harbor Rule' waives underpayment penalties if you prepay 100% of your prior year tax liability (110% if prior AGI exceeded $150,000) or 90% of current year liability.
+  </div>
+  <p class="cw-deep-text">W-2 employees often fail to realize that their employers quietly subsidize half of their FICA tax bill (7.65%). When transitioning to 1099 independent contractor status, you become both the employer and employee, assuming full responsibility for the entire 15.3% Self-Employment Contributions Act (SECA) tax burden in addition to regular federal and state income tax brackets.</p>
+  <p class="cw-deep-text">To prevent severe cash flow shortages during April tax season, independent workers must establish a disciplined business accounting protocol: transfer 25% to 30% of every gross 1099 invoice payment into a dedicated business tax escrow account immediately upon receipt. Furthermore, forming an S-Corporation when net profits exceed $70,000 to $80,000 allows owners to bifurcate earnings into a 'reasonable salary' (subject to FICA) and shareholder dividend distributions (exempt from the 15.3% SECA tax), saving thousands annually.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What business expenses can I legally deduct on Schedule C?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Under IRS Code Section 162, you can deduct any 'ordinary and necessary' expense incurred in operating your trade or business. Permissible deductions include home office square footage, vehicle business mileage (67¢/mile standard rate), high-speed internet, cellular phone bills, advertising, professional software subscriptions, continuing education, business liability insurance, and contract labor fees.</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What happens if I miss an IRS quarterly estimated tax payment?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Missing a quarterly deadline (Form 1040-ES) triggers an IRS underpayment penalty under IRC Section 6654, calculated based on the prevailing federal short-term interest rate plus 3 percentage points (typically 7%–9% annualized). However, if you qualify under the IRS Safe Harbor rules by paying at least 100% of your prior year total tax through timely withholding, penalties are fully waived.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>💼</span> Freelance & 1099 Contractor Tax Mechanics: Quarterly Estimates & Deductions
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Operating as a 1099 independent contractor, consultant, or freelancer means you are classified as self-employed by the Internal Revenue Service. Unlike W-2 employees where employers automatically withhold taxes and pay half of FICA, 1099 professionals pay both the employer and employee shares of Social Security and Medicare via the 15.3% Self-Employment Tax (SECA).</p>
+    <p style="margin-top: 12px;">Freelancers must remit quarterly estimated tax payments four times per year using IRS Form 1040-ES. Maximizing deductible business expenses on Schedule C directly reduces taxable net profit, lowering both income and self-employment taxes simultaneously.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Freelance 1099 Tax Burden Across Revenue Tiers (Single Filer, Standard Deduction)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Gross 1099 Income</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Legitimate Schedule C Write-Offs</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Net Schedule C Profit</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Self-Employment Tax (15.3%)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Federal Income Tax (Est.)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Total Federal Tax Rate</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$10,000 (20%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$40,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$5,652</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,745</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">20.99% of net profit</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$80,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$16,000 (20%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$64,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$9,043</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$6,050</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">23.58% of net profit</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$120,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$24,000 (20%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$96,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$13,565</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$11,845</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">26.47% of net profit</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$160,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$32,000 (20%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$128,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$18,086</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$18,570</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">28.64% of net profit</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$220,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$40,000 (18%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$180,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$23,280 (SS Tax Capped)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$29,480</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">29.31% of net profit</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Quarterly 1099 Tax Compliance Protocols
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Memorize IRS Form 1040-ES Deadlines:</strong> <span>Quarterly estimated tax payments are strictly due: Q1 (April 15), Q2 (June 15), Q3 (September 15), and Q4 (January 15).</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Claim the Section 199A QBI Deduction:</strong> <span>Eligible self-employed contractors can deduct up to 20% of their net qualified business income from federal income tax under the Tax Cuts and Jobs Act.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Track Vehicle Mileage with GPS:</strong> <span>Claim the official IRS business mileage rate for all work-related driving, keeping contemporaneous electronic logs to satisfy audit requirements.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 freelance tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 1099 self</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 employment tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 schedule tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 social security</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 medicare estimated</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 quarterly taxes</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script>
+  function setTxt(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  function calculateTaxes() {
+    try {
+      const gross = parseFloat(document.getElementById('annualGross')?.value) || 0;
+      const expenses = parseFloat(document.getElementById('businessExpenses')?.value) || 0;
+      const status = document.getElementById('filingStatus')?.value || 'single';
+      const stateRate = parseFloat(document.getElementById('stateSelect')?.value) || 0.05;
+      const retirement = parseFloat(document.getElementById('retirementDeduction')?.value) || 0;
+
+      const netProfit = Math.max(0, gross - expenses);
+
+      const seTaxable = netProfit * 0.9235;
+      const ssCap = 176100;
+      const ssTax = Math.min(seTaxable, ssCap) * 0.124;
+      const medTax = seTaxable * 0.029;
+      const totalSETax = ssTax + medTax;
+      const halfSETax = totalSETax * 0.5;
+
+      const agi = Math.max(0, netProfit - halfSETax - retirement);
+
+      let stdDeduction = 15000;
+      if (status === 'married') stdDeduction = 30000;
+      else if (status === 'hoh') stdDeduction = 22500;
+
+      const qbiDeduction = netProfit * 0.20;
+      const taxableIncome = Math.max(0, agi - stdDeduction - qbiDeduction);
+
+      let fedTax = 0;
+      if (status === 'married') {
+        if (taxableIncome <= 23850) fedTax = taxableIncome * 0.10;
+        else if (taxableIncome <= 96950) fedTax = 2385 + (taxableIncome - 23850) * 0.12;
+        else if (taxableIncome <= 206700) fedTax = 11157 + (taxableIncome - 96950) * 0.22;
+        else fedTax = 35302 + (taxableIncome - 206700) * 0.24;
+      } else {
+        if (taxableIncome <= 11925) fedTax = taxableIncome * 0.10;
+        else if (taxableIncome <= 48475) fedTax = 1192.5 + (taxableIncome - 11925) * 0.12;
+        else if (taxableIncome <= 103350) fedTax = 5578.5 + (taxableIncome - 48475) * 0.22;
+        else fedTax = 17651 + (taxableIncome - 103350) * 0.24;
+      }
+
+      const stateTax = Math.max(0, (netProfit - stdDeduction) * stateRate);
+
+      const totalTaxes = totalSETax + fedTax + stateTax;
+      const quarterly = totalTaxes / 4;
+      const takeHome = Math.max(0, netProfit - totalTaxes);
+      const effectiveRate = netProfit > 0 ? (totalTaxes / netProfit) * 100 : 0;
+
+      setTxt('kpiQuarterly', '$' + quarterly.toFixed(2));
+      setTxt('effectiveSub', 'Effective Total Tax Rate: ' + effectiveRate.toFixed(1) + '%');
+      setTxt('kpiSETax', '$' + Math.round(totalSETax).toLocaleString());
+      setTxt('kpiFedTax', '$' + Math.round(fedTax).toLocaleString());
+      setTxt('kpiQBI', '$' + Math.round(qbiDeduction).toLocaleString());
+      setTxt('kpiTakeHome', '$' + Math.round(takeHome).toLocaleString());
+
+      setTxt('rowNetProfit', '$' + Math.round(netProfit).toLocaleString());
+      setTxt('rowSE', '$' + Math.round(totalSETax).toLocaleString());
+      setTxt('rowFed', '$' + Math.round(fedTax).toLocaleString());
+      setTxt('rowState', '$' + Math.round(stateTax).toLocaleString());
+      setTxt('rowTotalTax', '$' + Math.round(totalTaxes).toLocaleString());
+      setTxt('rowTakeHome', '$' + Math.round(takeHome).toLocaleString());
+    } catch(err) {
+      console.error('Error in calculateTaxes:', err);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input, select').forEach(function(el) {
+      el.addEventListener('input', calculateTaxes);
+      el.addEventListener('change', calculateTaxes);
+      el.addEventListener('keyup', calculateTaxes);
+    });
+    calculateTaxes();
+
+    const shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async () => {
+        const gross = document.getElementById('annualGross')?.value || '85000';
+        const quarterly = document.getElementById('kpiQuarterly')?.textContent || '$4,604.50';
+        const se = document.getElementById('kpiSETax')?.textContent || '$10,314';
+        const takehome = document.getElementById('kpiTakeHome')?.textContent || '$54,582';
+
+        const shareText = `💼 CalcWorker — 1099 Freelance Tax Estimate:\n` +
+          `• Gross Income: $${Number(gross).toLocaleString()}\n` +
+          `• Quarterly Voucher (1040-ES): ${quarterly}\n` +
+          `• Self-Employment Tax: ${se}\n` +
+          `• Net Take-Home: ${takehome}\n` +
+          `🔗 Free Calculator: ${window.location.href}`;
+
+        const btnText = document.getElementById('shareBtnText');
+    const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : (typeof shareText !== 'undefined' ? shareText : (typeof t !== 'undefined' ? t : window.location.href));
+    navigator.clipboard.writeText(copyContent).then(function() {
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      const btnEl = document.getElementById('shareBtn') || document.getElementById('omniShareBtn');
+      if (btnEl) btnEl.style.background = '#047857';
+      setTimeout(function() {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      }, 2500);
+    });
+      });
+    }
+  });
+
+  window.calculateTaxes = calculateTaxes;
+</script> <script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

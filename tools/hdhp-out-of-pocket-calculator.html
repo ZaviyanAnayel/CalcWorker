@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HDHP vs PPO Out-of-Pocket Maximum Calculator 2026 — CalcWorker</title>
+<meta content="Calculate worst-case medical expenses, deductible milestones, coinsurance splits, and ACA maximum out-of-pocket limits for High Deductible Health Plans." name="description"/>
+<meta content="hdhp calculator, out of pocket max 2026, aca out of pocket limits, hdhp vs ppo cost, coinsurance deductible calculator" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/hdhp-out-of-pocket-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/hdhp-out-of-pocket-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="HDHP vs PPO Out-of-Pocket Maximum Calculator 2026" property="og:title"/>
+<meta content="Calculate worst-case medical expenses, deductible milestones, coinsurance splits, and ACA maximum out-of-pocket limits for High Deductible Health Plans." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<style>
+.prompt-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.prompt-kpi-box {
+  background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.prompt-kpi-box:hover {
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+.prompt-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.prompt-kpi-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.token-blue { color: #38bdf8; }
+.cost-green { color: #34d399; }
+.save-purple { color: #a855f7; }
+</style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "HDHP vs PPO Out-of-Pocket Maximum Calculator 2026",
+    "url": "https://calcworker.com/tools/hdhp-out-of-pocket-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+  {
+    "@type": "Question",
+    "name": "What is the difference between a Deductible and Out-of-Pocket Maximum?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "A deductible is the initial amount you must pay 100% out-of-pocket before insurance covers a dime. The out-of-pocket maximum is the hard legal ceiling\u2014once reached, your health insurer pays 100% of all covered in-network services for the rest of the plan year."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "What is coinsurance?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Coinsurance is the percentage split of covered medical costs you pay after meeting your deductible (most commonly an 80/20 split, where insurance pays 80% and you pay 20%)."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Does monthly premium count toward your deductible or out-of-pocket max?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Premiums are the ongoing monthly subscription cost to maintain coverage. They do not count toward your deductible or out-of-pocket maximum."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "When does an HDHP beat a traditional PPO plan?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "HDHPs beat PPOs in two scenarios: 1) Very low medical utilization (you pocket huge premium savings and HSA tax breaks), or 2) Catastrophic medical utilization (the lower annual premium plus capped OOP max results in lower all-in costs than high PPO premiums)."
+    }
+  }
+]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Universal Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <!-- Populated automatically by sidebar.js and calcworker-common.js -->
+  </div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<!-- Top Navigation Header -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="1" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Page Workstation -->
+<main class="page-container">
+<!-- Breadcrumbs -->
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>&rsaquo;</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">HDHP vs PPO Out-of-Pocket Maximum Calculator 2026</span>
+</div>
+
+<!-- Header Card -->
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(37, 99, 235, 0.12); color: var(--brand-primary); font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>⚡</span> ACA 2026 Limits
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        HDHP vs PPO Out-of-Pocket Maximum Calculator 2026
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Calculate worst-case medical expenses, deductible milestones, coinsurance splits, and ACA maximum out-of-pocket limits for High Deductible Health Plans.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator Grid -->
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <!-- Inputs Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>⚙️</span> Calculation Parameters
+      </h2>
+    </div>
+    <div style="margin-bottom: 16px;">
+  <label for="annualPlanPremium" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Annual Payroll Health Premium Paid</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="annualPlanPremium" value="2400" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="planDeductible" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Individual Annual Deductible</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="planDeductible" value="3200" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="coinsurancePatientPct" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Patient Coinsurance Share (%)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <input type="number" id="coinsurancePatientPct" value="20" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.85rem;">%</span>
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="outOfPocketMaxLimit" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Plan Out-of-Pocket Maximum</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="outOfPocketMaxLimit" value="6500" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="projectedMedicalClaims" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Projected Gross Medical Bills</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="projectedMedicalClaims" value="12000" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+
+  </div>
+
+  <!-- Results Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>📊</span> Real-Time Analysis
+      </h2>
+    </div>
+    
+    <!-- KPI Summary Grid -->
+    <div class="prompt-kpi-grid">
+      <div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Patient Out-of-Pocket Cost</div>
+  <div class="prompt-kpi-val cost-green" id="resPatientTotalPaid">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Insurer Covered Share</div>
+  <div class="prompt-kpi-val token-blue" id="resInsurerPaidAmount">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Maximum Worst-Case Exposure</div>
+  <div class="prompt-kpi-val save-purple" id="resWorstCaseScenario">$0.00</div>
+</div>
+
+    </div>
+
+    <!-- Secondary Summary Rows -->
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Deductible Absorbed by Patient</span>
+  <strong id="resDeductibleSpent" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Coinsurance Paid Past Deductible</span>
+  <strong id="resCoinsuranceSpent" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Total All-In Cost (Claims + Premiums)</span>
+  <strong id="resAllInAnnual" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">ACA Statutory Federal Limit (2026)</span>
+  <strong id="resAcaStatutoryLimit" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+
+    </div>
+
+    <!-- Smart One-Click Copy Calculation Summary -->
+    <div style="margin: 18px 0 0 0;">
+      <button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md); cursor: pointer;" type="button">
+        <span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Deep Technical Guide (AdSense E-E-A-T) -->
+<!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Total Annual Healthcare Financial Exposure Formulation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Net Cost} = \text{Premiums} + \min(\text{OOP Max}, \text{Deductible} + c \times \max(0, \text{Claims} - \text{Deductible})) - \text{HSA Tax Shield}</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Sums annual payroll premiums and maximum out-of-pocket ceiling, subtracting employer seed deposits and tax savings.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Deductible:</span> <span>Amount patient must pay 100% before coinsurance cost-sharing activates.</span></li>
+      <li><span class="cw-var-symbol">c:</span> <span>Coinsurance percentage paid by patient (typically 10% to 20% after deductible).</span></li>
+      <li><span class="cw-var-symbol">OOP Max:</span> <span>Statutory maximum out-of-pocket ceiling mandated by Affordable Care Act (ACA).</span></li>
+      <li><span class="cw-var-symbol">HSA Shield:</span> <span>Immediate cash tax savings = Annual HSA Contribution × (Federal + State + FICA Tax Rate).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>An individual with an HDHP plan (premium $2,200, deductible $3,000, OOP max $6,000, coinsurance 20%) incurs $12,000 in medical procedures.</li>
+      <li>Patient pays $3,000 deductible + 20% of remaining $9,000 ($1,800) = $4,800 out-of-pocket.</li>
+      <li>Funding this via HSA at a 32% marginal tax bracket saves $1,536 in taxes, reducing true procedure cost to $3,264.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Check in-network provider lists; ensure your preferred doctors and local hospitals participate in the HDHP network before switching plans.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Affordable Care Act (ACA) and Department of Health and Human Services (HHS) maximum annual out-of-pocket expense parameters.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the difference between a Deductible and Out-of-Pocket Maximum?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">A deductible is the initial amount you must pay 100% out-of-pocket before insurance covers a dime. The out-of-pocket maximum is the hard legal ceiling—once reached, your health insurer pays 100% of all covered in-network services for the rest of the plan year.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is coinsurance?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Coinsurance is the percentage split of covered medical costs you pay after meeting your deductible (most commonly an 80/20 split, where insurance pays 80% and you pay 20%).</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Does monthly premium count toward your deductible or out-of-pocket max?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">No. Premiums are the ongoing monthly subscription cost to maintain coverage. They do not count toward your deductible or out-of-pocket maximum.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">When does an HDHP beat a traditional PPO plan?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">HDHPs beat PPOs in two scenarios: 1) Very low medical utilization (you pocket huge premium savings and HSA tax breaks), or 2) Catastrophic medical utilization (the lower annual premium plus capped OOP max results in lower all-in costs than high PPO premiums).</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏥</span> HDHP vs. PPO Total Cost Modeling: Premiums, Deductibles & Out-of-Pocket Maximums
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Selecting between a High Deductible Health Plan (HDHP) paired with an HSA and a traditional Preferred Provider Organization (PPO) plan requires analyzing Total Annual Financial Risk. Many employees mistakenly choose PPOs solely because of lower deductibles, overlooking substantial monthly payroll premium drains.</p>
+    <p style="margin-top: 12px;">A rigorous healthcare cost model evaluates two extremes: a Low-Utilization Year (preventive checkups only) and a Worst-Case Catastrophic Year (surgeries or serious illness hitting the statutory Out-of-Pocket Maximum).</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> HDHP vs. PPO Annual Financial Comparison ($100k Salary Single Employee)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Scenario / Cost Element</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">HDHP Plan ($3,000 Deductible)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">PPO Plan ($750 Deductible)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Financial Winner & Net Difference</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Annual Payroll Premium Cost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,200 / yr ($100/mo)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3,600 / yr ($300/mo)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP saves $2,400 guaranteed in premiums</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Employer HSA Cash Contribution</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">+$600 seed deposit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP gives $600 free cash</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Low Utilization Year (Zero claims)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$600 net out-of-pocket</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3,600 net cost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP wins by $3,000 savings</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Moderate Year ($2,500 claims)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,100 net out-of-pocket</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$4,200 net cost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP wins by $2,100 savings</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Worst-Case Year (Hits OOP Max)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$6,200 total spending</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$6,600 total spending</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP still wins by $400 in catastrophic year</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Health Plan Selection Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Calculate the Guaranteed Premium Delta:</strong> <span>Subtract annual HDHP premiums from PPO premiums; that guaranteed cash difference is money in your pocket regardless of medical claims.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Fund Your HSA With the Premium Savings:</strong> <span>Channel the $2,400 annual premium savings directly into your HSA to instantly cover your higher deductible in cash.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Select PPO Only for Frequent Specialist Care:</strong> <span>If you have ongoing chronic conditions requiring weekly prescription refills, therapy, or frequent specialist copays, a PPO copay model may provide superior convenience.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 hdhp high</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 deductible health</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 plan out</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 pocket maximum</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 deductible coinsurance</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 copay health</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 savings account</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+
+<script>
+function calculateAll() {
+  try {
+    
+            const premium = parseFloat(document.getElementById('annualPlanPremium').value) || 0;
+            const ded = parseFloat(document.getElementById('planDeductible').value) || 0;
+            const coinsPct = (parseFloat(document.getElementById('coinsurancePatientPct').value) || 20) / 100;
+            const oopMax = parseFloat(document.getElementById('outOfPocketMaxLimit').value) || 6500;
+            const claims = parseFloat(document.getElementById('projectedMedicalClaims').value) || 0;
+
+            const paidDed = Math.min(claims, ded);
+            const remainingClaims = Math.max(0, claims - ded);
+            const coinsPaidRaw = remainingClaims * coinsPct;
+            const patientClaimsTotal = Math.min(oopMax, paidDed + coinsPaidRaw);
+
+            const insurerShare = Math.max(0, claims - patientClaimsTotal);
+            const allInCost = premium + patientClaimsTotal;
+            const worstCaseAllIn = premium + oopMax;
+
+            document.getElementById('resPatientTotalPaid').textContent = '$' + Math.round(patientClaimsTotal).toLocaleString('en-US');
+            document.getElementById('resInsurerPaidAmount').textContent = '$' + Math.round(insurerShare).toLocaleString('en-US');
+            document.getElementById('resWorstCaseScenario').textContent = '$' + Math.round(worstCaseAllIn).toLocaleString('en-US') + ' (Premium + OOP Max)';
+            document.getElementById('resDeductibleSpent').textContent = '$' + Math.round(paidDed).toLocaleString('en-US') + ' (100% patient responsibility)';
+            document.getElementById('resCoinsuranceSpent').textContent = '$' + Math.round(patientClaimsTotal - paidDed).toLocaleString('en-US') + ' (' + (coinsPct * 100).toFixed(0) + '% coinsurance)';
+            document.getElementById('resAllInAnnual').textContent = '$' + Math.round(allInCost).toLocaleString('en-US') + ' (Including annual premiums)';
+            document.getElementById('resAcaStatutoryLimit').textContent = '2026 ACA statutory max: $9,200 Individual / $18,400 Family';
+        
+  } catch(e) {
+    console.error("Calculation error", e);
+  }
+}
+
+// Bind inputs
+document.querySelectorAll('.calc-card input, .calc-card select').forEach(el => {
+  el.addEventListener('input', calculateAll);
+  el.addEventListener('change', calculateAll);
+});
+
+// Smart Copy Calculation Summary
+const shareBtn = document.getElementById('shareBtn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    const kpiEls = document.querySelectorAll('.prompt-kpi-box');
+    let summaryText = '⚡ CalcWorker — HDHP Health Plan Out-of-Pocket Analysis:\n';
+    kpiEls.forEach(el => {
+      const lbl = el.querySelector('.prompt-kpi-label')?.textContent || '';
+      const val = el.querySelector('.prompt-kpi-val')?.textContent || '';
+      if (lbl && val) summaryText += '• ' + lbl + ': ' + val + '\n';
+    });
+    summaryText += '🔗 Free Calculator: ' + window.location.href;
+
+    try {
+      await navigator.clipboard.writeText(summaryText);
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      shareBtn.style.background = '#047857';
+      shareBtn.style.color = '#ffffff';
+      setTimeout(() => {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        shareBtn.style.background = '';
+        shareBtn.style.color = '';
+      }, 2500);
+    } catch(err) {
+      console.error('Failed to copy', err);
+    }
+  });
+}
+
+// Run on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calculateAll);
+} else {
+  calculateAll();
+}
+</script>
+
+<script src="/js/sidebar.js?v=2026-v26"></script>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

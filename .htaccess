@@ -1,0 +1,87 @@
+# ==============================================================================
+# CalcWorker.com — Production LiteSpeed / Apache Web Server Configuration
+# V2 Master Architecture: Security, Canonicalization, Indexing & Caching
+# ==============================================================================
+
+# 1. DISABLE SERVER DIRECTORY INDEXING (Critical Security & SEO Fix)
+# Prevents raw file listings on /tools/, /css/, /js/, /assets/
+Options -Indexes
+
+# 2. DEFAULT CHARACTER ENCODING
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # ----------------------------------------------------------------------------
+  # A. CANONICAL HOST: FORCE HTTPS AND NON-WWW IN A SINGLE 301 HOP
+  # ----------------------------------------------------------------------------
+  RewriteCond %{HTTPS} off [OR]
+  RewriteCond %{HTTP_HOST} ^www\.calcworker\.com$ [NC]
+  RewriteRule ^(.*)$ https://calcworker.com/$1 [R=301,L]
+
+  # ----------------------------------------------------------------------------
+  # B. HOMEPAGE CANONICALIZATION: REDIRECT /index.html TO /
+  # ----------------------------------------------------------------------------
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.html(?:\?[^\ ]*)?\ HTTP/ [NC]
+  RewriteRule ^index\.html$ https://calcworker.com/ [R=301,L]
+
+  # ----------------------------------------------------------------------------
+  # C. DIRECTORY REDIRECTION: REDIRECT /tools AND /tools/ TO HOMEPAGE HUB
+  # ----------------------------------------------------------------------------
+  RewriteRule ^tools/?$ https://calcworker.com/ [R=301,L]
+
+  # ----------------------------------------------------------------------------
+  # D. EXTENSIONLESS URL 301 REDIRECT TO .HTML CANONICALS
+  # Matches /tools/mortgage-calculator -> /tools/mortgage-calculator.html
+  # Prevents duplicate HTTP 200 responses without creating redirect loops
+  # ----------------------------------------------------------------------------
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{DOCUMENT_ROOT}/tools/$1.html -f
+  RewriteRule ^tools/([^/]+)/?$ https://calcworker.com/tools/$1.html [R=301,L]
+
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 3. CUSTOM 404 ERROR DOCUMENT
+# ------------------------------------------------------------------------------
+ErrorDocument 404 /404.html
+
+# ------------------------------------------------------------------------------
+# 4. SECURITY & PRIVACY RESPONSE HEADERS
+# ------------------------------------------------------------------------------
+<IfModule mod_headers.c>
+  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 5. BROWSER CACHING FOR OPTIMAL CORE WEB VITALS
+# ------------------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType application/manifest+json "access plus 1 week"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+# ------------------------------------------------------------------------------
+# 6. GZIP / BROTLI COMPRESSION
+# ------------------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css application/javascript application/json application/xml image/svg+xml
+</IfModule>

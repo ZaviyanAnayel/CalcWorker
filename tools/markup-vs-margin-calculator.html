@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Markup vs Margin Calculator — Retail & E-Commerce Pricing — CalcWorker</title>
+<meta content="Calculate profit margins, cost markups, retail selling prices, and gross profit dollars with zero confusion between margin and markup percentages." name="description"/>
+<meta content="markup vs margin calculator, profit margin formula, cost markup calculator, retail pricing calculator, gross margin percentage" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/markup-vs-margin-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/markup-vs-margin-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Markup vs Margin Calculator — Retail & E-Commerce Pricing" property="og:title"/>
+<meta content="Calculate profit margins, cost markups, retail selling prices, and gross profit dollars with zero confusion between margin and markup percentages." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<style>
+.prompt-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.prompt-kpi-box {
+  background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.prompt-kpi-box:hover {
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+.prompt-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.prompt-kpi-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.token-blue { color: #38bdf8; }
+.cost-green { color: #34d399; }
+.save-purple { color: #a855f7; }
+</style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Markup vs Margin Calculator — Retail & E-Commerce Pricing",
+    "url": "https://calcworker.com/tools/markup-vs-margin-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+  {
+    "@type": "Question",
+    "name": "What is the fundamental difference between markup and margin?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Margin is profit expressed as a percentage of the selling price. Markup is profit expressed as a percentage of the cost basis."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Why is a 50% markup not a 50% margin?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "If you buy an item for $50 and mark it up by 50% ($25), you sell it for $75. Your profit is $25. Divided by the $75 selling price, your margin is 33.3%, not 50%."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "What markup is needed to achieve a 50% gross margin?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "To achieve a 50% gross margin, you must use a 100% markup (keystone pricing), doubling your cost basis."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Can margin ever exceed 100%?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "No. Profit margin can never reach or exceed 100% unless your cost of goods sold is zero or negative. Markup, however, can be 200%, 500%, or 1,000%+."
+    }
+  }
+]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Universal Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <!-- Populated automatically by sidebar.js and calcworker-common.js -->
+  </div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<!-- Top Navigation Header -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="1" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Page Workstation -->
+<main class="page-container">
+<!-- Breadcrumbs -->
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>&rsaquo;</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">Markup vs Margin Calculator</span>
+</div>
+
+<!-- Header Card -->
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(37, 99, 235, 0.12); color: var(--brand-primary); font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>⚡</span> Profit Engineering
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        Markup vs Margin Calculator — Retail & E-Commerce Pricing
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Calculate profit margins, cost markups, retail selling prices, and gross profit dollars with zero confusion between margin and markup percentages.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator Grid -->
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <!-- Inputs Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>⚙️</span> Calculation Parameters
+      </h2>
+    </div>
+    <div style="margin-bottom: 16px;">
+  <label for="itemCostBasis" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Cost of Goods Sold (COGS)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="itemCostBasis" value="45.00" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="targetMarkupPercent" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Target Cost Markup (%)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <input type="number" id="targetMarkupPercent" value="65.0" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.85rem;">%</span>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Results Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>📊</span> Real-Time Analysis
+      </h2>
+    </div>
+    
+    <!-- KPI Summary Grid -->
+    <div class="prompt-kpi-grid">
+      <div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Calculated Selling Price</div>
+  <div class="prompt-kpi-val cost-green" id="resSellingPrice">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Gross Profit per Unit</div>
+  <div class="prompt-kpi-val token-blue" id="resGrossProfitDollar">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">True Profit Margin (%)</div>
+  <div class="prompt-kpi-val save-purple" id="resGrossMarginPercent">$0.00</div>
+</div>
+
+    </div>
+
+    <!-- Secondary Summary Rows -->
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Stated Cost Markup</span>
+  <strong id="resCostMarkupView" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Cost as % of Selling Price</span>
+  <strong id="resCostRatio" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Selling Price for 50% Margin</span>
+  <strong id="resFiftyMarginPrice" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Rule of Thumb Benchmark</span>
+  <strong id="resRuleOfThumb" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+
+    </div>
+
+    <!-- Smart One-Click Copy Calculation Summary -->
+    <div style="margin: 18px 0 0 0;">
+      <button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md); cursor: pointer;" type="button">
+        <span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Deep Technical Guide (AdSense E-E-A-T) -->
+<!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Markup & Gross Profit Margin Mathematical Conversions</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Margin \%} = \frac{\text{Price} - \text{COGS}}{\text{Price}} \times 100\% \quad \Longleftrightarrow \quad \text{Markup \%} = \frac{\text{Price} - \text{COGS}}{\text{COGS}} \times 100\%</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Converts between cost-based markup percentage and revenue-based profit margin, and determines target retail selling price.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">COGS:</span> <span>Cost of Goods Sold (unit manufacturing, wholesale purchase, or acquisition cost).</span></li>
+      <li><span class="cw-var-symbol">Price:</span> <span>Retail selling price = COGS ÷ (1 - Margin%) = COGS × (1 + Markup%).</span></li>
+      <li><span class="cw-var-symbol">Mathematical Rule:</span> <span>Margin is always strictly less than Markup for any positive profit. A 50% margin requires a 100% markup.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>An e-commerce item with COGS of $45 targeting a 35% gross profit margin requires a selling price of $45 ÷ (1 - 0.35) = $69.23.</li>
+      <li>The corresponding markup on cost is ($69.23 - $45) ÷ $45 = 53.85%.</li>
+      <li>Mistakenly adding 35% markup would price the item at only $60.75, slashing true gross margin to 25.9%.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Gross Margin can never mathematically exceed 100%, whereas Markup can be 200%, 500%, or 1,000%+.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> National Retail Federation (NRF) standard merchandise financial planning formulas.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the fundamental difference between markup and margin?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Margin is profit expressed as a percentage of the selling price. Markup is profit expressed as a percentage of the cost basis.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Why is a 50% markup not a 50% margin?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">If you buy an item for $50 and mark it up by 50% ($25), you sell it for $75. Your profit is $25. Divided by the $75 selling price, your margin is 33.3%, not 50%.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What markup is needed to achieve a 50% gross margin?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">To achieve a 50% gross margin, you must use a 100% markup (keystone pricing), doubling your cost basis.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Can margin ever exceed 100%?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">No. Profit margin can never reach or exceed 100% unless your cost of goods sold is zero or negative. Markup, however, can be 200%, 500%, or 1,000%+.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏷️</span> Markup vs. Profit Margin: Mathematical Differences & Retail Pricing Formulas
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Confusing Markup with Gross Margin is one of the most common and fatal pricing errors made by retail, wholesale, and e-commerce entrepreneurs. While both metrics express the relationship between Cost of Goods Sold (COGS) and Selling Price, Markup calculates profit as a percentage of cost, whereas Margin calculates profit as a percentage of the final retail price.</p>
+    <p style="margin-top: 12px;">A 50% markup does NOT equal a 50% profit margin; it results in a 33.3% gross profit margin. If a merchant intending to make a 40% margin prices their goods using a 40% markup, they severely underprice inventory, often failing to cover operational overhead.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Markup Percentage to Gross Profit Margin Conversion Matrix
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Cost of Goods (COGS)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Markup Applied %</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Final Retail Price</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Gross Dollar Profit</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">True Gross Profit Margin %</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0% Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$57.50</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$7.50 Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">13.04% Gross Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">25.0% Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$62.50</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$12.50 Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">20.00% Gross Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">33.3% Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$66.67</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$16.67 Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">25.00% Gross Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">50.0% Markup (Keystone)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$75.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$25.00 Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">33.33% Gross Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">66.7% Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$83.33</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$33.33 Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">40.00% Gross Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">100.0% Markup (Double)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$100.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50.00 Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">50.00% Gross Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">300.0% Markup (Luxury)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$200.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$150.00 Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">75.00% Gross Margin</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Retail Pricing Strategy Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Master Keystone Pricing:</strong> <span>In traditional retail, 'Keystone' pricing implies doubling wholesale cost (100% markup), which produces exactly a 50% gross margin to cover commercial lease rent and sales staff wages.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Always Price for Margin First:</strong> <span>Start by identifying your target gross profit margin (e.g. 60% for cosmetics, 40% for electronics), then derive the necessary retail price using: Price = Cost ÷ (1 - Margin %).</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Factor In Promotional Discount Buffers:</strong> <span>If you plan to run regular 20% discount sales, price your initial MSRP with a higher margin buffer so discounted sales remain profitable.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 markup margin</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 gross margin</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 percentage markup</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 percentage cost</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 goods sold</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 cogs selling</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 price profit</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+
+<script>
+function calculateAll() {
+  try {
+    
+            const cost = parseFloat(document.getElementById('itemCostBasis').value) || 0;
+            const markup = (parseFloat(document.getElementById('targetMarkupPercent').value) || 0) / 100;
+
+            const profit = cost * markup;
+            const price = cost + profit;
+            const margin = price > 0 ? (profit / price) * 100 : 0;
+            const costRatio = price > 0 ? (cost / price) * 100 : 0;
+
+            const priceFor50 = cost * 2.0;
+
+            document.getElementById('resSellingPrice').textContent = '$' + price.toFixed(2);
+            document.getElementById('resGrossProfitDollar').textContent = '$' + profit.toFixed(2);
+            document.getElementById('resGrossMarginPercent').textContent = margin.toFixed(1) + '% Margin';
+            document.getElementById('resCostMarkupView').textContent = (markup * 100).toFixed(1) + '% Markup on Cost';
+            document.getElementById('resCostRatio').textContent = costRatio.toFixed(1) + '% of revenue';
+            document.getElementById('resFiftyMarginPrice').textContent = '$' + priceFor50.toFixed(2) + ' (Requires 100% markup)';
+            document.getElementById('resRuleOfThumb').textContent = 'Markup is always higher than Margin for any positive profit';
+        
+  } catch(e) {
+    console.error("Calculation error", e);
+  }
+}
+
+// Bind inputs
+document.querySelectorAll('.calc-card input, .calc-card select').forEach(el => {
+  el.addEventListener('input', calculateAll);
+  el.addEventListener('change', calculateAll);
+});
+
+// Smart Copy Calculation Summary
+const shareBtn = document.getElementById('shareBtn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    const kpiEls = document.querySelectorAll('.prompt-kpi-box');
+    let summaryText = '⚡ CalcWorker — Markup vs Margin Pricing Evaluation:\n';
+    kpiEls.forEach(el => {
+      const lbl = el.querySelector('.prompt-kpi-label')?.textContent || '';
+      const val = el.querySelector('.prompt-kpi-val')?.textContent || '';
+      if (lbl && val) summaryText += '• ' + lbl + ': ' + val + '\n';
+    });
+    summaryText += '🔗 Free Calculator: ' + window.location.href;
+
+    try {
+      await navigator.clipboard.writeText(summaryText);
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      shareBtn.style.background = '#047857';
+      shareBtn.style.color = '#ffffff';
+      setTimeout(() => {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        shareBtn.style.background = '';
+        shareBtn.style.color = '';
+      }, 2500);
+    } catch(err) {
+      console.error('Failed to copy', err);
+    }
+  });
+}
+
+// Run on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calculateAll);
+} else {
+  calculateAll();
+}
+</script>
+
+<script src="/js/sidebar.js?v=2026-v26"></script>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

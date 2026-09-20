@@ -1,0 +1,1181 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- ===== Primary SEO ===== -->
+<title>Amazon FBA Calculator 2026 — Seller Fees & Profit Margin</title>
+<meta content="Estimate Amazon FBA fulfillment fees, category referral rates, storage costs, and net profit margins. Updated for 2026 low-price and standard size tiers." name="description"/>
+<meta content="amazon fba calculator, amazon fba fee calculator 2026, amazon profit margin calculator, amazon referral fee calculator, low price fba calculator, amazon roi calculator, calcworker" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/amazon-fba-calculator.html" rel="canonical"/>
+<!-- ===== Open Graph ===== -->
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/amazon-fba-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Amazon FBA Calculator 2026 — Seller Fees & Profit Margin" property="og:title"/>
+<meta content="Estimate Amazon FBA fulfillment fees, category referral rates, storage costs, and net profit margins. Updated for 2026 low-price and standard size tiers." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- Google tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<style>
+    .fba-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .fba-kpi-box {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .fba-kpi-box:hover {
+      border-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    .fba-kpi-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted, #94a3b8);
+      margin-bottom: 6px;
+    }
+    .fba-kpi-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main, #f8fafc);
+    }
+    .fba-kpi-value.profit-positive { color: #10b981; }
+    .fba-kpi-value.profit-negative { color: #ef4444; }
+    .fba-kpi-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted, #94a3b8);
+      margin-top: 4px;
+    }
+
+    .fba-breakdown-bar {
+      width: 100%;
+      height: 18px;
+      border-radius: 9px;
+      overflow: hidden;
+      display: flex;
+      margin: 16px 0 10px 0;
+      background: rgba(255,255,255,0.06);
+    }
+    .fba-bar-cogs { background: #64748b; transition: width 0.3s; }
+    .fba-bar-fees { background: #ef4444; transition: width 0.3s; }
+    .fba-bar-ppc  { background: #f59e0b; transition: width 0.3s; }
+    .fba-bar-profit { background: #10b981; transition: width 0.3s; }
+
+    .fba-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      font-size: 0.8rem;
+      margin-bottom: 16px;
+    }
+    .fba-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-muted, #cbd5e1);
+    }
+    .fba-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    .fba-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 14px;
+      font-size: 0.88rem;
+    }
+    .fba-table th, .fba-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border, rgba(255,255,255,0.08));
+    }
+    .fba-table th {
+      color: var(--text-muted, #94a3b8);
+      font-weight: 600;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .fba-table td.amount {
+      text-align: right;
+      font-weight: 600;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .method-toggle {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .method-btn {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border, rgba(255,255,255,0.15));
+      background: var(--bg-subtle, rgba(255,255,255,0.04));
+      color: var(--text-main, #f8fafc);
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.15s ease;
+    }
+    .method-btn.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #ffffff;
+    }
+
+    .faq-item details {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.02));
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+    }
+    .faq-item summary {
+      padding: 14px 18px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--text-main, #f8fafc);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: "▼";
+      font-size: 0.75rem;
+      transition: transform 0.2s;
+    }
+    .faq-item details[open] summary::after {
+      transform: rotate(180deg);
+    }
+    .faq-item p {
+      padding: 0 18px 16px 18px;
+      color: var(--text-muted, #cbd5e1);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+    }
+  </style>
+<!-- FAQPage Schema for Search Rich Snippets -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Amazon FBA Profit & Fee Calculator 2026",
+    "url": "https://calcworker.com/tools/amazon-fba-calculator.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What percentage does Amazon take on average per sale?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Amazon charges two primary types of fees: a Referral Fee (typically 15% of the total purchase price for most categories, ranging from 8% for electronics up to 45% for device accessories) and an FBA Fulfillment Fee (pick, pack, and ship) which ranges from $3.22 to $6.50+ for standard-size items. In total, Amazon fees generally consume between 30% and 40% of the item's retail selling price."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the new Low-Price FBA fee structure in 2026?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For products priced under $10, Amazon automatically enrolls items into Low-Price FBA rates. These rates provide a $0.77 discount compared to standard FBA fulfillment rates while offering standard shipping speeds to Prime members. This replaces the old Small and Light program."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Amazon's Inbound Placement Fee work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Amazon charges an Inbound Placement Service fee when you send inventory into their fulfillment network. If you choose a Minimal Shipment Split (sending all inventory to a single hub), Amazon charges an extra $0.21 to $0.40+ per unit. If you split inventory into 4 or more shipments across the country yourself, this inbound placement fee can be reduced to $0.00."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between Amazon profit margin and ROI?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Profit Margin is the percentage of total selling price that remains as profit after all fees and costs: (Net Profit / Selling Price) \u00d7 100. ROI (Return on Investment) measures how much money you made relative to your initial capital invested: (Net Profit / Total Costs) \u00d7 100. A healthy Amazon product typically targets at least a 25% net profit margin and a 100% ROI."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does Amazon FBA monthly storage cost in Q4 vs the rest of the year?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Standard monthly inventory storage fees from January to September are $0.87 per cubic foot for standard-size items. During the Q4 holiday peak season (October to December), monthly storage fees increase significantly to $2.40 per cubic foot. Sellers with high storage utilization ratios or aged inventory (over 180 days) may also face additional surcharges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "When is FBM (Merchant Fulfilled) cheaper than Amazon FBA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "FBM is often more cost-effective for heavy, oversized, slow-turning, or low-margin items where Amazon FBA fulfillment and storage surcharges erode margins. However, FBA products typically generate significantly higher sales velocity because they qualify for Prime free 1-2 day delivery and win the Buy Box much more frequently."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do customer returns affect Amazon FBA profits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "When a customer returns an FBA item, Amazon refunds the customer and credits back the referral fee minus a 20% restocking fee (up to $5.00). However, Amazon does not refund the original FBA pick and pack fee. In categories like Apparel and Shoes, Amazon also charges a Return Processing Fee on returned items."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Amazon charge referral fees on shipping and gift wrap?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Amazon referral fees are calculated on the total amount paid by the buyer, which includes the item price, shipping fees (if FBM), and any gift-wrap fees. However, sales tax collected from the buyer is excluded from referral fee calculations in marketplace facilitator states."
+        }
+      }
+    ]
+  }
+]
+</script>
+<meta content="#090d16" name="theme-color"/>
+<script defer="" src="../js/analytics.js"></script>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link active" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<!-- Main Viewport -->
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn" title="Toggle Navigation Menu">☰</button>
+<span class="topbar-title">Amazon FBA Profit &amp; Fee Calculator</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" style="margin-bottom: 12px; font-size: 0.8rem; color: var(--text-dim);">
+<a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Dashboard</a> / 
+          <span>E-Commerce</span> / 
+          <span style="color: var(--brand-primary); font-weight: 600;">Amazon FBA Calculator</span>
+</nav>
+<!-- Tool Header Block -->
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>📦</span> Amazon FBA Profit &amp; Fee Calculator (2026)</h1>
+<p class="tool-header-desc">
+            Calculate accurate take-home profits on Amazon. Models 2026 referral categories, Low-Price FBA rates (&lt;$10), inbound placement fees, Q4 peak holiday storage, and PPC advertising costs.
+          </p>
+</div>
+<!-- Tool Body / Calculator Content -->
+<div class="tool-page-layout">
+<!-- LEFT: INPUTS -->
+<div class="tool-form-card" style="padding: 24px;">
+<!-- Fulfillment Toggle -->
+<div style="margin-bottom: 20px;">
+<label style="display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 8px;">Fulfillment Method</label>
+<div class="method-toggle">
+<button class="method-btn active" id="btnFBA" onclick="setMethod('fba')" type="button">
+                📦 Fulfillment by Amazon (FBA)
+              </button>
+<button class="method-btn" id="btnFBM" onclick="setMethod('fbm')" type="button">
+                🚚 Merchant Fulfilled (FBM)
+              </button>
+</div>
+</div>
+<h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+            1. Pricing &amp; Product Costs
+          </h2>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="sellingPrice" style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">
+<span>Selling Price ($)</span>
+<span id="lowPriceBadge" style="display: none; font-size: 0.72rem; color: #10b981; font-weight: 700;">✓ Low-Price FBA Active</span>
+</label>
+<input class="form-input" id="sellingPrice" min="0.01" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="24.99"/>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="cogs" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Cost of Goods Sold / Manufacturing ($)</label>
+<input class="form-input" id="cogs" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="5.50"/>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="inboundFreight" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Shipping / Freight to Amazon Warehouse ($/unit)</label>
+<input class="form-input" id="inboundFreight" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="1.20"/>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="category" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Product Category (Referral Fee)</label>
+<select class="form-input" id="category" onchange="calculateFBA()" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 0.9rem;">
+<option selected="" value="0.15">Home &amp; Kitchen (15%)</option>
+<option value="0.17">Clothing &amp; Accessories (17%)</option>
+<option value="0.15">Beauty, Health &amp; Personal Care (15%)</option>
+<option value="0.08">Consumer Electronics (8%)</option>
+<option value="0.08">Camera &amp; Photo (8%)</option>
+<option value="0.12">Automotive &amp; Powersports (12%)</option>
+<option value="0.15">Baby Products (15%)</option>
+<option value="0.15">Books (15% + $1.80 Closing)</option>
+<option value="0.15">Grocery &amp; Gourmet Food (15%)</option>
+<option value="0.15">Pet Supplies (15%)</option>
+<option value="0.15">Sports &amp; Outdoors (15%)</option>
+<option value="0.15">Toys &amp; Games (15%)</option>
+<option value="0.45">Amazon Device Accessories (45%)</option>
+<option value="0.15">Everything Else (15%)</option>
+</select>
+</div>
+<h2 style="font-size: 1.15rem; font-weight: 700; margin: 24px 0 16px 0; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+            2. Dimensions, Weight &amp; FBA Tier
+          </h2>
+<div id="fbaSection">
+<div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-bottom: 14px;">
+<div>
+<label for="dimL" style="font-size: 0.78rem; color: var(--text-muted);">Length (in)</label>
+<input class="form-input" id="dimL" min="0.1" oninput="calculateFBA()" step="0.5" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main);" type="number" value="10"/>
+</div>
+<div>
+<label for="dimW" style="font-size: 0.78rem; color: var(--text-muted);">Width (in)</label>
+<input class="form-input" id="dimW" min="0.1" oninput="calculateFBA()" step="0.5" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main);" type="number" value="8"/>
+</div>
+<div>
+<label for="dimH" style="font-size: 0.78rem; color: var(--text-muted);">Height (in)</label>
+<input class="form-input" id="dimH" min="0.1" oninput="calculateFBA()" step="0.5" style="width: 100%; padding: 8px; border-radius: 6px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main);" type="number" value="2"/>
+</div>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="unitWeight" style="display: flex; justify-content: space-between; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">
+<span>Unit Shipping Weight (lb)</span>
+<span id="tierNameDisplay" style="font-size: 0.75rem; color: #2563eb; font-weight: 700;">Standard-Size (~1.2 lb)</span>
+</label>
+<input class="form-input" id="unitWeight" min="0.05" oninput="calculateFBA()" step="0.1" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="1.2"/>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="inboundPlacement" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Inbound Placement Service Option (2026)</label>
+<select class="form-input" id="inboundPlacement" onchange="calculateFBA()" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 0.9rem;">
+<option selected="" value="0.27">Minimal Shipment Split (~$0.27/unit fee)</option>
+<option value="0.14">Partial Shipment Split (~$0.14/unit fee)</option>
+<option value="0.00">Amazon-Optimized Split (4+ locations, $0.00 fee)</option>
+</select>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="storageSeason" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Inventory Storage Season</label>
+<select class="form-input" id="storageSeason" onchange="calculateFBA()" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 0.9rem;">
+<option selected="" value="0.08">Standard Season (Jan – Sep, ~$0.08/unit/mo)</option>
+<option value="0.24">Peak Q4 Season (Oct – Dec, ~$0.24/unit/mo)</option>
+</select>
+</div>
+</div>
+<!-- FBM Fields (Hidden by default) -->
+<div id="fbmSection" style="display: none;">
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="fbmShippingCost" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Customer Delivery Shipping Cost ($)</label>
+<input class="form-input" id="fbmShippingCost" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="5.80"/>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="fbmPackaging" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Boxes &amp; Packaging Material ($)</label>
+<input class="form-input" id="fbmPackaging" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="0.75"/>
+</div>
+</div>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="ppcSpend" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Amazon PPC Advertising Spend ($/unit)</label>
+<input class="form-input" id="ppcSpend" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="2.50"/>
+</div>
+<div class="form-group" style="margin-bottom: 8px;">
+<label for="returnRate" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Expected Customer Return Rate (%)</label>
+<input class="form-input" id="returnRate" max="100" min="0" oninput="calculateFBA()" step="0.1" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="3.5"/>
+</div>
+</div>
+<!-- RIGHT: RESULTS PANEL (SIDE ME) -->
+<div class="tool-results-card" style="padding: 24px; position: sticky; top: 80px; align-self: start;">
+<div style="text-align: center; margin-bottom: 16px;">
+<span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">Net Profit Per Unit</span>
+<div id="kpiNetProfit" style="font-size: 2.2rem; font-weight: 900; color: #10b981; font-family: monospace; margin: 4px 0;">$6.42</div>
+<div class="cw-disclaimer-card" style="margin-top: 18px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary); font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">
+  <strong style="color: var(--text-main);">Financial Estimate Disclaimer:</strong> Calculations produced by this tool are mathematical estimates designed for planning and comparison purposes only. Final loan payments, interest charges, tax liabilities, and payroll withholdings vary according to your lender terms, tax filing status, and applicable federal, state, and local laws. Consult a certified financial planner or CPA for professional advice.
+</div>
+<div id="marginSub" style="font-size: 0.82rem; color: var(--text-muted);">Net Margin: 25.7% | ROI: 95.8%</div>
+</div>
+<!-- Smart One-Click Copy Calculation Summary -->
+<div style="margin: 0 0 16px 0;">
+<button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; margin-top: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);" type="button"><span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span></button>
+</div>
+<!-- KPI Mini Grid -->
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Total Amazon Fees</div>
+<div id="kpiTotalFees" style="font-size: 1.15rem; font-weight: 700; color: #ef4444; font-family: monospace;">$8.85</div>
+</div>
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">FBA Fulfillment</div>
+<div id="kpiFulfillmentFee" style="font-size: 1.15rem; font-weight: 700; color: #f59e0b; font-family: monospace;">$4.76</div>
+</div>
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Referral Fee (15%)</div>
+<div id="kpiReferralFee" style="font-size: 1.15rem; font-weight: 700; color: #3b82f6; font-family: monospace;">$3.75</div>
+</div>
+<div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
+<div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Break-Even Price</div>
+<div id="kpiBreakEven" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); font-family: monospace;">$18.57</div>
+</div>
+</div>
+<!-- Breakdown Table -->
+<h3 style="font-size: 0.92rem; font-weight: 700; margin-bottom: 8px;">Unit Economics Breakdown</h3>
+<table class="fba-table" style="width: 100%; border-collapse: collapse; font-size: 0.85rem;">
+<tbody>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Selling Price</td><td class="amount" id="rowSellingPrice" style="text-align: right; font-weight: 700;">$24.99</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Product Cost (COGS)</td><td class="amount" id="rowCOGS" style="text-align: right; color: #ef4444;">-$5.50</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Inbound Freight</td><td class="amount" id="rowFreight" style="text-align: right; color: #ef4444;">-$1.20</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Amazon Referral Fee</td><td class="amount" id="rowReferral" style="text-align: right; color: #ef4444;">-$3.75</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">FBA Fulfillment Fee</td><td class="amount" id="rowFulfillment" style="text-align: right; color: #ef4444;">-$4.76</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">PPC Advertising Spend</td><td class="amount" id="rowPPC" style="text-align: right; color: #ef4444;">-$2.50</td></tr>
+<tr style="font-weight: 700;"><td style="padding: 8px 0; color: var(--text-main);">Net Take-Home Cash</td><td class="amount" id="rowNetProfit" style="text-align: right; color: #10b981;">$6.42</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+<!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+<h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+<span>🔗</span> Related Precision Calculators
+          </h3>
+<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+</div>
+<div class="related-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px;">
+<a class="related-tool-link" href="/tools/ecommerce-profit-comparator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">⚖️</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">HOT</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Multi-Platform Comparator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Side-by-side fee and profit comparison: TikTok Shop vs Amazon vs Etsy vs Shopify.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/shopify-fee-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🛍️</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">NEW</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Shopify Fee &amp; Profit</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Calculate subscription plans, payment gateway transaction fees, and net take-home.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/etsy-profit.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🛍️</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">SELLERS</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Etsy Fee &amp; Profit</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Calculate $0.20 listing, 6.5% transaction, payment processing, and ad deductions.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+</div>
+</section>
+<!-- FAQ Section -->
+<section style="margin-top: 48px;">
+<h2 style="font-size: 1.5rem; font-weight: 800; color: var(--text-main); margin-bottom: 20px;">
+            Frequently Asked Questions (Amazon FBA Fees)
+          </h2>
+<div class="faq-item">
+<details open="">
+<summary>What percentage does Amazon take on average per sale?</summary>
+<p>Amazon charges two primary types of fees: a Referral Fee (typically 15% of the total purchase price for most categories, ranging from 8% for electronics up to 45% for device accessories) and an FBA Fulfillment Fee (pick, pack, and ship) which ranges from $3.22 to $6.50+ for standard-size items. In total, Amazon fees generally consume between 30% and 40% of the item's retail selling price.</p>
+</details>
+<details>
+<summary>What is the new Low-Price FBA fee structure in 2026?</summary>
+<p>For products priced under $10, Amazon automatically enrolls items into Low-Price FBA rates. These rates provide a $0.77 discount compared to standard FBA fulfillment rates while offering standard shipping speeds to Prime members. This replaces the old Small and Light program.</p>
+</details>
+<details>
+<summary>How does Amazon's Inbound Placement Fee work?</summary>
+<p>Amazon charges an Inbound Placement Service fee when you send inventory into their fulfillment network. If you choose a Minimal Shipment Split (sending all inventory to a single hub), Amazon charges an extra $0.21 to $0.40+ per unit. If you split inventory into 4 or more shipments across the country yourself, this inbound placement fee can be reduced to $0.00.</p>
+</details>
+<details>
+<summary>What is the difference between Amazon profit margin and ROI?</summary>
+<p>Profit Margin is the percentage of total selling price that remains as profit after all fees and costs: (Net Profit / Selling Price) × 100. ROI (Return on Investment) measures how much money you made relative to your initial capital invested: (Net Profit / Total Costs) × 100. A healthy Amazon product typically targets at least a 25% net profit margin and a 100% ROI.</p>
+</details>
+<details>
+<summary>How much does Amazon FBA monthly storage cost in Q4 vs the rest of the year?</summary>
+<p>Standard monthly inventory storage fees from January to September are $0.87 per cubic foot for standard-size items. During the Q4 holiday peak season (October to December), monthly storage fees increase significantly to $2.40 per cubic foot. Sellers with high storage utilization ratios or aged inventory (over 180 days) may also face additional surcharges.</p>
+</details>
+<details>
+<summary>When is FBM (Merchant Fulfilled) cheaper than Amazon FBA?</summary>
+<p>FBM is often more cost-effective for heavy, oversized, slow-turning, or low-margin items where Amazon FBA fulfillment and storage surcharges erode margins. However, FBA products typically generate significantly higher sales velocity because they qualify for Prime free 1-2 day delivery and win the Buy Box much more frequently.</p>
+</details>
+<details>
+<summary>How do customer returns affect Amazon FBA profits?</summary>
+<p>When a customer returns an FBA item, Amazon refunds the customer and credits back the referral fee minus a 20% restocking fee (up to $5.00). However, Amazon does not refund the original FBA pick and pack fee. In categories like Apparel and Shoes, Amazon also charges a Return Processing Fee on returned items.</p>
+</details>
+<details>
+<summary>Does Amazon charge referral fees on shipping and gift wrap?</summary>
+<p>Yes. Amazon referral fees are calculated on the total amount paid by the buyer, which includes the item price, shipping fees (if FBM), and any gift-wrap fees. However, sales tax collected from the buyer is excluded from referral fee calculations in marketplace facilitator states.</p>
+</details>
+</div>
+</section>
+<!-- Footer -->
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Amazon FBA Fee Architecture & Unit Economics</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">Net FBA Profit = Price - COGS - Referral Fee - FBA Fulfillment Fee - Monthly Storage Fee - Inbound Placement Fee</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Calculates net merchant margin by subtracting unit production cost, shipping, Amazon referral fees (8-15%), FBA pick/pack fees, and storage from list price.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Price:</span> <span>Buy Box retail price paid by customer on Amazon.com</span></li>
+      <li><span class="cw-var-symbol">COGS:</span> <span>Landed cost per unit (Manufacturing, ocean freight, customs clearance, prep)</span></li>
+      <li><span class="cw-var-symbol">Referral Fee:</span> <span>Category-specific percentage (15% standard for Home, Toys, Office; 8% for electronics over $100)</span></li>
+      <li><span class="cw-var-symbol">FBA Fulfillment Fee:</span> <span>Weight-and-dimension tiered fee covering Amazon pick, pack, and Prime 2-day delivery</span></li>
+      <li><span class="cw-var-symbol">Storage Fee:</span> <span>Monthly inventory storage ($0.87/cu ft off-peak, $2.40/cu ft Q4 holiday peak)</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Kitchen Gadget selling for $29.99. Dimensions: 10" × 6" × 2", Shipping Weight: 1.2 lbs (Large Standard Tier). Landed COGS: $6.50.</li>
+      <li>Amazon Referral Fee (15%): $29.99 × 0.15 = $4.50.</li>
+      <li>FBA Fulfillment Pick & Pack Fee: $5.42 (Large standard, 1–1.5 lbs tier).</li>
+      <li>Inbound Placement Service Fee: $0.28 per unit. Monthly Storage Reserve: $0.15.</li>
+      <li>Total Amazon Fees: $4.50 + $5.42 + $0.28 + $0.15 = $10.35 (34.5% of selling price).</li>
+      <li>Net Profit per Unit: $29.99 - $6.50 (COGS) - $10.35 (Amazon Fees) = $13.14 per unit sold.</li>
+      <li>Net Profit Margin: ($13.14 / $29.99) × 100% = 43.8% Net Margin.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Always optimize packaging dimensions. Reducing carton length or thickness by just 0.5 inches can drop your product from 'Large Standard' to 'Small Standard', saving $0.80 to $1.50 per unit in FBA fees.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Amazon updates its FBA fee rate cards annually. Key thresholds include the 'Small Standard' tier (under 16 oz, 15" × 12" × 0.75") and 'Large Standard' tier (under 20 lbs, 18" × 14" × 8"). Exceeding standard tier pushes items into 'Oversize' classification, where fulfillment fees jump by over 150%. The Low-Inventory-Level fee penalizes sellers whose inventory consistently drops below 28 days of historical sales velocity.
+  </div>
+  <p class="cw-deep-text">Optimizing packaging engineering is the highest-leverage operational hack in Amazon FBA selling. Shaving just a quarter of an inch off product packaging can drop an item from the Large Standard tier to Small Standard, saving $1.80 to $2.50 per unit across tens of thousands of orders.</p>
+  <p class="cw-deep-text">Furthermore, inventory turnover velocity must be managed strictly to prevent aged inventory surcharges. Amazon assesses punitive long-term storage fees on inventory stored beyond 180 days, which can completely wipe out profit margins during the Q4 holiday retail surge.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is the Amazon Inbound Placement Service Fee?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Introduced in 2024, the Inbound Placement Service fee charges sellers an average of $0.21 to $0.68 per unit when shipping inventory to a single inbound consolidation center, rather than manually splitting shipments across 4 to 5 regional fulfillment centers across the US.</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is the Amazon Referral Fee minimum?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Across most Amazon retail categories, there is a minimum referral fee of $0.30 per item. If an item sells for $1.50, the seller pays $0.30 (20%) rather than the standard 15% rate.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📦</span> Amazon FBA Fee Architecture: Referral Fees, Weight Tiers & Storage Drag
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Fulfillment by Amazon (FBA) allows e-commerce sellers to leverage Amazon's global logistics network, Prime 2-day delivery badges, and customer service infrastructure. However, Amazon assesses multi-layered fees that can consume 30% to 50% of the retail selling price.</p>
+    <p style="margin-top: 12px;">The two primary fees are Referral Fees (typically 8% to 15% across categories) and FBA Fulfillment Fees (tiered based on unit packaged dimensions and shipping weight). Sellers must also manage Aged Inventory Surcharges (formerly long-term storage fees) for stock languishing in fulfillment centers past 180 days.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> FBA Size Tier Fulfillment Fee Breakdown (Standard Size Items)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Size Tier Category</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Shipping Weight Limit</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Standard FBA Fulfillment Fee</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Low-Price FBA Fee (<$10)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Referral Fee % Baseline</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Small Standard (4 oz or less)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Max 4 oz (15x12x0.75 in)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3.22 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2.45 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0% (Most categories)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Small Standard (8 oz to 16 oz)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Max 16 oz</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3.77 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2.88 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0%</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Large Standard (4 oz or less)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Max 4 oz (18x14x8 in)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3.86 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3.15 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0%</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Large Standard (12 oz to 1 lb)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Max 1 lb</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$4.75 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3.95 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0%</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Large Standard (2 lbs to 3 lbs)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Max 3 lbs</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$6.10 per unit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">N/A</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0%</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Aged Inventory Surcharge (181-270d)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Per cubic foot</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1.50 / cu ft / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">N/A</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Surcharge on stagnant stock</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Amazon FBA Margin Protection Tactics
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Design Packaging to Escape Size Tier Jumps:</strong> <span>Trimming 0.5 inches off product packaging to remain inside 'Small Standard' rather than 'Large Standard' saves $0.64 per unit, adding thousands to your bottom line.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Target 3x Cost-to-Price Multipliers:</strong> <span>Ensure your retail selling price is at least 3x to 4x your landed manufacturing cost (1/3 COGS, 1/3 Amazon fees, 1/3 net profit margin).</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Monitor Inventory Performance Index (IPI):</strong> <span>Keep your IPI score above 400 to avoid strict warehouse storage volume limits during peak Q4 holiday shopping quarters.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 amazon fba</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 fee calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 fulfillment amazon</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 referral fee</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 storage fee</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 net profit</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 margin roas</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script>
+  let activeMethod = 'fba';
+
+  function setTxt(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+
+  function setMethod(method) {
+    activeMethod = method;
+    const btnFBA = document.getElementById('btnFBA');
+    const btnFBM = document.getElementById('btnFBM');
+    const fbaSec = document.getElementById('fbaSection');
+    const fbmSec = document.getElementById('fbmSection');
+
+    if (method === 'fba') {
+      btnFBA?.classList.add('active');
+      btnFBM?.classList.remove('active');
+      if (fbaSec) fbaSec.style.display = 'block';
+      if (fbmSec) fbmSec.style.display = 'none';
+    } else {
+      btnFBM?.classList.add('active');
+      btnFBA?.classList.remove('active');
+      if (fbaSec) fbaSec.style.display = 'none';
+      if (fbmSec) fbmSec.style.display = 'block';
+    }
+    calculateFBA();
+  }
+
+  function calculateFBA() {
+    try {
+      const price = parseFloat(document.getElementById('sellingPrice')?.value) || 0;
+      const cogs = parseFloat(document.getElementById('cogs')?.value) || 0;
+      const freight = parseFloat(document.getElementById('inboundFreight')?.value) || 0;
+      const refRate = parseFloat(document.getElementById('category')?.value) || 0.15;
+      const ppc = parseFloat(document.getElementById('ppcSpend')?.value) || 0;
+      const returnRate = parseFloat(document.getElementById('returnRate')?.value) || 0;
+
+      const isLowPrice = price < 10.0;
+      const badge = document.getElementById('lowPriceBadge');
+      if (badge) badge.style.display = isLowPrice ? 'inline' : 'none';
+
+      const referralFee = price * refRate;
+
+      let fulfillmentFee = 0;
+      if (activeMethod === 'fba') {
+        const weight = parseFloat(document.getElementById('unitWeight')?.value) || 1.2;
+        const inboundPlacement = parseFloat(document.getElementById('inboundPlacement')?.value) || 0.27;
+        const storageSeason = parseFloat(document.getElementById('storageSeason')?.value) || 0.08;
+
+        let basePickPack = 4.25;
+        if (isLowPrice) basePickPack = 3.48;
+        else if (weight > 2.0) basePickPack = 5.40;
+
+        fulfillmentFee = basePickPack + inboundPlacement + storageSeason;
+      } else {
+        const fbmShip = parseFloat(document.getElementById('fbmShippingCost')?.value) || 5.80;
+        const fbmPack = parseFloat(document.getElementById('fbmPackaging')?.value) || 0.75;
+        fulfillmentFee = fbmShip + fbmPack;
+      }
+
+      const returnCost = (referralFee * 0.20) * (returnRate / 100);
+      const totalFees = referralFee + fulfillmentFee + returnCost;
+      const totalUnitCost = cogs + freight + ppc + totalFees;
+      const netProfit = price - totalUnitCost;
+      const netMargin = price > 0 ? (netProfit / price) * 100 : 0;
+      const roi = (cogs + freight) > 0 ? (netProfit / (cogs + freight)) * 100 : 0;
+      const breakEven = (cogs + freight + ppc + fulfillmentFee + returnCost) / (1 - refRate);
+
+      const netEl = document.getElementById('kpiNetProfit');
+      if (netEl) {
+        netEl.textContent = '$' + netProfit.toFixed(2);
+        netEl.style.color = netProfit >= 0 ? '#10b981' : '#ef4444';
+      }
+
+      setTxt('marginSub', `Net Margin: ${netMargin.toFixed(1)}% | ROI: ${roi.toFixed(1)}%`);
+      setTxt('kpiTotalFees', '$' + totalFees.toFixed(2));
+      setTxt('kpiFulfillmentFee', '$' + fulfillmentFee.toFixed(2));
+      setTxt('kpiReferralFee', '$' + referralFee.toFixed(2));
+      setTxt('kpiBreakEven', '$' + breakEven.toFixed(2));
+
+      setTxt('rowSellingPrice', '$' + price.toFixed(2));
+      setTxt('rowCOGS', '-$' + cogs.toFixed(2));
+      setTxt('rowFreight', '-$' + freight.toFixed(2));
+      setTxt('rowReferral', '-$' + referralFee.toFixed(2));
+      setTxt('rowFulfillment', '-$' + fulfillmentFee.toFixed(2));
+      setTxt('rowPPC', '-$' + ppc.toFixed(2));
+
+      const rowNet = document.getElementById('rowNetProfit');
+      if (rowNet) {
+        rowNet.textContent = '$' + netProfit.toFixed(2);
+        rowNet.style.color = netProfit >= 0 ? '#10b981' : '#ef4444';
+      }
+    } catch(err) {
+      console.error('Error in calculateFBA:', err);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('input, select').forEach(function(el) {
+      el.addEventListener('input', calculateFBA);
+      el.addEventListener('change', calculateFBA);
+      el.addEventListener('keyup', calculateFBA);
+    });
+    calculateFBA();
+
+    const shareBtn = document.getElementById('shareBtn');
+    if (shareBtn) {
+      shareBtn.addEventListener('click', async () => {
+        const price = document.getElementById('sellingPrice')?.value || '24.99';
+        const profit = document.getElementById('kpiNetProfit')?.textContent || '$6.42';
+        const fees = document.getElementById('kpiTotalFees')?.textContent || '$8.85';
+
+        const shareText = `📦 CalcWorker — Amazon FBA Profit Breakdown:\n` +
+          `• Price: $${price}\n` +
+          `• Net Profit / Unit: ${profit}\n` +
+          `• Total Amazon Fees: ${fees}\n` +
+          `🔗 Free Calculator: ${window.location.href}`;
+
+        const btnText = document.getElementById('shareBtnText');
+    const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : (typeof shareText !== 'undefined' ? shareText : (typeof t !== 'undefined' ? t : window.location.href));
+    navigator.clipboard.writeText(copyContent).then(function() {
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      const btnEl = document.getElementById('shareBtn') || document.getElementById('omniShareBtn');
+      if (btnEl) btnEl.style.background = '#047857';
+      setTimeout(function() {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      }, 2500);
+    });
+      });
+    }
+  });
+
+  window.calculateFBA = calculateFBA;
+  window.setMethod = setMethod;
+</script> <script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

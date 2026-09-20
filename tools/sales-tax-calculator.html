@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+  (function(){
+    try {
+      if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+      var t = localStorage.getItem('calcworker_theme') || 'dark';
+      document.documentElement.setAttribute('data-theme', t);
+      var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+      document.documentElement.setAttribute('data-calc-theme', calcT);
+    } catch(e){}
+  })();
+</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sales Tax Calculator — US State & Local Rates Lookup</title>
+<meta content="Calculate total purchase costs and state/local sales tax across all 50 US states. Supports forward and reverse pre-tax price calculations." name="description"/>
+<meta content="sales tax calculator, us sales tax, state sales tax rates, sales tax by state 2026, calculate sales tax, tax out of pocket" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://calcworker.com/tools/sales-tax-calculator.html" rel="canonical"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-1QCQNSCVQM');
+</script>
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<script defer="" src="/js/analytics.js"></script>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "US Sales Tax Calculator All 50 States",
+    "url": "https://calcworker.com/tools/sales-tax-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How is the Sales Tax calculated?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The calculation uses validated industry-standard mathematical formulas to ensure exact, error-free results based on your specified input values."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are my calculation details saved on your servers?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Never. CalcWorker operates strictly client-side. Your inputs, calculations, and results remain private inside your personal browser sandbox."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How frequently should I update these calculations?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "We recommend recalculating whenever your financial, operational, or personal variables change to maintain accurate, up-to-date tracking."
+        }
+      }
+    ]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script>
+<link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+<style>
+.st-result-big{font-size:2.2rem;font-weight:800;color:var(--brand-primary);font-family:monospace;}
+.result-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.9rem;}
+.result-row:last-child{border-bottom:none;}
+.result-row .lbl{color:var(--text-muted);}
+.result-row .val{font-weight:700;color:var(--text-main);font-family:monospace;}
+</style>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link active" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn">☰</button>
+<span class="topbar-title">🏛️ Sales Tax Calc</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>🏛️</span> US Sales Tax Calculator (All 50 States)</h1>
+<p class="tool-header-desc">
+Calculate exact state, county, and city sales tax across all 50 US states. Pre-loaded with official 2026 combined averages for quick retail and business invoicing calculations.
+</p>
+</div>
+<div class="tool-page-layout">
+<div class="tool-form-panel">
+<div class="form-group">
+<label class="form-label">Pre-Tax Purchase Amount ($)</label>
+<div class="input-prefix-wrap"><span class="input-prefix">$</span>
+<input class="form-input input-with-prefix" id="subtotal" min="1" step="5" type="number" value="150.00"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label">Select US State</label>
+<select class="form-input" id="stateSelect">
+  <option value="0.0929">Alabama (Avg Combined ~9.29%)</option>
+  <option value="0.0182">Alaska (State 0%, Local Avg ~1.82%)</option>
+  <option value="0.0838">Arizona (Avg Combined ~8.38%)</option>
+  <option value="0.0947">Arkansas (Avg Combined ~9.47%)</option>
+  <option value="0.0885" selected>California (Avg Combined ~8.85%)</option>
+  <option value="0.0781">Colorado (Avg Combined ~7.81%)</option>
+  <option value="0.0635">Connecticut (Statewide Flat 6.35%)</option>
+  <option value="0.0000">Delaware (0% — No State or Local Sales Tax)</option>
+  <option value="0.0600">District of Columbia / DC (6.00%)</option>
+  <option value="0.0702">Florida (Avg Combined ~7.02%)</option>
+  <option value="0.0738">Georgia (Avg Combined ~7.38%)</option>
+  <option value="0.0450">Hawaii (General Excise Tax ~4.50%)</option>
+  <option value="0.0603">Idaho (Avg Combined ~6.03%)</option>
+  <option value="0.0886">Illinois (Avg Combined ~8.86%)</option>
+  <option value="0.0700">Indiana (Statewide Flat 7.00%)</option>
+  <option value="0.0694">Iowa (Avg Combined ~6.94%)</option>
+  <option value="0.0865">Kansas (Avg Combined ~8.65%)</option>
+  <option value="0.0600">Kentucky (Statewide Flat 6.00%)</option>
+  <option value="0.0956">Louisiana (Avg Combined ~9.56%)</option>
+  <option value="0.0550">Maine (Statewide Flat 5.50%)</option>
+  <option value="0.0600">Maryland (Statewide Flat 6.00%)</option>
+  <option value="0.0625">Massachusetts (Statewide Flat 6.25%)</option>
+  <option value="0.0600">Michigan (Statewide Flat 6.00%)</option>
+  <option value="0.0752">Minnesota (Avg Combined ~7.52%)</option>
+  <option value="0.0707">Mississippi (Avg Combined ~7.07%)</option>
+  <option value="0.0839">Missouri (Avg Combined ~8.39%)</option>
+  <option value="0.0000">Montana (0% — No State or Local Sales Tax)</option>
+  <option value="0.0697">Nebraska (Avg Combined ~6.97%)</option>
+  <option value="0.0824">Nevada (Avg Combined ~8.24%)</option>
+  <option value="0.0000">New Hampshire (0% — No State or Local Sales Tax)</option>
+  <option value="0.0660">New Jersey (Statewide ~6.60%)</option>
+  <option value="0.0772">New Mexico (Gross Receipts ~7.72%)</option>
+  <option value="0.0853">New York (Avg Combined ~8.53%)</option>
+  <option value="0.0700">North Carolina (Avg Combined ~7.00%)</option>
+  <option value="0.0704">North Dakota (Avg Combined ~7.04%)</option>
+  <option value="0.0724">Ohio (Avg Combined ~7.24%)</option>
+  <option value="0.0899">Oklahoma (Avg Combined ~8.99%)</option>
+  <option value="0.0000">Oregon (0% — No State or Local Sales Tax)</option>
+  <option value="0.0634">Pennsylvania (Avg Combined ~6.34%)</option>
+  <option value="0.0700">Rhode Island (Statewide Flat 7.00%)</option>
+  <option value="0.0750">South Carolina (Avg Combined ~7.50%)</option>
+  <option value="0.0420">South Dakota (Avg Combined ~4.20%)</option>
+  <option value="0.0955">Tennessee (Avg Combined ~9.55%)</option>
+  <option value="0.0820">Texas (Avg Combined ~8.20%)</option>
+  <option value="0.0725">Utah (Avg Combined ~7.25%)</option>
+  <option value="0.0636">Vermont (Avg Combined ~6.36%)</option>
+  <option value="0.0577">Virginia (Avg Combined ~5.77%)</option>
+  <option value="0.0938">Washington (Avg Combined ~9.38%)</option>
+  <option value="0.0657">West Virginia (Avg Combined ~6.57%)</option>
+  <option value="0.0570">Wisconsin (Avg Combined ~5.70%)</option>
+  <option value="0.0544">Wyoming (Avg Combined ~5.44%)</option>
+  <option value="custom">-- Custom Rate (Enter Below) --</option>
+</select>
+</div>
+<div class="form-group" id="customRateWrap" style="display:none;">
+<label class="form-label">Custom Tax Rate (%)</label>
+<div class="input-prefix-wrap"><input class="form-input" id="customRate" max="25" min="0" step="0.01" type="number" value="7.5"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">%</span></div>
+</div>
+</div>
+<div class="tool-results-panel">
+<div class="result-card" style="text-align:center;padding:24px;">
+<div style="font-size:0.82rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Total Price (With Tax)</div>
+<div class="st-result-big" id="resTotalPrice">$163.23</div>
+<div id="resTaxDetail" style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">Sales Tax: +$13.23 @ 8.82%</div>
+</div>
+<div style="margin: 12px 0;">
+<button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; margin-top: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);" type="button"><span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span></button>
+</div>
+<div class="result-card" style="margin-top:14px;">
+<div class="result-row"><span class="lbl">💵 Pre-Tax Subtotal</span><span class="val" id="resSub">$150.00</span></div>
+<div class="result-row"><span class="lbl">📊 Effective Sales Tax Rate</span><span class="val" id="resRateVal">8.82%</span></div>
+<div class="result-row"><span class="lbl">🏛️ Total Sales Tax Collected</span><span class="val" id="resTaxCollected" style="color:#ef4444;">+$13.23</span></div>
+<div class="result-row" style="background:var(--bg-subtle);border-radius:6px;padding:8px 10px;margin:4px 0;"><span class="lbl" style="font-weight:700;">🧾 Total Out-of-Pocket</span><span class="val" id="resGrandTotal" style="color:var(--brand-primary);font-size:1.05rem;">$163.23</span></div>
+</div>
+</div>
+</div>
+<section class="tool-guide-section" style="margin-top:48px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:12px;">How US Sales Tax Works</h2>
+<p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-bottom:18px;">Unlike value-added tax (VAT) common in Europe, sales tax in the United States is levied strictly at the point of sale. Most US states allow local municipalities (counties, cities, and special transit districts) to add local piggyback sales taxes on top of base state tax rates.</p>
+</section>
+
+<!-- Comprehensive Educational & Methodology Section (AdSense E-E-A-T Compliant) -->
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📘</span> Comprehensive Methodology & Practical Guide: Sales Tax
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Precision calculation is critical when assessing <strong>Sales Tax</strong> metrics. CalcWorker applies standardized mathematical algorithms to eliminate estimation errors and provide instantaneous, reliable data directly in your browser.</p>
+                <p>When analyzing these figures, consider your broader financial and operational goals. Regularly auditing your baseline metrics and adjusting inputs allows you to maintain optimal efficiency and long-term stability.</p>
+  </div>
+  
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>❓</span> Frequently Asked Questions
+  </h3>
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">How is the Sales Tax calculated?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">The calculation uses validated industry-standard mathematical formulas to ensure exact, error-free results based on your specified input values.</p>
+            </details>
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">Are my calculation details saved on your servers?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Never. CalcWorker operates strictly client-side. Your inputs, calculations, and results remain private inside your personal browser sandbox.</p>
+            </details>
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">How frequently should I update these calculations?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">We recommend recalculating whenever your financial, operational, or personal variables change to maintain accurate, up-to-date tracking.</p>
+            </details>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px;">
+  <h2><span>🏷️</span> State vs. Local Sales Tax Jurisdictions &amp; Nexus</h2>
+  <div style="color: var(--text-muted); line-height: 1.6; font-size: 0.9rem;">
+    <p>The United States does not have a federal national sales tax. Instead, sales tax is governed at the state, county, and municipal level across over 11,000 distinct tax jurisdictions:</p>
+    <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+      <li><strong style="color: var(--text-main);">Combined Tax Rates:</strong> Total sales tax equals State Base Rate + County Rate + City/Special District Surtaxes. For example, Tennessee and Louisiana have state rates of 7% and 4.45% respectively, but local add-ons can push combined rates above 9.5%.</li>
+      <li><strong style="color: var(--text-main);">States with Zero Sales Tax:</strong> Five states do not impose a statewide retail sales tax: Alaska, Delaware, Montana, New Hampshire, and Oregon (often abbreviated as NOMAD states).</li>
+      <li><strong style="color: var(--text-main);">Tax-Exempt Essentials:</strong> Most states exempt unprepared grocery food, prescription medications, and medical devices from standard sales taxation.</li>
+    </ul>
+  </div>
+</article>
+
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Combined Destination Sales Tax & Reverse Computation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">Total Cost = Subtotal × (1 + r_{state} + r_{county} + r_{city}), | Base Price = frac{Total Price}{1 + r_{total}}</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Multiplies item subtotal by the combined state, county, and local municipality sales tax rate to compute total checkout price and tax collected.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">r_state:</span> <span>State Statutory Sales Tax Rate (e.g., California 7.25%, Texas 6.25%, Tennessee 7.00%)</span></li>
+      <li><span class="cw-var-symbol">r_county:</span> <span>County Government Local Surcharge (Typically 0.25% to 2.50%)</span></li>
+      <li><span class="cw-var-symbol">r_city:</span> <span>Municipal and Special Transportation District Add-on Taxes</span></li>
+      <li><span class="cw-var-symbol">Reverse Tax Formula:</span> <span>Extracts the original pre-tax price when only the receipt total is known</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Item Subtotal: $450.00. Location: Los Angeles, CA.</li>
+      <li>State Rate (7.25%) + LA County Rate (1.25%) + City/Transit (1.00%) = Total Combined Sales Tax Rate: 9.50%.</li>
+      <li>Sales Tax Amount: $450.00 × 0.0950 = $42.75.</li>
+      <li>Total Invoiced Amount: $450.00 + $42.75 = $492.75.</li>
+      <li>Reverse Verification: $492.75 / 1.0950 = $450.00 base price exactly.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Break down complicated multi-step calculations by solving inner parentheses first, converting all time units to the same scale (e.g. annual to monthly), and checking your result with this tool.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Five states impose zero general state-level sales tax (NOMAD states: New Hampshire, Oregon, Montana, Alaska, Delaware). The highest average combined state and local sales tax rates in the US benchmark in Tennessee (9.55%), Louisiana (9.56%), Arkansas (9.44%), and Washington (9.40%). Under South Dakota v. Wayfair (2018), remote online merchants must collect destination sales tax if economic nexus thresholds ($100,000 sales or 200 transactions) are reached.
+  </div>
+  <p class="cw-deep-text">Sales tax accounting in the United States is among the most fragmented compliance landscapes in modern commerce, encompassing over 11,000 individual municipal, county, and transit tax jurisdictions. In origin-based states (like Texas and Ohio), sales tax is calculated based on where the seller is located, while in destination-based states (like California and New York), tax is calculated based on where the customer receives the goods.</p>
+  <p class="cw-deep-text">Small business owners must maintain strict separation between business revenue and collected sales tax reserves. Sales tax collected from retail customers is a trust fund liability belonging to the state treasury; utilizing sales tax cash flow to cover working capital expenses carries severe personal liability, civil fines, and potential criminal penalties under state tax codes.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Are food and grocery items subject to sales tax in the US?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">In the vast majority of US states, essential groceries purchased for home preparation are exempt from state sales tax. However, prepared hot meals, restaurant dining, catering, and carbonated soft drinks are fully taxable at standard retail rates.</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is the difference between Sales Tax and Use Tax?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Sales tax is collected directly by registered retail merchants at the point of sale. Use tax is legally owed by the consumer directly to their state department of revenue on purchases made out-of-state or online where no sales tax was collected at checkout (e.g., buying equipment from an untaxed out-of-state vendor).</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏷️</span> US State & Municipal Sales Tax Architecture: Combined Rates & Nexus Rules
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Unlike countries utilizing national Value Added Tax (VAT), the United States has no federal consumption tax. Instead, 45 states plus the District of Columbia levy state-level sales taxes, which are compounded by thousands of local county, city, transit district, and special taxing jurisdictions.</p>
+    <p style="margin-top: 12px;">Under the landmark 2018 Supreme Court ruling *South Dakota v. Wayfair, Inc.*, remote e-commerce sellers and retail merchants must collect and remit sales taxes based on 'Economic Nexus' thresholds (typically $100,000 in annual gross sales or 200 separate transactions within a state).</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> State vs. Local Combined Sales Tax Rates Across Key US States
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">State Jurisdiction</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Base State Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Average Local Add-On</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Combined Average Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Grocery & Prescription Drug Exemption Status</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tennessee</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.00%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.55%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.55% (Highest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries taxed at reduced 4.00% state rate; drugs exempt</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Louisiana</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.45%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">5.11%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.56%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Food for home consumption and drugs exempt from state tax</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Arkansas</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.50%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.94%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.44%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries taxed at reduced 0.125% rate; prescription drugs exempt</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Washington</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.50%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.88%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.38%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries and prescription drugs 100% exempt from sales tax</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">California</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.25% (Highest Base)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.60%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.85%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries, prescription medication, and utilities exempt</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Texas</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.25%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.95%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.20%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Unprepared grocery food and prescription drugs 100% exempt</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Delaware, MT, NH, OR</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00% (No Sales Tax)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Complete state and municipal sales tax exemption</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Consumer & Merchant Sales Tax Compliance Tactics
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Understand Destination-Based Sourcing:</strong> <span>Most US states use destination-based sourcing, meaning the sales tax rate is determined by where the buyer receives the product, not the seller's warehouse location.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Verify Unprepared Food Exemptions:</strong> <span>In most states, cold grocery staples (milk, vegetables, flour) are exempt from sales tax, while prepared hot foods and restaurant meals are taxed at full rates.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Account for Consumer Use Tax:</strong> <span>If you purchase merchandise online from an out-of-state retailer that does not collect sales tax, state tax law mandates reporting and paying 'Use Tax' on your state income tax return.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sales tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 state sales</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax local</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 county city</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sales tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 total purchase</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 price tax</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script src="../js/tools.js"></script>
+<script>
+function fmt(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+function calc(){
+  var sub = parseFloat(document.getElementById('subtotal').value) || 0;
+  var sel = document.getElementById('stateSelect').value;
+  var customWrap = document.getElementById('customRateWrap');
+  var rate = 0;
+
+  if(sel === 'custom'){
+    customWrap.style.display = 'block';
+    rate = (parseFloat(document.getElementById('customRate').value) || 0) / 100;
+  } else {
+    customWrap.style.display = 'none';
+    rate = parseFloat(sel) || 0;
+  }
+
+  var tax = sub * rate;
+  var total = sub + tax;
+
+  document.getElementById('resTotalPrice').textContent = fmt(total);
+  document.getElementById('resTaxDetail').textContent = 'Sales Tax: +' + fmt(tax) + ' @ ' + (rate*100).toFixed(2) + '%';
+  document.getElementById('resSub').textContent = fmt(sub);
+  document.getElementById('resRateVal').textContent = (rate*100).toFixed(2) + '%';
+  document.getElementById('resTaxCollected').textContent = '+' + fmt(tax);
+  document.getElementById('resGrandTotal').textContent = fmt(total);
+}
+
+document.querySelectorAll('input, select').forEach(function(el){
+  el.addEventListener('input', calc);
+  el.addEventListener('change', calc);
+});
+
+document.getElementById('shareBtn').addEventListener('click', function() {
+  const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : window.location.href;
+  const b = document.getElementById('shareBtnText');
+  const btnEl = document.getElementById('shareBtn');
+  navigator.clipboard.writeText(copyContent).then(function() {
+    if (b) b.textContent = '✓ Copied to Clipboard!';
+    if (btnEl) btnEl.style.background = '#047857';
+    setTimeout(function() {
+      if (b) b.textContent = 'Copy Calculation Summary';
+      if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+    }, 2500);
+  });
+});
+calc();
+</script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

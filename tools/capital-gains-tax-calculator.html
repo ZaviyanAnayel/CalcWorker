@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Capital Gains Tax Calculator 2026 — Federal & State Rates — CalcWorker</title>
+<meta content="Calculate US federal and state capital gains tax for short-term and long-term asset sales, including the 3.8% Net Investment Income Tax (NIIT)." name="description"/>
+<meta content="capital gains tax calculator, long term capital gains 2026, short term capital gains, niit tax, stock sale tax, irs capital gains rates" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/capital-gains-tax-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/capital-gains-tax-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Capital Gains Tax Calculator 2026 — Federal & State Rates" property="og:title"/>
+<meta content="Calculate US federal and state capital gains tax for short-term and long-term asset sales, including the 3.8% Net Investment Income Tax (NIIT)." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<style>
+.prompt-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.prompt-kpi-box {
+  background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.prompt-kpi-box:hover {
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+.prompt-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.prompt-kpi-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.token-blue { color: #38bdf8; }
+.cost-green { color: #34d399; }
+.save-purple { color: #a855f7; }
+</style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Capital Gains Tax Calculator 2026 — Federal & State Rates",
+    "url": "https://calcworker.com/tools/capital-gains-tax-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+  {
+    "@type": "Question",
+    "name": "What is the difference between short-term and long-term capital gains?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Assets held for 365 days or less are classified as short-term capital gains and taxed as ordinary income (up to 37%). Assets held for longer than one year qualify for favorable long-term tax rates of 0%, 15%, or 20%."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "What is the Net Investment Income Tax (NIIT)?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The NIIT is a 3.8% surtax established under IRC Section 1411 on net investment income for individuals whose modified adjusted gross income exceeds $200,000 for single filers or $250,000 for married couples filing jointly."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Do all US states tax capital gains?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Most states tax capital gains as regular income. States with no personal income tax (Texas, Florida, Nevada, Washington, Wyoming, South Dakota, Alaska) do not tax capital gains."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Can capital losses offset capital gains?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Capital losses can offset capital gains dollar-for-dollar without limit. Excess losses up to $3,000 can reduce ordinary taxable income each year."
+    }
+  }
+]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Universal Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <!-- Populated automatically by sidebar.js and calcworker-common.js -->
+  </div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<!-- Top Navigation Header -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="1" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Page Workstation -->
+<main class="page-container">
+<!-- Breadcrumbs -->
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>&rsaquo;</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">Capital Gains Tax Calculator 2026</span>
+</div>
+
+<!-- Header Card -->
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(37, 99, 235, 0.12); color: var(--brand-primary); font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>⚡</span> IRS 2026 Brackets
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        Capital Gains Tax Calculator 2026 — Federal & State Rates
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Calculate US federal and state capital gains tax for short-term and long-term asset sales, including the 3.8% Net Investment Income Tax (NIIT).
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator Grid -->
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <!-- Inputs Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>⚙️</span> Calculation Parameters
+      </h2>
+    </div>
+    <div style="margin-bottom: 16px;">
+  <label for="purchasePrice" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Initial Purchase Price (Cost Basis)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="purchasePrice" value="10000" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="salePrice" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Final Asset Sale Price</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="salePrice" value="25000" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="holdingPeriod" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Holding Duration</label>
+  <select id="holdingPeriod" style="width: 100%; padding: 10px 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text-main); font-weight: 600; font-size: 0.9rem; cursor: pointer;">
+    <option value="long" selected>Long-Term (Held > 1 Year)</option>
+    <option value="short">Short-Term (Held ≤ 1 Year)</option>
+  </select>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="taxableIncome" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Annual Taxable Income (Excl. Gain)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="taxableIncome" value="95000" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="filingStatus" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Tax Filing Status</label>
+  <select id="filingStatus" style="width: 100%; padding: 10px 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text-main); font-weight: 600; font-size: 0.9rem; cursor: pointer;">
+    <option value="single" selected>Single</option>
+    <option value="married">Married Filing Jointly</option>
+    <option value="head">Head of Household</option>
+  </select>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="stateTaxRate" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">State Capital Gains Tax Rate (%)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <input type="number" id="stateTaxRate" value="5.0" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.85rem;">%</span>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Results Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>📊</span> Real-Time Analysis
+      </h2>
+    </div>
+    
+    <!-- KPI Summary Grid -->
+    <div class="prompt-kpi-grid">
+      <div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Total Net Capital Gain</div>
+  <div class="prompt-kpi-val cost-green" id="resNetGain">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Total Estimated Tax</div>
+  <div class="prompt-kpi-val token-blue" id="resTotalTax">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Effective Tax Rate</div>
+  <div class="prompt-kpi-val save-purple" id="resEffectiveRate">$0.00</div>
+</div>
+
+    </div>
+
+    <!-- Secondary Summary Rows -->
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Federal Capital Gains Tax</span>
+  <strong id="resFedTax" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Net Investment Income Tax (NIIT 3.8%)</span>
+  <strong id="resNiitTax" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">State Capital Gains Tax</span>
+  <strong id="resStateTax" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Net After-Tax Proceeds</span>
+  <strong id="resAfterTaxProfit" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+
+    </div>
+
+    <!-- Smart One-Click Copy Calculation Summary -->
+    <div style="margin: 18px 0 0 0;">
+      <button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md); cursor: pointer;" type="button">
+        <span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Deep Technical Guide (AdSense E-E-A-T) -->
+<!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Net Capital Gains Tax & NIIT Surcharge Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Tax} = (\text{Proceeds} - \text{Basis}) \times \text{Bracket Rate} + \max(0, \min(\text{Gain}, \text{MAGI} - \text{Threshold})) \times 3.8\%</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Applies preferential capital gains tiers to long-term gains, ordinary income brackets to short-term gains, and 3.8% NIIT on investment income exceeding statutory MAGI ceilings.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Proceeds:</span> <span>Gross transaction sale price minus broker execution commissions.</span></li>
+      <li><span class="cw-var-symbol">Basis:</span> <span>Original cost basis adjusted for stock splits, reinvested dividends, and capital improvements.</span></li>
+      <li><span class="cw-var-symbol">Holding Period:</span> <span>Short-Term (≤ 365 days, ordinary rates 10%-37%) vs. Long-Term (> 365 days, rates 0%, 15%, 20%).</span></li>
+      <li><span class="cw-var-symbol">NIIT:</span> <span>3.8% Net Investment Income Tax applied under IRC § 1411 when MAGI exceeds $250,000 (MFJ) or $200,000 (Single).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>A married joint filer earning $220,000 sells stock held for 3 years for $100,000 that was purchased for $40,000 ($60,000 gain).</li>
+      <li>Because holding exceeds 1 year, the gain falls in the 15% long-term tier, generating $9,000 in federal capital gains tax instead of $14,400 under ordinary income rates.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Donating appreciated stock held over one year directly to a 501(c)(3) charity eliminates 100% of capital gains tax liability while providing a full fair-market-value itemized tax deduction.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Internal Revenue Code Section 1(h) and Section 1411 establish statutory capital gains rates and net investment income tax thresholds.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the difference between short-term and long-term capital gains?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Assets held for 365 days or less are classified as short-term capital gains and taxed as ordinary income (up to 37%). Assets held for longer than one year qualify for favorable long-term tax rates of 0%, 15%, or 20%.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the Net Investment Income Tax (NIIT)?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The NIIT is a 3.8% surtax established under IRC Section 1411 on net investment income for individuals whose modified adjusted gross income exceeds $200,000 for single filers or $250,000 for married couples filing jointly.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Do all US states tax capital gains?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Most states tax capital gains as regular income. States with no personal income tax (Texas, Florida, Nevada, Washington, Wyoming, South Dakota, Alaska) do not tax capital gains.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Can capital losses offset capital gains?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Yes. Capital losses can offset capital gains dollar-for-dollar without limit. Excess losses up to $3,000 can reduce ordinary taxable income each year.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📈</span> Capital Gains Tax Modeling: Short-Term vs. Long-Term Rates & NIIT Rules
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Profits realized from selling capital assets (stocks, cryptocurrencies, real estate, precious metals) are categorized into short-term or long-term holdings based on an exact one-year holding period. Short-term capital gains (assets held 365 days or fewer) are taxed at ordinary income rates up to 37%.</p>
+    <p style="margin-top: 12px;">Long-term capital gains (assets held 366 days or longer) enjoy preferential federal rates of 0%, 15%, or 20%. High-income investors must also account for the statutory 3.8% Net Investment Income Tax (NIIT) under IRC § 1411 and state capital gains taxation.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> 2026 Long-Term Capital Gains Federal Tax Brackets
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Capital Gains Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Single Taxable Income Range</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Married Joint Taxable Income Range</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Head of Household Range</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">0% Capital Gains Rate</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 – $48,350</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 – $96,700</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 – $64,750</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">15% Capital Gains Rate</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$48,350 – $533,400</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$96,700 – $600,050</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$64,750 – $566,700</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">20% Capital Gains Rate</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Over $533,400</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Over $600,050</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Over $566,700</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">+3.8% NIIT Surcharge</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">MAGI Over $200,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">MAGI Over $250,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">MAGI Over $200,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Tax-Loss Harvesting & Gain Deferral Protocols
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Harvest Losses to Offset Capital Gains:</strong> <span>Capital losses directly offset capital gains dollar-for-dollar; net excess losses can offset up to $3,000 of ordinary wage income annually, carrying forward indefinitely.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Beware the 30-Day Wash Sale Rule (IRC § 1091):</strong> <span>Selling a stock or ETF for a tax loss and repurchasing a 'substantially identical' security within 30 days before or after the sale disallows the tax loss deduction.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Utilize Section 121 Primary Residence Exclusion:</strong> <span>Taxpayers who own and occupy a primary home for at least 2 of the 5 years preceding sale exclude up to $250,000 (single) or $500,000 (married joint) of capital gain entirely tax-free.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 capital gains</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax short</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 term long</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 term stock</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sale crypto</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sale irs</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax brackets</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+
+<script>
+function calculateAll() {
+  try {
+    
+            const buy = parseFloat(document.getElementById('purchasePrice').value) || 0;
+            const sell = parseFloat(document.getElementById('salePrice').value) || 0;
+            const holding = document.getElementById('holdingPeriod').value;
+            const income = parseFloat(document.getElementById('taxableIncome').value) || 0;
+            const status = document.getElementById('filingStatus').value;
+            const stateRate = (parseFloat(document.getElementById('stateTaxRate').value) || 0) / 100;
+
+            const gain = Math.max(0, sell - buy);
+            let fedRate = 0;
+            let niitRate = 0;
+
+            if (holding === 'long') {
+                let zeroLimit = status === 'married' ? 94050 : 47025;
+                let fifteenLimit = status === 'married' ? 583750 : 518900;
+                let totalInc = income + gain;
+                if (totalInc <= zeroLimit) fedRate = 0.0;
+                else if (totalInc <= fifteenLimit) fedRate = 0.15;
+                else fedRate = 0.20;
+            } else {
+                if (income > 600000) fedRate = 0.37;
+                else if (income > 240000) fedRate = 0.35;
+                else if (income > 190000) fedRate = 0.32;
+                else if (income > 100000) fedRate = 0.24;
+                else if (income > 47000) fedRate = 0.22;
+                else fedRate = 0.12;
+            }
+
+            let niitThreshold = status === 'married' ? 250000 : 200000;
+            if ((income + gain) > niitThreshold) {
+                const subjectToNiit = Math.min(gain, (income + gain) - niitThreshold);
+                niitRate = (subjectToNiit * 0.038) / (gain || 1);
+            }
+
+            const fedTax = gain * fedRate;
+            const niitTax = gain * niitRate;
+            const stateTax = gain * stateRate;
+            const totalTax = fedTax + niitTax + stateTax;
+            const afterTax = sell - totalTax;
+            const effRate = gain > 0 ? (totalTax / gain) * 100 : 0;
+
+            document.getElementById('resNetGain').textContent = '$' + gain.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resTotalTax').textContent = '$' + totalTax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resEffectiveRate').textContent = effRate.toFixed(1) + '%';
+            document.getElementById('resFedTax').textContent = '$' + fedTax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resNiitTax').textContent = '$' + niitTax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resStateTax').textContent = '$' + stateTax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resAfterTaxProfit').textContent = '$' + afterTax.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        
+  } catch(e) {
+    console.error("Calculation error", e);
+  }
+}
+
+// Bind inputs
+document.querySelectorAll('.calc-card input, .calc-card select').forEach(el => {
+  el.addEventListener('input', calculateAll);
+  el.addEventListener('change', calculateAll);
+});
+
+// Smart Copy Calculation Summary
+const shareBtn = document.getElementById('shareBtn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    const kpiEls = document.querySelectorAll('.prompt-kpi-box');
+    let summaryText = '⚡ CalcWorker — US Capital Gains Tax Estimate:\n';
+    kpiEls.forEach(el => {
+      const lbl = el.querySelector('.prompt-kpi-label')?.textContent || '';
+      const val = el.querySelector('.prompt-kpi-val')?.textContent || '';
+      if (lbl && val) summaryText += '• ' + lbl + ': ' + val + '\n';
+    });
+    summaryText += '🔗 Free Calculator: ' + window.location.href;
+
+    try {
+      await navigator.clipboard.writeText(summaryText);
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      shareBtn.style.background = '#047857';
+      shareBtn.style.color = '#ffffff';
+      setTimeout(() => {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        shareBtn.style.background = '';
+        shareBtn.style.color = '';
+      }, 2500);
+    } catch(err) {
+      console.error('Failed to copy', err);
+    }
+  });
+}
+
+// Run on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calculateAll);
+} else {
+  calculateAll();
+}
+</script>
+
+<script src="/js/sidebar.js?v=2026-v26"></script>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

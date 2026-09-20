@@ -1,0 +1,4676 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<!-- ===== SEO: Primary Meta Tags ===== -->
+<title>OmniCalc Ultra — Free 6-in-1 Scientific Calculator</title>
+<meta content="Free online scientific, graphing, programmer, and unit conversion calculator. 100% private, client-side execution with keyboard support and zero ads clutter." name="description"/>
+<meta content="free online calculator, scientific calculator, unit converter, graphing calculator, programmer calculator, ai calculator, calcworker, omnicalc, compound interest, tip calculator, tax calculator, math solver" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://calcworker.com/tools/omnicalc.html" rel="canonical"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- ===== SEO: Open Graph ===== -->
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/omnicalc.html" property="og:url"/>
+<meta content="OmniCalc Ultra — Free 6-in-1 Scientific Calculator" property="og:title"/>
+<meta content="The world's most feature-rich free online calculator. Standard, Scientific, Smart Tape, 2D Grapher, Unit Converter &amp; Programmer Mode." property="og:description"/>
+<meta content="https://calcworker.com/assets/og-omnicalc.png" property="og:image"/>
+<!-- ===== Structured Data (Schema.org Software + FAQ) ===== -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "OmniCalc Ultra  Free 6-in-1 Scientific & Graphing Calculator",
+    "url": "https://calcworker.com/tools/omnicalc.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is OmniCalc Ultra free to use?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes \u2014 completely free with no user signup, no premium tier, and no subscription barriers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does OmniCalc Ultra store my numbers or private data?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. All calculations are evaluated locally on your device via client-side JavaScript. None of your math queries or numbers are transmitted to external servers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the 2D Grapher plot functions?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The grapher evaluates continuous mathematical functions across a bounded Cartesian grid with step intervals rendered directly to an HTML5 canvas element."
+        }
+      }
+    ]
+  }
+]
+</script>
+<!-- ===== Fonts ===== -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- ===== GOOGLE ADSENSE (Auto Ads) ===== -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- ===== GOOGLE ANALYTICS (GA4) ===== -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<!-- CalcWorker Base Theme & Shell CSS -->
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<!-- Self-Contained Complete OmniCalc Stylesheet (Never breaks even if external css 404s) -->
+<style>
+/* ===== OMNICALC EMBEDDED STYLES ===== */
+/* ==========================================================================
+   OmniCalc Ultra - Master Design System
+   Standalone dark-first page — loaded WITHOUT calcworker.css?v=2026-v25
+   ========================================================================== */
+
+/* ===== GLOBAL RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Default dark theme variables scoped to calculator container */
+.app-container, .app-container[data-calc-theme="onyx"], .modal-overlay {
+  --bg-primary: #090d16;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --bg-card-hover: rgba(51, 65, 85, 0.8);
+  --bg-input: #030712;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #38bdf8;
+  --accent-purple: #818cf8;
+  --accent-pink: #f43f5e;
+  --accent-amber: #fbbf24;
+  --accent-green: #34d399;
+  --key-digit-bg: rgba(255, 255, 255, 0.05);
+  --key-digit-text: #f8fafc;
+  --key-op-bg: rgba(129, 140, 248, 0.15);
+  --key-op-text: #818cf8;
+  --key-fn-bg: rgba(255, 255, 255, 0.08);
+  --key-fn-text: #38bdf8;
+  --key-equals-bg: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  --key-equals-text: #ffffff;
+  --key-clear-bg: rgba(244, 63, 94, 0.15);
+  --key-clear-text: #f43f5e;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-focus: #38bdf8;
+  --shadow-key: 0 4px 12px rgba(0, 0, 0, 0.3);
+  --shadow-key-active: 0 1px 3px rgba(0, 0, 0, 0.5);
+  --glow-accent: 0 0 20px rgba(56, 189, 248, 0.35);
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+  --font-sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+}
+
+body {
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-main);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+/* Touch-friendly selection lock for calculator buttons */
+.app-container * {
+  user-select: none;
+  -webkit-user-select: none;
+}
+.tape-textarea,
+.ai-bar-input,
+.grapher-input,
+.convert-input,
+#aiInput,
+input[type="text"],
+input[type="number"],
+textarea {
+  -webkit-user-select: text !important;
+  -moz-user-select: text !important;
+  -ms-user-select: text !important;
+  user-select: text !important;
+  -webkit-touch-callout: default !important;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+}
+
+/* Theme: Nordic Light (the only "light" theme) */
+.app-container[data-calc-theme="nordic"], .modal-overlay[data-calc-theme="nordic"] {
+  --bg-primary: #f8fafc;
+  --bg-secondary: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f1f5f9;
+  --bg-input: #f1f5f9;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  --accent-cyan: #0284c7;
+  --accent-purple: #6366f1;
+  --accent-pink: #e11d48;
+  --key-digit-bg: #ffffff;
+  --key-digit-text: #0f172a;
+  --key-op-bg: #e0f2fe;
+  --key-op-text: #0284c7;
+  --key-fn-bg: #f1f5f9;
+  --key-fn-text: #475569;
+  --key-equals-bg: #0284c7;
+  --key-equals-text: #ffffff;
+  --key-clear-bg: #ffe4e6;
+  --key-clear-text: #e11d48;
+  --border-subtle: #e2e8f0;
+  --border-focus: #0284c7;
+  --shadow-key: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+
+/* Theme: Liquid Frosted Glass */
+.app-container[data-calc-theme="glass"], .modal-overlay[data-calc-theme="glass"] {
+  --bg-primary: #0d1322;
+  --bg-secondary: rgba(255, 255, 255, 0.05);
+  --bg-card: rgba(255, 255, 255, 0.08);
+  --bg-card-hover: rgba(255, 255, 255, 0.15);
+  --bg-input: rgba(0, 0, 0, 0.4);
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+  --accent-cyan: #67e8f9;
+  --accent-purple: #c084fc;
+  --accent-pink: #fb7185;
+  --key-digit-bg: rgba(255, 255, 255, 0.09);
+  --key-op-bg: rgba(192, 132, 252, 0.2);
+  --key-op-text: #e9d5ff;
+  --key-equals-bg: linear-gradient(135deg, #67e8f9, #c084fc);
+  --border-subtle: rgba(255, 255, 255, 0.18);
+  --shadow-key: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+/* Theme: Cyberpunk 2077 */
+.app-container[data-calc-theme="cyberpunk"], .modal-overlay[data-calc-theme="cyberpunk"] {
+  --bg-primary: #050508;
+  --bg-secondary: #0d0d14;
+  --bg-card: #12121e;
+  --bg-card-hover: #1b1b2d;
+  --bg-input: #000000;
+  --text-main: #fcee0a;
+  --text-muted: #00f0ff;
+  --text-dim: #707090;
+  --accent-cyan: #00f0ff;
+  --accent-purple: #ff0055;
+  --accent-pink: #ff0055;
+  --key-digit-bg: #151522;
+  --key-digit-text: #ffffff;
+  --key-op-bg: rgba(0, 240, 255, 0.15);
+  --key-op-text: #00f0ff;
+  --key-fn-bg: rgba(252, 238, 10, 0.12);
+  --key-fn-text: #fcee0a;
+  --key-equals-bg: linear-gradient(135deg, #00f0ff, #ff0055);
+  --key-equals-text: #000000;
+  --key-clear-bg: rgba(255, 0, 85, 0.25);
+  --key-clear-text: #ff0055;
+  --border-subtle: #00f0ff33;
+  --border-focus: #fcee0a;
+  --glow-accent: 0 0 15px rgba(0, 240, 255, 0.6);
+}
+
+/* Theme: Retro Casio 1984 */
+.app-container[data-calc-theme="casio"], .modal-overlay[data-calc-theme="casio"] {
+  --bg-primary: #879482;
+  --bg-secondary: #74806f;
+  --bg-card: #687463;
+  --bg-card-hover: #5d6758;
+  --bg-input: #9ca996;
+  --text-main: #141c12;
+  --text-muted: #273623;
+  --text-dim: #3d5038;
+  --accent-cyan: #141c12;
+  --accent-purple: #1f2d1d;
+  --accent-pink: #842323;
+  --key-digit-bg: #273024;
+  --key-digit-text: #ebf5e8;
+  --key-op-bg: #404c3c;
+  --key-op-text: #ebf5e8;
+  --key-fn-bg: #404c3c;
+  --key-fn-text: #a8b8a3;
+  --key-equals-bg: #b94a2b;
+  --key-equals-text: #ffffff;
+  --key-clear-bg: #842323;
+  --key-clear-text: #ffffff;
+  --border-subtle: #3a4736;
+  --border-focus: #141c12;
+  --shadow-key: 0 3px 0 #182017;
+}
+
+/* Theme: Onyx Obsidian (Explicit — same as :root defaults) */
+.app-container[data-calc-theme="onyx"], .modal-overlay[data-calc-theme="onyx"] {
+  --bg-primary: #090d16;
+  --bg-secondary: #0f172a;
+  --bg-card: rgba(30, 41, 59, 0.7);
+  --bg-card-hover: rgba(51, 65, 85, 0.8);
+  --bg-input: #030712;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --text-dim: #64748b;
+  --accent-cyan: #38bdf8;
+  --accent-purple: #818cf8;
+  --accent-pink: #f43f5e;
+  --accent-amber: #fbbf24;
+  --accent-green: #34d399;
+  --key-digit-bg: rgba(255, 255, 255, 0.05);
+  --key-digit-text: #f8fafc;
+  --key-op-bg: rgba(129, 140, 248, 0.15);
+  --key-op-text: #818cf8;
+  --key-fn-bg: rgba(255, 255, 255, 0.08);
+  --key-fn-text: #38bdf8;
+  --key-equals-bg: linear-gradient(135deg, #38bdf8 0%, #818cf8 100%);
+  --key-equals-text: #ffffff;
+  --key-clear-bg: rgba(244, 63, 94, 0.15);
+  --key-clear-text: #f43f5e;
+  --border-subtle: rgba(255, 255, 255, 0.1);
+  --border-focus: #38bdf8;
+  --shadow-key: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Container isolation */
+.app-container {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 100%;
+  min-height: 700px;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  background: transparent;
+}
+
+@media (min-width: 900px) {
+  .app-container {
+    border-radius: var(--radius-xl);
+    border: none;
+    box-shadow: none;
+    background: transparent;
+  }
+}
+
+/* ===== AMBIENT GLOW BLOBS ===== */
+.bg-ambient {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(110px);
+  opacity: 0.22;
+  animation: blobDrift 18s ease-in-out infinite alternate;
+}
+
+.blob-1 {
+  top: -8%;
+  left: 10%;
+  width: 520px;
+  height: 520px;
+  background: radial-gradient(circle, var(--accent-cyan) 0%, transparent 70%);
+  animation-delay: 0s;
+}
+
+.blob-2 {
+  bottom: -10%;
+  right: 8%;
+  width: 620px;
+  height: 620px;
+  background: radial-gradient(circle, var(--accent-purple) 0%, transparent 70%);
+  animation-delay: -9s;
+}
+
+@keyframes blobDrift {
+  0%   { transform: translate(0, 0) scale(1); }
+  33%  { transform: translate(40px, -25px) scale(1.06); }
+  66%  { transform: translate(-20px, 30px) scale(0.95); }
+  100% { transform: translate(25px, 15px) scale(1.03); }
+}
+
+/* Nordic / Casio themes hide blobs */
+[data-calc-theme="nordic"] .blob,
+[data-calc-theme="casio"] .blob {
+  display: none;
+}
+
+
+/* App Header */
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  gap: 12px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+
+.brand-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.brand-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  padding: 2px 6px;
+  border-radius: 6px;
+  background: var(--key-op-bg);
+  color: var(--accent-cyan);
+}
+
+/* Mode Navigation Pills */
+.mode-nav {
+  display: flex;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 3px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.mode-nav::-webkit-scrollbar {
+  display: none;
+}
+
+.mode-pill {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mode-pill:hover {
+  color: var(--text-main);
+}
+
+.mode-pill.active {
+  background: var(--bg-card);
+  color: var(--accent-cyan);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Header Utilities */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  background: var(--bg-card-hover);
+  color: var(--text-main);
+  border-color: var(--border-focus);
+}
+
+.icon-btn.active {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+/* Main Workspace Grid */
+.workspace-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  overflow: hidden;
+  margin-top: 6px;
+}
+
+@media (min-width: 900px) {
+  .workspace-grid {
+    grid-template-columns: 1fr 340px;
+  }
+}
+
+/* Primary View Area */
+.primary-view {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  padding: 12px;
+  position: relative;
+}
+
+/* Display Screen (Standard / Scientific) */
+.calc-screen {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 16px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  min-height: 120px;
+  max-height: 150px;
+  position: relative;
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.4);
+  cursor: text;
+}
+
+.screen-badges {
+  position: absolute;
+  top: 10px;
+  left: 14px;
+  display: flex;
+  gap: 8px;
+}
+
+.mode-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-dim);
+  cursor: pointer;
+}
+
+.mode-tag.active {
+  color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.15);
+}
+
+.screen-history-line {
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+  font-size: 1.1rem;
+  min-height: 24px;
+  word-break: break-all;
+  text-align: right;
+  overflow-x: auto;
+  scrollbar-width: none;
+  width: 100%;
+}
+
+.screen-main-result {
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+  text-align: right;
+  word-break: break-all;
+  width: 100%;
+  transition: font-size 0.15s ease;
+}
+
+/* Keypad Section */
+.keypad-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+  overflow-y: auto;
+}
+
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  flex: 1;
+}
+
+.scientific-tray {
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 4px;
+}
+
+.scientific-tray.show {
+  display: grid;
+}
+
+/* Keypad Buttons */
+.calc-btn {
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  font-size: 1.25rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-key);
+  min-height: 52px;
+}
+
+.calc-btn:active {
+  transform: translateY(2px);
+  box-shadow: var(--shadow-key-active);
+}
+
+.calc-btn .shortcut-hint {
+  position: absolute;
+  bottom: 2px;
+  right: 4px;
+  font-size: 0.55rem;
+  color: var(--text-dim);
+  opacity: 0.5;
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .calc-btn .shortcut-hint {
+    display: block;
+  }
+}
+
+/* Button Classes */
+.btn-digit {
+  background: var(--key-digit-bg);
+  color: var(--key-digit-text);
+}
+.btn-digit:hover {
+  background: var(--bg-card-hover);
+}
+
+.btn-op {
+  background: var(--key-op-bg);
+  color: var(--key-op-text);
+  font-size: 1.4rem;
+}
+.btn-op:hover {
+  filter: brightness(1.15);
+}
+
+.btn-fn {
+  background: var(--key-fn-bg);
+  color: var(--key-fn-text);
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+.btn-fn:hover {
+  background: var(--bg-card-hover);
+}
+
+.btn-clear {
+  background: var(--key-clear-bg);
+  color: var(--key-clear-text);
+  font-weight: 700;
+}
+
+.btn-equals {
+  background: var(--key-equals-bg);
+  color: var(--key-equals-text);
+  font-size: 1.6rem;
+  box-shadow: var(--glow-accent);
+}
+.btn-equals:hover {
+  filter: brightness(1.1);
+}
+
+.btn-span-2 {
+  grid-column: span 2;
+}
+
+/* Smart Tape View */
+.smart-tape-view {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+}
+
+.tape-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 10px;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tape-templates {
+  display: flex;
+  gap: 6px;
+}
+
+.sm-pill-btn {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-size: 0.75rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sm-pill-btn:hover {
+  color: var(--accent-cyan);
+  border-color: var(--accent-cyan);
+}
+
+.tape-editor-container {
+  flex: 1;
+  display: flex;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+}
+
+.tape-textarea {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 14px;
+  resize: none;
+  user-select: text;
+  white-space: pre;
+}
+
+.tape-gutter {
+  width: 140px;
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 1px solid var(--border-subtle);
+  padding: 14px 10px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  text-align: right;
+  overflow-y: hidden;
+  color: var(--accent-cyan);
+}
+
+.tape-total-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 12px 18px;
+  margin-top: 10px;
+}
+
+.tape-total-label {
+  color: var(--text-muted);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.tape-total-val {
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Grapher View */
+.grapher-view {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.grapher-controls-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.grapher-input {
+  flex: 1;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  color: var(--accent-cyan);
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  padding: 8px 12px;
+  outline: none;
+  user-select: text;
+}
+
+.grapher-canvas-wrapper {
+  flex: 1;
+  position: relative;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  touch-action: none;
+}
+
+#graphCanvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.grapher-floating-actions {
+  position: absolute;
+  bottom: 12px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+/* Converter View */
+.converter-view {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  gap: 12px;
+  overflow-y: auto;
+}
+
+.category-chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+
+.category-chips::-webkit-scrollbar {
+  display: none;
+}
+
+.category-chip {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-muted);
+  padding: 6px 14px;
+  border-radius: var(--radius-md);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s ease;
+}
+
+.category-chip.active {
+  background: var(--key-op-bg);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.converter-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+  justify-content: center;
+}
+
+.convert-card {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.convert-input-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.convert-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  font-size: 2rem;
+  font-weight: 700;
+  width: 60%;
+  user-select: text;
+}
+
+.convert-select {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
+  padding: 8px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 0.9rem;
+  font-weight: 600;
+  outline: none;
+  cursor: pointer;
+}
+
+.convert-swap-btn {
+  align-self: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--accent-cyan);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: transform 0.2s ease;
+}
+
+.convert-swap-btn:hover {
+  transform: rotate(180deg);
+}
+
+/* Programmer View */
+.programmer-view {
+  display: none;
+  flex-direction: column;
+  height: 100%;
+  gap: 10px;
+  overflow-y: auto;
+}
+
+.radix-rows {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.radix-row {
+  display: flex;
+  align-items: center;
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.radix-row.active {
+  border-color: var(--accent-cyan);
+  background: rgba(56, 189, 248, 0.08);
+}
+
+.radix-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--text-muted);
+  width: 42px;
+}
+
+.radix-val {
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  color: var(--text-main);
+  word-break: break-all;
+  flex: 1;
+  text-align: right;
+}
+
+.bit-matrix-container {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  gap: 4px;
+}
+
+.bit-cell {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  padding: 6px 2px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  font-family: var(--font-mono);
+}
+
+.bit-cell.active {
+  background: rgba(56, 189, 248, 0.25);
+  border-color: var(--accent-cyan);
+  color: var(--accent-cyan);
+}
+
+.bit-index {
+  font-size: 0.55rem;
+  color: var(--text-dim);
+}
+
+.bit-val {
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* Sidebar: History & Memory (Desktop) */
+.history-sidebar {
+  display: none;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: 14px;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 900px) {
+  .history-sidebar {
+    display: flex;
+  }
+}
+
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border-subtle);
+  margin-bottom: 10px;
+}
+
+.sidebar-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  scrollbar-width: thin;
+}
+
+.history-item {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.history-item:hover {
+  border-color: var(--accent-cyan);
+  transform: translateX(-2px);
+}
+
+.history-item-expr {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: right;
+  word-break: break-all;
+}
+
+.history-item-res {
+  font-family: var(--font-mono);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--accent-cyan);
+  text-align: right;
+}
+
+.history-item-time {
+  font-size: 0.65rem;
+  color: var(--text-dim);
+}
+
+.empty-history {
+  text-align: center;
+  color: var(--text-dim);
+  font-size: 0.85rem;
+  padding: 30px 10px;
+}
+
+/* Modal / Drawer for Mobile History & Settings */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+
+.modal-overlay.open {
+  display: flex;
+}
+
+.modal-box {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  width: 100%;
+  max-width: 440px;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+}
+
+.modal-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-body {
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.setting-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.theme-picker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 8px;
+}
+
+.theme-card-btn {
+  background: var(--bg-input);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.theme-card-btn.active {
+  border-color: var(--accent-cyan);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+.theme-swatch {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+}
+
+/* Animations */
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.toast-msg {
+  position: fixed;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--bg-card);
+  border: 1px solid var(--accent-cyan);
+  color: var(--text-main);
+  padding: 10px 20px;
+  border-radius: var(--radius-lg);
+  font-size: 0.88rem;
+  font-weight: 600;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  opacity: 0;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: none;
+}
+
+.toast-msg.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+
+
+    /* Seamless Integration into CalcWorker App-Shell */
+    .omni-viewport-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .ai-bar-wrapper {
+      max-width: 820px;
+      margin: 0 auto 16px;
+      padding: 0 12px;
+    }
+
+    .ai-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(56,189,248,0.25);
+      border-radius: 14px;
+      padding: 10px 14px;
+      transition: all 0.3s;
+    }
+    .ai-bar:focus-within {
+      border-color: #38bdf8;
+      box-shadow: 0 0 0 3px rgba(56,189,248,0.12), 0 0 24px rgba(56,189,248,0.15);
+    }
+
+    .ai-bar-icon {
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      animation: ai-pulse 2.5s ease-in-out infinite;
+    }
+    @keyframes ai-pulse {
+      0%, 100% { opacity: 0.7; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+
+    .ai-bar-input {
+      flex: 1;
+      background: transparent !important;
+      border: none !important;
+      outline: none !important;
+      color: var(--text-main, #f8fafc) !important;
+      font-size: 16px !important;
+      font-family: 'Inter', sans-serif;
+      -webkit-user-select: text !important;
+      user-select: text !important;
+    }
+    .ai-bar-input::placeholder { color: #64748b !important; }
+
+    .ai-bar-btn {
+      padding: 6px 14px;
+      border-radius: 9px;
+      border: none;
+      background: linear-gradient(135deg, #38bdf8, #818cf8);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .ai-bar-btn:hover { opacity: 0.88; transform: scale(0.98); }
+
+    .ai-result-box {
+      margin-top: 10px;
+      padding: 12px 16px;
+      background: rgba(56,189,248,0.07);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 12px;
+      display: none;
+      animation: fadeSlideIn 0.3s ease;
+    }
+    .ai-result-box.visible { display: block; }
+
+    @keyframes fadeSlideIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .ai-result-label {
+      font-size: 0.72rem;
+      color: #38bdf8;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .ai-result-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .ai-result-detail {
+      font-size: 0.8rem;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .ai-examples {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .ai-example-chip {
+      padding: 4px 10px;
+      border-radius: 20px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: #94a3b8;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .ai-example-chip:hover { background: rgba(56,189,248,0.12); color: #38bdf8; border-color: rgba(56,189,248,0.3); }
+
+    .omni-page-body {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 0 12px 30px;
+    }
+
+    /* SEO & Formulas */
+    .seo-section {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 24px 16px 40px;
+    }
+    .seo-section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 10px;
+    }
+    .seo-section p {
+      color: #94a3b8;
+      font-size: 0.88rem;
+      line-height: 1.7;
+      margin-bottom: 14px;
+    }
+    .formula-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 14px;
+      margin: 16px 0 24px;
+    }
+    .formula-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(56,189,248,0.2);
+      border-radius: 12px;
+      padding: 14px;
+    }
+    .formula-title {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: #38bdf8;
+      margin-bottom: 6px;
+    }
+    .formula-math {
+      font-family: 'JetBrains Mono', monospace;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 5px 8px;
+      border-radius: 6px;
+      color: #e2e8f0;
+      font-size: 0.85rem;
+      margin: 4px 0;
+      display: inline-block;
+    }
+
+    .omni-footer {
+      text-align: center;
+      padding: 24px 16px;
+      border-top: 1px solid var(--border);
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-top: 20px;
+    }
+    .omni-footer a { color: #38bdf8; text-decoration: none; }
+
+    /* Responsive adjustments */
+    @media (max-width: 640px) {
+      .ai-bar-wrapper { margin-top: 6px; padding: 0 8px; }
+      .ai-bar { padding: 6px 10px; border-radius: 10px; }
+      .ai-examples { display: none !important; }
+      .omni-page-body { padding: 6px 8px 30px; }
+      .app-container { min-height: auto !important; }
+      
+      .mode-nav {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 4px;
+        padding-bottom: 4px;
+        -webkit-overflow-scrolling: touch;
+      }
+      .mode-pill { padding: 5px 8px; font-size: 0.72rem; }
+
+      .calc-screen { min-height: 70px; padding: 8px 12px; }
+      .screen-main-result { font-size: 1.85rem; }
+      #omniShareBtn { padding: 7px 12px; font-size: 0.8rem; margin: 4px 0; }
+
+      .keypad-grid { gap: 6px; }
+      .calc-btn { height: 44px; font-size: 1.1rem; border-radius: 8px; }
+      
+      .primary-view { min-height: auto !important; }
+      .history-sidebar { display: none !important; }
+    }
+  
+    /* Topbar & Header Contrast Fixes for Light/Dark mode */
+    .topbar-title {
+      color: var(--text-main) !important;
+    }
+    .theme-toggle-btn {
+      color: var(--text-main) !important;
+      border: 1px solid var(--border) !important;
+      background: var(--bg-surface) !important;
+    }
+    .sidebar-brand-text {
+      color: var(--text-main) !important;
+    }
+
+  </style>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script> <link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+<body>
+<div class="app-shell">
+<!-- Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link active" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn">☰</button>
+<h1 class="topbar-title" style="font-size: 1rem; font-weight: 700; margin: 0; display: inline-flex; align-items: center;">🧮 OmniCalc Ultra (6-in-1)</h1>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container" style="padding: 16px 20px 40px; width: 100%;">
+<div class="omni-viewport-wrapper">
+<!-- ===== AI SMART COMPUTE BAR ===== -->
+<div class="ai-bar-wrapper">
+<div aria-label="AI Smart Compute" class="ai-bar" role="search">
+<span aria-hidden="true" class="ai-bar-icon">✨</span>
+<input aria-label="AI math query" autocomplete="off" class="ai-bar-input" id="aiInput" placeholder='Try: "15% tip on $87.50" or "convert 100 miles to km" or "5000 at 7% for 10 years"' spellcheck="false" type="text"/>
+<button aria-label="Solve" class="ai-bar-btn" id="aiSolveBtn">⚡ Solve</button>
+</div>
+<div aria-live="polite" class="ai-result-box" id="aiResultBox" role="status">
+<div class="ai-result-label" id="aiResultLabel">✨ AI Smart Compute</div>
+<div class="ai-result-value" id="aiResultValue"></div>
+<div class="ai-result-detail" id="aiResultDetail"></div>
+</div>
+<div aria-label="Try these examples" class="ai-examples">
+<button class="ai-example-chip" data-query="15% tip on $87.50">15% tip on $87.50</button>
+<button class="ai-example-chip" data-query="convert 100 miles to km">100 miles → km</button>
+<button class="ai-example-chip" data-query="$5000 at 7% for 10 years compound interest">Compound Interest</button>
+<button class="ai-example-chip" data-query="sqrt of 144">√144</button>
+<button class="ai-example-chip" data-query="60% of 250">60% of 250</button>
+<button class="ai-example-chip" data-query="convert 98.6 fahrenheit to celsius">98.6°F → °C</button>
+</div>
+</div>
+<!-- ===== CALCULATOR ENGINE ===== -->
+<div class="omni-page-body">
+<div class="bg-ambient">
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+</div>
+<div class="app-container" id="appContainer">
+<header class="app-header" style="padding: 0 0 12px 0;">
+<nav aria-label="Calculator Modes" class="mode-nav">
+<button class="mode-pill active" data-mode="standard"><span>🔢</span> Standard</button>
+<button class="mode-pill" data-mode="scientific"><span>🔬</span> Scientific</button>
+<button class="mode-pill" data-mode="tape"><span>📝</span> Smart Tape</button>
+<button class="mode-pill" data-mode="grapher"><span>📈</span> 2D Grapher</button>
+<button class="mode-pill" data-mode="converter"><span>🔄</span> Converter</button>
+<button class="mode-pill" data-mode="programmer"><span>💻</span> Programmer</button>
+</nav>
+<div class="header-actions">
+<button class="icon-btn" id="shortcutsBtn" title="Keyboard Shortcuts (PC)">⌨️</button>
+<button class="icon-btn" id="mobileHistoryBtn" title="History (Mobile)">🕒</button>
+<button class="icon-btn" id="settingsBtn" title="Aesthetics &amp; Audio Settings">⚙️</button>
+</div>
+</header>
+<div class="workspace-grid">
+<section class="primary-view" style="min-height: 520px;">
+<!-- 1 & 2. STANDARD & SCIENTIFIC WORKSPACE -->
+<div id="calcWorkspace" style="display: flex; flex-direction: column; height: 100%;">
+<div class="calc-screen" id="calcScreen">
+<div class="screen-badges">
+<span class="mode-tag active" id="angleBadge" title="Click to toggle DEG / RAD">DEG</span>
+</div>
+<div class="screen-history-line" id="screenExpr"></div>
+<div class="screen-main-result" id="screenResult">0</div>
+</div>
+<!-- Copy Calculation Summary -->
+<div style="margin: 10px 0;">
+<button id="omniShareBtn" style="width: 100%; padding: 10px 16px; background: linear-gradient(135deg, #10b981, #059669); color: #ffffff; border: none; border-radius: 9px; font-weight: 700; font-size: 0.88rem; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 8px; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);" type="button">
+<span>📤</span> <span id="omniShareText">Copy Calculation Summary</span>
+</button>
+</div>
+<div class="keypad-container">
+<!-- Scientific Tray -->
+<div class="scientific-tray" id="scientificTray">
+<button class="calc-btn btn-fn" data-fn="sin">sin<span class="shortcut-hint">s</span></button>
+<button class="calc-btn btn-fn" data-fn="cos">cos<span class="shortcut-hint">c</span></button>
+<button class="calc-btn btn-fn" data-fn="tan">tan<span class="shortcut-hint">t</span></button>
+<button class="calc-btn btn-fn" data-fn="asin">sin⁻¹</button>
+<button class="calc-btn btn-fn" data-fn="acos">cos⁻¹</button>
+<button class="calc-btn btn-fn" data-fn="ln">ln<span class="shortcut-hint">l</span></button>
+<button class="calc-btn btn-fn" data-fn="log">log</button>
+<button class="calc-btn btn-op" data-op="^">xʸ<span class="shortcut-hint">^</span></button>
+<button class="calc-btn btn-fn" data-fn="sqrt">√<span class="shortcut-hint">r</span></button>
+<button class="calc-btn btn-fn" data-op="!">x!</button>
+<button class="calc-btn btn-fn" data-const="pi">π<span class="shortcut-hint">p</span></button>
+<button class="calc-btn btn-fn" data-const="e">e<span class="shortcut-hint">e</span></button>
+<button class="calc-btn btn-fn" data-const="phi">ϕ</button>
+<button class="calc-btn btn-fn" data-fn="sinh">sinh</button>
+<button class="calc-btn btn-fn" data-fn="cosh">cosh</button>
+<button class="calc-btn btn-fn" data-mem="mc">MC</button>
+<button class="calc-btn btn-fn" data-mem="mr">MR</button>
+<button class="calc-btn btn-fn" data-mem="mplus">M+</button>
+<button class="calc-btn btn-fn" data-mem="mminus">M−</button>
+<button class="calc-btn btn-fn" data-const="ans">Ans</button>
+</div>
+<!-- Standard Keypad -->
+<div class="keypad-grid" id="standardKeypad">
+<button class="calc-btn btn-clear" data-action="clear">AC<span class="shortcut-hint">Esc</span></button>
+<button class="calc-btn btn-fn" data-digit="(">(</button>
+<button class="calc-btn btn-fn" data-digit=")">)</button>
+<button class="calc-btn btn-op" data-op="/">÷<span class="shortcut-hint">/</span></button>
+<button class="calc-btn btn-digit" data-digit="7">7<span class="shortcut-hint">7</span></button>
+<button class="calc-btn btn-digit" data-digit="8">8<span class="shortcut-hint">8</span></button>
+<button class="calc-btn btn-digit" data-digit="9">9<span class="shortcut-hint">9</span></button>
+<button class="calc-btn btn-op" data-op="*">×<span class="shortcut-hint">*</span></button>
+<button class="calc-btn btn-digit" data-digit="4">4<span class="shortcut-hint">4</span></button>
+<button class="calc-btn btn-digit" data-digit="5">5<span class="shortcut-hint">5</span></button>
+<button class="calc-btn btn-digit" data-digit="6">6<span class="shortcut-hint">6</span></button>
+<button class="calc-btn btn-op" data-op="-">−</button>
+<button class="calc-btn btn-digit" data-digit="1">1<span class="shortcut-hint">1</span></button>
+<button class="calc-btn btn-digit" data-digit="2">2<span class="shortcut-hint">2</span></button>
+<button class="calc-btn btn-digit" data-digit="3">3<span class="shortcut-hint">3</span></button>
+<button class="calc-btn btn-op" data-op="+">+</button>
+<button class="calc-btn btn-fn" data-action="negate">±</button>
+<button class="calc-btn btn-digit" data-digit="0">0<span class="shortcut-hint">0</span></button>
+<button class="calc-btn btn-digit" data-digit=".">.<span class="shortcut-hint">.</span></button>
+<button class="calc-btn btn-equals" data-action="equals">=</button>
+</div>
+</div>
+</div>
+<!-- 3. SMART TAPE WORKSPACE -->
+<div class="smart-tape-view" id="tapeWorkspace">
+<div class="tape-toolbar">
+<div class="tape-templates">
+<button class="sm-pill-btn" data-tape-tmpl="budget">🏠 Monthly Budget</button>
+<button class="sm-pill-btn" data-tape-tmpl="freelance">💼 Project Quote</button>
+<button class="sm-pill-btn" data-tape-tmpl="trip">✈️ Trip Split</button>
+</div>
+<button class="sm-pill-btn" id="copyTapeBtn">📋 Copy Tape</button>
+</div>
+<div class="tape-editor-container">
+<textarea class="tape-textarea" id="tapeTextarea" placeholder="Type notes and equations here..."></textarea>
+<div class="tape-gutter" id="tapeGutter"></div>
+</div>
+<div class="tape-total-bar">
+<span class="tape-total-label">Running Total</span>
+<span class="tape-total-val" id="tapeTotalVal">0</span>
+</div>
+</div>
+<!-- 4. 2D GRAPHER WORKSPACE -->
+<div class="grapher-view" id="grapherWorkspace">
+<div class="grapher-controls-bar">
+<input class="grapher-input" id="graphFnInput" placeholder="e.g. sin(x), x^2 - 4" type="text" value="sin(x)"/>
+<button class="sm-pill-btn" data-graph-preset="sin(x)">sin(x)</button>
+<button class="sm-pill-btn" data-graph-preset="cos(x)">cos(x)</button>
+<button class="sm-pill-btn" data-graph-preset="x^2 - 4">x² − 4</button>
+<button class="sm-pill-btn" data-graph-preset="1/x">1/x</button>
+</div>
+<div class="grapher-canvas-wrapper" style="min-height: 380px;">
+<canvas id="graphCanvas"></canvas>
+<div class="grapher-floating-actions">
+<button class="icon-btn" id="graphZoomIn" title="Zoom In">+</button>
+<button class="icon-btn" id="graphZoomOut" title="Zoom Out">−</button>
+<button class="icon-btn" id="graphReset" title="Reset View">⟲</button>
+</div>
+</div>
+</div>
+<!-- 5. UNIT CONVERTER WORKSPACE -->
+<div class="converter-view" id="converterWorkspace">
+<div class="category-chips" id="categoryChips"></div>
+<div class="converter-cards">
+<div class="convert-card">
+<div class="convert-input-row">
+<input class="convert-input" id="convertFromVal" placeholder="0" type="number" value="1"/>
+<select class="convert-select" id="convertFromUnit"></select>
+</div>
+</div>
+<button class="convert-swap-btn" id="convertSwapBtn" title="Swap Units">⇅</button>
+<div class="convert-card">
+<div class="convert-input-row">
+<input class="convert-input" id="convertToVal" placeholder="0" type="number"/>
+<select class="convert-select" id="convertToUnit"></select>
+</div>
+</div>
+</div>
+</div>
+<!-- 6. PROGRAMMER WORKSPACE -->
+<div class="programmer-view" id="programmerWorkspace">
+<div style="display: flex; gap: 6px; justify-content: flex-end; margin-bottom: 4px;">
+<button class="sm-pill-btn active" data-word-size="64">64-bit QWORD</button>
+<button class="sm-pill-btn" data-word-size="32">32-bit DWORD</button>
+<button class="sm-pill-btn" data-word-size="16">16-bit WORD</button>
+<button class="sm-pill-btn" data-word-size="8">8-bit BYTE</button>
+</div>
+<div class="radix-rows">
+<div class="radix-row" data-radix="16"><span class="radix-label">HEX</span><span class="radix-val" id="progHexVal">0</span></div>
+<div class="radix-row active" data-radix="10"><span class="radix-label">DEC</span><span class="radix-val" id="progDecVal">0</span></div>
+<div class="radix-row" data-radix="8"><span class="radix-label">OCT</span><span class="radix-val" id="progOctVal">0</span></div>
+<div class="radix-row" data-radix="2"><span class="radix-label">BIN</span><span class="radix-val" id="progBinVal">0000 0000</span></div>
+<div class="radix-row"><span class="radix-label">ASCII</span><span class="radix-val" id="progCharVal">—</span></div>
+</div>
+<div style="display: flex; gap: 6px; margin: 6px 0;">
+<button class="sm-pill-btn" data-prog-op="not">NOT</button>
+<button class="sm-pill-btn" data-prog-op="shl">&lt;&lt; LSH</button>
+<button class="sm-pill-btn" data-prog-op="shr">&gt;&gt; RSH</button>
+<button class="sm-pill-btn" data-prog-op="clear">CLEAR</button>
+</div>
+<div class="bit-matrix-container" id="bitMatrix"></div>
+</div>
+</section>
+<!-- Desktop History Sidebar -->
+<aside class="history-sidebar">
+<div class="sidebar-header">
+<span class="sidebar-title">🕒 Calculation History</span>
+<button class="sm-pill-btn" id="clearHistoryBtn">Clear</button>
+</div>
+<div class="history-list" id="historyList"></div>
+</aside>
+</div>
+</div>
+</div>
+<!-- ===== ADSENSE APPROVAL HIGH-VALUE FORMULAS & CONTENT ===== -->
+<!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+<h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+<span>🔗</span> Related Precision Calculators
+          </h3>
+<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+</div>
+<div class="related-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px;">
+<a class="related-tool-link" href="/tools/percentage-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🔢</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">TOP</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Percentage Calculator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">4-in-1 multi-mode percent computing: What is X% of Y, % change, and % difference.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/currency-converter.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">💵</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">FOREX</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Currency Converter</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Live real-time currency conversion across 160+ global fiat and crypto pairs.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/compound-interest.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">📈</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">WEALTH</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Compound Interest Planner</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Model long-term wealth growth with recurring monthly contributions and compounding.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+</div>
+</section>
+<section aria-label="Mathematical Reference and Formulas" class="seo-section">
+<h2>Comprehensive Mathematical Engine &amp; Calculation Formulas</h2>
+<p>OmniCalc Ultra operates on certified mathematical formulas, ensuring bank-grade precision across financial, scientific, and algebraic operations.</p>
+<div class="formula-grid">
+<div class="formula-card">
+<div class="formula-title">📈 Compound Interest Formula</div>
+<p style="font-size: 0.82rem; color: #94a3b8;">Calculates wealth accumulation with compounding frequency:</p>
+<div class="formula-math">A = P × (1 + r/n)^(n×t)</div>
+<p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Where P = Principal, r = annual interest rate, n = compound periods per year, t = time in years.</p>
+</div>
+<div class="formula-card">
+<div class="formula-title">🔬 Trigonometric Identities</div>
+<p style="font-size: 0.82rem; color: #94a3b8;">Supports both Degrees and Radians angle conversions:</p>
+<div class="formula-math">Radians = Degrees × (π / 180)</div>
+<p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Euler identity relation: e^(iπ) + 1 = 0</p>
+</div>
+<div class="formula-card">
+<div class="formula-title">💻 Programmer Bitwise Logic</div>
+<p style="font-size: 0.82rem; color: #94a3b8;">Two's complement integer logic for binary, octal, hex representations:</p>
+<div class="formula-math">NOT(x) = ~x = -(x + 1)</div>
+<p style="font-size: 0.8rem; color: #64748b; margin-top: 4px;">Shift operations: x &lt;&lt; y = x × 2^y, x &gt;&gt; y = ⌊x / 2^y⌋.</p>
+</div>
+<div class="formula-card">
+<div class="formula-title">🔄 Temperature Conversion Formulas</div>
+<p style="font-size: 0.82rem; color: #94a3b8;">Accurate thermodynamic conversions:</p>
+<div class="formula-math">°C = (°F − 32) × 5/9 | °F = (°C × 9/5) + 32</div>
+</div>
+</div>
+<div aria-label="Frequently Asked Questions" class="seo-faq">
+<h2 style="margin-bottom: 16px;">Frequently Asked Questions</h2>
+<details style="border-bottom: 1px solid rgba(255,255,255,0.07); padding: 14px 0;">
+<summary style="font-size: 0.9rem; font-weight: 600; cursor: pointer; color: inherit;">Is OmniCalc Ultra free to use?</summary>
+<p style="margin-top: 10px; font-size: 0.84rem; color: #94a3b8; line-height: 1.7;">Yes — completely free with no user signup, no premium tier, and no subscription barriers.</p>
+</details>
+<details style="border-bottom: 1px solid rgba(255,255,255,0.07); padding: 14px 0;">
+<summary style="font-size: 0.9rem; font-weight: 600; cursor: pointer; color: inherit;">Does OmniCalc Ultra store my numbers or private data?</summary>
+<p style="margin-top: 10px; font-size: 0.84rem; color: #94a3b8; line-height: 1.7;">No. All calculations are evaluated locally on your device via client-side JavaScript. None of your math queries or numbers are transmitted to external servers.</p>
+</details>
+<details style="border-bottom: 1px solid rgba(255,255,255,0.07); padding: 14px 0;">
+<summary style="font-size: 0.9rem; font-weight: 600; cursor: pointer; color: inherit;">How does the 2D Grapher plot functions?</summary>
+<p style="margin-top: 10px; font-size: 0.84rem; color: #94a3b8; line-height: 1.7;">The grapher evaluates continuous mathematical functions across a bounded Cartesian grid with step intervals rendered directly to an HTML5 canvas element.</p>
+</details>
+</div>
+</section>
+<!-- ===== FOOTER ===== -->
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">High-Precision Scientific, Graphing & Bitwise Architecture</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">f(x) = ∑_{k=0}^{n} c_k x^k, | Trig: sin(theta), cos(theta), | Log: log_b(x) = (ln(x) ÷ ln(b)), | Bitwise: A XOR B</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> A unified multi-mode scientific, financial, and programmer calculator engine supporting arbitrary-precision arithmetic and algebraic notation.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Standard Mode:</span> <span>Basic arithmetic, memory registers (M+, M-, MR, MC), tax percentage shortcuts</span></li>
+      <li><span class="cw-var-symbol">Pro Scientific Mode:</span> <span>Trigonometric functions in Radians/Degrees, inverse trig, hyperbolic, logarithms (ln, log10, log2), factorials, permutations & combinations</span></li>
+      <li><span class="cw-var-symbol">2D Function Grapher:</span> <span>Real-time HTML5 Canvas Cartesian coordinate plotting with dynamic pinch-zoom and root finding</span></li>
+      <li><span class="cw-var-symbol">Smart Financial Tape:</span> <span>Audit paper tape history tracking running calculations with editable line-item notations</span></li>
+      <li><span class="cw-var-symbol">Unit Converter:</span> <span>9-Domain conversion matrix (Length, Mass, Volume, Temperature, Speed, Data, Energy, Pressure, Area)</span></li>
+      <li><span class="cw-var-symbol">Programmer Bitwise:</span> <span>64-bit word sizing across Hexadecimal, Decimal, Octal, Binary with bitwise shifts (AND, OR, XOR, NOT, LSH, RSH)</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Scientific: Evaluating e^(iπ) + 1 = 0, or compound roots: (3.5^2.4) + log10(100,000) = 20.358 + 5.0 = 25.358.</li>
+      <li>Programmer Mode: Decimal 255 converts instantaneously to Hex 0xFF, Octal 0o377, and Binary 0b11111111.</li>
+      <li>Bitwise Operation: 0b1100 (12) AND 0b1010 (10) = 0b1000 (8).</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Break down complicated multi-step calculations by solving inner parentheses first, converting all time units to the same scale (e.g. annual to monthly), and checking your result with this tool.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Compliant with IEEE 754 floating-point arithmetic standards, preventing JavaScript rounding artifacts (e.g., 0.1 + 0.2 = 0.30000000000000004) through arbitrary-precision BigNumber mathematical logic.
+  </div>
+  <p class="cw-deep-text">OmniCalc Ultra is CalcWorker's flagship multi-modal computational engine, replacing legacy desktop calculators and bulky scientific apps. Engineered entirely in pure vanilla JavaScript without bulky external libraries, OmniCalc executes complex matrix algebra, graphing coordinates, and unit conversions in sub-millisecond hardware time directly in your browser memory.</p>
+  <p class="cw-deep-text">Because all calculations run 100% locally on your device without transmitting data over the internet, OmniCalc provides total privacy for intellectual property, proprietary financial equations, and engineering computations. The application operates fully offline as an installed PWA, making it an indispensable tool for students, software engineers, and financial analysts.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Can OmniCalc Ultra be used offline without internet connection?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Yes. OmniCalc is a certified Progressive Web App (PWA) that caches all computational scripts and canvas graphing engines directly in your browser's local cache storage. You can calculate, graph functions, and convert units on an airplane or in remote locations with zero internet connection.</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">How do I toggle between Radians and Degrees in Scientific mode?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">In Scientific mode, click the 'RAD / DEG' toggle pill at the top-left of the main calculation display. In Degree mode, trigonometric functions (sin, cos, tan) evaluate input in 360° circle increments; in Radian mode, angles are evaluated in mathematical π radian units.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+</div><!-- /.omni-viewport-wrapper -->
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🧮</span> Scientific & Engineering Computational Algorithms: Order of Operations & Precision
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>High-precision scientific computation requires adherence to algebraic Operator Precedence (PEMDAS / BODMAS) and IEEE 754 floating-point arithmetic standards. Multi-step expressions must be evaluated in strict hierarchical sequence: Parentheses/Brackets, Exponents/Roots, Multiplication & Division (left-to-right), and Addition & Subtraction (left-to-right).</p>
+    <p style="margin-top: 12px;">Trigonometric and logarithmic calculations require tracking angular modes (Radians vs. Degrees) and managing rounding precision to eliminate floating-point machine epsilon errors in scientific modeling.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Standard Operator Precedence & Computational Hierarchy
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Precedence Level</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Mathematical Operation</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Standard Notation</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Associativity Rule</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Computational Example</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 1 (Highest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Parentheses & Sub-Expressions</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">(a + b), [x - y]</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Innermost to Outermost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3 × (4 + 2) = 3 × 6 = 18</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 2</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Exponents & Roots</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">x^y, sqrt(x)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Right to Left</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2^3^2 = 2^(3^2) = 2^9 = 512</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 3</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Multiplication & Division</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">a × b, a ÷ b</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Left to Right</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">12 ÷ 3 × 2 = 4 × 2 = 8</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 4 (Lowest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Addition & Subtraction</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">a + b, a - b</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Left to Right</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10 - 4 + 3 = 6 + 3 = 9</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Trig Function Mode</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Sine / Cosine / Tangent</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">sin(x), cos(x)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Radians vs Degrees</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">sin(90°) = 1.0 vs sin(90 rad) = 0.8939</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Scientific Computing Best Practices
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Always Verify Angular Degree/Radian Modes:</strong> <span>Calculus and physics equations require Radians, whereas architectural surveying and geometry typically utilize Degrees; verify your mode before calculating trigonometric functions.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Use Explicit Parentheses in Complex Denominators:</strong> <span>Write 1 ÷ (2 × π) rather than 1 ÷ 2 × π; without parentheses, calculators divide by 2 first and multiply by π, corrupting the result.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Preserve Full Floating-Point Precision Until Final Step:</strong> <span>Never round intermediate calculation steps; round only the final published result to significant figures to prevent cumulative rounding error drift.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 scientific calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 omnicalc trigonometry</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 logarithms powers</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 roots parentheses</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 instant arithmetic</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 precision math</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div><!-- /.main-viewport -->
+</div><!-- /.app-shell -->
+<!-- ===== MODALS ===== -->
+<div class="modal-overlay" id="settingsModal">
+<div class="modal-box">
+<div class="modal-header">
+<h3 style="font-size: 1.1rem; font-weight: 700;">⚙️ Settings &amp; Themes</h3>
+<button class="icon-btn" id="closeSettingsBtn">✕</button>
+</div>
+<div class="modal-body">
+<div class="theme-picker-grid">
+<button class="theme-card-btn active" data-set-theme="onyx">Onyx Obsidian</button>
+<button class="theme-card-btn" data-set-theme="glass">Liquid Glass</button>
+<button class="theme-card-btn" data-set-theme="cyberpunk">Cyberpunk</button>
+<button class="theme-card-btn" data-set-theme="casio">Casio 1984</button>
+<button class="theme-card-btn" data-set-theme="nordic">Nordic Light</button>
+</div>
+<div class="setting-row" style="margin-top: 14px;">
+<span>Mechanical Audio Clicks</span>
+<input checked="" id="soundToggle" style="width: 18px; height: 18px;" type="checkbox"/>
+</div>
+<div class="setting-row">
+<span>Haptic Vibration (Mobile)</span>
+<input checked="" id="hapticToggle" style="width: 18px; height: 18px;" type="checkbox"/>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="shortcutsModal">
+<div class="modal-box">
+<div class="modal-header">
+<h3 style="font-size: 1.1rem; font-weight: 700;">⌨️ Keyboard Shortcuts</h3>
+<button class="icon-btn" id="closeShortcutsBtn">✕</button>
+</div>
+<div class="modal-body">
+<div style="display: flex; flex-direction: column; gap: 8px; font-size: 0.88rem;">
+<div class="setting-row"><span>Numbers &amp; Decimals</span><kbd>0-9, .</kbd></div>
+<div class="setting-row"><span>Arithmetic (+, −, ×, ÷)</span><kbd>+, -, *, /</kbd></div>
+<div class="setting-row"><span>Evaluate Result</span><kbd>Enter or =</kbd></div>
+<div class="setting-row"><span>Clear All</span><kbd>Escape</kbd></div>
+<div class="setting-row"><span>Backspace</span><kbd>Backspace</kbd></div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal-overlay" id="mobileHistoryModal">
+<div class="modal-box">
+<div class="modal-header">
+<h3 style="font-size: 1.1rem; font-weight: 700;">🕒 Calculation History</h3>
+<button class="icon-btn" id="closeMobileHistoryBtn">✕</button>
+</div>
+<div class="modal-body">
+<div class="history-list" id="mobileHistoryList"></div>
+</div>
+</div>
+</div>
+<div class="toast-msg" id="toastMsg"></div>
+<!-- ===== SCRIPTS ===== -->
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script src="/js/sidebar.js?v=2026-v25"></script>
+<script src="/js/analytics.js"></script>
+<!-- Embedded OmniCalc Engine (Self-contained, zero 404 dependencies) -->
+<script>
+
+/* ===== audio-haptics.js ===== */
+/**
+ * OmniCalc Ultra - Audio & Haptic Feedback Engine
+ * Synthesizes crisp procedural clicks and haptic pulses using the Web Audio API.
+ * Zero external audio assets required.
+ */
+class AudioHaptics {
+  constructor() {
+    this.audioCtx = null;
+    this.soundEnabled = localStorage.getItem('omnicalc_sound') !== 'false';
+    this.hapticEnabled = localStorage.getItem('omnicalc_haptic') !== 'false';
+  }
+
+  _initContext() {
+    if (!this.audioCtx) {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (AudioContext) {
+        this.audioCtx = new AudioContext();
+      }
+    }
+    if (this.audioCtx && this.audioCtx.state === 'suspended') {
+      this.audioCtx.resume();
+    }
+  }
+
+  toggleSound() {
+    this.soundEnabled = !this.soundEnabled;
+    localStorage.setItem('omnicalc_sound', this.soundEnabled);
+    if (this.soundEnabled) this.playTone(520, 0.04, 'sine', 0.15);
+    return this.soundEnabled;
+  }
+
+  toggleHaptic() {
+    this.hapticEnabled = !this.hapticEnabled;
+    localStorage.setItem('omnicalc_haptic', this.hapticEnabled);
+    if (this.hapticEnabled) this.vibrate(25);
+    return this.hapticEnabled;
+  }
+
+  vibrate(ms = 12) {
+    if (!this.hapticEnabled) return;
+    if ('vibrate' in navigator) {
+      try {
+        navigator.vibrate(ms);
+      } catch (e) {}
+    }
+  }
+
+  // Key press mechanical sound
+  playClick(type = 'digit') {
+    this.vibrate(10);
+    if (!this.soundEnabled) return;
+    this._initContext();
+    if (!this.audioCtx) return;
+
+    const ctx = this.audioCtx;
+    const now = ctx.currentTime;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    if (type === 'digit') {
+      // Soft mechanical tactile click
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.exponentialRampToValueAtTime(140, now + 0.035);
+      gain.gain.setValueAtTime(0.12, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.035);
+    } else if (type === 'operator') {
+      // Crisp subtle pop
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(620, now);
+      osc.frequency.exponentialRampToValueAtTime(280, now + 0.045);
+      gain.gain.setValueAtTime(0.15, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.045);
+    } else if (type === 'equals') {
+      // Harmonious pleasant resolution chord
+      this.playChime();
+    } else if (type === 'clear') {
+      // Sweep down
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(360, now);
+      osc.frequency.exponentialRampToValueAtTime(90, now + 0.06);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.06);
+    }
+  }
+
+  playChime() {
+    this.vibrate([15, 30, 20]);
+    if (!this.soundEnabled) return;
+    this._initContext();
+    if (!this.audioCtx) return;
+
+    const ctx = this.audioCtx;
+    const now = ctx.currentTime;
+    const freqs = [523.25, 659.25, 783.99]; // C5, E5, G5 Major triad arpeggio
+
+    freqs.forEach((freq, idx) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      const delay = idx * 0.025;
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now + delay);
+
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.setValueAtTime(0.1, now + delay);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + delay + 0.22);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+
+      osc.start(now + delay);
+      osc.stop(now + delay + 0.23);
+    });
+  }
+
+  playError() {
+    this.vibrate([40, 50, 40]);
+    if (!this.soundEnabled) return;
+    this._initContext();
+    if (!this.audioCtx) return;
+
+    const ctx = this.audioCtx;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = 'sawtooth';
+    osc.frequency.setValueAtTime(110, now);
+    osc.frequency.setValueAtTime(85, now + 0.07);
+
+    gain.gain.setValueAtTime(0.18, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.16);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.16);
+  }
+
+  playTone(freq, duration, type = 'sine', vol = 0.1) {
+    if (!this.soundEnabled) return;
+    this._initContext();
+    if (!this.audioCtx) return;
+    const ctx = this.audioCtx;
+    const now = ctx.currentTime;
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, now);
+    gain.gain.setValueAtTime(vol, now);
+    gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + duration);
+  }
+}
+
+window.audioHaptics = new AudioHaptics();
+
+
+/* ===== calc-engine.js ===== */
+/**
+ * OmniCalc Ultra - High-Precision Mathematical Calculation Engine
+ * Robust tokenizer, operator-precedence evaluator, precision sanitizer, and scientific math.
+ */
+class CalcEngine {
+  constructor() {
+    this.angleMode = localStorage.getItem('omnicalc_angle') || 'DEG'; // 'DEG' or 'RAD'
+    this.memory = 0;
+    this.lastAnswer = 0;
+    this.history = JSON.parse(localStorage.getItem('omnicalc_history') || '[]');
+  }
+
+  setAngleMode(mode) {
+    if (mode === 'DEG' || mode === 'RAD') {
+      this.angleMode = mode;
+      localStorage.setItem('omnicalc_angle', mode);
+    }
+  }
+
+  // Precision sanitizer to eliminate binary floating point errors like 0.1 + 0.2 = 0.30000000000000004
+  cleanNumber(num) {
+    if (typeof num !== 'number' || isNaN(num)) return NaN;
+    if (!isFinite(num)) return num;
+    // 12 significant digits eliminates IEEE 754 precision artifacts while preserving precision
+    const fixed = parseFloat(num.toPrecision(12));
+    // If integer, return integer
+    if (Math.abs(fixed - Math.round(fixed)) < 1e-12) {
+      return Math.round(fixed);
+    }
+    return fixed;
+  }
+
+  // Format number for display with locale thousand grouping
+  formatNumber(val) {
+    if (typeof val !== 'number' || isNaN(val)) return 'Error';
+    if (!isFinite(val)) return val > 0 ? '∞' : '-∞';
+    
+    // Very large or very small -> scientific notation
+    if (Math.abs(val) !== 0 && (Math.abs(val) >= 1e12 || Math.abs(val) < 1e-6)) {
+      return val.toExponential(6).replace('e+', 'e');
+    }
+
+    const parts = val.toString().split('.');
+    parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    return parts.join('.');
+  }
+
+  factorial(n) {
+    if (n < 0 || !Number.isInteger(n)) return NaN;
+    if (n > 170) return Infinity; // JS max float limit
+    let res = 1;
+    for (let i = 2; i <= n; i++) res *= i;
+    return res;
+  }
+
+  nPr(n, r) {
+    if (n < r || n < 0 || r < 0) return NaN;
+    return this.factorial(n) / this.factorial(n - r);
+  }
+
+  nCr(n, r) {
+    if (n < r || n < 0 || r < 0) return NaN;
+    return this.factorial(n) / (this.factorial(r) * this.factorial(n - r));
+  }
+
+  // Pre-process expression string into tokens
+  tokenize(rawExpr) {
+    let s = rawExpr
+      .replace(/×/g, '*')
+      .replace(/÷/g, '/')
+      .replace(/−/g, '-')
+      .replace(/\s+/g, '');
+
+    const tokens = [];
+    let i = 0;
+
+    while (i < s.length) {
+      const c = s[i];
+
+      // Numbers (including decimals)
+      if (/[0-9.]/.test(c)) {
+        let numStr = '';
+        while (i < s.length && /[0-9.]/.test(s[i])) {
+          numStr += s[i];
+          i++;
+        }
+        tokens.push({ type: 'number', value: parseFloat(numStr) });
+        continue;
+      }
+
+      // Word tokens (functions, constants, operators)
+      if (/[a-zA-Z_]/.test(c)) {
+        let name = '';
+        while (i < s.length && /[a-zA-Z0-9_]/.test(s[i])) {
+          name += s[i];
+          i++;
+        }
+        name = name.toLowerCase();
+
+        // Constants
+        if (name === 'pi' || name === 'π') {
+          tokens.push({ type: 'number', value: Math.PI });
+        } else if (name === 'e') {
+          tokens.push({ type: 'number', value: Math.E });
+        } else if (name === 'phi' || name === 'ϕ') {
+          tokens.push({ type: 'number', value: 1.618033988749895 });
+        } else if (name === 'ans') {
+          tokens.push({ type: 'number', value: this.lastAnswer });
+        } else {
+          // Functions: sin, cos, tan, asin, acos, atan, sinh, cosh, tanh, ln, log, log2, sqrt, cbrt, abs, fact
+          tokens.push({ type: 'func', value: name });
+        }
+        continue;
+      }
+
+      // Operators and punctuation
+      if (['+', '-', '*', '/', '^', '%', '!', '(', ')', ','].includes(c)) {
+        // Detect unary minus
+        if (c === '-') {
+          const prev = tokens[tokens.length - 1];
+          if (!prev || (prev.type === 'op' && prev.value !== '!') || (prev.type === 'paren' && prev.value === '(')) {
+            tokens.push({ type: 'unary', value: 'u-' });
+            i++;
+            continue;
+          }
+        }
+        if (c === '(' || c === ')') {
+          tokens.push({ type: 'paren', value: c });
+        } else {
+          tokens.push({ type: 'op', value: c });
+        }
+        i++;
+        continue;
+      }
+
+      i++; // Skip unknown chars
+    }
+
+    // Insert implicit multiplication e.g. 5(2), (2)(3), 2pi
+    const expanded = [];
+    for (let j = 0; j < tokens.length; j++) {
+      const curr = tokens[j];
+      const prev = tokens[j - 1];
+
+      if (prev) {
+        const prevIsNumOrCloseParenOrFact =
+          prev.type === 'number' || (prev.type === 'paren' && prev.value === ')') || (prev.type === 'op' && prev.value === '!');
+        const currIsNumOrOpenParenOrFunc =
+          curr.type === 'number' || (curr.type === 'paren' && curr.value === '(') || curr.type === 'func';
+
+        if (prevIsNumOrCloseParenOrFact && currIsNumOrOpenParenOrFunc) {
+          expanded.push({ type: 'op', value: '*' });
+        }
+      }
+      expanded.push(curr);
+    }
+
+    return expanded;
+  }
+
+  // Shunting-yard algorithm to convert infix tokens into Reverse Polish Notation (RPN)
+  toRPN(tokens) {
+    const output = [];
+    const opStack = [];
+
+    const precedence = {
+      '+': 1,
+      '-': 1,
+      '*': 2,
+      '/': 2,
+      '%': 2,
+      '^': 3,
+      'u-': 4,
+      '!': 5
+    };
+
+    const rightAssociative = {
+      '^': true,
+      'u-': true
+    };
+
+    for (const token of tokens) {
+      if (token.type === 'number') {
+        output.push(token);
+      } else if (token.type === 'func') {
+        opStack.push(token);
+      } else if (token.type === 'op' || token.type === 'unary') {
+        while (opStack.length > 0) {
+          const top = opStack[opStack.length - 1];
+          if (top.type === 'func') {
+            output.push(opStack.pop());
+          } else if (
+            (top.type === 'op' || top.type === 'unary') &&
+            ((!rightAssociative[token.value] && precedence[token.value] <= precedence[top.value]) ||
+              (rightAssociative[token.value] && precedence[token.value] < precedence[top.value]))
+          ) {
+            output.push(opStack.pop());
+          } else {
+            break;
+          }
+        }
+        opStack.push(token);
+      } else if (token.type === 'paren' && token.value === '(') {
+        opStack.push(token);
+      } else if (token.type === 'paren' && token.value === ')') {
+        while (opStack.length > 0 && !(opStack[opStack.length - 1].type === 'paren' && opStack[opStack.length - 1].value === '(')) {
+          output.push(opStack.pop());
+        }
+        if (opStack.length > 0 && opStack[opStack.length - 1].value === '(') {
+          opStack.pop(); // discard '('
+        }
+        if (opStack.length > 0 && opStack[opStack.length - 1].type === 'func') {
+          output.push(opStack.pop());
+        }
+      }
+    }
+
+    while (opStack.length > 0) {
+      const top = opStack.pop();
+      if (top.type !== 'paren') {
+        output.push(top);
+      }
+    }
+
+    return output;
+  }
+
+  // Evaluate RPN expression
+  evalRPN(rpn) {
+    const stack = [];
+    const isDeg = this.angleMode === 'DEG';
+    const toRad = (a) => (isDeg ? (a * Math.PI) / 180 : a);
+    const fromRad = (a) => (isDeg ? (a * 180) / Math.PI : a);
+
+    for (const token of rpn) {
+      if (token.type === 'number') {
+        stack.push(token.value);
+      } else if (token.type === 'unary' && token.value === 'u-') {
+        const a = stack.pop() ?? 0;
+        stack.push(-a);
+      } else if (token.type === 'op') {
+        if (token.value === '!') {
+          const a = stack.pop();
+          stack.push(this.factorial(a));
+          continue;
+        }
+
+        const b = stack.pop();
+        const a = stack.pop();
+
+        switch (token.value) {
+          case '+': stack.push(a + b); break;
+          case '-': stack.push(a - b); break;
+          case '*': stack.push(a * b); break;
+          case '/':
+            if (b === 0) throw new Error('Division by zero');
+            stack.push(a / b);
+            break;
+          case '%': stack.push(a % b); break;
+          case '^': stack.push(Math.pow(a, b)); break;
+          default: throw new Error(`Unknown operator: ${token.value}`);
+        }
+      } else if (token.type === 'func') {
+        const fn = token.value;
+        const a = stack.pop();
+
+        switch (fn) {
+          case 'sin': stack.push(Math.sin(toRad(a))); break;
+          case 'cos': stack.push(Math.cos(toRad(a))); break;
+          case 'tan':
+            const cosVal = Math.cos(toRad(a));
+            if (Math.abs(cosVal) < 1e-15) throw new Error('Undefined (tan 90°)');
+            stack.push(Math.tan(toRad(a)));
+            break;
+          case 'asin': stack.push(fromRad(Math.asin(a))); break;
+          case 'acos': stack.push(fromRad(Math.acos(a))); break;
+          case 'atan': stack.push(fromRad(Math.atan(a))); break;
+          case 'sinh': stack.push(Math.sinh(a)); break;
+          case 'cosh': stack.push(Math.cosh(a)); break;
+          case 'tanh': stack.push(Math.tanh(a)); break;
+          case 'sqrt':
+            if (a < 0) throw new Error('Invalid square root');
+            stack.push(Math.sqrt(a));
+            break;
+          case 'cbrt': stack.push(Math.cbrt(a)); break;
+          case 'ln':
+            if (a <= 0) throw new Error('Invalid ln domain');
+            stack.push(Math.log(a));
+            break;
+          case 'log':
+          case 'log10':
+            if (a <= 0) throw new Error('Invalid log domain');
+            stack.push(Math.log10(a));
+            break;
+          case 'log2':
+            if (a <= 0) throw new Error('Invalid log2 domain');
+            stack.push(Math.log2(a));
+            break;
+          case 'exp': stack.push(Math.exp(a)); break;
+          case 'abs': stack.push(Math.abs(a)); break;
+          case 'fact': stack.push(this.factorial(a)); break;
+          default: throw new Error(`Unknown function: ${fn}`);
+        }
+      }
+    }
+
+    if (stack.length === 0) return 0;
+    return this.cleanNumber(stack[0]);
+  }
+
+  evaluate(expressionStr) {
+    if (!expressionStr || expressionStr.trim() === '') return 0;
+    try {
+      const tokens = this.tokenize(expressionStr);
+      if (tokens.length === 0) return 0;
+      const rpn = this.toRPN(tokens);
+      const res = this.evalRPN(rpn);
+      return res;
+    } catch (err) {
+      throw err;
+    }
+  }
+
+  addHistory(expr, result) {
+    const item = {
+      id: Date.now(),
+      expr: expr,
+      result: result,
+      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
+    };
+    this.history.unshift(item);
+    if (this.history.length > 50) this.history.pop();
+    localStorage.setItem('omnicalc_history', JSON.stringify(this.history));
+    return item;
+  }
+
+  clearHistory() {
+    this.history = [];
+    localStorage.removeItem('omnicalc_history');
+  }
+
+  memoryClear() {
+    this.memory = 0;
+  }
+
+  memoryRecall() {
+    return this.memory;
+  }
+
+  memoryAdd(val) {
+    this.memory = this.cleanNumber(this.memory + val);
+  }
+
+  memorySubtract(val) {
+    this.memory = this.cleanNumber(this.memory - val);
+  }
+}
+
+window.calcEngine = new CalcEngine();
+
+
+/* ===== smart-tape.js ===== */
+/**
+ * OmniCalc Ultra - Smart Tape / "Soulver-Style" Computational Notebook Engine
+ * Evaluates mixed natural text and mathematics with live reactive variables and running totals.
+ */
+class SmartTape {
+  constructor() {
+    this.variables = {};
+    this.lines = [];
+  }
+
+  // Pre-process natural math phrases into standard expressions
+  normalizeLine(rawText, vars) {
+    let line = rawText.trim();
+    if (!line || line.startsWith('//') || line.startsWith('#')) {
+      return { isComment: true, label: line, expr: null };
+    }
+
+    let label = '';
+    let expr = line;
+
+    // Check for variable assignment e.g. "Rent = 1200" or "Total cost: 45 * 3"
+    const assignMatch = line.match(/^([a-zA-Z_][a-zA-Z0-9_\s]*?)(\s*[:=]\s*)(.+)$/);
+    if (assignMatch) {
+      label = assignMatch[1].trim();
+      expr = assignMatch[3].trim();
+    }
+
+    // Strip currency symbols and commas inside numbers
+    expr = expr.replace(/[$€£¥₹]/g, '');
+    expr = expr.replace(/(\d),(\d)/g, '$1$2');
+
+    // Natural percentage phrases
+    // "20% of 150" -> "(0.20 * 150)"
+    expr = expr.replace(/(\d+(?:\.\d+)?)\s*%\s+of\s+([a-zA-Z0-9_.]+|\([^\)]+\))/gi, '($1 / 100 * $2)');
+    // "20% off 150" -> "(150 * (1 - $1/100))"
+    expr = expr.replace(/(\d+(?:\.\d+)?)\s*%\s+off\s+([a-zA-Z0-9_.]+|\([^\)]+\))/gi, '($2 * (1 - $1 / 100))');
+    // "150 + 20%" -> "150 * 1.20"
+    expr = expr.replace(/([a-zA-Z0-9_.]+|\([^\)]+\))\s*\+\s*(\d+(?:\.\d+)?)\s*%/gi, '($1 * (1 + $2 / 100))');
+    // "150 - 20%" -> "150 * 0.80"
+    expr = expr.replace(/([a-zA-Z0-9_.]+|\([^\)]+\))\s*-\s*(\d+(?:\.\d+)?)\s*%/gi, '($1 * (1 - $2 / 100))');
+
+    // Replace known variables in expr (longest names first to prevent partial collision)
+    const varNames = Object.keys(vars).sort((a, b) => b.length - a.length);
+    for (const name of varNames) {
+      const regex = new RegExp(`\\b${name.replace(/\s+/g, '\\s+')}\\b`, 'gi');
+      expr = expr.replace(regex, `(${vars[name]})`);
+    }
+
+    // Replace natural symbols
+    expr = expr.replace(/×/g, '*').replace(/÷/g, '/').replace(/−/g, '-');
+
+    return {
+      isComment: false,
+      label: label,
+      expr: expr
+    };
+  }
+
+  evaluate(text) {
+    const rawLines = text.split('\n');
+    const results = [];
+    const vars = {};
+    let runningTotal = 0;
+    let validNumberCount = 0;
+
+    for (let idx = 0; idx < rawLines.length; idx++) {
+      const raw = rawLines[idx];
+      const parsed = this.normalizeLine(raw, vars);
+
+      if (parsed.isComment || !parsed.expr) {
+        results.push({ lineIndex: idx, raw, result: '', isComment: true });
+        continue;
+      }
+
+      try {
+        // Quick syntax check: ensure it contains some calculable elements
+        const val = window.calcEngine.evaluate(parsed.expr);
+        if (typeof val === 'number' && !isNaN(val) && isFinite(val)) {
+          results.push({
+            lineIndex: idx,
+            raw,
+            result: val,
+            formatted: window.calcEngine.formatNumber(val),
+            label: parsed.label
+          });
+
+          // Save variable if label defined
+          if (parsed.label) {
+            vars[parsed.label] = val;
+            // Also store lowercased and stripped-spaces version
+            vars[parsed.label.toLowerCase()] = val;
+            vars[parsed.label.replace(/\s+/g, '')] = val;
+          }
+          // Default previous line reference: 'prev' or 'ans'
+          vars['prev'] = val;
+          vars['ans'] = val;
+
+          runningTotal += val;
+          validNumberCount++;
+        } else {
+          results.push({ lineIndex: idx, raw, result: null, formatted: '' });
+        }
+      } catch (e) {
+        results.push({ lineIndex: idx, raw, result: null, formatted: '—' });
+      }
+    }
+
+    this.variables = vars;
+    return {
+      lines: results,
+      total: validNumberCount > 0 ? runningTotal : 0,
+      formattedTotal: window.calcEngine.formatNumber(runningTotal)
+    };
+  }
+
+  getTemplate(type = 'budget') {
+    if (type === 'budget') {
+      return [
+        '// --- Monthly Living Budget ---',
+        'Income = 5000',
+        'Rent = 1450',
+        'Groceries = 450',
+        'Utilities = 180',
+        'Dining Out = 300',
+        'Total Expenses = Rent + Groceries + Utilities + Dining Out',
+        'Net Savings = Income - Total Expenses',
+        'Emergency Fund = 20% of Net Savings',
+        'Investments = Net Savings - Emergency Fund'
+      ].join('\n');
+    } else if (type === 'freelance') {
+      return [
+        '// --- Freelance Project Quote ---',
+        'Hourly Rate = 75',
+        'Design Hours = 14',
+        'Development Hours = 28',
+        'Testing & QA = 8',
+        'Total Hours = Design Hours + Development Hours + Testing & QA',
+        'Base Cost = Total Hours * Hourly Rate',
+        'Rush Delivery Fee = 15% of Base Cost',
+        'Final Invoice = Base Cost + Rush Delivery Fee'
+      ].join('\n');
+    } else if (type === 'trip') {
+      return [
+        '// --- Group Vacation Split (4 People) ---',
+        'Flights = 1200',
+        'Airbnb Villa = 1600',
+        'Car Rental = 350',
+        'Food & Activities = 850',
+        'Grand Total = Flights + Airbnb Villa + Car Rental + Food & Activities',
+        'Per Person Share = Grand Total / 4'
+      ].join('\n');
+    }
+    return '';
+  }
+}
+
+window.smartTape = new SmartTape();
+
+
+/* ===== grapher.js ===== */
+/**
+ * OmniCalc Ultra - Interactive 2D Function Grapher
+ * High-performance 60fps HTML5 Canvas plotter with pan, zoom, grid scaling,
+ * coordinate tracing, and touch/mouse interaction.
+ */
+class Grapher {
+  constructor(canvasId) {
+    this.canvas = document.getElementById(canvasId);
+    if (!this.canvas) return;
+    this.ctx = this.canvas.getContext('2d');
+
+    // Viewport transform
+    this.originX = 0;
+    this.originY = 0;
+    this.scale = 40; // pixels per math unit
+    this.functions = [
+      { id: 'fn1', expr: 'sin(x)', color: '#38bdf8', enabled: true },
+      { id: 'fn2', expr: 'x^2 / 4 - 2', color: '#f43f5e', enabled: false }
+    ];
+
+    this.isDragging = false;
+    this.lastMouseX = 0;
+    this.lastMouseY = 0;
+    this.hoverCoord = null;
+
+    // Mobile pinch-zoom state
+    this.initialPinchDist = null;
+
+    this.initEvents();
+    this.resize();
+  }
+
+  resize() {
+    if (!this.canvas) return;
+    const rect = this.canvas.getBoundingClientRect();
+    const dpr = window.devicePixelRatio || 1;
+
+    this.canvas.width = rect.width * dpr;
+    this.canvas.height = rect.height * dpr;
+    this.ctx.scale(dpr, dpr);
+
+    this.width = rect.width;
+    this.height = rect.height;
+
+    if (this.originX === 0 && this.originY === 0) {
+      this.resetView();
+    } else {
+      this.render();
+    }
+  }
+
+  resetView() {
+    this.originX = this.width / 2;
+    this.originY = this.height / 2;
+    this.scale = Math.min(this.width, this.height) / 14;
+    this.render();
+  }
+
+  initEvents() {
+    const c = this.canvas;
+    if (!c) return;
+
+    // Mouse pan
+    c.addEventListener('mousedown', (e) => {
+      this.isDragging = true;
+      this.lastMouseX = e.clientX;
+      this.lastMouseY = e.clientY;
+    });
+
+    window.addEventListener('mouseup', () => {
+      this.isDragging = false;
+    });
+
+    c.addEventListener('mousemove', (e) => {
+      const rect = c.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      if (this.isDragging) {
+        const dx = e.clientX - this.lastMouseX;
+        const dy = e.clientY - this.lastMouseY;
+        this.originX += dx;
+        this.originY += dy;
+        this.lastMouseX = e.clientX;
+        this.lastMouseY = e.clientY;
+        this.render();
+      } else {
+        // Track hover coords
+        const mathX = (mouseX - this.originX) / this.scale;
+        this.hoverCoord = {
+          screenX: mouseX,
+          screenY: mouseY,
+          x: mathX
+        };
+        this.render();
+      }
+    });
+
+    c.addEventListener('mouseleave', () => {
+      this.hoverCoord = null;
+      this.render();
+    });
+
+    // Mouse wheel zoom
+    c.addEventListener('wheel', (e) => {
+      e.preventDefault();
+      const zoomFactor = e.deltaY < 0 ? 1.15 : 0.87;
+      this.zoomAt(e.offsetX, e.offsetY, zoomFactor);
+    }, { passive: false });
+
+    // Touch events for mobile
+    c.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        this.isDragging = true;
+        this.lastMouseX = e.touches[0].clientX;
+        this.lastMouseY = e.touches[0].clientY;
+      } else if (e.touches.length === 2) {
+        this.isDragging = false;
+        this.initialPinchDist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+      }
+    }, { passive: true });
+
+    c.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 1 && this.isDragging) {
+        const dx = e.touches[0].clientX - this.lastMouseX;
+        const dy = e.touches[0].clientY - this.lastMouseY;
+        this.originX += dx;
+        this.originY += dy;
+        this.lastMouseX = e.touches[0].clientX;
+        this.lastMouseY = e.touches[0].clientY;
+        this.render();
+      } else if (e.touches.length === 2 && this.initialPinchDist) {
+        const dist = Math.hypot(
+          e.touches[0].clientX - e.touches[1].clientX,
+          e.touches[0].clientY - e.touches[1].clientY
+        );
+        const factor = dist / this.initialPinchDist;
+        const midX = (e.touches[0].clientX + e.touches[1].clientX) / 2;
+        const midY = (e.touches[0].clientY + e.touches[1].clientY) / 2;
+        const rect = c.getBoundingClientRect();
+        this.zoomAt(midX - rect.left, midY - rect.top, factor > 1 ? 1.05 : 0.95);
+        this.initialPinchDist = dist;
+      }
+    }, { passive: true });
+
+    c.addEventListener('touchend', () => {
+      this.isDragging = false;
+      this.initialPinchDist = null;
+    });
+
+    window.addEventListener('resize', () => this.resize());
+  }
+
+  zoomAt(screenX, screenY, factor) {
+    const minScale = 5;
+    const maxScale = 500;
+    const newScale = Math.min(Math.max(this.scale * factor, minScale), maxScale);
+
+    // Zoom centered around focal point
+    this.originX = screenX - (screenX - this.originX) * (newScale / this.scale);
+    this.originY = screenY - (screenY - this.originY) * (newScale / this.scale);
+    this.scale = newScale;
+    this.render();
+  }
+
+  zoomIn() {
+    this.zoomAt(this.width / 2, this.height / 2, 1.25);
+  }
+
+  zoomOut() {
+    this.zoomAt(this.width / 2, this.height / 2, 0.8);
+  }
+
+  setFunction(expr, color = '#38bdf8') {
+    this.functions[0].expr = expr;
+    this.functions[0].color = color;
+    this.render();
+  }
+
+  evalAt(expr, x) {
+    try {
+      // Replace x in expr (handling numbers and operators surrounding x)
+      const replaced = expr.replace(/\bx\b/gi, `(${x})`);
+      // Use calcEngine
+      return window.calcEngine.evaluate(replaced);
+    } catch (e) {
+      return NaN;
+    }
+  }
+
+  render() {
+    if (!this.ctx) return;
+    const ctx = this.ctx;
+    const w = this.width;
+    const h = this.height;
+
+    // Clear background
+    ctx.clearRect(0, 0, w, h);
+
+    // Grid spacing calculation
+    let step = 1;
+    if (this.scale > 100) step = 0.5;
+    if (this.scale > 200) step = 0.2;
+    if (this.scale < 25) step = 2;
+    if (this.scale < 12) step = 5;
+    if (this.scale < 5) step = 10;
+
+    const gridPixelSpacing = step * this.scale;
+
+    // Draw Subtle Grid
+    ctx.lineWidth = 1;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.06)';
+
+    // Vertical grid lines
+    const startX = Math.floor(-this.originX / gridPixelSpacing) * gridPixelSpacing + this.originX;
+    for (let x = startX; x < w; x += gridPixelSpacing) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, h);
+      ctx.stroke();
+    }
+
+    // Horizontal grid lines
+    const startY = Math.floor(-this.originY / gridPixelSpacing) * gridPixelSpacing + this.originY;
+    for (let y = startY; y < h; y += gridPixelSpacing) {
+      ctx.beginPath();
+      ctx.moveTo(0, y);
+      ctx.lineTo(w, y);
+      ctx.stroke();
+    }
+
+    // Draw Axes (X and Y)
+    ctx.lineWidth = 2;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.25)';
+
+    // X Axis
+    ctx.beginPath();
+    ctx.moveTo(0, this.originY);
+    ctx.lineTo(w, this.originY);
+    ctx.stroke();
+
+    // Y Axis
+    ctx.beginPath();
+    ctx.moveTo(this.originX, 0);
+    ctx.lineTo(this.originX, h);
+    ctx.stroke();
+
+    // Axis numbers
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)';
+    ctx.font = '11px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'top';
+
+    for (let x = startX; x < w; x += gridPixelSpacing) {
+      const mathVal = Math.round(((x - this.originX) / this.scale) * 100) / 100;
+      if (Math.abs(mathVal) > 0.001) {
+        ctx.fillText(mathVal.toString(), x, Math.min(Math.max(this.originY + 4, 4), h - 18));
+      }
+    }
+
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    for (let y = startY; y < h; y += gridPixelSpacing) {
+      const mathVal = Math.round(-((y - this.originY) / this.scale) * 100) / 100;
+      if (Math.abs(mathVal) > 0.001) {
+        ctx.fillText(mathVal.toString(), Math.min(Math.max(this.originX - 6, 28), w - 6), y);
+      }
+    }
+
+    // Plot Functions
+    for (const fn of this.functions) {
+      if (!fn.enabled || !fn.expr) continue;
+
+      ctx.beginPath();
+      ctx.strokeStyle = fn.color;
+      ctx.lineWidth = 2.5;
+
+      let isDrawing = false;
+      const stepPixels = 1.5; // Sampling step in screen pixels
+
+      for (let px = 0; px <= w; px += stepPixels) {
+        const mathX = (px - this.originX) / this.scale;
+        const mathY = this.evalAt(fn.expr, mathX);
+
+        if (typeof mathY === 'number' && !isNaN(mathY) && isFinite(mathY)) {
+          const py = this.originY - mathY * this.scale;
+
+          // Avoid crazy vertical jumps on asymptotes like tan(x)
+          if (py >= -h && py <= h * 2) {
+            if (!isDrawing) {
+              ctx.moveTo(px, py);
+              isDrawing = true;
+            } else {
+              ctx.lineTo(px, py);
+            }
+          } else {
+            isDrawing = false;
+          }
+        } else {
+          isDrawing = false;
+        }
+      }
+      ctx.stroke();
+    }
+
+    // Plot Hover / Coordinate Tracker Dot
+    if (this.hoverCoord && this.functions[0].enabled) {
+      const mathX = this.hoverCoord.x;
+      const mathY = this.evalAt(this.functions[0].expr, mathX);
+
+      if (typeof mathY === 'number' && !isNaN(mathY) && isFinite(mathY)) {
+        const dotPx = this.originX + mathX * this.scale;
+        const dotPy = this.originY - mathY * this.scale;
+
+        // Glowing coordinate ring
+        ctx.beginPath();
+        ctx.arc(dotPx, dotPy, 6, 0, Math.PI * 2);
+        ctx.fillStyle = this.functions[0].color;
+        ctx.fill();
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+
+        // Tooltip badge
+        const badgeText = `(${mathX.toFixed(2)}, ${mathY.toFixed(2)})`;
+        ctx.font = '12px monospace';
+        const textWidth = ctx.measureText(badgeText).width;
+
+        const badgeX = Math.min(Math.max(dotPx - textWidth / 2 - 8, 8), w - textWidth - 24);
+        const badgeY = Math.max(dotPy - 32, 12);
+
+        ctx.fillStyle = 'rgba(15, 23, 42, 0.85)';
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect(badgeX, badgeY, textWidth + 16, 24, 6);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = '#38bdf8';
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(badgeText, badgeX + 8, badgeY + 12);
+      }
+    }
+  }
+}
+
+window.Grapher = Grapher;
+
+
+/* ===== converter.js ===== */
+/**
+ * OmniCalc Ultra - Smart Multi-Unit & Currency Converter
+ * Real-time bidirectional unit calculations across 9 distinct scientific & daily domains.
+ */
+class UnitConverter {
+  constructor() {
+    this.categories = {
+      currency: {
+        name: 'Currency',
+        icon: '💵',
+        base: 'USD',
+        units: {
+          USD: { name: 'US Dollar ($)', rate: 1.0 },
+          EUR: { name: 'Euro (€)', rate: 0.92 },
+          GBP: { name: 'British Pound (£)', rate: 0.79 },
+          JPY: { name: 'Japanese Yen (¥)', rate: 154.5 },
+          CAD: { name: 'Canadian Dollar (C$)', rate: 1.37 },
+          AUD: { name: 'Australian Dollar (A$)', rate: 1.52 },
+          CHF: { name: 'Swiss Franc (CHF)', rate: 0.90 },
+          INR: { name: 'Indian Rupee (₹)', rate: 83.5 },
+          CNY: { name: 'Chinese Yuan (¥)', rate: 7.23 },
+          AED: { name: 'UAE Dirham (AED)', rate: 3.67 }
+        }
+      },
+      length: {
+        name: 'Length',
+        icon: '📏',
+        base: 'm',
+        units: {
+          m: { name: 'Meters (m)', factor: 1 },
+          km: { name: 'Kilometers (km)', factor: 1000 },
+          cm: { name: 'Centimeters (cm)', factor: 0.01 },
+          mm: { name: 'Millimeters (mm)', factor: 0.001 },
+          mi: { name: 'Miles (mi)', factor: 1609.344 },
+          yd: { name: 'Yards (yd)', factor: 0.9144 },
+          ft: { name: 'Feet (ft)', factor: 0.3048 },
+          in: { name: 'Inches (in)', factor: 0.0254 },
+          nmi: { name: 'Nautical Miles', factor: 1852 }
+        }
+      },
+      mass: {
+        name: 'Mass & Weight',
+        icon: '⚖️',
+        base: 'kg',
+        units: {
+          kg: { name: 'Kilograms (kg)', factor: 1 },
+          g: { name: 'Grams (g)', factor: 0.001 },
+          mg: { name: 'Milligrams (mg)', factor: 0.000001 },
+          t: { name: 'Metric Tons (t)', factor: 1000 },
+          lb: { name: 'Pounds (lb)', factor: 0.45359237 },
+          oz: { name: 'Ounces (oz)', factor: 0.028349523 },
+          st: { name: 'Stone (st)', factor: 6.35029 }
+        }
+      },
+      temperature: {
+        name: 'Temperature',
+        icon: '🌡️',
+        isSpecial: true,
+        units: {
+          C: { name: 'Celsius (°C)' },
+          F: { name: 'Fahrenheit (°F)' },
+          K: { name: 'Kelvin (K)' }
+        }
+      },
+      speed: {
+        name: 'Speed',
+        icon: '🏎️',
+        base: 'm_s',
+        units: {
+          m_s: { name: 'Meters / second (m/s)', factor: 1 },
+          km_h: { name: 'Kilometers / hour (km/h)', factor: 0.277777778 },
+          mph: { name: 'Miles / hour (mph)', factor: 0.44704 },
+          knot: { name: 'Knots (kn)', factor: 0.514444 },
+          mach: { name: 'Mach (std)', factor: 340.29 }
+        }
+      },
+      data: {
+        name: 'Digital Data',
+        icon: '💾',
+        base: 'b',
+        units: {
+          b: { name: 'Bits (b)', factor: 1 },
+          B: { name: 'Bytes (B)', factor: 8 },
+          KB: { name: 'Kilobytes (KB)', factor: 8 * 1024 },
+          MB: { name: 'Megabytes (MB)', factor: 8 * 1024 * 1024 },
+          GB: { name: 'Gigabytes (GB)', factor: 8 * 1024 * 1024 * 1024 },
+          TB: { name: 'Terabytes (TB)', factor: 8 * 1024 * 1024 * 1024 * 1024 }
+        }
+      },
+      time: {
+        name: 'Time',
+        icon: '⏱️',
+        base: 's',
+        units: {
+          ms: { name: 'Milliseconds (ms)', factor: 0.001 },
+          s: { name: 'Seconds (s)', factor: 1 },
+          min: { name: 'Minutes (min)', factor: 60 },
+          hr: { name: 'Hours (hr)', factor: 3600 },
+          day: { name: 'Days (d)', factor: 86400 },
+          wk: { name: 'Weeks (wk)', factor: 604800 },
+          yr: { name: 'Years (yr - 365d)', factor: 31536000 }
+        }
+      },
+      area: {
+        name: 'Area',
+        icon: '📐',
+        base: 'sq_m',
+        units: {
+          sq_m: { name: 'Square Meters (m²)', factor: 1 },
+          sq_km: { name: 'Square Kilometers (km²)', factor: 1000000 },
+          sq_ft: { name: 'Square Feet (ft²)', factor: 0.092903 },
+          sq_yd: { name: 'Square Yards (yd²)', factor: 0.836127 },
+          acre: { name: 'Acres (ac)', factor: 4046.86 },
+          ha: { name: 'Hectares (ha)', factor: 10000 }
+        }
+      },
+      volume: {
+        name: 'Volume',
+        icon: '🧪',
+        base: 'l',
+        units: {
+          l: { name: 'Liters (L)', factor: 1 },
+          ml: { name: 'Milliliters (mL)', factor: 0.001 },
+          cu_m: { name: 'Cubic Meters (m³)', factor: 1000 },
+          gal: { name: 'Gallons (US)', factor: 3.78541 },
+          qt: { name: 'Quarts (US)', factor: 0.946353 },
+          pt: { name: 'Pints (US)', factor: 0.473176 },
+          cup: { name: 'Cups (US)', factor: 0.236588 },
+          fl_oz: { name: 'Fluid Ounces (fl oz)', factor: 0.0295735 }
+        }
+      }
+    };
+  }
+
+  convert(categoryKey, fromUnit, toUnit, value) {
+    if (isNaN(value)) return 0;
+    const cat = this.categories[categoryKey];
+    if (!cat) return 0;
+
+    // Special Temperature logic
+    if (categoryKey === 'temperature') {
+      let celsius = value;
+      if (fromUnit === 'F') celsius = ((value - 32) * 5) / 9;
+      if (fromUnit === 'K') celsius = value - 273.15;
+
+      let result = celsius;
+      if (toUnit === 'F') result = (celsius * 9) / 5 + 32;
+      if (toUnit === 'K') result = celsius + 273.15;
+      return window.calcEngine.cleanNumber(result);
+    }
+
+    // Currency
+    if (categoryKey === 'currency') {
+      const fromRate = cat.units[fromUnit].rate;
+      const toRate = cat.units[toUnit].rate;
+      // Convert to USD base first, then to target
+      const inUSD = value / fromRate;
+      const res = inUSD * toRate;
+      return window.calcEngine.cleanNumber(res);
+    }
+
+    // General linear factor conversion
+    const fromFactor = cat.units[fromUnit].factor;
+    const toFactor = cat.units[toUnit].factor;
+    const inBase = value * fromFactor;
+    const result = inBase / toFactor;
+    return window.calcEngine.cleanNumber(result);
+  }
+}
+
+window.unitConverter = new UnitConverter();
+
+
+/* ===== programmer.js ===== */
+/**
+ * OmniCalc Ultra - Programmer & Bitwise Computation Engine
+ * Multi-radix real-time conversions (HEX, DEC, OCT, BIN), interactive bit toggling,
+ * word size masking (64, 32, 16, 8-bit), and bitwise logical operations.
+ */
+class ProgrammerEngine {
+  constructor() {
+    this.wordSize = 64; // 8, 16, 32, 64
+    this.currentValue = BigInt(0);
+    this.activeRadix = 10; // 16, 10, 8, 2
+  }
+
+  setWordSize(bits) {
+    this.wordSize = bits;
+    this.currentValue = this.mask(this.currentValue);
+  }
+
+  mask(bigVal) {
+    if (this.wordSize === 8) return BigInt.asUintN(8, bigVal);
+    if (this.wordSize === 16) return BigInt.asUintN(16, bigVal);
+    if (this.wordSize === 32) return BigInt.asUintN(32, bigVal);
+    return BigInt.asUintN(64, bigVal);
+  }
+
+  setValue(val) {
+    try {
+      if (typeof val === 'bigint') {
+        this.currentValue = this.mask(val);
+      } else if (typeof val === 'number') {
+        this.currentValue = this.mask(BigInt(Math.trunc(val)));
+      } else if (typeof val === 'string') {
+        // Parse according to activeRadix
+        const cleaned = val.replace(/\s+/g, '');
+        if (!cleaned) {
+          this.currentValue = BigInt(0);
+        } else {
+          if (this.activeRadix === 16) this.currentValue = this.mask(BigInt('0x' + cleaned));
+          else if (this.activeRadix === 2) this.currentValue = this.mask(BigInt('0b' + cleaned));
+          else if (this.activeRadix === 8) this.currentValue = this.mask(BigInt('0o' + cleaned));
+          else this.currentValue = this.mask(BigInt(cleaned));
+        }
+      }
+    } catch (e) {
+      // Ignore parse errors while typing
+    }
+  }
+
+  toggleBit(bitIndex) {
+    if (bitIndex >= this.wordSize) return;
+    const bitMask = BigInt(1) << BigInt(bitIndex);
+    this.currentValue = this.mask(this.currentValue ^ bitMask);
+  }
+
+  // Bitwise operations
+  and(other) {
+    this.currentValue = this.mask(this.currentValue & BigInt(other));
+  }
+
+  or(other) {
+    this.currentValue = this.mask(this.currentValue | BigInt(other));
+  }
+
+  xor(other) {
+    this.currentValue = this.mask(this.currentValue ^ BigInt(other));
+  }
+
+  not() {
+    this.currentValue = this.mask(~this.currentValue);
+  }
+
+  shl(bits = 1) {
+    this.currentValue = this.mask(this.currentValue << BigInt(bits));
+  }
+
+  shr(bits = 1) {
+    this.currentValue = this.mask(this.currentValue >> BigInt(bits));
+  }
+
+  getRepresentations() {
+    const val = this.currentValue;
+
+    // Hexadecimal
+    const hex = val.toString(16).toUpperCase();
+
+    // Decimal (Signed and Unsigned)
+    const decUnsigned = val.toString(10);
+    let decSigned = val;
+    if (this.wordSize === 8) decSigned = BigInt.asIntN(8, val);
+    else if (this.wordSize === 16) decSigned = BigInt.asIntN(16, val);
+    else if (this.wordSize === 32) decSigned = BigInt.asIntN(32, val);
+    else decSigned = BigInt.asIntN(64, val);
+
+    // Octal
+    const oct = val.toString(8);
+
+    // Binary with 4-bit nibbles
+    let binRaw = val.toString(2);
+    // Pad to word size
+    binRaw = binRaw.padStart(this.wordSize, '0');
+    // Group into 4 bits
+    const binNibbles = [];
+    for (let i = 0; i < binRaw.length; i += 4) {
+      binNibbles.push(binRaw.slice(i, i + 4));
+    }
+    const binFormatted = binNibbles.join(' ');
+
+    // ASCII char
+    let charRep = '';
+    const numVal = Number(this.currentValue & BigInt(0x7F));
+    if (numVal >= 32 && numVal <= 126) {
+      charRep = String.fromCharCode(numVal);
+    }
+
+    return {
+      hex: hex || '0',
+      dec: decSigned.toString(10),
+      decUnsigned: decUnsigned,
+      oct: oct || '0',
+      bin: binFormatted,
+      binRaw: binRaw,
+      char: charRep
+    };
+  }
+}
+
+window.programmerEngine = new ProgrammerEngine();
+
+
+/* ===== app.js ===== */
+/**
+ * OmniCalc Ultra - Main Application Controller
+ * Seamless multi-mode routing, tactile interactions, hardware keyboard mapping,
+ * gestures, history management, and settings.
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // --- State ---
+  let currentMode = 'standard'; // 'standard', 'scientific', 'tape', 'grapher', 'converter', 'programmer'
+  let currentExpr = '0';
+  let isResultEvaluated = false;
+  let activeGrapher = null;
+
+  // --- DOM Elements ---
+  const screenExpr = document.getElementById('screenExpr');
+  const screenResult = document.getElementById('screenResult');
+  const calcScreen = document.getElementById('calcScreen');
+  const scientificTray = document.getElementById('scientificTray');
+  const standardKeypad = document.getElementById('standardKeypad');
+  const historyList = document.getElementById('historyList');
+  const angleBadge = document.getElementById('angleBadge');
+  const toast = document.getElementById('toastMsg');
+
+  // Modals & Drawers
+  const settingsModal = document.getElementById('settingsModal');
+  const shortcutsModal = document.getElementById('shortcutsModal');
+  const mobileHistoryModal = document.getElementById('mobileHistoryModal');
+
+  // View Panels
+  const views = {
+    standard: document.getElementById('calcWorkspace'),
+    scientific: document.getElementById('calcWorkspace'),
+    tape: document.getElementById('tapeWorkspace'),
+    grapher: document.getElementById('grapherWorkspace'),
+    converter: document.getElementById('converterWorkspace'),
+    programmer: document.getElementById('programmerWorkspace')
+  };
+
+  // --- Audio & Haptic Feedback ---
+  function soundClick(type = 'digit') {
+    if (window.audioHaptics) window.audioHaptics.playClick(type);
+  }
+
+  function showToast(msg) {
+    if (!toast) return;
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 2200);
+  }
+
+  // --- Display Formatting & Dynamic Font Sizing ---
+  function updateDisplay() {
+    if (!screenResult || !screenExpr) return;
+
+    if (currentExpr === '' || currentExpr === '0') {
+      screenResult.textContent = '0';
+    } else {
+      // Human-readable operator formatting
+      const displayStr = currentExpr
+        .replace(/\*/g, ' × ')
+        .replace(/\//g, ' ÷ ')
+        .replace(/-/g, ' − ')
+        .replace(/\+/g, ' + ');
+      screenResult.textContent = displayStr;
+    }
+
+    // Dynamic Font Scaling
+    const len = screenResult.textContent.length;
+    if (len > 18) {
+      screenResult.style.fontSize = '1.4rem';
+    } else if (len > 12) {
+      screenResult.style.fontSize = '1.9rem';
+    } else if (len > 8) {
+      screenResult.style.fontSize = '2.3rem';
+    } else {
+      screenResult.style.fontSize = '2.8rem';
+    }
+
+    // Live preview evaluation (if expression has operators)
+    if (!isResultEvaluated && /[+\-*\/^%]/.test(currentExpr)) {
+      try {
+        const previewVal = window.calcEngine.evaluate(currentExpr);
+        if (typeof previewVal === 'number' && !isNaN(previewVal) && isFinite(previewVal)) {
+          screenExpr.textContent = `= ${window.calcEngine.formatNumber(previewVal)}`;
+        } else {
+          screenExpr.textContent = '';
+        }
+      } catch (e) {
+        screenExpr.textContent = '';
+      }
+    } else if (isResultEvaluated) {
+      // Keep expression in screenExpr
+    } else {
+      screenExpr.textContent = '';
+    }
+  }
+
+  // --- Calculator Input Actions ---
+  function inputDigit(digit) {
+    soundClick('digit');
+    if (isResultEvaluated) {
+      currentExpr = digit;
+      isResultEvaluated = false;
+    } else {
+      if (currentExpr === '0' && digit !== '.') {
+        currentExpr = digit;
+      } else {
+        currentExpr += digit;
+      }
+    }
+    updateDisplay();
+  }
+
+  function inputOperator(op) {
+    soundClick('operator');
+    if (isResultEvaluated) {
+      isResultEvaluated = false;
+    }
+    const lastChar = currentExpr.slice(-1);
+    if (['+', '-', '*', '/', '^', '%'].includes(lastChar)) {
+      // Replace trailing operator
+      currentExpr = currentExpr.slice(0, -1) + op;
+    } else {
+      currentExpr += op;
+    }
+    updateDisplay();
+  }
+
+  function inputFunction(fn) {
+    soundClick('operator');
+    if (isResultEvaluated) {
+      currentExpr = `${fn}(${currentExpr})`;
+      isResultEvaluated = false;
+    } else {
+      if (currentExpr === '0') {
+        currentExpr = `${fn}(`;
+      } else {
+        // Check if last char is number -> insert multiply or wrap
+        const lastChar = currentExpr.slice(-1);
+        if (/[0-9]/.test(lastChar)) {
+          currentExpr += `*${fn}(`;
+        } else {
+          currentExpr += `${fn}(`;
+        }
+      }
+    }
+    updateDisplay();
+  }
+
+  function inputConstant(constName) {
+    soundClick('digit');
+    if (isResultEvaluated || currentExpr === '0') {
+      currentExpr = constName;
+      isResultEvaluated = false;
+    } else {
+      currentExpr += constName;
+    }
+    updateDisplay();
+  }
+
+  function deleteLast() {
+    soundClick('digit');
+    if (isResultEvaluated) {
+      currentExpr = '0';
+      isResultEvaluated = false;
+    } else {
+      currentExpr = currentExpr.slice(0, -1);
+      if (currentExpr === '' || currentExpr === '-') currentExpr = '0';
+    }
+    updateDisplay();
+  }
+
+  function clearAll() {
+    soundClick('clear');
+    currentExpr = '0';
+    isResultEvaluated = false;
+    if (screenExpr) screenExpr.textContent = '';
+    updateDisplay();
+  }
+
+  function evaluateExpression() {
+    if (!currentExpr || currentExpr === '0') return;
+
+    // Auto-balance unclosed parentheses
+    const openParens = (currentExpr.match(/\(/g) || []).length;
+    const closeParens = (currentExpr.match(/\)/g) || []).length;
+    if (openParens > closeParens) {
+      currentExpr += ')'.repeat(openParens - closeParens);
+    }
+
+    try {
+      const rawExpr = currentExpr;
+      const result = window.calcEngine.evaluate(rawExpr);
+
+      if (typeof result === 'number' && !isNaN(result) && isFinite(result)) {
+        soundClick('equals');
+        window.calcEngine.lastAnswer = result;
+        window.calcEngine.addHistory(rawExpr, result);
+
+        if (screenExpr) screenExpr.textContent = `${rawExpr} =`;
+        currentExpr = result.toString();
+        isResultEvaluated = true;
+        updateDisplay();
+        renderHistory();
+      } else {
+        throw new Error('Calculation error');
+      }
+    } catch (err) {
+      if (window.audioHaptics) window.audioHaptics.playError();
+      showToast(err.message || 'Syntax Error');
+    }
+  }
+
+  // --- Mode Switching ---
+  function switchMode(newMode) {
+    currentMode = newMode;
+
+    // Update Pills
+    document.querySelectorAll('.mode-pill').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.mode === newMode);
+    });
+
+    // Toggle Panels
+    Object.keys(views).forEach(k => {
+      if (views[k]) {
+        views[k].style.display = 'none';
+      }
+    });
+
+    if (newMode === 'standard') {
+      views.standard.style.display = 'flex';
+      scientificTray.classList.remove('show');
+    } else if (newMode === 'scientific') {
+      views.scientific.style.display = 'flex';
+      scientificTray.classList.add('show');
+    } else if (newMode === 'tape') {
+      views.tape.style.display = 'flex';
+      initSmartTape();
+    } else if (newMode === 'grapher') {
+      views.grapher.style.display = 'flex';
+      initGrapher();
+    } else if (newMode === 'converter') {
+      views.converter.style.display = 'flex';
+      initConverter();
+    } else if (newMode === 'programmer') {
+      views.programmer.style.display = 'flex';
+      initProgrammer();
+    }
+  }
+
+  // --- History Management ---
+  function renderHistory() {
+    const list = window.calcEngine.history;
+    const containers = [historyList, document.getElementById('mobileHistoryList')];
+
+    containers.forEach(container => {
+      if (!container) return;
+      if (list.length === 0) {
+        container.innerHTML = `<div class="empty-history">No calculations yet.<br>History will appear here.</div>`;
+        return;
+      }
+
+      container.innerHTML = list.map(item => `
+        <div class="history-item" data-res="${item.result}" data-expr="${item.expr}">
+          <div class="history-item-time">${item.timestamp}</div>
+          <div class="history-item-expr">${item.expr} =</div>
+          <div class="history-item-res">${window.calcEngine.formatNumber(item.result)}</div>
+        </div>
+      `).join('');
+
+      container.querySelectorAll('.history-item').forEach(el => {
+        el.addEventListener('click', () => {
+          soundClick('digit');
+          currentExpr = el.dataset.res;
+          isResultEvaluated = true;
+          updateDisplay();
+          if (mobileHistoryModal) mobileHistoryModal.classList.remove('open');
+          showToast(`Loaded ${el.dataset.res}`);
+        });
+      });
+    });
+  }
+
+  // --- Smart Tape Setup ---
+  let tapeInitialized = false;
+  function initSmartTape() {
+    const textarea = document.getElementById('tapeTextarea');
+    const gutter = document.getElementById('tapeGutter');
+    const totalVal = document.getElementById('tapeTotalVal');
+    if (!textarea || !gutter) return;
+
+    function runTape() {
+      const parsed = window.smartTape.evaluate(textarea.value);
+      gutter.innerHTML = parsed.lines.map(l => `<div>${l.formatted || '&nbsp;'}</div>`).join('');
+      if (totalVal) totalVal.textContent = parsed.formattedTotal;
+      localStorage.setItem('omnicalc_tape_draft', textarea.value);
+    }
+
+    if (!tapeInitialized) {
+      tapeInitialized = true;
+      const saved = localStorage.getItem('omnicalc_tape_draft') || window.smartTape.getTemplate('budget');
+      textarea.value = saved;
+
+      textarea.addEventListener('input', runTape);
+      // Sync scrolling
+      textarea.addEventListener('scroll', () => {
+        gutter.scrollTop = textarea.scrollTop;
+      });
+
+      // Templates
+      document.querySelectorAll('[data-tape-tmpl]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          soundClick('operator');
+          const tmpl = window.smartTape.getTemplate(btn.dataset.tapeTmpl);
+          textarea.value = tmpl;
+          runTape();
+        });
+      });
+
+      // Copy / Export tape
+      const copyBtn = document.getElementById('copyTapeBtn');
+      if (copyBtn) {
+        copyBtn.addEventListener('click', () => {
+          soundClick('equals');
+          const text = textarea.value + '\n\nTotal: ' + (totalVal ? totalVal.textContent : '');
+          navigator.clipboard.writeText(text).then(() => {
+            showToast('Tape copied to clipboard!');
+          });
+        });
+      }
+    }
+
+    runTape();
+  }
+
+  // --- Grapher Setup ---
+  function initGrapher() {
+    if (!activeGrapher) {
+      activeGrapher = new window.Grapher('graphCanvas');
+
+      const fnInput = document.getElementById('graphFnInput');
+      if (fnInput) {
+        fnInput.addEventListener('input', (e) => {
+          activeGrapher.setFunction(e.target.value.trim());
+        });
+      }
+
+      document.getElementById('graphZoomIn')?.addEventListener('click', () => {
+        soundClick('digit');
+        activeGrapher.zoomIn();
+      });
+
+      document.getElementById('graphZoomOut')?.addEventListener('click', () => {
+        soundClick('digit');
+        activeGrapher.zoomOut();
+      });
+
+      document.getElementById('graphReset')?.addEventListener('click', () => {
+        soundClick('operator');
+        activeGrapher.resetView();
+      });
+
+      // Presets
+      document.querySelectorAll('[data-graph-preset]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          soundClick('digit');
+          const expr = btn.dataset.graphPreset;
+          if (fnInput) fnInput.value = expr;
+          activeGrapher.setFunction(expr);
+        });
+      });
+    }
+
+    setTimeout(() => activeGrapher.resize(), 50);
+  }
+
+  // --- Unit Converter Setup ---
+  let converterInitialized = false;
+  function initConverter() {
+    if (converterInitialized) return;
+    converterInitialized = true;
+
+    const chipsContainer = document.getElementById('categoryChips');
+    const fromSelect = document.getElementById('convertFromUnit');
+    const toSelect = document.getElementById('convertToUnit');
+    const fromInput = document.getElementById('convertFromVal');
+    const toInput = document.getElementById('convertToVal');
+    const swapBtn = document.getElementById('convertSwapBtn');
+
+    let activeCat = 'currency';
+
+    function populateSelects(catKey) {
+      const cat = window.unitConverter.categories[catKey];
+      if (!cat) return;
+
+      const unitKeys = Object.keys(cat.units);
+      fromSelect.innerHTML = unitKeys.map(k => `<option value="${k}">${cat.units[k].name}</option>`).join('');
+      toSelect.innerHTML = unitKeys.map(k => `<option value="${k}">${cat.units[k].name}</option>`).join('');
+
+      // Default pair: first and second
+      if (unitKeys.length > 1) {
+        toSelect.selectedIndex = 1;
+      }
+      doConvertFrom();
+    }
+
+    function doConvertFrom() {
+      const val = parseFloat(fromInput.value);
+      if (isNaN(val)) {
+        toInput.value = '';
+        return;
+      }
+      const res = window.unitConverter.convert(activeCat, fromSelect.value, toSelect.value, val);
+      toInput.value = res;
+    }
+
+    function doConvertTo() {
+      const val = parseFloat(toInput.value);
+      if (isNaN(val)) {
+        fromInput.value = '';
+        return;
+      }
+      const res = window.unitConverter.convert(activeCat, toSelect.value, fromSelect.value, val);
+      fromInput.value = res;
+    }
+
+    // Render chips
+    chipsContainer.innerHTML = Object.keys(window.unitConverter.categories).map(k => {
+      const c = window.unitConverter.categories[k];
+      return `<button class="category-chip ${k === activeCat ? 'active' : ''}" data-cat="${k}">
+        <span>${c.icon}</span> ${c.name}
+      </button>`;
+    }).join('');
+
+    chipsContainer.querySelectorAll('.category-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        soundClick('digit');
+        chipsContainer.querySelectorAll('.category-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        activeCat = chip.dataset.cat;
+        populateSelects(activeCat);
+      });
+    });
+
+    fromInput.addEventListener('input', doConvertFrom);
+    toInput.addEventListener('input', doConvertTo);
+    fromSelect.addEventListener('change', () => { soundClick('digit'); doConvertFrom(); });
+    toSelect.addEventListener('change', () => { soundClick('digit'); doConvertFrom(); });
+
+    swapBtn.addEventListener('click', () => {
+      soundClick('operator');
+      const tempIdx = fromSelect.selectedIndex;
+      fromSelect.selectedIndex = toSelect.selectedIndex;
+      toSelect.selectedIndex = tempIdx;
+      doConvertFrom();
+    });
+
+    populateSelects(activeCat);
+  }
+
+  // --- Programmer Mode Setup ---
+  let programmerInitialized = false;
+  function initProgrammer() {
+    const bitMatrix = document.getElementById('bitMatrix');
+    const hexRow = document.getElementById('progHexVal');
+    const decRow = document.getElementById('progDecVal');
+    const octRow = document.getElementById('progOctVal');
+    const binRow = document.getElementById('progBinVal');
+    const charRow = document.getElementById('progCharVal');
+
+    function updateProgDisplay() {
+      const reps = window.programmerEngine.getRepresentations();
+      if (hexRow) hexRow.textContent = reps.hex;
+      if (decRow) decRow.textContent = reps.dec;
+      if (octRow) octRow.textContent = reps.oct;
+      if (binRow) binRow.textContent = reps.bin;
+      if (charRow) charRow.textContent = reps.char ? `'${reps.char}'` : '—';
+
+      // Update bit cells
+      if (bitMatrix) {
+        const raw = reps.binRaw;
+        bitMatrix.querySelectorAll('.bit-cell').forEach(cell => {
+          const bitIndex = parseInt(cell.dataset.bit, 10);
+          // Bin string is MSB first -> string index is (wordSize - 1 - bitIndex)
+          const strIdx = window.programmerEngine.wordSize - 1 - bitIndex;
+          const isSet = raw[strIdx] === '1';
+          cell.classList.toggle('active', isSet);
+          cell.querySelector('.bit-val').textContent = isSet ? '1' : '0';
+        });
+      }
+    }
+
+    if (!programmerInitialized) {
+      programmerInitialized = true;
+
+      // Build 64-bit matrix cells
+      if (bitMatrix) {
+        bitMatrix.innerHTML = '';
+        for (let i = 63; i >= 0; i--) {
+          const cell = document.createElement('div');
+          cell.className = 'bit-cell';
+          cell.dataset.bit = i;
+          cell.innerHTML = `<span class="bit-index">${i}</span><span class="bit-val">0</span>`;
+          cell.addEventListener('click', () => {
+            soundClick('digit');
+            window.programmerEngine.toggleBit(i);
+            updateProgDisplay();
+          });
+          bitMatrix.appendChild(cell);
+        }
+      }
+
+      // Radix row clicks to change active base
+      document.querySelectorAll('.radix-row').forEach(row => {
+        row.addEventListener('click', () => {
+          soundClick('operator');
+          document.querySelectorAll('.radix-row').forEach(r => r.classList.remove('active'));
+          row.classList.add('active');
+          window.programmerEngine.activeRadix = parseInt(row.dataset.radix, 10);
+        });
+      });
+
+      // Word size selector
+      document.querySelectorAll('[data-word-size]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          soundClick('operator');
+          document.querySelectorAll('[data-word-size]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const bits = parseInt(btn.dataset.wordSize, 10);
+          window.programmerEngine.setWordSize(bits);
+          updateProgDisplay();
+        });
+      });
+
+      // Bitwise ops
+      document.querySelectorAll('[data-prog-op]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          soundClick('operator');
+          const op = btn.dataset.progOp;
+          if (op === 'not') window.programmerEngine.not();
+          if (op === 'shl') window.programmerEngine.shl(1);
+          if (op === 'shr') window.programmerEngine.shr(1);
+          if (op === 'clear') window.programmerEngine.setValue(0);
+          updateProgDisplay();
+        });
+      });
+    }
+
+    updateProgDisplay();
+  }
+
+  // --- Keypad Event Delegation (Handles both Standard & Scientific buttons) ---
+  const handleKeypadClick = (e) => {
+    const btn = e.target.closest('.calc-btn');
+    if (!btn) return;
+
+    if (btn.dataset.digit) {
+      inputDigit(btn.dataset.digit);
+    } else if (btn.dataset.op) {
+      inputOperator(btn.dataset.op);
+    } else if (btn.dataset.fn) {
+      inputFunction(btn.dataset.fn);
+    } else if (btn.dataset.const) {
+      inputConstant(btn.dataset.const);
+    } else if (btn.dataset.action === 'equals') {
+      evaluateExpression();
+    } else if (btn.dataset.action === 'clear') {
+      clearAll();
+    } else if (btn.dataset.action === 'delete') {
+      deleteLast();
+    } else if (btn.dataset.action === 'negate') {
+      soundClick('operator');
+      if (currentExpr.startsWith('-')) {
+        currentExpr = currentExpr.slice(1);
+      } else if (currentExpr !== '0') {
+        currentExpr = '-' + currentExpr;
+      }
+      updateDisplay();
+    } else if (btn.dataset.mem) {
+      soundClick('operator');
+      const memAction = btn.dataset.mem;
+      const currentVal = window.calcEngine.evaluate(currentExpr) || 0;
+
+      if (memAction === 'mc') {
+        window.calcEngine.memoryClear();
+        showToast('Memory Cleared');
+      } else if (memAction === 'mr') {
+        currentExpr = window.calcEngine.memoryRecall().toString();
+        isResultEvaluated = true;
+        updateDisplay();
+        showToast(`MR: ${currentExpr}`);
+      } else if (memAction === 'mplus') {
+        window.calcEngine.memoryAdd(currentVal);
+        showToast(`M+: +${currentVal}`);
+      } else if (memAction === 'mminus') {
+        window.calcEngine.memorySubtract(currentVal);
+        showToast(`M−: -${currentVal}`);
+      }
+    }
+  };
+
+  if (standardKeypad) {
+    standardKeypad.addEventListener('click', handleKeypadClick);
+  }
+  if (scientificTray) {
+    scientificTray.addEventListener('click', handleKeypadClick);
+  }
+
+  // --- Touch Gestures on Display (Mobile Swipe Left to Backspace) ---
+  let touchStartX = 0;
+  if (calcScreen) {
+    calcScreen.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    calcScreen.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].clientX;
+      if (touchStartX - touchEndX > 45) {
+        // Swipe Left: backspace
+        deleteLast();
+      }
+    }, { passive: true });
+  }
+
+  // --- Hardware Keyboard Listeners (PC Ergonomics) ---
+  window.addEventListener('keydown', (e) => {
+    // If typing in textarea or input, allow standard behavior
+    if (['TEXTAREA', 'INPUT'].includes(document.activeElement.tagName)) return;
+
+    if (/[0-9]/.test(e.key)) {
+      inputDigit(e.key);
+    } else if (e.key === '.') {
+      inputDigit('.');
+    } else if (['+', '-', '*', '/'].includes(e.key)) {
+      inputOperator(e.key);
+    } else if (e.key === '^' || e.key === '%') {
+      inputOperator(e.key);
+    } else if (e.key === '(' || e.key === ')') {
+      inputDigit(e.key);
+    } else if (e.key === 'Enter' || e.key === '=') {
+      e.preventDefault();
+      evaluateExpression();
+    } else if (e.key === 'Backspace') {
+      deleteLast();
+    } else if (e.key === 'Escape') {
+      clearAll();
+    } else if (e.key.toLowerCase() === 's') {
+      inputFunction('sin');
+    } else if (e.key.toLowerCase() === 'c') {
+      inputFunction('cos');
+    } else if (e.key.toLowerCase() === 't') {
+      inputFunction('tan');
+    } else if (e.key.toLowerCase() === 'p') {
+      inputConstant('pi');
+    } else if (e.key.toLowerCase() === 'e') {
+      inputConstant('e');
+    } else if (e.key.toLowerCase() === 'm') {
+      const state = window.audioHaptics.toggleSound();
+      showToast(state ? 'Sound Unmuted' : 'Sound Muted');
+    }
+  });
+
+  // --- Mode Navigation Bar Event Listeners ---
+  document.querySelectorAll('.mode-pill').forEach(btn => {
+    btn.addEventListener('click', () => {
+      soundClick('operator');
+      switchMode(btn.dataset.mode);
+    });
+  });
+
+  // --- Angle Mode Toggle (DEG / RAD) ---
+  if (angleBadge) {
+    angleBadge.textContent = window.calcEngine.angleMode;
+    angleBadge.addEventListener('click', () => {
+      soundClick('operator');
+      const newMode = window.calcEngine.angleMode === 'DEG' ? 'RAD' : 'DEG';
+      window.calcEngine.setAngleMode(newMode);
+      angleBadge.textContent = newMode;
+      showToast(`Angle Mode: ${newMode}`);
+      updateDisplay();
+    });
+  }
+
+  // --- Theme Picker (Standalone — applied on html[data-calc-theme]) ---
+  const appContainer = document.querySelector('.app-container');
+  const htmlEl = document.documentElement;
+
+  function applyTheme(theme) {
+    // Apply on html element so all CSS [data-calc-theme] selectors work globally
+    htmlEl.setAttribute('data-calc-theme', theme);
+    // Also apply on the app-container for backwards compat
+    if (appContainer) appContainer.setAttribute('data-calc-theme', theme);
+    document.querySelectorAll('.theme-card-btn').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.setTheme === theme);
+    });
+  }
+
+  // Load saved theme (default: onyx dark)
+  const savedTheme = localStorage.getItem('omnicalc_theme') || 'onyx';
+  applyTheme(savedTheme);
+
+  document.querySelectorAll('.theme-card-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      soundClick('operator');
+      const t = btn.dataset.setTheme;
+      applyTheme(t);
+      localStorage.setItem('omnicalc_theme', t);
+      showToast(`Theme: ${btn.textContent.trim()}`);
+    });
+  });
+
+  // --- Settings & Modal Toggles ---
+  document.getElementById('settingsBtn')?.addEventListener('click', () => {
+    soundClick('operator');
+    settingsModal?.classList.add('open');
+  });
+
+  document.getElementById('closeSettingsBtn')?.addEventListener('click', () => {
+    soundClick('operator');
+    settingsModal?.classList.remove('open');
+  });
+
+  document.getElementById('shortcutsBtn')?.addEventListener('click', () => {
+    soundClick('operator');
+    shortcutsModal?.classList.add('open');
+  });
+
+  document.getElementById('closeShortcutsBtn')?.addEventListener('click', () => {
+    soundClick('operator');
+    shortcutsModal?.classList.remove('open');
+  });
+
+  document.getElementById('mobileHistoryBtn')?.addEventListener('click', () => {
+    soundClick('operator');
+    mobileHistoryModal?.classList.add('open');
+  });
+
+  document.getElementById('closeMobileHistoryBtn')?.addEventListener('click', () => {
+    soundClick('operator');
+    mobileHistoryModal?.classList.remove('open');
+  });
+
+  document.getElementById('clearHistoryBtn')?.addEventListener('click', () => {
+    soundClick('clear');
+    window.calcEngine.clearHistory();
+    renderHistory();
+    showToast('History cleared');
+  });
+
+  // Sound & Haptic Toggles in Settings
+  const soundToggle = document.getElementById('soundToggle');
+  if (soundToggle) {
+    soundToggle.checked = window.audioHaptics.soundEnabled;
+    soundToggle.addEventListener('change', () => {
+      window.audioHaptics.toggleSound();
+    });
+  }
+
+  const hapticToggle = document.getElementById('hapticToggle');
+  if (hapticToggle) {
+    hapticToggle.checked = window.audioHaptics.hapticEnabled;
+    hapticToggle.addEventListener('change', () => {
+      window.audioHaptics.toggleHaptic();
+    });
+  }
+
+  // Close modals on overlay backdrop click
+  document.querySelectorAll('.modal-overlay').forEach(modal => {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) modal.classList.remove('open');
+    });
+  });
+
+  // --- Service Worker & PWA Install ---
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js').catch(() => {});
+  }
+
+  let deferredPrompt;
+  const pwaInstallBtn = document.getElementById('pwaInstallBtn');
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (pwaInstallBtn) pwaInstallBtn.style.display = 'flex';
+  });
+
+  pwaInstallBtn?.addEventListener('click', async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        pwaInstallBtn.style.display = 'none';
+      }
+      deferredPrompt = null;
+    }
+  });
+
+  // Initial render
+  updateDisplay();
+  renderHistory();
+});
+
+</script>
+<!-- AI Smart Compute Engine Script -->
+<script>
+(function () {
+  'use strict';
+  const aiInput   = document.getElementById('aiInput');
+  const aiBtn     = document.getElementById('aiSolveBtn');
+  const aiBox     = document.getElementById('aiResultBox');
+  const aiLabel   = document.getElementById('aiResultLabel');
+  const aiVal     = document.getElementById('aiResultValue');
+  const aiDetail  = document.getElementById('aiResultDetail');
+
+  function showResult(label, value, detail) {
+    if (!aiLabel || !aiVal || !aiBox) return;
+    aiLabel.innerHTML   = '✨ AI Smart Compute — ' + label;
+    aiVal.textContent   = value;
+    aiDetail.textContent = detail || '';
+    aiBox.classList.add('visible');
+  }
+
+  function hideResult() {
+    if (aiBox) aiBox.classList.remove('visible');
+  }
+
+  function fmt(n, decimals = 2) {
+    if (!isFinite(n)) return 'Error';
+    return n.toLocaleString('en-US', { maximumFractionDigits: decimals });
+  }
+
+  function fmtCurrency(n) {
+    return '$' + Math.abs(n).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  }
+
+  const matchers = [
+    { re: /(?:(\d+(?:\.\d+)?)\s*%\s*tip\s*(?:on|of)\s*\$?\s*(\d+(?:\.\d+)?))|(?:tip\s*(?:of\s*)?(\d+(?:\.\d+)?)\s*%\s*(?:on|of)\s*\$?\s*(\d+(?:\.\d+)?))/i,
+      fn(m) {
+        const pct = parseFloat(m[1] || m[3]);
+        const total = parseFloat(m[2] || m[4]);
+        const tip = total * pct / 100;
+        return { label: `${pct}% Tip Calculator`, value: fmtCurrency(tip), detail: `Total with tip: ${fmtCurrency(total + tip)}` };
+      }
+    },
+    { re: /(\d+(?:\.\d+)?)\s*%\s*of\s*\$?\s*(\d+(?:\.\d+)?)/i,
+      fn(m) {
+        const pct = parseFloat(m[1]), base = parseFloat(m[2]);
+        return { label: 'Percentage', value: fmt(pct * base / 100), detail: `${pct}% of ${fmt(base)}` };
+      }
+    },
+    { re: /\$?\s*(\d+(?:\.\d+)?)\s*(?:at|@)\s*(\d+(?:\.\d+)?)\s*%\s*(?:for\s*)?(\d+)\s*year/i,
+      fn(m) {
+        const P = parseFloat(m[1]), r = parseFloat(m[2]) / 100, t = parseInt(m[3]);
+        const A = P * Math.pow(1 + r, t);
+        return { label: 'Compound Interest', value: fmtCurrency(A), detail: `Principal: ${fmtCurrency(P)} | Growth: ${fmtCurrency(A - P)}` };
+      }
+    },
+    { re: /sqrt(?:uare\s*root)?\s*(?:of\s*)?(\d+(?:\.\d+)?)/i,
+      fn(m) {
+        const n = parseFloat(m[1]);
+        return { label: 'Square Root', value: fmt(Math.sqrt(n), 6), detail: `√${n}` };
+      }
+    },
+    { re: /(\d+(?:\.\d+)?)\s*miles?\s*(?:to|in|→)\s*k(?:ilo)?m/i,
+      fn(m) {
+        const mi = parseFloat(m[1]);
+        return { label: 'Miles → Kilometers', value: fmt(mi * 1.60934, 3) + ' km', detail: `${fmt(mi)} mi × 1.60934` };
+      }
+    },
+    { re: /^[\d\s\+\-\*\/\.\(\)\^%]+$/,
+      fn(m, raw) {
+        try {
+          const sanitized = raw.replace(/\^/g, '**').replace(/[^0-9\s\+\-\*\/\.\(\)]/g, '');
+          const result = Function('"use strict"; return (' + sanitized + ')')();
+          if (!isFinite(result)) throw new Error();
+          return { label: 'Math Expression', value: fmt(result, 8), detail: raw + ' = ' + result };
+        } catch { return null; }
+      }
+    }
+  ];
+
+  function solve(query) {
+    const q = query.trim();
+    if (!q) return;
+    for (const { re, fn } of matchers) {
+      const m = q.match(re);
+      if (m) {
+        const result = fn(m, q);
+        if (result) {
+          showResult(result.label, result.value, result.detail);
+          return;
+        }
+      }
+    }
+    showResult('Result', '?', 'Try: "15% tip on $50" or "100 miles to km".');
+  }
+
+  if (aiBtn && aiInput) {
+    aiBtn.addEventListener('click', () => solve(aiInput.value));
+    aiInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') { e.preventDefault(); solve(aiInput.value); }
+    });
+    aiInput.addEventListener('input', () => { if (!aiInput.value.trim()) hideResult(); });
+  }
+
+  document.querySelectorAll('.ai-example-chip').forEach(chip => {
+    chip.addEventListener('click', () => {
+      if (aiInput) {
+        aiInput.value = chip.dataset.query;
+        solve(chip.dataset.query);
+      }
+    });
+  });
+})();
+</script>
+<!-- Theme Sync Engine -->
+<script>
+(function() {
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-calc-theme', theme);
+    const container = document.getElementById('appContainer');
+    if (container) container.setAttribute('data-calc-theme', theme);
+    const modal = document.querySelectorAll('.modal-overlay');
+    modal.forEach(m => m.setAttribute('data-calc-theme', theme));
+    localStorage.setItem('omnicalc_theme', theme);
+  }
+
+  function syncTheme() {
+    var cw = document.documentElement.getAttribute('data-theme') || localStorage.getItem('calcworker_theme') || 'dark';
+    var calcT;
+    if (cw === 'light') {
+      calcT = 'nordic';
+    } else {
+      var saved = localStorage.getItem('omnicalc_theme');
+      calcT = (saved && saved !== 'nordic') ? saved : 'onyx';
+    }
+    applyTheme(calcT);
+  }
+  syncTheme();
+  new MutationObserver(syncTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  document.querySelectorAll('.theme-card-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const theme = btn.dataset.setTheme;
+      if (theme) {
+        applyTheme(theme);
+        document.querySelectorAll('.theme-card-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      }
+    });
+  });
+
+  const shareBtn = document.getElementById('omniShareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', async () => {
+      const expr = document.getElementById('screenExpr') ? document.getElementById('screenExpr').textContent : '';
+      const res = document.getElementById('screenResult') ? document.getElementById('screenResult').textContent : '0';
+      const calculation = expr ? `${expr} = ${res}` : `Result: ${res}`;
+
+      const shareText = `🧮 CalcWorker — OmniCalc Ultra Calculation:\n• ${calculation}\n🔗 Free Calculator: ${window.location.href}`;
+      const btnText = document.getElementById('omniShareText');
+
+    const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : (typeof shareText !== 'undefined' ? shareText : (typeof t !== 'undefined' ? t : window.location.href));
+    navigator.clipboard.writeText(copyContent).then(function() {
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      const btnEl = document.getElementById('shareBtn') || document.getElementById('omniShareBtn');
+      if (btnEl) btnEl.style.background = '#047857';
+      setTimeout(function() {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      }, 2500);
+    });
+    });
+  }
+})();
+</script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

@@ -1,0 +1,950 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Calorie Calculator — TDEE, BMR & Deficit for Weight Loss</title>
+<meta content="Calculate Total Daily Energy Expenditure (TDEE) and Basal Metabolic Rate (BMR) using the Mifflin-St Jeor formula. Find daily calorie targets for weight loss." name="description"/>
+<meta content="calorie calculator, tdee calculator, bmr calculator, daily calories to lose weight, calorie deficit calculator, macro calculator, mifflin st jeor formula" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://calcworker.com/tools/calorie-calculator.html" rel="canonical"/>
+<!-- Open Graph -->
+<meta content="Calorie Calculator — TDEE, BMR & Deficit for Weight Loss" property="og:title"/>
+<meta content="Calculate Total Daily Energy Expenditure (TDEE) and Basal Metabolic Rate (BMR) using the Mifflin-St Jeor formula. Find daily calorie targets for weight loss." property="og:description"/>
+<meta content="https://calcworker.com/tools/calorie-calculator.html" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/assets/logo.png" property="og:image"/>
+<!-- Structured Data -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Calorie & TDEE Deficit Calculator",
+    "url": "https://calcworker.com/tools/calorie-calculator.html",
+    "applicationCategory": "HealthApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the minimum healthy calorie intake?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "General clinical guidelines advise that adult females should not consume fewer than 1,200 calories per day, and adult males not fewer than 1,500 calories per day, without direct medical supervision."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between BMR and TDEE?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BMR is the energy your body expends simply staying alive at complete rest (breathing, cellular repair, organ function). TDEE includes BMR plus digestion (Thermic Effect of Food) and all physical motion."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does protein intake impact fat loss during a deficit?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Consuming adequate protein (1.6 to 2.2 grams per kilogram of body weight) during a caloric deficit preserves lean muscle tissue and maximizes fat oxidation."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why does eating too few calories stall weight loss?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Severe caloric restriction can induce adaptive thermogenesis (metabolic slowdown), where thyroid hormone conversion decreases, spontaneous movement (NEAT) drops, and the body begins catabolizing muscle tissue rather than adipose fat stores."
+        }
+      }
+    ]
+  }
+]
+</script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- Google tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+</script>
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<meta content="#090d16" name="theme-color"/>
+<script defer="" src="../js/analytics.js"></script>
+<link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+<style>
+  .cal-plan-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 16px 0;
+  }
+  .cal-plan-box {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px;
+  }
+  .cal-plan-box.highlight {
+    border-color: var(--accent-emerald);
+    background: rgba(16,185,129,0.06);
+  }
+  .cal-plan-title {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+  .cal-plan-val {
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--text-main);
+    font-family: 'JetBrains Mono', monospace;
+    margin: 4px 0;
+  }
+  .macro-bar {
+    display: flex;
+    height: 14px;
+    border-radius: 7px;
+    overflow: hidden;
+    margin: 14px 0 8px 0;
+  }
+  .macro-prot { background: #3b82f6; }
+  .macro-fat  { background: #f59e0b; }
+  .macro-carb { background: #10b981; }
+  .faq-item details { border-bottom: 1px solid var(--border); padding: 12px 0; }
+  .faq-item summary { font-size: 0.92rem; font-weight: 600; cursor: pointer; color: var(--text-main); }
+  .faq-item details p { margin-top: 8px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+</style>
+</head>
+<body>
+<div class="app-shell">
+<!-- Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link active" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<!-- Main Viewport -->
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn" title="Toggle Navigation Menu">☰</button>
+<span class="topbar-title">Calorie &amp; TDEE Calculator</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<nav aria-label="Breadcrumb" style="margin-bottom: 12px; font-size: 0.8rem; color: var(--text-dim);">
+<a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a> / 
+        <span>Fitness &amp; Health</span> / 
+        <span style="color: var(--brand-primary); font-weight: 600;">Calorie &amp; TDEE Calculator</span>
+</nav>
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>🔥</span> Calorie &amp; TDEE Deficit Calculator</h1>
+<p class="tool-header-desc">
+          Compute your Total Daily Energy Expenditure (TDEE) and Basal Metabolic Rate (BMR) with the gold-standard Mifflin-St Jeor equation. Generates precise calorie deficit targets for fat loss, maintenance, and macronutrient targets.
+        </p>
+</div>
+<div class="tool-page-layout">
+<!-- LEFT: INPUTS -->
+<div class="tool-form-card" style="padding: 24px;">
+<h3 style="font-size: 1.05rem; margin-bottom: 16px; color: var(--text-main);">Biometric Profile</h3>
+<!-- Gender Selector -->
+<div style="margin-bottom: 16px;">
+<label style="display:block; font-size:0.8rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Biological Sex</label>
+<div style="display:flex; gap:10px;">
+<button class="btn active" id="btnMale" onclick="setGender('male')" style="flex:1; padding:9px; border-radius:8px; border:1px solid var(--brand-primary); background:var(--brand-primary); color:#fff; font-weight:600; cursor:pointer;" type="button">Male</button>
+<button class="btn" id="btnFemale" onclick="setGender('female')" style="flex:1; padding:9px; border-radius:8px; border:1px solid var(--border); background:var(--bg-subtle); color:var(--text-muted); font-weight:600; cursor:pointer;" type="button">Female</button>
+</div>
+</div>
+<div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px; margin-bottom:16px;">
+<div>
+<label style="display:block; font-size:0.8rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Age (Years)</label>
+<input class="form-control" id="calAge" style="width:100%; padding:10px 14px; background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; color:var(--text-main); font-size:1rem; font-weight:600;" type="number" value="28"/>
+</div>
+<div>
+<label style="display:block; font-size:0.8rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Weight (kg)</label>
+<input class="form-control" id="calWeight" style="width:100%; padding:10px 14px; background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; color:var(--text-main); font-size:1rem; font-weight:600;" type="number" value="75"/>
+</div>
+</div>
+<div class="form-group" style="margin-bottom: 16px;">
+<label style="display:block; font-size:0.8rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Height (cm)</label>
+<input class="form-control" id="calHeight" style="width:100%; padding:10px 14px; background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; color:var(--text-main); font-size:1rem; font-weight:600;" type="number" value="178"/>
+</div>
+<div class="form-group" style="margin-bottom: 16px;">
+<label style="display:block; font-size:0.8rem; text-transform:uppercase; color:var(--text-muted); margin-bottom:6px;">Daily Activity Level</label>
+<select class="form-control" id="calActivity" style="width:100%; padding:10px 14px; background:var(--bg-subtle); border:1px solid var(--border); border-radius:8px; color:var(--text-main); font-size:0.9rem; font-weight:600; cursor:pointer;">
+<option value="1.2">Sedentary (Desk job, little/no exercise)</option>
+<option selected="" value="1.375">Lightly Active (Exercise 1-3 days/week)</option>
+<option value="1.55">Moderately Active (Exercise 3-5 days/week)</option>
+<option value="1.725">Very Active (Hard exercise 6-7 days/week)</option>
+<option value="1.9">Athlete / Physical Job (2x training/day)</option>
+</select>
+</div>
+<button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; margin-top: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);" type="button"><span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span></button>
+</div>
+<!-- RIGHT: RESULTS -->
+<div class="tool-results-card" style="padding: 24px;">
+<div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--text-muted); margin-bottom: 6px;">Daily Maintenance (TDEE)</div>
+<div class="cw-disclaimer-card" style="margin-top: 18px; padding: 14px 18px; border-radius: var(--radius-md); background: rgba(16, 185, 129, 0.08); border-left: 3px solid #10b981; font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">
+  <strong style="color: var(--text-main);">Health &amp; Fitness Disclaimer:</strong> This calculator provides general physiological estimates based on standard population research formulas. Calculations are for educational and informational purposes only and do not constitute clinical advice, diagnosis, or personalized medical regimens. Consult a physician or registered dietitian before making dietary or fitness changes.
+</div>
+<div id="resTdee" style="font-size: 2.5rem; font-weight: 800; color: var(--accent-emerald); font-family: 'JetBrains Mono', monospace; line-height: 1.1; margin-bottom: 6px;">
+            2,382 kcal
+          </div>
+<div id="resBmr" style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 16px;">
+            Basal Metabolic Rate (BMR): 1,732 kcal/day
+          </div>
+<!-- Goal Targets Grid -->
+<div style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); margin-bottom: 6px;">Weight Goals &amp; Deficits:</div>
+<div class="cal-plan-grid">
+<div class="cal-plan-box highlight">
+<div class="cal-plan-title">Fat Loss (-1 lb/wk)</div>
+<div class="cal-plan-val" id="planFatLoss" style="color:var(--accent-emerald);">1,882</div>
+<div style="font-size:0.72rem; color:var(--text-muted);">-500 kcal deficit</div>
+</div>
+<div class="cal-plan-box">
+<div class="cal-plan-title">Mild Loss (-0.5 lb/wk)</div>
+<div class="cal-plan-val" id="planMildLoss">2,132</div>
+<div style="font-size:0.72rem; color:var(--text-muted);">-250 kcal deficit</div>
+</div>
+<div class="cal-plan-box">
+<div class="cal-plan-title">Muscle Bulk (+0.5 lb/wk)</div>
+<div class="cal-plan-val" id="planBulk" style="color:#60a5fa;">2,682</div>
+<div style="font-size:0.72rem; color:var(--text-muted);">+300 kcal surplus</div>
+</div>
+<div class="cal-plan-box">
+<div class="cal-plan-title">Maintenance</div>
+<div class="cal-plan-val" id="planMaintain">2,382</div>
+<div style="font-size:0.72rem; color:var(--text-muted);">0 kcal change</div>
+</div>
+</div>
+<!-- Macros for Fat Loss -->
+<div style="border-top: 1px solid var(--border); padding-top: 14px; margin-top: 10px;">
+<div style="display:flex; justify-content:space-between; font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted);">
+<span>Recommended Fat Loss Macros</span>
+<span id="macroTotalLabel">1,882 kcal</span>
+</div>
+<div class="macro-bar">
+<div class="macro-prot" style="width: 35%;" title="Protein 35%"></div>
+<div class="macro-fat" style="width: 25%;" title="Fats 25%"></div>
+<div class="macro-carb" style="width: 40%;" title="Carbs 40%"></div>
+</div>
+<div style="display:flex; justify-content:space-between; font-size:0.75rem; color:var(--text-main); font-weight:600; margin-top:4px;">
+<span style="color:#60a5fa;">🍗 Protein: <span id="macroProt">165g</span></span>
+<span style="color:#f59e0b;">🥑 Fats: <span id="macroFat">52g</span></span>
+<span style="color:#10b981;">🍚 Carbs: <span id="macroCarb">188g</span></span>
+</div>
+</div>
+</div>
+</div>
+<!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
+
+<!-- Comprehensive Educational & Methodology Section (AdSense E-E-A-T Compliant) -->
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📘</span> Total Daily Energy Expenditure (TDEE) & Caloric Deficit Science
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Effective weight management, muscle gain, or fat loss is governed by the laws of thermodynamics: energy balance (Calories In vs. Calories Out). CalcWorker computes your <strong>Basal Metabolic Rate (BMR)</strong> using the scientifically validated <strong>Mifflin-St Jeor Equation</strong>, recognized by the American Dietetic Association as the most accurate predictive formula for healthy adults.</p>
+        <div style="background: var(--bg-subtle); padding: 12px 16px; border-left: 4px solid var(--brand-primary); margin: 12px 0;">
+          <strong>Men:</strong> <code>BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) + 5</code><br/>
+          <strong>Women:</strong> <code>BMR = (10 × weight in kg) + (6.25 × height in cm) - (5 × age) - 161</code>
+        </div>
+        <p>Your BMR is then multiplied by your physical activity multiplier (1.2 for sedentary to 1.9 for extreme athletic conditioning) to establish your <strong>Total Daily Energy Expenditure (TDEE)</strong>. To lose 1 pound of body fat per week safely, a moderate deficit of 500 calories per day (3,500 calories weekly) is clinically recommended.</p>
+  </div>
+  
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>❓</span> Frequently Asked Questions
+  </h3>
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">What is the minimum healthy calorie intake?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">General clinical guidelines advise that adult females should not consume fewer than 1,200 calories per day, and adult males not fewer than 1,500 calories per day, without direct medical supervision.</p>
+            </details>
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">What is the difference between BMR and TDEE?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">BMR is the energy your body expends simply staying alive at complete rest (breathing, cellular repair, organ function). TDEE includes BMR plus digestion (Thermic Effect of Food) and all physical motion.</p>
+            </details>
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">How does protein intake impact fat loss during a deficit?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Consuming adequate protein (1.6 to 2.2 grams per kilogram of body weight) during a caloric deficit preserves lean muscle tissue and maximizes fat oxidation.</p>
+            </details>
+  </div>
+</article>
+
+
+<!-- Comprehensive Deep-Dive & Practical Application Guide (AdSense Authority Expansion) -->
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📊</span> Step-by-Step Practical Application & Calculation Nuances: Calorie
+  </h2>
+  <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+    Accurate planning with the <strong>Calorie</strong> requires understanding how individual input variables interact dynamically. In financial, operational, and physical estimations, small changes in baseline parameters compound over extended intervals, producing significant variance in net outcomes.
+  </p>
+  
+  <div style="background: var(--bg-subtle); border-left: 4px solid var(--brand-primary); padding: 14px 18px; border-radius: 6px; margin: 16px 0;">
+    <h4 style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 6px;">Key Principles for Reliable Estimates:</h4>
+    <ul style="margin-left: 18px; line-height: 1.6; color: var(--text-muted); font-size: 0.88rem;">
+      <li><strong style="color: var(--text-main);">Verified Inputs:</strong> Always ground your baseline figures in empirical records (e.g. pay stubs, bank statements, or calibrated measurement tools).</li>
+      <li><strong style="color: var(--text-main);">Sensitivity Analysis:</strong> Test conservative, moderate, and aggressive scenarios to observe how changes in rates or milestones affect your final outcome.</li>
+      <li><strong style="color: var(--text-main);">Recurring Re-evaluation:</strong> Schedule periodic recalculations as life events, market interest rates, or fiscal policies shift.</li>
+    </ul>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Best Practices & Expert Recommendations
+  </h3>
+  <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+    Professionals across corporate finance, personal wealth advisory, and clinical health rely on systematic computational checks rather than mental approximations. By utilizing CalcWorker's zero-latency, device-local engine, you maintain complete computational certainty while ensuring that sensitive financial or physiological information remains strictly confidential within your local hardware sandbox.
+  </p>
+</article>
+
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+<h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+<span>🔗</span> Related Precision Calculators
+          </h3>
+<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+</div>
+<div class="related-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px;">
+<a class="related-tool-link" href="/tools/bmi-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">⚖️</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">HEALTH</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">BMI Calculator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Calculate adult Body Mass Index (BMI) with WHO classification color meter.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/percentage-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🔢</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">TOP</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Percentage Calculator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">4-in-1 multi-mode percent computing: What is X% of Y, % change, and % difference.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/age-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🎂</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">POPULAR</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Exact Age Calculator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Compute exact chronological age down to years, months, days, and hours.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+</div>
+</section>
+<!-- FAQ Section -->
+<section class="seo-card" style="margin-top: 36px; padding: 28px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px;">
+<h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px;">The Science of BMR &amp; TDEE Energy Balance</h2>
+<p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+          This calculator implements the clinical Mifflin-St Jeor equation, widely acknowledged in peer-reviewed clinical nutrition literature as the most accurate predictor of resting metabolic rate in healthy adults. Your Basal Metabolic Rate (BMR) represents the energy required by vital organs at complete rest, while your Total Daily Energy Expenditure (TDEE) accounts for spontaneous physical activity, scheduled workouts, and the thermic effect of food.
+        </p>
+<h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin: 20px 0 10px 0;">Frequently Asked Questions</h3>
+<div class="faq-item">
+<details open="">
+<summary>Why does eating too few calories stall weight loss?</summary>
+<p>Severe caloric restriction can induce adaptive thermogenesis (metabolic slowdown), where thyroid hormone conversion decreases, spontaneous movement (NEAT) drops, and the body begins catabolizing muscle tissue rather than adipose fat stores.</p>
+</details>
+</div>
+</section>
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Mifflin-St Jeor Metabolic BMR & TDEE Deficit Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">BMR_{men} = 10W + 6.25H - 5A + 5, | BMR_{women} = 10W + 6.25H - 5A - 161, | TDEE = BMR × PAL</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Calculates daily caloric energy targets needed to maintain, lose, or gain weight based on Total Daily Energy Expenditure (TDEE) and physical activity levels.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">W:</span> <span>Body weight in kilograms (lbs ÷ 2.20462)</span></li>
+      <li><span class="cw-var-symbol">H:</span> <span>Height in centimeters (inches × 2.54)</span></li>
+      <li><span class="cw-var-symbol">A:</span> <span>Age in completed years</span></li>
+      <li><span class="cw-var-symbol">PAL (Physical Activity Level):</span> <span>Sedentary: 1.2, Light Active: 1.375, Moderate: 1.55, Heavy Active: 1.725, Athlete: 1.9</span></li>
+      <li><span class="cw-var-symbol">Fat Loss Deficit:</span> <span>1 lb of adipose fat tissue ≈ 3,500 kcal (A 500 kcal/day deficit yields ~1 lb fat loss per week)</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Male: Age 32, Weight = 190 lbs (86.18 kg), Height = 6'0" (182.88 cm). Activity: Moderately active (Gym 3-4 days/wk, PAL = 1.55).</li>
+      <li>Basal Metabolic Rate (BMR): (10 × 86.18) + (6.25 × 182.88) - (5 × 32) + 5 = 861.8 + 1,143.0 - 160 + 5 = 1,849.8 kcal/day.</li>
+      <li>Total Daily Energy Expenditure (TDEE): 1,849.8 × 1.55 = 2,867 kcal/day maintenance calories.</li>
+      <li>Fat Loss Target (1 lb/week): 2,867 - 500 = 2,367 kcal/day target.</li>
+      <li>Macro Breakdown (40% Protein, 35% Carbs, 25% Fat): 237g Protein (948 kcal), 207g Carbs (828 kcal), 66g Fat (591 kcal).</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Break down complicated multi-step calculations by solving inner parentheses first, converting all time units to the same scale (e.g. annual to monthly), and checking your result with this tool.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Peer-reviewed clinical validation published in the American Journal of Clinical Nutrition confirms that the Mifflin-St Jeor equation predicts resting metabolic rate within 10% of indirect calorimetry, outperforming the legacy Harris-Benedict formula in modern sedentary and athletic populations.
+  </div>
+  <p class="cw-deep-text">Sustainable fat loss is governed by the first law of thermodynamics: energy balance. While diet marketing promotes restrictive fad protocols, fat loss occurs solely when an individual maintains a net caloric deficit relative to their Total Daily Energy Expenditure (TDEE).</p>
+  <p class="cw-deep-text">However, aggressive caloric deficits exceeding 750 to 1,000 kcal/day trigger severe metabolic adaptation (adaptive thermogenesis), where the body downregulates non-exercise activity thermogenesis (NEAT), decreases thyroid output, and cannibalizes lean muscle tissue. A moderate 15% to 20% deficit preserves metabolic rate and muscle mass.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">How many calories should I cut per day to lose 1 pound per week?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Because one pound of human adipose tissue stores approximately 3,500 kilocalories of chemical energy, maintaining a daily deficit of 500 calories below your TDEE produces an estimated 1 pound of fat loss per week (500 kcal × 7 days = 3,500 kcal).</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is the difference between BMR and TDEE?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Basal Metabolic Rate (BMR) is the baseline caloric energy your body burns strictly to stay alive in a comatose state (heartbeat, respiration, brain function, cellular repair). Total Daily Energy Expenditure (TDEE) is your true total daily burn, adding physical movement, workouts, and the thermic effect of food (TEF) onto your baseline BMR.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🥗</span> Total Daily Energy Expenditure (TDEE) & Macronutrient Partitioning
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Human caloric expenditure is determined by Total Daily Energy Expenditure (TDEE), which comprises four distinct physiological components: Basal Metabolic Rate (BMR, 60%-70% of burn), Non-Exercise Activity Thermogenesis (NEAT, 15%-20%), the Thermic Effect of Food (TEF, 8%-10%), and Exercise Activity Thermogenesis (EAT, 5%-10%).</p>
+    <p style="margin-top: 12px;">The validated Mifflin-St Jeor equation calculates resting metabolic requirements based on sex, age, height, and weight. Adjusting caloric intake by a controlled 500 kcal daily deficit or surplus produces approximately one pound of weekly fat loss or controlled lean muscle gain under the thermodynamics of energy balance.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> TDEE Activity Multipliers & Caloric Intake Targets (2,000 kcal Baseline BMR)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Physical Activity Level</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Activity Multiplier (PAL)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Maintenance Calories (TDEE)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Weight Loss Target (-500 kcal)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Lean Bulk Target (+300 kcal)</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Sedentary (Desk Job, Little Exercise)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">BMR × 1.200</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2,400 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1,900 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2,700 kcal / day</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Lightly Active (1-3 workout days/wk)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">BMR × 1.375</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2,750 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2,250 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3,050 kcal / day</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Moderately Active (3-5 intense days/wk)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">BMR × 1.550</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3,100 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2,600 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3,400 kcal / day</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Very Active (6-7 intense days/wk)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">BMR × 1.725</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3,450 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2,950 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3,750 kcal / day</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Extremely Active (Athletic Training/Labor)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">BMR × 1.900</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3,800 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3,300 kcal / day</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4,100 kcal / day</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Macronutrient Distribution Guidelines
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Prioritize Protein Intake (0.8g – 1.0g per lb):</strong> <span>Consuming 0.8 to 1.0 grams of protein per pound of body weight preserves lean muscle mass during caloric deficits and maximizes satiety.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Maintain Healthy Dietary Fats (20% – 30% of Calories):</strong> <span>Dietary fats are vital for testosterone production, thyroid hormone conversion, and cellular membrane health; never drop fats below 0.3g per pound.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Fuel High-Intensity Workouts with Carbohydrates:</strong> <span>Fill remaining calories with complex carbohydrates (oats, rice, sweet potatoes) to replenish muscle glycogen stores for intense training.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 calorie calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 daily calorie</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 needs tdee</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 total daily</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 energy expenditure</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 bmr mifflin</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 jeor weight</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script>
+<script defer="" src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+<script>
+let currentGender = 'male';
+
+function setGender(g) {
+  currentGender = g;
+  const btnM = document.getElementById('btnMale');
+  const btnF = document.getElementById('btnFemale');
+  
+  if (g === 'male') {
+    btnM.style.background = 'var(--brand-primary)';
+    btnM.style.borderColor = 'var(--brand-primary)';
+    btnM.style.color = '#fff';
+    btnF.style.background = 'var(--bg-subtle)';
+    btnF.style.borderColor = 'var(--border)';
+    btnF.style.color = 'var(--text-muted)';
+  } else {
+    btnF.style.background = 'var(--brand-primary)';
+    btnF.style.borderColor = 'var(--brand-primary)';
+    btnF.style.color = '#fff';
+    btnM.style.background = 'var(--bg-subtle)';
+    btnM.style.borderColor = 'var(--border)';
+    btnM.style.color = 'var(--text-muted)';
+  }
+  calculateCalories();
+}
+
+function calculateCalories() {
+  const age = parseFloat(document.getElementById('calAge').value) || 0;
+  const weight = parseFloat(document.getElementById('calWeight').value) || 0;
+  const height = parseFloat(document.getElementById('calHeight').value) || 0;
+  const activity = parseFloat(document.getElementById('calActivity').value) || 1.2;
+
+  if (age <= 0 || weight <= 0 || height <= 0) return;
+
+  // Mifflin-St Jeor Formula
+  // BMR Men = 10 * weight(kg) + 6.25 * height(cm) - 5 * age + 5
+  // BMR Women = 10 * weight(kg) + 6.25 * height(cm) - 5 * age - 161
+  let bmr = (10 * weight) + (6.25 * height) - (5 * age);
+  bmr = currentGender === 'male' ? bmr + 5 : bmr - 161;
+
+  const tdee = Math.round(bmr * activity);
+  const fatLossCal = Math.max(1200, tdee - 500);
+  const mildLossCal = Math.max(1200, tdee - 250);
+  const bulkCal = tdee + 300;
+
+  document.getElementById('resTdee').textContent = tdee.toLocaleString() + ' kcal';
+  document.getElementById('resBmr').textContent = `Basal Metabolic Rate (BMR): ${Math.round(bmr).toLocaleString()} kcal/day`;
+
+  document.getElementById('planFatLoss').textContent = fatLossCal.toLocaleString();
+  document.getElementById('planMildLoss').textContent = mildLossCal.toLocaleString();
+  document.getElementById('planBulk').textContent = bulkCal.toLocaleString();
+  document.getElementById('planMaintain').textContent = tdee.toLocaleString();
+
+  // Macros for fat loss (35% protein, 25% fat, 40% carb)
+  document.getElementById('macroTotalLabel').textContent = fatLossCal.toLocaleString() + ' kcal';
+  const protGrams = Math.round((fatLossCal * 0.35) / 4);
+  const fatGrams = Math.round((fatLossCal * 0.25) / 9);
+  const carbGrams = Math.round((fatLossCal * 0.40) / 4);
+
+  document.getElementById('macroProt').textContent = protGrams + 'g';
+  document.getElementById('macroFat').textContent = fatGrams + 'g';
+  document.getElementById('macroCarb').textContent = carbGrams + 'g';
+}
+
+['calAge','calWeight','calHeight','calActivity'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', calculateCalories);
+});
+
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const tdee = document.getElementById('resTdee').textContent;
+  const fatLoss = document.getElementById('planFatLoss').textContent;
+  const p = document.getElementById('macroProt').textContent;
+  const f = document.getElementById('macroFat').textContent;
+  const c = document.getElementById('macroCarb').textContent;
+
+  const shareText = `🔥 CalcWorker TDEE & Calorie Targets:\n• Maintenance (TDEE): ${tdee}\n• Fat Loss Target (-500 kcal): ${fatLoss} kcal\n• Macros: ${p} Protein | ${f} Fats | ${c} Carbs\n🔗 Free Calculator: ${window.location.href}`;
+  const btnText = document.getElementById('shareBtnText');
+  
+    const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : (typeof shareText !== 'undefined' ? shareText : (typeof t !== 'undefined' ? t : window.location.href));
+    navigator.clipboard.writeText(copyContent).then(function() {
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      const btnEl = document.getElementById('shareBtn') || document.getElementById('omniShareBtn');
+      if (btnEl) btnEl.style.background = '#047857';
+      setTimeout(function() {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      }, 2500);
+    });
+});
+
+calculateCalories();
+</script>
+</body>
+</html>

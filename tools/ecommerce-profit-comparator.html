@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<!-- ===== Primary SEO ===== -->
+<title>E-Commerce Fee Comparator — Amazon vs Etsy vs eBay</title>
+<meta content="Directly compare seller fees and net profit margins across Amazon, Etsy, eBay, and Shopify for identical product retail prices and fulfillment methods." name="description"/>
+<meta content="ecommerce profit calculator, etsy vs amazon profit, tiktok shop fee calculator, shopify vs etsy fees, ebay profit calculator, amazon fba calculator 2026, multi channel selling calculator, calcworker" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/ecommerce-profit-comparator.html" rel="canonical"/>
+<!-- ===== Open Graph ===== -->
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/ecommerce-profit-comparator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="E-Commerce Fee Comparator — Amazon vs Etsy vs eBay" property="og:title"/>
+<meta content="Directly compare seller fees and net profit margins across Amazon, Etsy, eBay, and Shopify for identical product retail prices and fulfillment methods." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- Google tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<style>
+    /* Premium Comparison Custom Styles */
+    .winner-banner {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.25));
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .winner-badge-pill {
+      background: #10b981;
+      color: #ffffff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .winner-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--text-main, #111827);
+    }
+    .platform-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .platform-card {
+      background: var(--bg-surface, #ffffff);
+      border: 1px solid var(--border-subtle, #e5e7eb);
+      border-radius: 12px;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+    .platform-card.is-winner {
+      border: 2px solid #10b981;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.18);
+    }
+    .platform-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid var(--border-subtle, #f3f4f6);
+    }
+    .platform-name {
+      font-size: 1rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .profit-figure {
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .profit-figure.positive { color: #10b981; }
+    .profit-figure.negative { color: #ef4444; }
+    .margin-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted, #6b7280);
+      margin-bottom: 12px;
+    }
+    .card-metrics-list {
+      font-size: 0.82rem;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      color: var(--text-muted, #4b5563);
+    }
+    .card-metrics-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .break-even-pill {
+      margin-top: 10px;
+      padding: 6px 10px;
+      background: var(--bg-subtle, #f9fafb);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      text-align: center;
+      color: var(--text-dim, #6b7280);
+    }
+  </style>
+<!-- Structured Data: FAQPage & WebApplication -->
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "E-Commerce Multi-Platform Profit Comparator",
+    "url": "https://calcworker.com/tools/ecommerce-profit-comparator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+]
+</script>
+<meta content="#090d16" name="theme-color"/>
+<script defer="" src="../js/analytics.js"></script>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link active" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<!-- Main Viewport -->
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn" title="Toggle Navigation Menu">☰</button>
+<span class="topbar-title">E-Commerce Multi-Platform Profit Comparator</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<!-- Breadcrumbs -->
+<nav aria-label="Breadcrumb" style="margin-bottom: 12px; font-size: 0.8rem; color: var(--text-dim);">
+<a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Dashboard</a> / 
+          <span>E-Commerce</span> / 
+          <span style="color: var(--brand-primary); font-weight: 600;">Multi-Platform Profit Comparator</span>
+</nav>
+<!-- Tool Header Block -->
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>⚖️</span> E-Commerce Multi-Platform Profit Comparator</h1>
+<p class="tool-header-desc">
+            Instantly compare real take-home profit, marketplace fees, and break-even pricing side-by-side across <strong>TikTok Shop, Amazon, Etsy, Shopify, and eBay (2026 Updated Rates)</strong>. Enter your product numbers once and discover which platform makes you the most money.
+          </p>
+</div>
+<div class="tool-page-layout">
+<!-- Form Inputs -->
+<div class="tool-form-card">
+<h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 18px;">Product Pricing &amp; Unit Economics</h2>
+<div class="form-grid two-col">
+<!-- Item Sale Price -->
+<div class="form-group">
+<label class="form-label" for="itemPrice">Retail Sale Price</label>
+<div class="input-with-affix">
+<span class="input-affix-prefix">$</span>
+<input class="form-input has-prefix" id="itemPrice" min="0" step="1.00" type="number" value="49.99"/>
+</div>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Customer listing price</span>
+</div>
+<!-- Customer Shipping Fee -->
+<div class="form-group">
+<label class="form-label" for="shippingCharged">Customer Paid Shipping</label>
+<div class="input-with-affix">
+<span class="input-affix-prefix">$</span>
+<input class="form-input has-prefix" id="shippingCharged" min="0" step="0.50" type="number" value="4.99"/>
+</div>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Enter $0 if Free Shipping</span>
+</div>
+<!-- Product COGS -->
+<div class="form-group">
+<label class="form-label" for="itemCost">Product Cost (COGS)</label>
+<div class="input-with-affix">
+<span class="input-affix-prefix">$</span>
+<input class="form-input has-prefix" id="itemCost" min="0" step="0.50" type="number" value="12.50"/>
+</div>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Manufacturing / wholesale unit cost</span>
+</div>
+<!-- Actual Shipping Cost Paid -->
+<div class="form-group">
+<label class="form-label" for="shippingCost">Actual Shipping Label Cost</label>
+<div class="input-with-affix">
+<span class="input-affix-prefix">$</span>
+<input class="form-input has-prefix" id="shippingCost" min="0" step="0.25" type="number" value="5.25"/>
+</div>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Carrier postage cost (USPS/UPS)</span>
+</div>
+<!-- Packaging & Prep -->
+<div class="form-group">
+<label class="form-label" for="packagingCost">Packaging &amp; Prep Cost</label>
+<div class="input-with-affix">
+<span class="input-affix-prefix">$</span>
+<input class="form-input has-prefix" id="packagingCost" min="0" step="0.25" type="number" value="1.50"/>
+</div>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Boxes, bubble wrap, poly mailers, labels</span>
+</div>
+<!-- Ad Spend / CAC -->
+<div class="form-group">
+<label class="form-label" for="adSpend">Ad Spend / CAC Per Order</label>
+<div class="input-with-affix">
+<span class="input-affix-prefix">$</span>
+<input class="form-input has-prefix" id="adSpend" min="0" step="0.50" type="number" value="4.00"/>
+</div>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Meta/TikTok/Google ads acquisition cost</span>
+</div>
+<!-- Product Category -->
+<div class="form-group" style="grid-column: span 2;">
+<label class="form-label" for="categorySelect">Product Category (Adjusts Amazon &amp; eBay Rates)</label>
+<select class="form-select" id="categorySelect">
+<option selected="" value="standard">Standard Goods &amp; Home Decor (Amazon: 15%, eBay: 13.25%)</option>
+<option value="apparel">Apparel &amp; Accessories (Amazon: 17%, eBay: 13.25%)</option>
+<option value="electronics">Consumer Electronics (Amazon: 8%, eBay: 9.35%)</option>
+<option value="handmade">Handmade &amp; Crafts (Amazon Handmade: 15%, eBay: 13.25%)</option>
+<option value="beauty">Beauty &amp; Personal Care (Amazon: 15%, eBay: 13.25%)</option>
+</select>
+<span style="font-size: 0.72rem; color: var(--text-dim);">Amazon &amp; eBay apply different commission rates based on product vertical</span>
+</div>
+<!-- Amazon Fulfillment Type -->
+<div class="form-group" style="grid-column: span 2;">
+<label class="form-label" for="amazonFulfillment">Amazon Fulfillment Mode</label>
+<select class="form-select" id="amazonFulfillment">
+<option selected="" value="fbm">FBM (Fulfilled by Merchant — You handle shipping)</option>
+<option value="fba">FBA (Fulfilled by Amazon — ~$4.25 standard pick/pack fee replaces postage)</option>
+</select>
+</div>
+</div>
+</div>
+<!-- Results Summary Card -->
+<div class="tool-results-card">
+<!-- Best Channel Winner Banner -->
+<div class="winner-banner" id="winnerBanner">
+<div>
+<span class="winner-badge-pill">★ Winner: Best Take-Home Profit</span>
+<div class="winner-title" id="winnerPlatformTitle">Shopify Direct ($26.45 Net)</div>
+<div class="cw-disclaimer-card" style="margin-top: 18px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary); font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">
+  <strong style="color: var(--text-main);">Financial Estimate Disclaimer:</strong> Calculations produced by this tool are mathematical estimates designed for planning and comparison purposes only. Final loan payments, interest charges, tax liabilities, and payroll withholdings vary according to your lender terms, tax filing status, and applicable federal, state, and local laws. Consult a certified financial planner or CPA for professional advice.
+</div>
+<div id="winnerPlatformSub" style="font-size: 0.8rem; color: var(--text-muted); margin-top: 4px;">
+                  Highest profit margin at 48.1% with lowest platform fees.
+                </div>
+</div>
+<div style="text-align: right;">
+<div style="font-size: 0.75rem; color: var(--text-dim); text-transform: uppercase;">Top Net Profit</div>
+<div id="winnerProfit" style="font-size: 1.6rem; font-weight: 800; color: #10b981;">$26.45</div>
+</div>
+</div>
+<!-- Smart One-Click Copy Calculation Summary -->
+<div style="margin: 0 0 20px 0;">
+<button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; margin-top: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);" type="button"><span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span></button>
+</div>
+<!-- Side-by-Side 5 Cards -->
+<div class="platform-cards-grid" id="platformCardsContainer">
+<!-- Cards generated by JS -->
+</div>
+<!-- Full Itemized Matrix Table -->
+<h3 style="font-size: 1rem; font-weight: 700; margin: 20px 0 10px 0;">Channel Matrix Comparison</h3>
+<div class="data-table-container">
+<table class="data-table">
+<thead>
+<tr>
+<th>Platform</th>
+<th>Customer Total</th>
+<th>Platform Fees</th>
+<th>Product &amp; Ship Costs</th>
+<th>Ad Spend</th>
+<th>Net Profit</th>
+<th>Margin</th>
+</tr>
+</thead>
+<tbody id="comparisonTableBody">
+<!-- Generated by JS -->
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Comprehensive Educational Guide (AdSense Quality Standard) -->
+<section class="tool-guide-section" style="margin-top: 40px; padding: 28px; background: var(--bg-surface, #ffffff); border: 1px solid var(--border-subtle, #e5e7eb); border-radius: 12px; line-height: 1.7; color: var(--text-main, #1f2937);">
+<h2 style="color: var(--brand-primary, #2563eb); font-size: 1.5rem; margin-bottom: 12px;">E-Commerce Fee Architecture: Maximizing Margins Across Marketplaces</h2>
+<p>Multi-channel e-commerce sellers frequently face a perplexing dilemma: they price their inventory identically across multiple marketplaces, yet notice vast discrepancies in their actual monthly cash disbursements. The reason lies in the underlying fee models utilized by platforms like TikTok Shop, Amazon, Etsy, Shopify, and eBay. Each platform levies different combinations of referral cuts, transaction commissions, fixed insertion fees, and payment gateway percentages.</p>
+<h3 style="margin-top: 20px; font-size: 1.2rem;">2026 Marketplace Commission &amp; Fee Breakdown</h3>
+<ul style="padding-left: 20px; margin-top: 8px;">
+<li><strong>TikTok Shop:</strong> Operates at an aggressive standard referral fee (typically 6% + $0.30 per completed order in the US, up to 8% depending on creator incentives). It currently provides lower transaction hurdles compared to mature legacy marketplaces, making it attractive for viral impulse-buy items.</li>
+<li><strong>Shopify (Direct-to-Consumer):</strong> When utilizing Shopify Payments, merchants pay no marketplace commission—only credit card processing fees (typically 2.9% + $0.30 on the Basic tier). While profit margins are the highest per order, merchants are responsible for driving 100% of their customer acquisition traffic through paid ads or SEO.</li>
+<li><strong>Etsy:</strong> Tailored for handmade, digital, and vintage goods. Etsy charges a $0.20 listing renewal fee per item, a 6.5% transaction fee on the full order value (including customer-paid shipping), and a 3% + $0.25 payment processing charge.</li>
+<li><strong>Amazon (FBM / FBA):</strong> Dominates US consumer search volume, but charges a category referral commission averaging 15% (8% on select consumer electronics, 17% on apparel). FBA adds fulfillment, pick, and pack charges, while FBM requires sellers to absorb standard postage.</li>
+<li><strong>eBay:</strong> Utilizes a Final Value Fee structure that averages 13.25% plus a flat $0.40 per order across most consumer categories, applied to the combined item and shipping total.</li>
+</ul>
+<h3 style="margin-top: 20px; font-size: 1.2rem;">Mathematical Net Profit &amp; Break-Even Equation</h3>
+<div style="background: var(--bg-subtle, #f3f4f6); padding: 14px 18px; border-left: 4px solid var(--brand-primary, #2563eb); border-radius: 6px; font-family: monospace; font-size: 0.92rem; margin: 15px 0;">
+            Gross Order Total = Retail Price + Shipping Charged to Customer<br/><br/>
+            Total Costs = COGS + Actual Postage Paid + Packaging + Allocated Ad Spend (CAC)<br/><br/>
+            Net Profit = Gross Order Total - Marketplace Fees - Payment Processing - Total Costs<br/><br/>
+            Net Margin (%) = (Net Profit / Gross Order Total) × 100<br/><br/>
+            Break-Even Retail Price = (Total Costs + Fixed Platform Fees - Shipping Charged × (1 - Variable Fee Rate)) / (1 - Variable Fee Rate)
+          </div>
+<h3 style="margin-top: 28px; color: var(--brand-primary, #2563eb); font-size: 1.3rem;">Frequently Asked Questions (FAQs)</h3>
+<div style="margin-top: 12px;">
+<h4 style="margin: 8px 0 4px 0; font-size: 1.05rem;">Should I price my products differently across each marketplace?</h4>
+<p style="margin: 0 0 14px 0; color: var(--text-muted, #4b5563);">Yes. Because Amazon and eBay take upwards of 13% to 15% in platform commissions while Shopify takes less than 3% in processing fees, savvy sellers often price items 10% to 15% higher on Amazon to preserve identical net profit margins.</p>
+<h4 style="margin: 8px 0 4px 0; font-size: 1.05rem;">Why is customer-paid shipping subject to platform fees?</h4>
+<p style="margin: 0 0 14px 0; color: var(--text-muted, #4b5563);">All major platforms (Etsy, eBay, Amazon, TikTok) assess transaction fees on the shipping fee charged to the buyer. This eliminates fee evasion where sellers would sell a $50 product for $1 with $49 shipping.</p>
+<h4 style="margin: 8px 0 4px 0; font-size: 1.05rem;">How does Ad Spend / CAC affect net margins?</h4>
+<p style="margin: 0 0 14px 0; color: var(--text-muted, #4b5563);">On search marketplaces (Amazon, Etsy, eBay), buyers have high purchasing intent, leading to lower direct ad costs. On DTC platforms (Shopify), your Customer Acquisition Cost (CAC) through Facebook, TikTok, or Google Ads can often equal 20% to 40% of the retail price, turning positive gross margins into negative net income if unmonitored.</p>
+</div>
+</section>
+<!-- Footer -->
+<!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+<h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+<span>🔗</span> Related Precision Calculators
+          </h3>
+<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+</div>
+<div class="related-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px;">
+<a class="related-tool-link" href="/tools/amazon-fba-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">📦</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">PROFIT</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Amazon FBA Calculator</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Calculate referral fees, FBA fulfillment tiers, low-price rates, and net margin.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/shopify-fee-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🛍️</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">NEW</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Shopify Fee &amp; Profit</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Calculate subscription plans, payment gateway transaction fees, and net take-home.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/tiktok-shop-affiliate-calculator.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🛍️</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">HOT</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">TikTok Shop Affiliate</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Compute GMV commissions (5%-30%), sample costs, and net creator take-home.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+</div>
+</section>
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Multichannel E-Commerce Net Margin Comparison Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">Net Margin = (Retail Price - COGS - Platform Fee - Payment Fee - Fulfillment Cost - Ad Spend ÷ Retail Price) × 100%</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Applies standard mathematical and statistical rules to calculate Multichannel E-Commerce Net Margin Comparison Model accurately with real-world variable adjustments.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Retail Price:</span> <span>Customer checkout price including collected shipping fee</span></li>
+      <li><span class="cw-var-symbol">COGS:</span> <span>Cost of Goods Sold (Unit manufacturing, inbound freight, packaging, customs duties)</span></li>
+      <li><span class="cw-var-symbol">Platform Fee:</span> <span>Amazon (8%–15% referral) vs Etsy (6.5% transaction) vs Shopify ($39/mo flat plan + 0% platform fee)</span></li>
+      <li><span class="cw-var-symbol">Payment Processing:</span> <span>Stripe/Shopify Payments (2.9% + 30¢) vs PayPal (3.49% + 49¢)</span></li>
+      <li><span class="cw-var-symbol">Customer Acquisition (CAC):</span> <span>Blended ad spend per unit sold (Meta, Google, TikTok Ads)</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Unit Retail Price: $45.00. Landed COGS: $12.00 per unit.</li>
+      <li>Amazon FBA Channel: Referral Fee 15% ($6.75) + FBA Pick/Pack ($5.40). Net Profit = $20.85 (46.3% Margin). Organic Amazon search traffic covers CAC.</li>
+      <li>Shopify DTC Channel: Shopify Payments 2.9% + 30¢ ($1.61) + 3PL fulfillment ($6.50) + Meta Ad CAC ($14.00). Net Profit = $10.89 (24.2% Margin).</li>
+      <li>Etsy Channel: Listing ($0.20) + 6.5% Transaction ($2.93) + Payment 3% + 25¢ ($1.60) + Shipping ($5.50). Net Profit = $22.77 (50.6% Margin).</li>
+      <li>Strategic Conclusion: Marketplaces (Amazon, Etsy) provide superior initial margins for new brands due to built-in buyer search intent; Shopify delivers long-term enterprise value through customer data ownership and email remarketing.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Break down complicated multi-step calculations by solving inner parentheses first, converting all time units to the same scale (e.g. annual to monthly), and checking your result with this tool.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Industry benchmarks for private-label physical e-commerce dictate a minimum 3x to 4x markup over landed COGS (e.g., an item manufactured for $10 should retail for $35 to $45) to absorb marketing ad spend, platform take-rates, returns (typically 8%–15% in apparel, 3%–5% in hard goods), and storage overhead while maintaining a 20%+ net operating profit margin.
+  </div>
+  <p class="cw-deep-text">Selecting the optimal e-commerce distribution channel requires balancing platform fee friction against customer acquisition cost (CAC). On marketplaces like Amazon and Etsy, sellers pay steep variable take-rates (15% to 25% of gross revenue), but gain immediate access to millions of high-intent buyers with pre-saved credit cards and Prime shipping expectations.</p>
+  <p class="cw-deep-text">Conversely, selling direct-to-consumer (DTC) via Shopify eliminates marketplace referral commissions, but shifts the entire burden of customer acquisition onto paid media channels (Facebook, Instagram, Google Ads, TikTok). A sustainable e-commerce business model leverages marketplaces for high-volume cash generation while driving repeat brand loyalty to an owned DTC website via product inserts and loyalty programs.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Which platform is best for beginners — Amazon, Shopify, or Etsy?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">For handmade, vintage, or custom craft goods, Etsy offers the lowest barrier to entry with zero monthly subscriptions. For private-label consumer packaged goods with scalable manufacturing, Amazon FBA provides immediate global scale. For established brands with custom packaging, strong storytelling, and repeat-order consumables, Shopify provides complete customer list ownership.</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is a healthy net profit margin for an e-commerce brand in 2026?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">After accounting for product manufacturing, international ocean freight, platform commissions, 3PL fulfillment, paid advertising, and returns, a healthy e-commerce business operates between 15% and 25% net profit margin before taxes.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>⚖️</span> E-Commerce Multichannel Fee Comparison: Amazon vs. Etsy vs. eBay vs. Shopify
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Selling products online across multiple retail channels requires analyzing divergent fee mechanics. While marketplaces (Amazon, eBay, Etsy) charge hefty transaction commissions (10% to 18%) in exchange for massive organic consumer search traffic, direct-to-consumer storefronts (Shopify) charge low transaction fees (2.9% + $0.30) but require substantial paid advertising ad spend to acquire customers.</p>
+    <p style="margin-top: 12px;">A unified fee comparison allows multi-channel e-commerce merchants to optimize channel inventory allocation, calculating exact net profit margins across identical price points.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> E-Commerce Platform Net Profit Margin Comparison ($50.00 Retail Product, $15.00 COGS)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Platform Channel</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Gross Selling Price</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Platform & Transaction Fees</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Fulfillment / Shipping Cost</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Net Dollar Profit</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Net Profit Margin %</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Shopify DTC Storefront</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1.75 (2.9%+$0.30)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$5.50 (Self-Shipped USPS)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$27.75 Net Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">55.5% High Margin (Requires Ads)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">eBay (General Merchandise)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$6.93 (13.25%+$0.30)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$5.50 (Self-Shipped)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$22.57 Net Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">45.1% Net Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Etsy (Handmade / Craft)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$5.20 (6.5%+$0.20+3%+$0.25)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$5.50 (Self-Shipped)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$24.30 Net Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">48.6% Net Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Amazon FBM (Merchant Fulfilled)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$7.50 (15% Referral Fee)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$5.50 (Self-Shipped)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$22.00 Net Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">44.0% Net Margin</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Amazon FBA (Prime Fulfilled)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$7.50 (15% Referral Fee)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$4.75 (Amazon FBA Pick/Pack)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$22.75 Net Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">45.5% Margin (Highest Volume)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Multichannel E-Commerce Strategy Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Use Marketplaces for Discovery, Shopify for LTV:</strong> <span>Acquire new customers on Amazon and Etsy where shoppers already search, then use product package inserts to guide customers to your Shopify store for repeat purchases.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Price Differently by Channel:</strong> <span>There is no requirement to keep prices identical; price items 8% to 12% higher on Amazon to offset referral fees while offering discounts on your direct storefront.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Account for Advertising Cost of Sales (ACOS):</strong> <span>On Amazon, organic rank requires running Sponsored Products ads; factor a 15% to 25% target ACOS into your net margin model.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 ecommerce profit</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 comparison amazon</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 shopify ebay</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 fee comparator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 net margins</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 fulfillment marketplace</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 seller profit</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script src="../js/tools.js"></script>
+<script>
+    function calculateChannels() {
+      const price = parseFloat(document.getElementById('itemPrice').value) || 0;
+      const shipCharged = parseFloat(document.getElementById('shippingCharged').value) || 0;
+      const cogs = parseFloat(document.getElementById('itemCost').value) || 0;
+      let shipCost = parseFloat(document.getElementById('shippingCost').value) || 0;
+      const packaging = parseFloat(document.getElementById('packagingCost').value) || 0;
+      const adSpend = parseFloat(document.getElementById('adSpend').value) || 0;
+      const category = document.getElementById('categorySelect').value;
+      const fulfillment = document.getElementById('amazonFulfillment').value;
+
+      const totalRevenue = price + shipCharged;
+
+      // Platform Rate Calculations (2026 Standards)
+      // 1. Shopify (Direct DTC) - 2.9% + $0.30 payment gateway
+      const shopifyFees = totalRevenue > 0 ? (totalRevenue * 0.029) + 0.30 : 0;
+      const shopifyCosts = cogs + shipCost + packaging + adSpend;
+      const shopifyProfit = totalRevenue - shopifyFees - shopifyCosts;
+      const shopifyMargin = totalRevenue > 0 ? (shopifyProfit / totalRevenue) * 100 : 0;
+      const shopifyBreakEven = (shopifyCosts + 0.30 - (shipCharged * (1 - 0.029))) / (1 - 0.029);
+
+      // 2. TikTok Shop (6% referral + $0.30 processing)
+      const tiktokRate = 0.06;
+      const tiktokFees = totalRevenue > 0 ? (totalRevenue * tiktokRate) + 0.30 : 0;
+      const tiktokCosts = cogs + shipCost + packaging + (adSpend * 0.5); // lower organic ad spend assumed
+      const tiktokProfit = totalRevenue - tiktokFees - tiktokCosts;
+      const tiktokMargin = totalRevenue > 0 ? (tiktokProfit / totalRevenue) * 100 : 0;
+      const tiktokBreakEven = (tiktokCosts + 0.30 - (shipCharged * (1 - tiktokRate))) / (1 - tiktokRate);
+
+      // 3. Etsy (0.20 listing + 6.5% transaction + 3% + $0.25 payment)
+      const etsyListing = 0.20;
+      const etsyTransaction = totalRevenue * 0.065;
+      const etsyPayment = totalRevenue > 0 ? (totalRevenue * 0.03) + 0.25 : 0;
+      const etsyFees = etsyListing + etsyTransaction + etsyPayment;
+      const etsyCosts = cogs + shipCost + packaging; // marketplace organic search
+      const etsyProfit = totalRevenue - etsyFees - etsyCosts;
+      const etsyMargin = totalRevenue > 0 ? (etsyProfit / totalRevenue) * 100 : 0;
+      const etsyVarRate = 0.065 + 0.03;
+      const etsyBreakEven = (etsyCosts + etsyListing + 0.25 - (shipCharged * (1 - etsyVarRate))) / (1 - etsyVarRate);
+
+      // 4. Amazon
+      let amzReferralRate = 0.15;
+      if (category === 'apparel') amzReferralRate = 0.17;
+      if (category === 'electronics') amzReferralRate = 0.08;
+
+      let amzPostage = shipCost;
+      let amzFulfillmentFee = 0;
+      if (fulfillment === 'fba') {
+        amzPostage = 0; // handled by Amazon FBA
+        amzFulfillmentFee = 4.35; // standard ~1lb tier 2026 pick/pack
+      }
+      const amzReferralFee = totalRevenue * amzReferralRate;
+      const amzFees = amzReferralFee + amzFulfillmentFee;
+      const amzCosts = cogs + amzPostage + packaging + (adSpend * 0.4);
+      const amzProfit = totalRevenue - amzFees - amzCosts;
+      const amzMargin = totalRevenue > 0 ? (amzProfit / totalRevenue) * 100 : 0;
+      const amzBreakEven = (amzCosts + amzFulfillmentFee - (shipCharged * (1 - amzReferralRate))) / (1 - amzReferralRate);
+
+      // 5. eBay (13.25% + $0.40)
+      let ebayRate = 0.1325;
+      if (category === 'electronics') ebayRate = 0.0935;
+      const ebayFees = totalRevenue > 0 ? (totalRevenue * ebayRate) + 0.40 : 0;
+      const ebayCosts = cogs + shipCost + packaging;
+      const ebayProfit = totalRevenue - ebayFees - ebayCosts;
+      const ebayMargin = totalRevenue > 0 ? (ebayProfit / totalRevenue) * 100 : 0;
+      const ebayBreakEven = (ebayCosts + 0.40 - (shipCharged * (1 - ebayRate))) / (1 - ebayRate);
+
+      const platforms = [
+        {
+          id: 'shopify',
+          name: 'Shopify DTC',
+          icon: '🛍️',
+          fees: shopifyFees,
+          feeNote: '2.9% + 30¢ Payment',
+          costs: shopifyCosts,
+          profit: shopifyProfit,
+          margin: shopifyMargin,
+          breakEven: Math.max(0, shopifyBreakEven),
+          revenue: totalRevenue
+        },
+        {
+          id: 'tiktok',
+          name: 'TikTok Shop',
+          icon: '🎵',
+          fees: tiktokFees,
+          feeNote: '6% + 30¢ Referral',
+          costs: tiktokCosts,
+          profit: tiktokProfit,
+          margin: tiktokMargin,
+          breakEven: Math.max(0, tiktokBreakEven),
+          revenue: totalRevenue
+        },
+        {
+          id: 'etsy',
+          name: 'Etsy Shop',
+          icon: '🎨',
+          fees: etsyFees,
+          feeNote: '6.5% + 3% + 45¢ total',
+          costs: etsyCosts,
+          profit: etsyProfit,
+          margin: etsyMargin,
+          breakEven: Math.max(0, etsyBreakEven),
+          revenue: totalRevenue
+        },
+        {
+          id: 'amazon',
+          name: fulfillment === 'fba' ? 'Amazon FBA' : 'Amazon FBM',
+          icon: '📦',
+          fees: amzFees,
+          feeNote: `${(amzReferralRate * 100).toFixed(0)}% referral + fees`,
+          costs: amzCosts,
+          profit: amzProfit,
+          margin: amzMargin,
+          breakEven: Math.max(0, amzBreakEven),
+          revenue: totalRevenue
+        },
+        {
+          id: 'ebay',
+          name: 'eBay Store',
+          icon: '🏷️',
+          fees: ebayFees,
+          feeNote: `${(ebayRate * 100).toFixed(1)}% + 40¢`,
+          costs: ebayCosts,
+          profit: ebayProfit,
+          margin: ebayMargin,
+          breakEven: Math.max(0, ebayBreakEven),
+          revenue: totalRevenue
+        }
+      ];
+
+      // Identify Winner
+      let winner = platforms[0];
+      for (let i = 1; i < platforms.length; i++) {
+        if (platforms[i].profit > winner.profit) {
+          winner = platforms[i];
+        }
+      }
+
+      // Update Winner Banner
+      document.getElementById('winnerPlatformTitle').textContent = `${winner.name} ($${winner.profit.toFixed(2)} Net)`;
+      document.getElementById('winnerProfit').textContent = `$${winner.profit.toFixed(2)}`;
+      document.getElementById('winnerPlatformSub').textContent = 
+        `Generates the highest margin at ${winner.margin.toFixed(1)}% with $${winner.fees.toFixed(2)} in total channel fees.`;
+
+      // Render Platform Cards
+      const container = document.getElementById('platformCardsContainer');
+      container.innerHTML = '';
+
+      platforms.forEach(p => {
+        const isWinner = p.id === winner.id;
+        const card = document.createElement('div');
+        card.className = `platform-card ${isWinner ? 'is-winner' : ''}`;
+        
+        const profitClass = p.profit >= 0 ? 'positive' : 'negative';
+
+        card.innerHTML = `
+          <div>
+            <div class="platform-card-header">
+              <span class="platform-name"><span>${p.icon}</span> ${p.name}</span>
+              ${isWinner ? '<span class="winner-badge-pill" style="font-size: 0.65rem;">★ BEST</span>' : ''}
+            </div>
+            <div class="profit-figure ${profitClass}">$${p.profit.toFixed(2)}</div>
+            <div class="margin-sub">Profit Margin: <strong>${p.margin.toFixed(1)}%</strong></div>
+            
+            <div class="card-metrics-list">
+              <div class="card-metrics-row">
+                <span>Platform Fees:</span>
+                <span style="color: #ef4444; font-weight: 600;">-$${p.fees.toFixed(2)}</span>
+              </div>
+              <div class="card-metrics-row" style="font-size: 0.72rem; color: var(--text-dim);">
+                <span>Fee Basis:</span>
+                <span>${p.feeNote}</span>
+              </div>
+              <div class="card-metrics-row">
+                <span>Net COGS &amp; Ship:</span>
+                <span>$${p.costs.toFixed(2)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="break-even-pill">
+            Break-Even Retail: <strong>$${p.breakEven.toFixed(2)}</strong>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+
+      // Render Matrix Table
+      const tableBody = document.getElementById('comparisonTableBody');
+      tableBody.innerHTML = '';
+      platforms.forEach(p => {
+        const isWinner = p.id === winner.id;
+        const tr = document.createElement('tr');
+        if (isWinner) tr.style.backgroundColor = 'rgba(16, 185, 129, 0.08)';
+        
+        tr.innerHTML = `
+          <td style="font-weight: 700;">
+            ${p.icon} ${p.name} ${isWinner ? '<span style="color: #10b981; font-size: 0.75rem;">(Top)</span>' : ''}
+          </td>
+          <td>$${p.revenue.toFixed(2)}</td>
+          <td style="color: #ef4444;">-$${p.fees.toFixed(2)}</td>
+          <td>$${(cogs + shipCost + packaging).toFixed(2)}</td>
+          <td>$${(p.costs - (cogs + shipCost + packaging)).toFixed(2)}</td>
+          <td style="font-weight: 700; color: ${p.profit >= 0 ? '#10b981' : '#ef4444'};">$${p.profit.toFixed(2)}</td>
+          <td style="font-weight: 600;">${p.margin.toFixed(1)}%</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+    }
+
+    document.querySelectorAll('input, select').forEach(el => {
+      el.addEventListener('input', calculateChannels);
+      el.addEventListener('change', calculateChannels);
+    });
+
+    calculateChannels();
+
+    // Share & Copy Calculation Logic
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const price = document.getElementById('itemPrice').value;
+      const winner = document.getElementById('winnerPlatformTitle').textContent;
+      const winnerProf = document.getElementById('winnerProfit').textContent;
+
+      const shareText = `⚖️ CalcWorker — E-Commerce Multi-Platform Profit Comparison:\n` +
+        `• Product Retail Price: $${price}\n` +
+        `• Best Channel Winner: ${winner}\n` +
+        `• Top Net Take-Home: ${winnerProf}\n` +
+        `• Real-time fees compared across TikTok Shop, Amazon, Etsy, Shopify & eBay\n` +
+        `🔗 Free Calculator: ${window.location.href}`;
+
+      const btnText = document.getElementById('shareBtnText');
+
+    const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : (typeof shareText !== 'undefined' ? shareText : (typeof t !== 'undefined' ? t : window.location.href));
+    navigator.clipboard.writeText(copyContent).then(function() {
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      const btnEl = document.getElementById('shareBtn') || document.getElementById('omniShareBtn');
+      if (btnEl) btnEl.style.background = '#047857';
+      setTimeout(function() {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      }, 2500);
+    });
+    });
+  </script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

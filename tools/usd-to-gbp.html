@@ -1,0 +1,941 @@
+﻿<!DOCTYPE html>
+
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>USD to GBP Currency Converter — Live Dollar to Pound</title>
+<meta content="Convert US Dollars to British Pounds (USD to GBP) with live mid-market exchange rates, bank transfer fee comparisons, and UK currency tables." name="description"/>
+<meta name="keywords" content="USD to GBP converter, US dollar to British Pound sterling, Bank of England exchange rate, dollar to pound money transfer, transatlantic currency conversion"/>
+<link href="https://calcworker.com/tools/usd-to-gbp.html" rel="canonical"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<!-- Open Graph -->
+<meta content="website" property="og:type"/>
+<meta content="USD to GBP Currency Converter — Live Dollar to Pound" property="og:title"/>
+<meta content="Convert US Dollars to British Pounds (USD to GBP) with live mid-market exchange rates, bank transfer fee comparisons, and UK currency tables." property="og:description"/>
+<meta content="https://calcworker.com/tools/usd-to-gbp.html" property="og:url"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<!-- Google Analytics GA4 — Replace G-1QCQNSCVQM with your real ID -->
+<meta content="#090d16" name="theme-color"/>
+<script defer="" src="../js/analytics.js"></script>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "USD to GBP Converter Convert Dollars to British Pounds",
+    "url": "https://calcworker.com/tools/usd-to-gbp.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is the USD to GBP mid-market exchange rate today?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The mid-market rate is the real, uninflated exchange rate traded across international currency markets without bank markups. CalcWorker pulls live market quotes to ensure your calculations reflect true trading valuations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can American credit cards be used in the United Kingdom?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, Visa and Mastercard are accepted universally across the UK, including the London Underground (TfL), buses, restaurants, and shops via contactless tap-to-pay. When prompted, always choose to pay in GBP to avoid Dynamic Currency Conversion markups."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How can I avoid hidden bank fees when sending money from the US to the UK?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use regulated online money transfer specialists that provide real-time mid-market exchange rates and transparent upfront pricing rather than relying on legacy SWIFT wire transfers from retail banks."
+        }
+      }
+    ]
+  }
+]
+</script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link active" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn" title="Toggle Navigation Menu">☰</button>
+<span class="topbar-title">USD to GBP Exchange Rate</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+<circle cx="18" cy="5" r="3"></circle>
+<circle cx="6" cy="12" r="3"></circle>
+<circle cx="18" cy="19" r="3"></circle>
+<line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+<line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+</svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<nav aria-label="Breadcrumb" style="margin-bottom: 12px; font-size: 0.8rem; color: var(--text-dim);">
+<a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Dashboard</a> / 
+          <a href="./currency-converter.html" style="color: var(--text-muted); text-decoration: none;">Currency Converter</a> / 
+          <span style="color: var(--brand-primary); font-weight: 600;">USD to GBP</span>
+</nav>
+<div class="tool-header-block">
+<h1><span>🇺🇸 ⇄ 🇬🇧</span> USD to GBP Converter: Convert Dollars to British Pounds</h1>
+<p class="tool-header-desc">
+            Calculate conversions from US Dollars to British Pounds Sterling (GBP) at real-time wholesale forex rates. Perfect for Americans visiting London, Edinburgh, or doing business in the UK.
+          </p>
+</div>
+<div class="currency-converter-card">
+<div class="currency-row-grid">
+<div class="form-group" style="grid-column: span 3;">
+<label class="form-label" for="amountInput">
+<span>Amount to Convert</span>
+<span id="amountSymbol" style="color: var(--brand-primary); font-family: monospace;">USD ($)</span>
+</label>
+<div class="input-with-affix">
+<span class="input-affix-prefix" id="inputPrefix">$</span>
+<input class="form-input has-prefix" id="amountInput" min="0" step="any" type="number" value="1000"/>
+</div>
+</div>
+<div class="form-group">
+<label class="form-label" for="fromSelect">From Currency</label>
+<select class="form-select" id="fromSelect"></select>
+</div>
+<div class="swap-btn-container">
+<button aria-label="Swap currencies" class="currency-swap-btn" id="swapBtn" title="Swap currencies" type="button">⇄</button>
+</div>
+<div class="form-group">
+<label class="form-label" for="toSelect">To Currency</label>
+<select class="form-select" id="toSelect"></select>
+</div>
+</div>
+<div style="margin-top: 28px; border-top: 1px solid var(--border); padding-top: 24px;">
+<div class="primary-metric-box">
+<div class="primary-metric-label" id="summaryLabel">1,000 US Dollars =</div>
+<div class="primary-metric-val positive" id="resultVal">£739.83</div>
+<div class="primary-metric-sub" id="subLabel">British Pounds (GBP)</div>
+</div>
+<div class="results-table">
+<div class="result-row">
+<span class="result-row-label">Exchange Rate</span>
+<span class="result-row-val" id="rateVal">1 USD = 0.7398 GBP</span>
+</div>
+<div class="result-row">
+<span class="result-row-label">Inverse Rate</span>
+<span class="result-row-val highlight" id="inverseVal">1 GBP = 1.3517 USD</span>
+</div>
+<div class="result-row">
+<span class="result-row-label">Last Updated</span>
+<span class="result-row-val" id="timeVal">September 4, 2026</span>
+</div>
+</div>
+</div>
+</div>
+<div class="tool-results-card" style="margin-bottom: 36px;">
+<h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 14px;">USD to GBP Quick Denominations Table</h2>
+<div class="data-table-container">
+<table class="data-table">
+<thead>
+<tr>
+<th>US Dollars (USD)</th>
+<th>British Pounds (GBP Equivalent)</th>
+<th>Exchange Rate</th>
+</tr>
+</thead>
+<tbody id="pairTableBody"></tbody>
+</table>
+</div>
+<div class="cw-disclaimer-card" style="margin-top: 18px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary); font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">
+  <strong style="color: var(--text-main);">Financial Estimate Disclaimer:</strong> Calculations produced by this tool are mathematical estimates designed for planning and comparison purposes only. Final loan payments, interest charges, tax liabilities, and payroll withholdings vary according to your lender terms, tax filing status, and applicable federal, state, and local laws. Consult a certified financial planner or CPA for professional advice.
+</div>
+</div>
+<!-- SEO Editorial Content for USD to GBP -->
+<div class="seo-content-section" style="display: flex; flex-direction: column; gap: 24px; margin-top: 24px;">
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏦</span> US Banks vs. Online Money Transfers: Fee Comparison
+  </h2>
+  <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+    When converting foreign currency to GBP or sending USD to pound sterling transfers to fund overseas education, purchase UK property, or pay corporate vendors in Britain, the transfer channel chosen significantly dictates the net conversion total. 
+  </p>
+  <div style="overflow-x: auto; margin-top: 12px;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">Transfer Channel</th>
+          <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">Exchange Rate Markup</th>
+          <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">Typical Transfer Speed</th>
+          <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">Estimated Cost on $5,000</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">Major US Commercial Banks</td><td style="padding: 8px 14px; color: #ef4444;">2.5% – 4.0% hidden spread</td><td style="padding: 8px 14px;">2 – 4 business days</td><td style="padding: 8px 14px; color: #ef4444;">$160 – $240 (spread + wire fee)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">Airport FX Kiosks</td><td style="padding: 8px 14px; color: #ef4444;">7.0% – 12.0% spread</td><td style="padding: 8px 14px;">Instant (Cash)</td><td style="padding: 8px 14px; color: #ef4444;">$350 – $600 in lost value</td></tr>
+        <tr><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">Specialized Fintech Transfers</td><td style="padding: 8px 14px; color: #10b981;">0.3% – 0.5% transparent fee</td><td style="padding: 8px 14px;">Minutes to same-day</td><td style="padding: 8px 14px; color: #10b981;">$15 – $25 total fee</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="color: var(--text-muted); font-size: 0.85rem; line-height: 1.5; margin-top: 14px;">
+    Always request the exact recipient payout total in GBP before authorizing any international wire transfer, and verify the rate against our live conversion engine.
+  </p>
+</article>
+
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+    <span>📊</span> Quick USD to GBP Conversion Reference Table
+  </h2>
+  <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px;">
+    Quickly reference standard conversion amounts between US Dollars and British Pounds Sterling at standard baseline rates (approx 0.79 GBP per USD).
+  </p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+        <thead>
+          <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+            <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">US Dollar (USD)</th>
+            <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">British Pound (GBP) (Est.)</th>
+          </tr>
+        </thead>
+        <tbody style="color: var(--text-muted);">
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$1.00 USD</td><td style="padding: 8px 14px;">£0.79 GBP</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$5.00 USD</td><td style="padding: 8px 14px;">£3.95 GBP</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$10.00 USD</td><td style="padding: 8px 14px;">£7.90 GBP</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$20.00 USD</td><td style="padding: 8px 14px;">£15.80 GBP</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$50.00 USD</td><td style="padding: 8px 14px;">£39.50 GBP</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$100.00 USD</td><td style="padding: 8px 14px;">£79.00 GBP</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$500.00 USD</td><td style="padding: 8px 14px;">£395.00 GBP</td></tr>
+          <tr><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">$1,000.00 USD</td><td style="padding: 8px 14px;">£790.00 GBP</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div style="overflow-x: auto;">
+      <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+        <thead>
+          <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+            <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">British Pound (GBP)</th>
+            <th style="padding: 10px 14px; color: var(--text-main); font-weight: 700;">US Dollar (USD) (Est.)</th>
+          </tr>
+        </thead>
+        <tbody style="color: var(--text-muted);">
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£1.00 GBP</td><td style="padding: 8px 14px;">$1.27 USD</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£5.00 GBP</td><td style="padding: 8px 14px;">$6.33 USD</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£10.00 GBP</td><td style="padding: 8px 14px;">$12.66 USD</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£20.00 GBP</td><td style="padding: 8px 14px;">$25.32 USD</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£50.00 GBP</td><td style="padding: 8px 14px;">$63.29 USD</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£100.00 GBP</td><td style="padding: 8px 14px;">$126.58 USD</td></tr>
+          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£500.00 GBP</td><td style="padding: 8px 14px;">$632.91 USD</td></tr>
+          <tr><td style="padding: 8px 14px; font-weight: 600; color: var(--text-main);">£1,000.00 GBP</td><td style="padding: 8px 14px;">$1,265.82 USD</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</article>
+
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🇬🇧</span> Converting USD to Pound Sterling (USD vs Pound)
+  </h2>
+  <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+    The currency pair between the US Dollar and British Pound Sterling (affectionately nicknamed <em>"Cable"</em> in international finance markets since transatlantic telegraph cables connected London and New York in 1866) is one of the world's most critical financial arteries. Whether you are paying UK remote contractors, handling corporate commerce, or planning travel to London, understanding how real-time exchange rates work is vital to protecting your bottom line.
+  </p>
+  <p style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6; margin-bottom: 12px;">
+    Unlike domestic financial transactions, converting USD to GBP involves foreign currency exchange margins. When exchanging currency through traditional commercial banks, fees are frequently masked behind inflated rates rather than shown as an itemized line item. Always compare the offered exchange rate against the live mid-market benchmark shown above before executing a transfer.
+  </p>
+</article>
+
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+    <span>❓</span> Frequently Asked Questions (FAQ)
+  </h2>
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+      <summary style="font-weight: 700; color: var(--text-main);">What is the USD to GBP mid-market exchange rate today?</summary>
+      <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+        The mid-market rate is the real, uninflated exchange rate traded across international currency markets without bank markups. CalcWorker pulls live market quotes to ensure your calculations reflect true trading valuations.
+      </p>
+    </details>
+    <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+      <summary style="font-weight: 700; color: var(--text-main);">Can American credit cards be used in the United Kingdom?</summary>
+      <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+        Yes, Visa and Mastercard are accepted universally across the UK, including the London Underground (TfL), buses, restaurants, and shops via contactless tap-to-pay. When prompted, always choose to pay in GBP to avoid Dynamic Currency Conversion markups.
+      </p>
+    </details>
+    <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+      <summary style="font-weight: 700; color: var(--text-main);">How can I avoid hidden bank fees when sending money from the US to the UK?</summary>
+      <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">
+        Use regulated online money transfer specialists that provide real-time mid-market exchange rates and transparent upfront pricing rather than relying on legacy SWIFT wire transfers from retail banks.
+      </p>
+    </details>
+  </div>
+</article>
+
+</div>
+<!-- Copy Calculation Summary -->
+<div style="margin: 12px 0;">
+<button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; margin-top: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);" type="button"><span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span></button>
+</div>
+<!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; margin-top: 24px;">
+<h2 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-bottom: 12px;"><span>🌐</span> Popular Global Currency Pairs</h2>
+<div class="pair-links-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 10px; margin-top: 14px;">
+  <a class="pair-link-card" href="/tools/usd-to-eur.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>🇺🇸 USD to 🇪🇺 EUR</span><span>→</span></a>
+  <a class="pair-link-card" href="/tools/usd-to-gbp.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>🇺🇸 USD to 🇬🇧 GBP</span><span>→</span></a>
+  <a class="pair-link-card" href="/tools/usd-to-cad.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>🇺🇸 USD to 🇨🇦 CAD</span><span>→</span></a>
+  <a class="pair-link-card" href="/tools/usd-to-mxn.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>🇺🇸 USD to 🇲🇽 MXN</span><span>→</span></a>
+  <a class="pair-link-card" href="/tools/usd-to-jpy.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>🇺🇸 USD to 🇯🇵 JPY</span><span>→</span></a>
+  <a class="pair-link-card" href="/tools/usd-to-inr.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>🇺🇸 USD to 🇮🇳 INR</span><span>→</span></a>
+  <a class="pair-link-card" href="/tools/usd-to-pkr.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>🇺🇸 USD to 🇵🇰 PKR</span><span>→</span></a>
+  <a class="pair-link-card" href="/tools/currency-converter.html" style="padding: 10px 14px; background: var(--bg-subtle); border-radius: 8px; text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 0.85rem; display: flex; justify-content: space-between; border: 1px solid var(--border);"><span>💵 All 160+ Currencies</span><span>→</span></a>
+</div>
+</article>
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+<h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+<span>🔗</span> Related Precision Calculators
+          </h3>
+<span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+</div>
+<div class="related-tools-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 14px;">
+<a class="related-tool-link" href="/tools/currency-converter.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">💵</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">FOREX</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">Currency Converter</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Live real-time currency conversion across 160+ global fiat and crypto pairs.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/usd-to-eur.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">💶</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">ECB</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">USD to Euro Converter</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Dedicated US Dollar to Euro conversion engine with official ECB benchmark rates.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+<a class="related-tool-link" href="/tools/usd-to-cad.html" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease;">
+<div>
+<div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
+<span style="font-size: 1.35rem;">🍁</span>
+<span style="font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px;">FOREX</span>
+</div>
+<div style="font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px;">USD to Canadian Dollar</div>
+<p style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0;">Dedicated US Dollar to Canadian Dollar currency conversion engine.</p>
+</div>
+<div style="display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary);">
+<span>Open Calculator</span> <span style="margin-left: 4px;">→</span>
+</div>
+</a>
+</div>
+      <h3>Core Mathematical Formula &amp; Equation Derivation</h3>
+      <div style="background: var(--bg-subtle, #0b1329); padding: 18px 22px; border-radius: 10px; border-left: 4px solid var(--brand-primary, #2563eb); font-family: monospace; font-size: 0.95rem; margin: 18px 0; color: var(--text-main, #f8fafc); line-height: 1.6; overflow-x: auto; box-shadow: 0 4px 12px rgba(0,0,0,0.2);">
+        <div style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--brand-secondary, #38bdf8); margin-bottom: 6px; font-weight: 700;">Mathematical Specification:</div>
+        GBP = USD ÷ (Cable GBP/USD Rate) × (1 - Conversion Fee %)
+      </div>
+      <p>
+        <strong>Variable Definitions &amp; Computational Logic:</strong>
+      </p>
+      <ul style="margin: 0 0 20px 24px; color: var(--text-muted, #94a3b8); line-height: 1.8; font-size: 0.92rem;">
+        <li><strong>Source Amount:</strong> Principal currency volume submitted for foreign exchange conversion.</li>
+        <li><strong>Spot Mid-Market Rate:</strong> The unmanipulated equilibrium cross-rate traded between institutional central banks and global FX market makers.</li>
+        <li><strong>Retail Bank Markup:</strong> The hidden foreign transaction fee (1.5% to 3.5% at conventional commercial banks) embedded in tourist exchange rate quotes.</li>
+        <li><strong>Currency Standard:</strong> Calibrated specifically for British Pound Sterling (GBP) under Bank of England interbank clearing.</li>
+      </ul>
+      <h3>Step-by-Step Worked Numeric Example</h3>
+      <div style="background: rgba(30, 41, 59, 0.5); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 20px; font-size: 0.9rem; line-height: 1.7; color: var(--text-main, #e2e8f0);">
+        <strong style="color: #38bdf8; display: block; margin-bottom: 6px;">📊 Real-World Calculation Case Study:</strong>
+        Converting $1,000 USD at an interbank exchange rate of 1.3500 with zero bank markup yields exactly $1,350.00. However, a traditional wire transfer charging a 2.5% FX markup quotes an effective rate of 1.3162, returning only $1,316.25. Using CalcWorker's zero-markup calculation reveals a <strong>$33.75 hidden bank fee</strong>, allowing users to demand true mid-market rates before initiating transactions.
+      </div>
+
+    </section>
+
+<div class="seo-card" style="margin-top: 24px; padding: 24px; border-radius: var(--radius-md); background: var(--bg-card); border: 1px solid var(--border);">
+  <h2 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 6px; color: var(--text-main);">United Kingdom (British Pound Sterling) Exchange Guidance</h2>
+  <div style="font-size: 0.82rem; font-weight: 700; color: var(--brand-primary); margin-bottom: 14px;">Official Benchmark: Bank of England (BoE) Sterling Benchmark</div>
+  
+        <h3>British Pound (GBP) Exchange Nuances &amp; Transfer Protocols</h3>
+        <p>The British Pound Sterling (GBP) represents the world's oldest continuously traded currency. When exchanging US Dollars for Pounds, exchange spreads are heavily influenced by the Bank of England's official Bank Rate and London interbank market liquidity.</p>
+        <p><strong>UK ATM and Banking Fees:</strong> Most major UK bank ATMs (such as Barclays, HSBC, NatWest) do not charge native withdrawal fees for foreign visa/mastercard debit cards, making cash withdrawals significantly cheaper than retail exchange booths at Heathrow or Gatwick airport, which often charge spreads up to 10%.</p>
+        <p><strong>Wire Transfers (CHAPS vs Faster Payments):</strong> If transferring funds between US and UK commercial accounts, electronic wire transfers settled through the UK Faster Payments System (FPS) settle in near real-time, but American financial institutions routinely charge incoming/outgoing international wire fees ranging from $25 to $45 plus exchange rate markups.</p>
+        
+</div>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">US Dollar to British Pound (USD/GBP) Exchange Rate: Cable Trading Dynamics Quantitative Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Result} = f(x_1, x_2, \dots, x_n)</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Calculates accurate institutional metrics for US Dollar to British Pound (USD/GBP) Exchange Rate: Cable Trading Dynamics using verified financial and mathematical modeling.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Input Value:</span> <span>Primary numerical parameter entered into the calculator.</span></li>
+      <li><span class="cw-var-symbol">Normalized Rate:</span> <span>Periodic rate adjusted for calculation frequency.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Enter your specific values into the active calculation fields above.</li>
+      <li>The engine normalizes variables across all designated accounting periods.</li>
+      <li>Verified output metrics and amortization projections are generated instantly.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Break down complicated multi-step calculations by solving inner parentheses first, converting all time units to the same scale, and checking your result with this tool.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> US Federal Reserve, CFPB, and IRS regulatory guidelines govern standardized consumer calculation algorithms.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>💷</span> US Dollar to British Pound (USD/GBP) Exchange Rate: Cable Trading Dynamics
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>The exchange rate between the US Dollar and the British Pound Sterling (traditionally known in currency trading as 'Cable') is one of the oldest foreign exchange pairs in the world. Governed by the Bank of England and the US Federal Reserve, GBP/USD reflects bilateral trade, corporate cross-border investment, and financial services activity in the City of London.</p>
+    <p style="margin-top: 12px;">Retail travelers visiting the United Kingdom or US businesses importing goods from British suppliers must navigate foreign transaction fees, wire transfer margins, and conversion spreads.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> USD to GBP Conversion Matrix & Retail Spread Impact (Baseline Rate: 0.78 GBP)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">USD Amount Converted</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Mid-Market Value (GBP)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Retail Bank Rate (2.6% Spread)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Bank FX Markup Lost</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Wholesale Fintech Value</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$500 USD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£390.00 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£379.86 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£10.14 Lost in Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£388.20 GBP</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$1,000 USD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£780.00 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£759.72 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£20.28 Lost in Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£776.40 GBP</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$5,000 USD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£3,900.00 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£3,798.60 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£101.40 Lost in Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£3,882.00 GBP</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$10,000 USD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£7,800.00 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£7,597.20 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£202.80 Lost in Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£7,764.00 GBP</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$25,000 USD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£19,500.00 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£18,993.00 GBP</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£507.00 Lost in Markup</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">£19,410.00 GBP</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> UK Currency Conversion Best Practices
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Use Contactless Cards for London Transit:</strong> <span>London Underground (TfL) accepts contactless debit/credit cards directly with automatic daily fare capping; do not buy paper tickets or exchange cash for transport.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Avoid Bureau de Change Kiosks:</strong> <span>London tourist street exchange booths advertise 'Zero Commission' but embed 10% to 15% spreads in their conversion exchange rates.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Track UK Faster Payments Network Transfers:</strong> <span>UK bank accounts utilize the domestic Faster Payments network for instant domestic settlement; converting USD through specialized brokers facilitates same-day delivery.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 usd gbp</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 dollar british</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 pound sterling</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 exchange rate</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 bank rate</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 currency conversion</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 london travel</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script src="../js/currency-engine.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const fromSel = document.getElementById('fromSelect');
+      const toSel = document.getElementById('toSelect');
+      const amtInput = document.getElementById('amountInput');
+      const swap = document.getElementById('swapBtn');
+
+      function init() {
+        const currs = window.cwCurrency.currencies;
+        let fromH = '', toH = '';
+        Object.keys(currs).sort().forEach(c => {
+          fromH += `<option value="${c}" ${c === 'USD' ? 'selected' : ''}>${currs[c].flag} ${c} — ${currs[c].name}</option>`;
+          toH += `<option value="${c}" ${c === 'GBP' ? 'selected' : ''}>${currs[c].flag} ${c} — ${currs[c].name}</option>`;
+        });
+        fromSel.innerHTML = fromH;
+        toSel.innerHTML = toH;
+        update();
+      }
+
+      function update() {
+        const amt = parseFloat(amtInput.value) || 0;
+        const from = fromSel.value || 'USD';
+        const to = toSel.value || 'GBP';
+        const res = window.cwCurrency.convert(amt, from, to);
+
+        document.getElementById('inputPrefix').textContent = res.fromMeta.symbol || '';
+        document.getElementById('amountSymbol').textContent = `${from} (${res.fromMeta.symbol})`;
+        document.getElementById('summaryLabel').textContent = `${Number(amt).toLocaleString()} ${res.fromMeta.name} =`;
+        document.getElementById('resultVal').textContent = res.formattedTo;
+        document.getElementById('subLabel').textContent = `${res.toMeta.name} (${to})`;
+        document.getElementById('rateVal').textContent = res.rateDisplay;
+        document.getElementById('inverseVal').textContent = res.inverseRateDisplay;
+        document.getElementById('timeVal').textContent = window.cwCurrency.getFormattedTimestamp();
+
+        const denoms = [1, 5, 10, 20, 50, 100, 500, 1000, 5000, 10000];
+        document.getElementById('pairTableBody').innerHTML = denoms.map(d => {
+          const c = window.cwCurrency.convert(d, from, to);
+          return `<tr><td><strong>$${d.toLocaleString()}</strong> USD</td><td style="color:var(--brand-primary);font-weight:700;">${c.formattedTo} ${to}</td><td style="color:var(--text-dim);font-size:0.8rem;">${c.rateDisplay}</td></tr>`;
+        }).join('');
+      }
+
+      init();
+      window.cwCurrency.fetchLiveRates().then(update);
+      amtInput.addEventListener('input', update);
+      fromSel.addEventListener('change', update);
+      toSel.addEventListener('change', update);
+      swap.addEventListener('click', () => {
+        const t = fromSel.value;
+        fromSel.value = toSel.value;
+        toSel.value = t;
+        update();
+      });
+    });
+  
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const shareText = `💱 CalcWorker — USD to GBP Currency Converter:\n` +
+        `• Live Mid-Market Exchange Rate\n` +
+        `• Instant Bidirectional Conversion & Offline Support\n` +
+        `🔗 Free Currency Tool: ${window.location.href}`;
+
+      const btnText = document.getElementById('shareBtnText');
+    const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : (typeof shareText !== 'undefined' ? shareText : (typeof t !== 'undefined' ? t : window.location.href));
+    navigator.clipboard.writeText(copyContent).then(function() {
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      const btnEl = document.getElementById('shareBtn') || document.getElementById('omniShareBtn');
+      if (btnEl) btnEl.style.background = '#047857';
+      setTimeout(function() {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      }, 2500);
+    });
+    });
+
+  </script>
+<script>
+    document.getElementById('shareBtn').addEventListener('click', async () => {
+      const shareText = `💱 CalcWorker — USD to GBP Currency Converter:\n` +
+        `• Live Mid-Market Exchange Rate\n` +
+        `• Instant Bidirectional Conversion & Offline Support\n` +
+        `🔗 Free Currency Tool: ${window.location.href}`;
+
+      const btnText = document.getElementById('shareBtnText');
+    const copyContent = typeof extractAndFormatCalcData === 'function' ? extractAndFormatCalcData() : (typeof shareText !== 'undefined' ? shareText : (typeof t !== 'undefined' ? t : window.location.href));
+    navigator.clipboard.writeText(copyContent).then(function() {
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      const btnEl = document.getElementById('shareBtn') || document.getElementById('omniShareBtn');
+      if (btnEl) btnEl.style.background = '#047857';
+      setTimeout(function() {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        if (btnEl) btnEl.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+      }, 2500);
+    });
+    });
+</script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

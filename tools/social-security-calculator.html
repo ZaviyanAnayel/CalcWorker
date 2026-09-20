@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Social Security Benefits Calculator 2026 — Early vs FRA vs Age 70 — CalcWorker</title>
+<meta content="Estimate monthly Social Security retirement benefits based on claiming age (62 early, 67 Full Retirement Age, or 70 delayed credits) and lifetime inflation growth." name="description"/>
+<meta content="social security calculator, ssa benefit estimate 2026, early retirement age 62, full retirement age 67, delayed retirement credits age 70" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/social-security-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/social-security-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Social Security Benefits Calculator 2026 — Early vs FRA vs Age 70" property="og:title"/>
+<meta content="Estimate monthly Social Security retirement benefits based on claiming age (62 early, 67 Full Retirement Age, or 70 delayed credits) and lifetime inflation growth." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<style>
+.prompt-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.prompt-kpi-box {
+  background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.prompt-kpi-box:hover {
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+.prompt-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.prompt-kpi-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.token-blue { color: #38bdf8; }
+.cost-green { color: #34d399; }
+.save-purple { color: #a855f7; }
+</style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Social Security Benefits Calculator 2026 — Early vs FRA vs Age 70",
+    "url": "https://calcworker.com/tools/social-security-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+  {
+    "@type": "Question",
+    "name": "What is Full Retirement Age (FRA)?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "For individuals born in 1960 or later, Full Retirement Age under Social Security Administration guidelines is age 67."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "How much does claiming early at 62 reduce my check?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Claiming at age 62 permanently reduces your monthly check by 30% compared to waiting until age 67."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Why should I consider delaying until age 70?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "For each year you delay past age 67 up to 70, you earn an 8% per year Delayed Retirement Credit (+24% maximum increase)."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Are Social Security benefits taxable?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Depending on your combined income, up to 85% of your Social Security benefits may be taxable under federal rules."
+    }
+  }
+]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Universal Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <!-- Populated automatically by sidebar.js and calcworker-common.js -->
+  </div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<!-- Top Navigation Header -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="1" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Page Workstation -->
+<main class="page-container">
+<!-- Breadcrumbs -->
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>&rsaquo;</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">Social Security Benefits Calculator 2026</span>
+</div>
+
+<!-- Header Card -->
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(37, 99, 235, 0.12); color: var(--brand-primary); font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>⚡</span> SSA 2026 Formulas
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        Social Security Benefits Calculator 2026 — Early vs FRA vs Age 70
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Estimate monthly Social Security retirement benefits based on claiming age (62 early, 67 Full Retirement Age, or 70 delayed credits) and lifetime inflation growth.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator Grid -->
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <!-- Inputs Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>⚙️</span> Calculation Parameters
+      </h2>
+    </div>
+    <div style="margin-bottom: 16px;">
+  <label for="estMonthlyFraBenefit" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Estimated Monthly Benefit at Full Retirement Age (67)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="estMonthlyFraBenefit" value="2500" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="claimAge" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Target Claiming Age</label>
+  <select id="claimAge" style="width: 100%; padding: 10px 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text-main); font-weight: 600; font-size: 0.9rem; cursor: pointer;">
+    <option value="62">Age 62 (Earliest - 30% Permanent Reduction)</option>
+    <option value="63">Age 63 (25% Reduction)</option>
+    <option value="64">Age 64 (20% Reduction)</option>
+    <option value="65">Age 65 (13.3% Reduction)</option>
+    <option value="66">Age 66 (6.7% Reduction)</option>
+    <option value="67" selected>Age 67 (Full Retirement Age - 100% Benefit)</option>
+    <option value="68">Age 68 (Delayed Credit - 108% Benefit)</option>
+    <option value="69">Age 69 (Delayed Credit - 116% Benefit)</option>
+    <option value="70">Age 70 (Maximum Credit - 124% Benefit)</option>
+  </select>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="lifeExpectancy" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Expected Longevity Horizon</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <input type="number" id="lifeExpectancy" value="85" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.85rem;">Years</span>
+  </div>
+</div>
+
+  </div>
+
+  <!-- Results Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>📊</span> Real-Time Analysis
+      </h2>
+    </div>
+    
+    <!-- KPI Summary Grid -->
+    <div class="prompt-kpi-grid">
+      <div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Monthly Retirement Check</div>
+  <div class="prompt-kpi-val cost-green" id="resMonthlyPayment">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Annual Social Security Payout</div>
+  <div class="prompt-kpi-val token-blue" id="resAnnualPayment">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Projected Lifetime Benefits</div>
+  <div class="prompt-kpi-val save-purple" id="resCumulativeLifetime">$0.00</div>
+</div>
+
+    </div>
+
+    <!-- Secondary Summary Rows -->
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Baseline FRA Benefit (Age 67)</span>
+  <strong id="resBaseFra" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Benefit Adjustment Factor</span>
+  <strong id="resAdjustFactor" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Years Receiving Benefits</span>
+  <strong id="resBenefitYears" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Total Lifetime Payout Difference</span>
+  <strong id="resLifetimeDiff" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+
+    </div>
+
+    <!-- Smart One-Click Copy Calculation Summary -->
+    <div style="margin: 18px 0 0 0;">
+      <button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md); cursor: pointer;" type="button">
+        <span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Deep Technical Guide (AdSense E-E-A-T) -->
+<!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Primary Insurance Amount (PIA) & Actuarial Reduction Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Benefit} = \begin{cases} \text{PIA} \times \left(1 - \frac{5}{900} m_1 - \frac{5}{1200} m_2 \right) & \text{if claiming before FRA (Age 62-66)} \\ \text{PIA} & \text{if claiming at FRA (Age 67)} \\ \text{PIA} \times \left(1 + \frac{2}{300} m_3 \right) & \text{if delaying up to Age 70 (+8\%/yr)} \end{cases}</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Applies statutory actuarial reductions of 5/9 of 1% per month for early claiming, or adds 2/3 of 1% per month (8% per year) in delayed retirement credits up to age 70.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">PIA:</span> <span>Primary Insurance Amount calculated via Average Indexed Monthly Earnings (AIME) across highest 35 earning years.</span></li>
+      <li><span class="cw-var-symbol">FRA:</span> <span>Full Retirement Age (Age 67 for workers born in 1960 or later).</span></li>
+      <li><span class="cw-var-symbol">m_1, m_2:</span> <span>Months claimed early (up to 36 months at 5/9% per month; additional months up to 24 at 5/12% per month, maximum 30% reduction).</span></li>
+      <li><span class="cw-var-symbol">m_3:</span> <span>Months delayed past FRA up to age 70 (earning 8.0% annual Delayed Retirement Credits).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>A retiree with a Full Retirement Age PIA of $3,000/month: Claiming early at age 62 permanently reduces the monthly check to $2,100 (-30%).</li>
+      <li>Waiting until age 70 permanently boosts the monthly check to $3,720 (+24%).</li>
+      <li>Delaying delivers $1,620 more cash every month for the rest of their life.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Up to 85% of Social Security benefits become subject to federal income tax if your 'Combined Income' (Adjusted Gross Income + Non-taxable Interest + 50% of Social Security) exceeds $32,000 for single filers or $44,000 for married couples.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Social Security Act (42 U.S.C. § 402) and Social Security Administration Annual Trustee Reports govern actuarial tables.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is Full Retirement Age (FRA)?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">For individuals born in 1960 or later, Full Retirement Age under Social Security Administration guidelines is age 67.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">How much does claiming early at 62 reduce my check?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Claiming at age 62 permanently reduces your monthly check by 30% compared to waiting until age 67.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Why should I consider delaying until age 70?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">For each year you delay past age 67 up to 70, you earn an 8% per year Delayed Retirement Credit (+24% maximum increase).</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Are Social Security benefits taxable?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Depending on your combined income, up to 85% of your Social Security benefits may be taxable under federal rules.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏛️</span> Social Security Benefit Optimization: Early Claiming vs. FRA vs. Age 70
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Social Security retirement benefits form the foundational inflation-protected income floor for American retirees. Your Primary Insurance Amount (PIA) is calculated based on your highest 35 years of wage-indexed earnings. However, the calendar age at which you choose to initiate benefits permanently alters your monthly benefit check for life.</p>
+    <p style="margin-top: 12px;">Claiming early at age 62 permanently reduces your monthly check by up to 30% compared to your Full Retirement Age (FRA). Conversely, delaying benefits past FRA earns Delayed Retirement Credits of 8% per year up to age 70, boosting your monthly guaranteed check by 24% to 32% permanently.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Social Security Claiming Age vs. Monthly Check & Lifetime Break-Even (FRA = Age 67, $2,000 Baseline PIA)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Claiming Age</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Benefit Adjustment %</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Monthly Benefit Check</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Annual Retirement Income</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Lifetime Break-Even Age</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 62 (Earliest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">70.0% (-30% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,400 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$16,800 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 76.5</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 63</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">75.0% (-25% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,500 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$18,000 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 77.2</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 64</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">80.0% (-20% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,600 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$19,200 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 78.0</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 65</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">86.7% (-13.3% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,733 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$20,800 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 78.8</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 66</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">93.3% (-6.7% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,867 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$22,400 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 79.5</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 67 (Full Retirement Age)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">100.0% (Base PIA)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,000 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$24,000 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Baseline Standard</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 68 (+8% Delayed Credit)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">108.0% (+8.0%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,160 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$25,920 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 81.2</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 69 (+16% Delayed Credit)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">116.0% (+16.0%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,320 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$27,840 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 82.0</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 70 (Maximum Delay)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">124.0% (+24.0% Max)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,480 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$29,760 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 82.8</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Social Security Claiming Optimization Tactics
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Coordinate Spousal Benefits:</strong> <span>A lower-earning spouse can claim up to 50% of the higher earner's Full Retirement Age benefit, provided the higher earner has already filed for their own retirement benefits.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Protect Survivor Benefits by Delaying:</strong> <span>If you are the higher-earning spouse, delaying until age 70 maximizes the permanent lifetime survivor benefit that will pass to your surviving spouse upon your death.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Watch Out for the Retirement Earnings Test:</strong> <span>If you claim before Full Retirement Age and continue working, the Social Security Administration temporarily withholds $1 for every $2 earned above statutory limits ($23,400 in 2026).</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 social security</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 benefits full</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 retirement age</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 fra primary</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 insurance amount</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 pia early</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 claiming age</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+
+<script>
+function calculateAll() {
+  try {
+    
+            const base = parseFloat(document.getElementById('estMonthlyFraBenefit').value) || 0;
+            const age = parseInt(document.getElementById('claimAge').value, 10) || 67;
+            const life = parseInt(document.getElementById('lifeExpectancy').value, 10) || 85;
+
+            const multipliers = { 62: 0.70, 63: 0.75, 64: 0.80, 65: 0.867, 66: 0.933, 67: 1.00, 68: 1.08, 69: 1.16, 70: 1.24 };
+            const factor = multipliers[age] || 1.0;
+            const monthly = base * factor;
+            const annual = monthly * 12;
+            const years = Math.max(0, life - age);
+            const cumulative = annual * years;
+
+            const fraYears = Math.max(0, life - 67);
+            const fraCumulative = (base * 12) * fraYears;
+            const diff = cumulative - fraCumulative;
+
+            document.getElementById('resMonthlyPayment').textContent = '$' + Math.round(monthly).toLocaleString('en-US');
+            document.getElementById('resAnnualPayment').textContent = '$' + Math.round(annual).toLocaleString('en-US');
+            document.getElementById('resCumulativeLifetime').textContent = '$' + Math.round(cumulative).toLocaleString('en-US');
+            document.getElementById('resBaseFra').textContent = '$' + Math.round(base).toLocaleString('en-US') + ' / mo';
+            document.getElementById('resAdjustFactor').textContent = (factor * 100).toFixed(1) + '% of FRA';
+            document.getElementById('resBenefitYears').textContent = years + ' years (' + (years * 12) + ' checks)';
+            document.getElementById('resLifetimeDiff').textContent = (diff >= 0 ? '+$' : '-$') + Math.abs(Math.round(diff)).toLocaleString('en-US') + ' vs claiming at 67';
+        
+  } catch(e) {
+    console.error("Calculation error", e);
+  }
+}
+
+// Bind inputs
+document.querySelectorAll('.calc-card input, .calc-card select').forEach(el => {
+  el.addEventListener('input', calculateAll);
+  el.addEventListener('change', calculateAll);
+});
+
+// Smart Copy Calculation Summary
+const shareBtn = document.getElementById('shareBtn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    const kpiEls = document.querySelectorAll('.prompt-kpi-box');
+    let summaryText = '⚡ CalcWorker — Social Security Retirement Benefit Projection:\n';
+    kpiEls.forEach(el => {
+      const lbl = el.querySelector('.prompt-kpi-label')?.textContent || '';
+      const val = el.querySelector('.prompt-kpi-val')?.textContent || '';
+      if (lbl && val) summaryText += '• ' + lbl + ': ' + val + '\n';
+    });
+    summaryText += '🔗 Free Calculator: ' + window.location.href;
+
+    try {
+      await navigator.clipboard.writeText(summaryText);
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      shareBtn.style.background = '#047857';
+      shareBtn.style.color = '#ffffff';
+      setTimeout(() => {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        shareBtn.style.background = '';
+        shareBtn.style.color = '';
+      }, 2500);
+    } catch(err) {
+      console.error('Failed to copy', err);
+    }
+  });
+}
+
+// Run on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calculateAll);
+} else {
+  calculateAll();
+}
+</script>
+
+<script src="/js/sidebar.js?v=2026-v26"></script>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

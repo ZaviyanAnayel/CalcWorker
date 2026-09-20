@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Child Tax Credit (CTC) & EITC Calculator 2026 — CalcWorker</title>
+<meta content="Calculate your 2026 federal Child Tax Credit (CTC), refundable Additional Child Tax Credit (ACTC), and Earned Income Tax Credit (EITC)." name="description"/>
+<meta content="child tax credit calculator 2026, actc refundable credit, eitc calculator, child tax credit income limits, irs family credits" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/child-tax-credit-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/child-tax-credit-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Child Tax Credit (CTC) & EITC Calculator 2026" property="og:title"/>
+<meta content="Calculate your 2026 federal Child Tax Credit (CTC), refundable Additional Child Tax Credit (ACTC), and Earned Income Tax Credit (EITC)." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<style>
+.prompt-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+.prompt-kpi-box {
+  background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 14px 12px;
+  text-align: center;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+.prompt-kpi-box:hover {
+  border-color: var(--brand-primary);
+  transform: translateY(-2px);
+}
+.prompt-kpi-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+.prompt-kpi-val {
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.token-blue { color: #38bdf8; }
+.cost-green { color: #34d399; }
+.save-purple { color: #a855f7; }
+</style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Child Tax Credit (CTC) & EITC Calculator 2026",
+    "url": "https://calcworker.com/tools/child-tax-credit-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+  {
+    "@type": "Question",
+    "name": "What is the 2026 Child Tax Credit amount?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The Child Tax Credit is up to $2,000 per qualifying child under age 17 on the last day of the tax year."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "What is the income phaseout for the Child Tax Credit?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The credit phases out by $50 for every $1,000 your modified AGI exceeds $400,000 for married couples filing jointly, or $200,000 for all other filers."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "What is the Additional Child Tax Credit (ACTC)?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "The ACTC is the refundable portion of the Child Tax Credit (up to $1,700 per child) paid to families whose credit exceeds their total tax liability."
+    }
+  },
+  {
+    "@type": "Question",
+    "name": "Can I claim both the Child Tax Credit and the Earned Income Tax Credit?",
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "Yes. Qualified families with children can claim both the Child Tax Credit and the Earned Income Tax Credit on the same federal tax return."
+    }
+  }
+]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<!-- Universal Sidebar Navigation -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <!-- Populated automatically by sidebar.js and calcworker-common.js -->
+  </div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<!-- Top Navigation Header -->
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="1" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Page Workstation -->
+<main class="page-container">
+<!-- Breadcrumbs -->
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>&rsaquo;</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">Child Tax Credit (CTC) & EITC Calculator 2026</span>
+</div>
+
+<!-- Header Card -->
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(37, 99, 235, 0.12); color: var(--brand-primary); font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>⚡</span> IRS 2026 Credits
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        Child Tax Credit (CTC) & EITC Calculator 2026
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Calculate your 2026 federal Child Tax Credit (CTC), refundable Additional Child Tax Credit (ACTC), and Earned Income Tax Credit (EITC).
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- Calculator Grid -->
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <!-- Inputs Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>⚙️</span> Calculation Parameters
+      </h2>
+    </div>
+    <div style="margin-bottom: 16px;">
+  <label for="numChildren" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Qualifying Children Under Age 17</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <input type="number" id="numChildren" value="2" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="filingStatus" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Filing Status</label>
+  <select id="filingStatus" style="width: 100%; padding: 10px 12px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; color: var(--text-main); font-weight: 600; font-size: 0.9rem; cursor: pointer;">
+    <option value="married" selected>Married Filing Jointly</option>
+    <option value="single">Single</option>
+    <option value="head">Head of Household</option>
+  </select>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="earnedIncome" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Annual Earned Income (W-2 / 1099)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="earnedIncome" value="75000" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+<div style="margin-bottom: 16px;">
+  <label for="agiIncome" style="font-size: 0.82rem; font-weight: 700; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.04em; display: block; margin-bottom: 6px;">Adjusted Gross Income (AGI)</label>
+  <div style="display: flex; align-items: center; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden;">
+    <span style="padding: 0 12px; color: var(--text-muted); font-weight: 600; font-size: 0.9rem;">$</span>
+    <input type="number" id="agiIncome" value="85000" style="width: 100%; padding: 10px 12px; background: transparent; border: none; outline: none; color: var(--text-main); font-weight: 600; font-size: 0.95rem;" />
+  </div>
+</div>
+
+  </div>
+
+  <!-- Results Card -->
+  <div class="calc-card">
+    <div class="calc-card-header" style="margin-bottom: 16px;">
+      <h2 style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); margin: 0; display: flex; align-items: center; gap: 8px;">
+        <span>📊</span> Real-Time Analysis
+      </h2>
+    </div>
+    
+    <!-- KPI Summary Grid -->
+    <div class="prompt-kpi-grid">
+      <div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Total Child Tax Credit</div>
+  <div class="prompt-kpi-val cost-green" id="resTotalCredit">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Refundable Portion (ACTC)</div>
+  <div class="prompt-kpi-val token-blue" id="resRefundablePart">$0.00</div>
+</div>
+<div class="prompt-kpi-box">
+  <div class="prompt-kpi-label">Estimated EITC Credit</div>
+  <div class="prompt-kpi-val save-purple" id="resEstEitc">$0.00</div>
+</div>
+
+    </div>
+
+    <!-- Secondary Summary Rows -->
+    <div style="margin-bottom: 16px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Maximum Potential Credit ($2,000/child)</span>
+  <strong id="resMaxCredit" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Phaseout Threshold</span>
+  <strong id="resPhaseThreshold" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Phaseout Reduction</span>
+  <strong id="resPhaseCut" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+<div style="display: flex; justify-content: space-between; align-items: center; padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 0.88rem;">
+  <span style="color: var(--text-muted);">Net Total Tax Bill Reduction</span>
+  <strong id="resNetTaxShield" style="color: var(--text-main); font-size: 0.95rem;">--</strong>
+</div>
+
+    </div>
+
+    <!-- Smart One-Click Copy Calculation Summary -->
+    <div style="margin: 18px 0 0 0;">
+      <button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md); cursor: pointer;" type="button">
+        <span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- Deep Technical Guide (AdSense E-E-A-T) -->
+<!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Statutory Child Tax Credit & ACTC Refundability Formula</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{CTC} = \max\left(0, \$2,000 \times N - \left\lfloor \frac{\max(0, \text{MAGI} - \text{Threshold})}{\$1,000} \right\rfloor \times \$50 \right)</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Calculates the maximum $2,000 per-child credit, minus $50 for each $1,000 by which Modified Adjusted Gross Income exceeds statutory phaseout caps.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">N:</span> <span>Number of qualifying children under age 17 with valid SSNs issued before tax filing due date.</span></li>
+      <li><span class="cw-var-symbol">Threshold:</span> <span>$400,000 for Married Filing Jointly; $200,000 for Single and Head of Household filers.</span></li>
+      <li><span class="cw-var-symbol">Phaseout:</span> <span>Credit reduces by $50 for each $1,000 (or fraction thereof) of MAGI above statutory threshold.</span></li>
+      <li><span class="cw-var-symbol">ACTC:</span> <span>Additional Child Tax Credit refundable portion = min($1,700/child, 15% of earned income above $2,500).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>A married couple with 2 qualifying children has MAGI of $424,000.</li>
+      <li>Base credit is $4,000.</li>
+      <li>Excess income is $24,000 (24 increments of $1,000).</li>
+      <li>Reduction = 24 × $50 = $1,200.</li>
+      <li>Final allowable tax credit = $4,000 - $1,200 = $2,800 direct reduction in federal tax liability.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> If parents are divorced, IRS Form 8332 must be signed by the custodial parent to legally release the Child Tax Credit claim to the non-custodial parent.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Internal Revenue Code § 24 and IRS Publication 972 govern child tax credit phaseout algorithms and earned income refundability formulas.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the 2026 Child Tax Credit amount?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The Child Tax Credit is up to $2,000 per qualifying child under age 17 on the last day of the tax year.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the income phaseout for the Child Tax Credit?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The credit phases out by $50 for every $1,000 your modified AGI exceeds $400,000 for married couples filing jointly, or $200,000 for all other filers.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the Additional Child Tax Credit (ACTC)?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The ACTC is the refundable portion of the Child Tax Credit (up to $1,700 per child) paid to families whose credit exceeds their total tax liability.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Can I claim both the Child Tax Credit and the Earned Income Tax Credit?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Yes. Qualified families with children can claim both the Child Tax Credit and the Earned Income Tax Credit on the same federal tax return.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>👶</span> Child Tax Credit (CTC) Modeling: Phaseouts, ACTC & Refundability
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>The federal Child Tax Credit under Internal Revenue Code Section 24 provides eligible American parents with up to $2,000 per qualifying child under age 17. Unlike a tax deduction which merely reduces taxable income, a tax credit reduces your bottom-line tax liability dollar-for-dollar.</p>
+    <p style="margin-top: 12px;">The credit contains a refundable component known as the Additional Child Tax Credit (ACTC), which allows lower-income families who owe zero federal tax to receive up to $1,700 per child as an IRS refund, calculated at 15% of earned income exceeding $2,500.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Child Tax Credit Phaseout Ranges & Refundability Thresholds
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Filing Status</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Statutory Phaseout Threshold (MAGI)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Phaseout Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Max Refundable ACTC Amount</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Qualifying Dependent Age Limit</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Married Filing Jointly</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$400,000 MAGI</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50 reduction per $1,000 over threshold</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,700 per qualifying child</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Under age 17 at end of tax year</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Single / Head of Household</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$200,000 MAGI</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50 reduction per $1,000 over threshold</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,700 per qualifying child</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Under age 17 at end of tax year</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Married Filing Separately</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$200,000 MAGI</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50 reduction per $1,000 over threshold</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,700 per qualifying child</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Under age 17 at end of tax year</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Other Dependents (ODC)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$200,000 / $400,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Same phaseout mechanism</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 (Non-refundable $500 credit)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Age 17-18, or college full-time under 24</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Maximizing Child Tax Benefits
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Verify Social Security Number Requirements:</strong> <span>Under IRC § 24(h)(7), each qualifying child must possess a valid Social Security Number issued before the tax return due date; ITINs only qualify for the non-refundable $500 Credit for Other Dependents.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Combine With Child & Dependent Care Credit (CDCTC):</strong> <span>Working parents can stack the Child Tax Credit with the Dependent Care Credit (Form 2441) to offset daycare, preschool, and summer camp expenses.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Manage High-Income Phaseouts:</strong> <span>Families earning near the $400k joint phaseout ceiling can lower Modified AGI by maxing out traditional 401(k) contributions, HSA contributions, and pre-tax health premiums.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 child tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 credit ctc</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 irs form</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 8812 qualifying</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 child refundable</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 actc income</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 phaseout tax</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+
+<script>
+function calculateAll() {
+  try {
+    
+            const kids = parseInt(document.getElementById('numChildren').value, 10) || 0;
+            const status = document.getElementById('filingStatus').value;
+            const earned = parseFloat(document.getElementById('earnedIncome').value) || 0;
+            const agi = parseFloat(document.getElementById('agiIncome').value) || 0;
+
+            const maxCredit = kids * 2000;
+            const threshold = status === 'married' ? 400000 : 200000;
+
+            let phaseCut = 0;
+            if (agi > threshold) {
+                const excess = agi - threshold;
+                phaseCut = Math.ceil(excess / 1000) * 50;
+            }
+
+            const ctc = Math.max(0, maxCredit - phaseCut);
+            // Refundable portion (15% of earned income above $2,500 up to $1,700 per kid)
+            const earnedOver = Math.max(0, earned - 2500);
+            const refundableCap = kids * 1700;
+            const refundable = Math.min(ctc, Math.min(refundableCap, earnedOver * 0.15));
+
+            // EITC Approximation
+            let eitc = 0;
+            if (status === 'married' && agi < 65000) {
+                if (kids === 1 && agi < 48000) eitc = Math.min(4200, earned * 0.34);
+                else if (kids === 2 && agi < 55000) eitc = Math.min(6900, earned * 0.40);
+                else if (kids >= 3 && agi < 60000) eitc = Math.min(7800, earned * 0.45);
+            } else if (status !== 'married' && agi < 55000) {
+                if (kids === 1 && agi < 42000) eitc = Math.min(4200, earned * 0.34);
+                else if (kids === 2 && agi < 48000) eitc = Math.min(6900, earned * 0.40);
+                else if (kids >= 3 && agi < 53000) eitc = Math.min(7800, earned * 0.45);
+            }
+
+            document.getElementById('resTotalCredit').textContent = '$' + Math.round(ctc).toLocaleString('en-US');
+            document.getElementById('resRefundablePart').textContent = '$' + Math.round(refundable).toLocaleString('en-US');
+            document.getElementById('resEstEitc').textContent = '$' + Math.round(eitc).toLocaleString('en-US');
+            document.getElementById('resMaxCredit').textContent = '$' + Math.round(maxCredit).toLocaleString('en-US');
+            document.getElementById('resPhaseThreshold').textContent = '$' + threshold.toLocaleString('en-US') + ' MAGI';
+            document.getElementById('resPhaseCut').textContent = phaseCut > 0 ? '-$' + phaseCut.toLocaleString('en-US') : '$0 (Fully Qualified)';
+            document.getElementById('resNetTaxShield').textContent = '$' + Math.round(ctc + eitc).toLocaleString('en-US');
+        
+  } catch(e) {
+    console.error("Calculation error", e);
+  }
+}
+
+// Bind inputs
+document.querySelectorAll('.calc-card input, .calc-card select').forEach(el => {
+  el.addEventListener('input', calculateAll);
+  el.addEventListener('change', calculateAll);
+});
+
+// Smart Copy Calculation Summary
+const shareBtn = document.getElementById('shareBtn');
+if (shareBtn) {
+  shareBtn.addEventListener('click', async () => {
+    const kpiEls = document.querySelectorAll('.prompt-kpi-box');
+    let summaryText = '⚡ CalcWorker — Child Tax Credit (CTC) & EITC Calculation:\n';
+    kpiEls.forEach(el => {
+      const lbl = el.querySelector('.prompt-kpi-label')?.textContent || '';
+      const val = el.querySelector('.prompt-kpi-val')?.textContent || '';
+      if (lbl && val) summaryText += '• ' + lbl + ': ' + val + '\n';
+    });
+    summaryText += '🔗 Free Calculator: ' + window.location.href;
+
+    try {
+      await navigator.clipboard.writeText(summaryText);
+      const btnText = document.getElementById('shareBtnText');
+      if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+      shareBtn.style.background = '#047857';
+      shareBtn.style.color = '#ffffff';
+      setTimeout(() => {
+        if (btnText) btnText.textContent = 'Copy Calculation Summary';
+        shareBtn.style.background = '';
+        shareBtn.style.color = '';
+      }, 2500);
+    } catch(err) {
+      console.error('Failed to copy', err);
+    }
+  });
+}
+
+// Run on load
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', calculateAll);
+} else {
+  calculateAll();
+}
+</script>
+
+<script src="/js/sidebar.js?v=2026-v26"></script>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

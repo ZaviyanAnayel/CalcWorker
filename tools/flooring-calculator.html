@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Flooring &amp; Tile Square Footage Cost Calculator 2026</title>
+<meta content="Calculate exact square footage, 10% waste allowances, box quantities, material costs, and labor estimates for hardwood, LVP vinyl plank, tile, and laminate flooring." name="description"/>
+<meta content="flooring calculator, tile square footage calculator, lvp flooring cost, hardwood flooring estimator 2026, carpet square foot calculator, calcworker" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/flooring-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/flooring-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Flooring &amp; Tile Square Footage Cost Calculator 2026" property="og:title"/>
+<meta content="Calculate exact square footage, 10% waste allowances, box quantities, material costs, and labor estimates for hardwood, LVP vinyl plank, tile, and laminate flooring." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v25" rel="stylesheet"/>
+<style>
+    .floor-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .floor-kpi-box {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.04));
+      border: 1px solid var(--border, rgba(255, 255, 255, 0.1));
+      border-radius: 10px;
+      padding: 14px;
+      text-align: center;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .floor-kpi-box:hover {
+      border-color: #2563eb;
+      transform: translateY(-2px);
+    }
+    .floor-kpi-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted, #94a3b8);
+      margin-bottom: 6px;
+    }
+    .floor-kpi-value {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--text-main, #f8fafc);
+    }
+    .floor-kpi-value.cost-green { color: #10b981; }
+    .floor-kpi-value.sqft-blue { color: #38bdf8; }
+    .floor-kpi-sub {
+      font-size: 0.7rem;
+      color: var(--text-muted, #94a3b8);
+      margin-top: 4px;
+    }
+  </style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Flooring & Tile Square Footage Cost Calculator 2026",
+    "url": "https://calcworker.com/tools/flooring-calculator.html",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "All",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do you calculate square footage for flooring?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Measure the room length in feet and width in feet, then multiply them together: Area (sq ft) = Length (ft) × Width (ft). For irregular L-shaped rooms, split the area into separate rectangles, calculate each individually, and sum them together."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why do I need to add 10% waste for flooring or tile?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A 10% waste allowance is an industry standard to account for end-of-row cutoffs, pattern matching, damaged planks, and awkward room angles. For diagonal or herringbone layouts, professionals recommend adding 15% to 20% waste."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How many boxes of flooring do I need to buy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Divide your total square footage (including the 10% waste factor) by the square footage contained in each manufacturer box, then always round UP to the nearest whole integer. For example: 450 sq ft needed ÷ 22 sq ft per carton = 20.45 $
+ightarrow$ Buy 21 boxes."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much does professional flooring installation cost in the US?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Average US labor costs range from $1.50 to $3.50 per square foot for Luxury Vinyl Plank (LVP) and laminate, $3.00 to $8.00 per square foot for solid hardwood, and $5.00 to $12.00 per square foot for ceramic or porcelain tile."
+        }
+      }
+    ]
+  }
+]
+</script>
+<meta content="#090d16" name="theme-color"/>
+<script defer="" src="../js/analytics.js"></script>
+<script defer="" src="/js/sidebar.js?v=2026-v25"></script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<link href="/css/ai-widget.css?v=2026-v25" rel="stylesheet"/>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Real Estate & Mortgages</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
+        <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
+        <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
+        <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Taxes & IRS Regulations</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Banking, Loans & Credit</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
+        <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Investments & Retirement</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
+        <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
+        <li><a class="nav-link" href="/tools/life-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Life Insurance Needs (DIME)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Career, Salary & Education</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Business, Legal & E-Commerce</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
+        <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
+        <li><a class="nav-link" href="/tools/ebay-fee-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">eBay Seller Fee & Profit</span></a></li>
+        <li><a class="nav-link" href="/tools/etsy-profit.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Etsy Seller Fee & Profit</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Creators & Social Media</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
+        <li><a class="nav-link" href="/tools/tiktok-coins-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">TikTok Coins & Gifts to USD</span></a></li>
+        <li><a class="nav-link" href="/tools/youtube-money-calculator.html"><span class="nav-link-icon">▶️</span><span class="nav-link-text">YouTube Money & CPM</span></a></li>
+        <li><a class="nav-link" href="/tools/instagram-money-calculator.html"><span class="nav-link-icon">📸</span><span class="nav-link-text">Instagram Sponsored Rate</span></a></li>
+        <li><a class="nav-link" href="/tools/podcast-sponsorship-calculator.html"><span class="nav-link-icon">🎙️</span><span class="nav-link-text">Podcast Ad Sponsorship</span></a></li>
+        <li><a class="nav-link" href="/tools/channel-growth-calculator.html"><span class="nav-link-icon">🚀</span><span class="nav-link-text">Channel Milestone Tracker</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Healthcare & Insurance</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Currency & Global Exchange</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/currency-converter.html"><span class="nav-link-icon">💱</span><span class="nav-link-text">Currency Converter (Live Rates)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-eur.html"><span class="nav-link-icon">💶</span><span class="nav-link-text">USD to EUR (Euro)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-gbp.html"><span class="nav-link-icon">💷</span><span class="nav-link-text">USD to GBP (British Pound)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-cad.html"><span class="nav-link-icon">🍁</span><span class="nav-link-text">USD to CAD (Canadian Dollar)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-mxn.html"><span class="nav-link-icon">🌮</span><span class="nav-link-text">USD to MXN (Mexican Peso)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-inr.html"><span class="nav-link-icon">🇮🇳</span><span class="nav-link-text">USD to INR (Indian Rupee)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-jpy.html"><span class="nav-link-icon">💴</span><span class="nav-link-text">USD to JPY (Japanese Yen)</span></a></li>
+        <li><a class="nav-link" href="/tools/usd-to-pkr.html"><span class="nav-link-icon">🇵🇰</span><span class="nav-link-text">USD to PKR (Pakistani Rupee)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link active" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
+        <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/date-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Date & Days Calculator</span></a></li>
+        <li><a class="nav-link" href="/tools/bmi-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">BMI & Body Composition</span></a></li>
+        <li><a class="nav-link" href="/tools/calorie-calculator.html"><span class="nav-link-icon">🔥</span><span class="nav-link-text">Calorie & TDEE Deficit</span></a></li>
+        <li><a class="nav-link" href="/tools/water-intake-calculator.html"><span class="nav-link-icon">💧</span><span class="nav-link-text">Daily Water Intake</span></a></li>
+        <li><a class="nav-link" href="/tools/steps-to-miles.html"><span class="nav-link-icon">🚶</span><span class="nav-link-text">Steps to Miles & Kilometers</span></a></li>
+        <li><a class="nav-link" href="/tools/bench-press-calculator.html"><span class="nav-link-icon">🏋️</span><span class="nav-link-text">Bench Press & 1RM Max</span></a></li>
+        <li><a class="nav-link" href="/tools/fuel-cost-calculator.html"><span class="nav-link-icon">⛽</span><span class="nav-link-text">Fuel Cost & Trip Mileage</span></a></li>
+        <li><a class="nav-link" href="/tools/tip-calculator.html"><span class="nav-link-icon">🍽️</span><span class="nav-link-text">Tip Calculator & Splitter</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="main-viewport">
+  <div class="cw-offline-strip" id="cw-offline-strip">
+    <div class="cw-offline-strip-inner">
+      <div class="cw-offline-left">
+        <span class="cw-offline-badge" id="cwOfflineBadge">
+          <span class="cw-offline-dot"></span>
+          <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+        </span>
+        <span class="cw-offline-headline" id="cwOfflineHeadline">
+          ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+        </span>
+      </div>
+      <div class="cw-offline-right">
+        <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          <span>Install App</span>
+        </button>
+      </div>
+    </div>
+  </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn" title="Toggle Navigation Menu">☰</button>
+<span class="topbar-title">Flooring &amp; Tile Cost Calculator</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+<svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14"><circle cx="18" cy="5" r="3"></circle><circle cx="6" cy="12" r="3"></circle><circle cx="18" cy="19" r="3"></circle><line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line><line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line></svg>
+<span class="btn-label">Share</span>
+</button>
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15"><circle cx="12" cy="12" r="5"></circle><line x1="12" x2="12" y1="1" y2="3"></line><line x1="12" x2="12" y1="21" y2="23"></line><line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line><line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line><line x1="1" x2="3" y1="1" y2="12"></line><line x1="21" x2="23" y1="12" y2="12"></line><line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line><line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line></svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<nav aria-label="Breadcrumb" style="margin-bottom: 12px; font-size: 0.8rem; color: var(--text-dim);">
+<a href="../index.html" style="color: var(--text-muted); text-decoration: none;">Dashboard</a> / 
+<span>Home &amp; Everyday</span> / 
+<span style="color: var(--brand-primary); font-weight: 600;">Flooring &amp; Tile Cost</span>
+</nav>
+
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>🪵</span> Flooring &amp; Tile Square Footage Cost Calculator (2026)</h1>
+<p class="tool-header-desc">
+Calculate exact square footage, industry standard waste allowances (10%-15%), carton/box purchase quantities, material expenses, and professional installation labor.
+</p>
+</div>
+
+<div class="tool-page-layout">
+<div class="tool-form-card" style="padding: 24px;">
+<h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+1. Room Dimensions &amp; Layout
+</h2>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+<div class="form-group">
+<label for="roomLength" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Room Length (Feet)</label>
+<input class="form-input" id="roomLength" min="1" oninput="calculateFloor()" step="0.5" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="20"/>
+</div>
+<div class="form-group">
+<label for="roomWidth" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Room Width (Feet)</label>
+<input class="form-input" id="roomWidth" min="1" oninput="calculateFloor()" step="0.5" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="15"/>
+</div>
+</div>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="extraSqFt" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Extra Closets &amp; Hallways Area (Sq Ft)</label>
+<input class="form-input" id="extraSqFt" min="0" oninput="calculateFloor()" step="10" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="35"/>
+</div>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="floorWaste" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Waste &amp; Cut Allowance (%)</label>
+<select class="form-select" id="floorWaste" onchange="calculateFloor()" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 0.95rem;">
+<option value="0.05">5% Waste (Simple straight rectangular room)</option>
+<option value="0.10" selected>10% Waste (Standard industry recommendation)</option>
+<option value="0.15">15% Waste (Diagonal lay or curved walls)</option>
+<option value="0.20">20% Waste (Complex herringbone or mosaic tile)</option>
+</select>
+</div>
+
+<h2 style="font-size: 1.15rem; font-weight: 700; margin: 24px 0 16px 0; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+2. Materials &amp; Installation Labor
+</h2>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="floorMaterial" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Flooring Material Type</label>
+<select class="form-select" id="floorMaterial" onchange="applyMaterialPreset()" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 0.95rem;">
+<option value="3.49_2.00_20" selected>Luxury Vinyl Plank (LVP) — $3.49/sq ft</option>
+<option value="6.99_4.50_22">Solid Hardwood Flooring — $6.99/sq ft</option>
+<option value="4.89_5.50_15">Porcelain / Ceramic Tile — $4.89/sq ft</option>
+<option value="2.29_1.75_24">Laminate Flooring — $2.29/sq ft</option>
+<option value="3.19_1.50_30">Plush Carpet with Padding — $3.19/sq ft</option>
+</select>
+</div>
+<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+<div class="form-group">
+<label for="matPrice" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Material Cost ($/sq ft)</label>
+<input class="form-input" id="matPrice" min="0.5" oninput="calculateFloor()" step="0.25" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="3.49"/>
+</div>
+<div class="form-group">
+<label for="boxSize" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Box Coverage (Sq Ft/Box)</label>
+<input class="form-input" id="boxSize" min="5" oninput="calculateFloor()" step="1" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="20"/>
+</div>
+</div>
+<div class="form-group" style="margin-bottom: 16px;">
+<label for="laborPrice" style="display: block; font-size: 0.88rem; font-weight: 600; margin-bottom: 6px;">Labor Cost ($/sq ft — $0 for DIY)</label>
+<input class="form-input" id="laborPrice" min="0" oninput="calculateFloor()" step="0.5" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="2.00"/>
+</div>
+</div>
+
+<div class="tool-results-card" style="padding: 24px;">
+<h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
+Flooring Project Cost &amp; Material Estimates
+</h2>
+
+<div class="floor-kpi-grid">
+<div class="floor-kpi-box">
+<div class="floor-kpi-label">Total Project Cost</div>
+<div class="floor-kpi-value cost-green" id="kpiTotalCost">$2,019</div>
+<div class="floor-kpi-sub" id="subCostPerSqFt">$5.48 per sq ft all-in</div>
+</div>
+<div class="floor-kpi-box">
+<div class="floor-kpi-label">Material to Purchase</div>
+<div class="floor-kpi-value sqft-blue" id="kpiTotalSqFt">369 Sq Ft</div>
+<div class="floor-kpi-sub" id="subNetSqFt">Net: 335 sq ft + 10% waste</div>
+</div>
+<div class="floor-kpi-box">
+<div class="floor-kpi-label">Boxes to Purchase</div>
+<div class="floor-kpi-value sqft-blue" id="kpiBoxCount">19 Boxes</div>
+<div class="floor-kpi-sub">Rounded up to next whole carton</div>
+</div>
+<div class="floor-kpi-box">
+<div class="floor-kpi-label">Material vs Labor</div>
+<div class="floor-kpi-value cost-green" id="kpiMatCost">$1,288</div>
+<div class="floor-kpi-sub" id="subLaborCost">Labor: $738</div>
+</div>
+</div>
+
+<div style="margin: 20px 0; background: var(--bg-subtle); border-radius: 10px; border: 1px solid var(--border); overflow: hidden;">
+<table style="width: 100%; border-collapse: collapse; font-size: 0.88rem;">
+<thead style="background: rgba(255, 255, 255, 0.04); border-bottom: 1px solid var(--border);">
+<tr>
+<th style="padding: 10px 14px; text-align: left; color: var(--text-muted); font-weight: 600;">Cost Component</th>
+<th style="padding: 10px 14px; text-align: right; color: var(--text-muted); font-weight: 600;">Quantity</th>
+<th style="padding: 10px 14px; text-align: right; color: #38bdf8; font-weight: 600;">Rate</th>
+<th style="padding: 10px 14px; text-align: right; color: #10b981; font-weight: 600;">Subtotal</th>
+</tr>
+</thead>
+<tbody>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding: 10px 14px; color: var(--text-main);">Net Room Area</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-main);" id="rowNetSqFt">335 sq ft</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-muted);">-</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-muted);">-</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding: 10px 14px; color: var(--text-main);">10% Waste &amp; Cutting Allowance</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-main);" id="rowWasteSqFt">34 sq ft</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-muted);">-</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-muted);">-</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding: 10px 14px; color: var(--text-main); font-weight:600;">Flooring Material (Boxes Purchased)</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-main);" id="rowBoxesQty">19 boxes (380 sq ft)</td>
+<td style="padding: 10px 14px; text-align: right; color: #38bdf8;" id="rowMatRate">$3.49/sq ft</td>
+<td style="padding: 10px 14px; text-align: right; font-weight: 700; color: var(--text-main);" id="rowMatTotal">$1,326.20</td>
+</tr>
+<tr style="border-bottom: 1px solid var(--border);">
+<td style="padding: 10px 14px; color: var(--text-main);">Professional Installation Labor</td>
+<td style="padding: 10px 14px; text-align: right; color: var(--text-main);" id="rowLaborQty">369 sq ft</td>
+<td style="padding: 10px 14px; text-align: right; color: #38bdf8;" id="rowLaborRate">$2.00/sq ft</td>
+<td style="padding: 10px 14px; text-align: right; font-weight: 700; color: var(--text-main);" id="rowLaborTotal">$738.00</td>
+</tr>
+<tr>
+<td style="padding: 10px 14px; font-weight: 700; color: #10b981;">Total Estimated Project Investment</td>
+<td style="padding: 10px 14px; text-align: right; font-weight: 700; color: #10b981;" colspan="2">-</td>
+<td style="padding: 10px 14px; text-align: right; font-weight: 700; color: #10b981; font-size:1.05rem;" id="rowGrandTotal">$2,064.20</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+<button class="cw-msg-btn" id="shareBtn" style="width: 100%; justify-content: center; padding: 12px; font-size: 0.95rem; margin-top: 12px;" type="button">
+📋 <span id="shareBtnText">Copy Flooring Project Summary</span>
+</button>
+</div>
+</div>
+
+<!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Flooring Material & Carton Requirement Formula</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Gross Sq Ft} = (\text{Room Length} \times \text{Room Width}) \times (1 + \text{Waste Factor}) \quad \text{and} \quad \text{Cartons} = \left\lceil \frac{\text{Gross Sq Ft}}{\text{Sq Ft per Box}} \right\rceil</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Multiplies net room area by the waste allowance percentage and rounds up to the nearest whole commercial carton.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Room Area:</span> <span>Net floor surface area measured in feet (Length × Width).</span></li>
+      <li><span class="cw-var-symbol">Waste Factor:</span> <span>Percentage allowance for cutting scrap (0.10 for straight lay, 0.15 for diagonal/tile).</span></li>
+      <li><span class="cw-var-symbol">Carton Coverage:</span> <span>Usable square footage contained in each factory-sealed box.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Room Dimensions: Living room measuring 22 feet long by 16 feet wide = 352 square feet net floor area.</li>
+      <li>Waste Allowance: 10% waste factor for straight-lay luxury vinyl plank ($352 × 1.10 = 387.2 gross square feet).</li>
+      <li>Box Coverage: Selected LVP carton covers 21.5 square feet per box.</li>
+      <li>Box Calculation: 387.2 sq ft ÷ 21.5 sq ft/box = 18.009 boxes.</li>
+      <li>Carton Purchase: Ceiling function rounds up to 19 whole cartons (19 × 21.5 = 408.5 sq ft purchased). At $3.50/sq ft, total cost = $1,429.75.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Acclimate natural hardwood flooring inside the conditioned living space for 5 to 7 days prior to installation to prevent seasonal buckling and gapping.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> National Wood Flooring Association (NWFA) Installation Guidelines and Tile Council of North America (TCNA) Handbook.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+<section class="cw-educational-section" style="margin-top: 48px; border-top: 1px solid var(--border); padding-top: 36px;">
+<h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">
+📐 Flooring Calculation Geometry &amp; Square Footage Formulas
+</h2>
+
+<div class="cw-math-eq-clean">
+<div class="cw-math-label">Core Flooring Equation:</div>
+<div class="cw-math-formula">Gross Sq Ft = [ (Length × Width) + Extra Area ] × (1 + Waste Factor) | Boxes = Ceiling(Gross Sq Ft ÷ Box Coverage)</div>
+</div>
+
+<div class="cw-plain-english">
+<strong>In Plain English:</strong> To calculate flooring materials, multiply room length by width to get base square footage, add any closets or hallways, multiply by 1.10 (to add 10% for cuts and waste), and divide by square feet per carton. Always round up to the next full box because retailers do not sell partial cartons.
+</div>
+
+<div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+<ul class="cw-vars-list">
+<li><span class="cw-var-symbol">Length &amp; Width:</span> <span>Physical wall-to-wall measurements in linear feet (12 inches = 1.0 ft)</span></li>
+<li><span class="cw-var-symbol">Net Area:</span> <span>Raw floor surface area = Length × Width</span></li>
+<li><span class="cw-var-symbol">Waste Factor:</span> <span>10% standard straight plank; 15% for 45-degree diagonal installations; 20% for herringbone or multi-sized stone patterns</span></li>
+<li><span class="cw-var-symbol">Box Coverage:</span> <span>Manufacturer carton yield (typically 18 to 24 sq ft per box for plank flooring)</span></li>
+<li><span class="cw-var-symbol">Labor Rate:</span> <span>Contractor installation charge per gross square foot</span></li>
+</ul>
+
+<div class="cw-step-box">
+<h3><span>📝</span> Step-by-Step Practical Flooring Calculation Example</h3>
+<p class="cw-step-intro">Follow this real-world home renovation example for a living room and coat closet:</p>
+<ol class="cw-step-list">
+<li><strong>Measure Living Room:</strong> Length = 22 feet, Width = 16 feet. Net Area = 22 × 16 = <strong>352 sq ft</strong>.</li>
+<li><strong>Add Coat Closet:</strong> 4 ft × 5 ft = <strong>20 sq ft</strong>. Total Net Area = 352 + 20 = <strong>372 sq ft</strong>.</li>
+<li><strong>Factor in 10% Waste:</strong> 372 sq ft × 1.10 = <strong>409.2 sq ft needed</strong>.</li>
+<li><strong>Calculate Boxes Needed:</strong> Selected Luxury Vinyl Plank (LVP) covers 21.5 sq ft per box. 409.2 ÷ 21.5 = 19.03 $
+ightarrow$ <strong>Order 20 full boxes (430 sq ft total)</strong>.</li>
+<li><strong>Calculate Material Expense:</strong> 430 sq ft × $3.89/sq ft = <strong>$1,672.70</strong>.</li>
+<li><strong>Add Installation Labor:</strong> Professional installer charges $2.25/sq ft. 409.2 sq ft × $2.25 = <strong>$920.70</strong>.</li>
+<li><strong>Total Project Cost:</strong> $1,672.70 (materials) + $920.70 (labor) = <strong>$2,593.40 total project investment ($6.97/sq ft finished)</strong>.</li>
+</ol>
+<div class="cw-tip-box">
+<strong>💡 Pro Tip for Solving Complex Cases:</strong> Always keep one full, unopened box of flooring stored in a climate-controlled closet after the project is complete. Flooring dye lots change and styles are discontinued frequently by manufacturers. Having an original spare box ensures you can seamlessly replace damaged planks if a plumbing leak or heavy appliance scratch occurs years later.
+</div>
+</div>
+
+<div class="cw-benchmark-card">
+<strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> The Tile Council of North America (TCNA Handbook) and the National Wood Flooring Association (NWFA) establish US installation tolerances. Standard subfloor deflection must not exceed L/360 for ceramic tile and L/720 for natural stone to prevent grout cracking. Solid hardwood flooring must acclimate inside the home's ambient climate (35%–55% relative humidity) for a minimum of 72 hours prior to nailing.
+</div>
+
+<p class="cw-deep-text">
+Flooring selection is one of the highest-ROI home improvement projects in the United States, typically returning 70% to 80% of its cost upon home resale according to the National Association of Realtors (NAR). In recent years, Luxury Vinyl Plank (LVP) with a rigid stone-polymer composite (SPC) core has captured the largest market share due to its 100% waterproof performance, realistic wood-grain embossing, and straightforward click-lock floating installation.
+</p>
+
+<p class="cw-deep-text">
+Homeowners must also evaluate transition mouldings and underlayment requirements. While many modern LVP planks feature pre-attached acoustic foam pads, concrete subfloors in basements or ground-floor slabs require a 6-mil polyethylene vapor barrier to block rising hydrostatic moisture. In addition, measure doorways to calculate T-mouldings, reducers, and quarter-round shoe moulding linear footage.
+</p>
+
+<div style="margin-top: 24px;">
+<h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Frequently Asked Questions</h3>
+<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is the difference between nominal and actual tile square footage?</summary>
+<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Tile dimensions listed on boxes are often 'nominal' (e.g., a 12x24 inch tile may actually measure 11.75x23.75 inches to accommodate a standard 1/8-inch or 1/16-inch grout joint). The square footage listed on the manufacturer box already accounts for standard grout spacing, so use the carton coverage metric directly.</p>
+</details>
+<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Can I install new flooring directly over existing tile or vinyl?</summary>
+<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Yes, floating floors like Luxury Vinyl Plank and laminate can be installed over existing firmly bonded tile, sheet vinyl, or hardwood, provided the surface is clean, flat within 3/16-inch over a 10-foot span, and deep grout lines are leveled with an embossing leveler compound.</p>
+</details>
+</div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📐</span> Flooring Material Estimation: Square Footage, Waste Factors & Box Rounding
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Calculating flooring materials for home renovation (hardwood, luxury vinyl plank, ceramic tile, laminate, carpeting) requires measuring the net surface square footage and adding an essential 'Waste Factor' to account for end-of-row cuts, room angles, closet transitions, and damaged material.</p>
+    <p style="margin-top: 12px;">Under National Wood Flooring Association (NWFA) standards, standard rectangular rooms require a 10% waste factor, while complex layouts with diagonal patterns, herringbone designs, or numerous corners require a 15% to 20% waste buffer. Furthermore, flooring is sold in fixed whole cartons, requiring ceiling rounding.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Flooring Waste Factors & Box Estimation Across Material Types (500 Sq Ft Room)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Flooring Material Type</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Recommended Waste Factor</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Total Material to Order</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Carton Coverage</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Whole Cartons to Purchase</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Luxury Vinyl Plank (LVP)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">550 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">23.8 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">24 Cartons (571.2 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Engineered Hardwood (Straight)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">550 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">20.0 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">28 Cartons (560.0 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Hardwood (Herringbone / Diagonal)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0% – 20.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">575 – 600 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">20.0 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">29 – 30 Cartons (600 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Porcelain / Ceramic Tile (Grid)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">550 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">37 Cartons (555.0 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Large Format Tile (Diagonal/Offset)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">575 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">14.4 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">40 Cartons (576.0 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Wall-to-Wall Carpeting (Broadloom)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">12.0% – 15.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">575 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Sold in 12-ft rolls</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Requires 12x48 ft roll cut</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Flooring Installation Planning Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Measure Every Closet and Nook Separately:</strong> <span>Break complex L-shaped rooms and adjoining closets into individual rectangles (Length × Width), calculate each square footage, and sum them together.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Always Keep One Full Unopened Spare Carton:</strong> <span>Flooring dye lots and manufacturing runs change frequently; retain one spare carton in your attic or basement for future plumbing leak repairs.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Factor In Subfloor Underlayment and Transitions:</strong> <span>Order equal square footage of moisture barrier underlayment and measure linear feet of doorways for T-moldings, reducers, and shoe molding.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
+<section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
+  <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+  </h2>
+  <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+  </p>
+  <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 flooring calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 square footage</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tile hardwood</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 laminate lvp</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 luxury vinyl</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 plank waste</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 factor boxes</span>
+
+  </div>
+  <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+  </div>
+</section>
+
+  
+
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 102 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script>
+function setTxt(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+
+function applyMaterialPreset() {
+  const sel = document.getElementById('floorMaterial');
+  if (!sel) return;
+  const parts = sel.value.split('_');
+  if (parts.length >= 3) {
+    document.getElementById('matPrice').value = parts[0];
+    document.getElementById('laborPrice').value = parts[1];
+    document.getElementById('boxSize').value = parts[2];
+  }
+  calculateFloor();
+}
+
+function calculateFloor() {
+  try {
+    const len = parseFloat(document.getElementById('roomLength')?.value) || 20;
+    const wid = parseFloat(document.getElementById('roomWidth')?.value) || 15;
+    const extra = parseFloat(document.getElementById('extraSqFt')?.value) || 35;
+    const wastePct = parseFloat(document.getElementById('floorWaste')?.value) || 0.10;
+    const matRate = parseFloat(document.getElementById('matPrice')?.value) || 3.49;
+    const boxSqFt = parseFloat(document.getElementById('boxSize')?.value) || 20;
+    const laborRate = parseFloat(document.getElementById('laborPrice')?.value) || 2.00;
+
+    const netSqFt = (len * wid) + extra;
+    const wasteSqFt = netSqFt * wastePct;
+    const grossSqFt = netSqFt + wasteSqFt;
+
+    const boxesNeeded = Math.ceil(grossSqFt / (boxSqFt || 20));
+    const purchasedSqFt = boxesNeeded * boxSqFt;
+
+    const totalMatCost = purchasedSqFt * matRate;
+    const totalLaborCost = grossSqFt * laborRate;
+    const grandTotal = totalMatCost + totalLaborCost;
+    const costPerSqFt = grandTotal / (netSqFt || 1);
+
+    setTxt('kpiTotalCost', '$' + Math.round(grandTotal).toLocaleString());
+    setTxt('subCostPerSqFt', '$' + costPerSqFt.toFixed(2) + ' per sq ft all-in');
+    setTxt('kpiTotalSqFt', Math.round(grossSqFt).toLocaleString() + ' Sq Ft');
+    setTxt('subNetSqFt', 'Net: ' + Math.round(netSqFt) + ' sq ft + ' + (wastePct * 100).toFixed(0) + '% waste');
+    setTxt('kpiBoxCount', boxesNeeded + ' Boxes');
+    setTxt('kpiMatCost', '$' + Math.round(totalMatCost).toLocaleString());
+    setTxt('subLaborCost', 'Labor: $' + Math.round(totalLaborCost).toLocaleString());
+
+    setTxt('rowNetSqFt', Math.round(netSqFt).toLocaleString() + ' sq ft');
+    setTxt('rowWasteSqFt', Math.round(wasteSqFt).toLocaleString() + ' sq ft');
+    setTxt('rowBoxesQty', boxesNeeded + ' boxes (' + Math.round(purchasedSqFt) + ' sq ft)');
+    setTxt('rowMatRate', '$' + matRate.toFixed(2) + '/sq ft');
+    setTxt('rowMatTotal', '$' + totalMatCost.toFixed(2));
+    setTxt('rowLaborQty', Math.round(grossSqFt).toLocaleString() + ' sq ft');
+    setTxt('rowLaborRate', '$' + laborRate.toFixed(2) + '/sq ft');
+    setTxt('rowLaborTotal', '$' + totalLaborCost.toFixed(2));
+    setTxt('rowGrandTotal', '$' + grandTotal.toFixed(2));
+  } catch(e) {
+    console.error('Flooring calc error:', e);
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('input, select').forEach(function(el) {
+    el.addEventListener('input', calculateFloor);
+    el.addEventListener('change', calculateFloor);
+    el.addEventListener('keyup', calculateFloor);
+  });
+  calculateFloor();
+
+  const shareBtn = document.getElementById('shareBtn');
+  if (shareBtn) {
+    shareBtn.addEventListener('click', function() {
+      const sqft = document.getElementById('kpiTotalSqFt')?.textContent || '369 Sq Ft';
+      const boxes = document.getElementById('kpiBoxCount')?.textContent || '19 Boxes';
+      const cost = document.getElementById('kpiTotalCost')?.textContent || '$2,019';
+
+      const shareText = '🪵 CalcWorker Flooring & Tile Project Estimate:\n' +
+        '• Total Area Needed: ' + sqft + '\n' +
+        '• Boxes to Order: ' + boxes + '\n' +
+        '• Total Estimated Investment: ' + cost + '\n' +
+        '🔗 Free Calculator: ' + window.location.href;
+
+      navigator.clipboard.writeText(shareText).then(function() {
+        const btnText = document.getElementById('shareBtnText');
+        if (btnText) btnText.textContent = '✓ Copied to Clipboard!';
+        setTimeout(function() {
+          if (btnText) btnText.textContent = 'Copy Flooring Project Summary';
+        }, 2500);
+      });
+    });
+  }
+});
+</script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

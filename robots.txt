@@ -1,0 +1,6 @@
+# Robots.txt for CalcWorker (https://calcworker.com)
+User-agent: *
+Allow: /
+
+# Sitemaps
+Sitemap: https://calcworker.com/sitemap.xml
