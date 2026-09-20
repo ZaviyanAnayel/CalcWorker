@@ -795,25 +795,187 @@
     return null;
   }
 
-  // 5. Deep Knowledge & Entity Resolver
+  // ==========================================
+  // 4.1 Advanced NLP & Fuzzy Matching Engine
+  // ==========================================
+  const VOCABULARY = new Set();
+  if (typeof TOOLS_DB !== 'undefined' && Array.isArray(TOOLS_DB)) {
+    TOOLS_DB.forEach(tool => {
+      const text = `${tool.title} ${tool.url} ${(tool.keywords || []).join(' ')}`.toLowerCase();
+      const words = text.match(/[a-z0-9]{3,}/g) || [];
+      words.forEach(w => VOCABULARY.add(w));
+    });
+  }
+
+  // Fast Levenshtein distance for typo correction
+  function levenshtein(a, b) {
+    if (a === b) return 0;
+    if (a.length === 0) return b.length;
+    if (b.length === 0) return a.length;
+    const v0 = new Array(b.length + 1);
+    const v1 = new Array(b.length + 1);
+    for (let i = 0; i <= b.length; i++) v0[i] = i;
+    for (let i = 0; i < a.length; i++) {
+      v1[0] = i + 1;
+      for (let j = 0; j < b.length; j++) {
+        const cost = a[i] === b[j] ? 0 : 1;
+        v1[j + 1] = Math.min(v1[j] + 1, v0[j + 1] + 1, v0[j] + cost);
+      }
+      for (let j = 0; j <= b.length; j++) v0[j] = v1[j];
+    }
+    return v1[b.length];
+  }
+
+  // Common phonetic & typing variations
+  const COMMON_TYPOS = {
+    'dept': 'debt', 'depts': 'debts', 'lone': 'loan', 'lones': 'loans',
+    'mortgege': 'mortgage', 'morgage': 'mortgage', 'mortage': 'mortgage', 'mortgaj': 'mortgage',
+    'salry': 'salary', 'selary': 'salary', 'slary': 'salary', 'tanha': 'salary', 'tankhwa': 'salary',
+    'calory': 'calorie', 'calori': 'calorie', 'calries': 'calorie',
+    'inflasion': 'inflation', 'mehngai': 'inflation', 'mehengai': 'inflation',
+    'curruncy': 'currency', 'currancy': 'currency', 'crancy': 'currency', 'paisa': 'currency',
+    'youtub': 'youtube', 'yt': 'youtube', 'tictok': 'tiktok', 'tik': 'tiktok',
+    'insta': 'instagram', 'ig': 'instagram', 'amzon': 'amazon', 'amzn': 'amazon',
+    'whf': 'commute', 'intrest': 'interest', 'sood': 'interest',
+    'persent': 'percentage', 'persentage': 'percentage', 'prcnt': 'percentage',
+    'refi': 'refinance', 'refinancing': 'refinance',
+    'propety': 'property', 'proprty': 'property',
+    'clossing': 'closing', 'clsing': 'closing',
+    'insuranc': 'insurance', 'retirmnt': 'retirement'
+  };
+
+  // Acronym expansions for instant precision
+  const ACRONYMS = {
+    'dti': 'debt to income dti',
+    'piti': 'mortgage piti principal interest taxes insurance',
+    'fba': 'amazon fba fees',
+    'fbm': 'amazon fbm merchant',
+    '1rm': 'bench press one rep max 1rm',
+    'bmi': 'body mass index bmi',
+    'tdee': 'calorie tdee deficit bmr',
+    'bmr': 'calorie bmr tdee',
+    'heloc': 'heloc home equity line',
+    'rmd': '401k rmd retirement distribution',
+    'hsa': 'hsa fsa health savings',
+    'fsa': 'hsa fsa flexible spending',
+    'pslf': 'student loan pslf forgiveness',
+    'cd': 'cd ladder certificate deposit'
+  };
+
+  // Stop words that should NEVER trigger false-positive substring tool matches
+  const STOP_WORDS = new Set([
+    "a", "an", "the", "and", "or", "but", "if", "in", "on", "at", "to", "for",
+    "of", "with", "by", "from", "up", "about", "into", "over", "after", "is",
+    "are", "was", "were", "be", "been", "being", "have", "has", "had", "do",
+    "does", "did", "can", "could", "should", "would", "how", "what", "which",
+    "who", "when", "where", "why", "ka", "ke", "ki", "ko", "se", "me", "mein",
+    "par", "k", "kya", "yeh", "woh", "hai", "hain", "karna", "karne", "i", "my",
+    "me", "calculator", "calc", "calculate", "tool", "tools", "please", "batao", "dikhao"
+  ]);
+
+  // Fast fuzzy spell-checker against our site vocabulary
+  function correctWord(word) {
+    if (!word || word.length < 3) return word;
+    if (VOCABULARY.has(word)) return word;
+    if (COMMON_TYPOS[word]) return COMMON_TYPOS[word];
+
+    let best = word;
+    let minD = 99;
+    const maxAllowedEdits = word.length <= 5 ? 1 : 2;
+
+    for (const v of VOCABULARY) {
+      if (Math.abs(v.length - word.length) <= maxAllowedEdits) {
+        const d = levenshtein(word, v);
+        if (d < minD && d <= maxAllowedEdits) {
+          minD = d;
+          best = v;
+        }
+      }
+    }
+    return best;
+  }
+
+  // Conversational Intent Checkers
+  function isGreeting(query) {
+    const raw = (query || '').trim().toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    const GREETINGS = [
+      'hi', 'hello', 'hey', 'hiya', 'hlo', 'helo', 'hy', 'salam', 'assalam',
+      'assalamu alaikum', 'assalam o alaikum', 'assalamualaikum', 'aoa', 'slm',
+      'kese ho', 'kaise ho', 'kaisay ho', 'how are you', 'how r u', 'how do you do',
+      'good morning', 'good afternoon', 'good evening', 'good night',
+      'namaste', 'hola', 'yo', 'sup', 'wassup', 'whats up', 'what is up'
+    ];
+    return GREETINGS.some(g => raw === g || raw === `${g} ai` || raw === `${g} calcworker` || (raw.startsWith(`${g} `) && raw.split(' ').length <= 3));
+  }
+
+  function isThanks(query) {
+    const raw = (query || '').trim().toLowerCase().replace(/[^a-z0-9\s]/g, ' ').replace(/\s+/g, ' ').trim();
+    const THANKS = ['thanks', 'thank you', 'thx', 'shukriya', 'bohot shukriya', 'shukria', 'jazakallah', 'dhanyawad', 'great', 'awesome', 'nice', 'perfect', 'zabardast', 'bohot khoob'];
+    return THANKS.some(t => raw === t || raw.startsWith(`${t} `) && raw.split(' ').length <= 3);
+  }
+
+  function isHelp(query) {
+    const raw = (query || '').trim().toLowerCase();
+    return raw === 'help' || raw.includes('kya kar sakte ho') || raw.includes('what can you do') || raw.includes('features') || raw.includes('who are you') || raw.includes('tum kya ho');
+  }
+
+  // 5. Deep Knowledge, Conversational & Fuzzy Entity Resolver
   function resolveKnowledge(query) {
-    // 1. Sanitize & Normalize Punctuation and Common Typos
     const rawQ = (query || "").toLowerCase().trim();
     const cleanQ = rawQ.replace(/[\?\!\,\.\:\;\(\)\[\]\*\_]/g, " ").replace(/\s+/g, " ").trim();
-    
-    // Normalize phonetic & typing variations
-    const q = cleanQ
-      .replace(/\b(tottal|totle|totl|totall|totel)\b/g, "total")
-      .replace(/\b(calclator|calculater|calculaters|calculators|calc|calcs)\b/g, "calculator")
-      .replace(/\b(toosl|toool|toools|tol|tolls|toos)\b/g, "tools")
-      .replace(/\b(kitnay|kitna)\b/g, "kitne")
-      .replace(/\b(saaray|saare|saray)\b/g, "sare")
-      .replace(/\b(dikhao|dekhao|batao|btao)\b/g, "show");
 
-    // 5.1 Owner & Founder Queries (English + Roman Urdu)
-    if (q.includes("owner") || q.includes("zaviyan") || q.includes("founder") || q.includes("who made") || 
-        q.includes("who created") || q.includes("who owns") || q.includes("kisne banaya") || 
-        q.includes("owner kaun") || q.includes("malik") || q.includes("company") || q.includes("about calcworker")) {
+    // 5.0 Natural Conversational Greeting Intent
+    if (isGreeting(cleanQ)) {
+      if (cleanQ.includes("salam") || cleanQ.includes("kese") || cleanQ.includes("kaise") || cleanQ.includes("aoa")) {
+        return `👋 <strong>Walaikum Assalam! CalcWorker me khush-amdeed!</strong><br><br>` +
+          `Main aapka 100% private aur zero-latency financial &amp; mathematical AI assistant hoon.<br><br>` +
+          `<strong>Main aapki kya madad kar sakta hoon?</strong><br>` +
+          `• <strong>Hisab Kitab:</strong> Koi bhi equation likhein (maslan <em>"20% of 1500"</em> ya <em>"5000 / 12"</em>)<br>` +
+          `• <strong>Calculator Dhoondein:</strong> Maslan <em>"debt to income"</em>, <em>"mortgage payment"</em>, <em>"freelance tax"</em>, <em>"car loan"</em><br>` +
+          `• <strong>Guides &amp; Articles:</strong> Detailed guide parhney ke liye <em>"guides"</em> likhein<br>` +
+          `• <strong>Tamam 102 Tools:</strong> Saari list dekhne ke liye <em>"sare tools dikhao"</em> likhein!`;
+      }
+      return `👋 <strong>Hello! Welcome to CalcWorker!</strong><br><br>` +
+        `I am your 100% private, client-side financial &amp; computational AI assistant.<br><br>` +
+        `<strong>How can I help you today?</strong><br>` +
+        `• <strong>Solve Math Instantly:</strong> e.g., <em>"what is 18% of 450"</em> or <em>"2500 * 12"</em><br>` +
+        `• <strong>Find Any Calculator:</strong> e.g., <em>"debt to income"</em>, <em>"mortgage payment"</em>, <em>"1099 tax"</em>, <em>"car lease"</em>, <em>"401k match"</em><br>` +
+        `• <strong>In-Depth Guides:</strong> Type <em>"guides"</em> to access our complete Guides Hub<br>` +
+        `• <strong>Browse All 102 Tools:</strong> Type <em>"show all tools"</em> to explore the full directory!`;
+    }
+
+    // 5.0.1 Gratitude & Appreciation Intent
+    if (isThanks(cleanQ)) {
+      return `😊 <strong>You're very welcome!</strong><br><br>` +
+        `I'm always here to help you calculate and optimize your decisions across all 102 tools. Feel free to ask anytime!`;
+    }
+
+    // 5.0.2 Capabilities & Help Intent
+    if (isHelp(cleanQ)) {
+      return `🤖 <strong>CalcWorker AI Capabilities:</strong><br><br>` +
+        `1. <strong>Zero-Latency Arithmetic:</strong> Solves percentages, division, multiplication, and formulas instantly.<br>` +
+        `2. <strong>Typo-Tolerant Tool Matching:</strong> Understands what tool you need even with spelling errors (e.g. <em>"dept to income"</em> or <em>"mortgege"</em>).<br>` +
+        `3. <strong>Deep Domain Knowledge:</strong> Explains exact 2026 US tax brackets, PITI mortgage components, FBA fees, and YouTube RPM.<br>` +
+        `4. <strong>Direct Guide Pairing:</strong> Provides 1-click links to in-depth research articles.<br>` +
+        `5. <strong>100% Client-Side Privacy:</strong> Zero telemetry — your financial numbers never leave your device.`;
+    }
+
+    // 5.0.3 Guides & Articles Hub Intent
+    if (cleanQ === "guides" || cleanQ === "guide" || cleanQ === "articles" || cleanQ === "article" || cleanQ.includes("guides hub") || cleanQ.includes("all guides")) {
+      return `📚 <strong>CalcWorker Guides &amp; Research Hub:</strong><br><br>` +
+        `We feature <strong>102+ comprehensive, mathematically verified calculation guides</strong> complete with worked numerical examples, formulas, and benchmark tables.<br><br>` +
+        `• 🏠 <a href="/articles/mortgage-piti-calculation-guide-2026.html">Mortgage PITI Calculation Guide (2026)</a><br>` +
+        `• 🏛️ <a href="/articles/1099-freelance-quarterly-tax-guide-2026.html">1099 Freelance &amp; Quarterly Tax Guide</a><br>` +
+        `• 📈 <a href="/articles/roth-ira-calculator-guide-2026.html">Roth IRA Wealth Accumulator Guide</a><br>` +
+        `• 💼 <a href="/articles/amazon-fba-calculator-guide-2026.html">Amazon FBA Fee &amp; Profit Guide</a><br>` +
+        `• 🎬 <a href="/articles/youtube-money-calculator-guide-2026.html">YouTube AdSense &amp; RPM Guide</a><br><br>` +
+        `<a href="/articles/" class="cw-msg-btn">Explore All 102+ Guides in Hub →</a>`;
+    }
+
+    // 5.1 Owner & Founder Queries
+    if (cleanQ.includes("owner") || cleanQ.includes("zaviyan") || cleanQ.includes("founder") || cleanQ.includes("who made") || 
+        cleanQ.includes("who created") || cleanQ.includes("who owns") || cleanQ.includes("kisne banaya") || 
+        cleanQ.includes("owner kaun") || cleanQ.includes("malik") || cleanQ.includes("company") || cleanQ.includes("about calcworker")) {
       return `<strong>Owner &amp; Founder Information:</strong><br><br>` +
         `CalcWorker is founded, engineered, and owned by <strong>${CW_INFO.owner}</strong> and operated by <strong>${CW_INFO.company}</strong>.<br><br>` +
         `• <strong>Founder:</strong> Zaviyan<br>` +
@@ -823,8 +985,8 @@
     }
 
     // 5.2 Contact & Support Queries
-    if (q.includes("contact") || q.includes("email") || q.includes("support") || q.includes("reach out") || 
-        q.includes("rabta") || q.includes("help email")) {
+    if (cleanQ.includes("contact") || cleanQ.includes("email") || cleanQ.includes("support") || cleanQ.includes("reach out") || 
+        cleanQ.includes("rabta") || cleanQ.includes("help email")) {
       return `<strong>Contact &amp; Executive Support:</strong><br><br>` +
         `For enterprise licensing, custom mathematical modeling, or developer integrations, reach out directly to the executive office:<br><br>` +
         `📧 <strong>Official Email:</strong> <a href="mailto:${CW_INFO.email}">${CW_INFO.email}</a><br>` +
@@ -833,9 +995,9 @@
         `⏱️ <strong>Response Guarantee:</strong> Inquiries receive prioritized responses within 24 business hours.`;
     }
 
-    // 5.3 Privacy, Telemetry & Security (Client-Side Guarantee)
-    if (q.includes("privacy") || q.includes("safe") || q.includes("telemetry") || q.includes("data") || 
-        q.includes("server") || q.includes("offline") || q.includes("pwa") || q.includes("mahfooz") || q.includes("security")) {
+    // 5.3 Privacy, Telemetry & Security
+    if (cleanQ.includes("privacy") || cleanQ.includes("safe") || cleanQ.includes("telemetry") || cleanQ.includes("data") || 
+        cleanQ.includes("server") || cleanQ.includes("offline") || cleanQ.includes("pwa") || cleanQ.includes("mahfooz") || cleanQ.includes("security")) {
       return `🔒 <strong>Privacy &amp; Security Architecture:</strong><br><br>` +
         `CalcWorker operates with a <strong>Zero-Telemetry, Client-Side Only</strong> security model:<br><br>` +
         `1. <strong>Local Sandbox:</strong> Every mathematical formula executes 100% inside your browser's V8/JavaScript engine.<br>` +
@@ -844,10 +1006,10 @@
     }
 
     // 5.4 Tool Count & Verification Queries
-    if (q.includes("total tools") || q.includes("how many") || q.includes("tool count") || 
-        q.includes("count") || q.includes("102") || q.includes("kitne tools") || q.includes("kitne calculator") || 
-        q.includes("total calculator") || q === "tools" || q === "total" || q === "total tools" || 
-        q.includes("all tools count") || q.includes("kitne tools hain") || q.includes("total kitne")) {
+    if (cleanQ.includes("total tools") || cleanQ.includes("how many") || cleanQ.includes("tool count") || 
+        cleanQ.includes("count") || cleanQ.includes("102") || cleanQ.includes("kitne tools") || cleanQ.includes("kitne calculator") || 
+        cleanQ.includes("total calculator") || cleanQ === "tools" || cleanQ === "total" || cleanQ === "total tools" || 
+        cleanQ.includes("all tools count") || cleanQ.includes("kitne tools hain") || cleanQ.includes("total kitne")) {
       return `📊 <strong>Total Calculator Suite: Exactly 102 Tools!</strong><br><br>` +
         `CalcWorker features <strong>102 distinct, production-grade calculators</strong> divided across 8 core disciplines:<br><br>` +
         `• 🏠 <strong>Mortgages &amp; Real Estate:</strong> 10 specialized calculators<br>` +
@@ -861,11 +1023,11 @@
         `Type <em>"show all tools"</em> or <em>"sare tools dikhao"</em> to explore the full directory!`;
     }
 
-    // 5.5 Complete 102 Tools Directory Intent (English + Roman Urdu)
-    if (q.includes("all tools") || q.includes("sare tools") || q.includes("saare tools") || 
-        q.includes("list of tools") || q.includes("show tools") || q.includes("directory") || 
-        q.includes("tamam tools") || q.includes("sabhi tools") || q.includes("list tools") ||
-        q === "tools" || q === "list" || q === "menu") {
+    // 5.5 Complete 102 Tools Directory Intent
+    if (cleanQ.includes("all tools") || cleanQ.includes("sare tools") || cleanQ.includes("saare tools") || 
+        cleanQ.includes("list of tools") || cleanQ.includes("show tools") || cleanQ.includes("directory") || 
+        cleanQ.includes("tamam tools") || cleanQ.includes("sabhi tools") || cleanQ.includes("list tools") ||
+        cleanQ === "tools" || cleanQ === "list" || cleanQ === "menu") {
       return `📚 <strong>Master Directory: All 102 CalcWorker Tools</strong><br><br>` +
         `<strong>🏠 Mortgages &amp; Real Estate:</strong><br>` +
         `• <a href="/tools/mortgage-calculator.html">Mortgage Payment</a> | <a href="/tools/mortgage-refinance-calculator.html">Refinance Break-Even</a> | <a href="/tools/fha-vs-conventional-calculator.html">FHA vs Conv</a> | <a href="/tools/heloc-calculator.html">HELOC</a> | <a href="/tools/home-equity-loan-calculator.html">Home Equity</a> | <a href="/tools/closing-costs-calculator.html">Closing Costs</a> | <a href="/tools/rent-vs-buy.html">Rent vs Buy</a> | <a href="/tools/extra-mortgage-payment-calculator.html">Extra Payments</a> | <a href="/tools/property-tax-calculator.html">Property Tax</a> | <a href="/tools/prorated-rent-calculator.html">Prorated Rent</a><br><br>` +
@@ -880,82 +1042,27 @@
         `<em>Click any tool name above to launch immediately!</em>`;
     }
 
-    // 5.6 Category-Specific Guidance Intents
-    if (q.includes("mortgage") || q.includes("home loan") || q.includes("ghr ka loan") || q.includes("makan")) {
-      return `🏠 <strong>Mortgage &amp; Real Estate Calculators:</strong><br><br>` +
-        `We provide 10 precision real estate calculators tailored to 2026 lending standards:<br>` +
-        `• <a href="/tools/mortgage-calculator.html">Mortgage Payment &amp; Amortization</a> — Full PITI breakdown.<br>` +
-        `• <a href="/tools/mortgage-refinance-calculator.html">Mortgage Refinance Break-Even</a> — Exact month recovery.<br>` +
-        `• <a href="/tools/fha-vs-conventional-calculator.html">FHA vs Conventional</a> — Compare PMI vs MIP.<br>` +
-        `• <a href="/tools/heloc-calculator.html">HELOC Payment</a> — Draw &amp; repayment calculations.<br>` +
-        `• <a href="/tools/home-equity-loan-calculator.html">Home Equity Loan</a> — Lump-sum equity borrowing.<br>` +
-        `• <a href="/tools/closing-costs-calculator.html">Closing Costs Calculator</a> — Buyer &amp; seller fee estimates.<br>` +
-        `• <a href="/tools/rent-vs-buy.html">Rent vs Buy Analysis</a> — Long-term equity comparison.<br>` +
-        `• <a href="/tools/extra-mortgage-payment-calculator.html">Extra Mortgage Payments</a> — Save thousands in interest.`;
-    }
-
-    if (q.includes("tax") || q.includes("taxes") || q.includes("irs") || q.includes("tax bachane") || q.includes("tax calculator")) {
-      return `🏛️ <strong>US Tax &amp; Payroll Calculators:</strong><br><br>` +
-        `Comprehensive calculators compliant with 2026 IRS tax brackets and state revenue statutes:<br>` +
-        `• <a href="/tools/paycheck-calculator.html">Paycheck Take-Home Calculator</a> — Federal, State &amp; FICA taxes.<br>` +
-        `• <a href="/tools/state-tax-relocation-calculator.html">State Tax Relocation (50 States)</a> — Compare take-home pay boost.<br>` +
-        `• <a href="/tools/freelance-tax-calculator.html">1099 Freelance &amp; Self-Employment Tax</a> — Schedule C deductions.<br>` +
-        `• <a href="/tools/capital-gains-tax-calculator.html">Capital Gains Tax</a> — Short-term vs long-term rates.<br>` +
-        `• <a href="/tools/child-tax-credit-calculator.html">Child Tax Credit (CTC &amp; ACTC)</a> — Form 8812 refunds.<br>` +
-        `• <a href="/tools/tax-withholding.html">W-4 Tax Withholding Estimator</a> — Avoid penalties or large refunds.<br>` +
-        `• <a href="/tools/estate-tax-calculator.html">Federal Estate &amp; Gift Tax</a> — Exemption thresholds.<br>` +
-        `• <a href="/tools/llc-vs-scorp-calculator.html">LLC vs S-Corp Tax Savings</a> — FICA savings via reasonable salary.`;
-    }
-
-    if (q.includes("creator") || q.includes("youtube") || q.includes("tiktok") || q.includes("instagram") || q.includes("podcast")) {
-      return `🎬 <strong>Creator Economy &amp; Social Monetization:</strong><br><br>` +
-        `Real-world earnings calculators calibrated to current 2026 monetization algorithms:<br>` +
-        `• <a href="/tools/ai-prompt-cost-calculator.html">AI Prompt &amp; Token Cost Calculator</a> — Live LLM pricing &amp; prompt optimization.<br>` +
-        `• <a href="/tools/youtube-money-calculator.html">YouTube Ad Revenue &amp; RPM</a> — Long-form &amp; Shorts earnings.<br>` +
-        `• <a href="/tools/tiktok-money-calculator.html">TikTok Creator Rewards Program</a> — RPM &amp; view multipliers.<br>` +
-        `• <a href="/tools/tiktok-coins-calculator.html">TikTok Coins &amp; Diamonds Cashout</a> — Live stream diamond payouts.<br>` +
-        `• <a href="/tools/tiktok-shop-affiliate-calculator.html">TikTok Shop Affiliate Commission</a> — GMV commission forecasting.<br>` +
-        `• <a href="/tools/instagram-money-calculator.html">Instagram Sponsored Post &amp; Reels</a> — Engagement-based pricing.<br>` +
-        `• <a href="/tools/podcast-sponsorship-calculator.html">Podcast Sponsorship CPM</a> — Pre/mid/post-roll ad revenue.<br>` +
-        `• <a href="/tools/substack-calculator.html">Substack Newsletter MRR</a> — Subscriber churn &amp; net take-home.`;
-    }
-
-    // 5.7 Roman Urdu General Question Intent
-    if (q.includes("kaise use") || q.includes("tareeqa") || q.includes("tareeqe") || q.includes("batao") || 
-        q.includes("madad") || q.includes("kese use") || q.includes("kaise chale")) {
-      return `💡 <strong>CalcWorker Ko Use Karne Ka Tareeqa:</strong><br><br>` +
-        `1. <strong>Tool Select Karein:</strong> Search bar ya upar diye gaye category tabs me kisi bhi calculator ka naam likhein.<br>` +
-        `2. <strong>Values Enter Karein:</strong> Left side ke form me apni required details (maslan amount, interest rate, saal wagera) enter karein.<br>` +
-        `3. <strong>Instant Results:</strong> Calculate button par click karein ya slider move karein — result zero-latency me aapke samne hoga.<br>` +
-        `4. <strong>Copy &amp; Share:</strong> Result card ke upar diye gaye <em>"Copy Summary"</em> button se poora result ek click me clipboard me copy karein.<br>` +
-        `5. <strong>Offline Ready:</strong> Aap site ko PWA ke tor par install kar ke bina internet ke bhi use kar sakte hain!`;
-    }
-
-    // 5.8 AI Prompt Engineering, Token Estimation & LLM API Cost Intent
-    if (q.includes("prompt") || q.includes("token") || q.includes("llm") || q.includes("ai cost") || 
-        q.includes("openai cost") || q.includes("claude cost") || q.includes("deepseek") || 
-        q.includes("gpt-4o") || q.includes("api cost") || q.includes("prompt engineering") ||
-        q.includes("bpe") || q.includes("token calculator") || q.includes("ai prompt") ||
-        q.includes("gemini cost") || q.includes("tokens to usd") || q.includes("prompt compression")) {
-      return `🤖 <strong>AI Prompt Engineering &amp; Cost Calculator (2026 Live Benchmark)</strong><br><br>` +
-        `Engineered by <strong>Zaviyan</strong> (${CW_INFO.company}), this workstation estimates token consumption and benchmarks live API pricing across 12+ industry LLMs (OpenAI GPT-4o / o1, Anthropic Claude 3.5 Sonnet / Haiku, Google Gemini 1.5 / 2.0 Flash, DeepSeek-V3 / R1, and Meta Llama 3.3).<br><br>` +
-        `• <strong>Token Estimation:</strong> Calibrated BPE tokenizer heuristic (~4 chars/token for prose, ~3.1 chars/token for code/JSON).<br>` +
-        `• <strong>Cost Equation:</strong> Total Cost = [(System Tokens × SysRate) + (User Tokens × UserRate) + (Output Tokens × OutRate)] ÷ 1,000,000.<br>` +
-        `• <strong>Prompt Caching:</strong> Saves up to 90% on cached system prompts and repetitive contexts.<br>` +
-        `• <strong>Batch API Mode:</strong> Automatic flat 50% discount for non-realtime async batch jobs.<br>` +
-        `• <strong>One-Click Copy:</strong> Instantly copies your calculation summary or prompt text to clipboard.<br><br>` +
-        `<div class="cw-msg-card">` +
-          `<strong>AI Prompt Engineering &amp; Cost Calculator</strong><br>` +
-          `Benchmark prompt compression, token counts, and live 2026 API pricing with 100% zero-telemetry privacy.<br>` +
-          `<a href="/tools/ai-prompt-cost-calculator.html" class="cw-msg-btn">Launch AI Cost Calculator →</a>` +
-        `</div>`;
-    }
-
-    // 5.9 Simple Arithmetic Expression Check
-    const mathAns = solveSimpleMath(q);
+    // 5.6 Simple Arithmetic Expression Check (e.g. 20% of 500, 5000 / 12)
+    const mathAns = solveSimpleMath(cleanQ);
     if (mathAns) return mathAns;
 
-    // 5.10 Dense NLP Matching Across All 102 Tools
+    // 5.7 High-Precision Typo-Tolerant Tool Matching Engine
+    const rawWords = cleanQ.match(/[a-z0-9]+/g) || [];
+    const expanded = [];
+    for (const w of rawWords) {
+      if (ACRONYMS[w]) {
+        expanded.push(...ACRONYMS[w].split(' '));
+      } else {
+        expanded.push(correctWord(w));
+      }
+    }
+
+    const fullPhrase = expanded.join(' ');
+    const tokens = expanded.filter(t => !STOP_WORDS.has(t));
+    if (tokens.length === 0) {
+      return `I can help you calculate that! Try asking for a specific calculator like <em>"debt to income"</em>, <em>"mortgage payment"</em>, <em>"1099 tax"</em>, or type <em>"show all tools"</em> to explore all 102 tools.`;
+    }
+
     const SYN_MAP = {
       'car': ['auto', 'vehicle', 'lease', 'loan'],
       'auto': ['car', 'vehicle', 'lease', 'loan'],
@@ -972,38 +1079,67 @@
 
     let bestTool = null;
     let maxScore = 0;
-    const tokens = q.split(/\s+/).filter(t => t.length > 1);
 
     for (const tool of TOOLS_DB) {
       let score = 0;
-      const titleLower = (tool.title || '').toLowerCase();
-      const urlLower = (tool.url || '').toLowerCase();
-      const inputsLower = (tool.inputs || '').toLowerCase();
-      const formulaLower = (tool.formula || '').toLowerCase();
-      const proTipLower = (tool.pro_tip || '').toLowerCase();
-      const kwList = tool.keywords || [];
+      const rawTitle = (tool.title || '').toLowerCase();
+      const cleanTitle = rawTitle.replace(/[\-_]/g, ' ');
+      const rawUrl = (tool.url || '').toLowerCase();
+      const cleanUrl = rawUrl.replace(/[\-_]/g, ' ');
+      const cleanKws = (tool.keywords || []).map(k => k.toLowerCase().replace(/[\-_]/g, ' '));
 
-      // Token matching
+      const titleWords = cleanTitle.match(/[a-z0-9]+/g) || [];
+      const urlWords = cleanUrl.match(/[a-z0-9]+/g) || [];
+
+      // 1. Multi-word phrase matching bonus (e.g. "debt to income")
+      if (expanded.length >= 2) {
+        if (cleanTitle.includes(fullPhrase)) score += 220;
+        else if (cleanKws.some(kw => kw.includes(fullPhrase))) score += 190;
+        else if (cleanUrl.includes(fullPhrase)) score += 160;
+      }
+
+      // Also check token-only phrase if stop words were removed
+      if (tokens.length >= 2) {
+        const tokenPhrase = tokens.join(' ');
+        if (tokenPhrase !== fullPhrase) {
+          if (cleanTitle.includes(tokenPhrase)) score += 120;
+          else if (cleanKws.some(kw => kw.includes(tokenPhrase))) score += 100;
+        }
+      }
+
+      // 2. Primary root slug bonus
       for (const t of tokens) {
-        if (titleLower.includes(t)) score += 35;
-        if (urlLower.includes(t)) score += 25;
-        if (inputsLower.includes(t)) score += 10;
-        if (formulaLower.includes(t)) score += 10;
-        if (proTipLower.includes(t)) score += 5;
+        if (rawUrl.endsWith(`/${t}-calculator.html`) || rawUrl.endsWith(`/${t}.html`)) {
+          score += 65;
+        }
+      }
 
-        // Keyword list
-        for (const kw of kwList) {
-          if (kw === t) score += 20;
-          else if (kw.includes(t)) score += 8;
+      // 3. Token-level matching
+      for (const t of tokens) {
+        if (titleWords.includes(t)) {
+          score += 50;
+        } else if (titleWords.some(w => w.startsWith(t) && t.length >= 3)) {
+          score += 30;
         }
 
-        // Check synonyms
+        if (urlWords.includes(t)) {
+          score += 40;
+        } else if (urlWords.some(w => w.startsWith(t) && t.length >= 3)) {
+          score += 25;
+        }
+
+        for (const kw of cleanKws) {
+          if (kw === t) {
+            score += 40;
+          } else if (kw.includes(t) && t.length >= 3) {
+            score += 15;
+          }
+        }
+
         const syns = SYN_MAP[t] || [];
         for (const s of syns) {
-          if (titleLower.includes(s) || urlLower.includes(s)) score += 18;
-          for (const kw of kwList) {
-            if (kw.includes(s)) score += 6;
-          }
+          if (titleWords.includes(s) || urlWords.includes(s)) score += 25;
+          if (cleanKws.some(kw => kw.includes(s))) score += 20;
         }
       }
 
@@ -1013,7 +1149,7 @@
       }
     }
 
-    if (maxScore >= 12 && bestTool) {
+    if (maxScore >= 40 && bestTool) {
       return `<strong>${bestTool.title}</strong><br><br>` +
         `<strong>📋 How to Use This Tool:</strong><br>${bestTool.how_to_use}<br><br>` +
         `<div class="cw-msg-card">` +
@@ -1023,22 +1159,24 @@
         `</div>` +
         `<div style="font-size:0.78rem; color:#cbd5e1; margin:6px 0;">💡 <strong>Pro Tip:</strong> ${bestTool.pro_tip}</div>` +
         `<div style="display:flex; gap:8px; flex-wrap:wrap; margin-top:8px;">` +
-  `<a href="${bestTool.url}" class="cw-msg-btn">Open Tool →</a>` +
-  (GUIDES_MAP[bestTool.url] ? `<a href="${GUIDES_MAP[bestTool.url].guide_url}" class="cw-msg-btn" style="background:#1e293b; border:1px solid #3b82f6;">📖 Read Guide →</a>` : "") +
-`</div>`;
+          `<a href="${bestTool.url}" class="cw-msg-btn">Open Tool →</a>` +
+          (typeof GUIDES_MAP !== 'undefined' && GUIDES_MAP[bestTool.url] ? `<a href="${GUIDES_MAP[bestTool.url].guide_url}" class="cw-msg-btn" style="background:#1e293b; border:1px solid #3b82f6;">📖 Read Guide →</a>` : "") +
+        `</div>`;
     }
 
-    // 5.11 General Heuristic Directory Recommendation (102 Tools)
+    // 5.8 General Fallback Guidance (when score < 40)
     return `I can help you calculate that! CalcWorker features <strong>102 precision financial, creator, and business calculators</strong> engineered by Zaviyan (${CW_INFO.company}).<br><br>` +
       `Here are popular tools you can explore right now:<br>` +
       `• <a href="/tools/mortgage-calculator.html">Mortgage Payment &amp; Amortization</a><br>` +
-      `• <a href="/tools/ai-prompt-cost-calculator.html">AI Prompt Engineering &amp; Token Cost</a><br>` +
+      `• <a href="/tools/dti-calculator.html">Debt-to-Income (DTI) Ratio</a><br>` +
       `• <a href="/tools/paycheck-calculator.html">Paycheck Take-Home (2026 Brackets)</a><br>` +
-      `• <a href="/tools/state-tax-relocation-calculator.html">50-State Relocation Tax Comparison</a><br>` +
-      `• <a href="/tools/cd-ladder-calculator.html">CD Ladder Yield Structure</a><br>` +
-      `• <a href="/tools/tiktok-money-calculator.html">TikTok Creator Rewards &amp; RPM</a><br><br>` +
+      `• <a href="/tools/freelance-tax-calculator.html">1099 Freelance Tax Calculator</a><br>` +
+      `• <a href="/tools/auto-loan.html">Auto Loan &amp; Car Finance</a><br>` +
+      `• <a href="/tools/youtube-money-calculator.html">YouTube AdSense &amp; RPM</a><br><br>` +
       `You can ask me for formulas, step-by-step instructions for any of the 102 tools, or type <em>"show all tools"</em> to see the complete directory!`;
   }
+
+
 
   // 6. Dynamic Context Chips
   function getContextChips() {
