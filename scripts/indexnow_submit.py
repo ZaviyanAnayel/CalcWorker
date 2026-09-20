@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 """
 IndexNow Auto-Indexing Utility for CalcWorker.com
-Notifies Bing, Yandex, Seznam, and IndexNow-enabled search engines
-about new or updated URLs instantly.
+Submits sitemap URLs to IndexNow (Bing, Yandex, Seznam, Naver)
 """
 
 import urllib.request
@@ -12,12 +11,12 @@ import sys
 import os
 
 INDEXNOW_KEY = "f63b4b8a25c14e13b821a7df84e622b1"
-HOST = "calcworker.com"
+HOST = "www.calcworker.com"
 KEY_LOCATION = f"https://{HOST}/{INDEXNOW_KEY}.txt"
 
 ENDPOINTS = [
-    "https://api.indexnow.org/indexnow",
     "https://yandex.com/indexnow",
+    "https://api.indexnow.org/indexnow",
     "https://www.bing.com/indexnow"
 ]
 
@@ -28,13 +27,22 @@ def get_sitemap_urls():
         return []
     with open(sitemap_path, "r", encoding="utf-8") as f:
         content = f.read()
-    return re.findall(r"<loc>(.*?)</loc>", content)
+    raw_urls = re.findall(r"<loc>(.*?)</loc>", content)
+    # Ensure all URLs use canonical www.calcworker.com for host match
+    clean_urls = []
+    for u in raw_urls:
+        if u.startswith("https://calcworker.com"):
+            clean_urls.append(u.replace("https://calcworker.com", "https://www.calcworker.com"))
+        else:
+            clean_urls.append(u)
+    return clean_urls
 
 def submit_urls(urls):
     if not urls:
         print("No URLs provided for submission.")
         return False
 
+    # IndexNow accepts up to 10,000 URLs per batch
     payload = {
         "host": HOST,
         "key": INDEXNOW_KEY,
@@ -76,7 +84,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         target_urls = [u.strip() for u in sys.argv[1:] if u.strip().startswith("http")]
     else:
-        print("No specific URLs provided. Loading all URLs from sitemap.xml...")
+        print("Loading all URLs from sitemap.xml...")
         target_urls = get_sitemap_urls()
 
     print(f"Submitting {len(target_urls)} URLs to IndexNow ({HOST})...")
