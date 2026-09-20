@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Financial & Computational Guides Hub (2026) | CalcWorker</title>
+  <meta name="description" content="Explore in-depth, expert-reviewed financial, mortgage, tax, and computational guides with step-by-step mathematical formulas and embedded interactive calculators."/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CalcWorker Guides &amp; Research Hub (2026)"/>
+  <meta property="og:description" content="In-depth financial, mortgage, tax, and algorithmic guides with interactive calculator tools."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://calcworker.com/articles/"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384" crossorigin="anonymous"></script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .hub-container {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+      flex: 1;
+      width: 100%;
+    }
+
+    .hub-hero {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .hub-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(59, 130, 246, 0.12);
+      color: #60a5fa;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 4px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .hub-hero h1 {
+      font-size: 2.5rem;
+      color: #f8fafc;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+    .hub-hero p {
+      color: var(--text-muted);
+      font-size: 1.08rem;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .articles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .article-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(59, 130, 246, 0.5);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+    .card-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 3px 8px;
+      border-radius: 6px;
+      align-self: flex-start;
+      margin-bottom: 12px;
+    }
+    .article-card h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-bottom: 12px;
+    }
+    .article-card h2 a {
+      color: #f8fafc;
+    }
+    .article-card h2 a:hover {
+      color: #60a5fa;
+      text-decoration: none;
+    }
+    .card-desc {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+    .btn-read {
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 6px 14px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .btn-read:hover {
+      text-decoration: none;
+      filter: brightness(1.1);
+    }
+
+    footer {
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">Dashboard</a>
+      <a href="/articles/" style="color: #60a5fa; font-weight: 700;">Guides Hub</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <main class="hub-container">
+    <div class="hub-hero">
+      <div class="hub-badge">📖 CalcWorker Knowledge Base</div>
+      <h1>Financial &amp; Computational Guides</h1>
+      <p>In-depth, mathematically verified editorial guides exploring real-world calculation scenarios, federal regulations, and algorithmic strategies paired with our interactive tool suite.</p>
+    </div>
+
+    <div class="articles-grid">
+
+      <!-- Article Card 1 -->
+      <article class="article-card">
+        <span class="card-tag">Real Estate &amp; Mortgages</span>
+        <h2><a href="/articles/mortgage-piti-calculation-guide-2026.html">How to Calculate Mortgage PITI Payments (2026 Complete Guide)</a></h2>
+        <p class="card-desc">Master the four pillars of housing liabilities: Principal, Interest, Property Taxes, and Insurance. Includes complete 2026 amortization formulas, worked examples, and interactive tool pairing.</p>
+        <div class="card-footer">
+          <span>⏱️ 7 min read</span>
+          <a href="/articles/mortgage-piti-calculation-guide-2026.html" class="btn-read">Read Guide →</a>
+        </div>
+      </article>
+
+      <!-- Article Card 2 -->
+      <article class="article-card">
+        <span class="card-tag">Taxes &amp; Self-Employment</span>
+        <h2><a href="/articles/1099-freelance-quarterly-tax-guide-2026.html">2026 Guide to 1099 Freelance Quarterly Taxes: Schedule C &amp; SE Tax</a></h2>
+        <p class="card-desc">Everything freelancers, gig workers, and contractors need to calculate estimated quarterly IRS payments, self-employment tax (15.3%), and safe harbor deduction strategies.</p>
+        <div class="card-footer">
+          <span>⏱️ 8 min read</span>
+          <a href="/articles/1099-freelance-quarterly-tax-guide-2026.html" class="btn-read">Read Guide →</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/">All 102 Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+</body>
+</html>
