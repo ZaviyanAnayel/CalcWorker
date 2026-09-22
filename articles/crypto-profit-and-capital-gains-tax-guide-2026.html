@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>2026 Crypto Tax Guide: Short vs Long-Term Gains, Cost Basis & ROI | CalcWorker Guide (2026)</title>
+  <meta name="description" content="Learn 2026 crypto profit tax rules—short vs long-term rates, FIFO/HIFO/LIFO cost basis, wash‑sale limits, and ROI calculations. Use our calculator."/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/crypto-profit-and-capital-gains-tax-guide-2026.html"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="2026 Crypto Tax Guide: Short vs Long-Term Gains, Cost Basis & ROI | CalcWorker"/>
+  <meta property="og:description" content="Learn 2026 crypto profit tax rules—short vs long-term rates, FIFO/HIFO/LIFO cost basis, wash‑sale limits, and ROI calculations. Use our calculator."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://calcworker.com/articles/crypto-profit-and-capital-gains-tax-guide-2026.html"/>
+  <meta property="og:site_name" content="CalcWorker"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": "2026 Crypto Tax Guide: Short vs Long-Term Gains, Cost Basis & ROI",
+        "description": "Learn 2026 crypto profit tax rules—short vs long-term rates, FIFO/HIFO/LIFO cost basis, wash‑sale limits, and ROI calculations. Use our calculator.",
+        "mainEntityOfPage": "https://calcworker.com/articles/crypto-profit-and-capital-gains-tax-guide-2026.html",
+        "datePublished": "2026-09-20",
+        "dateModified": "2026-09-20",
+        "author": {
+          "@type": "Organization",
+          "name": "CalcWorker Research Team",
+          "url": "https://calcworker.com/about.html"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "CalcWorker",
+          "logo": "https://calcworker.com/assets/favicon.png"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+          "@type": "Question",
+          "name": "What qualifies as a short‑term vs long‑term crypto gain?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A short‑term gain is realized when you sell a cryptocurrency you held for 12 months or less; long‑term gains apply after 12 months. The holding period starts on the day after acquisition."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I choose any cost‑basis method for crypto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. The IRS permits FIFO, LIFO, and specific identification methods such as HIFO, provided you consistently apply the chosen method and maintain detailed records."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are wash‑sale rules really applicable to crypto?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Effective 2024, the wash‑sale rule was extended to virtual currencies. A loss is disallowed if you repurchase the same or substantially identical crypto within 30 days, and the loss is added to the new lot’s basis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I report crypto gains on my 2026 tax return?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Report short‑term gains on Schedule D and Form 8949 as ordinary income, and long‑term gains on Schedule D with the appropriate long‑term rate. Include any wash‑sale adjustments on Form 8949."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does the Crypto Profit & ROI Calculator handle multiple cost‑basis methods?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Absolutely. The tool lets you input each trade, select FIFO, LIFO, or HIFO, and instantly shows the resulting taxable gains, wash‑sale adjustments, and after‑tax ROI."
+          }
+        }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+      --code-bg: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .article-header h1 {
+      font-size: 2.3rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      font-weight: 800;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+    }
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .tool-embed-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-embed-banner h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-embed-banner p { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-launch-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+    .tool-launch-btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .toc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-box h3 { font-size: 1rem; color: #f8fafc; margin-bottom: 12px; }
+    .toc-box ul { list-style-position: inside; color: #60a5fa; font-size: 0.92rem; line-height: 1.9; }
+
+    .article-section { margin-bottom: 40px; }
+    .article-section h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-left: 4px solid #3b82f6;
+      padding-left: 14px;
+    }
+    .article-section h3 { font-size: 1.2rem; color: #e2e8f0; margin: 20px 0 10px 0; }
+    .article-section p { margin-bottom: 16px; color: #cbd5e1; font-size: 1.02rem; }
+    .article-section ul, .article-section ol { margin-left: 24px; margin-bottom: 18px; color: #cbd5e1; }
+    .article-section li { margin-bottom: 8px; }
+
+    .formula-box {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #38bdf8;
+      font-size: 0.95rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .data-table th, .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.92rem;
+    }
+    .data-table th { background: #1e293b; color: #f8fafc; font-weight: 700; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq-answer {
+      padding: 0 20px 16px 20px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .faq-icon { font-size: 1.2rem; color: #3b82f6; }
+
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">All Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <article class="article-container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span> <a href="/#tools">Guides</a> <span>/</span> <span>2026 Crypto Tax Guide: Short vs Long-Term Gains, Cost Basis & ROI</span>
+    </div>
+
+    <header class="article-header">
+      <h1>2026 Crypto Tax Guide: Short vs Long-Term Gains, Cost Basis & ROI</h1>
+      <div class="meta-bar">
+        <span>⏱️ 8 min read</span>
+        <span>📅 Updated 2026</span>
+        <span class="badge-verified">✓ Expert Verified</span>
+        <span>By CalcWorker Financial Team</span>
+      </div>
+    </header>
+
+    <div class="tool-embed-banner">
+      <h3><span>🧮</span> Interactive Tool: Crypto Profit & ROI Calculator</h3>
+      <p>Run your exact numbers immediately using CalcWorker's zero-knowledge client-side mathematical engine. No sign-up or data collection required.</p>
+      <a href="https://calcworker.com/tools/crypto-profit-calculator.html" class="tool-launch-btn">Open Free Crypto Profit & ROI Calculator →</a>
+    </div>
+
+    <div class="toc-box">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#section-1">Foundations: How Crypto Gains Are Taxed & Core Math</a></li>
+<li><a href="#section-2">Key Pillars: Rates, Cost‑Basis Methods & Wash‑Sale Rules</a></li>
+<li><a href="#section-3">Step‑by‑Step 2026 Example: Calculating Net ROI</a></li>
+<li><a href="#section-4">Optimization Strategies to Maximize After‑Tax Returns</a></li>
+      </ul>
+    </div>
+
+    
+        <section id="section-1" class="article-section">
+          <h2>Foundations: How Crypto Gains Are Taxed & Core Math</h2>
+          <p>In the United States, every cryptocurrency transaction that results in a profit is a taxable event. The IRS treats crypto as property, so capital gains rules apply. The key distinction is whether the holding period is <strong>short-term</strong> (≤ 12 months) or <strong>long-term</strong> (> 12 months). Short‑term gains are taxed at ordinary‑income rates, while long‑term gains enjoy preferential rates.</p><p>The fundamental calculation is simple but must be applied consistently across all trades:</p><div class='formula-box'>Gain = Sale Price – Cost Basis</div><p>Where <em>Cost Basis</em> depends on the accounting method you choose (FIFO, LIFO, HIFO). Accurate record‑keeping is essential because the IRS can audit any discrepancy.</p><p>Use our <a href='crypto-profit-calculator.html'>Crypto Profit & ROI Calculator</a> to automate these calculations and avoid manual errors.</p>
+        </section>
+        
+
+        <section id="section-2" class="article-section">
+          <h2>Key Pillars: Rates, Cost‑Basis Methods & Wash‑Sale Rules</h2>
+          <p>The 2026 tax landscape introduces three pillars you must master:</p><ol><li><strong>Tax Rates</strong> – Short‑term vs long‑term brackets.</li><li><strong>Cost‑Basis Accounting</strong> – FIFO, LIFO, HIFO.</li><li><strong>Wash‑Sale Rule</strong> – Newly extended to crypto in 2024.</li></ol><table class='data-table'>
+  <thead>
+    <tr><th>Item</th><th>Short‑Term Rate (2026)</th><th>Long‑Term Rate (2026)</th><th>Notes</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Ordinary Income Bracket</td><td>10% – 37%</td><td>—</td><td>Applies to gains held ≤ 12 months.</td></tr>
+    <tr><td>0% Long‑Term Rate</td><td>—</td><td>0%</td><td>For taxable income ≤ $44,625 (single).</td></tr>
+    <tr><td>15% Long‑Term Rate</td><td>—</td><td>15%</td><td>Income $44,626 – $492,150.</td></tr>
+    <tr><td>20% Long‑Term Rate</td><td>—</td><td>20%</td><td>Income > $492,150.</td></tr>
+    <tr><td>Net Investment Income Tax</td><td>—</td><td>3.8%</td><td>Applies if AGI > $200,000 (single).</td></tr>
+    <tr><td>Wash‑Sale Rule</td><td>Disallows loss if same crypto repurchased ≤ 30 days.</td><td>Disallows loss similarly.</td><td>Loss is added to the new lot’s basis.</td></tr>
+  </tbody>
+</table>
+        </section>
+        
+
+        <section id="section-3" class="article-section">
+          <h2>Step‑by‑Step 2026 Example: Calculating Net ROI</h2>
+          <p>Jane Doe bought and sold Bitcoin in 2026. Below is a realistic timeline:</p><ul>
+  <li>Jan 15: Bought 0.5 BTC @ $30,000 each → $15,000 (Lot A)</li>
+  <li>Mar 10: Bought 0.3 BTC @ $32,000 each → $9,600 (Lot B)</li>
+  <li>Jun 05: Sold 0.4 BTC for $35,000 each → $14,000</li>
+  <li>Oct 20: Sold 0.2 BTC for $28,000 each → $5,600</li>
+</ul><p>Assume Jane’s ordinary‑income tax bracket is 24% and her long‑term rate is 15% (income $120,000). She also pays the 3.8% NIIT on net investment income.</p><p><strong>Step 1 – Choose Cost Basis (FIFO)</strong></p><div class='formula-box'>
+  FIFO Cost for Jun 05 sale = (0.4 BTC from Lot A) → 0.4 × $30,000 = $12,000
+</div><p>Gain = $14,000 – $12,000 = $2,000 (short‑term)</p><p><strong>Step 2 – Remaining Basis after Jun 05</strong></p><div class='formula-box'>
+  Lot A remaining = 0.1 BTC @ $30,000 = $3,000
+  Lot B unchanged = 0.3 BTC @ $32,000 = $9,600
+</div><p><strong>Step 3 – Cost Basis for Oct 20 sale (HIFO)</strong></p><div class='formula-box'>
+  HIFO picks highest cost first → use 0.2 BTC from Lot B @ $32,000 = $6,400
+</div><p>Gain = $5,600 – $6,400 = –$800 (short‑term loss)</p><p><strong>Step 4 – Apply Wash‑Sale Rule</strong></p><p>Jane repurchased 0.2 BTC on Nov 01 at $29,000. Because the loss occurred within 30 days, the $800 loss is disallowed and added to the new lot’s basis:</p><div class='formula-box'>
+  New Lot basis = $5,800 (purchase $5,800 + disallowed $800)
+</div><p><strong>Step 5 – Tax Liability</strong></p><div class='formula-box'>
+  Tax on $2,000 gain = $2,000 × 24% = $480
+  Net Investment Tax = $2,000 × 3.8% = $76
+  Total Tax = $556
+</div><p><strong>Step 6 – Net ROI</strong></p><div class='formula-box'>
+  Total Invested = $15,000 + $9,600 + $5,800 = $30,400
+  Total Received = $14,000 + $5,600 = $19,600
+  Net Cash Flow = $19,600 – $30,400 = –$10,800
+  After‑Tax Cash Flow = –$10,800 – $556 = –$11,356
+  ROI = (After‑Tax Cash Flow ÷ Total Invested) × 100 = –37.4%
+</div><p>Jane ends the year with a –37.4% after‑tax ROI, illustrating how wash‑sale rules and cost‑basis choices dramatically affect outcomes.</p>
+        </section>
+        
+
+        <section id="section-4" class="article-section">
+          <h2>Optimization Strategies to Maximize After‑Tax Returns</h2>
+          <p>Below are proven tactics you can implement today:</p><ol>
+  <li><strong>Harvest Long‑Term Gains</strong> – Hold positions > 12 months to qualify for the 0%/15%/20% rates.</li>
+  <li><strong>Strategic Cost‑Basis Selection</strong> – Use HIFO when you expect a market dip; it locks in higher basis, reducing taxable gains.</li>
+  <li><strong>Timing Wash‑Sales</strong> – If you must realize a loss, wait > 30 days before repurchasing the same coin, or buy a correlated alt‑coin instead.</li>
+  <li><strong>Utilize Tax‑Advantaged Accounts</strong> – Some crypto can be held in self‑directed IRAs, deferring or eliminating capital gains.</li>
+  <li><strong>Quarterly Estimated Payments</strong> – Avoid penalties by projecting short‑term gains and paying quarterly estimates based on your projected ordinary‑income bracket.</li>
+  <li><strong>Leverage the Crypto Profit & ROI Calculator</strong> – Run multiple scenarios (FIFO vs HIFO) to see the tax impact before executing trades.</li>
+</ol><p>Implementing even two of these strategies can shave several percentage points off your effective tax rate, boosting your net ROI.</p>
+        </section>
+        
+
+    <section class="article-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What qualifies as a short‑term vs long‑term crypto gain?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A short‑term gain is realized when you sell a cryptocurrency you held for 12 months or less; long‑term gains apply after 12 months. The holding period starts on the day after acquisition.</p>
+          </div>
+        </div>
+        
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Can I choose any cost‑basis method for crypto?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes. The IRS permits FIFO, LIFO, and specific identification methods such as HIFO, provided you consistently apply the chosen method and maintain detailed records.</p>
+          </div>
+        </div>
+        
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Are wash‑sale rules really applicable to crypto?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Effective 2024, the wash‑sale rule was extended to virtual currencies. A loss is disallowed if you repurchase the same or substantially identical crypto within 30 days, and the loss is added to the new lot’s basis.</p>
+          </div>
+        </div>
+        
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>How do I report crypto gains on my 2026 tax return?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Report short‑term gains on Schedule D and Form 8949 as ordinary income, and long‑term gains on Schedule D with the appropriate long‑term rate. Include any wash‑sale adjustments on Form 8949.</p>
+          </div>
+        </div>
+        
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Does the Crypto Profit & ROI Calculator handle multiple cost‑basis methods?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Absolutely. The tool lets you input each trade, select FIFO, LIFO, or HIFO, and instantly shows the resulting taxable gains, wash‑sale adjustments, and after‑tax ROI.</p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <div class="tool-embed-banner" style="margin-top: 48px;">
+      <h3>Ready to run your calculations?</h3>
+      <p>Use our precision 2026 financial calculator to evaluate your scenario in seconds.</p>
+      <a href="https://calcworker.com/tools/crypto-profit-calculator.html" class="tool-launch-btn">Launch Crypto Profit & ROI Calculator Now →</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+  <script>
+    function toggleArticleFaq(btn) {
+      var ans = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      if (ans.style.display === 'none') {
+        ans.style.display = 'block';
+        icon.textContent = '−';
+      } else {
+        ans.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  </script>
+</body>
+</html>
