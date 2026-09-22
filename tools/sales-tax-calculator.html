@@ -522,74 +522,24 @@ Calculate exact state, county, and city sales tax across all 50 US states. Pre-l
 <!-- Enterprise Authority Footer -->
 
 <!-- Deep Technical Analysis & Reference Table Section -->
-<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
-    <span>🏷️</span> US State & Municipal Sales Tax Architecture: Combined Rates & Nexus Rules
-  </h2>
-  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-    <p>Unlike countries utilizing national Value Added Tax (VAT), the United States has no federal consumption tax. Instead, 45 states plus the District of Columbia levy state-level sales taxes, which are compounded by thousands of local county, city, transit district, and special taxing jurisdictions.</p>
-    <p style="margin-top: 12px;">Under the landmark 2018 Supreme Court ruling *South Dakota v. Wayfair, Inc.*, remote e-commerce sellers and retail merchants must collect and remit sales taxes based on 'Economic Nexus' thresholds (typically $100,000 in annual gross sales or 200 separate transactions within a state).</p>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>📊</span> State vs. Local Combined Sales Tax Rates Across Key US States
-  </h3>
-  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
-    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
-      <thead>
-        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
-          <th style="padding: 12px 16px; color: var(--text-main);">State Jurisdiction</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">Base State Rate</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">Average Local Add-On</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">Combined Average Rate</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">Grocery & Prescription Drug Exemption Status</th>
-        </tr>
-      </thead>
-      <tbody style="color: var(--text-muted);">
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tennessee</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.00%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.55%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.55% (Highest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries taxed at reduced 4.00% state rate; drugs exempt</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Louisiana</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.45%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">5.11%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.56%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Food for home consumption and drugs exempt from state tax</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Arkansas</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.50%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.94%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.44%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries taxed at reduced 0.125% rate; prescription drugs exempt</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Washington</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.50%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.88%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.38%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries and prescription drugs 100% exempt from sales tax</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">California</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.25% (Highest Base)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.60%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.85%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Groceries, prescription medication, and utilities exempt</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Texas</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.25%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.95%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.20%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Unprepared grocery food and prescription drugs 100% exempt</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Delaware, MT, NH, OR</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00% (No Sales Tax)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Complete state and municipal sales tax exemption</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>⚡</span> Consumer & Merchant Sales Tax Compliance Tactics
-  </h3>
-  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
-    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Understand Destination-Based Sourcing:</strong> <span>Most US states use destination-based sourcing, meaning the sales tax rate is determined by where the buyer receives the product, not the seller's warehouse location.</span></li>
-    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Verify Unprepared Food Exemptions:</strong> <span>In most states, cold grocery staples (milk, vegetables, flour) are exempt from sales tax, while prepared hot foods and restaurant meals are taxed at full rates.</span></li>
-    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Account for Consumer Use Tax:</strong> <span>If you purchase merchandise online from an out-of-state retailer that does not collect sales tax, state tax law mandates reporting and paying 'Use Tax' on your state income tax return.</span></li>
-  </ul>
-</section>
-
-<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sales tax</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 state sales</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax local</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 county city</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sales tax</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 total purchase</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 price tax</span>
-
+    <a href="/?q=Sales+Tax+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Sales Tax Calculator</a>
+    <a href="/?q=US+State" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 US State</a>
+    <a href="/?q=Local+Rates+Lookup" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Local Rates Lookup</a>
+    <a href="/?q=how+to+calculate+sales+tax" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate sales tax</a>
+    <a href="/?q=sales+tax+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 sales tax formula</a>
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
-<p class="cw-sources" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 6px 0 0;">Sources: <a href="https://www.irs.gov/" rel="noopener" style="color: var(--brand-primary);">IRS.gov</a></p>
 </section>
 
   

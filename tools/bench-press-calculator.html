@@ -450,218 +450,24 @@ Calculate your estimated One Rep Max (1RM) for bench press, barbell squats, and 
 </div>
 </div>
 <!-- FAQ Accordion -->
-<section class="seo-card" style="margin-top: 40px;">
-<h2>Frequently Asked Questions About Bench Press &amp; 1RM</h2>
-<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
-<details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
-<summary style="font-weight: 700; color: var(--text-main);">Why calculate 1RM instead of testing it directly?</summary>
-<p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Testing a true 1-rep max with heavy weights carries a high risk of pectoral tears and shoulder injury. Calculating your max from a submaximal set (such as 3 to 8 reps) is much safer and allows precise percentage programming for strength blocks.</p>
-</details>
-<details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
-<summary style="font-weight: 700; color: var(--text-main);">What is the difference between Brzycki and Epley formulas?</summary>
-<p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">The Brzycki formula is conservative and works well under 10 reps. The Epley formula: Weight × (1 + Reps/30) slightly favors higher reps. CalcWorker's composite mode averages both for maximum real-world barbell accuracy.</p>
-</details>
-</div>
-</section>
-
-<!-- Comprehensive Strength Training Methodology Section -->
-<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px;">
-  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
-    <span>🏋️</span> The Biomechanics & Science of the Barbell Bench Press
-  </h2>
-  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-    <p>
-      The flat barbell bench press is the universal gold standard for measuring upper-body pressing strength, recruiting the pectoralis major, anterior deltoids, triceps brachii, and latissimus dorsi. Maximizing performance while protecting the shoulder joints requires understanding the five fundamental points of contact: the head firmly on the bench, upper back retracted into the pad, glutes touching the bench, and both feet driven flat into the floor to create whole-body kinetic leg drive.
-    </p>
-    <p style="margin-top: 12px;">
-      A common misconception among beginner lifters is that the barbell should travel in a straight vertical line. In reality, a biomechanically sound bench press follows a slight <strong>J-curve bar path</strong>: lowering under control to touch the lower sternum (nipple line) with forearms vertically stacked directly beneath the wrists, and pressing upward and slightly backward toward the eye line over the shoulder joints, maximizing mechanical leverage.
-    </p>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>📐</span> Mathematical Analysis of 1RM Formulas
-  </h3>
-  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-    <p>
-      Testing a true 1-Rep Max with maximal barbell loads carries an elevated risk of pectoral tears, rotator cuff strain, and tendonitis. Exercise physiologists developed validated repetition-to-failure mathematical models to estimate 1RM safely from submaximal sets:
-    </p>
-    <div style="overflow-x: auto; margin: 16px 0;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
-        <thead>
-          <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
-            <th style="padding: 10px 14px; color: var(--text-main);">Formula</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Mathematical Equation</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Optimal Rep Range</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Key Characteristic</th>
-          </tr>
-        </thead>
-        <tbody style="color: var(--text-muted);">
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 8px 14px; font-weight: 700; color: var(--text-main);">Brzycki</td>
-            <td style="padding: 8px 14px;"><code>Weight / (1.0278 - 0.0278 × Reps)</code></td>
-            <td style="padding: 8px 14px;">1 – 8 reps</td>
-            <td style="padding: 8px 14px;">Conservative; standard for heavy strength blocks</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 8px 14px; font-weight: 700; color: var(--text-main);">Epley</td>
-            <td style="padding: 8px 14px;"><code>Weight × (1 + Reps / 30)</code></td>
-            <td style="padding: 8px 14px;">2 – 10 reps</td>
-            <td style="padding: 8px 14px;">Accurate across powerlifting and athletic training</td>
-          </tr>
-          <tr style="border-bottom: 1px solid var(--border);">
-            <td style="padding: 8px 14px; font-weight: 700; color: var(--text-main);">Lander</td>
-            <td style="padding: 8px 14px;"><code>(100 × Weight) / (101.3 - 2.67123 × Reps)</code></td>
-            <td style="padding: 8px 14px;">1 – 6 reps</td>
-            <td style="padding: 8px 14px;">High accuracy for low-rep power attempts</td>
-          </tr>
-          <tr>
-            <td style="padding: 8px 14px; font-weight: 700; color: var(--brand-primary);">CalcWorker Composite</td>
-            <td style="padding: 8px 14px;"><code>Average(Brzycki, Epley, Lander)</code></td>
-            <td style="padding: 8px 14px;">1 – 12 reps</td>
-            <td style="padding: 8px 14px;">Balances outliers for optimal real-world gym accuracy</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>📊</span> Bench Press Strength Standards by Body Weight
-  </h3>
-  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-    <p>
-      To benchmark your personal bench press progression against competitive lifting classifications, review these standard 1RM targets for adult male lifters (using standard Olympic barbells):
-    </p>
-    <div style="overflow-x: auto; margin: 16px 0;">
-      <table style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
-        <thead>
-          <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
-            <th style="padding: 10px 14px; color: var(--text-main);">Body Weight</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Untrained</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Novice (1 Plate)</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Intermediate</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Advanced (2 Plates)</th>
-            <th style="padding: 10px 14px; color: var(--text-main);">Elite (3+ Plates)</th>
-          </tr>
-        </thead>
-        <tbody style="color: var(--text-muted);">
-          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 700; color: var(--text-main);">150 lbs</td><td style="padding: 8px 14px;">100 lbs</td><td style="padding: 8px 14px;">135 lbs</td><td style="padding: 8px 14px;">165 lbs</td><td style="padding: 8px 14px;">215 lbs</td><td style="padding: 8px 14px;">265 lbs</td></tr>
-          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 700; color: var(--text-main);">180 lbs</td><td style="padding: 8px 14px;">120 lbs</td><td style="padding: 8px 14px;">155 lbs</td><td style="padding: 8px 14px;">195 lbs</td><td style="padding: 8px 14px;">255 lbs</td><td style="padding: 8px 14px;">315 lbs</td></tr>
-          <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 8px 14px; font-weight: 700; color: var(--text-main);">200 lbs</td><td style="padding: 8px 14px;">135 lbs</td><td style="padding: 8px 14px;">175 lbs</td><td style="padding: 8px 14px;">220 lbs</td><td style="padding: 8px 14px;">285 lbs</td><td style="padding: 8px 14px;">345 lbs</td></tr>
-          <tr><td style="padding: 8px 14px; font-weight: 700; color: var(--text-main);">220+ lbs</td><td style="padding: 8px 14px;">145 lbs</td><td style="padding: 8px 14px;">190 lbs</td><td style="padding: 8px 14px;">240 lbs</td><td style="padding: 8px 14px;">310 lbs</td><td style="padding: 8px 14px;">375 lbs</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>⚡</span> Periodization: How to Program Percentage Training Loads
-  </h3>
-  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-    <p>
-      Once you determine your baseline 1RM using the calculator above, do not attempt maximal singles during regular training sessions. Instead, utilize <strong>percentage-based training</strong>:
-    </p>
-    <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
-      <li><strong style="color: var(--text-main);">90% – 95% of 1RM (Heavy Strength):</strong> 1 to 3 repetitions per set with 3 to 5 minutes rest. Recruits high-threshold fast-twitch motor units without excessive muscular fatigue.</li>
-      <li><strong style="color: var(--text-main);">80% – 85% of 1RM (Power &amp; Muscle Density):</strong> 4 to 6 repetitions per set (e.g. classic 5x5 protocol). Balances mechanical tension with training volume.</li>
-      <li><strong style="color: var(--text-main);">70% – 75% of 1RM (Hypertrophy / Muscle Building):</strong> 8 to 10 repetitions per set with 90 seconds rest. Maximizes metabolic stress and muscular size development.</li>
-      <li><strong style="color: var(--text-main);">60% – 65% of 1RM (Speed &amp; Dynamic Effort):</strong> 12+ repetitions or explosive speed work to improve rate of force development (RFD).</li>
-    </ul>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>🛡️</span> Safe Max-Testing Warmup Protocol
-  </h3>
-  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-    <p>
-      When preparing for a heavy strength test or calculating your top set, follow this physiological warm-up ladder to prime the central nervous system without accumulating metabolic waste:
-    </p>
-    <ol style="margin-left: 20px; display: flex; flex-direction: column; gap: 6px; margin-top: 8px;">
-      <li><strong>Empty Bar (45 lbs):</strong> 2 sets of 10 smooth repetitions focusing on scapular retraction and bar path.</li>
-      <li><strong>40% of Projected Max:</strong> 1 set of 5 explosive reps.</li>
-      <li><strong>60% of Projected Max:</strong> 1 set of 3 crisp reps.</li>
-      <li><strong>75% of Projected Max:</strong> 1 set of 2 reps.</li>
-      <li><strong>85% of Projected Max:</strong> 1 single repetition.</li>
-      <li><strong>Target Work Set:</strong> Execute your target repetitions (3 to 5 reps) and input the numbers into the calculator above.</li>
-    </ol>
-  </div>
-</article>
-<section class="cw-formula-guide">
-  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
-  <div class="cw-formula-card">
-    <div class="cw-formula-header">
-      <span class="cw-formula-title">One-Repetition Maximum (1RM) Neuromuscular Strength Model</span>
-      <span class="cw-formula-tag">Verified Calculation Model</span>
-    </div>
-    <div class="cw-math-eq-clean">
-      <div class="cw-math-label">Core Formula:</div>
-      <div class="cw-math-formula">1RM (Brzycki) = (W ÷ 1.0278 - 0.0278 × R), | 1RM (Epley) = W × (1 + (R ÷ 30))</div>
-    </div>
-    <div class="cw-plain-english">
-      <strong>In Plain English:</strong> Calculates estimated One-Rep Maximum (1RM) strength capacity using validated powerlifting formulas (Epley, Brzycki) from submaximal repetitions.
-    </div>
-    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
-    <ul class="cw-vars-list">
-      <li><span class="cw-var-symbol">W:</span> <span>Weight lifted during submaximal testing set (lbs or kg)</span></li>
-      <li><span class="cw-var-symbol">R:</span> <span>Repetitions completed to technical failure (Formula accuracy highest between 2 and 10 reps)</span></li>
-      <li><span class="cw-var-symbol">Training Percentages:</span> <span>Strength: 85%–90% 1RM (1–5 reps), Hypertrophy: 70%–80% 1RM (8–12 reps), Endurance: 60%–65% 1RM (15+ reps)</span></li>
-    </ul>
-  </div>
-  <div class="cw-step-box">
-    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
-    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
-    <ol class="cw-step-list">
-      <li>Bench Press Set: 225 lbs lifted for 5 clean repetitions to momentary muscle failure.</li>
-      <li>Brzycki Formula: 1RM = 225 / [1.0278 - (0.0278 × 5)] = 225 / 0.8888 = 253.15 lbs.</li>
-      <li>Epley Formula: 1RM = 225 × [1 + (5 / 30)] = 225 × 1.1667 = 262.50 lbs.</li>
-      <li>Averaged Consensus 1RM: ~258 lbs maximum single-rep capacity.</li>
-      <li>Working Sets (80% 1RM for Hypertrophy): 258 × 0.80 = 205 lbs for 8–10 reps.</li>
-    </ol>
-    <div class="cw-tip-box">
-      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Break down complicated multi-step calculations by solving inner parentheses first, converting all time units to the same scale (e.g. annual to monthly), and checking your result with this tool.
-    </div>
-  </div>
-  <div class="cw-benchmark-card">
-    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> National Strength and Conditioning Association (NSCA) standards establish strength benchmarks for adult male bench press: Novice (0.8x bodyweight), Intermediate (1.2x bodyweight), Advanced (1.5x bodyweight), Elite (2.0x bodyweight).
-  </div>
-  <p class="cw-deep-text">Attempting true 1-rep maximum lifts to failure carries substantial risk of acute pectoralis tendon tears, rotator cuff impingement, and cervical spine injury. Submaximal 1RM estimation formulas allow lifters to predict peak neuromuscular strength safely using 3-rep to 8-rep working sets.</p>
-  <p class="cw-deep-text">Periodized progressive overload models utilize calculated 1RM numbers to calibrate training intensity percentages across mesocycles. Programming 4-week blocks transitioning from 70% volume hypertrophy to 87.5% intensity peaking ensures continuous strength gains while de-risking joint structures.</p>
-  <div style="margin-top: 24px;">
-    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
-    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
-      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Which 1RM formula is most accurate — Brzycki or Epley?</summary>
-      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">The Brzycki formula is widely recognized as the most accurate predictor for sets under 10 repetitions, while the Epley formula tends to slightly overestimate maximum strength but performs well for high-rep barbell compound movements.</p>
-    </details>
-    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
-      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Can this formula be used for Squats and Deadlifts as well?</summary>
-      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Yes. Both the Brzycki and Epley formulas are universally applied across the 'Big 3' powerlifting movements: Barbell Bench Press, Back Squat, and Conventional/Sumo Deadlift.</p>
-    </details>
-  </div>
-</section>
-
-<!-- Enterprise Authority Footer -->
-
-<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 bench press</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 1rm one</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 rep max</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 calculator strength</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 weightlifting epiley</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 brzycki formula</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 powerlifting gym</span>
-
+    <a href="/?q=Bench+Press+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Bench Press Calculator</a>
+    <a href="/?q=One+Rep+Max+Brzycki+Formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 One Rep Max Brzycki Formula</a>
+    <a href="/?q=how+to+calculate+bench+press" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate bench press</a>
+    <a href="/?q=bench+press+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 bench press formula</a>
+    <a href="/?q=best+bench+press+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best bench press calculator</a>
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+    <strong>Health &amp; Editorial Standards:</strong> Estimates follow standard published formulas and public-health guidance (e.g. CDC, WHO). This tool is for information only and is not medical advice &mdash; consult a qualified professional for health decisions. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API.
   </div>
+<p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
 
   

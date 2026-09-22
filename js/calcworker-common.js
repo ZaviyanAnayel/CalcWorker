@@ -1204,6 +1204,17 @@ window.cwApp = new CalcWorkerApp();
     var searchQuery = '';
     if (searchInput) {
       searchInput.value = '';
+      // Deep-link support: prefill live search from ?q= (used by query pills + JSON-LD SearchAction)
+      try {
+        var qParam = new URLSearchParams(window.location.search).get('q');
+        if (qParam && qParam.trim()) {
+          searchInput.value = qParam;
+          searchQuery = qParam;
+          if (searchInput.scrollIntoView) {
+            searchInput.scrollIntoView({ block: 'center' });
+          }
+        }
+      } catch (e) {}
     }
 
     function escapeHtml(str) {

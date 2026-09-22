@@ -444,191 +444,22 @@ Ladder Yield &amp; Cash Flow Performance
 </div>
 
 <!-- Mathematical Formulas & Methodology -->
-<section class="seo-card" style="margin-bottom: 32px;">
-  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
-  <div class="cw-formula-card">
-    <div class="cw-formula-header">
-      <span class="cw-formula-title">Weighted Blended CD Ladder Yield Formulation</span>
-      <span class="cw-formula-tag">Verified Calculation Model</span>
-    </div>
-    <div class="cw-math-eq-clean">
-      <div class="cw-math-label">Core Formula:</div>
-      <div class="cw-math-formula">\text{Blended APY} = \sum_{k=1}^{m} \left( \frac{\text{Tranche Balance}_k}{\text{Total Capital}} \times \text{APY}_k \right)</div>
-    </div>
-    <div class="cw-plain-english">
-      <strong>In Plain English:</strong> Calculates the weighted average yield across all active CD tranches and projects rolling annual interest cash flow.
-    </div>
-    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
-    <ul class="cw-vars-list">
-      <li><span class="cw-var-symbol">Tranche Balance:</span> <span>Capital allocated to each specific certificate of deposit maturity tier.</span></li>
-      <li><span class="cw-var-symbol">Total Capital:</span> <span>Aggregate cash deployed across the entire ladder portfolio.</span></li>
-      <li><span class="cw-var-symbol">m:</span> <span>Total number of ladder tranches (e.g. 4 quarterly tranches or 5 annual tranches).</span></li>
-    </ul>
-  </div>
-  <div class="cw-step-box">
-    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
-    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
-    <ol class="cw-step-list">
-      <li>Capital Allocation: $40,000 divided into 4 equal $10,000 tranches across 6-month, 12-month, 18-month, and 24-month CDs.</li>
-      <li>Interest Rates: 6-mo (5.20%), 12-mo (5.00%), 18-mo (4.80%), 24-mo (4.60%).</li>
-      <li>Weighted Calculation: (0.25 × 5.20%) + (0.25 × 5.00%) + (0.25 × 4.80%) + (0.25 × 4.60%) = 1.30% + 1.25% + 1.20% + 1.15% = 4.90%.</li>
-      <li>Annual Interest Generated: $40,000 × 4.90% = $1,960.00 annual passive cash flow.</li>
-      <li>Liquidity Schedule: $10,000 plus interest becomes fully liquid and penalty-free every 6 months.</li>
-    </ol>
-    <div class="cw-tip-box">
-      <strong>💡 Pro Tip for Solving Complex Cases:</strong> If interest rates are rising, use shorter 3-month and 6-month ladders; if the Federal Reserve is actively cutting rates, lock in long-term 3-year to 5-year CDs to freeze high yields.
-    </div>
-  </div>
-  <div class="cw-benchmark-card">
-    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Federal Deposit Insurance Act (12 U.S.C. 1821) and FDIC standard deposit insurance guidelines.
-  </div>
-  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
-  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
-</section>
-<section class="cw-educational-section" style="margin-top: 48px; border-top: 1px solid var(--border); padding-top: 36px;">
-<h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">
-📐 The Mathematical Engineering Behind a CD Ladder Strategy
-</h2>
-
-<div class="cw-math-eq-clean">
-<div class="cw-math-label">Compound CD Formula:</div>
-<div class="cw-math-formula">A = P × (1 + r/n)^(n × t) | Total Ladder Interest = ∑ [ A_t - P_t ] across all rungs t=1..k</div>
-</div>
-
-<div class="cw-plain-english">
-<strong>In Plain English:</strong> A CD ladder bridges the gap between interest rate returns and cash liquidity. Instead of locking all your money into a single long-term CD (which traps your liquidity) or keeping it in a low-interest checking account, you split your cash evenly into multiple CDs maturing 1, 2, 3, 4, and 5 years out. Every single year, one CD matures, giving you access to cash penalty-free.
-</div>
-
-<div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
-<ul class="cw-vars-list">
-<li><span class="cw-var-symbol">P (Principal):</span> <span>Total initial capital divided equally among the k ladder rungs (P ÷ k per CD)</span></li>
-<li><span class="cw-var-symbol">r (Nominal Rate):</span> <span>Stated annual interest rate or Annual Percentage Yield (APY)</span></li>
-<li><span class="cw-var-symbol">n (Compounding):</span> <span>Compounding intervals per year (typically 12 for monthly, 365 for daily)</span></li>
-<li><span class="cw-var-symbol">t (Term):</span> <span>Maturity horizon in years for each respective certificate</span></li>
-<li><span class="cw-var-symbol">k (Rungs):</span> <span>Total number of staggered time horizons in the ladder system</span></li>
-</ul>
-
-<div class="cw-step-box">
-<h3><span>📝</span> Step-by-Step Practical CD Ladder Example</h3>
-<p class="cw-step-intro">Follow this real-world US banking example of building a 5-year $50,000 CD ladder:</p>
-<ol class="cw-step-list">
-<li><strong>Split Capital:</strong> $50,000 total capital divided across 5 rungs = <strong>$10,000 per CD</strong>.</li>
-<li><strong>Purchase Staggered CDs:</strong>
-  <ul>
-    <li>Rung 1: $10,000 in a 1-Year CD at 4.80% APY $
-ightarrow$ Earns $480 interest.</li>
-    <li>Rung 2: $10,000 in a 2-Year CD at 4.80% APY $
-ightarrow$ Earns $983 interest.</li>
-    <li>Rung 3: $10,000 in a 3-Year CD at 4.80% APY $
-ightarrow$ Earns $1,510 interest.</li>
-    <li>Rung 4: $10,000 in a 4-Year CD at 4.80% APY $
-ightarrow$ Earns $2,063 interest.</li>
-    <li>Rung 5: $10,000 in a 5-Year CD at 4.80% APY $
-ightarrow$ Earns $2,642 interest.</li>
-  </ul>
-</li>
-<li><strong>Cumulative Return:</strong> Total compounded interest earned = <strong>$7,678</strong> guaranteed risk-free.</li>
-<li><strong>Reinvestment Rolling Phase:</strong> When Rung 1 matures in Year 1, you take the $10,480 and reinvest it into a new 5-Year CD. In Year 2, Rung 2 matures and rolls into another 5-Year CD.</li>
-<li><strong>Permanent Outcome:</strong> Within 5 years, every single CD in your portfolio earns the maximum 5-year APY, while 20% of your total capital matures every 12 months for complete liquidity!</li>
-</ol>
-<div class="cw-tip-box">
-<strong>💡 Pro Tip for Solving Complex Cases:</strong> To maximize liquidity, you can construct a 'Mini-Ladder' using 3-month, 6-month, 9-month, and 12-month CDs. This ensures cash unlocks every single quarter, providing an ideal holding vehicle for quarterly estimated tax escrow (Form 1040-ES) or predictable tuition expenses.
-</div>
-</div>
-
-<div class="cw-benchmark-card">
-<strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> All bank deposits are insured under Title 12 of the US Code by the Federal Deposit Insurance Corporation (FDIC) up to $250,000 per depositor, per bank. To protect large cash reserves exceeding $250,000, savers can distribute CD ladder rungs across multiple distinct FDIC-insured online banks or utilize CDARS (IntraFi Network Deposits) to secure multi-million-dollar government coverage.
-</div>
-
-<p class="cw-deep-text">
-The primary macroeconomic risk facing conservative savers is interest rate fluctuation. When the Federal Reserve embarks on an aggressive rate-hiking campaign, short-term yields surge. However, when economic inflation moderates and the central bank initiates rate cuts, high-yield savings accounts immediately slash their rates overnight.
-</p>
-
-<p class="cw-deep-text">
-A CD ladder acts as a contractual hedge against Federal Reserve rate reductions. Because your interest rate is locked in writing for 2, 3, 4, or 5 years, the bank cannot decrease your rate even if market interest rates plummet to zero. If rates instead increase, your annually maturing rungs provide immediate cash to reinvest at the newly elevated market APYs.
-</p>
-
-<div style="margin-top: 24px;">
-<h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Frequently Asked Questions</h3>
-<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
-<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Do I have to pay taxes on CD interest before the CD matures?</summary>
-<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Under IRS rules, interest earned on a CD is taxable as ordinary income in the tax year it is credited to your account (constructively received), even if the CD has not yet matured and the funds cannot be withdrawn without penalty. Your bank will issue IRS Form 1099-INT in January reporting annual accrued interest.</p>
-</details>
-<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
-<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is a No-Penalty CD and should I use it in my ladder?</summary>
-<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">A No-Penalty CD allows you to withdraw your full principal and accrued interest starting 7 days after funding without incurring early withdrawal charges. They offer slightly lower APYs than traditional fixed CDs, but provide an ideal first rung if you anticipate urgent emergency cash needs.</p>
-</details>
-</div>
-</section>
-
-<!-- Enterprise Authority Footer -->
-
-<!-- Deep Technical Analysis & Reference Table Section -->
-<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
-  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
-    <span>🪜</span> Certificate of Deposit (CD) Laddering: Yield Maximization & Liquidity Rotation
-  </h2>
-  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
-    <p>A Certificate of Deposit (CD) Ladder is a time-tested fixed-income strategy that divides cash across multiple CDs with staggered maturity dates (e.g. 3-month, 6-month, 9-month, and 12-month or 1-year through 5-year maturities).</p>
-    <p style="margin-top: 12px;">CD laddering resolves the fundamental fixed-income dilemma: locking money up for higher long-term yields versus keeping cash liquid for emergencies. As each tranche matures, you gain access to penalty-free cash or roll it into a new top-tier CD at prevailing market rates.</p>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>📊</span> Sample 5-Year CD Ladder Structure ($50,000 Total Capital)
-  </h3>
-  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
-    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
-      <thead>
-        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
-          <th style="padding: 12px 16px; color: var(--text-main);">Ladder Tranche</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">Capital Allocated</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">CD Term</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">Annual APY</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">First Maturity Date</th>
-          <th style="padding: 12px 16px; color: var(--text-main);">Annual Rolling Interest</th>
-        </tr>
-      </thead>
-      <tbody style="color: var(--text-muted);">
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tranche 1</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$10,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1-Year CD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">5.15% APY</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Month 12</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$515.00</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tranche 2</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$10,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2-Year CD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.85% APY</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Month 24</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$485.00</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tranche 3</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$10,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3-Year CD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.60% APY</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Month 36</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$460.00</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tranche 4</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$10,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4-Year CD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.45% APY</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Month 48</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$445.00</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tranche 5</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$10,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">5-Year CD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.35% APY</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Month 60</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$435.00</td></tr>
-        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Entire Ladder Total</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$50,000 Total</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rolling 5-Yr Maturity</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.68% Blended APY</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Continuous Annual Rollover</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,340.00 / year</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
-    <span>⚡</span> CD Laddering Execution Tactics
-  </h3>
-  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
-    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Utilize Brokered CDs for Higher Yields:</strong> <span>Purchase brokered CDs inside Fidelity or Schwab brokerage accounts; they often pay 0.25% to 0.50% more than brick-and-mortar retail banks and can be traded on secondary markets without early withdrawal penalties.</span></li>
-    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Watch Out for Early Withdrawal Penalties:</strong> <span>Standard bank CDs penalize early withdrawals by forfeiting 3 to 6 months of interest; only ladder funds you do not need before the tranche maturity date.</span></li>
-    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Verify FDIC / NCUA Insurance Coverage Limits:</strong> <span>Ensure total deposits across all CDs at any single financial institution remain within statutory federal insurance limits ($250,000 per depositor, per account ownership category).</span></li>
-  </ul>
-</section>
-
-<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
+    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 ladder yield</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 calculator certificate</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 deposit rolling</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 maturity blended</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 apy interest</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 income liquidity</span>
-<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 banking fixed</span>
-
+    <a href="/?q=CD+Ladder+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 CD Ladder Calculator</a>
+    <a href="/?q=Certificate+of+Deposit+Yield" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Certificate of Deposit Yield</a>
+    <a href="/?q=how+to+calculate+cd+ladder" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate cd ladder</a>
+    <a href="/?q=cd+ladder+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 cd ladder formula</a>
+    <a href="/?q=best+cd+ladder+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best cd ladder calculator</a>
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
