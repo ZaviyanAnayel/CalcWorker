@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Real Estate Calculators — 18 Free Real Estate Tools | CalcWorker</title>
+<meta content="Explore 18 free real estate calculators for buyers, owners, and investors — from the full-PITI Mortgage Calculator and Rent vs Buy tool to Cap Rate, DSCR, and BRRRR underwriting models." name="description"/>
+<meta content="real estate calculators, mortgage calculator, rent vs buy calculator, cap rate calculator, rental property calculator, house affordability calculator" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://calcworker.com/real-estate-calculators" rel="canonical"/>
+<meta content="Real Estate Calculators — 18 Free Real Estate Tools | CalcWorker" property="og:title"/>
+<meta content="Explore 18 free real estate calculators for buyers, owners, and investors — from the full-PITI Mortgage Calculator and Rent vs Buy tool to Cap Rate, DSCR, and BRRRR underwriting models." property="og:description"/>
+<meta content="https://calcworker.com/real-estate-calculators" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Real Estate Calculators — 18 Free Real Estate Tools | CalcWorker",
+    "url": "https://calcworker.com/real-estate-calculators",
+    "description": "Explore 18 free real estate calculators for buyers, owners, and investors — from the full-PITI Mortgage Calculator and Rent vs Buy tool to Cap Rate, DSCR, and BRRRR underwriting models.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "CalcWorker",
+      "url": "https://calcworker.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much house can I actually afford?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A widely used guideline is the 28/36 rule: keep total housing costs (PITI) at or under 28% of gross monthly income, and all debts under 36%. The House Affordability Calculator applies this to your income, debts, down payment, and rate to produce a realistic price range &mdash; then confirm it with a lender’s pre-approval."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is a good cap rate for a rental property?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "It depends heavily on the market: investors often cite 5&ndash;10% as a typical screening range, with higher cap rates usually signaling higher risk or lower-growth areas. Treat cap rate as a comparison tool between properties, not a verdict &mdash; the Cap Rate Calculator pairs best with the Cash Flow Rental Calculator for the full picture."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I rent or buy?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "There is no universal answer &mdash; it hinges on how long you will stay, local price-to-rent ratios, and your down payment. As a rough rule of thumb, buying tends to win if you will stay 5+ years; short horizons favor renting once closing costs and selling fees are counted. The Rent vs Buy tool runs your exact numbers."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is DSCR and why do lenders care about it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "DSCR (Debt-Service Coverage Ratio) is a property’s net operating income divided by its debt payments. It tells a lender whether the property pays for itself: many investor-loan programs look for a DSCR of at least 1.2, meaning income covers 120% of the mortgage. The DSCR Calculator shows where your deal stands."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does the BRRRR strategy work?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "BRRRR stands for Buy, Rehab, Rent, Refinance, Repeat: you purchase a distressed property, renovate it, rent it out, refinance based on the new appraised value to pull your capital back out, then repeat with the next deal. The BRRRR Calculator models each phase so you can see whether the refi actually returns your cash."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are these real estate calculators a substitute for professional advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No &mdash; they are planning estimates. They are ideal for screening deals and comparing scenarios, but appraisals, inspections, title work, and loan terms involve professionals. Verify the numbers that matter with your real estate agent, lender, or attorney before committing."
+        }
+      }
+    ]
+  }
+]
+</script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- Google tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Calculator Categories</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/finance-calculators"><span class="nav-link-icon">💰</span><span class="nav-link-text">Finance Calculators</span></a></li>
+        <li><a class="nav-link" href="/tax-calculators"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Calculators</span></a></li>
+        <li><a class="nav-link active" href="/real-estate-calculators"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Real Estate Calculators</span></a></li>
+        <li><a class="nav-link" href="/creator-calculators"><span class="nav-link-icon">🎥</span><span class="nav-link-text">Creator Calculators</span></a></li>
+        <li><a class="nav-link" href="/business-calculators"><span class="nav-link-icon">💼</span><span class="nav-link-text">Business Calculators</span></a></li>
+        <li><a class="nav-link" href="/health-calculators"><span class="nav-link-icon">🏥</span><span class="nav-link-text">Health Calculators</span></a></li>
+        <li><a class="nav-link" href="/ai-calculators"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Calculators</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Company</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/about.html"><span class="nav-link-icon">ℹ️</span><span class="nav-link-text">About CalcWorker</span></a></li>
+        <li><a class="nav-link" href="/contact.html"><span class="nav-link-icon">✉️</span><span class="nav-link-text">Contact</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn">☰</button>
+<span class="topbar-title">🏠 Real Estate Calculators</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>🏠</span> Real Estate Calculators</h1>
+<p class="tool-header-desc">All 18 free real estate calculators in one place — Explore 18 free real estate calculators for buyers, owners, and investors — from the full-PITI Mortgage Calculator and Rent vs Buy tool to Cap Rate, DSCR, and BRRRR underwriting models.. Every tool runs 100% client-side in your browser: no sign-up, no uploads, instant answers.</p>
+<p style="font-size:0.78rem;color:var(--text-muted);margin-top:8px;">Last updated: September 2026 · 18 free tools</p>
+</div>
+<section class="tool-guide-section" style="margin-top:32px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:12px;">The Complete Guide to Real Estate Calculators</h2>
+<p>A home is the largest purchase most people ever make, and a rental property is a small business wearing a roof. This hub brings together <strong>18 free real estate calculators</strong> for buyers, homeowners, renters, and investors &mdash; from your first mortgage payment to the cash-on-cash return on your tenth rental. Every tool runs instantly in your browser with no sign-up, and your numbers never leave your device.</p>
+<h3>Buying a home: know your payment before you fall in love</h3>
+<p>Start with the <strong>Mortgage Calculator</strong>: it breaks your monthly payment into principal, interest, taxes, insurance, and PMI (PITI) and shows the full amortization schedule, so you see the true cost &mdash; not just the sticker price. The <strong>House Affordability Calculator</strong> works backward from your income and debts to a price range that will not strain your budget, and the <strong>Rent vs Buy Decision</strong> tool settles the eternal debate with your local numbers instead of slogans. Budget the fine print with the <strong>Home Closing Costs</strong> estimator, compare loan programs with <strong>FHA vs Conventional</strong>, and check whether refinancing pays with the <strong>Mortgage Refinance Break-Even</strong> calculator. Already own? The <strong>Extra Mortgage Payment</strong> tool shows how much interest a little extra principal destroys, and <strong>HELOC &amp; Credit Line</strong> plus <strong>Home Equity Loan vs HELOC</strong> help you tap equity wisely. The <strong>Property Tax &amp; Mill Rate</strong> calculator keeps the taxman’s share honest.</p>
+<h3>Investing: underwrite like a professional</h3>
+<p>Investors live or die by the numbers. The <strong>Cash Flow Rental Calculator</strong> projects monthly and annual cash flow after mortgage, taxes, insurance, vacancy, and maintenance &mdash; because a property that does not cash flow is a speculation, not an investment. The <strong>Cap Rate Calculator</strong> and <strong>Cash-on-Cash Return Calculator</strong> let you compare properties on equal footing, while the <strong>DSCR Calculator</strong> checks the debt-service coverage ratio lenders actually scrutinize (many want to see 1.2x or better). The <strong>BRRRR Calculator</strong> models the full buy-rehab-rent-refinance-repeat playbook from purchase to cash-out refi, and the <strong>Airbnb Profit Calculator</strong> tests whether short-term rental math beats a long-term tenant. Selling? The <strong>Real Estate Commission Calculator</strong> splits agent commissions in seconds, and landlords can sanity-check commercial terms with the <strong>Triple Net (NNN) Lease</strong> calculator or split a mid-month move with <strong>Prorated Rent</strong>.</p>
+<h3>How to pick the right tool</h3>
+<p>Buying your first home: Mortgage, House Affordability, Rent vs Buy, Closing Costs &mdash; in that order. Refinancing: Refinance Break-Even first, then Extra Mortgage Payment to compare strategies. Evaluating a rental: Cash Flow, then Cap Rate and Cash-on-Cash, then DSCR before you talk to a lender. Selling: Commission calculator plus Property Tax. One honest note: these are <strong>estimates for planning, not professional advice</strong> &mdash; verify consequential numbers with your agent, lender, or attorney before signing.</p>
+</section>
+<section style="margin-top:40px;">
+<h2 style="font-size:1.4rem;font-weight:800;color:var(--text-main);margin-bottom:6px;display:flex;align-items:center;gap:8px;"><span>🏠</span> All 18 Real Estate Calculators</h2>
+<p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:18px;line-height:1.6;">Every tool below is free, unlimited, and runs entirely in your browser — pick the one that matches your question.</p>
+<div class="hub-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+<a class="tool-card" href="/tools/airbnb-profit-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🛏️</div><div><h3 class="tool-card-title">Airbnb Profit Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Estimate nightly revenue, occupancy-adjusted income, and costs for a short-term rental.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/brrrr-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🔁</div><div><h3 class="tool-card-title">BRRRR Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Model the buy-rehab-rent-refinance-repeat strategy from purchase to cash-out refi.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/cap-rate-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">📊</div><div><h3 class="tool-card-title">Cap Rate Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Compute capitalization rate from NOI and price to compare investment properties.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/cash-flow-rental-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">💵</div><div><h3 class="tool-card-title">Cash Flow Rental Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Project monthly and annual cash flow for a rental property after all expenses.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/cash-on-cash-return-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">💰</div><div><h3 class="tool-card-title">Cash-on-Cash Return Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Measure annual cash return against the actual cash you invested in a property.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/closing-costs-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🏡</div><div><h3 class="tool-card-title">Home Purchase Closing Costs Estimator 2026</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Estimate itemized buyer and seller closing costs on US home purchases: lender origination, appraisal, title insurance, transfer taxes, and prepaid escrow.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/dscr-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🏦</div><div><h3 class="tool-card-title">DSCR Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Calculate debt-service coverage ratio to see if a property qualifies for investor financing.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/extra-mortgage-payment-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">💸</div><div><h3 class="tool-card-title">Extra Mortgage Principal Payment &amp; Early Payoff Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Calculate how making extra monthly, annual, or lump-sum principal payments cuts years off your mortgage and saves tens of thousands in compound interest.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/fha-vs-conventional-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">⚖️</div><div><h3 class="tool-card-title">FHA vs Conventional Loan Calculator 2026</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Compare monthly payments, upfront and annual mortgage insurance (FHA MIP vs Conventional PMI), and long-term costs between FHA and Conventional mortgages.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/heloc-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">💳</div><div><h3 class="tool-card-title">HELOC &amp; Equity Line</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Calculate 10-year interest-only draw payments followed by 20-year amortized payments on home equity lines of credit.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/home-equity-loan-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🏡</div><div><h3 class="tool-card-title">Home Equity Loan vs HELOC Calculator 2026</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Compare fixed-rate Home Equity Loans with variable-rate Home Equity Lines of Credit (HELOC). Calculate draw periods, repayment jumps, and maximum borrowing limits.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/house-affordability-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🏠</div><div><h3 class="tool-card-title">House Affordability Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Find the home price range that fits your income, debts, and down payment.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/mortgage-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🏠</div><div><h3 class="tool-card-title">Mortgage Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Accurate monthly home payments including Principal, Interest, Property Taxes, Homeowners Insurance, and private mortgage insurance (PMI).</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/mortgage-refinance-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🔄</div><div><h3 class="tool-card-title">Mortgage Refinance Break-Even</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Calculate mortgage refinance break-even in months, monthly payment reduction, closing cost recovery, and net lifetime interest savings.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/nnn-lease-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🏢</div><div><h3 class="tool-card-title">Commercial Triple Net (NNN) Lease Calculator 2026</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Calculate total tenant occupancy costs, annual CAM fees, property tax pass-throughs, and landlord net rental income under commercial NNN lease agreements.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/prorated-rent-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">📅</div><div><h3 class="tool-card-title">Prorated Rent Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Calculate exact partial month lease payments for move-in or move-out dates with 30-day, 365-day, and banker&#x27;s rule formulas.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/real-estate-commission-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">🤝</div><div><h3 class="tool-card-title">Real Estate Commission Calculator</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Split listing and buyer-agent commissions on a home sale in seconds.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/rent-vs-buy.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #3b82f6; background: #3b82f626;">⚖️</div><div><h3 class="tool-card-title">Rent vs Buy Decision</h3><span class="tool-category-badge">Real Estate</span></div></div><p class="tool-card-desc">Compare the 30-year financial impact of buying real estate versus renting and investing down payment capital in the market.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+</div>
+</section>
+<section class="tool-guide-section" style="margin-top:48px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:4px;">Real Estate Calculator FAQs</h2>
+<p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:8px;">Straight answers to the questions people ask most about real estate calculators.</p>
+<div class="faq-item" style="margin-top:12px;">
+<details><summary>How much house can I actually afford?</summary><p>A widely used guideline is the 28/36 rule: keep total housing costs (PITI) at or under 28% of gross monthly income, and all debts under 36%. The House Affordability Calculator applies this to your income, debts, down payment, and rate to produce a realistic price range &mdash; then confirm it with a lender’s pre-approval.</p></details>
+<details><summary>What is a good cap rate for a rental property?</summary><p>It depends heavily on the market: investors often cite 5&ndash;10% as a typical screening range, with higher cap rates usually signaling higher risk or lower-growth areas. Treat cap rate as a comparison tool between properties, not a verdict &mdash; the Cap Rate Calculator pairs best with the Cash Flow Rental Calculator for the full picture.</p></details>
+<details><summary>Should I rent or buy?</summary><p>There is no universal answer &mdash; it hinges on how long you will stay, local price-to-rent ratios, and your down payment. As a rough rule of thumb, buying tends to win if you will stay 5+ years; short horizons favor renting once closing costs and selling fees are counted. The Rent vs Buy tool runs your exact numbers.</p></details>
+<details><summary>What is DSCR and why do lenders care about it?</summary><p>DSCR (Debt-Service Coverage Ratio) is a property’s net operating income divided by its debt payments. It tells a lender whether the property pays for itself: many investor-loan programs look for a DSCR of at least 1.2, meaning income covers 120% of the mortgage. The DSCR Calculator shows where your deal stands.</p></details>
+<details><summary>How does the BRRRR strategy work?</summary><p>BRRRR stands for Buy, Rehab, Rent, Refinance, Repeat: you purchase a distressed property, renovate it, rent it out, refinance based on the new appraised value to pull your capital back out, then repeat with the next deal. The BRRRR Calculator models each phase so you can see whether the refi actually returns your cash.</p></details>
+<details><summary>Are these real estate calculators a substitute for professional advice?</summary><p>No &mdash; they are planning estimates. They are ideal for screening deals and comparing scenarios, but appraisals, inspections, title work, and loan terms involve professionals. Verify the numbers that matter with your real estate agent, lender, or attorney before committing.</p></details>
+</div>
+</section>
+<section class="related-tools-section" style="margin-top:40px;margin-bottom:30px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+<h3 style="font-size:1.15rem;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:8px;margin:0;"><span>🧭</span> Browse Other Calculator Categories</h3>
+<span style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">140 Free Tools Total</span>
+</div>
+<div class="related-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;">
+<a class="related-tool-link" href="/finance-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">💰</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">57 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Finance Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Browse 57 free finance calculators for investing, loans, retirement, and everyday money math — including the C…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/tax-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏛️</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">19 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Tax Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Estimate taxes with 19 free tax calculators — the Paycheck Net Take-Home (2026), W-4 Withholding, and Freelanc…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/creator-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🎥</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">18 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Creator Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Project earnings with 18 free creator calculators — YouTube Money &amp; CPM, TikTok RPM, and the Sponsorship Prici…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/business-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">💼</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">15 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Business Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Run the numbers with 15 free business calculators — Break-Even Point, LLC vs S-Corp Tax Savings, Amazon FBA Fe…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/health-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏥</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">9 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Health Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Hit your targets with 9 free health calculators — BMI &amp; Body Composition, Calorie &amp; TDEE Deficit, and the HDHP…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/ai-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🤖</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">4 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">AI Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Budget LLM usage with 4 free AI cost calculators — the AI Token Calculator plus OpenAI API Cost and Claude API…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏠</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">140 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">CalcWorker Home</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Back to the full dashboard with all 140 free calculators in one place…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Go to Dashboard</span><span style="margin-left:4px;">→</span></div></a>
+</div>
+</section>
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 137 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span><a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;"><span>📘 Facebook</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

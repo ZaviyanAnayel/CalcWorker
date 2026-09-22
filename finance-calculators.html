@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Finance Calculators — 56 Free Finance Tools | CalcWorker</title>
+<meta content="Browse 56 free finance calculators for investing, loans, retirement, and everyday money math — including the Compound Interest planner, Credit Card Payoff tool, and 401(k) Retirement Savings estimator." name="description"/>
+<meta content="finance calculators, free financial calculators, investment calculator, loan calculator, retirement calculator, compound interest calculator" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://calcworker.com/finance-calculators" rel="canonical"/>
+<meta content="Finance Calculators — 56 Free Finance Tools | CalcWorker" property="og:title"/>
+<meta content="Browse 56 free finance calculators for investing, loans, retirement, and everyday money math — including the Compound Interest planner, Credit Card Payoff tool, and 401(k) Retirement Savings estimator." property="og:description"/>
+<meta content="https://calcworker.com/finance-calculators" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Finance Calculators — 56 Free Finance Tools | CalcWorker",
+    "url": "https://calcworker.com/finance-calculators",
+    "description": "Browse 56 free finance calculators for investing, loans, retirement, and everyday money math — including the Compound Interest planner, Credit Card Payoff tool, and 401(k) Retirement Savings estimator.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "CalcWorker",
+      "url": "https://calcworker.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Which finance calculator should I start with if I am in debt?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Start with the Debt Payoff planner: it compares the snowball and avalanche strategies side by side so you can pick the payoff order that fits your psychology and your interest rates. Then use the Credit Card Payoff tool on your highest-rate card to see the true cost of minimum payments. Tackle high-interest debt before directing serious money into investing."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does my debt-to-income (DTI) ratio affect loan approval?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Lenders divide your total monthly debt payments by your gross monthly income to get your DTI. Many lenders use roughly 43% back-end DTI as a guideline for qualified mortgages, and lower is always better. The Debt-to-Income Calculator computes both your front-end (housing) and back-end (all debts) ratios so you can see exactly what a lender will see."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between APR and APY?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "APR (Annual Percentage Rate) is the yearly cost of borrowing, including most lender fees &mdash; use it to compare loans. APY (Annual Percentage Yield) is what your savings earn after compounding &mdash; use it to compare bank accounts. The APR vs APY Calculator shows how compounding frequency turns a modest rate gap into real money over time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are these finance calculators really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. All 57 finance calculators are free with no sign-up, no usage limits, and no paywalled &ldquo;pro&rdquo; results. They run 100% client-side in your browser, so your financial numbers are never uploaded anywhere."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I rely on these results for a big decision like buying a house?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Use them as planning estimates, not final answers. They are great for comparing scenarios &mdash; 15-year vs 30-year terms, extra payments, different down payments &mdash; but a lender, tax advisor, or fiduciary financial planner should verify the numbers before you sign anything."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do the numbers I type into these calculators leave my device?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Every CalcWorker calculator executes entirely in your browser. There is no account, no server-side storage, and no telemetry on your inputs &mdash; your financial data stays on your device."
+        }
+      }
+    ]
+  }
+]
+</script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- Google tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Calculator Categories</div>
+      <ul class="nav-links">
+        <li><a class="nav-link active" href="/finance-calculators"><span class="nav-link-icon">💰</span><span class="nav-link-text">Finance Calculators</span></a></li>
+        <li><a class="nav-link" href="/tax-calculators"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Calculators</span></a></li>
+        <li><a class="nav-link" href="/real-estate-calculators"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Real Estate Calculators</span></a></li>
+        <li><a class="nav-link" href="/creator-calculators"><span class="nav-link-icon">🎥</span><span class="nav-link-text">Creator Calculators</span></a></li>
+        <li><a class="nav-link" href="/business-calculators"><span class="nav-link-icon">💼</span><span class="nav-link-text">Business Calculators</span></a></li>
+        <li><a class="nav-link" href="/health-calculators"><span class="nav-link-icon">🏥</span><span class="nav-link-text">Health Calculators</span></a></li>
+        <li><a class="nav-link" href="/ai-calculators"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Calculators</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Company</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/about.html"><span class="nav-link-icon">ℹ️</span><span class="nav-link-text">About CalcWorker</span></a></li>
+        <li><a class="nav-link" href="/contact.html"><span class="nav-link-icon">✉️</span><span class="nav-link-text">Contact</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn">☰</button>
+<span class="topbar-title">💰 Finance Calculators</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>💰</span> Finance Calculators</h1>
+<p class="tool-header-desc">All 57 free finance calculators in one place — Browse 56 free finance calculators for investing, loans, retirement, and everyday money math — including the Compound Interest planner, Credit Card Payoff tool, and 401(k) Retirement Savings estimator.. Every tool runs 100% client-side in your browser: no sign-up, no uploads, instant answers.</p>
+<p style="font-size:0.78rem;color:var(--text-muted);margin-top:8px;">Last updated: September 2026 · 57 free tools</p>
+</div>
+<section class="tool-guide-section" style="margin-top:32px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:12px;">The Complete Guide to Finance Calculators</h2>
+<p>Every money decision is a math problem in disguise &mdash; how fast debt shrinks, how wealth compounds, what a paycheck really leaves behind. This hub gathers <strong>57 free finance calculators</strong> covering banking, loans and credit, investing and retirement, currency exchange, and everyday money math. They are built for everyone from first-time budgeters to seasoned investors, and every one runs entirely in your browser: type in your numbers, get an instant answer, and nothing you enter ever leaves your device.</p>
+<h3>Start where money leaks: debt and credit</h3>
+<p>If you carry balances, begin with the <strong>Credit Card Payoff</strong> calculator to see exactly how many months and how much interest stand between you and zero, then use the <strong>Debt Payoff</strong> planner to compare the snowball method (smallest balance first, for momentum) against the avalanche method (highest rate first, for minimum interest). Before you apply for anything, run the <strong>Debt-to-Income Calculator</strong> &mdash; it computes your DTI ratio the same way lenders do, so you know where you stand on borrowing power. And the <strong>Credit Score Simulator</strong> shows how moves like paying down a card or opening a new account could shift your score before you make them for real.</p>
+<h3>Grow what you keep: investing and retirement</h3>
+<p>Once debt is under control, the <strong>Compound Interest</strong> planner visualizes how monthly contributions snowball over decades &mdash; the single most motivating chart in personal finance. The <strong>401(k) Retirement Savings</strong> calculator factors in your employer match (free money too many people leave on the table), while the <strong>Roth IRA Tax-Free Growth</strong> tool shows the long-run payoff of after-tax contributions. Dreaming of an early exit? The <strong>FIRE Calculator</strong> maps your savings rate to a projected independence date. Track the big picture with the <strong>Net Worth</strong> calculator and stress-test it with the <strong>Inflation &amp; Retirement (4% Rule)</strong> planner.</p>
+<h3>Everyday money, handled in seconds</h3>
+<p>Not every calculation is life-changing &mdash; some just save you from overpaying. The <strong>Currency Converter</strong> uses live rates, with dedicated USD to EUR, GBP, CAD, MXN, INR, JPY, and PKR pairs for travel and remittances. The <strong>Tip Calculator &amp; Splitter</strong> settles restaurant bills, the <strong>Grocery Unit Price</strong> tool exposes which package size is actually cheaper, and the <strong>Fuel Cost &amp; Trip Mileage</strong> calculator prices out road trips before you leave.</p>
+<h3>How to pick the right tool</h3>
+<p>Match the calculator to the question you are actually asking: <em>&ldquo;when will I be debt-free?&rdquo;</em> &rarr; payoff tools; <em>&ldquo;can I afford this loan?&rdquo;</em> &rarr; DTI and loan calculators; <em>&ldquo;am I saving enough?&rdquo;</em> &rarr; retirement and FIRE planners. One honest note: these calculators produce <strong>estimates for planning purposes, not professional financial advice</strong>. For mortgages, investments, or tax strategy, confirm the numbers with a licensed professional before you commit.</p>
+</section>
+<section style="margin-top:40px;">
+<h2 style="font-size:1.4rem;font-weight:800;color:var(--text-main);margin-bottom:6px;display:flex;align-items:center;gap:8px;"><span>💰</span> All 57 Finance Calculators</h2>
+<p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:18px;line-height:1.6;">Every tool below is free, unlimited, and runs entirely in your browser — pick the one that matches your question.</p>
+<div class="hub-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+<a class="tool-card" href="/tools/401k-rmd-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">📅</div><div><h3 class="tool-card-title">401(k) &amp; IRA RMD Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate mandatory annual Required Minimum Distributions (RMDs) from traditional IRAs and 401(k)s using the IRS Uniform Lifetime Table.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/529-college-savings-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🎓</div><div><h3 class="tool-card-title">529 College Savings Plan Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate compound tax-free growth, state income tax deduction savings, and future college tuition coverage for your child&#x27;s 529 education savings plan.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/age-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🎂</div><div><h3 class="tool-card-title">Exact Age &amp; Birthday</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate chronological age down to completed years, months, days, total hours, and next birthday countdown.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/apr-to-apy-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">📈</div><div><h3 class="tool-card-title">APR vs APY Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert nominal Annual Percentage Rate (APR) to effective Annual Percentage Yield (APY) across daily, monthly, and quarterly compounding frequencies.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/auto-loan.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🚗</div><div><h3 class="tool-card-title">Auto Loan Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate monthly car payments, total loan interest, dealership fees, and trade-in tax savings across various loan terms.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/car-lease-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🏎️</div><div><h3 class="tool-card-title">Car Lease Payment</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Evaluate auto leases by computing depreciation fees, financing charges via Money Factor to APR, and lease-end residual values.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/cd-ladder-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🪜</div><div><h3 class="tool-card-title">CD Ladder Yield Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Plan optimal multi-year Certificate of Deposit ladders to maximize blended APY yields while maintaining rolling liquidity.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/commute-cost-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🚗</div><div><h3 class="tool-card-title">Commute Cost &amp; Work-From-Home (WFH) Savings Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate the true financial and personal time cost of your daily vehicle commute, including gas, vehicle depreciation, tolls, parking, and annual remote work savings.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/compound-interest.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">📈</div><div><h3 class="tool-card-title">Compound Interest</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Visualize exponential portfolio growth with monthly deposits, annual returns, and compounding frequencies.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/cost-of-living-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🏙️</div><div><h3 class="tool-card-title">US City Cost of Living &amp; Salary Relocation Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Compare purchasing power, housing expenses, state tax differences, and equivalent salary needs when relocating between major US metropolitan areas.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/credit-card-payoff.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💳</div><div><h3 class="tool-card-title">Credit Card Payoff</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate exact months to payoff credit card balances and discover the true total interest cost of minimum payments.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/credit-score-simulator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">📊</div><div><h3 class="tool-card-title">Credit Score Simulator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">See how actions like paying down balances or opening new cards could shift your credit score.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/crypto-profit-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🪙</div><div><h3 class="tool-card-title">Crypto Profit &amp; ROI</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate net cryptocurrency trading profits, percentage return on investment, and exchange fee deductions.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/currency-converter.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💱</div><div><h3 class="tool-card-title">Global Currency Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert between 150+ world currencies using real-time interbank mid-market exchange rates with 0 markups.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/date-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">📅</div><div><h3 class="tool-card-title">Date Difference Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Count exact days, weeks, months, and business working days between any two calendar dates.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/debt-payoff.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💳</div><div><h3 class="tool-card-title">Debt Snowball &amp; Avalanche</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Compare the psychological momentum of the Debt Snowball vs the mathematically optimal Debt Avalanche method.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/dog-cat-age-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🐾</div><div><h3 class="tool-card-title">Dog &amp; Cat Age to Human Years Biological Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate your pet&#x27;s true biological age in equivalent human years based on American Veterinary Medical Association (AVMA) breed size and developmental curve research.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/dti-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">⚖️</div><div><h3 class="tool-card-title">Debt-to-Income (DTI) Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate front-end and back-end Debt-to-Income (DTI) ratios to determine your mortgage qualification limits for Conventional, FHA, and VA loans.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/electricity-cost-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💡</div><div><h3 class="tool-card-title">Appliance Electricity Cost &amp; Power Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate the exact daily, monthly, and annual operating cost of any home electrical appliance or electronic device based on wattage rating and local utility kWh tariffs.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/emergency-fund-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🛡️</div><div><h3 class="tool-card-title">Emergency Fund Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate your ideal 3-month to 6-month liquid emergency fund based on essential living expenses, job security, and household dependents.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/ev-vs-gas-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">⚡</div><div><h3 class="tool-card-title">EV vs Gas Car True Cost Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Compare the total operational fuel and maintenance costs of an Electric Vehicle (EV) versus a traditional internal combustion gasoline vehicle based on your annual mileage and regional utility rates.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/fire-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🔥</div><div><h3 class="tool-card-title">FIRE Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Project when you can reach financial independence and retire early from your savings rate and spending.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/flooring-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🪵</div><div><h3 class="tool-card-title">Flooring &amp; Tile Square Footage</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate exact square footage, 10% waste allowances, box quantities, material costs, and labor for hardwood, LVP, and tile.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/fuel-cost-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">⛽</div><div><h3 class="tool-card-title">Trip Fuel &amp; Gas Cost</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Estimate road trip gasoline expenses from vehicle MPG, distance, gas prices, and split costs evenly per passenger.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/gpa-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🎓</div><div><h3 class="tool-card-title">College &amp; High School GPA</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate unweighted 4.0 and weighted 5.0 cumulative grade point averages across regular, honors, and AP courses.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/hourly-rate.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💼</div><div><h3 class="tool-card-title">Freelancer Hourly Rate</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate minimum billable hourly rate based on desired salary, overhead, unbillable admin time, and taxes.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/inflation-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💵</div><div><h3 class="tool-card-title">US CPI Inflation</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate historical purchasing power erosion using official Bureau of Labor Statistics Consumer Price Index data.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/inflation-retirement-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">⏳</div><div><h3 class="tool-card-title">Inflation &amp; Retirement Purchasing Power Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate how cumulative inflation erodes future purchasing power, and determine the exact inflated nest egg needed to sustain your standard of living using the Trinity 4% Safe Withdrawal Rule.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/job-offer-comparison-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💼</div><div><h3 class="tool-card-title">Job Offer Total Compensation Comparator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Compare two competing corporate job offers side-by-side evaluating base salary, 401(k) matching, annual bonuses, equity/RSUs, health premiums, and paid time off.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/kitchen-recipe-converter.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🍳</div><div><h3 class="tool-card-title">Kitchen Recipe Measurement &amp; Scaling Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Scale recipe ingredient quantities up or down for any party size, and convert effortlessly between US customary cups, tablespoons, teaspoons, fluid ounces, and professional metric grams.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/markup-vs-margin-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🏷️</div><div><h3 class="tool-card-title">Markup vs Margin Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate profit margins, cost markups, retail selling prices, and gross profit dollars with zero confusion between margin and markup percentages.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/net-worth-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">⚖️</div><div><h3 class="tool-card-title">Personal Net Worth Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate your true personal net worth by auditing liquid cash, investment portfolios, real estate equity, vehicle values minus mortgages, and student debts.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/omnicalc.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🧮</div><div><h3 class="tool-card-title">OmniCalc Ultra</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">The flagship computational workstation: Standard, Pro Scientific, 2D Grapher, Smart Tape, 9-domain Unit Converter, and Programmer Bitwise mode.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/overtime-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">⏱️</div><div><h3 class="tool-card-title">Overtime &amp; 1.5x Pay</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate weekly earnings with 1.5x overtime and double-time rates for non-exempt hourly employees.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/paycheck-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💵</div><div><h3 class="tool-card-title">Paycheck Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Estimate exact 2026 net pay after Federal taxes, FICA (Social Security &amp; Medicare), and state tax withholdings.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/payday-loan-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">⚠️</div><div><h3 class="tool-card-title">Payday Loan Real APR &amp; Debt Trap Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Unveil the true annual percentage rate (390% to 520%+ APR) hidden behind standard two-week payday cash advance flat fees.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/percentage-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">%</div><div><h3 class="tool-card-title">Percentage Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Solve what is X% of Y, calculate percentage increases or decreases, markups, discounts, and common ratios.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/personal-loan-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💳</div><div><h3 class="tool-card-title">Personal Loan Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate monthly installment payments, total interest costs, and origination fee impacts on unsecured personal loans and debt consolidation loans.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/retirement-401k.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🏖️</div><div><h3 class="tool-card-title">401(k) Retirement Savings</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Simulate retirement wealth accumulation with employee salary contributions and guaranteed company matching.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/sales-commission-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">📈</div><div><h3 class="tool-card-title">Sales Commission &amp; Quota Accelerator Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate tiered sales commission, quota attainment accelerators, on-target earnings (OTE), and split commission payouts for enterprise B2B sales reps and account executives.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/savings-goal-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🎯</div><div><h3 class="tool-card-title">Savings Goal &amp; Sinking Fund Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate the exact monthly deposit needed to reach your target savings goal for home down payments, emergency funds, vacations, or wedding expenses.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/simple-interest-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">📊</div><div><h3 class="tool-card-title">Simple vs Compound Interest Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Compare how simple interest loans contrast with compound interest wealth accumulation to visualize the exponential power of compounding interest over decades.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/social-security-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">👴</div><div><h3 class="tool-card-title">Social Security Benefits Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Estimate monthly Social Security retirement benefits based on claiming age (62 early, 67 Full Retirement Age, or 70 delayed credits) and lifetime inflation growth.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/solar-roi.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">☀️</div><div><h3 class="tool-card-title">Solar Panel ROI</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate solar payback years and 25-year net utility savings factoring in the 30% Federal Clean Energy Tax Credit.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/student-loan.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🎓</div><div><h3 class="tool-card-title">Student Loan Repayment</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Model standard 10-year and extended repayment terms, total lifetime interest, and savings from extra monthly prepayments.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/student-loan-pslf-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🏛️</div><div><h3 class="tool-card-title">PSLF vs Standard Repayment Calculator 2026</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate your projected tax-free federal student loan forgiveness under the 120-payment Public Service Loan Forgiveness (PSLF) program versus aggressive standard repayment.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/tip-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🍽️</div><div><h3 class="tool-card-title">Tip &amp; Bill Splitter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Calculate 15%, 18%, 20%, or custom tip amounts on pre-tax totals and split dinner bills evenly among friends.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/tire-size-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🛞</div><div><h3 class="tool-card-title">Tire Size Comparison &amp; Speedometer Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Compare original factory tire dimensions against aftermarket tires to calculate overall diameter change, sidewall height, revolutions per mile, and speedometer calibration error.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/unit-price-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🛒</div><div><h3 class="tool-card-title">Grocery Unit Price Comparison Calculator</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Compare two competing grocery store items with different packaging sizes and prices to identify the real lowest cost per ounce, pound, gram, or count.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/usd-to-cad.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💵</div><div><h3 class="tool-card-title">USD to CAD Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert US Dollars to Canadian Dollars with live rates and historical forex charts.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/usd-to-eur.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💶</div><div><h3 class="tool-card-title">USD to EUR Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert US Dollars to Euros with live interbank foreign exchange rates and zero bank spread markups.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/usd-to-gbp.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💷</div><div><h3 class="tool-card-title">USD to GBP Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert US Dollars to British Pounds with live interbank market exchange rates.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/usd-to-inr.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🇮🇳</div><div><h3 class="tool-card-title">USD to INR Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert US Dollars to Indian Rupees with live exchange rates and remittance comparisons.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/usd-to-jpy.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">💴</div><div><h3 class="tool-card-title">USD to JPY Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert US Dollars to Japanese Yen with real-time interbank currency exchange rates.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/usd-to-mxn.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🇲🇽</div><div><h3 class="tool-card-title">USD to MXN Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert US Dollars to Mexican Pesos with real-time mid-market rates for remittances.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/usd-to-pkr.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #10b981; background: #10b98126;">🇵🇰</div><div><h3 class="tool-card-title">USD to PKR Converter</h3><span class="tool-category-badge">Finance</span></div></div><p class="tool-card-desc">Convert US Dollars to Pakistani Rupees with live verified interbank rates.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+</div>
+</section>
+<section class="tool-guide-section" style="margin-top:48px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:4px;">Finance Calculator FAQs</h2>
+<p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:8px;">Straight answers to the questions people ask most about finance calculators.</p>
+<div class="faq-item" style="margin-top:12px;">
+<details><summary>Which finance calculator should I start with if I am in debt?</summary><p>Start with the Debt Payoff planner: it compares the snowball and avalanche strategies side by side so you can pick the payoff order that fits your psychology and your interest rates. Then use the Credit Card Payoff tool on your highest-rate card to see the true cost of minimum payments. Tackle high-interest debt before directing serious money into investing.</p></details>
+<details><summary>How does my debt-to-income (DTI) ratio affect loan approval?</summary><p>Lenders divide your total monthly debt payments by your gross monthly income to get your DTI. Many lenders use roughly 43% back-end DTI as a guideline for qualified mortgages, and lower is always better. The Debt-to-Income Calculator computes both your front-end (housing) and back-end (all debts) ratios so you can see exactly what a lender will see.</p></details>
+<details><summary>What is the difference between APR and APY?</summary><p>APR (Annual Percentage Rate) is the yearly cost of borrowing, including most lender fees &mdash; use it to compare loans. APY (Annual Percentage Yield) is what your savings earn after compounding &mdash; use it to compare bank accounts. The APR vs APY Calculator shows how compounding frequency turns a modest rate gap into real money over time.</p></details>
+<details><summary>Are these finance calculators really free?</summary><p>Yes. All 57 finance calculators are free with no sign-up, no usage limits, and no paywalled &ldquo;pro&rdquo; results. They run 100% client-side in your browser, so your financial numbers are never uploaded anywhere.</p></details>
+<details><summary>Can I rely on these results for a big decision like buying a house?</summary><p>Use them as planning estimates, not final answers. They are great for comparing scenarios &mdash; 15-year vs 30-year terms, extra payments, different down payments &mdash; but a lender, tax advisor, or fiduciary financial planner should verify the numbers before you sign anything.</p></details>
+<details><summary>Do the numbers I type into these calculators leave my device?</summary><p>No. Every CalcWorker calculator executes entirely in your browser. There is no account, no server-side storage, and no telemetry on your inputs &mdash; your financial data stays on your device.</p></details>
+</div>
+</section>
+<section class="related-tools-section" style="margin-top:40px;margin-bottom:30px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+<h3 style="font-size:1.15rem;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:8px;margin:0;"><span>🧭</span> Browse Other Calculator Categories</h3>
+<span style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">140 Free Tools Total</span>
+</div>
+<div class="related-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;">
+<a class="related-tool-link" href="/tax-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏛️</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">19 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Tax Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Estimate taxes with 19 free tax calculators — the Paycheck Net Take-Home (2026), W-4 Withholding, and Freelanc…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/real-estate-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏠</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">18 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Real Estate Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Explore 18 free real estate calculators for buyers, owners, and investors — from the full-PITI Mortgage Calcul…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/creator-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🎥</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">18 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Creator Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Project earnings with 18 free creator calculators — YouTube Money &amp; CPM, TikTok RPM, and the Sponsorship Prici…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/business-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">💼</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">15 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Business Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Run the numbers with 15 free business calculators — Break-Even Point, LLC vs S-Corp Tax Savings, Amazon FBA Fe…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/health-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏥</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">9 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Health Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Hit your targets with 9 free health calculators — BMI &amp; Body Composition, Calorie &amp; TDEE Deficit, and the HDHP…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/ai-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🤖</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">4 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">AI Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Budget LLM usage with 4 free AI cost calculators — the AI Token Calculator plus OpenAI API Cost and Claude API…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏠</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">140 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">CalcWorker Home</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Back to the full dashboard with all 140 free calculators in one place…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Go to Dashboard</span><span style="margin-left:4px;">→</span></div></a>
+</div>
+</section>
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 137 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span><a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;"><span>📘 Facebook</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>

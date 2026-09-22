@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<!-- Zero-Flicker Instant Hardware Executable Theme Lock -->
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Tax Calculators — 18 Free Tax Tools | CalcWorker</title>
+<meta content="Estimate taxes with 18 free tax calculators — the Paycheck Net Take-Home (2026), W-4 Withholding, and Freelance 1099 Tax tools help employees, freelancers, and investors plan with confidence." name="description"/>
+<meta content="tax calculator, free tax estimator, paycheck calculator, W-4 withholding calculator, freelance tax calculator, capital gains tax calculator" name="keywords"/>
+<meta content="index, follow" name="robots"/>
+<link href="https://calcworker.com/tax-calculators" rel="canonical"/>
+<meta content="Tax Calculators — 18 Free Tax Tools | CalcWorker" property="og:title"/>
+<meta content="Estimate taxes with 18 free tax calculators — the Paycheck Net Take-Home (2026), W-4 Withholding, and Freelance 1099 Tax tools help employees, freelancers, and investors plan with confidence." property="og:description"/>
+<meta content="https://calcworker.com/tax-calculators" property="og:url"/>
+<meta content="website" property="og:type"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Tax Calculators — 18 Free Tax Tools | CalcWorker",
+    "url": "https://calcworker.com/tax-calculators",
+    "description": "Estimate taxes with 18 free tax calculators — the Paycheck Net Take-Home (2026), W-4 Withholding, and Freelance 1099 Tax tools help employees, freelancers, and investors plan with confidence.",
+    "inLanguage": "en",
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "CalcWorker",
+      "url": "https://calcworker.com/"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Will I owe a penalty if I skip quarterly estimated tax payments?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Possibly. If you expect to owe $1,000 or more in tax after withholding and credits, the IRS generally requires quarterly estimated payments, and underpaying can trigger penalties plus interest. The Quarterly Tax Calculator sizes each payment; the usual safe harbors are paying at least 90% of the current year’s tax or 100% of last year’s tax (110% at higher incomes)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between a tax credit and a tax deduction?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A deduction reduces the income you are taxed on; a credit reduces the tax itself, dollar for dollar. That makes credits far more powerful: a $2,000 credit cuts your bill by $2,000, while a $2,000 deduction only saves you $2,000 times your marginal rate. The Child Tax Credit & EITC calculator shows credits in action."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I adjust my W-4 withholding?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If you owed a large balance or received a huge refund last April, yes &mdash; your withholding is miscalibrated. A big refund means you gave the IRS an interest-free loan; a big bill means possible underpayment penalties. The W-4 Withholding Calculator helps you tune it so each paycheck lands closer to your true liability."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How are work bonuses taxed?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bonuses are supplemental wages: employers typically withhold a flat 22% for federal tax on bonuses under $1 million. That is just withholding, not your final tax &mdash; the bonus ultimately gets taxed at your marginal rate when you file, so you may owe more or get some back. The Bonus Tax Calculator previews the take-home."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How much should a freelancer set aside for taxes?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A common rule of thumb is 25&ndash;30% of net profit in a separate account, but the right number depends on your bracket, state, and deductions. Run the Freelance 1099 Tax Estimator for your situation, then use the Quarterly Tax Calculator to schedule payments so April never ambushes you."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can these tax calculators replace a CPA?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. They are excellent for estimates, scenario planning, and catching withholding problems early, but they are not professional tax advice. For audits, business structure changes, equity compensation, or anything involving large sums, work with a licensed CPA or tax attorney."
+        }
+      }
+    ]
+  }
+]
+</script>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<!-- Google AdSense — Auto Ads -->
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384"></script>
+<!-- Google tag (gtag.js) - Google Analytics -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026-v26" rel="stylesheet"/>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav">
+    <div>
+      <div class="nav-group-title">Overview</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/"><span class="nav-link-icon">⚡</span><span class="nav-link-text">Dashboard</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Calculator Categories</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/finance-calculators"><span class="nav-link-icon">💰</span><span class="nav-link-text">Finance Calculators</span></a></li>
+        <li><a class="nav-link active" href="/tax-calculators"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Calculators</span></a></li>
+        <li><a class="nav-link" href="/real-estate-calculators"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Real Estate Calculators</span></a></li>
+        <li><a class="nav-link" href="/creator-calculators"><span class="nav-link-icon">🎥</span><span class="nav-link-text">Creator Calculators</span></a></li>
+        <li><a class="nav-link" href="/business-calculators"><span class="nav-link-icon">💼</span><span class="nav-link-text">Business Calculators</span></a></li>
+        <li><a class="nav-link" href="/health-calculators"><span class="nav-link-icon">🏥</span><span class="nav-link-text">Health Calculators</span></a></li>
+        <li><a class="nav-link" href="/ai-calculators"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Calculators</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Flagship Suite</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/tools/omnicalc.html"><span class="nav-link-icon">🧮</span><span class="nav-link-text">OmniCalc Ultra (6-in-1)</span></a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="nav-group-title">Company</div>
+      <ul class="nav-links">
+        <li><a class="nav-link" href="/about.html"><span class="nav-link-icon">ℹ️</span><span class="nav-link-text">About CalcWorker</span></a></li>
+        <li><a class="nav-link" href="/contact.html"><span class="nav-link-icon">✉️</span><span class="nav-link-text">Contact</span></a></li>
+      </ul>
+    </div>
+  </div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+      <!-- PWA Top Offline Notification Strip -->
+      <div id="cw-offline-strip" class="cw-offline-strip">
+        <div class="cw-offline-strip-inner">
+          <div class="cw-offline-left">
+            <span class="cw-offline-badge" id="cwOfflineBadge">
+              <span class="cw-offline-dot"></span>
+              <span id="cwOfflineBadgeText">⚡ 100% Offline App</span>
+            </span>
+            <span class="cw-offline-headline" id="cwOfflineHeadline">
+              ⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.
+            </span>
+          </div>
+          <div class="cw-offline-right">
+            <button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+              <span>Install App</span>
+            </button>
+          </div>
+        </div>
+      </div>
+<header class="topbar">
+<div class="topbar-left">
+<button class="hamburger-btn" id="hamburgerBtn">☰</button>
+<span class="topbar-title">🏛️ Tax Calculators</span>
+</div>
+<div class="topbar-right">
+<button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+<circle cx="12" cy="12" r="5"></circle>
+<line x1="12" x2="12" y1="1" y2="3"></line>
+<line x1="12" x2="12" y1="21" y2="23"></line>
+<line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+<line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+<line x1="1" x2="3" y1="1" y2="12"></line>
+<line x1="21" x2="23" y1="12" y2="12"></line>
+<line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+<line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+</svg>
+<span class="btn-label">Light</span>
+</button>
+</div>
+</header>
+<main class="page-container">
+<div class="tool-header-block">
+<h1 class="tool-header-title"><span>🏛️</span> Tax Calculators</h1>
+<p class="tool-header-desc">All 19 free tax calculators in one place — Estimate taxes with 18 free tax calculators — the Paycheck Net Take-Home (2026), W-4 Withholding, and Freelance 1099 Tax tools help employees, freelancers, and investors plan with confidence.. Every tool runs 100% client-side in your browser: no sign-up, no uploads, instant answers.</p>
+<p style="font-size:0.78rem;color:var(--text-muted);margin-top:8px;">Last updated: September 2026 · 19 free tools</p>
+</div>
+<section class="tool-guide-section" style="margin-top:32px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:12px;">The Complete Guide to Tax Calculators</h2>
+<p>Taxes touch every paycheck, every freelance invoice, and every investment sale &mdash; yet most people only think about them in April. This hub collects <strong>19 free tax calculators</strong> for W-2 employees, freelancers and gig workers, investors, landlords, and small business owners. Estimate what you owe, tune your withholding, plan quarterly payments, and compare tax strategies &mdash; all instantly, and all without your numbers ever leaving your browser.</p>
+<h3>For employees: keep more of every paycheck</h3>
+<p>The <strong>Paycheck Net Take-Home (2026)</strong> calculator breaks down exactly where each dollar of your salary goes: federal tax, state tax, Social Security, Medicare, and pre-tax deductions. If last April brought an unpleasant surprise &mdash; or a giant refund that was really an interest-free loan to the IRS &mdash; the <strong>W-4 Withholding Calculator</strong> helps you dial your allowances so your withholding lands close to your actual liability. The <strong>Tax Refund Estimator</strong> previews filing season before you file, the <strong>Bonus Tax Calculator</strong> shows how much of a bonus survives supplemental-wage withholding, and the <strong>RSU Tax Calculator</strong> estimates what vesting stock will cost you in taxes.</p>
+<h3>For the self-employed: stay ahead of quarterly deadlines</h3>
+<p>Freelancers do not get withholding &mdash; the IRS still wants its money four times a year. The <strong>Freelance 1099 Tax Estimator</strong> projects your total bill, the <strong>Self-Employment Tax Calculator</strong> isolates the Social Security and Medicare portion (both halves, since you are employer and employee), and the <strong>Quarterly Tax Calculator</strong> sizes each estimated payment so you avoid underpayment penalties. Choosing a business structure? The <strong>LLC Tax Calculator</strong> estimates pass-through liability while the <strong>S-Corp Tax Savings Calculator</strong> models the classic salary-vs-distribution split that can reduce self-employment tax once profits are high enough.</p>
+<h3>For investors, families, and movers</h3>
+<p>The <strong>Capital Gains Tax (2026)</strong> calculator separates short-term from long-term treatment before you sell, and the <strong>Roth Conversion Tax</strong> tool weighs the upfront tax cost of a conversion against decades of tax-free growth. Families can check the <strong>Child Tax Credit &amp; EITC</strong> estimator, high-net-worth households can model the <strong>Estate &amp; Lifetime Gift Tax</strong>, homeowners get the <strong>Property Tax &amp; Mill Rate</strong> calculator, shoppers get <strong>US State Sales Tax</strong>, and anyone considering a move can compare all 50 states with the <strong>State Tax Relocation</strong> calculator.</p>
+<h3>How to pick the right tool</h3>
+<p>Employees: start with Paycheck Net Take-Home, then W-4 Withholding, then the Tax Refund Estimator. Freelancers and gig workers: 1099 Estimator, Self-Employment Tax, and Quarterly Tax &mdash; in that order. Investors: Capital Gains and Roth Conversion. Movers: State Tax Relocation before you sign a lease. And one honest note: these are <strong>estimates for planning, not professional tax advice</strong>. Tax law is intricate and changes yearly &mdash; verify anything consequential with a CPA or the IRS before you file or make irrevocable moves.</p>
+</section>
+<section style="margin-top:40px;">
+<h2 style="font-size:1.4rem;font-weight:800;color:var(--text-main);margin-bottom:6px;display:flex;align-items:center;gap:8px;"><span>🏛️</span> All 19 Tax Calculators</h2>
+<p style="font-size:0.88rem;color:var(--text-muted);margin-bottom:18px;line-height:1.6;">Every tool below is free, unlimited, and runs entirely in your browser — pick the one that matches your question.</p>
+<div class="hub-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;">
+<a class="tool-card" href="/tools/bonus-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🎁</div><div><h3 class="tool-card-title">Bonus Tax Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">See how much of your work bonus survives federal withholding and where it lands.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/capital-gains-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🏛️</div><div><h3 class="tool-card-title">Capital Gains Tax Calculator 2026</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Calculate US federal and state capital gains tax for short-term and long-term asset sales, including the 3.8% Net Investment Income Tax (NIIT).</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/child-tax-credit-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">👶</div><div><h3 class="tool-card-title">Child Tax Credit (CTC) &amp; EITC Calculator 2026</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Calculate your 2026 federal Child Tax Credit (CTC), refundable Additional Child Tax Credit (ACTC), and Earned Income Tax Credit (EITC).</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/estate-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">📜</div><div><h3 class="tool-card-title">Federal Estate &amp; Lifetime Gift Tax Calculator 2026</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Determine federal estate tax liabilities, unified lifetime gift exemptions, and portability benefits for high-net-worth families.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/freelance-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">💼</div><div><h3 class="tool-card-title">1099 Freelance Tax</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Calculate Schedule C self-employment tax (15.3%), write-off savings, and quarterly estimated IRS tax obligations.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/llc-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">💼</div><div><h3 class="tool-card-title">LLC Tax Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Estimate federal and self-employment taxes on LLC income for single and multi-member setups.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/property-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🏛️</div><div><h3 class="tool-card-title">US Property Tax &amp; Mill Rate Assessment Calculator 2026</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Calculate annual and monthly US property taxes using assessed home value, county mill rates, and local homestead exemption deductions.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/quarterly-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">📅</div><div><h3 class="tool-card-title">Quarterly Tax Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Work out your estimated quarterly tax payments to avoid underpayment penalties.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/roth-conversion-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🔄</div><div><h3 class="tool-card-title">Roth Conversion Tax &amp; Break-Even Calculator 2026</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Calculate the upfront income tax cost of converting Traditional IRA funds to a Roth IRA versus decades of tax-free compound growth and future RMD elimination.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/roth-ira-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">📈</div><div><h3 class="tool-card-title">Roth IRA Tax-Free Growth</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Model tax-free compounding under IRS annual contribution limits ($7,000/yr) and tax savings in retirement.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/rsu-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">📈</div><div><h3 class="tool-card-title">RSU Tax Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Estimate taxes on restricted stock units at vest, including withholding and capital gains.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/s-corp-tax-savings-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">📉</div><div><h3 class="tool-card-title">S-Corp Tax Savings Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Compare S-corp salary-vs-distribution splits to find the self-employment tax sweet spot.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/sales-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🏛️</div><div><h3 class="tool-card-title">US State Sales Tax</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Compute sales tax and total checkout price for purchases using state and average local combined tax rates.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/self-employment-tax-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🧾</div><div><h3 class="tool-card-title">Self-Employment Tax Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Estimate Social Security and Medicare taxes owed on freelance and gig income.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/state-tax-relocation-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🚚</div><div><h3 class="tool-card-title">State Tax Relocation Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Compare state income tax differences across all 50 US States + DC and calculate take-home pay boost before moving.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/tax-refund-estimator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">💸</div><div><h3 class="tool-card-title">Tax Refund Estimator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Get a quick read on whether you are owed a refund or will owe when you file.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/tax-withholding.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🏛️</div><div><h3 class="tool-card-title">Tax Withholding Estimator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Avoid large tax refund loans to the IRS and prevent penalties by dialing in your exact paycheck withholding.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+<a class="tool-card" href="/tools/w-4-withholding-calculator.html"><div><div class="card-icon-title-row"><div class="tool-card-icon" style="color: #f59e0b; background: #f59e0b26;">🏛️</div><div><h3 class="tool-card-title">W-4 Withholding Calculator</h3><span class="tool-category-badge">Tax</span></div></div><p class="tool-card-desc">Check whether your paycheck withholding will cover your tax bill or leave you owing in April.</p></div><div class="tool-card-footer"><span>Open Calculator</span><span>→</span></div></a>
+</div>
+</section>
+<section class="tool-guide-section" style="margin-top:48px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:4px;">Tax Calculator FAQs</h2>
+<p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:8px;">Straight answers to the questions people ask most about tax calculators.</p>
+<div class="faq-item" style="margin-top:12px;">
+<details><summary>Will I owe a penalty if I skip quarterly estimated tax payments?</summary><p>Possibly. If you expect to owe $1,000 or more in tax after withholding and credits, the IRS generally requires quarterly estimated payments, and underpaying can trigger penalties plus interest. The Quarterly Tax Calculator sizes each payment; the usual safe harbors are paying at least 90% of the current year’s tax or 100% of last year’s tax (110% at higher incomes).</p></details>
+<details><summary>What is the difference between a tax credit and a tax deduction?</summary><p>A deduction reduces the income you are taxed on; a credit reduces the tax itself, dollar for dollar. That makes credits far more powerful: a $2,000 credit cuts your bill by $2,000, while a $2,000 deduction only saves you $2,000 times your marginal rate. The Child Tax Credit & EITC calculator shows credits in action.</p></details>
+<details><summary>Should I adjust my W-4 withholding?</summary><p>If you owed a large balance or received a huge refund last April, yes &mdash; your withholding is miscalibrated. A big refund means you gave the IRS an interest-free loan; a big bill means possible underpayment penalties. The W-4 Withholding Calculator helps you tune it so each paycheck lands closer to your true liability.</p></details>
+<details><summary>How are work bonuses taxed?</summary><p>Bonuses are supplemental wages: employers typically withhold a flat 22% for federal tax on bonuses under $1 million. That is just withholding, not your final tax &mdash; the bonus ultimately gets taxed at your marginal rate when you file, so you may owe more or get some back. The Bonus Tax Calculator previews the take-home.</p></details>
+<details><summary>How much should a freelancer set aside for taxes?</summary><p>A common rule of thumb is 25&ndash;30% of net profit in a separate account, but the right number depends on your bracket, state, and deductions. Run the Freelance 1099 Tax Estimator for your situation, then use the Quarterly Tax Calculator to schedule payments so April never ambushes you.</p></details>
+<details><summary>Can these tax calculators replace a CPA?</summary><p>No. They are excellent for estimates, scenario planning, and catching withholding problems early, but they are not professional tax advice. For audits, business structure changes, equity compensation, or anything involving large sums, work with a licensed CPA or tax attorney.</p></details>
+</div>
+</section>
+<section class="related-tools-section" style="margin-top:40px;margin-bottom:30px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;flex-wrap:wrap;gap:8px;">
+<h3 style="font-size:1.15rem;font-weight:800;color:var(--text-main);display:flex;align-items:center;gap:8px;margin:0;"><span>🧭</span> Browse Other Calculator Categories</h3>
+<span style="font-size:0.72rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;">140 Free Tools Total</span>
+</div>
+<div class="related-tools-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;">
+<a class="related-tool-link" href="/finance-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">💰</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">57 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Finance Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Browse 57 free finance calculators for investing, loans, retirement, and everyday money math — including the C…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/real-estate-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏠</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">18 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Real Estate Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Explore 18 free real estate calculators for buyers, owners, and investors — from the full-PITI Mortgage Calcul…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/creator-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🎥</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">18 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Creator Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Project earnings with 18 free creator calculators — YouTube Money &amp; CPM, TikTok RPM, and the Sponsorship Prici…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/business-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">💼</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">15 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Business Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Run the numbers with 15 free business calculators — Break-Even Point, LLC vs S-Corp Tax Savings, Amazon FBA Fe…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/health-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏥</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">9 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">Health Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Hit your targets with 9 free health calculators — BMI &amp; Body Composition, Calorie &amp; TDEE Deficit, and the HDHP…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/ai-calculators" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🤖</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">4 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">AI Calculators</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Budget LLM usage with 4 free AI cost calculators — the AI Token Calculator plus OpenAI API Cost and Claude API…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Browse Category</span><span style="margin-left:4px;">→</span></div></a>
+<a class="related-tool-link" href="/" style="display:flex;flex-direction:column;justify-content:space-between;background:var(--bg-surface);border:1px solid var(--border);border-radius:12px;padding:16px 18px;text-decoration:none;"><div><div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;"><span style="font-size:1.35rem;">🏠</span><span style="font-size:0.65rem;font-weight:800;background:rgba(37,99,235,0.12);color:#60a5fa;border:1px solid rgba(37,99,235,0.25);padding:2px 7px;border-radius:9999px;">140 TOOLS</span></div><div style="font-size:0.95rem;font-weight:700;color:var(--text-main);margin-bottom:4px;">CalcWorker Home</div><p style="font-size:0.8rem;color:var(--text-muted);line-height:1.45;margin:0 0 12px 0;">Back to the full dashboard with all 140 free calculators in one place…</p></div><div style="display:flex;align-items:center;font-size:0.8rem;font-weight:600;color:var(--brand-primary);"><span>Go to Dashboard</span><span style="margin-left:4px;">→</span></div></a>
+</div>
+</section>
+<footer style="background: var(--bg-surface, #0f172a); border-top: 1px solid var(--border, #1e293b); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main, #f8fafc); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    
+    <!-- 6-Column Responsive Grid -->
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      
+      <!-- Col 1: Brand & Zaviyan LLC Info -->
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted, #94a3b8); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial &amp; business computational workstation. 137 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <!-- Col 2: Real Estate & Lending -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate &amp; Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Mortgage &amp; PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/closing-costs-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Closing Costs Estimator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/nnn-lease-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Triple Net (NNN) Lease</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Taxes & Payroll -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes &amp; Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Child Tax Credit &amp; EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Sales Commission &amp; Quota</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Wealth & Investments -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth &amp; Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">401(k) &amp; IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 5: Creators & E-Commerce -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators &amp; Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">AI Prompt &amp; Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Shopify Fee &amp; Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">YouTube Money &amp; RPM</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 6: Company & Legal -->
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company &amp; Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted, #94a3b8); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Legal & AdSense Disclaimer Banner -->
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border, #1e293b); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted, #94a3b8);">
+      <strong style="color: #cbd5e1;">Regulatory &amp; Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <!-- Bottom Bar -->
+    <div style="border-top: 1px solid var(--border, #1e293b); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted, #94a3b8);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span><a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener" style="color: inherit; text-decoration: none;"><span>📘 Facebook</span></a>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.3"></script>
+<script defer="" src="/js/ai-widget.js?v=2026.3"></script>
+</body>
+</html>
