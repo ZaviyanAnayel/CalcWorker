@@ -542,7 +542,7 @@ function calculateAll() {
             const salary = parseFloat(document.getElementById('reasonableSalary').value) || 0;
             const overhead = parseFloat(document.getElementById('scorpOverheadAnnual').value) || 0;
 
-            // Default LLC: 15.3% SE tax on 92.35% of profit up to Social Security cap (~$168,600) + 2.9% Medicare
+            // Default LLC: 15.3% SE tax on 92.35% of profit up to Social Security cap (~$184,500) + 2.9% Medicare
             const seTaxBase = profit * 0.9235;
             const defaultLlcSeTax = seTaxBase * 0.153;
 

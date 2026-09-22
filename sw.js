@@ -4,7 +4,7 @@ const PRECACHE_URLS = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/css/style.css',
+  '/css/calcworker.css',
   '/js/calcworker-common.js',
   '/js/ai-widget.js',
   '/assets/favicon.png',
