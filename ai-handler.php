@@ -67,15 +67,15 @@ function getSmartFallback(string $q): string {
     }
 
     if (str_contains($lower, 'online') || str_contains($lower, 'offline') || str_contains($lower, 'connected') || str_contains($lower, 'internet')) {
-        return "Yes, you are 100% online and connected! CalcWorker runs live in real time and also features full offline caching so you never lose access. All 61+ calculators and mathematical tools are active. What calculation can I help you with?";
+        return "Yes, you are 100% online and connected! CalcWorker runs live in real time and also features full offline caching so you never lose access. All 102 calculators and mathematical tools are active. What calculation can I help you with?";
     }
 
     if ($lower === 'hi' || $lower === 'hello' || $lower === 'hey' || str_contains($lower, 'salam') || str_contains($lower, 'kaise') || str_contains($lower, 'haal')) {
-        return "Hello! I am CalcWorker AI, built by Zaviyan (Zaviyan LLC). I can help you solve complex math, calculate 1099 taxes, 50-state relocation taxes, mortgage refinance break-even, TikTok creator earnings, CD ladders, and more across all 61+ tools. What are you calculating today?";
+        return "Hello! I am CalcWorker AI, built by Zaviyan (Zaviyan LLC). I can help you solve complex math, calculate 1099 taxes, 50-state relocation taxes, mortgage refinance break-even, TikTok creator earnings, CD ladders, and more across all 102 tools. What are you calculating today?";
     }
 
     if (str_contains($lower, 'who are you') || str_contains($lower, 'what can you do') || str_contains($lower, 'calcworker') || str_contains($lower, 'help')) {
-        return "I am CalcWorker AI, trained on over 61+ calculators covering Real Estate, US Taxation, Personal Finance, E-Commerce, Creator Economics, and Fitness. I provide exact mathematical formulas, variable breakdowns, step-by-step methods, and links to our instant calculation tools.";
+        return "I am CalcWorker AI, trained on over 102 calculators covering Real Estate, US Taxation, Personal Finance, E-Commerce, Creator Economics, and Fitness. I provide exact mathematical formulas, variable breakdowns, step-by-step methods, and links to our instant calculation tools.";
     }
 
     if (str_contains($lower, 'amazon') || str_contains($lower, 'fba')) {
@@ -83,11 +83,11 @@ function getSmartFallback(string $q): string {
     }
 
     if (str_contains($lower, 'tiktok') || str_contains($lower, 'coin') || str_contains($lower, 'diamond')) {
-        return "On TikTok: 100 coins cost ~$1.05 USD on desktop web (recharging on web avoids Apple/Google 30% fees). When gifts are sent to creators, 2 diamonds = 1 coin value, and TikTok takes a 50% revenue cut, making 1 diamond worth ~$0.005 USD upon cashout. Try our <a href='/tools/tiktok-coin-calculator.html'>TikTok Coin Calculator</a>!";
+        return "On TikTok: 100 coins cost ~$1.05 USD on desktop web (recharging on web avoids Apple/Google 30% fees). When gifts are sent to creators, 2 diamonds = 1 coin value, and TikTok takes a 50% revenue cut, making 1 diamond worth ~$0.005 USD upon cashout. Try our <a href='/tools/tiktok-coins-calculator.html'>TikTok Coin Calculator</a>!";
     }
 
     if (str_contains($lower, 'tax') || str_contains($lower, '1099') || str_contains($lower, 'irs')) {
-        return "US 1099 self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) applied to 92.35% of your net Schedule C business profit after legitimate deductions. Check out our <a href='/tools/1099-tax-calculator.html'>1099 Tax Calculator</a> and <a href='/tools/federal-tax-bracket-calculator.html'>Federal Tax Bracket Calculator</a>!";
+        return "US 1099 self-employment tax is 15.3% (12.4% Social Security + 2.9% Medicare) applied to 92.35% of your net Schedule C business profit after legitimate deductions. Check out our <a href='/tools/freelance-tax-calculator.html'>1099 Tax Calculator</a> and <a href='/tools/federal-tax-bracket-calculator.html'>Federal Tax Bracket Calculator</a>!";
     }
 
     if (str_contains($lower, 'mortgage') || str_contains($lower, 'loan') || str_contains($lower, 'piti') || str_contains($lower, 'interest')) {
@@ -122,7 +122,7 @@ function getSmartFallback(string $q): string {
         return "To calculate flooring materials: Area = Length × Width + Closets. Always add a 10% waste factor for cuts (15% for diagonal), then divide by box coverage and round up. Check your project costs with our <a href='/tools/flooring-calculator.html'>Flooring & Tile Cost Calculator</a>!";
     }
 
-    return "I can help you solve that calculation! CalcWorker features 60+ precision calculators across Real Estate, Taxes, Investments, Creator Economy, and Health. Tell me the numbers or variables you're working with, or select a calculator from the left sidebar!";
+    return "I can help you solve that calculation! CalcWorker features 102 precision calculators across Real Estate, Taxes, Investments, Creator Economy, and Health. Tell me the numbers or variables you're working with, or select a calculator from the left sidebar!";
 }
 
 // 3. If no external API key, return smart internal response

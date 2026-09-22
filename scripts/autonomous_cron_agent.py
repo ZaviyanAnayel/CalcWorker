@@ -202,4 +202,10 @@ Do not include any text outside the JSON block. Do not wrap in markdown code blo
     return article_url
 
 if __name__ == "__main__":
+    if not GROQ_API_KEY:
+        print("[ERROR] GROQ_API_KEY environment variable is not set. "
+              "Set it as a GitHub Actions secret named GROQ_API_KEY for the "
+              "scheduled workflow, or export GROQ_API_KEY locally before running.",
+              file=sys.stderr)
+        sys.exit(1)
     generate_and_publish_next_article()

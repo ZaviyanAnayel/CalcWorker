@@ -1264,7 +1264,7 @@
         <div class="cw-ai-messages" id="cwAiMessages">
           <div class="cw-msg bot">
             👋 <strong>Hello! I am CalcWorker AI.</strong><br><br>
-            Owned and built by <strong>Zaviyan</strong> (${CW_INFO.company}). I am fully trained on all 55+ calculators, formulas, step-by-step usages, and business details.<br><br>
+            Owned and built by <strong>Zaviyan</strong> (${CW_INFO.company}). I am fully trained on all 102 calculators, formulas, step-by-step usages, and business details.<br><br>
             Ask me how to use any tool, for formulas, owner info, or contact email!
           </div>
         </div>
@@ -1357,7 +1357,7 @@
         const controller = new AbortController();
         const timeoutId = setTimeout(() => controller.abort(), 4000);
 
-        const response = await fetch("/ai-handler.php", {
+        const response = await fetch("/api/ai", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           signal: controller.signal,
