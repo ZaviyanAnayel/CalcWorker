@@ -600,7 +600,7 @@ button, input, select, textarea {
 .hero-search-input, .search-tools-input {
   width: 100%;
   height: 50px;
-  padding: 0 56px 0 46px;
+  padding: 0 92px 0 46px;
   font-size: 0.94rem;
   font-weight: 500;
   border-radius: var(--radius-md);
