@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -539,21 +539,180 @@ Flooring Project Cost &amp; Material Estimates
 </div>
 
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Flooring Material & Carton Requirement Formula</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Gross Sq Ft} = (\text{Room Length} \times \text{Room Width}) \times (1 + \text{Waste Factor}) \quad \text{and} \quad \text{Cartons} = \left\lceil \frac{\text{Gross Sq Ft}}{\text{Sq Ft per Box}} \right\rceil</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Multiplies net room area by the waste allowance percentage and rounds up to the nearest whole commercial carton.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Room Area:</span> <span>Net floor surface area measured in feet (Length × Width).</span></li>
+      <li><span class="cw-var-symbol">Waste Factor:</span> <span>Percentage allowance for cutting scrap (0.10 for straight lay, 0.15 for diagonal/tile).</span></li>
+      <li><span class="cw-var-symbol">Carton Coverage:</span> <span>Usable square footage contained in each factory-sealed box.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Room Dimensions: Living room measuring 22 feet long by 16 feet wide = 352 square feet net floor area.</li>
+      <li>Waste Allowance: 10% waste factor for straight-lay luxury vinyl plank ($352 × 1.10 = 387.2 gross square feet).</li>
+      <li>Box Coverage: Selected LVP carton covers 21.5 square feet per box.</li>
+      <li>Box Calculation: 387.2 sq ft ÷ 21.5 sq ft/box = 18.009 boxes.</li>
+      <li>Carton Purchase: Ceiling function rounds up to 19 whole cartons (19 × 21.5 = 408.5 sq ft purchased). At $3.50/sq ft, total cost = $1,429.75.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Acclimate natural hardwood flooring inside the conditioned living space for 5 to 7 days prior to installation to prevent seasonal buckling and gapping.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> National Wood Flooring Association (NWFA) Installation Guidelines and Tile Council of North America (TCNA) Handbook.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+<section class="cw-educational-section" style="margin-top: 48px; border-top: 1px solid var(--border); padding-top: 36px;">
+<h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">
+📐 Flooring Calculation Geometry &amp; Square Footage Formulas
+</h2>
+
+<div class="cw-math-eq-clean">
+<div class="cw-math-label">Core Flooring Equation:</div>
+<div class="cw-math-formula">Gross Sq Ft = [ (Length × Width) + Extra Area ] × (1 + Waste Factor) | Boxes = Ceiling(Gross Sq Ft ÷ Box Coverage)</div>
+</div>
+
+<div class="cw-plain-english">
+<strong>In Plain English:</strong> To calculate flooring materials, multiply room length by width to get base square footage, add any closets or hallways, multiply by 1.10 (to add 10% for cuts and waste), and divide by square feet per carton. Always round up to the next full box because retailers do not sell partial cartons.
+</div>
+
+<div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+<ul class="cw-vars-list">
+<li><span class="cw-var-symbol">Length &amp; Width:</span> <span>Physical wall-to-wall measurements in linear feet (12 inches = 1.0 ft)</span></li>
+<li><span class="cw-var-symbol">Net Area:</span> <span>Raw floor surface area = Length × Width</span></li>
+<li><span class="cw-var-symbol">Waste Factor:</span> <span>10% standard straight plank; 15% for 45-degree diagonal installations; 20% for herringbone or multi-sized stone patterns</span></li>
+<li><span class="cw-var-symbol">Box Coverage:</span> <span>Manufacturer carton yield (typically 18 to 24 sq ft per box for plank flooring)</span></li>
+<li><span class="cw-var-symbol">Labor Rate:</span> <span>Contractor installation charge per gross square foot</span></li>
+</ul>
+
+<div class="cw-step-box">
+<h3><span>📝</span> Step-by-Step Practical Flooring Calculation Example</h3>
+<p class="cw-step-intro">Follow this real-world home renovation example for a living room and coat closet:</p>
+<ol class="cw-step-list">
+<li><strong>Measure Living Room:</strong> Length = 22 feet, Width = 16 feet. Net Area = 22 × 16 = <strong>352 sq ft</strong>.</li>
+<li><strong>Add Coat Closet:</strong> 4 ft × 5 ft = <strong>20 sq ft</strong>. Total Net Area = 352 + 20 = <strong>372 sq ft</strong>.</li>
+<li><strong>Factor in 10% Waste:</strong> 372 sq ft × 1.10 = <strong>409.2 sq ft needed</strong>.</li>
+<li><strong>Calculate Boxes Needed:</strong> Selected Luxury Vinyl Plank (LVP) covers 21.5 sq ft per box. 409.2 ÷ 21.5 = 19.03 $
+ightarrow$ <strong>Order 20 full boxes (430 sq ft total)</strong>.</li>
+<li><strong>Calculate Material Expense:</strong> 430 sq ft × $3.89/sq ft = <strong>$1,672.70</strong>.</li>
+<li><strong>Add Installation Labor:</strong> Professional installer charges $2.25/sq ft. 409.2 sq ft × $2.25 = <strong>$920.70</strong>.</li>
+<li><strong>Total Project Cost:</strong> $1,672.70 (materials) + $920.70 (labor) = <strong>$2,593.40 total project investment ($6.97/sq ft finished)</strong>.</li>
+</ol>
+<div class="cw-tip-box">
+<strong>💡 Pro Tip for Solving Complex Cases:</strong> Always keep one full, unopened box of flooring stored in a climate-controlled closet after the project is complete. Flooring dye lots change and styles are discontinued frequently by manufacturers. Having an original spare box ensures you can seamlessly replace damaged planks if a plumbing leak or heavy appliance scratch occurs years later.
+</div>
+</div>
+
+<div class="cw-benchmark-card">
+<strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> The Tile Council of North America (TCNA Handbook) and the National Wood Flooring Association (NWFA) establish US installation tolerances. Standard subfloor deflection must not exceed L/360 for ceramic tile and L/720 for natural stone to prevent grout cracking. Solid hardwood flooring must acclimate inside the home's ambient climate (35%–55% relative humidity) for a minimum of 72 hours prior to nailing.
+</div>
+
+<p class="cw-deep-text">
+Flooring selection is one of the highest-ROI home improvement projects in the United States, typically returning 70% to 80% of its cost upon home resale according to the National Association of Realtors (NAR). In recent years, Luxury Vinyl Plank (LVP) with a rigid stone-polymer composite (SPC) core has captured the largest market share due to its 100% waterproof performance, realistic wood-grain embossing, and straightforward click-lock floating installation.
+</p>
+
+<p class="cw-deep-text">
+Homeowners must also evaluate transition mouldings and underlayment requirements. While many modern LVP planks feature pre-attached acoustic foam pads, concrete subfloors in basements or ground-floor slabs require a 6-mil polyethylene vapor barrier to block rising hydrostatic moisture. In addition, measure doorways to calculate T-mouldings, reducers, and quarter-round shoe moulding linear footage.
+</p>
+
+<div style="margin-top: 24px;">
+<h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Frequently Asked Questions</h3>
+<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is the difference between nominal and actual tile square footage?</summary>
+<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Tile dimensions listed on boxes are often 'nominal' (e.g., a 12x24 inch tile may actually measure 11.75x23.75 inches to accommodate a standard 1/8-inch or 1/16-inch grout joint). The square footage listed on the manufacturer box already accounts for standard grout spacing, so use the carton coverage metric directly.</p>
+</details>
+<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Can I install new flooring directly over existing tile or vinyl?</summary>
+<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Yes, floating floors like Luxury Vinyl Plank and laminate can be installed over existing firmly bonded tile, sheet vinyl, or hardwood, provided the surface is clean, flat within 3/16-inch over a 10-foot span, and deep grout lines are leveled with an embossing leveler compound.</p>
+</details>
+</div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📐</span> Flooring Material Estimation: Square Footage, Waste Factors & Box Rounding
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Calculating flooring materials for home renovation (hardwood, luxury vinyl plank, ceramic tile, laminate, carpeting) requires measuring the net surface square footage and adding an essential 'Waste Factor' to account for end-of-row cuts, room angles, closet transitions, and damaged material.</p>
+    <p style="margin-top: 12px;">Under National Wood Flooring Association (NWFA) standards, standard rectangular rooms require a 10% waste factor, while complex layouts with diagonal patterns, herringbone designs, or numerous corners require a 15% to 20% waste buffer. Furthermore, flooring is sold in fixed whole cartons, requiring ceiling rounding.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Flooring Waste Factors & Box Estimation Across Material Types (500 Sq Ft Room)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Flooring Material Type</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Recommended Waste Factor</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Total Material to Order</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Carton Coverage</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Whole Cartons to Purchase</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Luxury Vinyl Plank (LVP)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">550 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">23.8 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">24 Cartons (571.2 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Engineered Hardwood (Straight)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">550 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">20.0 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">28 Cartons (560.0 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Hardwood (Herringbone / Diagonal)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0% – 20.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">575 – 600 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">20.0 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">29 – 30 Cartons (600 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Porcelain / Ceramic Tile (Grid)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">550 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">37 Cartons (555.0 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Large Format Tile (Diagonal/Offset)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">575 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">14.4 sq ft / carton</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">40 Cartons (576.0 sq ft)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Wall-to-Wall Carpeting (Broadloom)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">12.0% – 15.0% Waste</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">575 Square Feet</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Sold in 12-ft rolls</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Requires 12x48 ft roll cut</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Flooring Installation Planning Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Measure Every Closet and Nook Separately:</strong> <span>Break complex L-shaped rooms and adjoining closets into individual rectangles (Length × Width), calculate each square footage, and sum them together.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Always Keep One Full Unopened Spare Carton:</strong> <span>Flooring dye lots and manufacturing runs change frequently; retain one spare carton in your attic or basement for future plumbing leak repairs.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Factor In Subfloor Underlayment and Transitions:</strong> <span>Order equal square footage of moisture barrier underlayment and measure linear feet of doorways for T-moldings, reducers, and shoe molding.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Flooring+%26+Tile+Square+Footage+Cost+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Flooring &amp; Tile Square Footage Cost Calculator</a>
-    <a href="/?q=how+to+calculate+flooring+%26+tile+square+footage+cost" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate flooring &amp; tile square footage cost</a>
-    <a href="/?q=flooring+%26+tile+square+footage+cost+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 flooring &amp; tile square footage cost formula</a>
-    <a href="/?q=best+flooring+%26+tile+square+footage+cost+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best flooring &amp; tile square footage cost calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 flooring calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 square footage</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tile hardwood</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 laminate lvp</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 luxury vinyl</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 plank waste</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 factor boxes</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

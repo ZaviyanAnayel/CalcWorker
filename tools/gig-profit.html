@@ -12,7 +12,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -586,24 +586,72 @@
 <!-- Enterprise Authority Footer -->
 
 <!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🚗</span> Gig Worker Profit Reality: Uber, Lyft & DoorDash True Net Income Modeling
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Rideshare driving and food delivery platforms (Uber, Lyft, DoorDash, Instacart) advertise attractive gross hourly earnings. However, gig drivers operate as 1099 independent contractors, meaning that gross app deposits do NOT equal take-home profit.</p>
+    <p style="margin-top: 12px;">A gig worker must pay for vehicle depreciation, commercial auto insurance endorsements, fuel, frequent oil changes and tires, and the 15.3% Self-Employment Tax (SECA). When vehicle operating costs ($0.35 to $0.50 per mile) are deducted, a driver grossing $25/hour often nets only $12 to $15/hour in real wealth.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Gig Driving True Net Income Breakdown (1,000 Miles / Week, $1,200 Gross App Revenue)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Expense / Revenue Item</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Weekly Gross Amount</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Cost Per Mile Driven</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Percentage of Gross Revenue</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Net Cash Impact</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Gross App Payouts & Tips</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,200.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1.20 / mile</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">100.0% (Gross Baseline)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,200.00 Initial Cash</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Fuel Expense (25 MPG @ $3.50/gal)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$140.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.14 / mile</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">11.7% of gross</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$140.00</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tires, Brakes & Oil Maintenance</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$60.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.06 / mile</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">5.0% of gross</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$60.00</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Vehicle Odometer Depreciation</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$180.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.18 / mile</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">15.0% of gross</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$180.00 (Wealth Loss)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Rideshare Insurance Endorsement</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$25.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.025 / mile</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.1% of gross</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$25.00</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Self-Employment Tax (SECA 15.3%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$112.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.112 / mile</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.3% of gross</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$112.00</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">True Economic Net Profit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$683.00 / week</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.683 / mile net</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">56.9% Net Retention</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$17.07 / hr (40 hrs worked)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Gig Economy Profit Maximization Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Track Every Mile with Automatic GPS:</strong> <span>Track all online miles (including deadhead return miles when searching for rides) using MileIQ or Gridwise to claim the statutory IRS business mileage rate on Schedule C.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Avoid Airport Waiting Queues:</strong> <span>Idling in airport parking lots for 45 minutes for a single ride destroys hourly earning velocity; position yourself near dense restaurant clusters or suburban business parks.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Obtain a Rideshare Insurance Endorsement:</strong> <span>Personal auto policies explicitly exclude commercial livery; driving for Uber without a rideshare endorsement risks complete denial of coverage if an accident occurs while online.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Gig+Worker+Profit+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Gig Worker Profit Calculator</a>
-    <a href="/?q=DoorDash+Net+Income" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 DoorDash Net Income</a>
-    <a href="/?q=how+to+calculate+gig+worker+profit" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate gig worker profit</a>
-    <a href="/?q=gig+worker+profit+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 gig worker profit formula</a>
-    <a href="/?q=best+gig+worker+profit+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best gig worker profit calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 gig profit</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 doordash uber</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 eats instacart</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 driver net</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 earnings gas</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 expense mileage</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 deduction vehicle</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
-<p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
 
   

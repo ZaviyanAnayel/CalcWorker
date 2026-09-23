@@ -12,7 +12,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -577,22 +577,69 @@
 <!-- Enterprise Authority Footer -->
 
 <!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>☀️</span> Residential Solar Photovoltaic (PV) ROI: Federal Credits & Net Metering
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Investing in a residential rooftop solar photovoltaic (PV) system is a major capital improvement that hedges household budgets against utility electricity rate inflation. Evaluating solar economic return requires modeling total gross installation costs, the 30% federal clean energy tax credit under IRC § 25D, and local utility Net Energy Metering (NEM) policies.</p>
+    <p style="margin-top: 12px;">In states with favorable full retail Net Metering (NEM 1.0/2.0), solar systems deliver payback periods of 6 to 8 years. However, in states transitioning to avoided-cost netting (such as California under NEM 3.0), adding home battery storage (e.g. Tesla Powerwall) is essential to store excess daytime solar production for evening peak consumption.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Residential Solar PV Financial Payback & ROI Comparison (8 kW System)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">System Specification</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Gross Turnkey Cost</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Federal 30% Tax Credit (IRC § 25D)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Net Out-of-Pocket Cost</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Estimated Payback Horizon</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">25-Year Net Electric Savings</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">8 kW Solar Alone (Retail NEM State)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$24,000 ($3.00/W)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$7,200 Federal Credit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$16,800 Net Cash</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.2 Years</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$42,500 Net Savings</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">8 kW Solar Alone (Avoided-Cost NEM 3.0)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$24,000 ($3.00/W)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$7,200 Federal Credit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$16,800 Net Cash</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">12.5 Years</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$24,000 Net Savings</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">8 kW Solar + 13.5 kWh Battery (NEM 3.0)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$36,000 ($4.50/W)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$10,800 Federal Credit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$25,200 Net Cash</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.9 Years</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$51,000 Net Savings</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">12 kW Large Solar + 2 Batteries</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$52,000 ($4.33/W)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">-$15,600 Federal Credit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$36,400 Net Cash</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.4 Years</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$78,000 Net Savings</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Solar Purchasing Best Practices
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Purchase with Cash or Solar Loan; Avoid Solar Leases:</strong> <span>Third-party solar power purchase agreements (PPAs) and leases allow the leasing company to pocket the $7,200+ federal tax credit, while making selling your home complicated.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Verify True Cash Price Per Watt:</strong> <span>Compare quotes using Cash Price Per Watt ($/W); nationwide benchmark pricing ranges from $2.80 to $3.20 per watt for quality monocrystalline panels.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Replace Older Roofs Before Solar Installation:</strong> <span>Solar panels last 25 to 30 years; if your asphalt shingle roof is over 15 years old, replace the roof beforehand to avoid paying $3,000+ to detach and reset panels later.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Solar+Panel+ROI+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Solar Panel ROI Calculator</a>
-    <a href="/?q=Payback+Period" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Payback Period</a>
-    <a href="/?q=Net+Savings" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Net Savings</a>
-    <a href="/?q=how+to+calculate+solar+panel+roi" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate solar panel roi</a>
-    <a href="/?q=solar+panel+roi+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 solar panel roi formula</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 solar panel</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 roi payback</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 period investment</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax credit</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 itc electric</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 bill savings</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 net metering</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

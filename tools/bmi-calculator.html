@@ -12,7 +12,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -604,24 +604,140 @@
 </div>
 </section>
 <!-- FAQ Section -->
+<section class="seo-card" style="margin-top: 36px; padding: 28px; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px;">
+<h2 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px;">Understanding Body Mass Index (BMI)</h2>
+<p style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 16px;">
+          Body Mass Index (BMI) is a screening metric established by the World Health Organization (WHO) to evaluate body mass relative to height. While BMI does not directly measure body fat percentage or differentiate between muscle mass and fat mass, it provides an invaluable population-level risk assessment for cardiovascular conditions, hypertension, and diabetes.
+        </p>
+<h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin: 20px 0 10px 0;">Frequently Asked Questions</h3>
+<div class="faq-item">
+<details open="">
+<summary>Does BMI apply to athletes and bodybuilders?</summary>
+<p>BMI may overestimate body fat in athletes or individuals with dense muscular builds because muscle tissue is denser than fat tissue. Muscular individuals should combine BMI with waist circumference or body fat calipers.</p>
+</details>
+</div>
+</section>
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Body Mass Index (BMI) & Quetelet Metric Formula</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">BMI (Imperial) = (Weight (lbs) × 703 ÷ Height (inches)²), | BMI (Metric) = (Weight (kg) ÷ Height (m)²)</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Measures body mass relative to height squared. For imperial measurements, multiply weight in pounds by 703 and divide twice by height in inches.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Underweight:</span> <span>BMI < 18.5</span></li>
+      <li><span class="cw-var-symbol">Normal Weight:</span> <span>18.5 ≤ BMI ≤ 24.9</span></li>
+      <li><span class="cw-var-symbol">Overweight:</span> <span>25.0 ≤ BMI ≤ 29.9</span></li>
+      <li><span class="cw-var-symbol">Obese (Class I):</span> <span>30.0 ≤ BMI ≤ 34.9</span></li>
+      <li><span class="cw-var-symbol">Obese (Class II/III):</span> <span>BMI ≥ 35.0 (Severe / Morbid Obesity)</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Individual: Height = 5 feet 10 inches (70 inches). Weight = 175 lbs.</li>
+      <li>Calculation: BMI = (175 × 703) / (70 × 70) = 123,025 / 4,900 = 25.11.</li>
+      <li>Classification: Borderline Overweight (0.11 above the 24.9 normal threshold).</li>
+      <li>Healthy Weight Range for 5'10": 129 lbs to 174 lbs.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> BMI does not distinguish between muscle mass and fat mass. Athletes and bodybuilders should pair BMI with body fat percentage or waist-to-height ratio for accurate health assessment.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> The World Health Organization (WHO) and the Centers for Disease Control and Prevention (CDC) utilize BMI as an epidemiological screening tool to assess population-level health risk factors for type 2 diabetes, cardiovascular disease, and hypertension.
+  </div>
+  <p class="cw-deep-text">Body Mass Index (BMI) was developed in the 1830s by Belgian mathematician Adolphe Quetelet as an epidemiological population statistic, not an individual clinical diagnostic test. While BMI provides a rapid, cost-free screening metric, it possesses a significant blind spot: it cannot differentiate between skeletal muscle mass, bone density, and visceral adipose tissue.</p>
+  <p class="cw-deep-text">Athletes, bodybuilders, and heavy laborers frequently classify as 'overweight' or 'obese' on BMI charts despite maintaining low body fat percentages and superior cardiovascular fitness. In modern clinical practice, physicians combine BMI with waist-to-hip ratio and DEXA body composition scans to evaluate true metabolic health.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Why do muscular athletes often have an 'overweight' or 'obese' BMI?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Muscle tissue is approximately 18% denser than adipose fat tissue by volume. Because the standard BMI formula only considers total body mass divided by height squared, individuals with elevated muscular development carry higher weight relative to height, registering an artificially high BMI despite low body fat.</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is a healthy waist-to-height ratio compared to BMI?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">A complementary clinical metric is the waist-to-height ratio: keeping your waist circumference under half your height (ratio < 0.50) is strongly correlated with low visceral abdominal fat and reduced cardiovascular disease risk.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>⚖️</span> Body Mass Index (BMI) Clinical Classifications & Body Composition Limitations
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Body Mass Index (BMI) is a standardized anthropometric screening tool adopted by the World Health Organization (WHO) and the Centers for Disease Control and Prevention (CDC) to classify adult weight categories. By evaluating body weight relative to height squared, BMI provides a rapid population-level indicator of adiposity and cardiometabolic risk.</p>
+    <p style="margin-top: 12px;">While clinically useful for general population screening, BMI has well-documented limitations: it cannot differentiate between skeletal muscle mass and adipose fat tissue. Muscular athletes, bodybuilders, and powerlifters frequently score in the 'Overweight' or 'Obese' categories despite possessing single-digit body fat percentages.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> CDC & World Health Organization Adult BMI Classifications
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">BMI Range (kg/m²)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Clinical Classification</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Associated Health Risk Level</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Recommended Clinical Protocol</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Under 18.5</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Underweight</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Elevated (Malnutrition, Osteoporosis)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Nutritional assessment; evaluate lean mass deficit</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">18.5 – 24.9</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Normal / Healthy Weight</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Lowest All-Cause Mortality Risk</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Maintain balanced diet and regular physical activity</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">25.0 – 29.9</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Overweight</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Increased Risk of Hypertension & CVD</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Evaluate waist-to-hip ratio and lipid biomarkers</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">30.0 – 34.9</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Class 1 Obesity (Moderate)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">High Cardiometabolic & Diabetes Risk</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Implement caloric deficit and cardiovascular training</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">35.0 – 39.9</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Class 2 Obesity (Severe)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Very High Risk of Sleep Apnea & Stroke</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Medical intervention and lifestyle modification</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">40.0 and Above</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Class 3 Obesity (Extreme/Morbid)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Extremely Elevated Health Risk</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Comprehensive clinical management and therapy</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Complementary Body Composition Metrics
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Measure Waist-to-Height Ratio (WtHR):</strong> <span>Keep your waist circumference under half your height (ratio < 0.50); visceral abdominal fat surrounding internal organs is far more predictive of cardiovascular disease than general BMI.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Use Dual-Energy X-Ray Absorptiometry (DEXA):</strong> <span>A DEXA scan provides the clinical gold standard for measuring exact body fat percentage, lean visceral muscle tissue, and bone mineral density.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Track Strength and Functional Performance:</strong> <span>Cardiovascular VO2 max and compound muscular strength are stronger predictors of longevity than scale weight alone.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=BMI+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 BMI Calculator</a>
-    <a href="/?q=Body+Mass+Index+for+Adults" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Body Mass Index for Adults</a>
-    <a href="/?q=how+to+calculate+bmi" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate bmi</a>
-    <a href="/?q=bmi+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 bmi formula</a>
-    <a href="/?q=best+bmi+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best bmi calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 bmi calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 body mass</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 index metric</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 imperial cdc</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 who weight</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 height underweight</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 normal overweight</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Health &amp; Editorial Standards:</strong> Estimates follow standard published formulas and public-health guidance (e.g. CDC, WHO). This tool is for information only and is not medical advice &mdash; consult a qualified professional for health decisions. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
-<p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
 
   

@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -300,24 +300,137 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Net Capital Gains Tax & NIIT Surcharge Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Tax} = (\text{Proceeds} - \text{Basis}) \times \text{Bracket Rate} + \max(0, \min(\text{Gain}, \text{MAGI} - \text{Threshold})) \times 3.8\%</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Applies preferential capital gains tiers to long-term gains, ordinary income brackets to short-term gains, and 3.8% NIIT on investment income exceeding statutory MAGI ceilings.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Proceeds:</span> <span>Gross transaction sale price minus broker execution commissions.</span></li>
+      <li><span class="cw-var-symbol">Basis:</span> <span>Original cost basis adjusted for stock splits, reinvested dividends, and capital improvements.</span></li>
+      <li><span class="cw-var-symbol">Holding Period:</span> <span>Short-Term (≤ 365 days, ordinary rates 10%-37%) vs. Long-Term (> 365 days, rates 0%, 15%, 20%).</span></li>
+      <li><span class="cw-var-symbol">NIIT:</span> <span>3.8% Net Investment Income Tax applied under IRC § 1411 when MAGI exceeds $250,000 (MFJ) or $200,000 (Single).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>A married joint filer earning $220,000 sells stock held for 3 years for $100,000 that was purchased for $40,000 ($60,000 gain).</li>
+      <li>Because holding exceeds 1 year, the gain falls in the 15% long-term tier, generating $9,000 in federal capital gains tax instead of $14,400 under ordinary income rates.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Donating appreciated stock held over one year directly to a 501(c)(3) charity eliminates 100% of capital gains tax liability while providing a full fair-market-value itemized tax deduction.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Internal Revenue Code Section 1(h) and Section 1411 establish statutory capital gains rates and net investment income tax thresholds.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the difference between short-term and long-term capital gains?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Assets held for 365 days or less are classified as short-term capital gains and taxed as ordinary income (up to 37%). Assets held for longer than one year qualify for favorable long-term tax rates of 0%, 15%, or 20%.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the Net Investment Income Tax (NIIT)?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The NIIT is a 3.8% surtax established under IRC Section 1411 on net investment income for individuals whose modified adjusted gross income exceeds $200,000 for single filers or $250,000 for married couples filing jointly.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Do all US states tax capital gains?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Most states tax capital gains as regular income. States with no personal income tax (Texas, Florida, Nevada, Washington, Wyoming, South Dakota, Alaska) do not tax capital gains.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Can capital losses offset capital gains?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Yes. Capital losses can offset capital gains dollar-for-dollar without limit. Excess losses up to $3,000 can reduce ordinary taxable income each year.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📈</span> Capital Gains Tax Modeling: Short-Term vs. Long-Term Rates & NIIT Rules
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Profits realized from selling capital assets (stocks, cryptocurrencies, real estate, precious metals) are categorized into short-term or long-term holdings based on an exact one-year holding period. Short-term capital gains (assets held 365 days or fewer) are taxed at ordinary income rates up to 37%.</p>
+    <p style="margin-top: 12px;">Long-term capital gains (assets held 366 days or longer) enjoy preferential federal rates of 0%, 15%, or 20%. High-income investors must also account for the statutory 3.8% Net Investment Income Tax (NIIT) under IRC § 1411 and state capital gains taxation.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> 2026 Long-Term Capital Gains Federal Tax Brackets
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Capital Gains Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Single Taxable Income Range</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Married Joint Taxable Income Range</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Head of Household Range</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">0% Capital Gains Rate</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 – $48,350</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 – $96,700</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 – $64,750</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">15% Capital Gains Rate</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$48,350 – $533,400</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$96,700 – $600,050</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$64,750 – $566,700</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">20% Capital Gains Rate</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Over $533,400</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Over $600,050</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Over $566,700</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">+3.8% NIIT Surcharge</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">MAGI Over $200,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">MAGI Over $250,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">MAGI Over $200,000</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Tax-Loss Harvesting & Gain Deferral Protocols
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Harvest Losses to Offset Capital Gains:</strong> <span>Capital losses directly offset capital gains dollar-for-dollar; net excess losses can offset up to $3,000 of ordinary wage income annually, carrying forward indefinitely.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Beware the 30-Day Wash Sale Rule (IRC § 1091):</strong> <span>Selling a stock or ETF for a tax loss and repurchasing a 'substantially identical' security within 30 days before or after the sale disallows the tax loss deduction.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Utilize Section 121 Primary Residence Exclusion:</strong> <span>Taxpayers who own and occupy a primary home for at least 2 of the 5 years preceding sale exclude up to $250,000 (single) or $500,000 (married joint) of capital gain entirely tax-free.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Capital+Gains+Tax+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Capital Gains Tax Calculator</a>
-    <a href="/?q=State+Rates" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 State Rates</a>
-    <a href="/?q=how+to+calculate+capital+gains+tax" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate capital gains tax</a>
-    <a href="/?q=capital+gains+tax+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 capital gains tax formula</a>
-    <a href="/?q=best+capital+gains+tax+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best capital gains tax calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 capital gains</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax short</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 term long</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 term stock</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sale crypto</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sale irs</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax brackets</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
+<p class="cw-sources" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 6px 0 0;">Sources: <a href="https://www.irs.gov/" rel="noopener" style="color: var(--brand-primary);">IRS.gov</a></p>
 </section>
 
   

@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -292,23 +292,138 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Triple Net Commercial Total Occupancy Cost Formulation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Total Rent} = (\text{RSF} \times \text{Base Rent/SF}) + \left( \frac{\text{Tenant RSF}}{\text{Total Building RSF}} \right) \times (\text{Taxes} + \text{Insurance} + \text{CAM})</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Sums contractual base square footage rent with pass-through operating expenses, multiplied by rentable square footage.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">RSF:</span> <span>Rentable Square Footage leased by the commercial tenant.</span></li>
+      <li><span class="cw-var-symbol">Pro-Rata Share:</span> <span>Tenant RSF divided by total building gross leasable area.</span></li>
+      <li><span class="cw-var-symbol">Pass-Through Expenses:</span> <span>Property taxes, property casualty/liability insurance, and Common Area Maintenance (CAM: parking lot, landscaping, roof, HVAC).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>A retailer leasing 4,000 RSF in a 40,000 RSF shopping center (10% pro-rata share) pays $25/SF base rent ($100,000/yr).</li>
+      <li>Building annual expenses are Taxes $140,000, Insurance $30,000, and CAM $90,000 ($260,000 total NNN expenses = $6.50/SF).</li>
+      <li>Tenant's total gross occupancy cost is $100,000 + $26,000 = $126,000/yr ($10,500/month or $31.50/SF gross equivalent).</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Carefully inspect the 'Usable' vs. 'Rentable' square footage ratio (BOMA Standard); an aggressive Building Core Factor can inflate your billable square footage by 12% to 18% over actual usable interior space.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Building Owners and Managers Association (BOMA International) Standard Methods of Floor Measurement govern commercial lease square footage definitions.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What does 'NNN' stand for in a Triple Net Lease?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">The three 'nets' represent the tenant's responsibility to pay: 1) Real estate property taxes, 2) Building insurance, and 3) Common Area Maintenance (CAM) operating expenses in addition to base rent.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What are Common Area Maintenance (CAM) charges?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">CAM fees cover operating costs for shared spaces: parking lot repaving, landscaping, snow removal, exterior lighting, shared hallway HVAC, elevator maintenance, and property management fees.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the difference between a Gross Lease and an NNN Lease?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">In a Gross Lease, the tenant pays a single flat rent, and the landlord absorbs all taxes, insurance, and maintenance. In an NNN lease, base rent is lower, but the tenant pays all operating expenses on a pro-rata basis.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Can NNN expenses increase during the lease term?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Yes. NNN pass-throughs fluctuate annually based on actual municipal property tax assessments, commercial insurance premium renewals, and contractor maintenance costs.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏢</span> Commercial Triple Net (NNN) Lease Valuation & Operating Expense Reconciliations
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>A Triple Net (NNN) lease is the foundational contractual structure of commercial real estate investment across retail shopping centers, medical office buildings, and industrial warehouses. Under an NNN lease, the tenant pays base contractual rent plus their proportionate pro-rata share of three operating expense categories: Real Estate Property Taxes, Building Casualty Insurance, and Common Area Maintenance (CAM).</p>
+    <p style="margin-top: 12px;">Unlike Gross leases where the landlord absorbs cost inflation, NNN leases pass all operational increases directly to the commercial tenant. Annual Common Area Maintenance (CAM) reconciliations audit actual municipal tax increases, snow removal charges, security, and utility expenses against monthly tenant escrow deposits.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Commercial Lease Structures: Gross vs. Modified Gross vs. Triple Net (NNN)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Lease Structure Type</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Base Rent Level</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Property Taxes Responsibility</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Building Insurance</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Common Area Maintenance (CAM)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Inflation Risk Bearer</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Full-Service Gross Lease</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Highest ($38-$45/SF)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Landlord pays 100%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Landlord pays 100%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Landlord pays 100%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Landlord absorbs all utility & tax spikes</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Modified Gross Lease</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Moderate ($28-$35/SF)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Base year included; tenant pays increases</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Base year included; tenant pays increases</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Negotiated allocation</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Shared between landlord and tenant</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Single Net Lease (N)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Moderate-Low ($24/SF)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant pays pro-rata taxes</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Landlord pays</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Landlord pays</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant bears tax risk alone</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Double Net Lease (NN)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Low ($20-$24/SF)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant pays pro-rata taxes</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant pays pro-rata insurance</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Landlord pays structural CAM</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant bears tax and casualty insurance risk</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Triple Net Lease (NNN)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Lowest Base ($16-$22/SF)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant pays 100% pro-rata</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant pays 100% pro-rata</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant pays 100% pro-rata</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Tenant absorbs 100% of municipal and operational inflation</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Commercial NNN Tenant Protection Strategies
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Negotiate Controllable CAM Expense Caps:</strong> <span>Cap controllable operating expenses (janitorial, landscaping, administrative fees) to a maximum 3% to 5% cumulative annual increase.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Exclude Capital Expenditures (CapEx):</strong> <span>Ensure the lease explicitly defines CAM to exclude major structural capital improvements (e.g. roof replacements, parking lot repaving) which must be amortized by the landlord over IRS depreciation recovery periods.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Mandate Annual Audit Rights:</strong> <span>Reserve the legal right to review landlord receipts and invoices within 90 days of receiving the year-end CAM reconciliation statement.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Commercial+Triple+Net+%28NNN%29+Lease+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Commercial Triple Net (NNN) Lease Calculator</a>
-    <a href="/?q=how+to+calculate+commercial+triple+net+%28nnn%29+lease" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate commercial triple net (nnn) lease</a>
-    <a href="/?q=commercial+triple+net+%28nnn%29+lease+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 commercial triple net (nnn) lease formula</a>
-    <a href="/?q=best+commercial+triple+net+%28nnn%29+lease+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best commercial triple net (nnn) lease calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 nnn lease</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 triple net</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 lease commercial</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 real estate</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 cam property</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 taxes building</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 insurance operating</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
-<p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
 
   

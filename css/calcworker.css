@@ -1,7 +1,10 @@
+/* Dim-only forever: theme toggle removed */
+#themeToggleBtn { display: none !important; }
+
 /* ==========================================================================
    CalcWorker — Universal Financial, Tax & Utility Platform
    World-Class 2026 SaaS Design System (Apple + Stripe + Linear + Vercel Inspired)
-   Production Ready • Zero CLS • Responsive Mobile-First • Dark & Dim Themes
+   Production Ready • Zero CLS • Responsive Mobile-First • Dim Theme (permanent)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -68,7 +71,7 @@
 }
 
 [data-theme="dim"] {
-  /* Color Palette — Dim: soft gray midpoint between dark and light */
+  /* Dim — permanent theme: soft gray midpoint */
   --bg-body: #1c2330;
   --bg-surface: #232c3d;
   --bg-surface-elevated: #2b3549;
@@ -109,6 +112,7 @@
   --shadow-card: inset 0 1px 0 0 rgba(255, 255, 255, 0.07), 0 0 0 1px rgba(148, 163, 184, 0.12), 0 4px 16px rgba(0, 0, 0, 0.4);
   --shadow-card-hover: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 0 0 1px rgba(56, 189, 248, 0.35), 0 12px 32px -4px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.12);
 }
+
 
 /* --------------------------------------------------------------------------
    2. Global Reset & Base Typography

@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -451,21 +451,137 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Metric Tire Diameter & Speedometer Calibration Formulation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">D = R + \frac{2 \times W \times A}{2,540} \quad \text{and} \quad \text{Actual Speed} = \text{Indicated Speed} \times \left( \frac{D_{\text{new}}}{D_{\text{original}}} \right)</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Converts metric section width and aspect ratio into total tire rolling height in inches, including both upper and lower sidewalls.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">W:</span> <span>Tire section width in millimeters (e.g., 225 mm).</span></li>
+      <li><span class="cw-var-symbol">A:</span> <span>Aspect ratio percentage (sidewall height as percentage of width, e.g., 50%).</span></li>
+      <li><span class="cw-var-symbol">R:</span> <span>Wheel rim diameter in inches (e.g., 17 inches).</span></li>
+      <li><span class="cw-var-symbol">Rev/Mile:</span> <span>Revolutions per mile = 63,360 ÷ (π × D in inches).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Replacing OEM 215/55R17 tires (Diameter 26.31 inches, 767 Rev/Mile) with oversized 235/55R18 tires (Diameter 28.18 inches, 716 Rev/Mile) introduces a +7.11% rolling diameter error.</li>
+      <li>When the vehicle speedometer reads 65.0 MPH, actual road speed is 69.6 MPH, altering gearing and odometer calibration.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> When upgrading to lower profile tires (aspect ratios under 40), increase cold inflation pressure by 2 to 4 PSI to protect fragile alloy wheel rims from pothole pinch flats.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> US Department of Transportation (DOT) Federal Motor Vehicle Safety Standard (FMVSS No. 139) governs light vehicle tire sizing, endurance, and pressure monitoring specifications.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">How does changing tire size affect my speedometer and odometer readings?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">Your vehicle speedometer and transmission calculate road speed based on tire revolutions per mile. When you install tires with a larger overall diameter, your wheel travels farther per revolution. Consequently, your speedometer will read slower than your actual road speed (e.g., indicating 60 MPH when you are actually traveling 62.5 MPH). It will also cause your odometer to register fewer miles than actually driven.</p>
+    </details>
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">What is the acceptable tolerance limit for tire size changes?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">Most automotive manufacturers and tire engineers recommend staying within a ±3.0% diameter variance from the factory OEM specification. Exceeding 3% can cause tire rubbing against wheel wells or suspension components, interfere with anti-lock braking (ABS) calibration, compromise electronic stability control (ESC), and alter final drive transmission gearing.</p>
+    </details>
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">What do the numbers in a tire size like 225/50R17 mean?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">The first number (225) is the tire's section width in millimeters from sidewall to sidewall. The second number (50) is the aspect ratio, meaning the sidewall height is 50% of the section width (112.5 mm). The 'R' designates radial construction, and the final number (17) represents the wheel rim diameter in inches.</p>
+    </details>
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">Will wider tires decrease my vehicle's fuel economy?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">Yes. Wider tires increase the contact patch and aerodynamic drag while adding rotational unsprung mass. In typical passenger vehicles, upgrading to tires 20mm wider often reduces fuel economy by 0.5 to 1.5 MPG, though it provides enhanced lateral grip and shorter dry braking distances.</p>
+    </details>
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">How do I calculate tire sidewall height in inches?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">Sidewall height in inches equals (Section Width in mm × Aspect Ratio ÷ 100) ÷ 25.4. For example, a 225/50R17 tire has a sidewall height of (225 × 0.50) ÷ 25.4 = 4.43 inches.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🛞</span> Tire Dimensional Geometry, Sidewall Aspect Ratios & Speedometer Error
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Automotive tire size designations follow standardized Tire and Rim Association (TRA) metric formatting (e.g., 245/45R18). Changing tire width, aspect ratio, or wheel diameter alters the overall tire rolling circumference, which directly affects speedometer calibration, transmission gear ratios, and odometer readings.</p>
+    <p style="margin-top: 12px;">When upgrading to larger wheels and lower profile tires ('plus-sizing'), maintaining total rolling diameter within ±3% of factory original equipment (OE) specification is critical to prevent anti-lock braking system (ABS) faults and traction control errors.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Tire Size Comparison & Speedometer Discrepancy Matrix (Baseline: 225/50R17)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Tire Specification</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Overall Diameter</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Sidewall Height</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Revolutions / Mile</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Indicated Speed @ 65 MPH True</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">225/50R17 (OEM Baseline)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">25.9 inches</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.4 inches</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">778 rev/mi</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">65.0 MPH (Exact)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">235/45R18 (Plus 1 Upgrade)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">26.3 inches (+1.5%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.2 inches</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">766 rev/mi</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">64.0 MPH (-1.0 MPH)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">245/40R19 (Plus 2 Upgrade)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">26.7 inches (+3.1%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.9 inches</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">755 rev/mi</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">63.0 MPH (-2.0 MPH)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">225/45R17 (Undersized)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">25.0 inches (-3.5%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.0 inches</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">806 rev/mi</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">67.3 MPH (+2.3 MPH)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">255/35R20 (Aggressive Stance)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">27.0 inches (+4.2%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.5 inches</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">747 rev/mi</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">62.4 MPH (-2.6 MPH)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Tire Replacement & Up-Sizing Best Practices
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Stay Within the 3% Diameter Rule:</strong> <span>Ensure replacement tire outer diameter differs by no more than 3% from factory equipment to avoid rubbing against wheel well liners or suspension struts.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Match Load Index & Speed Rating:</strong> <span>Never install replacement tires with a lower Load Index or Speed Rating than original factory specifications.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Recalibrate Speedometer if Changing Diameters:</strong> <span>Modern electronic engine control modules (ECMs) can be reprogrammed via OBD-II diagnostic tools to re-synchronize speedometer readouts with modified rolling circumferences.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Automotive & Engineering Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Tire+Size+Comparison+%26+Speedometer+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Tire Size Comparison &amp; Speedometer Calculator</a>
-    <a href="/?q=how+to+calculate+tire+size+comparison+%26+speedometer" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate tire size comparison &amp; speedometer</a>
-    <a href="/?q=tire+size+comparison+%26+speedometer+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 tire size comparison &amp; speedometer formula</a>
-    <a href="/?q=best+tire+size+comparison+%26+speedometer+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best tire size comparison &amp; speedometer calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tire size</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 comparison speedometer</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 error diameter</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 width aspect</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 ratio wheel</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 clearance rim</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 diameter tire</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

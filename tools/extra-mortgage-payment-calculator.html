@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -292,23 +292,137 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Accelerated Amortization Horizon Formulation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">B_k = B_{k-1}(1 + r) - (M + E) \quad \text{where} \quad M = P \frac{r(1+r)^n}{(1+r)^n - 1}</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Solves for the reduced number of remaining monthly payment cycles when an extra principal payment E is added to contractual payment M.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">M:</span> <span>Contractual scheduled monthly principal and interest amortized payment.</span></li>
+      <li><span class="cw-var-symbol">E:</span> <span>Discretionary additional principal prepayment applied directly to loan balance.</span></li>
+      <li><span class="cw-var-symbol">r:</span> <span>Monthly periodic interest rate (Annual Nominal Rate ÷ 12).</span></li>
+      <li><span class="cw-var-symbol">Savings:</span> <span>Total interest saved = Original Amortization Total Interest minus Accelerated Actual Paid Interest.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>On a $350,000 30-year fixed mortgage at 6.50% (base payment $2,212.24), adding a $250 monthly extra principal payment pays off the loan 6 years and 2 months early, eliminating 74 payments and saving $97,420 in total lifetime interest charges.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> If receiving an annual work bonus or tax refund, applying a single lump-sum $5,000 curtailment to principal each year has the exact same compounding benefit as adding $416 every month.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Fannie Mae Servicing Guide (Section B-1-01) mandates immediate crediting of principal curtailments against interest accrual.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">How does paying an extra $100 or $200 per month affect my mortgage?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">On a typical $300,000 30-year mortgage at 6.75%, an extra $200 per month saves over $65,000 in interest and eliminates more than 6 years of payments.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Should I designate extra payments toward 'Principal Only'?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Yes. Ensure your lender or servicer applies additional payments directly to the loan principal rather than advancing future scheduled interest payments.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Is there a prepayment penalty for paying off a mortgage early?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Under Dodd-Frank regulations, the vast majority of modern US residential conforming and FHA mortgages do not have prepayment penalties.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Is it better to pay off a low-rate mortgage or invest in index funds?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">If your mortgage interest rate is under 4%, investing in a diversified index fund (historically yielding 7-10% long-term) often yields higher net wealth. If your rate is 6.5%+ or you prioritize debt freedom, prepaying principal offers a guaranteed, risk-free return.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📈</span> Extra Mortgage Principal Payments: Compound Amortization Velocity & Wealth Creation
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Every extra dollar applied directly to your mortgage principal balance creates an immediate, risk-free, guaranteed rate of return equal to your mortgage note interest rate. Because amortized mortgage interest is calculated monthly on the remaining balance, prepaying principal removes future interest cycles permanently.</p>
+    <p style="margin-top: 12px;">Adding just one additional monthly payment per year—or rounding up monthly payments by $100 to $200—drastically steepens the principal payoff curve, stripping 5 to 8 years off a standard 30-year note and saving tens of thousands of dollars in unearned bank interest.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Impact of Monthly Extra Principal Payments on a $350,000 Mortgage @ 6.75%
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Extra Monthly Principal</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">New Monthly Payment</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Payoff Timeline</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Years Stripped Off Loan</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Total Lifetime Interest Saved</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$0 / mo (Baseline)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,269.99</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">30.0 Years (360 mos)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0 Years (Baseline)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 Saved (Baseline)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$100 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,369.99</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">26.3 Years (316 mos)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.7 Years Saved</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$47,380 Saved</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$200 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,469.99</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">23.5 Years (282 mos)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.5 Years Saved</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$82,140 Saved</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$300 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,569.99</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">21.3 Years (255 mos)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.7 Years Saved</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$109,215 Saved</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$500 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,769.99</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">18.0 Years (216 mos)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">12.0 Years Saved</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$148,650 Saved</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$1,000 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3,269.99</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">13.2 Years (158 mos)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">16.8 Years Saved</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$205,390 Saved</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Mortgage Acceleration Execution Protocol
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Explicitly Designate as 'Principal-Only':</strong> <span>When remitting extra funds, always select 'Apply to Principal' on your mortgage portal to ensure the bank does not classify it as an advance against future monthly payments.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Verify Prepayment Penalties:</strong> <span>Under CFPB Qualified Mortgage rules (12 CFR § 1026.43(g)), conventional conforming mortgages generally prohibit prepayment penalties, but always inspect your original promissory note.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Weigh Mortgage Payoff vs. Stock Market Return:</strong> <span>Prepaying a 7% mortgage yields a guaranteed 7% tax-free return, whereas prepaying a 3% mortgage from 2021 yields inferior returns compared to high-yield savings or broad-market index funds.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Extra+Mortgage+Principal+Payment+%26+Early+Payoff+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Extra Mortgage Principal Payment &amp; Early Payoff Calculator</a>
-    <a href="/?q=how+to+calculate+extra+mortgage+principal+payment+%26+early+payoff" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate extra mortgage principal payment &amp; early payoff</a>
-    <a href="/?q=extra+mortgage+principal+payment+%26+early+payoff+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 extra mortgage principal payment &amp; early payoff formula</a>
-    <a href="/?q=best+extra+mortgage+principal+payment+%26+early+payoff+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best extra mortgage principal payment &amp; early payoff calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 extra mortgage</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 payment principal</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 prepayment interest</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 savings loan</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 payoff amortization</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 reduction year</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 year mortgage</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
-<p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
 
   

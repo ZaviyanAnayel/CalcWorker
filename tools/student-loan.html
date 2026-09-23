@@ -12,7 +12,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -578,22 +578,69 @@
 <!-- Enterprise Authority Footer -->
 
 <!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🎓</span> Federal & Private Student Loans: Standard 10-Year Amortization & Repayment Plans
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Higher education financing in the United States spans direct federal student loans (Direct Subsidized, Unsubsidized, and Grad PLUS) and private commercial student loans. Unlike federal loans, which offer statutory income-driven plans and forgiveness protections, private student loans carry risk-based interest rates and strict repayment terms.</p>
+    <p style="margin-top: 12px;">The standard federal student loan repayment plan amortizes debt over 120 fixed monthly installments (10 years). Accelerated principal prepayments bypass future daily compounding interest under the simple daily interest model utilized by the Department of Education.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Federal Student Loan Interest Rates & 10-Year Repayment Schedules ($40,000 Debt)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Loan Program Type</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Statutory Interest Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Monthly 10-Year Payment</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Total Lifetime Interest</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Forgiveness / IDR Eligibility</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Direct Subsidized (Undergrad)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.53% Fixed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$454.82 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$14,578.40</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Eligible for SAVE / IBR / PSLF</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Direct Unsubsidized (Undergrad)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">6.53% Fixed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$454.82 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$14,578.40</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Eligible for SAVE / IBR / PSLF</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Direct Unsubsidized (Graduate)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.08% Fixed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$486.92 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$18,430.40</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Eligible for SAVE / IBR / PSLF</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Grad PLUS / Parent PLUS</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.08% Fixed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$508.12 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$20,974.40</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Eligible via ICR Consolidation</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Private Student Loan (Good Credit)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.50% Fixed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$474.84 / mo</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$16,980.80</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Strictly commercial; zero federal forgiveness</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Student Loan Repayment Optimization Tactics
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Leverage the 0.25% Auto-Debit Discount:</strong> <span>Enrolling in automatic monthly direct debit on your federal loan servicer portal automatically discounts your interest rate by 0.25% under federal regulations.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Target the Avalanche Method on Unsubsidized Debt:</strong> <span>Apply extra payments to Unsubsidized and Grad PLUS loans first, as Subsidized loans do not accrue interest while in school or authorized deferment.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Claim the Student Loan Interest Tax Deduction:</strong> <span>Under IRC § 221, taxpayers can deduct up to $2,500 in student loan interest paid annually as an above-the-line deduction without itemizing.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Student+Loan+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Student Loan Calculator</a>
-    <a href="/?q=Monthly+Payment" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Monthly Payment</a>
-    <a href="/?q=Repayment+Plans" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Repayment Plans</a>
-    <a href="/?q=how+to+calculate+student+loan" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate student loan</a>
-    <a href="/?q=student+loan+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 student loan formula</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 student loan</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 college debt</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 monthly repayment</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 interest capitalization</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 federal direct</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 private refinanced</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 student loan</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

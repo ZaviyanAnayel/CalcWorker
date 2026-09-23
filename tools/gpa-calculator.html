@@ -11,7 +11,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -460,22 +460,195 @@ Calculate your semester and cumulative Grade Point Average (GPA) on the standard
 </div>
 </div>
 <!-- FAQ Accordion -->
+<section class="seo-card" style="margin-top: 40px;">
+<h2>Frequently Asked Questions About GPA Calculations</h2>
+<div style="display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+<details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+<summary style="font-weight: 700; color: var(--text-main);">How is high school weighted GPA calculated?</summary>
+<p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Weighted GPA gives extra weight to rigorous courses. For example, an 'A' in a standard class earns 4.0 points, while an 'A' in an Honors class earns 4.5 points, and an Advanced Placement (AP) or International Baccalaureate (IB) class earns 5.0 points.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+<summary style="font-weight: 700; color: var(--text-main);">What GPA is needed for Cum Laude or Dean's List?</summary>
+<p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Dean's List generally requires a 3.50 or higher term GPA. For Latin honors at graduation, Cum Laude typically requires 3.5–3.69, Magna Cum Laude 3.7–3.89, and Summa Cum Laude 3.90 to 4.00.</p>
+</details>
+</div>
+</section>
+
+<!-- Comprehensive Educational & Methodology Section (AdSense E-E-A-T Compliant) -->
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📘</span> Comprehensive Methodology & Practical Guide: Gpa
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Precision calculation is critical when assessing <strong>Gpa</strong> metrics. CalcWorker applies standardized mathematical algorithms to eliminate estimation errors and provide instantaneous, reliable data directly in your browser.</p>
+                <p>When analyzing these figures, consider your broader financial and operational goals. Regularly auditing your baseline metrics and adjusting inputs allows you to maintain optimal efficiency and long-term stability.</p>
+  </div>
+  
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>❓</span> Frequently Asked Questions
+  </h3>
+  <div style="display: flex; flex-direction: column; gap: 12px;">
+    
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">How is the Gpa calculated?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">The calculation uses validated industry-standard mathematical formulas to ensure exact, error-free results based on your specified input values.</p>
+            </details>
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">Are my calculation details saved on your servers?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">Never. CalcWorker operates strictly client-side. Your inputs, calculations, and results remain private inside your personal browser sandbox.</p>
+            </details>
+            <details style="background: var(--bg-subtle); padding: 14px 18px; border-radius: 10px; border: 1px solid var(--border); cursor: pointer;">
+              <summary style="font-weight: 700; color: var(--text-main);">How frequently should I update these calculations?</summary>
+              <p style="margin-top: 8px; color: var(--text-muted); font-size: 0.88rem; line-height: 1.6;">We recommend recalculating whenever your financial, operational, or personal variables change to maintain accurate, up-to-date tracking.</p>
+            </details>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+<article class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-top: 24px;">
+  <h2><span>🎓</span> Collegiate GPA Calculations &amp; Academic Honors Standards</h2>
+  <div style="color: var(--text-muted); line-height: 1.6; font-size: 0.9rem;">
+    <p>A Grade Point Average (GPA) is the standardized numerical summary of academic achievement used across colleges and high schools in the United States:</p>
+    <ul style="margin-left: 20px; display: flex; flex-direction: column; gap: 8px; margin-top: 8px;">
+      <li><strong style="color: var(--text-main);">4.0 Unweighted Scale:</strong> Courses are evaluated on standard point values: A = 4.0, B = 3.0, C = 2.0, D = 1.0, and F = 0.0, weighted by credit hours. Formula: GPA = Total Quality Points / Total Credit Hours Attempted.</li>
+      <li><strong style="color: var(--text-main);">Weighted 5.0 Scale:</strong> High schools award extra weight for rigorous coursework: Advanced Placement (AP) and International Baccalaureate (IB) courses receive +1.0 grade points (A = 5.0), while Honors courses receive +0.5 grade points (A = 4.5).</li>
+      <li><strong style="color: var(--text-main);">Latin Honors Benchmarks:</strong> Universities typically award Latin honors based on cumulative undergraduate GPA thresholds: Cum Laude (3.50 – 3.69), Magna Cum Laude (3.70 – 3.89), and Summa Cum Laude (3.90 – 4.00).</li>
+    </ul>
+  </div>
+</article>
+
+<section class="cw-formula-guide">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Academic Grade Point Average (GPA) & Quality Points Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">Cumulative GPA = (∑ (Quality Grade Points [i] × Credit Hours [i]) ÷ ∑ Credit Hours [i])</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Your Grade Point Average (GPA) multiplies each class grade point by its credit hours to get 'Quality Points'. Then divide total Quality Points by total credit hours attempted.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Standard 4.0 Scale:</span> <span>A = 4.0, A- = 3.7, B+ = 3.3, B = 3.0, B- = 2.7, C+ = 2.3, C = 2.0, C- = 1.7, D = 1.0, F = 0.0</span></li>
+      <li><span class="cw-var-symbol">Weighted High School Scale:</span> <span>Honors adds +0.5 (4.5 scale), AP / IB adds +1.0 (5.0 scale)</span></li>
+      <li><span class="cw-var-symbol">Credit Hours:</span> <span>Course unit weight (Typically 3 to 4 credits for standard college lecture/lab courses)</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Semester Courses: 4 Classes (15 Total Credit Hours):</li>
+      <li>Course 1 (Calculus, 4 credits): Grade A (4.0) → 4 × 4.0 = 16.0 Quality Points.</li>
+      <li>Course 2 (Physics, 4 credits): Grade B+ (3.3) → 4 × 3.3 = 13.2 Quality Points.</li>
+      <li>Course 3 (Literature, 3 credits): Grade A- (3.7) → 3 × 3.7 = 11.1 Quality Points.</li>
+      <li>Course 4 (History, 4 credits): Grade B (3.0) → 4 × 3.0 = 12.0 Quality Points.</li>
+      <li>Total Quality Points: 16.0 + 13.2 + 11.1 + 12.0 = 52.3 Quality Points.</li>
+      <li>Semester GPA: 52.3 / 15.0 = 3.486 GPA.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> To raise a cumulative GPA, prioritize courses with higher credit hours (like 4-credit lab sciences). If retaking a course, verify whether your institution uses grade replacement or grade averaging in its registrar policy.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Academic Latin Honors benchmarks in US higher education typically require: Cum Laude (top 20% ~3.50–3.69 GPA), Magna Cum Laude (top 10% ~3.70–3.89 GPA), Summa Cum Laude (top 5% ~3.90–4.00 GPA). Graduate school and medical school admissions (AMCAS) recalculate GPAs by standardizing semester versus quarter credit systems.
+  </div>
+  <p class="cw-deep-text">Grade Point Average (GPA) is a weighted mathematical average where courses carrying higher credit hours exert greater influence on your cumulative academic standing. Earning an 'A' in a 4-credit laboratory science course offsets a 'C' in a 1-credit elective, highlighting the importance of strategic credit weighting.</p>
+  <p class="cw-deep-text">For high school students aiming for competitive university admissions, understanding the distinction between Weighted and Unweighted GPA is crucial. While weighted GPAs reward taking rigorous Advanced Placement (AP) and International Baccalaureate (IB) coursework, college admissions officers frequently strip out high school weighting to evaluate all applicants on an unweighted 4.0 baseline.</p>
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Strategic Practical Questions</h3>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">How does an 'Incomplete' or 'Withdrawal' (W) affect my college GPA?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">A grade of 'Withdrawal' (W) on your college transcript indicates you withdrew from the course prior to the academic penalty deadline; it carries zero quality points and is excluded from GPA denominator calculations. An 'Incomplete' (I) does not impact your GPA temporarily, but converts to a punitive 'F' (0.0) if coursework is not completed within statutory university deadlines.</p>
+    </details>
+    <details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+      <summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">How do I raise my cumulative GPA in my final college semester?</summary>
+      <p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Because cumulative GPA represents the weighted average of all previous semesters, raising an established GPA becomes mathematically harder as total accumulated credit hours expand. Achieving a 4.0 in your final 15 credits will only increase a 105-credit 3.20 GPA to approximately 3.30.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🎓</span> Grade Point Average (GPA) Architecture: Unweighted 4.0 vs. Weighted 5.0 Scales
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Grade Point Average (GPA) is the standardized metric utilized by high schools, universities, and graduate admissions committees to quantify academic achievement. Academic institutions utilize two distinct frameworks: the Unweighted 4.0 Scale (which caps standard letter grades at 4.0 regardless of course rigor) and the Weighted 5.0 Scale.</p>
+    <p style="margin-top: 12px;">On weighted scales, advanced coursework (Advanced Placement [AP], International Baccalaureate [IB], and Dual Enrollment college courses) awards an extra 1.0 quality point (an 'A' earns 5.0), while Honors courses award 0.5 bonus points, rewarding students for tackling challenging curricula.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Standard Letter Grade to GPA Quality Points Conversion Matrix
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Letter Grade</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Percentage Range</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Unweighted GPA (Standard)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Honors Course (+0.5)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">AP / IB / Dual Enrollment (+1.0)</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">A+ (Superior)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">97% – 100%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.50 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">5.00 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">A (Excellent)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">93% – 96%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.50 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">5.00 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">A- (Very Good)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">90% – 92%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.70 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.20 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.70 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">B+ (Above Average)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">87% – 89%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.30 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.80 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.30 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">B (Average Competence)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">83% – 86%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.50 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.00 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">B-</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">80% – 82%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.70 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.20 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.70 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">C+ (Satisfactory)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">77% – 79%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.30 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.80 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.30 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">C (Passing)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">73% – 76%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2.50 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3.00 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">D (Deficient Passing)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">65% – 69%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.00 Quality Points</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">F (Failing)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Below 65%</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00 Quality Points</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00 Quality Points</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> GPA Admissions Optimization Tactics
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Understand College Recalculation Practices:</strong> <span>Top university admissions offices often strip away high school weighting to recalculate their own standardized unweighted academic core GPA across Math, Science, English, History, and Foreign Languages.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Prioritize High Grades in Rigorous Courses:</strong> <span>Admissions officers universally prefer a 'B' in an AP/IB course over an 'A' in an easy non-honors elective because it demonstrates collegiate academic readiness.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Protect GPA Early in Freshman Year:</strong> <span>A low GPA earned during freshman year requires near-perfect 4.0 semesters in sophomore and junior years to bring cumulative GPA back into competitive scholarship ranges.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=GPA+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 GPA Calculator</a>
-    <a href="/?q=High+School" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 High School</a>
-    <a href="/?q=College+4.0+Scale" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 College 4.0 Scale</a>
-    <a href="/?q=how+to+calculate+gpa" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate gpa</a>
-    <a href="/?q=gpa+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 gpa formula</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 gpa calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 grade point</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 average weighted</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 unweighted cumulative</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 gpa semester</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 grades credit</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 hours college</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

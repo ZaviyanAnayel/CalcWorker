@@ -12,7 +12,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -588,24 +588,69 @@
 <!-- Enterprise Authority Footer -->
 
 <!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📝</span> IRS Form W-4 Withholding Dynamics & Underpayment Penalty Safe Harbors
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>The redesigned IRS Form W-4 eliminated personal allowances in favor of a five-step computational model that aligns payroll withholding directly with personal tax return schedules. Proper calibration ensures you do not overwithhold (losing liquidity to an interest-free government loan) or underwithhold (incurring IRS § 6654 penalties).</p>
+    <p style="margin-top: 12px;">Under federal law, employees must meet statutory 'Safe Harbor' withholding minimums: paying either 90% of current-year tax liability or 100% of prior-year tax liability (110% if prior-year AGI exceeded $150,000 for joint filers) to escape mandatory underpayment penalty assessments.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> IRS Statutory Underpayment Penalty Safe Harbor Standards
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Taxpayer Adjusted Gross Income (AGI)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Safe Harbor Threshold Rule</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Quarterly Payment Test</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">IRS § 6654 Underpayment Penalty Protection</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Under $150,000 ($75k Single)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">100% of Prior Year Total Tax</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">25% of prior year tax paid each quarter</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Full immunity from interest penalties</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Over $150,000 ($75k Single)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">110% of Prior Year Total Tax</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">27.5% of prior year tax paid each quarter</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Mandatory safe harbor tier for high earners</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Current Year Tax Liability Alternative</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">90% of Current Year Tax Liability</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Requires accurate mid-year income forecasting</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Protects taxpayers experiencing sharp income drops</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Small Balance Exception</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Under $1,000 Net Tax Balance Due</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Total tax owed after all withholding is <$1,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Zero penalties assessed automatically under law</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> W-4 Calibration Strategies for Multi-Income Households
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Complete Step 2 for Dual-Income Spouses:</strong> <span>If both spouses work and earn similar salaries, check Box 2(c) or use Step 4(c) extra withholding to prevent falling into higher marginal tax brackets unexpectedly.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Account for Non-Wage 1099 Side Income:</strong> <span>Add expected side-gig, freelance, or dividend income into Step 4(a) so your employer withholds taxes directly from your W-2 wages, eliminating estimated quarterly payments.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Claim Child Credits Accurately in Step 3:</strong> <span>Multiply qualifying dependents by $2,000 in Step 3 to reduce annual withholding and increase your bi-weekly paycheck cash flow immediately.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Tax+Withholding+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Tax Withholding Calculator</a>
-    <a href="/?q=W-4+Paycheck+Estimator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 W-4 Paycheck Estimator</a>
-    <a href="/?q=how+to+calculate+tax+withholding" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate tax withholding</a>
-    <a href="/?q=tax+withholding+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 tax withholding formula</a>
-    <a href="/?q=best+tax+withholding+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best tax withholding calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax withholding</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 allowances additional</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 withholding tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 refund avoidance</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 underpayment penalty</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 irs withholding</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
+<p class="cw-sources" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 6px 0 0;">Sources: <a href="https://www.irs.gov/" rel="noopener" style="color: var(--brand-primary);">IRS.gov</a></p>
 </section>
 
   

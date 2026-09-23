@@ -220,10 +220,9 @@
 
 class CalcWorkerApp {
   constructor() {
-    // 2-theme system: dark / dim only (same as WebDevWorker). Unknown values normalize to dark.
-    var saved = localStorage.getItem('calcworker_theme') || 'dark';
-    this.theme = (saved === 'dim') ? 'dim' : 'dark';
-    try { localStorage.setItem('calcworker_theme', this.theme); } catch(e) {}
+    // Dim-only forever: theme toggle removed, always dim.
+    this.theme = 'dim';
+    try { localStorage.setItem('calcworker_theme', 'dim'); } catch(e) {}
     this.audioEnabled = localStorage.getItem('calcworker_sound') !== 'false';
     this.audioCtx = null;
     this.init();
@@ -250,7 +249,8 @@ class CalcWorkerApp {
   bindEvents() {
     const themeBtn = document.getElementById('themeToggleBtn');
     if (themeBtn) {
-      themeBtn.addEventListener('click', () => this.toggleTheme());
+      themeBtn.style.display = 'none';
+      themeBtn.setAttribute('aria-hidden', 'true');
     }
 
     const hamburger = document.getElementById('hamburgerBtn');
@@ -284,27 +284,15 @@ class CalcWorkerApp {
   }
 
   toggleTheme() {
-    this.playClick();
-    this.theme = this.theme === 'dark' ? 'dim' : 'dark';
-    document.documentElement.setAttribute('data-theme', this.theme);
-    localStorage.setItem('calcworker_theme', this.theme);
-    this.updateThemeButton();
-    this.showToast(`Switched to ${this.theme === 'dark' ? 'Dark' : 'Dim'} Mode`);
+    // Theme toggle removed: dim-only forever.
+    document.documentElement.setAttribute('data-theme', 'dim');
+    try { localStorage.setItem('calcworker_theme', 'dim'); } catch(e) {}
   }
 
     updateThemeButton() {
     const btn = document.getElementById("themeToggleBtn");
-    if (!btn) return;
-    var isDark = this.theme === "dark";
-    btn.setAttribute("title", isDark ? "Switch to Dim Mode" : "Switch to Dark Mode");
-    btn.setAttribute("aria-label", isDark ? "Switch to Dim Mode" : "Switch to Dark Mode");
-    if (isDark) {
-      btn.innerHTML = `<span style="font-size:14px;">🌆</span><span class="btn-label">Dim</span>`;
-    } else {
-      btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#6366f1;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="btn-label">Dark</span>`;
+    if (btn) { btn.style.display = "none"; btn.setAttribute("aria-hidden", "true"); }
     }
-  }
-
   playClick() {
     if (!this.audioEnabled) return;
     try {

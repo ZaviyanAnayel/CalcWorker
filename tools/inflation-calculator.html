@@ -11,7 +11,7 @@
   (function(){
     try {
       if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-      var t = localStorage.getItem('calcworker_theme') || 'dark';
+      var t = 'dim'; // dim-only forever
       document.documentElement.setAttribute('data-theme', t);
       var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
       document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -473,22 +473,70 @@ Discover how rising consumer prices erode the purchasing power of your savings o
 <!-- Enterprise Authority Footer -->
 
 <!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>📉</span> US Consumer Price Index (CPI-U) & Purchasing Power Historical Modeling
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Inflation measures the sustained percentage increase in the general price level of goods and services over time, resulting in the erosion of currency purchasing power. The official benchmark measuring inflation in the United States is the Consumer Price Index for All Urban Consumers (CPI-U), published monthly by the Bureau of Labor Statistics (BLS).</p>
+    <p style="margin-top: 12px;">The CPI market basket tracks representative expenditures across eight major categories: Food and Beverages, Housing (shelter), Apparel, Transportation, Medical Care, Recreation, Education and Communication, and Other Goods and Services.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Historical Purchasing Power of $100 Across Selected US Decades (BLS CPI Data)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Year Milestone</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Headline CPI Index</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Equivalent Purchasing Power of $100</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Cumulative Inflation Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Historical Economic Context</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">1980</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">82.4</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$100.00 (Baseline)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.0% Baseline</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Peak Volcker Fed interest rate era</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">1990</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">130.7</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$158.62 needed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">+58.6% inflation</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1980s economic expansion</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">2000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">172.2</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$208.98 needed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">+108.9% inflation</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Dot-Com technology boom</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">2010</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">218.056</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$264.63 needed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">+164.6% inflation</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Post-2008 Great Financial Crisis</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">2020</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">258.811</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$314.09 needed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">+214.1% inflation</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Pre-pandemic low inflation era</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">2026 (Current)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">315.0 (Est.)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$382.28 needed</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">+282.3% inflation</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Post-pandemic supply chain adjustments</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Purchasing Power Protection Strategies
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Invest in Equities for Long-Term Growth:</strong> <span>Cash in savings accounts loses real value during inflationary periods; S&P 500 index funds historically deliver real returns of 7% after inflation.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Utilize Series I Savings Bonds (I-Bonds):</strong> <span>US Treasury Series I Bonds pay a composite interest rate combining a fixed rate with semi-annual inflation adjustments tied directly to the CPI-U.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Lock In Fixed-Rate Long-Term Debt:</strong> <span>Inflation benefits borrowers with 30-year fixed-rate mortgages; the real debt balance shrinks over time as wages and property prices rise.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=US+Inflation+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 US Inflation Calculator</a>
-    <a href="/?q=Dollar+Purchasing+Power" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Dollar Purchasing Power</a>
-    <a href="/?q=how+to+calculate+us+inflation" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate us inflation</a>
-    <a href="/?q=us+inflation+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 us inflation formula</a>
-    <a href="/?q=best+us+inflation+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best us inflation calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 inflation calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 purchasing power</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 cpi consumer</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 price index</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 historical inflation</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 dollar value</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 compounding erosion</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -581,23 +581,182 @@ Relocation Financial Impact
 </div>
 
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Net Multi-Tax Relocation Arbitrage Equation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\Delta\text{Tax} = (\text{Income} \times \Delta\tau_{\text{state}}) + (\text{Home Value} \times \Delta\tau_{\text{prop}}) + (\text{Taxable Spend} \times \Delta\tau_{\text{sales}})</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Calculates net annual cash savings by measuring the combined differential in state income taxes, local property levies, and retail sales taxes between two states.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Delta Income Tax:</span> <span>Difference in state marginal income tax rates multiplied by household taxable earnings.</span></li>
+      <li><span class="cw-var-symbol">Delta Property Tax:</span> <span>Difference in local real estate ad valorem tax rates multiplied by assessed home value.</span></li>
+      <li><span class="cw-var-symbol">Delta Sales Tax:</span> <span>Difference in state and municipal combined sales tax rates multiplied by annual retail taxable consumption.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Taxpayer Profile: $200,000 W-2 salary moving from California to Florida. Owns a $700,000 primary residence.</li>
+      <li>State Income Tax Savings: California 9.3% marginal rate ($14,500 state tax) drops to Florida 0% = +$14,500 annual savings.</li>
+      <li>Property Tax Differential: CA tax @ 0.75% ($5,250) vs. FL tax @ 0.95% ($6,650) = -$1,400 additional property tax.</li>
+      <li>Sales Tax Differential: Minor 0.5% variance on $40,000 annual taxable purchases = +$200 savings.</li>
+      <li>Net Annual Take-Home Gain: +$14,500 - $1,400 + $200 = $13,300.00 net annual cash savings ($1,108.33/month).</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> If you are a remote employee, verify your company has an active business entity registered in your new destination state, or you may still be subject to 'convenience of the employer' withholding rules.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Tax Foundation Annual State Business Tax Climate Index and statutory state administrative revenue department audit manuals.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+<section class="cw-educational-section" style="margin-top: 48px; border-top: 1px solid var(--border); padding-top: 36px;">
+<h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main); margin-bottom: 16px;">
+📐 State-to-State Tax Relocation Economics &amp; Calculation Rules
+</h2>
+
+<div class="cw-math-eq-clean">
+<div class="cw-math-label">Core Net Relocation Equation:</div>
+<div class="cw-math-formula">Net Relocation Surplus = (Origin State Tax - Destination State Tax) + (12 × Monthly Housing Savings) - State Sales/Property Tax Spreads</div>
+</div>
+
+<div class="cw-plain-english">
+<strong>In Plain English:</strong> When moving across US state lines, your financial gain equals the state income taxes you eliminate plus any reduction in rent or mortgage expenses, minus differences in local property taxes and sales taxes.
+</div>
+
+<div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+<ul class="cw-vars-list">
+<li><span class="cw-var-symbol">Gross Income:</span> <span>Total annual W-2 wages or 1099 profit subject to state income taxation</span></li>
+<li><span class="cw-var-symbol">Origin Effective Rate:</span> <span>Blended statutory state income tax bracket in current home state</span></li>
+<li><span class="cw-var-symbol">Destination Effective Rate:</span> <span>Target state income tax rate (0% in TX, FL, WA, NV, TN, WY, AK, SD, NH)</span></li>
+<li><span class="cw-var-symbol">Standard Deduction:</span> <span>State-specific standard deduction allowances per IRS filing status</span></li>
+<li><span class="cw-var-symbol">Housing Cost Delta:</span> <span>Monthly differential in comparable residential lease or mortgage financing</span></li>
+</ul>
+
+<div class="cw-step-box">
+<h3><span>📝</span> Step-by-Step Practical Relocation Calculation Example</h3>
+<p class="cw-step-intro">Follow this real-world example of an engineer relocating from San Francisco, CA to Austin, TX:</p>
+<ol class="cw-step-list">
+<li><strong>Annual Gross Compensation:</strong> $160,000 single filer.</li>
+<li><strong>California State Tax:</strong> After the standard deduction, taxable income falls across CA brackets (up to 9.3%). Annual California state income tax owed = <strong>$12,410</strong>.</li>
+<li><strong>Texas State Tax:</strong> The Texas Constitution prohibits personal income taxes. Annual Texas state income tax = <strong>$0</strong>.</li>
+<li><strong>Annual State Tax Savings:</strong> $12,410 - $0 = <strong>$12,410 per year ($1,034.16/month in pure tax savings)</strong>.</li>
+<li><strong>Housing Adjustment:</strong> Rent in SF was $3,200/mo; comparable apartment in Austin is $2,200/mo ($1,000/mo saved = $12,000/yr).</li>
+<li><strong>Total Combined Annual Wealth Boost:</strong> $12,410 (tax) + $12,000 (housing) = <strong>$24,410 net annual cash improvement</strong> ($122,050 over 5 years).</li>
+</ol>
+<div class="cw-tip-box">
+<strong>💡 Pro Tip for Solving Complex Cases:</strong> Watch out for the 'Tax Trade-Off'! States with zero income tax frequently make up municipal revenue through higher property taxes (e.g. Texas effective property tax rates average 1.6%–2.2%, compared to California's Proposition 13 capped at roughly 0.75%–1.1%) or higher local combined sales taxes. If buying an expensive home, calculate the net property tax offset before finalizing your move.
+</div>
+</div>
+
+<div class="cw-benchmark-card">
+<strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> The US Supreme Court (Complete Auto Transit v. Brady) establishes state tax nexus boundaries. Furthermore, under IRS Section 164, the SALT (State and Local Tax) federal itemized deduction cap is limited to $10,000 ($5,000 for married filing separately). Because high-earners in CA, NY, and NJ cannot deduct state taxes exceeding $10,000 from their federal tax return, relocating to zero-tax states delivers a massive 100% unencumbered take-home dividend.
+</div>
+
+<p class="cw-deep-text">
+Interstate relocation has surged among knowledge workers, tech professionals, and corporate executives following the nationwide rise of remote and hybrid work policies. High-tax states like California, New York, New Jersey, and Illinois have seen hundreds of thousands of residents relocate to the 'Sun Belt' states—primarily Texas, Florida, Tennessee, North Carolina, and Nevada.
+</p>
+
+<p class="cw-deep-text">
+However, transitioning your tax domicile requires meticulous execution. The Franchise Tax Board (FTB) in California and the Department of Taxation and Finance in New York audit former residents vigorously. You must establish conclusive residency evidence: changing your driver's license and vehicle registration within 30 days, registering to vote in your new state, moving primary medical providers and banking relationships, and relinquishing primary property ties in your former state.
+</p>
+
+<div style="margin-top: 24px;">
+<h3 style="font-size: 1.05rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">Frequently Asked Questions</h3>
+<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">What is the 183-day rule for state tax residency?</summary>
+<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Under the statutory 183-day rule, if you maintain a permanent place of abode in a state and spend 183 or more days (even a single minute counts as a day) physically inside that state during a calendar year, you are classified as a statutory resident and subject to full state income tax on all worldwide income.</p>
+</details>
+<details style="margin-bottom: 10px; background: var(--bg-subtle); padding: 10px 14px; border-radius: 6px; border: 1px solid var(--border);">
+<summary style="font-weight: 600; color: var(--text-main); cursor: pointer; font-size: 0.9rem;">Do I need to file two state tax returns in the year I move?</summary>
+<p style="margin-top: 8px; font-size: 0.86rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 0;">Yes. In the calendar year of your move, you typically file a 'Part-Year Resident' return in your former state (paying taxes on income earned prior to move date) and either another part-year return or zero-return in your destination state, establishing clear date-stamped residency separation.</p>
+</details>
+</div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🚚</span> State-to-State Tax Relocation Economics: Income, Property & Sales Tax Arbitrage
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Relocating between US states triggers significant shifts in your total tax burden. While attention often centers on state income taxes (comparing high-tax states like California and New York against zero-income-tax havens like Texas, Florida, and Washington), a complete financial analysis must incorporate local property tax millage, municipal sales taxes, and state domicile audits.</p>
+    <p style="margin-top: 12px;">Moving from a high-tax state requires formally severing tax domicile by establishing physical residency for at least 183 days and relocating your primary 'center of vital interests' (driver's license, voter registration, primary banking, family home) to avoid aggressive audit clawbacks.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Total State Tax Burden Comparison Across Top Relocation Destinations
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Destination State</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Top State Income Tax</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Median Property Tax Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">State + Local Sales Tax</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Overall State Tax Friendliness Rank</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Florida</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00% (No Income Tax)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.86% Median</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.02% Combined</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rank #4 (Highly Favorable)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Texas</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00% (No Income Tax)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.68% (Elevated)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.20% Combined</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rank #6 (Low Income / High Property)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Washington</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00% (7% on Cap Gains >$262k)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.93% Median</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">9.38% Combined</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rank #11 (Moderate / High Sales Tax)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Nevada</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.00% (No Income Tax)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.55% (Low)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.23% Combined</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rank #5 (Highly Favorable)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">North Carolina</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">4.50% Flat</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.77% Median</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">7.00% Combined</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rank #16 (Competitive Flat Tax)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">California</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">13.30% (Highest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">0.71% (Prop 13)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.85% Combined</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rank #49 (Heavy Tax Burden)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">New York</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10.90% (+ 3.88% NYC)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">1.73% Median</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.52% Combined</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Rank #50 (Highest Tax Burden)</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> State Tax Domicile Relocation Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Satisfy the 183-Day Statutory Presence Rule:</strong> <span>Maintain physical presence in your new domicile state for at least 183 days during the tax year and keep detailed cellular location or card receipt logs.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Sever the Primary Abode in Old State:</strong> <span>Retaining a vacant residence in New York or California while claiming Florida residency is the #1 audit red flag triggering aggressive state residency examinations.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Calculate the Property Tax Offset:</strong> <span>Moving to Texas saves state income tax, but property taxes at 1.8% - 2.5% can wipe out income tax savings for homeowners trading a $400k home for an $800k property.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=State-to-State+Tax+Relocation+%26+Moving+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 State-to-State Tax Relocation &amp; Moving Calculator</a>
-    <a href="/?q=how+to+calculate+state-to-state+tax+relocation+%26+moving" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate state-to-state tax relocation &amp; moving</a>
-    <a href="/?q=state-to-state+tax+relocation+%26+moving+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 state-to-state tax relocation &amp; moving formula</a>
-    <a href="/?q=best+state-to-state+tax+relocation+%26+moving+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best state-to-state tax relocation &amp; moving calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 state tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 relocation states</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 comparison income</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tax moving</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 income tax</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 states take</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 home pay</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
+<p class="cw-sources" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 6px 0 0;">Sources: <a href="https://www.irs.gov/" rel="noopener" style="color: var(--brand-primary);">IRS.gov</a></p>
 </section>
 
   

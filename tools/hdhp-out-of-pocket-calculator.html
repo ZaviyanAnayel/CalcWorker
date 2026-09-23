@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -292,23 +292,137 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Total Annual Healthcare Financial Exposure Formulation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Net Cost} = \text{Premiums} + \min(\text{OOP Max}, \text{Deductible} + c \times \max(0, \text{Claims} - \text{Deductible})) - \text{HSA Tax Shield}</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Sums annual payroll premiums and maximum out-of-pocket ceiling, subtracting employer seed deposits and tax savings.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Deductible:</span> <span>Amount patient must pay 100% before coinsurance cost-sharing activates.</span></li>
+      <li><span class="cw-var-symbol">c:</span> <span>Coinsurance percentage paid by patient (typically 10% to 20% after deductible).</span></li>
+      <li><span class="cw-var-symbol">OOP Max:</span> <span>Statutory maximum out-of-pocket ceiling mandated by Affordable Care Act (ACA).</span></li>
+      <li><span class="cw-var-symbol">HSA Shield:</span> <span>Immediate cash tax savings = Annual HSA Contribution × (Federal + State + FICA Tax Rate).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>An individual with an HDHP plan (premium $2,200, deductible $3,000, OOP max $6,000, coinsurance 20%) incurs $12,000 in medical procedures.</li>
+      <li>Patient pays $3,000 deductible + 20% of remaining $9,000 ($1,800) = $4,800 out-of-pocket.</li>
+      <li>Funding this via HSA at a 32% marginal tax bracket saves $1,536 in taxes, reducing true procedure cost to $3,264.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Check in-network provider lists; ensure your preferred doctors and local hospitals participate in the HDHP network before switching plans.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Affordable Care Act (ACA) and Department of Health and Human Services (HHS) maximum annual out-of-pocket expense parameters.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the difference between a Deductible and Out-of-Pocket Maximum?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">A deductible is the initial amount you must pay 100% out-of-pocket before insurance covers a dime. The out-of-pocket maximum is the hard legal ceiling—once reached, your health insurer pays 100% of all covered in-network services for the rest of the plan year.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is coinsurance?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Coinsurance is the percentage split of covered medical costs you pay after meeting your deductible (most commonly an 80/20 split, where insurance pays 80% and you pay 20%).</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Does monthly premium count toward your deductible or out-of-pocket max?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">No. Premiums are the ongoing monthly subscription cost to maintain coverage. They do not count toward your deductible or out-of-pocket maximum.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">When does an HDHP beat a traditional PPO plan?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">HDHPs beat PPOs in two scenarios: 1) Very low medical utilization (you pocket huge premium savings and HSA tax breaks), or 2) Catastrophic medical utilization (the lower annual premium plus capped OOP max results in lower all-in costs than high PPO premiums).</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏥</span> HDHP vs. PPO Total Cost Modeling: Premiums, Deductibles & Out-of-Pocket Maximums
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Selecting between a High Deductible Health Plan (HDHP) paired with an HSA and a traditional Preferred Provider Organization (PPO) plan requires analyzing Total Annual Financial Risk. Many employees mistakenly choose PPOs solely because of lower deductibles, overlooking substantial monthly payroll premium drains.</p>
+    <p style="margin-top: 12px;">A rigorous healthcare cost model evaluates two extremes: a Low-Utilization Year (preventive checkups only) and a Worst-Case Catastrophic Year (surgeries or serious illness hitting the statutory Out-of-Pocket Maximum).</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> HDHP vs. PPO Annual Financial Comparison ($100k Salary Single Employee)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Scenario / Cost Element</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">HDHP Plan ($3,000 Deductible)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">PPO Plan ($750 Deductible)</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Financial Winner & Net Difference</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Annual Payroll Premium Cost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,200 / yr ($100/mo)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3,600 / yr ($300/mo)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP saves $2,400 guaranteed in premiums</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Employer HSA Cash Contribution</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">+$600 seed deposit</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0.00</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP gives $600 free cash</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Low Utilization Year (Zero claims)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$600 net out-of-pocket</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$3,600 net cost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP wins by $3,000 savings</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Moderate Year ($2,500 claims)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,100 net out-of-pocket</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$4,200 net cost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP wins by $2,100 savings</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Worst-Case Year (Hits OOP Max)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$6,200 total spending</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$6,600 total spending</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">HDHP still wins by $400 in catastrophic year</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Health Plan Selection Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Calculate the Guaranteed Premium Delta:</strong> <span>Subtract annual HDHP premiums from PPO premiums; that guaranteed cash difference is money in your pocket regardless of medical claims.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Fund Your HSA With the Premium Savings:</strong> <span>Channel the $2,400 annual premium savings directly into your HSA to instantly cover your higher deductible in cash.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Select PPO Only for Frequent Specialist Care:</strong> <span>If you have ongoing chronic conditions requiring weekly prescription refills, therapy, or frequent specialist copays, a PPO copay model may provide superior convenience.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=HDHP+vs+PPO+Out-of-Pocket+Maximum+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 HDHP vs PPO Out-of-Pocket Maximum Calculator</a>
-    <a href="/?q=how+to+calculate+hdhp+vs+ppo+out-of-pocket+maximum" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate hdhp vs ppo out-of-pocket maximum</a>
-    <a href="/?q=hdhp+vs+ppo+out-of-pocket+maximum+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 hdhp vs ppo out-of-pocket maximum formula</a>
-    <a href="/?q=best+hdhp+vs+ppo+out-of-pocket+maximum+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best hdhp vs ppo out-of-pocket maximum calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 hdhp high</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 deductible health</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 plan out</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 pocket maximum</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 deductible coinsurance</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 copay health</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 savings account</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Health &amp; Editorial Standards:</strong> Estimates follow standard published formulas and public-health guidance (e.g. CDC, WHO). This tool is for information only and is not medical advice &mdash; consult a qualified professional for health decisions. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
-<p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
 
   

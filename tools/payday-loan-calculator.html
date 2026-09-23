@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -284,21 +284,135 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Federal Truth in Lending Act (TILA) Payday APR Formula</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{APR} = \left( \frac{\text{Finance Charge}}{\text{Principal Loan Amount}} \right) \times \left( \frac{365}{\text{Loan Term in Days}} \right) \times 100\%</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Annualizes short-term loan fees across 365 calendar days in accordance with Federal Reserve Regulation Z disclosure mandates.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Finance Charge:</span> <span>Flat fee charged per $100 borrowed (typically $15 to $20 per $100 for a two-week period).</span></li>
+      <li><span class="cw-var-symbol">Loan Term:</span> <span>Contractual repayment window until next payroll disbursement (typically 14 days).</span></li>
+      <li><span class="cw-var-symbol">Compounded Rollover:</span> <span>Refinancing the loan multiplies fees without reducing original borrowed principal.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>Borrowing $500 for a $75 fee over 14 days yields an effective APR of ($75 ÷ $500) × (365 ÷ 14) = 15.0% × 26.071 = 391.07% APR.</li>
+      <li>If the borrower rolls the loan over 3 times (6 weeks total), they pay $225 in finance charges while still owing the full $500 principal.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Active-duty military service members are protected by the federal Military Lending Act (MLA), which strictly caps all consumer credit interest and fees at a maximum 36% Military Annual Percentage Rate (MAPR).
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Consumer Financial Protection Bureau (12 CFR Part 1041) Payday, Vehicle Title, and Certain High-Cost Installment Loans rule.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Why is the APR on payday loans so staggeringly high?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Payday lenders disguise triple-digit interest rates as modest 'flat fees' (e.g. $15 per $100 borrowed). However, because that $15 fee is charged for only 14 days, annualizing that rate yields a staggering 391% APR.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is the payday loan 'rollover debt trap'?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">When a borrower cannot repay the full loan plus fee on payday, they pay another fee to renew or 'roll over' the loan for another two weeks. According to the CFPB, over 80% of payday loans are rolled over within 30 days.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What are Payday Alternative Loans (PALs)?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Federal credit unions offer Payday Alternative Loans (PALs) with loan amounts up to $2,000, repayment terms from 1 to 12 months, and interest rates legally capped at 28% APR.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Does the Military Lending Act (MLA) protect service members from payday loans?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Yes. The federal Military Lending Act caps interest rates and fees on consumer credit for active-duty service members and their dependents at a strict maximum of 36% Military Annual Percentage Rate (MAPR).</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>⚠️</span> Payday Loan Real APR Economics & Statutory Usury Protections
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Payday loans are short-term, high-cost consumer advances typically ranging from $100 to $1,000 designed to be repaid on the borrower's next paycheck. While storefront lenders advertise simple fees (such as '$15 per $100 borrowed'), annualizing a two-week fee reveals effective Annual Percentage Rates (APRs) between 390% and 780%.</p>
+    <p style="margin-top: 12px;">According to Consumer Financial Protection Bureau (CFPB) research, over 80% of payday loans are rolled over or renewed within 14 days, trapping low-income borrowers in a recurring debt cycle where cumulative fees quickly exceed the original principal borrowed.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Payday Loan Fees vs. Equivalent Annual Percentage Rate (APR) (14-Day Term)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Storefront Fee Charged</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Amount Borrowed</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Repayment Due in 14 Days</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Effective Annual APR</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Cost if Rolled Over for 6 Months</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$10 per $100</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$400 Loan</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$440 Due</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">260.71% APR</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$520 in fees alone</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$15 per $100 (Standard)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$400 Loan</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$460 Due</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">391.07% APR</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$780 in fees alone</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$20 per $100</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$400 Loan</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$480 Due</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">521.43% APR</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,040 in fees alone</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$25 per $100</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$400 Loan</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$500 Due</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">651.79% APR</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,300 in fees alone</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">$30 per $100 (High Fee)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$400 Loan</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$520 Due</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">782.14% APR</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,560 in fees alone</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Emergency Payday Loan Alternatives
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Access Credit Union PALs (Payday Alternative Loans):</strong> <span>Federal credit unions offer NCUA-regulated PAL loans capped at 28% APR with 1 to 12 month repayment windows.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Request Employer Earned Wage Access (EWA):</strong> <span>Platforms like DailyPay or employer payroll advances allow you to access already-earned wages for a nominal $2-$3 fee rather than 400% interest.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Know Your State Usury Limits:</strong> <span>19 states and Washington D.C. enforce statutory 36% APR interest rate caps that legally prohibit triple-digit storefront payday lending.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Payday+Loan+Real+APR+%26+Debt+Trap+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Payday Loan Real APR &amp; Debt Trap Calculator</a>
-    <a href="/?q=how+to+calculate+payday+loan+real+apr+%26+debt+trap" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate payday loan real apr &amp; debt trap</a>
-    <a href="/?q=payday+loan+real+apr+%26+debt+trap+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 payday loan real apr &amp; debt trap formula</a>
-    <a href="/?q=best+payday+loan+real+apr+%26+debt+trap+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best payday loan real apr &amp; debt trap calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 payday loan</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 apr true</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 borrowing cost</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 short term</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 cash advance</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 finance charge</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 high interest</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

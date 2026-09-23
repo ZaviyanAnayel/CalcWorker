@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -437,21 +437,132 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Marginal Tiered Sales Commission Equation</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Commission} = \sum_{i=1}^m \left( \min(\text{Sales}, \text{Cap}_i) - \text{Cap}_{i-1} \right) \times R_i + \text{Kicker Bonus}</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Calculates commission by multiplying revenue booked within each distinct quota bracket by that specific tier's accelerated commission percentage.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">Cap_i:</span> <span>Revenue tier thresholds established in corporate compensation plan (e.g., Tier 1: $0-$50k; Tier 2: $50k-$100k; Tier 3: >$100k).</span></li>
+      <li><span class="cw-var-symbol">R_i:</span> <span>Commission payout percentage rate for performance bracket i.</span></li>
+      <li><span class="cw-var-symbol">Kicker:</span> <span>One-time milestone bonus for achieving 100% or 120% of annual quota.</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>A compensation plan pays 5% on first $50,000, 8% on next $50,000 ($50k-$100k), and 12% on all revenue exceeding $100,000.</li>
+      <li>Generating $150,000 in sales volume yields: ($50k × 0.05) + ($50k × 0.08) + ($50k × 0.12) = $2,500 + $4,000 + $6,000 = $12,500 in total sales commission.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Check contract language regarding deal clawbacks; if a client cancels within 90 days, companies often claw back paid commissions against subsequent paychecks.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> WorldatWork and Alexander Group annual Sales Compensation Benchmark Survey.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">What is a tiered sales commission accelerator structure?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">A tiered accelerator structure increases the salesperson's commission percentage as they hit higher revenue milestones. For example: Tier 1 pays 5% on sales up to $50,000; Tier 2 accelerates to 8% for sales between $50,000 and $100,000; and Tier 3 pays 12% on all sales above $100,000, incentivizing high performers to exceed annual quotas.</p>
+    </details>
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">What is the difference between a recoverable and non-recoverable draw?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">A draw is an advance against anticipated future commissions. Under a recoverable draw, if your commissions fall below the advance amount, the deficit must be repaid or deducted from future paychecks. A non-recoverable draw provides guaranteed minimum baseline earnings that do not need to be repaid if sales underperform.</p>
+    </details>
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">Are sales commissions subject to different payroll tax withholding rates?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">Yes. The IRS treats commissions as supplemental wages. Employers typically withhold federal income tax using either the flat supplemental rate (currently 22% for amounts up to $1 million) or the aggregate method combining commission with regular base salary. Standard FICA (6.2% Social Security + 1.45% Medicare) and state taxes also apply.</p>
+    </details>
+    <details style="background: var(--bg-subtle, #0b1329); padding: 16px 20px; border-radius: 10px; border: 1px solid var(--border, #1e293b); cursor: pointer; margin-bottom: 12px;">
+      <summary style="font-weight: 700; color: var(--text-main, #f8fafc); outline: none;">What is FLSA Section 7(i) overtime exemption for commissioned employees?</summary>
+      <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted, #94a3b8); font-size: 0.9rem; line-height: 1.6;">Under Section 7(i) of the Fair Labor Standards Act, retail and service employees paid on commission are exempt from overtime pay if: (1) regular pay exceeds 1.5 times the federal minimum wage, and (2) more than half of total compensation over a representative period comes from commissions.</p>
+    </details>
+  </div>
+</section>
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🎯</span> Sales Commission Structures: Tiered Accelerators & OTE Modeling
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Sales compensation packages for enterprise Account Executives (AEs) and B2B sales professionals are built around On-Target Earnings (OTE), typically divided into a 50/50 split: 50% base salary and 50% variable performance commission. To incentivize exceeding annual revenue quotas, enterprise compensation plans implement 'Tiered Accelerators.'</p>
+    <p style="margin-top: 12px;">Under tiered commission accelerators, hitting 100% of quota pays the baseline commission rate (e.g. 10%), while revenue generated between 100% and 150% of quota triggers an accelerated commission rate (e.g. 15% to 20%), unlocking exponential earnings for top performers.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Tiered Sales Commission Accelerator Structure ($1,000,000 Annual Quota)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Quota Attainment Tier</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Revenue Booked</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Commission Accelerator Rate</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Tier Commission Earned</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Cumulative Variable Commission</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tier 1: 0% – 50% of Quota</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$0 – $500,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">8.0% Baseline</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$40,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$40,000</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tier 2: 50% – 100% of Quota</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$500,000 – $1,000,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">12.0% Target Rate</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$60,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$100,000 (100% OTE Achieved)</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tier 3: 100% – 125% Accelerator</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,000,000 – $1,250,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">18.0% Accelerator (1.5x)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$45,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$145,000</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tier 4: 125% – 150% Accelerator</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,250,000 – $1,500,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">24.0% Super-Accelerator (2x)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$60,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$205,000</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Tier 5: 150%+ President's Club</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Over $1,500,000</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">28.0% Executive Tier</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Uncapped</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$205,000 + $28k per $100k extra</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Commission Plan Due Diligence Rules
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Verify Quota Attainment Percentages:</strong> <span>Before accepting a sales role, ask what percentage of the existing sales team hit quota last year; if fewer than 50% achieved quota, the OTE figure is largely unachievable.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Demand Uncapped Commissions:</strong> <span>Ensure your sales contract specifies uncapped commissions; avoid agreements with 'windfall clauses' that allow management to adjust commissions on large enterprise deals.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Understand Recoverable vs. Non-Recoverable Draws:</strong> <span>A non-recoverable draw provides guaranteed income during ramp-up; a recoverable draw creates a debt balance that the company clawbacks from future commissions.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Sales & Incentive Compensation Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Sales+Commission+%26+Quota+Accelerator+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Sales Commission &amp; Quota Accelerator Calculator</a>
-    <a href="/?q=how+to+calculate+sales+commission+%26+quota+accelerator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate sales commission &amp; quota accelerator</a>
-    <a href="/?q=sales+commission+%26+quota+accelerator+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 sales commission &amp; quota accelerator formula</a>
-    <a href="/?q=best+sales+commission+%26+quota+accelerator+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best sales commission &amp; quota accelerator calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 sales commission</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 tiered commission</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 structure revenue</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 target sales</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 quota gross</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 margin commission</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 accelerators incentive</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>

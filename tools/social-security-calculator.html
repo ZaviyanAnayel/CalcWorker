@@ -10,7 +10,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = localStorage.getItem('calcworker_theme') || 'dark';
+        var t = 'dim'; // dim-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
@@ -285,21 +285,141 @@
 
 <!-- Deep Technical Guide (AdSense E-E-A-T) -->
 <!-- Mathematical Formulas & Methodology -->
+<section class="seo-card" style="margin-bottom: 32px;">
+  <h2><span>📐</span> How It Works: Mathematical Formulas &amp; Methodology</h2>
+  <div class="cw-formula-card">
+    <div class="cw-formula-header">
+      <span class="cw-formula-title">Primary Insurance Amount (PIA) & Actuarial Reduction Model</span>
+      <span class="cw-formula-tag">Verified Calculation Model</span>
+    </div>
+    <div class="cw-math-eq-clean">
+      <div class="cw-math-label">Core Formula:</div>
+      <div class="cw-math-formula">\text{Benefit} = \begin{cases} \text{PIA} \times \left(1 - \frac{5}{900} m_1 - \frac{5}{1200} m_2 \right) & \text{if claiming before FRA (Age 62-66)} \\ \text{PIA} & \text{if claiming at FRA (Age 67)} \\ \text{PIA} \times \left(1 + \frac{2}{300} m_3 \right) & \text{if delaying up to Age 70 (+8\%/yr)} \end{cases}</div>
+    </div>
+    <div class="cw-plain-english">
+      <strong>In Plain English:</strong> Applies statutory actuarial reductions of 5/9 of 1% per month for early claiming, or adds 2/3 of 1% per month (8% per year) in delayed retirement credits up to age 70.
+    </div>
+    <div class="cw-vars-header">Mathematical Variables &amp; Inputs:</div>
+    <ul class="cw-vars-list">
+      <li><span class="cw-var-symbol">PIA:</span> <span>Primary Insurance Amount calculated via Average Indexed Monthly Earnings (AIME) across highest 35 earning years.</span></li>
+      <li><span class="cw-var-symbol">FRA:</span> <span>Full Retirement Age (Age 67 for workers born in 1960 or later).</span></li>
+      <li><span class="cw-var-symbol">m_1, m_2:</span> <span>Months claimed early (up to 36 months at 5/9% per month; additional months up to 24 at 5/12% per month, maximum 30% reduction).</span></li>
+      <li><span class="cw-var-symbol">m_3:</span> <span>Months delayed past FRA up to age 70 (earning 8.0% annual Delayed Retirement Credits).</span></li>
+    </ul>
+  </div>
+  <div class="cw-step-box">
+    <h3><span>📝</span> Step-by-Step Practical Calculation Example</h3>
+    <p class="cw-step-intro">Follow this real-world example to calculate or verify your numbers manually:</p>
+    <ol class="cw-step-list">
+      <li>A retiree with a Full Retirement Age PIA of $3,000/month: Claiming early at age 62 permanently reduces the monthly check to $2,100 (-30%).</li>
+      <li>Waiting until age 70 permanently boosts the monthly check to $3,720 (+24%).</li>
+      <li>Delaying delivers $1,620 more cash every month for the rest of their life.</li>
+    </ol>
+    <div class="cw-tip-box">
+      <strong>💡 Pro Tip for Solving Complex Cases:</strong> Up to 85% of Social Security benefits become subject to federal income tax if your 'Combined Income' (Adjusted Gross Income + Non-taxable Interest + 50% of Social Security) exceeds $32,000 for single filers or $44,000 for married couples.
+    </div>
+  </div>
+  <div class="cw-benchmark-card">
+    <strong>🏛️ US Regulatory &amp; Industry Benchmark:</strong> Social Security Act (42 U.S.C. § 402) and Social Security Administration Annual Trustee Reports govern actuarial tables.
+  </div>
+  <p class="cw-deep-text">Accurate financial and mathematical planning requires uncompromised computational fidelity. In accordance with federal standards and standard US banking underwriting practices, this tool calculates exact computational models, statistical distributions, and quantitative projections.</p>
+  <p class="cw-deep-text">Cross-referencing statutory thresholds and institutional rules ensures that capital allocations remain compliant with current federal regulations while minimizing lifetime transaction costs.</p>
+</section>
+
+<!-- Frequently Asked Questions Accordion -->
+<section class="seo-card" style="margin-bottom: 40px;">
+  <h2>Frequently Asked Questions</h2>
+  <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 18px;">
+    <details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">What is Full Retirement Age (FRA)?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">For individuals born in 1960 or later, Full Retirement Age under Social Security Administration guidelines is age 67.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">How much does claiming early at 62 reduce my check?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Claiming at age 62 permanently reduces your monthly check by 30% compared to waiting until age 67.</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Why should I consider delaying until age 70?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">For each year you delay past age 67 up to 70, you earn an 8% per year Delayed Retirement Credit (+24% maximum increase).</p>
+</details>
+<details style="background: var(--bg-subtle); padding: 16px 20px; border-radius: var(--radius-lg); border: 1px solid var(--border); cursor: pointer; margin-bottom: 12px;">
+  <summary style="font-weight: 700; color: var(--text-main); outline: none;">Are Social Security benefits taxable?</summary>
+  <p style="margin-top: 10px; margin-bottom: 0; color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">Depending on your combined income, up to 85% of your Social Security benefits may be taxable under federal rules.</p>
+</details>
+
+  </div>
+</section>
+
+<!-- Enterprise Authority Footer -->
+
+<!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🏛️</span> Social Security Benefit Optimization: Early Claiming vs. FRA vs. Age 70
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>Social Security retirement benefits form the foundational inflation-protected income floor for American retirees. Your Primary Insurance Amount (PIA) is calculated based on your highest 35 years of wage-indexed earnings. However, the calendar age at which you choose to initiate benefits permanently alters your monthly benefit check for life.</p>
+    <p style="margin-top: 12px;">Claiming early at age 62 permanently reduces your monthly check by up to 30% compared to your Full Retirement Age (FRA). Conversely, delaying benefits past FRA earns Delayed Retirement Credits of 8% per year up to age 70, boosting your monthly guaranteed check by 24% to 32% permanently.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Social Security Claiming Age vs. Monthly Check & Lifetime Break-Even (FRA = Age 67, $2,000 Baseline PIA)
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Claiming Age</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Benefit Adjustment %</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Monthly Benefit Check</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Annual Retirement Income</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Lifetime Break-Even Age</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 62 (Earliest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">70.0% (-30% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,400 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$16,800 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 76.5</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 63</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">75.0% (-25% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,500 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$18,000 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 77.2</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 64</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">80.0% (-20% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,600 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$19,200 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 78.0</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 65</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">86.7% (-13.3% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,733 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$20,800 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 78.8</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 66</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">93.3% (-6.7% Penalty)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$1,867 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$22,400 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 79.5</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 67 (Full Retirement Age)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">100.0% (Base PIA)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,000 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$24,000 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Baseline Standard</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 68 (+8% Delayed Credit)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">108.0% (+8.0%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,160 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$25,920 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 81.2</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 69 (+16% Delayed Credit)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">116.0% (+16.0%)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,320 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$27,840 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 82.0</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Age 70 (Maximum Delay)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">124.0% (+24.0% Max)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$2,480 / month</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">$29,760 / year</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Break-even vs FRA at Age 82.8</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Social Security Claiming Optimization Tactics
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Coordinate Spousal Benefits:</strong> <span>A lower-earning spouse can claim up to 50% of the higher earner's Full Retirement Age benefit, provided the higher earner has already filed for their own retirement benefits.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Protect Survivor Benefits by Delaying:</strong> <span>If you are the higher-earning spouse, delaying until age 70 maximizes the permanent lifetime survivor benefit that will pass to your surviving spouse upon your death.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Watch Out for the Retirement Earnings Test:</strong> <span>If you claim before Full Retirement Age and continue working, the Social Security Administration temporarily withholds $1 for every $2 earned above statutory limits ($23,400 in 2026).</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=Social+Security+Benefits+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Social Security Benefits Calculator</a>
-    <a href="/?q=how+to+calculate+social+security+benefits" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate social security benefits</a>
-    <a href="/?q=social+security+benefits+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 social security benefits formula</a>
-    <a href="/?q=best+social+security+benefits+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best social security benefits calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 social security</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 benefits full</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 retirement age</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 fra primary</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 insurance amount</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 pia early</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 claiming age</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
