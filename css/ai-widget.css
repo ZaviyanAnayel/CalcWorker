@@ -41,7 +41,7 @@
   outline: none !important;
 }
 
-[data-theme="dim"] .cw-ai-launcher {
+[data-theme="dark"] .cw-ai-launcher {
   background: #2b3549 !important;
   border: 1.5px solid rgba(56, 189, 248, 0.5) !important;
   box-shadow: 0 8px 24px -4px rgba(37, 99, 235, 0.25), 0 2px 8px rgba(0, 0, 0, 0.08) !important;
@@ -64,7 +64,7 @@
   letter-spacing: 0.01em !important;
 }
 
-[data-theme="dim"] .cw-ai-launcher-label {
+[data-theme="dark"] .cw-ai-launcher-label {
   color: #e6ecf5 !important;
 }
 

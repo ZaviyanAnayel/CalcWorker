@@ -11,7 +11,7 @@
     (function(){
       try {
         if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-        var t = 'dim'; // dim-only forever
+        var t = 'dark'; // dark-only forever
         document.documentElement.setAttribute('data-theme', t);
         var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
         document.documentElement.setAttribute('data-calc-theme', calcT);
