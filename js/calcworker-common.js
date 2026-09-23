@@ -780,7 +780,7 @@ window.cwApp = new CalcWorkerApp();
 
 /* ==========================================================
    OFFLINE ENGINE & UNIVERSAL TOP NOTIFICATION STRIP (PWA)
-   Renders prominent offline-ready banner on Dashboard & all 102 tools
+   Renders prominent offline-ready banner on Dashboard & all 137 tools
    ========================================================== */
 (function() {
   function isPwaInstalled() {

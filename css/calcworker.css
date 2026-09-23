@@ -2871,7 +2871,7 @@ button, input, select, textarea {
 /* ==========================================================================
    Issue 4: Unified Button Design System (<= 4 Core Variants)
    ========================================================================== */
-.btn-primary, .topbar-share-btn.primary {
+.btn-primary, .topbar-share-btn.primary, .calc-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -2889,7 +2889,7 @@ button, input, select, textarea {
   transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.btn-primary:hover, .topbar-share-btn.primary:hover {
+.btn-primary:hover, .topbar-share-btn.primary:hover, .calc-btn:hover {
   background: var(--brand-hover);
   border-color: var(--brand-hover);
   transform: translateY(-1px);
