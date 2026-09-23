@@ -1,7 +1,7 @@
 /* ==========================================================================
    CalcWorker — Universal Financial, Tax & Utility Platform
    World-Class 2026 SaaS Design System (Apple + Stripe + Linear + Vercel Inspired)
-   Production Ready • Zero CLS • Responsive Mobile-First • Dark & Light Themes
+   Production Ready • Zero CLS • Responsive Mobile-First • Dark & Dim Themes
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
@@ -67,47 +67,47 @@
   --radius-full: 9999px;
 }
 
-[data-theme="light"] {
-  /* Color Palette — Premium Matte Luxury Light Mode (Soft, non-glare, eye-comfortable) */
-  --bg-body: #f1f3f7;              /* Soft calm light slate body, eliminates harsh glare */
-  --bg-surface: #ffffff;           /* Elevated crisp white cards */
-  --bg-surface-elevated: #ffffff;
-  --bg-subtle: #e5e9f0;            /* Soft muted contrast tone */
-  --bg-input: #ffffff;
-  --card-glass: rgba(255, 255, 255, 0.95);
-  --card-bg: #ffffff;
+[data-theme="dim"] {
+  /* Color Palette — Dim: soft gray midpoint between dark and light */
+  --bg-body: #1c2330;
+  --bg-surface: #232c3d;
+  --bg-surface-elevated: #2b3549;
+  --bg-subtle: #2e3a51;
+  --bg-input: #1a2130;
+  --card-glass: rgba(35, 44, 61, 0.88);
+  --card-bg: linear-gradient(180deg, rgba(43, 53, 73, 0.7) 0%, rgba(35, 44, 61, 0.85) 100%);
 
-  --text-main: #1e293b;            /* Deep rich charcoal slate (high contrast, easy on eyes) */
-  --text-muted: #475569;           /* Sophisticated medium slate for body copy */
-  --text-dim: #64748b;             /* Subtle slate for metadata and captions */
+  --text-main: #e6ecf5;
+  --text-muted: #9fabC2;
+  --text-dim: #6d7b93;
 
-  --border: #d5dbe5;               /* Defined, soft card borders */
-  --border-focus: #2563eb;         /* Deep royal sapphire blue */
-  --border-hover: #94a3b8;
-  --border-subtle: #e2e8f0;
+  --border: rgba(148, 163, 184, 0.16);
+  --border-focus: #38bdf8;
+  --border-hover: rgba(148, 163, 184, 0.32);
+  --border-subtle: rgba(148, 163, 184, 0.08);
 
-  --brand-primary: #2563eb;        /* Authoritative deep sapphire blue */
-  --brand-hover: #1d4ed8;
-  --brand-light: #e0edff;          /* Very gentle blue tint for active states */
-  --brand-glow: rgba(37, 99, 235, 0.12);
+  --brand-primary: #38bdf8;
+  --brand-hover: #7dd3fc;
+  --brand-light: rgba(56, 189, 248, 0.14);
+  --brand-glow: rgba(56, 189, 248, 0.2);
 
-  --accent-emerald: #059669;
-  --accent-emerald-light: #d1fae5;
-  --accent-rose: #e11d48;
-  --accent-rose-light: #ffe4e6;
-  --accent-amber: #d97706;
-  --accent-amber-light: #fef3c7;
-  --accent-indigo: #4f46e5;
-  --accent-indigo-light: #e0e7ff;
-  --accent-cyan: #0891b2;
-  --accent-purple: #7c3aed;
+  --accent-emerald: #34d399;
+  --accent-emerald-light: rgba(52, 211, 153, 0.16);
+  --accent-rose: #fb7185;
+  --accent-rose-light: rgba(251, 113, 133, 0.16);
+  --accent-amber: #fbbf24;
+  --accent-amber-light: rgba(251, 191, 36, 0.16);
+  --accent-indigo: #818cf8;
+  --accent-indigo-light: rgba(129, 140, 248, 0.16);
+  --accent-cyan: #22d3ee;
+  --accent-purple: #a78bfa;
 
-  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.04);
-  --shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
-  --shadow-lg: 0 10px 24px -4px rgba(15, 23, 42, 0.08);
-  --shadow-xl: 0 20px 35px -5px rgba(15, 23, 42, 0.10);
-  --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 0 0 1px #d5dbe5;
-  --shadow-card-hover: 0 12px 28px -4px rgba(15, 23, 42, 0.12), 0 0 0 1px #2563eb;
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+  --shadow-lg: 0 10px 24px -4px rgba(0, 0, 0, 0.5);
+  --shadow-xl: 0 20px 35px -5px rgba(0, 0, 0, 0.55);
+  --shadow-card: inset 0 1px 0 0 rgba(255, 255, 255, 0.07), 0 0 0 1px rgba(148, 163, 184, 0.12), 0 4px 16px rgba(0, 0, 0, 0.4);
+  --shadow-card-hover: inset 0 1px 0 0 rgba(255, 255, 255, 0.12), 0 0 0 1px rgba(56, 189, 248, 0.35), 0 12px 32px -4px rgba(0, 0, 0, 0.55), 0 0 24px rgba(56, 189, 248, 0.12);
 }
 
 /* --------------------------------------------------------------------------

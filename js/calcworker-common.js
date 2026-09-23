@@ -220,7 +220,10 @@
 
 class CalcWorkerApp {
   constructor() {
-    this.theme = localStorage.getItem('calcworker_theme') || 'dark';
+    // 2-theme system: dark / dim only (same as WebDevWorker). Unknown values normalize to dark.
+    var saved = localStorage.getItem('calcworker_theme') || 'dark';
+    this.theme = (saved === 'dim') ? 'dim' : 'dark';
+    try { localStorage.setItem('calcworker_theme', this.theme); } catch(e) {}
     this.audioEnabled = localStorage.getItem('calcworker_sound') !== 'false';
     this.audioCtx = null;
     this.init();
@@ -282,20 +285,21 @@ class CalcWorkerApp {
 
   toggleTheme() {
     this.playClick();
-    this.theme = this.theme === 'light' ? 'dark' : 'light';
+    this.theme = this.theme === 'dark' ? 'dim' : 'dark';
     document.documentElement.setAttribute('data-theme', this.theme);
     localStorage.setItem('calcworker_theme', this.theme);
     this.updateThemeButton();
-    this.showToast(`Switched to ${this.theme === 'dark' ? 'Dark' : 'Light'} Mode`);
+    this.showToast(`Switched to ${this.theme === 'dark' ? 'Dark' : 'Dim'} Mode`);
   }
 
     updateThemeButton() {
     const btn = document.getElementById("themeToggleBtn");
     if (!btn) return;
-    btn.setAttribute("title", this.theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode");
-    btn.setAttribute("aria-label", this.theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode");
-    if (this.theme === "dark") {
-      btn.innerHTML = `<svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#f59e0b;"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="1" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg><span class="btn-label">Light</span>`;
+    var isDark = this.theme === "dark";
+    btn.setAttribute("title", isDark ? "Switch to Dim Mode" : "Switch to Dark Mode");
+    btn.setAttribute("aria-label", isDark ? "Switch to Dim Mode" : "Switch to Dark Mode");
+    if (isDark) {
+      btn.innerHTML = `<span style="font-size:14px;">🌆</span><span class="btn-label">Dim</span>`;
     } else {
       btn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color:#6366f1;"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg><span class="btn-label">Dark</span>`;
     }
@@ -753,23 +757,23 @@ window.cwApp = new CalcWorkerApp();
     style.textContent = [
         '.cw-offline-strip { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif !important; font-size: 0.82rem !important; padding: 7px 20px !important; position: sticky !important; top: 0px !important; z-index: 50 !important; overflow: hidden !important; width: 100% !important; transition: all 0.3s ease !important; }',
         '[data-theme="dark"] .cw-offline-strip { background: linear-gradient(90deg, #070a12 0%, #0d1528 50%, #070a12 100%) !important; border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important; color: #f8fafc !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4) !important; }',
-        '[data-theme="light"] .cw-offline-strip { background: linear-gradient(90deg, #f0f7ff 0%, #e8f0fe 50%, #f0fdf4 100%) !important; border-bottom: 1px solid rgba(37, 99, 235, 0.2) !important; color: #0f172a !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important; }',
+        '[data-theme="dim"] .cw-offline-strip { background: linear-gradient(90deg, #1c2330 0%, #2b3549 50%, #1c2330 100%) !important; border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important; color: #e6ecf5 !important; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35) !important; }',
         '.cw-offline-strip-inner { max-width: 1400px !important; margin: 0 auto !important; display: flex !important; align-items: center !important; justify-content: space-between !important; gap: 12px !important; }',
         '.cw-offline-left { display: inline-flex !important; align-items: center !important; gap: 10px !important; flex-wrap: wrap !important; }',
         '.cw-offline-badge { display: inline-flex !important; align-items: center !important; gap: 6px !important; padding: 3px 10px !important; border-radius: 9999px !important; font-weight: 700 !important; font-size: 0.72rem !important; letter-spacing: 0.03em !important; white-space: nowrap !important; transition: all 0.3s ease !important; }',
         '[data-theme="dark"] .cw-offline-badge { background: rgba(16, 185, 129, 0.16) !important; border: 1px solid rgba(16, 185, 129, 0.45) !important; color: #34d399 !important; }',
-        '[data-theme="light"] .cw-offline-badge { background: rgba(16, 185, 129, 0.16) !important; border: 1px solid rgba(16, 185, 129, 0.5) !important; color: #047857 !important; }',
+        '[data-theme="dim"] .cw-offline-badge { background: rgba(16, 185, 129, 0.16) !important; border: 1px solid rgba(16, 185, 129, 0.45) !important; color: #34d399 !important; }',
         '.cw-offline-dot { width: 7px !important; height: 7px !important; border-radius: 50% !important; background-color: #10b981 !important; box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7) !important; animation: cw-pulse-green 2s infinite cubic-bezier(0.4, 0, 0.6, 1) !important; }',
         '@keyframes cw-pulse-green { 0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7); } 70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(16, 185, 129, 0); } 100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); } }',
         '.cw-offline-headline { line-height: 1.35 !important; font-size: 0.84rem !important; }',
         '[data-theme="dark"] .cw-offline-headline { color: #e2e8f0 !important; }',
         '[data-theme="dark"] .cw-offline-headline strong { color: #38bdf8 !important; font-weight: 700 !important; }',
-        '[data-theme="light"] .cw-offline-headline { color: #0f172a !important; font-weight: 600 !important; }',
-        '[data-theme="light"] .cw-offline-headline strong { color: #1d4ed8 !important; font-weight: 800 !important; }',
+        '[data-theme="dim"] .cw-offline-headline { color: #c7d0e0 !important; font-weight: 600 !important; }',
+        '[data-theme="dim"] .cw-offline-headline strong { color: #7dd3fc !important; font-weight: 800 !important; }',
         '.cw-offline-right { display: inline-flex !important; align-items: center !important; gap: 8px !important; flex-shrink: 0 !important; }',
         '.cw-pwa-install-btn { padding: 4px 14px !important; border-radius: 6px !important; font-size: 0.74rem !important; font-weight: 700 !important; cursor: pointer !important; display: inline-flex !important; align-items: center !important; gap: 6px !important; transition: all 0.2s ease !important; white-space: nowrap !important; border: none !important; }',
         '[data-theme="dark"] .cw-pwa-install-btn { background: linear-gradient(135deg, #0284c7, #2563eb) !important; color: #ffffff !important; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4) !important; }',
-        '[data-theme="light"] .cw-pwa-install-btn { background: linear-gradient(135deg, #2563eb, #1d4ed8) !important; color: #ffffff !important; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3) !important; }',
+        '[data-theme="dim"] .cw-pwa-install-btn { background: linear-gradient(135deg, #0284c7, #2563eb) !important; color: #ffffff !important; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4) !important; }',
         '.cw-pwa-install-btn:hover { filter: brightness(1.1) !important; transform: translateY(-1px) !important; }',
         '.cw-offline-dismiss { background: transparent !important; border: none !important; color: var(--text-muted) !important; font-size: 0.9rem !important; padding: 2px 7px !important; cursor: pointer !important; border-radius: 4px !important; line-height: 1 !important; transition: all 0.2s ease !important; }',
         '.cw-offline-dismiss:hover { color: var(--text-main) !important; background: rgba(0, 0, 0, 0.08) !important; }',
