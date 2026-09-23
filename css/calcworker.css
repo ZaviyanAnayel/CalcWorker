@@ -1953,6 +1953,34 @@ button, input, select, textarea {
   transform: translateY(1px) !important;
 }
 
+/* Premium subtle shine sweep on the Install App button */
+.cw-pwa-install-btn,
+.cw-install-btn,
+#cwPwaInstallBtn,
+#cwInstallBtn {
+  position: relative !important;
+  overflow: hidden !important;
+}
+.cw-pwa-install-btn::after,
+.cw-install-btn::after,
+#cwPwaInstallBtn::after,
+#cwInstallBtn::after {
+  content: "" !important;
+  position: absolute !important;
+  top: 0 !important;
+  left: -80% !important;
+  width: 55% !important;
+  height: 100% !important;
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,0.35) 50%, transparent 100%) !important;
+  transform: skewX(-18deg) !important;
+  animation: cwInstallShine 4.5s ease-in-out infinite !important;
+  pointer-events: none !important;
+}
+@keyframes cwInstallShine {
+  0%, 55% { left: -80% !important; }
+  85%, 100% { left: 140% !important; }
+}
+
 /* Light Mode Strip Styling */
 [data-theme="light"] #cw-offline-strip,
 [data-theme="light"] .cw-offline-strip {
@@ -2465,6 +2493,7 @@ button, input, select, textarea {
   color: #10b981;
 }
 .cw-deep-text {
+}
 
 
 /* ==========================================================================

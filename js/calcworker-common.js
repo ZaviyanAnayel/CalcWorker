@@ -798,6 +798,7 @@ window.cwApp = new CalcWorkerApp();
       if (window.navigator && window.navigator.standalone === true) return true;
       if (document.referrer && document.referrer.includes('android-app://')) return true;
       if (localStorage.getItem('cw_pwa_installed') === 'true') return true;
+      if (localStorage.getItem('cw_app_install_clicked') === 'true') return true;
     } catch(e) {}
     return false;
   }
@@ -913,13 +914,13 @@ window.cwApp = new CalcWorkerApp();
             '<span id="cwOfflineBadgeText">⚡ 100% Offline App</span>' +
           '</span>' +
           '<span class="cw-offline-headline" id="cwOfflineHeadline">' +
-            '⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.' +
+            '📲 <strong>Get the CalcWorker App:</strong> all 137 precision calculators in your pocket — free forever, works 100% offline.' +
           '</span>' +
         '</div>' +
         '<div class="cw-offline-right">' +
-          (!installed ? '<button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Install CalcWorker App">' +
-            '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>' +
-            '<span>Install App</span>' +
+          (!installed ? '<button class="cw-pwa-install-btn" id="cwPwaInstallBtn" type="button" title="Get CalcWorker on Google Play">' +
+            '<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M4 3.5v17c0 .4.43.64.76.43l8.9-5.32 2.3-1.38c.34-.2.34-.66 0-.86l-2.3-1.38-8.9-5.32c-.33-.21-.76 0-.76.43z" opacity=".95"/><path d="M16.66 10.5l2.3 1.38c.8.48.8 1.76 0 2.24l-2.3 1.38 2.9 1.74c1.1-.62 1.84-1.8 1.84-3.24s-.74-2.62-1.84-3.24l-2.9 1.74z" opacity=".55"/></svg>' +
+            '<span>Get the App</span>' +
           '</button>' : '') +
           '<button class="cw-offline-dismiss" id="cwOfflineDismissBtn" type="button" title="Dismiss notification" aria-label="Dismiss">✕</button>' +
         '</div>' +
@@ -954,7 +955,7 @@ window.cwApp = new CalcWorkerApp();
         }
         if (badge) badge.classList.remove('offline-mode');
         if (badgeText) badgeText.textContent = '⚡ 100% Offline App';
-        if (headline) headline.innerHTML = '⚡ <strong>Works 100% Offline:</strong> Install CalcWorker as an App for instant calculations anywhere — zero internet or signup required.';
+        if (headline) headline.innerHTML = '📲 <strong>Get the CalcWorker App:</strong> all 137 precision calculators in your pocket — free forever, works 100% offline.';
       } else {
         if (stripEl) stripEl.style.display = 'block';
         if (badge) badge.classList.add('offline-mode');
@@ -989,77 +990,14 @@ window.cwApp = new CalcWorkerApp();
     });
 
     function openInstallModal() {
-      if (deferredPrompt) {
-        deferredPrompt.prompt();
-        deferredPrompt.userChoice.then(function(choiceResult) {
-          if (choiceResult.outcome === 'accepted') {
-            try { localStorage.setItem('cw_pwa_installed', 'true'); } catch(e) {}
-            hideAllInstallButtons();
-            showToast('Installing CalcWorker...');
-          }
-          deferredPrompt = null;
-        });
-        return;
-      }
-
-      // If standalone already or no prompt, render guide modal
-      if (isPwaInstalled()) {
-        showToast('CalcWorker is already installed on your device!');
-        hideAllInstallButtons();
-        return;
-      }
-
-      var existingModal = document.getElementById('cw-install-modal');
-      if (existingModal) {
-        existingModal.classList.add('active');
-        return;
-      }
-
-      var modal = document.createElement('div');
-      modal.id = 'cw-install-modal';
-      modal.className = 'cw-share-modal-overlay active';
-      modal.innerHTML = '<div class="cw-share-modal" style="max-width: 480px; text-align: left;">' +
-        '<div class="cw-share-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:16px;">' +
-          '<h3 style="margin:0; font-size:1.15rem; color:#f8fafc; display:flex; align-items:center; gap:8px;">' +
-            '<span style="font-size:1.4rem;">📲</span> Install CalcWorker App' +
-          '</h3>' +
-          '<button class="cw-share-close" id="cwInstallCloseBtn" type="button" style="background:none; border:none; color:#94a3b8; font-size:1.2rem; cursor:pointer;">&times;</button>' +
-        '</div>' +
-        '<div style="font-size:0.86rem; color:#cbd5e1; line-height:1.6; margin-bottom:16px;">' +
-          'Install CalcWorker on your Desktop or Mobile device for <strong>instant zero-latency access, 100% offline usage</strong>, and a clean standalone window.' +
-        '</div>' +
-        '<div style="background:#0f172a; border:1px solid #1e293b; border-radius:10px; padding:14px; margin-bottom:16px; font-size:0.82rem; color:#94a3b8;">' +
-          '<strong style="color:#38bdf8; display:block; margin-bottom:6px;">📱 On iPhone / iOS (Safari):</strong>' +
-          'Tap the <strong>Share button</strong> (box with up arrow) in Safari, scroll down and tap <strong>"Add to Home Screen"</strong>.' +
-          '<div style="margin-top:10px; border-top:1px solid #1e293b; padding-top:10px;">' +
-            '<strong style="color:#38bdf8; display:block; margin-bottom:6px;">💻 On PC / Mac / Android (Chrome, Edge):</strong>' +
-            'Click the <strong>Install</strong> icon in the address bar (or browser menu &gt; "Install CalcWorker").' +
-          '</div>' +
-        '</div>' +
-        '<div style="display:flex; justify-content:space-between; align-items:center;">' +
-          '<button id="cwMarkInstalledBtn" type="button" style="background:transparent; border:1px solid rgba(255,255,255,0.15); color:#94a3b8; padding:7px 14px; border-radius:8px; font-size:0.8rem; cursor:pointer;">Already Installed? Hide this</button>' +
-          '<button id="cwInstallGotItBtn" type="button" style="background:var(--brand-primary, #2563eb); color:#fff; border:none; padding:8px 20px; border-radius:8px; font-size:0.85rem; font-weight:700; cursor:pointer;">Got It</button>' +
-        '</div>' +
-      '</div>';
-      document.body.appendChild(modal);
-
-      document.getElementById('cwInstallCloseBtn').onclick = closeInstallModal;
-      document.getElementById('cwInstallGotItBtn').onclick = closeInstallModal;
-      document.getElementById('cwMarkInstalledBtn').onclick = function() {
-        try { localStorage.setItem('cw_pwa_installed', 'true'); } catch(e) {}
-        hideAllInstallButtons();
-        closeInstallModal();
-        showToast('App installed setting saved.');
-      };
-      modal.onclick = function(e) {
-        if (e.target === modal) closeInstallModal();
-      };
+      // Install now redirects to the Google Play Store listing (no web/PWA install).
+      try { localStorage.setItem('cw_app_install_clicked', 'true'); } catch(e) {}
+      hideAllInstallButtons();
+      showToast('Opening Google Play Store…');
+      window.open('https://play.google.com/store/apps/details?id=com.zaviyanllc.calcworker', '_blank', 'noopener');
+      return;
     }
 
-    function closeInstallModal() {
-      var modal = document.getElementById('cw-install-modal');
-      if (modal) modal.classList.remove('active');
-    }
 
     document.addEventListener('click', function(e) {
       var btn = e.target.closest('#cwPwaInstallBtn, .cw-pwa-install-btn, .cw-install-btn, #cwInstallBtn, .install-app-btn');
@@ -1204,17 +1142,6 @@ window.cwApp = new CalcWorkerApp();
     var searchQuery = '';
     if (searchInput) {
       searchInput.value = '';
-      // Deep-link support: prefill live search from ?q= (used by query pills + JSON-LD SearchAction)
-      try {
-        var qParam = new URLSearchParams(window.location.search).get('q');
-        if (qParam && qParam.trim()) {
-          searchInput.value = qParam;
-          searchQuery = qParam;
-          if (searchInput.scrollIntoView) {
-            searchInput.scrollIntoView({ block: 'center' });
-          }
-        }
-      } catch (e) {}
     }
 
     function escapeHtml(str) {

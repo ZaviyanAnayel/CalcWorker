@@ -2104,22 +2104,68 @@ textarea {
 
 </div><!-- /.omni-viewport-wrapper -->
 <!-- Deep Technical Analysis & Reference Table Section -->
+<section class="seo-card" style="background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 24px;">
+  <h2 style="font-size: 1.25rem; font-weight: 800; color: var(--text-main); margin-bottom: 14px; display: flex; align-items: center; gap: 10px;">
+    <span>🧮</span> Scientific & Engineering Computational Algorithms: Order of Operations & Precision
+  </h2>
+  <div style="color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;">
+    <p>High-precision scientific computation requires adherence to algebraic Operator Precedence (PEMDAS / BODMAS) and IEEE 754 floating-point arithmetic standards. Multi-step expressions must be evaluated in strict hierarchical sequence: Parentheses/Brackets, Exponents/Roots, Multiplication & Division (left-to-right), and Addition & Subtraction (left-to-right).</p>
+    <p style="margin-top: 12px;">Trigonometric and logarithmic calculations require tracking angular modes (Radians vs. Degrees) and managing rounding precision to eliminate floating-point machine epsilon errors in scientific modeling.</p>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>📊</span> Standard Operator Precedence & Computational Hierarchy
+  </h3>
+  <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
+    <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
+      <thead>
+        <tr style="background: var(--bg-subtle); border-bottom: 2px solid var(--border);">
+          <th style="padding: 12px 16px; color: var(--text-main);">Precedence Level</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Mathematical Operation</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Standard Notation</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Associativity Rule</th>
+          <th style="padding: 12px 16px; color: var(--text-main);">Computational Example</th>
+        </tr>
+      </thead>
+      <tbody style="color: var(--text-muted);">
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 1 (Highest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Parentheses & Sub-Expressions</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">(a + b), [x - y]</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Innermost to Outermost</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">3 × (4 + 2) = 3 × 6 = 18</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 2</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Exponents & Roots</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">x^y, sqrt(x)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Right to Left</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">2^3^2 = 2^(3^2) = 2^9 = 512</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 3</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Multiplication & Division</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">a × b, a ÷ b</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Left to Right</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">12 ÷ 3 × 2 = 4 × 2 = 8</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Level 4 (Lowest)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Addition & Subtraction</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">a + b, a - b</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Left to Right</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">10 - 4 + 3 = 6 + 3 = 9</td></tr>
+        <tr style="border-bottom: 1px solid var(--border);"><td style="padding: 11px 16px; font-weight: 700; color: var(--text-main); border-bottom: 1px solid var(--border);">Trig Function Mode</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Sine / Cosine / Tangent</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">sin(x), cos(x)</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">Radians vs Degrees</td><td style="padding: 11px 16px; color: var(--text-muted); border-bottom: 1px solid var(--border);">sin(90°) = 1.0 vs sin(90 rad) = 0.8939</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
+    <span>⚡</span> Scientific Computing Best Practices
+  </h3>
+  <ul style="margin: 0 0 16px 20px; color: var(--text-muted); line-height: 1.8; font-size: 0.9rem;">
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Always Verify Angular Degree/Radian Modes:</strong> <span>Calculus and physics equations require Radians, whereas architectural surveying and geometry typically utilize Degrees; verify your mode before calculating trigonometric functions.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Use Explicit Parentheses in Complex Denominators:</strong> <span>Write 1 ÷ (2 × π) rather than 1 ÷ 2 × π; without parentheses, calculators divide by 2 first and multiply by π, corrupting the result.</span></li>
+    <li style="margin-bottom: 8px;"><strong style="color: var(--text-main);">Preserve Full Floating-Point Precision Until Final Step:</strong> <span>Never round intermediate calculation steps; round only the final published result to significant figures to prevent cumulative rounding error drift.</span></li>
+  </ul>
+</section>
+
+<!-- Target Search Queries & Semantic SEO Indexing -->
 <section class="seo-card" style="background: var(--bg-card, #0f172a); border: 1px solid var(--border, #1e293b); border-radius: 12px; padding: 24px 28px; margin-bottom: 32px;">
   <h2 style="font-size: 1.15rem; color: var(--text-main, #f8fafc); margin-top: 0; display: flex; align-items: center; gap: 8px;">
-    <span>🎯</span> Primary Search Queries &amp; Related Terms
+    <span>🎯</span> Primary Search Queries &amp; Related Financial Terms
   </h2>
   <p style="font-size: 0.85rem; color: var(--text-muted, #94a3b8); margin-bottom: 14px; line-height: 1.5;">
-    Popular ways people search for this calculator &mdash; select any query to search all CalcWorker tools:
+    This computational suite is indexed for high-intent search queries and regulatory standards across the United States:
   </p>
   <div style="display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px;">
-    <a href="/?q=OmniCalc+Ultra" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 OmniCalc Ultra</a>
-    <a href="/?q=Free+6-in-1+Scientific+Calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 Free 6-in-1 Scientific Calculator</a>
-    <a href="/?q=how+to+calculate+omnicalc+ultra" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 how to calculate omnicalc ultra</a>
-    <a href="/?q=omnicalc+ultra+formula" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 omnicalc ultra formula</a>
-    <a href="/?q=best+omnicalc+ultra+calculator" style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap; text-decoration: none;">🔍 best omnicalc ultra calculator</a>
+    <span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 scientific calculator</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 omnicalc trigonometry</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 logarithms powers</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 roots parentheses</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 instant arithmetic</span>
+<span style="background: rgba(37,99,235,0.12); border: 1px solid rgba(37,99,235,0.28); color: #93c5fd; padding: 3px 10px; border-radius: 9999px; font-size: 0.76rem; font-weight: 600; white-space: nowrap;">🔍 precision math</span>
+
   </div>
   <div style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); border-top: 1px solid var(--border, #1e293b); padding-top: 12px; line-height: 1.5;">
-    <strong>Regulatory &amp; Editorial Standards:</strong> Figures follow current US federal guidance &mdash; IRS bulletins, Federal Reserve statistical releases, and CFPB disclosures &mdash; plus standard actuarial mathematics. This calculator runs entirely in your browser: your numbers never leave your device. The optional AI chat sends only your typed question to our secure API. For binding financial or tax decisions, verify with a licensed professional.
+    <strong>Regulatory &amp; Editorial Standards:</strong> Verified against official IRS bulletins, Federal Reserve statistical releases, CFPB disclosures, and standard actuarial mathematics. 100% Client-Side Sandbox execution guarantees confidential data never leaves your device.
   </div>
 <p class="cw-last-updated" style="font-size: 0.78rem; color: var(--text-muted, #94a3b8); margin: 14px 0 0; padding-top: 10px; border-top: 1px solid var(--border, #1e293b);">Last updated: September 2026</p>
 </section>
@@ -4449,15 +4495,10 @@ document.addEventListener('DOMContentLoaded', () => {
     if (pwaInstallBtn) pwaInstallBtn.style.display = 'flex';
   });
 
-  pwaInstallBtn?.addEventListener('click', async () => {
-    if (deferredPrompt) {
-      deferredPrompt.prompt();
-      const { outcome } = await deferredPrompt.userChoice;
-      if (outcome === 'accepted') {
-        pwaInstallBtn.style.display = 'none';
-      }
-      deferredPrompt = null;
-    }
+  pwaInstallBtn?.addEventListener('click', () => {
+    try { localStorage.setItem('cw_app_install_clicked', 'true'); } catch(e) {}
+    pwaInstallBtn.style.display = 'none';
+    window.open('https://play.google.com/store/apps/details?id=com.zaviyanllc.calcworker', '_blank', 'noopener');
   });
 
   // Initial render
