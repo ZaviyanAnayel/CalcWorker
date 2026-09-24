@@ -898,6 +898,13 @@ window.cwApp = new CalcWorkerApp();
             console.warn('[CalcWorker] ServiceWorker registration warning:', err);
           });
       });
+      // bfcache restore (back/forward, tab restore) brings back the old DOM
+      // without any network fetch or SW update check. Reload once so a
+      // restored tab can never show a stale design. A real load afterwards
+      // has persisted=false, so this can never loop.
+      window.addEventListener('pageshow', function(e) {
+        if (e.persisted) { window.location.reload(); }
+      });
     }
 
     // 4. Hook Up Network Status & PWA Install Engine

@@ -1,5 +1,5 @@
 /* CalcWorker — High Performance PWA Service Worker */
-const CACHE_NAME = 'calcworker-v3-cache-20260924';
+const CACHE_NAME = 'calcworker-v4-cache-20260924';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -24,14 +24,44 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Activate: clean up old caches & take control immediately
+// Activate: clean up old caches, take control immediately, and force any
+// stale open page to reload exactly once.
+//
+// Why the forced reload: a returning visitor can be stuck on HTML/JS cached
+// by a previous worker version. That old page has no update listener, so the
+// page-level "reload on controllerchange" trick never fires for it — the
+// visitor keeps seeing the old design until they click somewhere. After
+// claim(), we navigate every controlled window client once; the navigation
+// goes through THIS worker (network-first), so the page comes back fresh.
+// This runs only when a previous calcworker cache existed (i.e. a real
+// update, not a first-time install), so first-time visitors never see a
+// double load, and it can never loop: the reloaded page finds this worker
+// already active, so activate never runs again for it.
 self.addEventListener('activate', (event) => {
   event.waitUntil(
-    caches.keys().then((keys) => {
-      return Promise.all(
-        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
-      );
-    }).then(() => self.clients.claim())
+    (async () => {
+      var keys = [];
+      try { keys = await caches.keys(); } catch (e) { keys = []; }
+      var hadOldVersion = keys.some(function (k) {
+        return k !== CACHE_NAME && k.indexOf('calcworker-') === 0;
+      });
+      try {
+        await Promise.all(
+          keys.filter(function (k) { return k !== CACHE_NAME; }).map(function (k) { return caches.delete(k); })
+        );
+      } catch (e) {}
+      try { await self.clients.claim(); } catch (e) {}
+      if (hadOldVersion) {
+        var clients = [];
+        try { clients = await self.clients.matchAll({ type: 'window' }); } catch (e) { clients = []; }
+        await Promise.all(clients.map(function (client) {
+          try {
+            var p = client.navigate(client.url);
+            return p && p.catch ? p.catch(function () {}) : Promise.resolve();
+          } catch (e) { return Promise.resolve(); }
+        }));
+      }
+    })()
   );
 });
 
