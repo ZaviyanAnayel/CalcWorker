@@ -686,14 +686,22 @@ window.cwSidebarGroups = [
     // this file) never overwrites the markup or double-binds the accordion.
     sidebarNav.setAttribute("data-cw-sidebar", "1");
 
-    // Issue 7 Accordion Handler (Collapsible categories)
+    // Accordion Handler: each heading toggles ONLY its own group.
+    // - An opened heading stays open until the user clicks it again to close it.
+    // - Opening one heading never closes the others (multiple groups can stay open).
+    // - Toggling never scrolls the sidebar: the scroll position is pinned.
     sidebarNav.addEventListener("click", function (e) {
       var titleEl = e.target.closest(".nav-group-title");
       if (titleEl) {
         var groupEl = titleEl.closest(".nav-group");
         if (groupEl) {
+          var sbEl = document.getElementById("sidebar") || document.querySelector(".sidebar");
+          var savedTop = sbEl ? sbEl.scrollTop : 0;
+          var pinScroll = function () { if (sbEl) { sbEl.scrollTop = savedTop; } };
           var isCollapsed = groupEl.classList.toggle("collapsed");
           titleEl.setAttribute("aria-expanded", isCollapsed ? "false" : "true");
+          pinScroll();
+          requestAnimationFrame(pinScroll);
         }
       }
     });
