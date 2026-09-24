@@ -989,7 +989,7 @@
 
         sortedCodes.forEach(code => {
           const c = currencies[code];
-          const text = `${c.flag} ${code} — ${c.name} (${c.symbol})`;
+          const text = `${code} — ${c.name} (${c.symbol})`;
           fromOptions += `<option value="${code}" ${code === 'USD' ? 'selected' : ''}>${text}</option>`;
           toOptions += `<option value="${code}" ${code === 'EUR' ? 'selected' : ''}>${text}</option>`;
         });
