@@ -640,6 +640,36 @@ window.cwSidebarGroups = [
       .replace(/'/g, "&#039;");
   }
 
+  // Compare two paths as the "same page": ignores trailing slashes and the
+  // .html extension, because sidebar data uses /tools/x.html while the live
+  // site serves clean URLs (/tools/x). Without this the active tool's group
+  // never matches and wrongly renders collapsed.
+  function samePage(a, b) {
+    var norm = function (p) {
+      p = normalizePath(p || "");
+      if (p.length > 1 && p.endsWith("/index.html")) p = p.slice(0, -11) || "/";
+      if (p.length > 5 && p.endsWith(".html")) p = p.slice(0, -5);
+      if (p.length > 1 && p.endsWith("/")) p = p.slice(0, -1);
+      return p || "/";
+    };
+    var na = norm(a), nb = norm(b);
+    return na === nb || (nb !== "/" && na.endsWith(nb)) || (na !== "/" && nb.endsWith(na));
+  }
+
+  // Persisted open/closed state per heading, so a group stays exactly as the
+  // user left it across page loads. Only explicit user toggles are stored;
+  // untouched groups fall back to the defaults below.
+  var CW_NAV_STATE_KEY = "cw_nav_open_v1";
+  function loadNavState() {
+    try {
+      var raw = localStorage.getItem(CW_NAV_STATE_KEY);
+      return raw ? JSON.parse(raw) : {};
+    } catch (e) { return {}; }
+  }
+  function saveNavState(state) {
+    try { localStorage.setItem(CW_NAV_STATE_KEY, JSON.stringify(state)); } catch (e) {}
+  }
+
   function renderSidebar() {
     var sidebarNav = document.querySelector("#sidebar .sidebar-nav") || document.querySelector(".sidebar-nav");
     if (!sidebarNav) return;
@@ -649,22 +679,25 @@ window.cwSidebarGroups = [
 
     var currentPath = normalizePath(window.location.pathname);
     var groups = window.cwSidebarGroups || [];
+    var navState = loadNavState();
 
     var html = groups.map(function (group) {
       var hasActiveItem = group.items.some(function (item) {
-        var itemPath = normalizePath(item.href);
-        return (itemPath === currentPath || (itemPath !== "/" && currentPath.endsWith(itemPath)));
+        return samePage(item.href, currentPath);
       });
-      // Keep overview, flagship, and active category open; others can be collapsed
+      // Keep overview, flagship, and active category open; others can be collapsed.
+      // A saved user toggle always wins: the group stays exactly as the user
+      // left it (open or closed) on every page until they change it again.
       var isOverviewOrFlagship = (group.title === "Overview" || group.title === "Flagship Suite");
-      var collapsedClass = (currentPath !== "/" && !hasActiveItem && !isOverviewOrFlagship) ? " collapsed" : "";
+      var defaultOpen = (currentPath === "/" || hasActiveItem || isOverviewOrFlagship);
+      var isOpen = (typeof navState[group.title] === "boolean") ? navState[group.title] : defaultOpen;
+      var collapsedClass = isOpen ? "" : " collapsed";
 
-      return '<div class="nav-group' + collapsedClass + '">' +
-        '<div class="nav-group-title" role="button" tabindex="0" aria-expanded="' + (collapsedClass ? 'false' : 'true') + '">' + escapeHtml(group.title) + '</div>' +
+      return '<div class="nav-group' + collapsedClass + '" data-group="' + escapeHtml(group.title) + '">' +
+        '<div class="nav-group-title" role="button" tabindex="0" aria-expanded="' + (isOpen ? 'true' : 'false') + '">' + escapeHtml(group.title) + '</div>' +
         '<ul class="nav-links">' +
         group.items.map(function (item) {
-          var itemPath = normalizePath(item.href);
-          var isActive = (itemPath === currentPath || (itemPath !== "/" && currentPath.endsWith(itemPath)));
+          var isActive = samePage(item.href, currentPath);
           var activeClass = isActive ? " active" : "";
           var badgeHtml = item.badge
             ? '<span class="nav-link-badge" style="background:' + (item.badgeType === "hot" ? "var(--brand-primary)" : "var(--brand-primary)") + ';color:#fff;">' + escapeHtml(item.badge) + '</span>'
@@ -700,6 +733,14 @@ window.cwSidebarGroups = [
           var pinScroll = function () { if (sbEl) { sbEl.scrollTop = savedTop; } };
           var isCollapsed = groupEl.classList.toggle("collapsed");
           titleEl.setAttribute("aria-expanded", isCollapsed ? "false" : "true");
+          // Remember this heading's state so it stays exactly as the user
+          // left it on every page until they toggle it again.
+          var gTitle = groupEl.getAttribute("data-group");
+          if (gTitle) {
+            var st = loadNavState();
+            st[gTitle] = !isCollapsed;
+            saveNavState(st);
+          }
           pinScroll();
           requestAnimationFrame(pinScroll);
         }
