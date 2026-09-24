@@ -1,5 +1,5 @@
 /* CalcWorker — High Performance PWA Service Worker */
-const CACHE_NAME = 'calcworker-v2-cache-2026';
+const CACHE_NAME = 'calcworker-v3-cache-20260924';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
@@ -35,7 +35,9 @@ self.addEventListener('activate', (event) => {
   );
 });
 
-// Fetch: Stale-While-Revalidate for local assets, Network-first for pages
+// Fetch: Network-first for pages, JS and CSS (never run stale code against
+// fresh HTML); Stale-While-Revalidate for images/fonts; cache fallback keeps
+// offline working.
 self.addEventListener('fetch', (event) => {
   const req = event.request;
   const url = new URL(req.url);
@@ -71,7 +73,26 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // Stale-While-Revalidate for local static assets (CSS, JS, images, fonts)
+  // Network-first for local JS/CSS: guarantees the page never executes a
+  // stale cached bundle against fresh HTML (the cause of dead click handlers
+  // after a deploy). Cache fallback keeps the site working offline.
+  if (url.origin === self.location.origin &&
+      (url.pathname.endsWith('.js') || url.pathname.endsWith('.css'))) {
+    event.respondWith(
+      fetch(req)
+        .then((networkResponse) => {
+          if (networkResponse && networkResponse.status === 200) {
+            const clone = networkResponse.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(req, clone));
+          }
+          return networkResponse;
+        })
+        .catch(() => caches.match(req))
+    );
+    return;
+  }
+
+  // Stale-While-Revalidate for other local static assets (images, fonts)
   if (url.origin === self.location.origin) {
     event.respondWith(
       caches.match(req).then((cachedResponse) => {
