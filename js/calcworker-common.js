@@ -627,8 +627,14 @@ window.cwApp = new CalcWorkerApp();
     const sidebarNav = document.querySelector("#sidebar .sidebar-nav") || document.querySelector(".sidebar-nav");
     if (!sidebarNav) return;
 
+    // sidebar.js renders the sidebar with the working accordion; when it has
+    // already rendered, do not overwrite its markup. Scroll restoration below
+    // still runs. (Fallback render only when sidebar.js did not run.)
+    const sidebarOwned = sidebarNav.hasAttribute("data-cw-sidebar");
+
     const currentPath = normalizePath(window.location.pathname);
 
+    if (!sidebarOwned) {
     sidebarNav.innerHTML = sidebarGroups
       .map(function (group) {
         return `
@@ -658,6 +664,7 @@ window.cwApp = new CalcWorkerApp();
         `;
       })
       .join("");
+    } // end if (!sidebarOwned)
 
 // Bulletproof Sidebar Scroll Restoration
     const sidebarEl = document.getElementById("sidebar") || document.querySelector(".sidebar");

@@ -643,6 +643,9 @@ window.cwSidebarGroups = [
   function renderSidebar() {
     var sidebarNav = document.querySelector("#sidebar .sidebar-nav") || document.querySelector(".sidebar-nav");
     if (!sidebarNav) return;
+    // Never render twice: a duplicate <script> include used to double-bind the
+    // accordion click handler, which made every sidebar heading click a no-op.
+    if (sidebarNav.hasAttribute("data-cw-sidebar")) return;
 
     var currentPath = normalizePath(window.location.pathname);
     var groups = window.cwSidebarGroups || [];
@@ -679,6 +682,9 @@ window.cwSidebarGroups = [
     }).join("");
 
     sidebarNav.innerHTML = html;
+    // Mark rendered so calcworker-common.js (and any accidental second load of
+    // this file) never overwrites the markup or double-binds the accordion.
+    sidebarNav.setAttribute("data-cw-sidebar", "1");
 
     // Issue 7 Accordion Handler (Collapsible categories)
     sidebarNav.addEventListener("click", function (e) {
