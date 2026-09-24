@@ -879,6 +879,16 @@ window.cwApp = new CalcWorkerApp();
 
     // 3. Register Service Worker
     if ('serviceWorker' in navigator) {
+      // After a deploy, when a newer SW takes over from an older one, reload
+      // once so returning visitors never stare at a stale cached page.
+      // First-time visitors (no previous controller) are not reloaded.
+      var cwWasControlled = !!navigator.serviceWorker.controller;
+      navigator.serviceWorker.addEventListener('controllerchange', function() {
+        if (cwWasControlled) {
+          cwWasControlled = false;
+          window.location.reload();
+        }
+      });
       window.addEventListener('load', function() {
         navigator.serviceWorker.register('/sw.js', { updateViaCache: 'none' }).then(function(reg){ reg.update(); return reg; })
           .then(function(reg) {
