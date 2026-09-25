@@ -4032,11 +4032,49 @@ document.addEventListener('DOMContentLoaded', () => {
       const copyBtn = document.getElementById('copyTapeBtn');
       if (copyBtn) {
         copyBtn.addEventListener('click', () => {
-          soundClick('equals');
-          const text = textarea.value + '\n\nTotal: ' + (totalVal ? totalVal.textContent : '');
-          navigator.clipboard.writeText(text).then(() => {
-            showToast('Tape copied to clipboard!');
-          });
+          if (typeof soundClick === 'function') soundClick('equals');
+          const tapeContent = textarea ? textarea.value.trim() : '';
+          if (!tapeContent) {
+            if (typeof showToast === 'function') showToast('Tape is empty! Enter calculations first.');
+            return;
+          }
+          const text = tapeContent + '\n\nTotal: ' + (totalVal ? totalVal.textContent : '');
+          
+          function onCopySuccess() {
+            const orig = copyBtn.innerHTML;
+            copyBtn.innerHTML = '✓ Copied!';
+            copyBtn.style.borderColor = '#10b981';
+            copyBtn.style.color = '#10b981';
+            setTimeout(() => {
+              copyBtn.innerHTML = orig;
+              copyBtn.style.borderColor = '';
+              copyBtn.style.color = '';
+            }, 1800);
+            if (typeof showToast === 'function') showToast('Tape copied to clipboard!');
+          }
+
+          if (navigator.clipboard && window.isSecureContext) {
+            navigator.clipboard.writeText(text).then(onCopySuccess).catch(fallback);
+          } else {
+            fallback();
+          }
+
+          function fallback() {
+            try {
+              const ta = document.createElement('textarea');
+              ta.value = text;
+              ta.style.position = 'fixed';
+              ta.style.left = '-9999px';
+              document.body.appendChild(ta);
+              ta.focus();
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              onCopySuccess();
+            } catch(e) {
+              if (typeof showToast === 'function') showToast('Please select text manually to copy');
+            }
+          }
         });
       }
     }
