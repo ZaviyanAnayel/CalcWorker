@@ -1,5 +1,5 @@
 /* CalcWorker — High Performance PWA Service Worker */
-const CACHE_NAME = 'calcworker-v4-cache-20260924';
+const CACHE_NAME = 'calcworker-v6-cache-20260925';
 const PRECACHE_URLS = [
   '/',
   '/index.html',
