@@ -233,7 +233,7 @@ def generate_article_html(tool):
   <meta property="og:site_name" content="CalcWorker"/>
 
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
@@ -674,7 +674,7 @@ def rebuild_hub(tools):
   <meta property="og:url" content="https://calcworker.com/articles/"/>
 
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
 
   <style>
     :root {{

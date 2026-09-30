@@ -30,7 +30,7 @@ ADSENSE   = chunk('<!-- Google AdSense — Auto Ads -->', '></script>')
 GTAG      = chunk('<!-- Google tag (gtag.js) - Google Analytics -->', '</script>')
 
 # sanity: adsense block must be byte-verbatim copy, untouched
-assert 'ca-pub-3405098265613384' in ADSENSE and 'adsbygoogle.js' in ADSENSE
+assert 'ca-pub-7358272532329016' in ADSENSE and 'adsbygoogle.js' in ADSENSE
 
 JS_PRELUDE = r"""
 function fmt0(n){n=isFinite(n)?n:0;return n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});}

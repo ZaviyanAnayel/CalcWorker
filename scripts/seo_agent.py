@@ -89,7 +89,7 @@ def render_article_html(slug, title, meta_desc, read_time, related_tool_file, re
   <meta property="og:site_name" content="CalcWorker"/>
 
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3405098265613384" crossorigin="anonymous"></script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
 
   <!-- Schema.org JSON-LD -->
   <script type="application/ld+json">
