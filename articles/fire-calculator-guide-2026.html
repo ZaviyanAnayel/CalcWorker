@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FIRE Calculator: Financial Independence Retire Early (2026) | CalcWorker</title>
+  <meta name="description" content="Calculate your FIRE number with the 4% rule, project compound growth, and find the exact age you can retire early. Real 2026 formulas and worked examples."/>
+  <meta name="keywords" content="FIRE calculator, financial independence retire early, FIRE number, 4 percent rule, Trinity study, safe withdrawal rate, retire early calculator, coast fire, lean fire, fat fire"/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/fire-calculator-guide-2026.html"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="FIRE Calculator: Financial Independence Retire Early (2026) | CalcWorker"/>
+  <meta property="og:description" content="Calculate your FIRE number with the 4% rule, project compound growth, and find the exact age you can retire early."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://calcworker.com/articles/fire-calculator-guide-2026.html"/>
+  <meta property="og:site_name" content="CalcWorker"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "FIRE Calculator: Financial Independence Retire Early (2026)",
+      "description": "Calculate your FIRE number with the 4% rule, project compound growth, and find the exact age you can retire early. Real 2026 formulas and worked examples.",
+      "mainEntityOfPage": "https://calcworker.com/articles/fire-calculator-guide-2026.html",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": {
+        "@type": "Organization",
+        "name": "CalcWorker Research Team",
+        "url": "https://calcworker.com/about.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CalcWorker",
+        "logo": "https://calcworker.com/assets/favicon.png"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the 4% rule?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The 4% rule, from the 1998 Trinity Study, says a retiree can withdraw 4% of their portfolio in year one of retirement and adjust that dollar amount for inflation each year, and historically survive a 30-year retirement in most market scenarios. It implies you need 25 times your annual expenses invested."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good FIRE number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It depends entirely on spending. At $40,000/year of expenses your FIRE number is $1,000,000; at $80,000/year it is $2,000,000. Cutting expenses is the highest-leverage move because it shrinks the target and simultaneously speeds up your savings rate."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the 4% rule still safe in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Many planners now suggest 3.5\u20134% as a starting point, with flexibility to cut spending in down years. Early retirees facing 40+ year horizons often target 3\u20133.5% for extra margin, since a longer retirement leaves more time for sequence-of-returns risk to bite."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What investment return should I assume?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "US stocks have returned about 10% nominal (roughly 7% after inflation) long-term. A 7% nominal assumption is common for stock-heavy portfolios; use 5\u20136% to be conservative or if you hold a meaningful bond allocation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Lean FIRE, Fat FIRE, and Coast FIRE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Lean FIRE is retiring on minimal spending (often under $40k/year); Fat FIRE targets a higher-spending lifestyle ($100k+/year) and a larger portfolio. Coast FIRE is the middle path: save enough early that compounding alone reaches your number by traditional retirement age, then work only to cover expenses."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+      --code-bg: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .article-header h1 {
+      font-size: 2.25rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      font-weight: 800;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+    }
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .tool-embed-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-embed-banner h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-embed-banner p { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-launch-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      transition: transform 0.15s ease;
+    }
+    .tool-launch-btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .toc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-box h3 { font-size: 1rem; color: #f8fafc; margin-bottom: 12px; }
+    .toc-box ul { list-style-position: inside; color: #60a5fa; font-size: 0.92rem; line-height: 1.9; }
+
+    .article-section { margin-bottom: 40px; }
+    .article-section h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-left: 4px solid #3b82f6;
+      padding-left: 14px;
+    }
+    .article-section h3 { font-size: 1.2rem; color: #e2e8f0; margin: 20px 0 10px 0; }
+    .article-section p { margin-bottom: 16px; color: #cbd5e1; font-size: 1.02rem; }
+    .article-section ul, .article-section ol { margin-left: 24px; margin-bottom: 18px; color: #cbd5e1; }
+    .article-section li { margin-bottom: 8px; }
+
+    .formula-box {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #38bdf8;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .data-table th, .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.92rem;
+    }
+    .data-table th {
+      background: rgba(30, 58, 138, 0.3);
+      color: #f8fafc;
+      font-weight: 600;
+    }
+    .data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .tip-card {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 4px solid #10b981;
+      padding: 18px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+      color: #d1fae5;
+    }
+    .tip-card strong { color: #34d399; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: transparent;
+      border: none;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-icon { font-size: 1.2rem; color: #60a5fa; transition: transform 0.2s ease; }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">Dashboard</a>
+      <a href="/articles/">Guides Hub</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </nav>
+
+  <article class="article-container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/articles/">Guides &amp; Articles</a> <span>/</span>
+      <span>FIRE Calculator Guide</span>
+    </div>
+
+    <header class="article-header">
+      <h1>FIRE Calculator: Financial Independence Retire Early (2026)</h1>
+      <div class="meta-bar">
+        <span>✍️ CalcWorker Research Team</span>
+        <span>📅 Updated October 12, 2026</span>
+        <span class="badge-verified">✓ Trinity Study Based</span>
+        <span>⏱️ 8 min read</span>
+        <span style="color:#60a5fa;">📈 Investments &amp; Retirement</span>
+      </div>
+    </header>
+
+    <div class="tool-embed-banner">
+      <h3><span>🔥</span> Find Your FIRE Number Now</h3>
+      <p>Enter your age, savings, contributions, and expenses to see your exact FIRE number and the age you can retire early.</p>
+      <a href="https://calcworker.com/tools/fire-calculator.html" class="tool-launch-btn">Launch FIRE Calculator →</a>
+    </div>
+
+    <nav class="toc-box">
+      <h3>Contents in this Guide</h3>
+      <ul>
+        <li><a href="#overview">1. What FIRE Actually Means</a></li>
+        <li><a href="#formula">2. The FIRE Number &amp; the 4% Rule</a></li>
+        <li><a href="#example">3. Worked Example: A 35-Year-Old Saver</a></li>
+        <li><a href="#variants">4. Lean, Fat, Coast &amp; Barista FIRE</a></li>
+        <li><a href="#risks">5. Sequence Risk, Taxes &amp; Fees</a></li>
+        <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+      </ul>
+    </nav>
+
+    <section id="overview" class="article-section">
+      <h2>1. What FIRE Actually Means</h2>
+      <p>FIRE — <strong>Financial Independence, Retire Early</strong> — is built on a single, almost mechanical idea: when your invested assets generate enough to cover your living expenses forever, work becomes optional. There's no magic threshold and no lottery ticket involved; it's a function of your spending, your savings rate, and time.</p>
+      <p>What surprises most people is that the math has nothing to do with income and everything to do with the <em>gap</em> between income and spending. A $200,000 earner who spends $195,000 is further from independence than a $70,000 earner who spends $45,000. Your savings rate — the percentage of income you keep — is the single most powerful variable, because it determines both how fast your portfolio grows and how much you ultimately need.</p>
+    </section>
+
+    <section id="formula" class="article-section">
+      <h2>2. The FIRE Number &amp; the 4% Rule</h2>
+      <p>Your <strong>FIRE number</strong> is the portfolio size that makes you financially independent. The standard way to derive it is the <strong>4% rule</strong>, popularized by the 1998 Trinity Study, which found that withdrawing 4% of a balanced portfolio in year one — then adjusting that dollar amount for inflation each year — survived 30-year retirements across almost every historical market scenario.</p>
+      <div class="formula-box">
+        FIRE Number = Annual Expenses ÷ Safe Withdrawal Rate<br/><br/>
+        Example: $60,000 ÷ 0.04 = $1,500,000   (i.e., 25 × your annual spending)
+      </div>
+      <p>Then you project whether your savings will reach that number, using the future value of a growing annuity:</p>
+      <div class="formula-box">
+        FV = P(1+r)^t + C × [ ((1+r)^t − 1) ÷ r ]<br/><br/>
+        P = current savings | C = annual contribution | r = annual return | t = years
+      </div>
+      <p>The 4% rule is a heuristic, not a law of physics. For a 30-year retirement it has held up historically; for a 50-year early retirement it deserves a safety margin. The rule also assumes a stock-heavy, low-fee portfolio. Our calculator lets you dial the withdrawal rate down to 3% or lower to reflect that longer horizon.</p>
+    </section>
+
+    <section id="example" class="article-section">
+      <h2>3. Worked Example: A 35-Year-Old Saver</h2>
+      <p>Meet a 35-year-old with <strong>$100,000</strong> invested, adding <strong>$20,000/year</strong>, earning <strong>7%</strong>, and planning to spend <strong>$60,000/year</strong> in retirement:</p>
+      <ol>
+        <li><strong>FIRE number:</strong> $60,000 ÷ 0.04 = <strong>$1,500,000</strong>.</li>
+        <li><strong>Growth over 25 years (to age 60):</strong> FV = 100,000 × (1.07)^25 + 20,000 × [((1.07)^25 − 1) ÷ 0.07] ≈ <strong>$1,807,700</strong>.</li>
+        <li><strong>Result:</strong> roughly <strong>$307,700 past</strong> the FIRE number by age 60.</li>
+        <li><strong>Solve for the actual crossing point:</strong> the portfolio hits $1.5M at about <strong>age 57.6</strong> — over two years earlier than planned.</li>
+      </ol>
+      <p>Now stress-test the assumptions. Drop the return to 6% and the FI age slips to roughly 59. Lower the withdrawal rate to 3.5% (raising the target to $1.71M) and it moves past 61. Raise contributions to $30,000/year and FI arrives around 54. These sensitivities are why running the numbers — not guessing — matters. Try the <a href="https://calcworker.com/tools/fire-calculator.html">FIRE calculator</a> yourself; small changes compound dramatically over 20+ years.</p>
+      <div class="tip-card">
+        <strong>💡 Strategic Pro Tip:</strong><br/>
+        Cutting expenses is the highest-leverage move in all of FIRE. Trimming $5,000/year of spending lowers your FIRE number by $125,000 (at 4%) <em>and</em> raises your savings rate by the same $5,000. It attacks the problem from both ends at once.
+      </div>
+    </section>
+
+    <section id="variants" class="article-section">
+      <h2>4. Lean, Fat, Coast &amp; Barista FIRE</h2>
+      <p>FIRE is a spectrum, not a single target. Knowing which flavor fits you changes the number you chase:</p>
+      <ul>
+        <li><strong>Lean FIRE:</strong> retiring on minimal spending, often under $40,000/year — FIRE number around $1,000,000. Low cost of living, but less cushion for healthcare or surprises.</li>
+        <li><strong>Fat FIRE:</strong> a $100,000+/year lifestyle — FIRE number $2,500,000+. Comfortable, but demands a much higher savings rate or income for longer.</li>
+        <li><strong>Coast FIRE:</strong> save enough <em>early</em> that compounding alone reaches your number by traditional retirement age, then work only to cover current expenses. The classic "front-load and relax" path.</li>
+        <li><strong>Barista FIRE:</strong> semi-retire early with part-time work that provides benefits (notably health insurance), letting a smaller portfolio stretch further.</li>
+      </ul>
+      <p>Model any of these with our <a href="https://calcworker.com/tools/compound-interest.html">compound interest calculator</a> to see how an early lump sum grows, and pair it with the <a href="https://calcworker.com/tools/inflation-retirement-calculator.html">inflation &amp; retirement (4% rule) calculator</a> to stress-test withdrawals against rising prices.</p>
+    </section>
+
+    <section id="risks" class="article-section">
+      <h2>5. Sequence Risk, Taxes &amp; Fees</h2>
+      <h3>Sequence-of-Returns Risk</h3>
+      <p>The 4% rule's biggest weakness is <strong>sequence risk</strong>: a bear market in the first few years of retirement depletes a portfolio far faster than the same decline later, because you're selling assets at the bottom. Mitigations include a larger bond allocation ("bond tent") in the years around retirement, flexible withdrawals (trimming spending 10–20% in down years), and part-time income that reduces drawdowns.</p>
+      <h3>Healthcare Before Medicare</h3>
+      <p>Early retirees must budget health insurance explicitly. Pre-Medicare coverage — ACA marketplace or otherwise — can run $500–$1,500 per month per person depending on age and location. That single line item can raise your FIRE number by six figures.</p>
+      <h3>Fees and Taxes Are Silent Killers</h3>
+      <p>A 1% advisory fee over 40 years can consume nearly a third of your potential wealth. Prefer low-cost index funds, and fill tax-advantaged accounts first. Use our <a href="https://calcworker.com/tools/roth-ira-calculator.html">Roth IRA calculator</a> to see how tax-free growth compounds, and track overall progress with the <a href="https://calcworker.com/tools/net-worth-calculator.html">net worth calculator</a>.</p>
+    </section>
+
+    <section id="faqs" class="article-section">
+      <h2>6. Frequently Asked Questions (FAQs)</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What is the 4% rule?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>The 4% rule, from the 1998 Trinity Study, says a retiree can withdraw 4% of their portfolio in year one of retirement and adjust that dollar amount for inflation each year, and historically survive a 30-year retirement in most market scenarios. It implies you need 25 times your annual expenses invested.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What is a good FIRE number?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>It depends entirely on spending. At $40,000/year of expenses your FIRE number is $1,000,000; at $80,000/year it is $2,000,000. Cutting expenses is the highest-leverage move because it shrinks the target and simultaneously speeds up your savings rate.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Is the 4% rule still safe in 2026?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Many planners now suggest 3.5–4% as a starting point, with flexibility to cut spending in down years. Early retirees facing 40+ year horizons often target 3–3.5% for extra margin, since a longer retirement leaves more time for sequence-of-returns risk to bite.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What investment return should I assume?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>US stocks have returned about 10% nominal (roughly 7% after inflation) long-term. A 7% nominal assumption is common for stock-heavy portfolios; use 5–6% to be conservative or if you hold a meaningful bond allocation.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What are Lean FIRE, Fat FIRE, and Coast FIRE?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Lean FIRE is retiring on minimal spending (often under $40k/year); Fat FIRE targets a higher-spending lifestyle ($100k+/year) and a larger portfolio. Coast FIRE is the middle path: save enough early that compounding alone reaches your number by traditional retirement age, then work only to cover expenses.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="tool-embed-banner" style="margin-top: 48px;">
+      <h3>Ready to find your FIRE age?</h3>
+      <p>Run your exact savings, contribution, return, and spending assumptions to see your FIRE number and projected independence age.</p>
+      <a href="https://calcworker.com/tools/fire-calculator.html" class="tool-launch-btn">Launch FIRE Calculator Now →</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/">All 102 Tools</a>
+      <a href="/articles/">Guides Hub</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+  <script>
+    function toggleArticleFaq(btn) {
+      var ans = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      if (ans.style.display === 'none') {
+        ans.style.display = 'block';
+        icon.textContent = '−';
+      } else {
+        ans.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  </script>
+</body>
+</html>

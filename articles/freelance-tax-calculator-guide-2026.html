@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Freelance Tax Calculator: 1099 Taxes (2026) | CalcWorker</title>
+  <meta name="description" content="How much tax does a freelancer pay in 2026? Self-employment tax plus income tax, the QBI deduction, the standard deduction, and worked examples — plus a free 1099 tax calculator."/>
+  <meta name="keywords" content="freelance tax calculator, 1099 tax, 1099-nec, independent contractor taxes, self employment tax, qbi deduction, qualified business income, freelance income tax, gig worker tax, 1099 vs w2"/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/freelance-tax-calculator-guide-2026.html"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Freelance Tax Calculator: 1099 Taxes (2026) | CalcWorker"/>
+  <meta property="og:description" content="How much tax does a freelancer pay in 2026? SE tax plus income tax, the QBI deduction, the standard deduction, and worked examples — with a free 1099 tax calculator."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://calcworker.com/articles/freelance-tax-calculator-guide-2026.html"/>
+  <meta property="og:site_name" content="CalcWorker"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Freelance Tax Calculator: 1099 Taxes (2026)",
+      "description": "How much tax does a freelancer pay in 2026? SE tax plus income tax, the QBI deduction, the standard deduction, and worked examples.",
+      "mainEntityOfPage": "https://calcworker.com/articles/freelance-tax-calculator-guide-2026.html",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": {
+        "@type": "Organization",
+        "name": "CalcWorker Research Team",
+        "url": "https://calcworker.com/about.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CalcWorker",
+        "logo": "https://calcworker.com/assets/favicon.png"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How much tax does a freelancer pay on 1099 income in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A freelancer pays two separate federal taxes: self-employment tax of 15.3% on 92.35% of net profit (Social Security 12.4% up to the $184,500 base plus Medicare 2.9% uncapped), and ordinary federal income tax on taxable income after the half-SE-tax deduction, the 20% QBI deduction, and the standard deduction ($16,100 single, $32,200 married filing jointly in 2026). Effective combined rates commonly land between 15% and 30% depending on income."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the difference between 1099 and W-2 tax treatment?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A W-2 employer withholds income tax, Social Security, and Medicare from every paycheck and pays half of the FICA taxes on your behalf. A 1099 worker receives the full gross amount with nothing withheld and must pay both halves of Social Security and Medicare (the 15.3% self-employment tax) themselves, typically through quarterly estimated payments."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is the QBI deduction and who qualifies?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The qualified business income (QBI) deduction lets most self-employed taxpayers deduct up to 20% of their qualified business income from taxable income. It is generally the lesser of 20% of QBI or 20% of taxable income before the deduction, and it phases out for certain specified service trades or businesses above income thresholds."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do freelancers need to pay estimated taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually yes. Because no employer withholds from 1099 income, freelancers who expect to owe $1,000 or more in tax for the year generally must make quarterly estimated payments on April 15, June 15, September 15, and January 15 to avoid an underpayment penalty."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What expenses can a freelancer deduct to lower 1099 taxes?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Freelancers deduct ordinary and necessary business expenses on Schedule C — home office, equipment, software, mileage, internet, phone, insurance, and professional services — which reduce net profit and therefore reduce both self-employment tax and income tax at the same time."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+      --code-bg: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .article-header h1 {
+      font-size: 2.25rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      font-weight: 800;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+    }
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .tool-embed-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-embed-banner h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-embed-banner p { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-launch-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      transition: transform 0.15s ease;
+    }
+    .tool-launch-btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .toc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-box h3 { font-size: 1rem; color: #f8fafc; margin-bottom: 12px; }
+    .toc-box ul { list-style-position: inside; color: #60a5fa; font-size: 0.92rem; line-height: 1.9; }
+
+    .article-section { margin-bottom: 40px; }
+    .article-section h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-left: 4px solid #3b82f6;
+      padding-left: 14px;
+    }
+    .article-section h3 { font-size: 1.2rem; color: #e2e8f0; margin: 20px 0 10px 0; }
+    .article-section p { margin-bottom: 16px; color: #cbd5e1; font-size: 1.02rem; }
+    .article-section ul, .article-section ol { margin-left: 24px; margin-bottom: 18px; color: #cbd5e1; }
+    .article-section li { margin-bottom: 8px; }
+
+    .formula-box {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #38bdf8;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .data-table th, .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.92rem;
+    }
+    .data-table th {
+      background: rgba(30, 58, 138, 0.3);
+      color: #f8fafc;
+      font-weight: 600;
+    }
+    .data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .tip-card {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 4px solid #10b981;
+      padding: 18px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+      color: #d1fae5;
+    }
+    .tip-card strong { color: #34d399; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: transparent;
+      border: none;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-icon { font-size: 1.2rem; color: #60a5fa; transition: transform 0.2s ease; }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">Dashboard</a>
+      <a href="/articles/">Guides Hub</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </nav>
+
+  <article class="article-container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/articles/">Guides &amp; Articles</a> <span>/</span>
+      <span>Freelance Tax Calculator Guide</span>
+    </div>
+
+    <header class="article-header">
+      <h1>Freelance Tax Calculator: 1099 Taxes (2026)</h1>
+      <div class="meta-bar">
+        <span>✍️ CalcWorker Research Team</span>
+        <span>📅 Updated October 12, 2026</span>
+        <span class="badge-verified">✓ 2026 IRS Figures</span>
+        <span>⏱️ 8 min read</span>
+        <span style="color:#60a5fa;">💰 Freelance &amp; 1099 Taxes</span>
+      </div>
+    </header>
+
+    <div class="tool-embed-banner">
+      <h3><span>💼</span> Fast-Track Calculation</h3>
+      <p>Want your total 1099 tax bill — SE tax plus income tax — in one shot? Use our private, client-side calculator.</p>
+      <a href="https://calcworker.com/tools/freelance-tax-calculator.html" class="tool-launch-btn">Launch Freelance Tax Calculator →</a>
+    </div>
+
+    <nav class="toc-box">
+      <h3>Contents in this Guide</h3>
+      <ul>
+        <li><a href="#overview">1. Strategic Overview &amp; Why It Matters</a></li>
+        <li><a href="#formula">2. The Complete 2026 Freelance Tax Formula</a></li>
+        <li><a href="#example">3. Step-by-Step Worked Example</a></li>
+        <li><a href="#nuances">4. Critical Nuances &amp; Pro Tips</a></li>
+        <li><a href="#benchmarks">5. Real-World Income Benchmarks</a></li>
+        <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+      </ul>
+    </nav>
+
+    <section id="overview" class="article-section">
+      <h2>1. Strategic Overview &amp; Why It Matters</h2>
+      <p>Freelancers in 2026 don't pay a single "1099 tax." Instead, they stack two separate federal obligations: <strong>self-employment tax</strong> (the Social Security and Medicare contributions an employer would otherwise split with them) and <strong>ordinary federal income tax</strong>. The combination is why so many new independent contractors are shocked to discover that 25% or more of their profit belongs to the IRS.</p>
+      <p>The mechanics differ sharply from a W-2 job. A traditional employer withholds income tax, Social Security, and Medicare from every paycheck and quietly pays half of your FICA burden. A 1099 worker receives the full amount with <em>nothing</em> withheld, must pay both halves of FICA through the 15.3% self-employment tax, and is expected to remit it all through quarterly estimated payments. Getting this math right early in the year is the difference between a smooth filing season and a four-figure surprise bill plus penalties.</p>
+      <p>This guide lays out the complete formula — self-employment tax, the half-SE-tax deduction, the 20% QBI deduction, and the standard deduction — followed by a worked example and benchmarks at several income levels.</p>
+    </section>
+
+    <section id="formula" class="article-section">
+      <h2>2. The Complete 2026 Freelance Tax Formula</h2>
+      <p>A freelancer's total federal bill is the sum of two components, computed in sequence because each one feeds the next:</p>
+      <div class="formula-box">
+        SE Tax = (Net Profit × 0.9235 × 0.124) + (Net Profit × 0.9235 × 0.029)<br/>
+        AGI = Net Profit − (0.5 × SE Tax)<br/>
+        QBI Deduction = lesser of (20% × QBI) or (20% × taxable income before QBI)<br/>
+        Taxable Income = AGI − QBI Deduction − Standard Deduction<br/>
+        Income Tax = 2026 bracket schedule applied to Taxable Income
+      </div>
+      <h3>Parameter Breakdown</h3>
+      <ul>
+        <li><strong>Net Profit:</strong> Gross 1099 income minus Schedule C business expenses. Deducting legitimate expenses lowers <em>both</em> your SE tax and income tax simultaneously, making expense tracking the highest-leverage tax move a freelancer has.</li>
+        <li><strong>Half-SE-Tax Deduction:</strong> An above-the-line adjustment equal to 50% of your self-employment tax, reducing AGI.</li>
+        <li><strong>QBI Deduction (Section 199A):</strong> Up to 20% of qualified business income, generally capped at 20% of taxable income before the deduction. It phases out for specified service trades or businesses above income limits.</li>
+        <li><strong>Standard Deduction (2026):</strong> $16,100 for single filers, $32,200 for married filing jointly, and $24,150 for heads of household.</li>
+        <li><strong>Income Tax Brackets (2026, single):</strong> 10% to $12,400; 12% to $50,400; 22% to $105,700; 24% to $201,775; then 32%, 35%, and 37% at higher thresholds.</li>
+      </ul>
+    </section>
+
+    <section id="example" class="article-section">
+      <h2>3. Step-by-Step Worked Example</h2>
+      <p>A freelance web developer, filing single, earns <strong>$80,000 in net profit</strong> for 2026 with no other income. Here is the full calculation:</p>
+      <ol>
+        <li><strong>Step 1 — Self-employment tax:</strong> $80,000 × 0.9235 = $73,880 in net earnings. Social Security: 12.4% × $73,880 = $9,161.12. Medicare: 2.9% × $73,880 = $2,142.52. SE tax total = <strong>$11,303.64</strong>.</li>
+        <li><strong>Step 2 — Half-SE-tax deduction:</strong> 50% × $11,303.64 = $5,651.82. Adjusted gross income = $80,000 − $5,651.82 = <strong>$74,348.18</strong>.</li>
+        <li><strong>Step 3 — QBI deduction:</strong> 20% × QBI ($74,348.18) = $14,869.64, but capped at 20% × ($74,348.18 − $16,100) = $11,649.64. Take the lesser: <strong>$11,649.64</strong>.</li>
+        <li><strong>Step 4 — Taxable income:</strong> $74,348.18 − $11,649.64 − $16,100 = <strong>$46,598.54</strong>.</li>
+        <li><strong>Step 5 — Income tax:</strong> 10% × $12,400 = $1,240; 12% × ($46,598.54 − $12,400) = $4,103.82. Income tax = <strong>$5,343.82</strong>.</li>
+        <li><strong>Step 6 — Total federal tax:</strong> $11,303.64 + $5,343.82 = <strong>$16,647.46</strong>, an effective rate of about <strong>20.8%</strong> of net profit.</li>
+      </ol>
+      <p>Note how the self-employment tax ($11,304) is more than double the income tax ($5,344) at this income level — a reminder that FICA, not income tax, is the dominant burden for most freelancers. The <a href="https://calcworker.com/tools/freelance-tax-calculator.html">freelance tax calculator</a> runs this entire chain automatically and lets you toggle deductions to see how each one moves the final number.</p>
+    </section>
+
+    <section id="nuances" class="article-section">
+      <h2>4. Critical Nuances &amp; Pro Tips</h2>
+      <div class="tip-card">
+        <strong>💡 Strategic Pro Tip:</strong><br/>
+        Track every legitimate business expense — home office, software, mileage, equipment, insurance, and internet. Because expenses reduce net profit, each deductible dollar cuts both the 15.3% SE tax and your marginal income tax, effectively saving 25–37 cents per dollar depending on your bracket.
+      </div>
+      <p>Three nuances change the picture materially. First, the <strong>QBI deduction's "lesser of" rule</strong> means lower earners often don't get the full 20% — the deduction is constrained by taxable income, as the example above showed ($11,650 rather than $14,870). Second, the <strong>Additional Medicare Tax</strong> of 0.9% kicks in on combined wage and self-employment income above $200,000 (single) or $250,000 (married filing jointly). Third, <strong>no withholding means estimated payments</strong>: freelancers who expect to owe $1,000 or more generally must pay quarterly, so budget using the <a href="https://calcworker.com/tools/quarterly-tax-calculator.html">quarterly tax calculator</a> rather than hoping a refund will cover the gap.</p>
+      <p>Finally, if you also hold a W-2 job, the Social Security wage base is shared across income types. The 6.2% already withheld on wages consumes part of the $184,500 ceiling, reducing how much of your freelance income is hit by the 12.4% component — but Medicare (2.9%) still applies to every freelance dollar. Compare your effective rates with the <a href="https://calcworker.com/tools/self-employment-tax-calculator.html">self-employment tax calculator</a> and, for the employed who moonlight, the <a href="https://calcworker.com/tools/w-4-withholding-calculator.html">W-4 withholding calculator</a>.</p>
+    </section>
+
+    <section id="benchmarks" class="article-section">
+      <h2>5. Real-World Income Benchmarks</h2>
+      <p>Approximate 2026 federal totals (SE tax + income tax) for a single freelancer taking the standard deduction and the QBI deduction:</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Net Profit (2026)</th>
+            <th>SE Tax</th>
+            <th>Income Tax</th>
+            <th>Total Federal Tax</th>
+            <th>Effective Rate</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>$20,000</strong></td><td>≈ $2,826</td><td>≈ $199</td><td style='color:#38bdf8; font-weight:700;'>≈ $3,025</td><td>≈ 15.1%</td></tr>
+          <tr><td><strong>$50,000</strong></td><td>≈ $7,065</td><td>≈ $2,667</td><td style='color:#38bdf8; font-weight:700;'>≈ $9,732</td><td>≈ 19.5%</td></tr>
+          <tr><td><strong>$80,000</strong></td><td>≈ $11,304</td><td>≈ $5,344</td><td style='color:#38bdf8; font-weight:700;'>≈ $16,647</td><td>≈ 20.8%</td></tr>
+          <tr><td><strong>$150,000</strong></td><td>≈ $21,194</td><td>≈ $16,413</td><td style='color:#38bdf8; font-weight:700;'>≈ $37,608</td><td>≈ 25.1%</td></tr>
+        </tbody>
+      </table>
+      <p>Figures are estimates for a single filer with standard deduction and no dependents; they exclude state tax, Additional Medicare Tax, and any retirement contributions. For a personalized, itemized result, run your exact numbers through the <a href="https://calcworker.com/tools/freelance-tax-calculator.html">freelance tax calculator</a>.</p>
+    </section>
+
+    <section id="faqs" class="article-section">
+      <h2>6. Frequently Asked Questions (FAQs)</h2>
+      <div class="faq-list">
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>How much tax does a freelancer pay on 1099 income in 2026?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A freelancer pays two separate federal taxes: self-employment tax of 15.3% on 92.35% of net profit (Social Security 12.4% up to the $184,500 base plus Medicare 2.9% uncapped), and ordinary income tax after the half-SE-tax deduction, the 20% QBI deduction, and the standard deduction ($16,100 single, $32,200 joint in 2026). Effective combined rates commonly land between 15% and 30%.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What is the difference between 1099 and W-2 tax treatment?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>A W-2 employer withholds income tax, Social Security, and Medicare from every paycheck and pays half of the FICA taxes for you. A 1099 worker receives the full gross amount with nothing withheld and must pay both halves of Social Security and Medicare (the 15.3% self-employment tax) themselves, usually through quarterly estimated payments.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What is the QBI deduction and who qualifies?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>The qualified business income (QBI) deduction lets most self-employed taxpayers deduct up to 20% of qualified business income from taxable income. It is generally the lesser of 20% of QBI or 20% of taxable income before the deduction, and it phases out for certain specified service trades or businesses above income thresholds.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Do freelancers need to pay estimated taxes?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Usually yes. Because no employer withholds from 1099 income, freelancers who expect to owe $1,000 or more for the year generally must make quarterly estimated payments on April 15, June 15, September 15, and January 15 to avoid an underpayment penalty.</p>
+          </div>
+        </div>
+        
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What expenses can a freelancer deduct to lower 1099 taxes?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Freelancers deduct ordinary and necessary business expenses on Schedule C — home office, equipment, software, mileage, internet, phone, insurance, and professional services — which reduce net profit and therefore reduce both self-employment tax and income tax at the same time.</p>
+          </div>
+        </div>
+        
+      </div>
+    </section>
+
+    <div class="tool-embed-banner" style="margin-top: 48px;">
+      <h3>Ready to run your calculations?</h3>
+      <p>See your complete 2026 freelance tax bill — SE tax, QBI, and income tax — in seconds on your own device.</p>
+      <a href="https://calcworker.com/tools/freelance-tax-calculator.html" class="tool-launch-btn">Launch Freelance Tax Calculator Now →</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/">All 102 Tools</a>
+      <a href="/articles/">Guides Hub</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+  <script>
+    function toggleArticleFaq(btn) {
+      var ans = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      if (ans.style.display === 'none') {
+        ans.style.display = 'block';
+        icon.textContent = '−';
+      } else {
+        ans.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  </script>
+</body>
+</html>

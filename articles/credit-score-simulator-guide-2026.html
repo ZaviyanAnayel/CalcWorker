@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Credit Score Simulator: How Credit Scores Work (2026) | CalcWorker</title>
+  <meta name="description" content="The five FICO factors, how utilization and missed payments move your score, and what a 20-point swing costs on a mortgage. Real 2026 numbers and examples."/>
+  <meta name="keywords" content="credit score simulator, FICO score factors, credit utilization, how to improve credit score, missed payment impact, hard inquiry, credit score tiers, mortgage credit score 2026"/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/credit-score-simulator-guide-2026.html"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Credit Score Simulator: How Credit Scores Work (2026) | CalcWorker"/>
+  <meta property="og:description" content="The five FICO factors, how utilization and missed payments move your score, and what a 20-point swing costs on a mortgage."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://calcworker.com/articles/credit-score-simulator-guide-2026.html"/>
+  <meta property="og:site_name" content="CalcWorker"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Credit Score Simulator: How Credit Scores Work (2026)",
+      "description": "The five FICO factors, how utilization and missed payments move your score, and what a 20-point swing costs on a mortgage. Real 2026 numbers and examples.",
+      "mainEntityOfPage": "https://calcworker.com/articles/credit-score-simulator-guide-2026.html",
+      "datePublished": "2026-10-12",
+      "dateModified": "2026-10-12",
+      "author": {
+        "@type": "Organization",
+        "name": "CalcWorker Research Team",
+        "url": "https://calcworker.com/about.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CalcWorker",
+        "logo": "https://calcworker.com/assets/favicon.png"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What credit score do I need for a mortgage in 2026?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Conventional loans typically require 620+, with the best rates at 740+. FHA loans allow 580 with 3.5% down (500 with 10% down), and VA loans have no official minimum though most lenders want around 620."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How fast can I raise my credit score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Utilization improvements can lift a score within one billing cycle (30\u201345 days) because utilization has no memory and resets monthly. Recovering from a missed payment takes much longer \u2014 late payments stay on reports for seven years, though their impact fades with age."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does checking my own credit score hurt it?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. Checking your own score is a soft inquiry and never affects it. Only hard inquiries from actual credit applications (typically \u22125 to \u221210 points each) have an impact, and rate-shopping within a short window counts as one inquiry."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good credit utilization ratio?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Under 30% is the common guideline, but under 10% is ideal for the highest scores. Both per-card and overall utilization matter. Paying balances before the statement closing date \u2014 not just the due date \u2014 is a legitimate way to report lower utilization."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long do hard inquiries affect my score?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Hard inquiries affect FICO scores for 12 months and remain visible on reports for 2 years. Rate-shopping for a mortgage or auto loan within a 14\u201345 day window is treated as a single inquiry."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+      --code-bg: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .article-header h1 {
+      font-size: 2.25rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      font-weight: 800;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+    }
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .tool-embed-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-embed-banner h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-embed-banner p { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-launch-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+      transition: transform 0.15s ease;
+    }
+    .tool-launch-btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .toc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-box h3 { font-size: 1rem; color: #f8fafc; margin-bottom: 12px; }
+    .toc-box ul { list-style-position: inside; color: #60a5fa; font-size: 0.92rem; line-height: 1.9; }
+
+    .article-section { margin-bottom: 40px; }
+    .article-section h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-left: 4px solid #3b82f6;
+      padding-left: 14px;
+    }
+    .article-section h3 { font-size: 1.2rem; color: #e2e8f0; margin: 20px 0 10px 0; }
+    .article-section p { margin-bottom: 16px; color: #cbd5e1; font-size: 1.02rem; }
+    .article-section ul, .article-section ol { margin-left: 24px; margin-bottom: 18px; color: #cbd5e1; }
+    .article-section li { margin-bottom: 8px; }
+
+    .formula-box {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #38bdf8;
+      font-size: 0.95rem;
+      word-break: break-word;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .data-table th, .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      font-size: 0.92rem;
+    }
+    .data-table th {
+      background: rgba(30, 58, 138, 0.3);
+      color: #f8fafc;
+      font-weight: 600;
+    }
+    .data-table tr:hover { background: rgba(255, 255, 255, 0.02); }
+
+    .tip-card {
+      background: rgba(16, 185, 129, 0.08);
+      border-left: 4px solid #10b981;
+      padding: 18px 20px;
+      border-radius: 0 8px 8px 0;
+      margin: 24px 0;
+      color: #d1fae5;
+    }
+    .tip-card strong { color: #34d399; }
+
+    .faq-list { display: flex; flex-direction: column; gap: 12px; margin-top: 16px; }
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 16px 20px;
+      background: transparent;
+      border: none;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .faq-icon { font-size: 1.2rem; color: #60a5fa; transition: transform 0.2s ease; }
+    .faq-answer {
+      padding: 0 20px 18px 20px;
+      color: #cbd5e1;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    footer {
+      margin-top: 80px;
+      padding-top: 30px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">Dashboard</a>
+      <a href="/articles/">Guides Hub</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener">Facebook</a>
+    </div>
+  </nav>
+
+  <article class="article-container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span>
+      <a href="/articles/">Guides &amp; Articles</a> <span>/</span>
+      <span>Credit Score Simulator Guide</span>
+    </div>
+
+    <header class="article-header">
+      <h1>Credit Score Simulator: How Credit Scores Work (2026)</h1>
+      <div class="meta-bar">
+        <span>✍️ CalcWorker Research Team</span>
+        <span>📅 Updated October 12, 2026</span>
+        <span class="badge-verified">✓ FICO Factor Weights</span>
+        <span>⏱️ 7 min read</span>
+        <span style="color:#60a5fa;">💳 Banking, Loans &amp; Credit</span>
+      </div>
+    </header>
+
+    <div class="tool-embed-banner">
+      <h3><span>💳</span> Simulate Your Score Now</h3>
+      <p>See how paying down balances, a missed payment, or a new account could move your score — before you act. Free and private.</p>
+      <a href="https://calcworker.com/tools/credit-score-simulator.html" class="tool-launch-btn">Launch Credit Score Simulator →</a>
+    </div>
+
+    <nav class="toc-box">
+      <h3>Contents in this Guide</h3>
+      <ul>
+        <li><a href="#overview">1. Why Your Score Is a Formula, Not a Mystery</a></li>
+        <li><a href="#factors">2. The Five FICO Factors &amp; Their Weights</a></li>
+        <li><a href="#example">3. Worked Example: A 720 Score</a></li>
+        <li><a href="#timing">4. Timing Tricks Most People Miss</a></li>
+        <li><a href="#cost">5. What Your Score Costs on a Mortgage</a></li>
+        <li><a href="#faqs">6. Frequently Asked Questions (FAQs)</a></li>
+      </ul>
+    </nav>
+
+    <section id="overview" class="article-section">
+      <h2>1. Why Your Score Is a Formula, Not a Mystery</h2>
+      <p>Your credit score feels opaque, but the dominant model — <strong>FICO</strong> — publishes exactly how much each behavior weighs. Scores run 300 to 850, and every point you gain or lose has a dollar value, because lenders translate scores into interest rates. A 40-point swing can change a mortgage rate by half a point or more, costing tens of thousands over 30 years.</p>
+      <p>A <strong>credit score simulator</strong> applies those published weights so you can preview, before you act, roughly how a decision — paying down a card, opening a new account, or missing a payment — will move your score. It's a planning tool, not a crystal ball: bureaus use proprietary versions with dozens of sub-factors, so the value is in <em>direction and magnitude</em>, not exact points.</p>
+    </section>
+
+    <section id="factors" class="article-section">
+      <h2>2. The Five FICO Factors &amp; Their Weights</h2>
+      <div class="formula-box">
+        Payment history (35%) + Amounts owed / utilization (30%) + Length of history (15%)<br/>
+        + New credit (10%) + Credit mix (10%) = 100%
+      </div>
+      <ul>
+        <li><strong>Payment history (35%):</strong> the single biggest factor. One 30-day late payment can drop a good score 60–110 points. This is why "pay on time, always" is the whole ballgame.</li>
+        <li><strong>Amounts owed / utilization (30%):</strong> your balances divided by your credit limits. Under 10% is ideal; above 30% starts to hurt. Crucially, utilization has <em>no memory</em> — it resets every month your new balances report.</li>
+        <li><strong>Length of history (15%):</strong> the average age of your accounts. Keep old cards open even if you don't use them.</li>
+        <li><strong>New credit (10%):</strong> hard inquiries and brand-new accounts shave a few to ~12 points each.</li>
+        <li><strong>Credit mix (10%):</strong> a blend of revolving (cards) and installment (auto, mortgage) accounts helps slightly.</li>
+      </ul>
+      <p>The leverage is concentrated at the top: payment history and utilization together are <strong>65%</strong> of your score, and both are within your direct control. That's the practical takeaway — master those two and the other three handle themselves.</p>
+    </section>
+
+    <section id="example" class="article-section">
+      <h2>3. Worked Example: A 720 Score</h2>
+      <p>Start with a <strong>720</strong> score, 100% on-time payment history, <strong>20% utilization</strong>, no missed payments, one new account in the last year, and 8 years of credit history:</p>
+      <ol>
+        <li><strong>Utilization effect:</strong> running 20% instead of the sub-10% ideal costs roughly <strong>−18 points</strong>.</li>
+        <li><strong>New-account effect:</strong> one recent account costs roughly <strong>−12 points</strong>.</li>
+        <li><strong>Simulated score:</strong> 720 − 18 − 12 = <strong>690</strong>.</li>
+        <li><strong>The lever:</strong> pay utilization down to 8% and the simulation rebounds to roughly <strong>712</strong> — because utilization resets monthly.</li>
+      </ol>
+      <p>This is why utilization is the fastest lever most people can pull. A missed payment, by contrast, doesn't just subtract — it reclassifies your "payment history" bucket and lingers for seven years. Use the <a href="https://calcworker.com/tools/credit-score-simulator.html">credit score simulator</a> to experiment with each scenario and see the directional impact before you act.</p>
+      <div class="tip-card">
+        <strong>💡 Strategic Pro Tip:</strong><br/>
+        Never close your oldest card before a mortgage application. Closing it shortens your average account age (15% of the score) and, by removing available credit, can spike your utilization (30%) — a double hit when it matters most.
+      </div>
+    </section>
+
+    <section id="timing" class="article-section">
+      <h2>4. Timing Tricks Most People Miss</h2>
+      <h3>Statement Date vs. Due Date</h3>
+      <p>Card issuers report your balance on the <strong>statement closing date</strong>, not the due date. If you pay in full <em>after</em> the statement closes but before the due date, the high balance has already been reported. To show low utilization, pay your balance down <em>before</em> the statement posts. This one habit can add 10–20 points with no other change.</p>
+      <h3>Rate-Shopping Windows</h3>
+      <p>Multiple hard inquiries for the same loan type within a 14–45 day window are treated as a single inquiry by FICO scoring. Shop aggressively in a short burst rather than spreading applications over months. Our <a href="https://calcworker.com/tools/dti-calculator.html">DTI calculator</a> helps you see whether the loan you're shopping for will even qualify.</p>
+      <h3>FICO vs. VantageScore</h3>
+      <p>Most lenders use FICO — for mortgages, often an older FICO version. The free "VantageScore" your bank app shows can differ by 20–40 points from the score a mortgage underwriter sees. Treat free scores as directional. Whatever your number, <a href="https://calcworker.com/tools/mortgage-calculator.html">model the payment</a> at several rates to see what each score tier actually buys.</p>
+    </section>
+
+    <section id="cost" class="article-section">
+      <h2>5. What Your Score Costs on a Mortgage</h2>
+      <p>Lenders price in <strong>score tiers</strong>. Borrowers above ~760 get the best rates, with meaningful steps down at 740, 700, 680, and 620 (the conventional floor). On a $400,000 30-year loan at 2026 rates, the gap between a 620 and a 760 score can exceed <strong>$300/month</strong> — over <strong>$100,000</strong> across the life of the loan.</p>
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Score Band</th>
+            <th>Label</th>
+            <th>Typical 2026 Outcome</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>800+</strong></td><td>Exceptional</td><td>Best available rates</td></tr>
+          <tr><td><strong>740–799</strong></td><td>Very Good</td><td>Near-prime rates; little to gain above this</td></tr>
+          <tr><td><strong>670–739</strong></td><td>Good</td><td>Prime, slightly higher rate</td></tr>
+          <tr><td><strong>580–669</strong></td><td>Fair</td><td>FHA territory; meaningfully higher APR</td></tr>
+          <tr><td><strong>&lt;580</strong></td><td>Poor</td><td>Few conventional options; repair first</td></tr>
+        </tbody>
+      </table>
+      <p>If your score is holding you back, the sequence is: (1) correct errors on your reports, (2) pay down revolving balances below 10% utilization, (3) ensure every bill is on time going forward. While you repair, our <a href="https://calcworker.com/tools/debt-payoff.html">debt snowball &amp; avalanche calculator</a> and <a href="https://calcworker.com/tools/credit-card-payoff.html">credit card payoff calculator</a> give you a concrete path to lower balances.</p>
+    </section>
+
+    <section id="faqs" class="article-section">
+      <h2>6. Frequently Asked Questions (FAQs)</h2>
+      <div class="faq-list">
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What credit score do I need for a mortgage in 2026?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Conventional loans typically require 620+, with the best rates at 740+. FHA loans allow 580 with 3.5% down (500 with 10% down), and VA loans have no official minimum though most lenders want around 620.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>How fast can I raise my credit score?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Utilization improvements can lift a score within one billing cycle (30–45 days) because utilization has no memory and resets monthly. Recovering from a missed payment takes much longer — late payments stay on reports for seven years, though their impact fades with age.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Does checking my own credit score hurt it?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>No. Checking your own score is a soft inquiry and never affects it. Only hard inquiries from actual credit applications (typically −5 to −10 points each) have an impact, and rate-shopping within a short window counts as one inquiry.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What is a good credit utilization ratio?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Under 30% is the common guideline, but under 10% is ideal for the highest scores. Both per-card and overall utilization matter. Paying balances before the statement closing date — not just the due date — is a legitimate way to report lower utilization.</p>
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>How long do hard inquiries affect my score?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Hard inquiries affect FICO scores for 12 months and remain visible on reports for 2 years. Rate-shopping for a mortgage or auto loan within a 14–45 day window is treated as a single inquiry.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="tool-embed-banner" style="margin-top: 48px;">
+      <h3>Ready to simulate your next move?</h3>
+      <p>Model utilization changes, a hypothetical missed payment, or a new account to see the directional impact on your score.</p>
+      <a href="https://calcworker.com/tools/credit-score-simulator.html" class="tool-launch-btn">Launch Credit Score Simulator Now →</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/">All 102 Tools</a>
+      <a href="/articles/">Guides Hub</a>
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+  <script>
+    function toggleArticleFaq(btn) {
+      var ans = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      if (ans.style.display === 'none') {
+        ans.style.display = 'block';
+        icon.textContent = '−';
+      } else {
+        ans.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  </script>
+</body>
+</html>
