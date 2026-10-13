@@ -7,7 +7,10 @@
  *   GROQ_API_KEY   (a Groq API key; never commit one to the repo)
  *
  * Behavior:
- *  - Strict Origin/Referer allowlist (calcworker.com only).
+ *  - Strict Origin/Referer allowlist (calcworker.com only) for browsers.
+ *  - The native Android app (header X-CalcWorker-App: android; OkHttp sends no
+ *    Origin/Referer) is a trusted first-party client and bypasses the browser
+ *    allowlist — it also auto-enables app mode (no URLs, "CalcWorker AI by Zaviyan").
  *  - Conservative in-memory rate limiting (best-effort on serverless).
  *  - Input/output caps to bound cost; 10s upstream timeout.
  *  - If GROQ_API_KEY is missing -> 503 JSON so the widget falls back to its
@@ -215,6 +218,14 @@ function originAllowed(req) {
   return { ok: false, origin: null };
 }
 
+/** Native Android app (OkHttp) sends no Origin/Referer, so it always fails the
+ *  browser allowlist. The app identifies itself with this header instead.
+ *  Rate limits still apply; the header is spoofable, but so is Origin from curl,
+ *  so no new abuse surface is created. */
+function isTrustedApp(req) {
+  return (req.headers["x-calcworker-app"] || "").toString().trim().toLowerCase() === "android";
+}
+
 // In-memory rate limiting (per serverless isolate — best-effort guard).
 const memHits = new Map();
 const memDaily = { date: "", count: 0 };
@@ -235,6 +246,7 @@ function dailyBudgetExceeded() {
 
 export default async function handler(req, res) {
   const check = originAllowed(req);
+  const trustedApp = isTrustedApp(req);
   const allowOrigin = check.ok && check.origin ? check.origin : "https://www.calcworker.com";
   res.setHeader("Access-Control-Allow-Origin", allowOrigin);
   res.setHeader("Vary", "Origin");
@@ -243,7 +255,7 @@ export default async function handler(req, res) {
 
   if (req.method === "OPTIONS") return res.status(204).end();
   if (req.method !== "POST") return json(res, 405, { error: "Method not allowed. Use POST." });
-  if (!check.ok) return json(res, 403, { error: "Forbidden origin." });
+  if (!check.ok && !trustedApp) return json(res, 403, { error: "Forbidden origin." });
 
   const len = Number(req.headers["content-length"] || 0);
   if (len > MAX_BODY_BYTES) return json(res, 413, { error: "Request too large." });
@@ -267,9 +279,9 @@ export default async function handler(req, res) {
   if (prompt.length < 2) return json(res, 400, { error: "Please ask a question." });
 
   const history = Array.isArray(body.history) ? body.history.slice(-6) : [];
-  const appMode = String(body.mode || "").toLowerCase() === "app";
+  const appMode = trustedApp || String(body.mode || "").toLowerCase() === "app";
   const systemPrompt = appMode
-    ? SYSTEM_PROMPT + "\n\nThe user is in the CalcWorker Android app: recommend calculators by EXACT catalog name only, no URLs."
+    ? SYSTEM_PROMPT + "\n\nThe user is in the CalcWorker Android app (identity: 'CalcWorker AI by Zaviyan' — never say 'Zaviyan LLC' in the app): recommend calculators by EXACT catalog name only, no URLs."
     : SYSTEM_PROMPT;
   const messages = [{ role: "system", content: systemPrompt }];
   for (const h of history) {
