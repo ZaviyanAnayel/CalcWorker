@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RSU Tax Guide 2026: Vesting, Withholding &amp; Selling Strategy | CalcWorker Guide (2026)</title>
+  <meta name="description" content="RSU tax upon vesting: the 22% withholding trap, sell-at-vest vs hold math and what to do after you sell. Keep more of your stock compensation in 2026."/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/rsu-stock-compensation-tax-guide-2026.html"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="RSU Tax Guide 2026: Vesting, Withholding &amp; Selling Strategy | CalcWorker"/>
+  <meta property="og:description" content="RSU tax upon vesting: the 22% withholding trap, sell-at-vest vs hold math and what to do after you sell. Keep more of your stock compensation in 2026."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://calcworker.com/articles/rsu-stock-compensation-tax-guide-2026.html"/>
+  <meta property="og:site_name" content="CalcWorker"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <!-- calcworker-batch-2026-10-14 -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "RSU Tax Guide 2026: Vesting, Withholding & Selling Strategy",
+      "description": "RSU tax upon vesting: the 22% withholding trap, sell-at-vest vs hold math and what to do after you sell. Keep more of your stock compensation in 2026.",
+      "mainEntityOfPage": "https://calcworker.com/articles/rsu-stock-compensation-tax-guide-2026.html",
+      "datePublished": "2026-10-14",
+      "dateModified": "2026-10-14",
+      "author": {
+        "@type": "Organization",
+        "name": "CalcWorker Financial Team",
+        "url": "https://calcworker.com/about.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CalcWorker",
+        "logo": "https://calcworker.com/assets/favicon.png"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When are RSUs taxed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At vesting, as ordinary W-2 income based on the stock's fair market value that day — regardless of whether you sell."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is sell-to-cover?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Your employer sells enough vested shares to cover tax withholding, delivering the rest to you. Convenient but often under-withholds for high earners."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I hold RSUs after vesting?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Generally no — you are already concentrated via salary and unvested grants. Sell, diversify, and treat proceeds as cash compensation."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How are RSUs different from stock options?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "RSUs always have value at vest (they're actual shares). Options can expire worthless if underwater; ISOs also offer special tax treatment RSUs lack."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do RSUs count toward the $1M withholding threshold?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes — supplemental wages including RSU vest income above $1M in a year face 37% mandatory withholding."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+      --code-bg: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .article-header h1 {
+      font-size: 2.3rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      font-weight: 800;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+    }
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .tool-embed-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-embed-banner h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-embed-banner p { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-launch-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+    .tool-launch-btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .toc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-box h3 { font-size: 1rem; color: #f8fafc; margin-bottom: 12px; }
+    .toc-box ul { list-style-position: inside; color: #60a5fa; font-size: 0.92rem; line-height: 1.9; }
+
+    .article-section { margin-bottom: 40px; }
+    .article-section h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-left: 4px solid #3b82f6;
+      padding-left: 14px;
+    }
+    .article-section h3 { font-size: 1.2rem; color: #e2e8f0; margin: 20px 0 10px 0; }
+    .article-section p { margin-bottom: 16px; color: #cbd5e1; font-size: 1.02rem; }
+    .article-section ul, .article-section ol { margin-left: 24px; margin-bottom: 18px; color: #cbd5e1; }
+    .article-section li { margin-bottom: 8px; }
+
+    .formula-box {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #38bdf8;
+      font-size: 0.95rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .data-table th, .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.92rem;
+    }
+    .data-table th { background: #1e293b; color: #f8fafc; font-weight: 700; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq-answer {
+      padding: 0 20px 16px 20px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .faq-icon { font-size: 1.2rem; color: #3b82f6; }
+
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">All Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <article class="article-container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span> <a href="/#tools">Guides</a> <span>/</span> <span>RSU Tax Guide 2026: Vesting, Withholding and Selling Strategy</span>
+    </div>
+
+    <header class="article-header">
+      <h1>RSU Tax Guide 2026: Vesting, Withholding and Selling Strategy</h1>
+      <div class="meta-bar">
+        <span>⏱️ 8 min read</span>
+        <span>📅 Updated 2026</span>
+        <span class="badge-verified">✓ Expert Verified</span>
+        <span>By CalcWorker Financial Team</span>
+      </div>
+    </header>
+
+    <div class="tool-embed-banner">
+      <h3><span>🧮</span> Interactive Tool: RSU Tax Calculator</h3>
+      <p>Model RSU vesting taxes and net proceeds with CalcWorker&#x27;s free equity compensation tools.</p>
+      <a href="https://calcworker.com/tools/rsu-tax-calculator.html" class="tool-launch-btn">Open Free RSU Tax Calculator &rarr;</a>
+    </div>
+
+    <div class="toc-box">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#section-1">How RSUs Are Taxed</a></li>
+        <li><a href="#section-2">The 22% Withholding Trap</a></li>
+        <li><a href="#section-3">Sell at Vest vs Hold</a></li>
+        <li><a href="#section-4">Advanced: 83(b) Doesn&#x27;t Apply, But...</a></li>
+      </ul>
+    </div>
+
+        <section id="section-1" class="article-section">
+          <h2>How RSUs Are Taxed</h2>
+<p>Restricted Stock Units are taxed as <strong>ordinary income at vesting</strong> — not at grant. When 1,000 shares vest at $80, you have $80,000 of W-2 income that day, whether you sell or hold.</p>
+<div class='formula-box'>Vest Income = Shares Vested &times; Fair Market Value at Vest</div>
+<p>Your <strong>cost basis becomes the vest price</strong> ($80/share). Future gains/losses are capital — short or long-term from the vest date.</p><p><strong>Double-trigger RSUs</strong> create the nastiest tax bill in equity comp. Your startup RSUs vest $200,000 of value at IPO; a 6-month lockup follows; the stock drops 40% — you now hold <strong>$120,000</strong> of stock but owe ordinary income tax on <strong>$200,000</strong>. At 35%, that's $70,000 of tax on $120,000 of value, netting you $50,000. Sell the instant the lockup lifts. Hope is not a tax strategy, and the IRS doesn't accept "but it's worth less now" as a deduction.</p><p>Contrast with <strong>stock options</strong>: ISOs can convert the spread to long-term capital treatment (with AMT exposure); NSOs tax the spread as ordinary income at exercise, like RSUs. But RSUs have zero leverage — 1,000 RSUs at $80 = $80,000 of certain value, while 1,000 options with an $80 strike on $80 stock = $0. RSUs are deferred cash; options are lottery tickets. Plan RSUs like salary and options like venture bets — different instruments, different psychology.</p>
+        </section>
+
+        <section id="section-2" class="article-section">
+          <h2>The 22% Withholding Trap</h2>
+<p>Employers withhold a flat <strong>22%</strong> federal on RSU income (37% above $1M). If you are in the 32-37% bracket, withholding falls short:</p>
+<p><strong>$80,000 vest, 35% bracket:</strong></p>
+<ul>
+<li>Withheld: $17,600 (22%)</li>
+<li>Actually owed: $28,000 (35%)</li>
+<li><strong>April surprise: $10,400</strong></li>
+</ul>
+<p>Fix: raise W-4 withholding or pay quarterly estimates. High earners get burned by this every year.</p><p><strong>State withholding</strong> creates its own shortfall. California withholds 10.23% supplemental on equity comp — on an $80,000 vest that's $8,184, roughly matching a 9.3-12.3% actual liability, so Californians land close. But add New York City tax on top of state, and combined shortfalls on large vests routinely hit <strong>$5,000-$10,000</strong>. Look up <em>your</em> state's supplemental withholding rate rather than assuming the federal 22% tells the whole story — the April surprise has a state chapter too.</p><p>Use the <strong>safe harbor</strong> to avoid penalties: owe more than $1,000 at filing and you need 100% of last year's total tax paid in (110% if AGI exceeded $150,000). On the $80,000 vest at 35%: $28,000 liability minus $17,600 withheld = $10,400 gap → quarterly estimates of <strong>$2,600</strong> each. Set calendar reminders for the January, April, June, and September estimate deadlines — the penalty for missing them is interest on the underpayment, month by month.</p>
+        </section>
+
+        <section id="section-3" class="article-section">
+          <h2>Sell at Vest vs Hold</h2>
+<table class='data-table'>
+<thead><tr><th>Strategy</th><th>Pros</th><th>Cons</th></tr></thead>
+<tbody>
+<tr><td><strong>Sell at vest</strong></td><td>Locks value; diversifies; no extra tax complexity</td><td>Misses future upside</td></tr>
+<tr><td><strong>Hold</strong></td><td>Potential growth; long-term gains after 1 yr</td><td>Concentration risk; single-stock exposure</td></tr>
+</tbody>
+</table>
+<p><strong>The diversification argument usually wins:</strong> your salary, bonus, and unvested RSUs already depend on this company. Holding vested shares doubles down. Most planners recommend selling at vest and diversifying — treat RSUs as cash compensation.</p><p>Apply the <strong>concentration rule</strong> mechanically: salary + bonus + unvested RSUs + vested shares = quadruple exposure to one company. If employer stock exceeds 10-20% of your net worth, trim on autopilot — sell 25% of every vest, no decisions required. Enron's employees learned the extreme version: the stock <em>and</em> the job can go to zero simultaneously. Diversification isn't pessimism about your company; it's recognition that your human capital is already 100% invested there.</p><p><strong>Donate appreciated shares</strong> instead of selling: hold vested RSUs 1+ year, then donate $20,000 of stock with a $12,000 basis. You deduct the full <strong>$20,000</strong> fair market value and permanently skip tax on the $8,000 gain. At 35%, that's $7,000 of income-tax savings plus ~$1,900 of capital-gains tax avoided = <strong>$8,900</strong> of total value from shares you'd have sold anyway. For charitably inclined holders, it's the highest-value exit available.</p>
+        </section>
+
+        <section id="section-4" class="article-section">
+          <h2>Advanced: 83(b) Doesn&#x27;t Apply, But...</h2>
+<ul>
+<li><strong>83(b) elections</strong> apply to restricted <em>stock</em>, not RSUs — no early-tax option exists for RSUs.</li>
+<li><strong>Double-trigger RSUs</strong> (startups): tax at IPO/acquisition trigger, often creating a massive single-year bill — plan liquidity.</li>
+<li><strong>State taxes:</strong> Vesting while in California then moving doesn't escape CA tax on the income earned there — allocation rules apply.</li>
+<li><strong>Net settlement:</strong> Most employers withhold shares for taxes ("sell to cover") — confirm enough was withheld for your bracket.</li>
+</ul><p><strong>Quit timing</strong> has a price tag: unvested RSUs are forfeited the day you leave — $150,000 vesting next quarter vanishes if you resign this quarter. Negotiate start dates around vesting cliffs; a two-week delay can be worth $50,000+. Note the asymmetry: stock <em>options</em> typically give 90 days post-departure to exercise, but RSUs offer no such grace — unvested means unowned. Read the vesting schedule before the offer letter, not after the resignation.</p><p><strong>Tender offers</strong> for private-company shares are taxed like any sale — long-term rates if you've held 1+ year from vesting (RSUs) or exercise (options). Two cautions: selling below the latest 409A valuation can raise eyebrows with the company, and <strong>clawback provisions</strong> in grant agreements can reclaim vested shares after misconduct or competitive departures. Read the actual grant agreement — not the HR summary — before assuming your vested shares are unconditionally yours.</p>
+        </section>
+
+    <section class="article-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>When are RSUs taxed?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>At vesting, as ordinary W-2 income based on the stock&#x27;s fair market value that day — regardless of whether you sell.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What is sell-to-cover?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Your employer sells enough vested shares to cover tax withholding, delivering the rest to you. Convenient but often under-withholds for high earners.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Should I hold RSUs after vesting?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Generally no — you are already concentrated via salary and unvested grants. Sell, diversify, and treat proceeds as cash compensation.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>How are RSUs different from stock options?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>RSUs always have value at vest (they&#x27;re actual shares). Options can expire worthless if underwater; ISOs also offer special tax treatment RSUs lack.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Do RSUs count toward the $1M withholding threshold?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes — supplemental wages including RSU vest income above $1M in a year face 37% mandatory withholding.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tool-embed-banner" style="margin-top: 48px;">
+      <h3>Ready to run your calculations?</h3>
+      <p>Use our precision 2026 financial calculator to evaluate your scenario in seconds.</p>
+      <a href="https://calcworker.com/tools/rsu-tax-calculator.html" class="tool-launch-btn">Launch RSU Tax Calculator Now &rarr;</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener">Facebook</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+  <script>
+    function toggleArticleFaq(btn) {
+      var ans = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      if (ans.style.display === 'none') {
+        ans.style.display = 'block';
+        icon.textContent = '\u2212';
+      } else {
+        ans.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  </script>
+</body>
+</html>

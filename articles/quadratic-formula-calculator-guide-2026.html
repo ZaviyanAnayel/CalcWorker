@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Quadratic Formula Guide 2026: Discriminant, Roots &amp; Factoring | CalcWorker Guide (2026)</title>
+  <meta name="description" content="The quadratic formula, what the discriminant reveals and factoring vs formula. Includes a projectile-motion application example with full steps shown."/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/quadratic-formula-calculator-guide-2026.html"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Quadratic Formula Guide 2026: Discriminant, Roots &amp; Factoring | CalcWorker"/>
+  <meta property="og:description" content="The quadratic formula, what the discriminant reveals and factoring vs formula. Includes a projectile-motion application example with full steps shown."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://calcworker.com/articles/quadratic-formula-calculator-guide-2026.html"/>
+  <meta property="og:site_name" content="CalcWorker"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <!-- calcworker-batch-2026-10-14 -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "Quadratic Formula Guide 2026: Discriminant, Roots & Factoring",
+      "description": "The quadratic formula, what the discriminant reveals and factoring vs formula. Includes a projectile-motion application example with full steps shown.",
+      "mainEntityOfPage": "https://calcworker.com/articles/quadratic-formula-calculator-guide-2026.html",
+      "datePublished": "2026-10-14",
+      "dateModified": "2026-10-14",
+      "author": {
+        "@type": "Organization",
+        "name": "CalcWorker Math Team",
+        "url": "https://calcworker.com/about.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CalcWorker",
+        "logo": "https://calcworker.com/assets/favicon.png"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "When should I use the quadratic formula?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Always works for ax^2 + bx + c = 0. Try factoring first for speed; fall back to the formula when factoring isn't obvious."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does the discriminant tell me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "b^2 - 4ac predicts the roots: positive = two real, zero = one repeated, negative = two complex."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I find the vertex?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "x = -b/2a, then plug back for y. Or complete the square to vertex form a(x-h)^2 + k with vertex (h, k)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are complex roots?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "When D < 0, roots involve i (sqrt(-1)). They come in conjugate pairs and mean the parabola never crosses the x-axis."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can quadratics model real things?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes - projectile motion, profit optimization, area problems, and physics equations are full of quadratics."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+      --code-bg: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .article-header h1 {
+      font-size: 2.3rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      font-weight: 800;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+    }
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .tool-embed-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-embed-banner h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-embed-banner p { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-launch-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+    .tool-launch-btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .toc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-box h3 { font-size: 1rem; color: #f8fafc; margin-bottom: 12px; }
+    .toc-box ul { list-style-position: inside; color: #60a5fa; font-size: 0.92rem; line-height: 1.9; }
+
+    .article-section { margin-bottom: 40px; }
+    .article-section h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-left: 4px solid #3b82f6;
+      padding-left: 14px;
+    }
+    .article-section h3 { font-size: 1.2rem; color: #e2e8f0; margin: 20px 0 10px 0; }
+    .article-section p { margin-bottom: 16px; color: #cbd5e1; font-size: 1.02rem; }
+    .article-section ul, .article-section ol { margin-left: 24px; margin-bottom: 18px; color: #cbd5e1; }
+    .article-section li { margin-bottom: 8px; }
+
+    .formula-box {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #38bdf8;
+      font-size: 0.95rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .data-table th, .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.92rem;
+    }
+    .data-table th { background: #1e293b; color: #f8fafc; font-weight: 700; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq-answer {
+      padding: 0 20px 16px 20px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .faq-icon { font-size: 1.2rem; color: #3b82f6; }
+
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">All Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <article class="article-container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span> <a href="/#tools">Guides</a> <span>/</span> <span>Quadratic Formula Guide 2026: Discriminant, Roots and Factoring</span>
+    </div>
+
+    <header class="article-header">
+      <h1>Quadratic Formula Guide 2026: Discriminant, Roots and Factoring</h1>
+      <div class="meta-bar">
+        <span>⏱️ 7 min read</span>
+        <span>📅 Updated 2026</span>
+        <span class="badge-verified">✓ Expert Verified</span>
+        <span>By CalcWorker Math Team</span>
+      </div>
+    </header>
+
+    <div class="tool-embed-banner">
+      <h3><span>🧮</span> Interactive Tool: Quadratic Formula Calculator</h3>
+      <p>Solve any quadratic instantly with discriminant analysis. Free on CalcWorker.</p>
+      <a href="https://calcworker.com/tools/quadratic-formula-calculator.html" class="tool-launch-btn">Open Free Quadratic Formula Calculator &rarr;</a>
+    </div>
+
+    <div class="toc-box">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#section-1">The Quadratic Formula</a></li>
+        <li><a href="#section-2">The Discriminant Tells All</a></li>
+        <li><a href="#section-3">Factoring vs Formula</a></li>
+        <li><a href="#section-4">Projectile Motion Application</a></li>
+      </ul>
+    </div>
+
+        <section id="section-1" class="article-section">
+          <h2>The Quadratic Formula</h2>
+<div class='formula-box'>x = (-b +/- sqrt(b^2 - 4ac)) / 2a</div>
+<p>For ax^2 + bx + c = 0. <strong>Example:</strong> x^2 - 5x + 6 = 0 (a=1, b=-5, c=6).</p>
+<p>x = (5 +/- sqrt(25 - 24)) / 2 = (5 +/- 1) / 2. Roots: <strong>x = 3, x = 2</strong>.</p>
+<p>Check: (3)^2 - 5(3) + 6 = 9 - 15 + 6 = 0. Correct.</p><p>Missing terms are legal - just write their coefficients as zero. For 2x^2 - 7 = 0, read a = 2, b = 0, c = -7: x = (0 +/- sqrt(0 + 56))/4 = +/-sqrt(56)/4. Simplify: sqrt(56) = 2sqrt(14), so x = +/-sqrt(14)/2, about +/-1.87. Students who skip writing b = 0 often misalign the formula; writing the zero explicitly keeps every term in its lane.</p><p>The costliest exam error is plugging into the formula before rearranging. Given 3x^2 = 5x + 2, first move everything left: 3x^2 - 5x - 2 = 0. Then x = (5 +/- sqrt(25 + 24))/6 = (5 +/- 7)/6, giving x = 2 or x = -1/3. Check x = 2: 3(4) = 5(2) + 2, 12 = 12. The quadratic formula only works on equations equal to zero - standard form first, formula second.</p>
+        </section>
+
+        <section id="section-2" class="article-section">
+          <h2>The Discriminant Tells All</h2>
+<div class='formula-box'>Discriminant D = b^2 - 4ac</div>
+<table class='data-table'>
+<thead><tr><th>D</th><th>Roots</th><th>Graph</th></tr></thead>
+<tbody>
+<tr><td>D &gt; 0</td><td>Two real roots</td><td>Crosses x-axis twice</td></tr>
+<tr><td>D = 0</td><td>One repeated root</td><td>Touches x-axis once</td></tr>
+<tr><td>D &lt; 0</td><td>Two complex roots</td><td>Never touches x-axis</td></tr>
+</tbody>
+</table>
+<p><strong>Example:</strong> x^2 + 2x + 5 = 0: D = 4 - 20 = -16. Complex roots: x = -1 +/- 2i.</p><p>The discriminant also predicts whether factoring is worth attempting. For x^2 - 7x + 10, D = 49 - 40 = 9 = 3^2 - a perfect square, so the roots are rational (5 and 2) and factoring will succeed. For x^2 - 5x + 3, D = 25 - 12 = 13, not a perfect square, so the roots are irrational and factoring over integers is hopeless - go straight to the formula. Compute D first and it tells you which method to use.</p><p>A zero discriminant has vivid real-world meaning. Suppose profit (in thousands) follows P = -2x^2 + 40x - 200 where x is hundreds of units. D = 1600 - 1600 = 0, so there is exactly one break-even quantity: x = -40/(2 x -2) = 10, or 1,000 units. The profit parabola just kisses the x-axis - produce 999 units and you lose money, 1,001 and you profit. A repeated root is the knife's edge between profit and loss.</p>
+        </section>
+
+        <section id="section-3" class="article-section">
+          <h2>Factoring vs Formula</h2>
+<ul>
+<li><strong>Factor first</strong> when a=1 and you can spot the pair: x^2 - 5x + 6 = (x-2)(x-3).</li>
+<li><strong>Formula</strong> always works - use it when factoring isn't obvious.</li>
+<li><strong>Completing the square</strong> reveals the vertex form: x^2 - 6x + 5 = (x-3)^2 - 4, vertex at <strong>(3, -4)</strong>.</li>
+<li><strong>Vertex shortcut:</strong> x-coordinate = -b/2a always.</li>
+</ul><p>The sum-product shortcut beats the formula whenever a = 1 and c has small factors. For x^2 - 8x + 15, hunt for two numbers with product 15 and sum -8: -3 and -5 fit, so the factorization is (x - 3)(x - 5). Listing c's factor pairs (1x15, 3x5) and checking their sums takes seconds. When no pair sums to b, abandon factoring gracefully and use the formula.</p><p>Special patterns deserve instant recognition. Difference of squares: x^2 - 64 = (x - 8)(x + 8). Perfect square trinomial: x^2 + 10x + 25 = (x + 5)^2. The pattern extends: 4x^2 - 9 = (2x - 3)(2x + 3), since both terms are squares. Spotting these forms turns a two-minute formula computation into a five-second rewrite.</p>
+        </section>
+
+        <section id="section-4" class="article-section">
+          <h2>Projectile Motion Application</h2>
+<p><strong>Ball thrown upward:</strong> h(t) = -16t^2 + 48t + 6 (feet, seconds).</p>
+<ul>
+<li><strong>Max height:</strong> t = -48/(2 x -16) = 1.5 s. h(1.5) = -36 + 72 + 6 = <strong>42 ft</strong>.</li>
+<li><strong>Hits ground:</strong> -16t^2 + 48t + 6 = 0. t = (-48 +/- sqrt(2304 + 384)) / -32 = (-48 +/- 51.8) / -32. Positive root: <strong>t = 3.12 s</strong>.</li>
+</ul><p>Projectiles pass each height twice, so expect two answers. With h(t) = -16t^2 + 48t + 6, when is the ball at 30 feet? Set -16t^2 + 48t + 6 = 30: -16t^2 + 48t - 24 = 0, or t^2 - 3t + 1.5 = 0. Then t = (3 +/- sqrt(9 - 6))/2 = (3 +/- sqrt(3))/2, about 0.63 s on the way up and 2.37 s on the way down. Two positive roots are not an error - they are the ascent and the descent.</p><p>Quadratics also solve every "maximize area" problem. With 100 feet of fence against a barn wall, let x be the depth: area A = x(100 - 2x) = -2x^2 + 100x. The vertex sits at x = -b/2a = -100/(2 x -2) = 25 feet, giving A = 25 x 50 = 1,250 sq ft. The same vertex formula that found the ball's peak height finds the biggest pen - optimization is just projectile math turned sideways.</p>
+        </section>
+
+    <section class="article-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>When should I use the quadratic formula?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Always works for ax^2 + bx + c = 0. Try factoring first for speed; fall back to the formula when factoring isn&#x27;t obvious.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What does the discriminant tell me?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>b^2 - 4ac predicts the roots: positive = two real, zero = one repeated, negative = two complex.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>How do I find the vertex?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>x = -b/2a, then plug back for y. Or complete the square to vertex form a(x-h)^2 + k with vertex (h, k).</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What are complex roots?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>When D &lt; 0, roots involve i (sqrt(-1)). They come in conjugate pairs and mean the parabola never crosses the x-axis.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Can quadratics model real things?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Yes - projectile motion, profit optimization, area problems, and physics equations are full of quadratics.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tool-embed-banner" style="margin-top: 48px;">
+      <h3>Ready to run your calculations?</h3>
+      <p>Use our precision 2026 financial calculator to evaluate your scenario in seconds.</p>
+      <a href="https://calcworker.com/tools/quadratic-formula-calculator.html" class="tool-launch-btn">Launch Quadratic Formula Calculator Now &rarr;</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener">Facebook</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+  <script>
+    function toggleArticleFaq(btn) {
+      var ans = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      if (ans.style.display === 'none') {
+        ans.style.display = 'block';
+        icon.textContent = '\u2212';
+      } else {
+        ans.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  </script>
+</body>
+</html>

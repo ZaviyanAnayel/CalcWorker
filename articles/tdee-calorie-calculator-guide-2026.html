@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TDEE &amp; Calorie Guide 2026: Find Your Maintenance Calories | CalcWorker Guide (2026)</title>
+  <meta name="description" content="Discover your true daily maintenance calories from BMR plus activity multipliers. Cutting and bulking math, and why the scale lies about your real progress."/>
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1"/>
+  <link rel="canonical" href="https://calcworker.com/articles/tdee-calorie-calculator-guide-2026.html"/>
+  <link rel="icon" type="image/png" href="/assets/favicon.png"/>
+  <meta name="theme-color" content="#1d4ed8"/>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="TDEE &amp; Calorie Guide 2026: Find Your Maintenance Calories | CalcWorker"/>
+  <meta property="og:description" content="Discover your true daily maintenance calories from BMR plus activity multipliers. Cutting and bulking math, and why the scale lies about your real progress."/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:url" content="https://calcworker.com/articles/tdee-calorie-calculator-guide-2026.html"/>
+  <meta property="og:site_name" content="CalcWorker"/>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016" crossorigin="anonymous"></script>
+
+  <!-- Schema.org JSON-LD -->
+  <!-- calcworker-batch-2026-10-14 -->
+  <script type="application/ld+json">
+  {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "TDEE & Calorie Guide 2026: Find Your Maintenance Calories",
+      "description": "Discover your true daily maintenance calories from BMR plus activity multipliers. Cutting and bulking math, and why the scale lies about your real progress.",
+      "mainEntityOfPage": "https://calcworker.com/articles/tdee-calorie-calculator-guide-2026.html",
+      "datePublished": "2026-10-14",
+      "dateModified": "2026-10-14",
+      "author": {
+        "@type": "Organization",
+        "name": "CalcWorker Health Team",
+        "url": "https://calcworker.com/about.html"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "CalcWorker",
+        "logo": "https://calcworker.com/assets/favicon.png"
+      }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is TDEE?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Total Daily Energy Expenditure - all calories you burn in 24 hours: basal metabolism + activity + digestion + exercise."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How accurate are TDEE calculators?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Within 10-15% for most. Treat the result as a starting point; adjust based on 3 weeks of real weight data."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Should I eat back exercise calories?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Usually no - trackers overestimate burn by 20-40%. If your TDEE multiplier already includes exercise, eating back double-counts."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why am I not losing weight at a deficit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Common causes: overestimated TDEE, untracked bites/drinks/oils (often 300-500 cal/day), or insufficient time (under 3 weeks)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does metabolism slow with age?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "About 1-2% per decade after 40, mostly from muscle loss - strength training largely offsets it."
+          }
+        }
+      ]
+    }
+  ]
+}
+  </script>
+
+  <style>
+    :root {
+      --bg: #090d16;
+      --card-bg: #0f172a;
+      --card-border: rgba(59, 130, 246, 0.22);
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent: #3b82f6;
+      --accent-gradient: linear-gradient(135deg, #60a5fa, #3b82f6, #2563eb);
+      --code-bg: #1e293b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.7;
+      padding-bottom: 60px;
+    }
+    a { color: #60a5fa; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .site-nav {
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .site-nav .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: #f8fafc;
+    }
+    .nav-links { display: flex; gap: 20px; font-size: 0.9rem; }
+    .nav-links a { color: var(--text-muted); font-weight: 500; }
+    .nav-links a:hover { color: #ffffff; }
+
+    .article-container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .breadcrumbs {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 16px;
+      display: flex;
+      gap: 8px;
+    }
+    .article-header h1 {
+      font-size: 2.3rem;
+      line-height: 1.25;
+      margin-bottom: 16px;
+      color: #f8fafc;
+      font-weight: 800;
+    }
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 32px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      align-items: center;
+    }
+    .badge-verified {
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-weight: 600;
+      font-size: 0.75rem;
+    }
+
+    .tool-embed-banner {
+      background: linear-gradient(135deg, rgba(30, 58, 138, 0.35), rgba(15, 23, 42, 0.85));
+      border: 1px solid rgba(59, 130, 246, 0.4);
+      border-radius: 14px;
+      padding: 24px;
+      margin: 32px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.35);
+    }
+    .tool-embed-banner h3 {
+      font-size: 1.25rem;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .tool-embed-banner p { color: #cbd5e1; font-size: 0.95rem; }
+    .tool-launch-btn {
+      align-self: flex-start;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      color: #ffffff !important;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.92rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+    }
+    .tool-launch-btn:hover {
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+
+    .toc-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 36px;
+    }
+    .toc-box h3 { font-size: 1rem; color: #f8fafc; margin-bottom: 12px; }
+    .toc-box ul { list-style-position: inside; color: #60a5fa; font-size: 0.92rem; line-height: 1.9; }
+
+    .article-section { margin-bottom: 40px; }
+    .article-section h2 {
+      font-size: 1.6rem;
+      color: #f1f5f9;
+      margin-bottom: 16px;
+      font-weight: 700;
+      border-left: 4px solid #3b82f6;
+      padding-left: 14px;
+    }
+    .article-section h3 { font-size: 1.2rem; color: #e2e8f0; margin: 20px 0 10px 0; }
+    .article-section p { margin-bottom: 16px; color: #cbd5e1; font-size: 1.02rem; }
+    .article-section ul, .article-section ol { margin-left: 24px; margin-bottom: 18px; color: #cbd5e1; }
+    .article-section li { margin-bottom: 8px; }
+
+    .formula-box {
+      background: #020617;
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin: 20px 0;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      color: #38bdf8;
+      font-size: 0.95rem;
+    }
+
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      background: var(--card-bg);
+      border-radius: 10px;
+      overflow: hidden;
+      border: 1px solid var(--card-border);
+    }
+    .data-table th, .data-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      font-size: 0.92rem;
+    }
+    .data-table th { background: #1e293b; color: #f8fafc; font-weight: 700; }
+    .data-table tr:last-child td { border-bottom: none; }
+
+    .faq-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 10px;
+      margin-bottom: 12px;
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #f8fafc;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+    }
+    .faq-answer {
+      padding: 0 20px 16px 20px;
+      color: #94a3b8;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .faq-icon { font-size: 1.2rem; color: #3b82f6; }
+
+    footer {
+      margin-top: 80px;
+      padding: 30px 20px;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.88rem;
+    }
+    footer a { color: var(--text-muted); margin: 0 10px; }
+    footer a:hover { color: #ffffff; }
+  </style>
+</head>
+<body>
+
+  <nav class="site-nav">
+    <a href="/" class="brand">
+      <span>⚡</span> CalcWorker
+    </a>
+    <div class="nav-links">
+      <a href="/">All Tools</a>
+      <a href="/about.html">About</a>
+      <a href="/privacy.html">Privacy</a>
+    </div>
+  </nav>
+
+  <article class="article-container">
+    <div class="breadcrumbs">
+      <a href="/">Home</a> <span>/</span> <a href="/#tools">Guides</a> <span>/</span> <span>TDEE and Calorie Guide 2026: Find Your Maintenance Calories</span>
+    </div>
+
+    <header class="article-header">
+      <h1>TDEE and Calorie Guide 2026: Find Your Maintenance Calories</h1>
+      <div class="meta-bar">
+        <span>⏱️ 8 min read</span>
+        <span>📅 Updated 2026</span>
+        <span class="badge-verified">✓ Expert Verified</span>
+        <span>By CalcWorker Health Team</span>
+      </div>
+    </header>
+
+    <div class="tool-embed-banner">
+      <h3><span>🧮</span> Interactive Tool: TDEE Calculator</h3>
+      <p>Find your maintenance calories and macro targets with CalcWorker&#x27;s free TDEE calculator.</p>
+      <a href="https://calcworker.com/tools/tdee-calculator.html" class="tool-launch-btn">Open Free TDEE Calculator &rarr;</a>
+    </div>
+
+    <div class="toc-box">
+      <h3>Table of Contents</h3>
+      <ul>
+        <li><a href="#section-1">BMR: Your Baseline Burn</a></li>
+        <li><a href="#section-2">Activity Multipliers: BMR to TDEE</a></li>
+        <li><a href="#section-3">Cutting and Bulking Math</a></li>
+        <li><a href="#section-4">Why the Scale Lies (and What to Track)</a></li>
+      </ul>
+    </div>
+
+        <section id="section-1" class="article-section">
+          <h2>BMR: Your Baseline Burn</h2>
+<div class='formula-box'>Mifflin-St Jeor (Men): 10 x kg + 6.25 x cm - 5 x age + 5</div>
+<div class='formula-box'>Mifflin-St Jeor (Women): 10 x kg + 6.25 x cm - 5 x age - 161</div>
+<p><strong>Example:</strong> 30-year-old man, 180 lb (81.6 kg), 5'10" (178 cm): BMR = 816 + 1112 - 150 + 5 = <strong>1,783 cal/day</strong> - what he burns lying still all day.</p><p>Work the women's formula too: 32 years, 145 lb (65.8 kg), 5'5" (165 cm): 10 x 65.8 = 658; 6.25 x 165 = 1031; minus 5 x 32 = 160; minus 161. Total: 658 + 1031 - 160 - 161 = <strong>1,368 cal/day</strong>. Cross-check with Katch-McArdle (BMR = 370 + 21.6 x lean mass in kg): at 28% body fat her lean mass is 47.4 kg, giving 370 + 1024 = <strong>1,394</strong> — within 26 calories of Mifflin-St Jeor, which is why both formulas stay in use.</p><p>Aging's toll is specific: our 180-lb man at 50 computes 816 + 1112 - 250 + 5 = <strong>1,683</strong> vs 1,783 at 30 — a 100-cal/day decline per two decades, roughly one cookie's worth of "I used to eat whatever I wanted." One semantic trap: most calculators labeled "BMR" actually estimate RMR (resting, not basal), which runs ~10% higher — a 150-cal naming gap that explains why two calculators disagree.</p>
+        </section>
+
+        <section id="section-2" class="article-section">
+          <h2>Activity Multipliers: BMR to TDEE</h2>
+<table class='data-table'>
+<thead><tr><th>Activity Level</th><th>Multiplier</th><th>Example TDEE</th></tr></thead>
+<tbody>
+<tr><td>Sedentary</td><td>x1.2</td><td>2,140</td></tr>
+<tr><td>Light (1-3 days/wk)</td><td>x1.375</td><td>2,452</td></tr>
+<tr><td>Moderate (3-5 days/wk)</td><td>x1.55</td><td>2,764</td></tr>
+<tr><td>Very active (6-7 days)</td><td>x1.725</td><td>3,076</td></tr>
+</tbody>
+</table>
+<p>Most people overestimate activity - desk workers who lift 3x/week are "lightly active," not "very active." When in doubt, pick one level lower and adjust after 3 weeks of tracking weight.</p><p>Translate real life honestly: 10,000 daily steps ≈ +300-400 cal ≈ 0.15-0.20 on the multiplier; a nurse on 12-hour shifts can legitimately claim 1.725; a programmer who lifts 3x/week is 1.375, full stop. The empirical test beats the label: if your weight holds steady for 3 weeks at the computed TDEE, the multiplier was right regardless of what you called your lifestyle.</p><p>The classic double-count: logging a 400-cal run in an app while using the 1.55 multiplier counts it twice. Pick one system — multiplier <em>or</em> sedentary x 1.2 plus logged exercise, never both. After 3 weeks, calibrate: losing 0.5 lb/week less than planned means true TDEE is ~250 cal lower than estimated, so cut intake 250 or add ~3,500 daily steps.</p>
+        </section>
+
+        <section id="section-3" class="article-section">
+          <h2>Cutting and Bulking Math</h2>
+<ul>
+<li><strong>Fat loss:</strong> TDEE minus 500 cal/day = about 1 lb/week loss. Never drop below BMR for long.</li>
+<li><strong>Muscle gain:</strong> TDEE plus 250-300 cal/day (lean bulk minimizes fat gain).</li>
+<li><strong>Protein:</strong> 0.7-1.0g per lb of body weight daily - 180 lb means 130-180g protein.</li>
+</ul>
+<p><strong>Example cut:</strong> TDEE 2,764, target 2,264 cal/day. Expected: ~1 lb/week. After 12 weeks: ~12 lb lost. Then recalculate - lighter bodies burn less.</p><p>Diet breaks are planned, not failures: after 8-12 weeks of cutting, spend 10-14 days at maintenance TDEE. Leptin and thyroid output partially recover, gym performance rebounds, and adherence data favors planned breaks over white-knuckling into a binge. Expect 2-4 lb of water and glycogen regain — not fat — and resume the deficit after. Two steps forward, one planned half-step back still finishes the staircase.</p><p>Lean-bulk composition: +250 cal/day ≈ +0.5 lb/week, of which trained lifters gain roughly 50-70% as muscle (beginners do better). The waist is the governor: gaining over 0.5"/month means the surplus is too big — trim 100-150 cal. After 4-6 months of bulking, a 4-6 week mini-cut at -500 cal strips 4-6 lb of fat without losing the new muscle, then the bulk resumes.</p>
+        </section>
+
+        <section id="section-4" class="article-section">
+          <h2>Why the Scale Lies (and What to Track)</h2>
+<ol>
+<li>Weigh daily, compare <strong>weekly averages</strong> - water swings 3 lb daily.</li>
+<li>Track waist measurement alongside weight.</li>
+<li>Give any calorie target <strong>3 full weeks</strong> before adjusting.</li>
+<li>NEAT (steps, fidgeting) varies hugely - 8,000 vs 3,000 daily steps can differ 300+ calories.</li>
+<li>Metabolic adaptation: prolonged dieting drops TDEE 5-15% - diet breaks help.</li>
+</ol><p>Quantify the noise so it stops scaring you: 400g of stored carbs bind ~1,200-1,600g of water (3-4g per gram of glycogen), so a big pasta night adds 3-4 lb overnight; creatine loading adds 2-4 lb of intracellular water in week one; the luteal phase of the menstrual cycle adds 2-5 lb. None of it is fat. Judge only 4-week trends — daily readings are weather, the monthly average is climate.</p><p>Run the trend method: weigh daily, average Sunday-to-Saturday, compare week 4 to week 1. Example: week-1 average 182.4, week-4 average 179.8 = 2.6 lb lost ≈ 0.65 lb/week, implying a true ~325 cal/day deficit rather than the planned 500. Close the gap by cutting 175 cal or adding 3,500 steps/day — adjust the plan to the data, not the data to the plan.</p>
+        </section>
+
+    <section class="article-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>What is TDEE?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Total Daily Energy Expenditure - all calories you burn in 24 hours: basal metabolism + activity + digestion + exercise.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>How accurate are TDEE calculators?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Within 10-15% for most. Treat the result as a starting point; adjust based on 3 weeks of real weight data.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Should I eat back exercise calories?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Usually no - trackers overestimate burn by 20-40%. If your TDEE multiplier already includes exercise, eating back double-counts.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Why am I not losing weight at a deficit?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>Common causes: overestimated TDEE, untracked bites/drinks/oils (often 300-500 cal/day), or insufficient time (under 3 weeks).</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleArticleFaq(this)">
+            <span>Does metabolism slow with age?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-answer">
+            <p>About 1-2% per decade after 40, mostly from muscle loss - strength training largely offsets it.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="tool-embed-banner" style="margin-top: 48px;">
+      <h3>Ready to run your calculations?</h3>
+      <p>Use our precision 2026 financial calculator to evaluate your scenario in seconds.</p>
+      <a href="https://calcworker.com/tools/tdee-calculator.html" class="tool-launch-btn">Launch TDEE Calculator Now &rarr;</a>
+    </div>
+  </article>
+
+  <footer>
+    <p>&copy; 2026 CalcWorker. High-Precision Computational Tools for High-Stakes Decisions.</p>
+    <p style="margin-top: 10px;">
+      <a href="/about.html">About</a>
+      <a href="/contact.html">Contact</a>
+      <a href="https://www.facebook.com/calcworker/" target="_blank" rel="noopener">Facebook</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/disclaimer.html">Disclaimer</a>
+    </p>
+  </footer>
+
+  <script src="/js/calcworker-common.js?v=2026.3"></script>
+  <script>
+    function toggleArticleFaq(btn) {
+      var ans = btn.nextElementSibling;
+      var icon = btn.querySelector('.faq-icon');
+      if (ans.style.display === 'none') {
+        ans.style.display = 'block';
+        icon.textContent = '\u2212';
+      } else {
+        ans.style.display = 'none';
+        icon.textContent = '+';
+      }
+    }
+  </script>
+</body>
+</html>
