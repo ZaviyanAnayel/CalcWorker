@@ -369,12 +369,42 @@
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url>\n    <loc>https://calcworker.com/tools/mortgage-refinance-calculator.html</loc>\n    <lastmod>2026-09-17</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>
-  <url>\n    <loc>https://calcworker.com/tools/state-tax-relocation-calculator.html</loc>\n    <lastmod>2026-09-17</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>
-  <url>\n    <loc>https://calcworker.com/tools/life-insurance-calculator.html</loc>\n    <lastmod>2026-09-17</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>
-  <url>\n    <loc>https://calcworker.com/tools/cd-ladder-calculator.html</loc>\n    <lastmod>2026-09-17</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>
-  <url>\n    <loc>https://calcworker.com/tools/substack-calculator.html</loc>\n    <lastmod>2026-09-17</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>
-  <url>\n    <loc>https://calcworker.com/tools/flooring-calculator.html</loc>\n    <lastmod>2026-09-17</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>
+  <url>
+    <loc>https://calcworker.com/tools/mortgage-refinance-calculator.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calcworker.com/tools/state-tax-relocation-calculator.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calcworker.com/tools/life-insurance-calculator.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calcworker.com/tools/cd-ladder-calculator.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calcworker.com/tools/substack-calculator.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://calcworker.com/tools/flooring-calculator.html</loc>
+    <lastmod>2026-09-17</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
   <url>
     <loc>https://calcworker.com/tools/capital-gains-tax-calculator.html</loc>
     <lastmod>2026-09-17</lastmod>
