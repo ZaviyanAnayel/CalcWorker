@@ -723,7 +723,7 @@
 <tr style="font-weight: 700;"><td style="padding: 8px 0; color: var(--text-main);">Net Take-Home Cash</td><td class="amount" id="rowNetProfit" style="text-align: right; color: #10b981;">$7.42</td></tr>
 </tbody>
 </table>
-<p id="feesNote" style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; margin: 10px 0 0 0;">Total Amazon Fees ($8.37) = Referral Fee $3.75 + FBA Fulfillment Fee $4.60 (pick &amp; pack $4.25 + inbound placement $0.27 + storage $0.08) + return cost $0.03.</p>
+<p id="feesNote" style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; margin: 10px 0 0 0;">Total Amazon Fees ($8.37) = Referral Fee $3.75 + FBA Fulfillment Fee $4.60 (pick &amp; pack $4.25 + inbound placement $0.27 + storage $0.08) + return cost $0.03. Figures are rounded; the total is calculated from unrounded values.</p>
 </div>
 </div>
 <!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
@@ -1193,9 +1193,9 @@
       const feesNote = document.getElementById('feesNote');
       if (feesNote) {
         if (activeMethod === 'fba') {
-          feesNote.textContent = 'Total Amazon Fees ($' + totalFees.toFixed(2) + ') = Referral Fee $' + referralFee.toFixed(2) + ' + FBA Fulfillment Fee $' + fulfillmentFee.toFixed(2) + ' (pick & pack $' + basePickPack.toFixed(2) + ' + inbound placement $' + placementFee.toFixed(2) + ' + storage $' + storageFee.toFixed(2) + ') + return cost $' + returnCost.toFixed(2) + '.';
+          feesNote.textContent = 'Total Amazon Fees ($' + totalFees.toFixed(2) + ') = Referral Fee $' + referralFee.toFixed(2) + ' + FBA Fulfillment Fee $' + fulfillmentFee.toFixed(2) + ' (pick & pack $' + basePickPack.toFixed(2) + ' + inbound placement $' + placementFee.toFixed(2) + ' + storage $' + storageFee.toFixed(2) + ') + return cost $' + returnCost.toFixed(2) + '. Figures are rounded; the total is calculated from unrounded values.';
         } else {
-          feesNote.textContent = 'Total Amazon Fees ($' + totalFees.toFixed(2) + ') = Referral Fee $' + referralFee.toFixed(2) + ' + Merchant Fulfillment $' + fulfillmentFee.toFixed(2) + ' (shipping $' + fbmShip.toFixed(2) + ' + packaging $' + fbmPack.toFixed(2) + ') + return cost $' + returnCost.toFixed(2) + '.';
+          feesNote.textContent = 'Total Amazon Fees ($' + totalFees.toFixed(2) + ') = Referral Fee $' + referralFee.toFixed(2) + ' + Merchant Fulfillment $' + fulfillmentFee.toFixed(2) + ' (shipping $' + fbmShip.toFixed(2) + ' + packaging $' + fbmPack.toFixed(2) + ') + return cost $' + returnCost.toFixed(2) + '. Figures are rounded; the total is calculated from unrounded values.';
         }
       }
 
