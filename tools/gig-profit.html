@@ -43,6 +43,17 @@
     gtag('config', 'G-1QCQNSCVQM');
   </script>
 <link href="/css/calcworker.css?v=2026.4" rel="stylesheet"/>
+<style>
+    .preset-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px 0; }
+    .preset-chip { padding: 7px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; background: var(--bg-subtle, rgba(255,255,255,0.05)); border: 1px solid var(--border, rgba(255,255,255,0.12)); color: var(--text-main, #f8fafc); cursor: pointer; transition: all 0.15s ease; }
+    .preset-chip:hover, .preset-chip.active { background: #2563eb; border-color: #2563eb; color: #ffffff; }
+    .cw-advanced-details { margin-top: 16px; background: var(--bg-subtle, rgba(255,255,255,0.02)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 8px; padding: 12px 14px; }
+    .cw-advanced-details summary { font-size: 0.9rem; font-weight: 600; color: var(--text-main, #f8fafc); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .cw-advanced-details summary::-webkit-details-marker { display: none; }
+    .cw-advanced-details summary::after { content: "\25BC"; font-size: 0.7rem; transition: transform 0.2s; }
+    .cw-advanced-details[open] summary::after { transform: rotate(180deg); }
+    .cw-advanced-details .form-grid { margin-top: 14px; }
+  </style>
 <meta content="#090d16" name="theme-color"/>
 <script defer="" src="../js/analytics.js"></script>
 <script type="application/ld+json">
@@ -349,6 +360,11 @@
 <!-- Form Inputs -->
 <div class="tool-form-card">
 <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 20px;">Weekly Operating Numbers</h2>
+<div class="preset-chips">
+<button class="preset-chip" onclick="applyGigPreset(this, 700, 300, 20, 3.65, 28, 0.08)" type="button">DoorDash 20 hrs/wk</button>
+<button class="preset-chip active" onclick="applyGigPreset(this, 1250, 550, 35, 3.65, 28, 0.08)" type="button">Uber 35 hrs/wk</button>
+<button class="preset-chip" onclick="applyGigPreset(this, 400, 180, 12, 3.65, 28, 0.08)" type="button">Weekend only</button>
+</div>
 <div class="form-grid two-col">
 <div class="form-group">
 <label class="form-label" for="grossWeekly">Weekly App Earnings (Fares + Tips)</label>
@@ -371,6 +387,10 @@
 <span class="input-affix-suffix">hrs/wk</span>
 </div>
 </div>
+</div>
+<details class="cw-advanced-details">
+<summary>Advanced — fuel &amp; vehicle costs</summary>
+<div class="form-grid two-col">
 <div class="form-group">
 <label class="form-label" for="gasPrice">Average Gas Price</label>
 <div class="input-with-affix">
@@ -394,6 +414,7 @@
 <span style="font-size: 0.72rem; color: var(--text-dim);">AAA recommends $0.08–$0.10/mi</span>
 </div>
 </div>
+</details>
 </div>
 <!-- Results Summary -->
 <div class="tool-results-card">
@@ -402,7 +423,7 @@
 <div class="cw-disclaimer-card" style="margin-top: 18px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary); font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">
   <strong style="color: var(--text-main);">Financial Estimate Disclaimer:</strong> Calculations produced by this tool are mathematical estimates designed for planning and comparison purposes only. Final loan payments, interest charges, tax liabilities, and payroll withholdings vary according to your lender terms, tax filing status, and applicable federal, state, and local laws. Consult a certified financial planner or CPA for professional advice.
 </div>
-<div class="primary-metric-val" id="resNetHourly">$29.69</div>
+<div class="primary-metric-val" id="resNetHourly">$32.41</div>
 <div class="primary-metric-sub" id="resGrossHourly">Gross app rate: $35.71 / hr</div>
 </div>
 <!-- Smart One-Click Copy Calculation Summary -->
@@ -412,27 +433,27 @@
 <div class="results-table">
 <div class="result-row">
 <span class="result-row-label">True Net Profit / Week</span>
-<span class="result-row-val positive" id="resNetWeekly">$1,039</span>
+<span class="result-row-val positive" id="resNetWeekly">$1,134.30</span>
 </div>
 <div class="result-row">
 <span class="result-row-label">Annualized Net Take-Home</span>
-<span class="result-row-val highlight" id="resAnnualNet">$54,040</span>
+<span class="result-row-val highlight" id="resAnnualNet">$58,983.79</span>
 </div>
 <div class="result-row">
 <span class="result-row-label">2026 IRS Mileage Deduction (67¢/mi)</span>
-<span class="result-row-val positive" id="resIRSDeduction">$368 / wk</span>
+<span class="result-row-val positive" id="resIRSDeduction">$368.50 / wk</span>
 </div>
 <div class="result-row">
 <span class="result-row-label">Weekly Fuel Expense</span>
-<span class="result-row-val negative" id="resGasCost">$72</span>
+<span class="result-row-val negative" id="resGasCost">$71.70</span>
 </div>
 <div class="result-row">
 <span class="result-row-label">Weekly Maintenance &amp; Wear Reserve</span>
-<span class="result-row-val negative" id="resMaintCost">$44</span>
+<span class="result-row-val negative" id="resMaintCost">$44.00</span>
 </div>
 <div class="result-row">
 <span class="result-row-label">Annual Taxable Income (After Mileage)</span>
-<span class="result-row-val" id="resTaxableIncome">$44,564</span>
+<span class="result-row-val" id="resTaxableIncome">$45,838.00</span>
 </div>
 </div>
 </div>
@@ -604,6 +625,7 @@
   <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); margin-top: 24px; margin-bottom: 12px;">
     <span>📊</span> Gig Driving True Net Income Breakdown (1,000 Miles / Week, $1,200 Gross App Revenue)
   </h3>
+  <p style="font-size: 0.85rem; color: var(--text-muted); margin: 0 0 4px 0;">Illustrative scenario only — it uses different inputs from the calculator above (1,000 miles/week, $1,200 gross, 40 hours), so its $683.00/week and $17.07/hr figures will not match the live results for the default 550 miles / $1,250 / 35 hours.</p>
   <div class="guide-table-wrapper" style="overflow-x: auto; margin: 16px 0; border: 1px solid var(--border); border-radius: 8px;">
     <table class="guide-table" style="width: 100%; border-collapse: collapse; font-size: 0.88rem; text-align: left;">
       <thead>
@@ -783,6 +805,22 @@
 <script src="/js/calcworker-common.js?v=2026.4"></script>
 <script src="../js/tools.js"></script>
 <script>
+    // Money formatter: exactly 2 decimals with thousands separators (e.g. $1,134.30).
+    function fmtMoney(n) { return n.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}); }
+
+    // One-click presets: set all six inputs, then recalculate.
+    function applyGigPreset(btn, gross, miles, hours, gas, mpg, maint) {
+      document.getElementById('grossWeekly').value = gross;
+      document.getElementById('milesWeekly').value = miles;
+      document.getElementById('hoursWeekly').value = hours;
+      document.getElementById('gasPrice').value = gas;
+      document.getElementById('mpg').value = mpg;
+      document.getElementById('maintPerMile').value = maint;
+      document.querySelectorAll('.preset-chip').forEach(function (c) { c.classList.remove('active'); });
+      if (btn) btn.classList.add('active');
+      update();
+    }
+
     function update() {
       const p = {
         grossWeekly: parseFloat(document.getElementById('grossWeekly').value),
@@ -795,12 +833,13 @@
       const res = window.cwTools.calcGigProfit(p);
       document.getElementById('resNetHourly').textContent = `$${res.netHourlyActual.toFixed(2)}`;
       document.getElementById('resGrossHourly').textContent = `Gross app rate: $${res.grossHourly.toFixed(2)} / hr`;
-      document.getElementById('resNetWeekly').textContent = `$${res.netWeekly.toLocaleString()}`;
-      document.getElementById('resAnnualNet').textContent = `$${res.annualNet.toLocaleString()}`;
-      document.getElementById('resIRSDeduction').textContent = `$${res.irsDeductionWeekly.toLocaleString()} / wk`;
-      document.getElementById('resGasCost').textContent = `$${res.gasCostWeekly.toLocaleString()}`;
-      document.getElementById('resMaintCost').textContent = `$${res.maintCostWeekly.toLocaleString()}`;
-      document.getElementById('resTaxableIncome').textContent = `$${res.taxableIncomeIRS.toLocaleString()}`;
+      document.getElementById('resNetWeekly').textContent = `$${fmtMoney(res.netWeekly)}`;
+      document.getElementById('resAnnualNet').textContent = `$${fmtMoney(res.annualNet)}`;
+      document.getElementById('resIRSDeduction').textContent = `$${fmtMoney(res.irsDeductionWeekly)} / wk`;
+      document.getElementById('resGasCost').textContent = `$${fmtMoney(res.gasCostWeekly)}`;
+      document.getElementById('resMaintCost').textContent = `$${fmtMoney(res.maintCostWeekly)}`;
+      // calcGigProfit returns WEEKLY taxable income; this row is labelled Annual, so annualize for display.
+      document.getElementById('resTaxableIncome').textContent = `$${fmtMoney(res.taxableIncomeIRS * 52)}`;
     }
 
     document.querySelectorAll('input').forEach(i => i.addEventListener('input', update));

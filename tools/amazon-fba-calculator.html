@@ -203,6 +203,16 @@
       line-height: 1.6;
       margin: 0;
     }
+
+    .preset-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 16px 0; }
+    .preset-chip { padding: 7px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 600; background: var(--bg-subtle, rgba(255,255,255,0.05)); border: 1px solid var(--border, rgba(255,255,255,0.12)); color: var(--text-main, #f8fafc); cursor: pointer; transition: all 0.15s ease; }
+    .preset-chip:hover, .preset-chip.active { background: #2563eb; border-color: #2563eb; color: #ffffff; }
+    .cw-advanced-details { margin-top: 8px; background: var(--bg-subtle, rgba(255,255,255,0.02)); border: 1px solid var(--border, rgba(255,255,255,0.1)); border-radius: 8px; padding: 12px 14px; }
+    .cw-advanced-details summary { font-size: 0.9rem; font-weight: 600; color: var(--text-main, #f8fafc); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; }
+    .cw-advanced-details summary::-webkit-details-marker { display: none; }
+    .cw-advanced-details summary::after { content: "\25BC"; font-size: 0.7rem; transition: transform 0.2s; }
+    .cw-advanced-details[open] summary::after { transform: rotate(180deg); }
+    .cw-advanced-details h2 { margin-top: 14px !important; }
   </style>
 <!-- FAQPage Schema for Search Rich Snippets -->
 <script type="application/ld+json">
@@ -560,6 +570,11 @@
               </button>
 </div>
 </div>
+<div class="preset-chips">
+<button class="preset-chip active" onclick="applyFBAPreset(this, 24.99, 5.50, 1.20, 10, 8, 2, 1.2, 2.50, 3.5)" type="button">$25 small item</button>
+<button class="preset-chip" onclick="applyFBAPreset(this, 49.99, 12.00, 2.00, 12, 10, 4, 2.0, 4.00, 3.5)" type="button">$50 standard</button>
+<button class="preset-chip" onclick="applyFBAPreset(this, 99.99, 28.00, 3.50, 14, 12, 6, 3.5, 8.00, 3.5)" type="button">$100 premium</button>
+</div>
 <h2 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 16px; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
             1. Pricing &amp; Product Costs
           </h2>
@@ -573,10 +588,6 @@
 <div class="form-group" style="margin-bottom: 14px;">
 <label for="cogs" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Cost of Goods Sold / Manufacturing ($)</label>
 <input class="form-input" id="cogs" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="5.50"/>
-</div>
-<div class="form-group" style="margin-bottom: 14px;">
-<label for="inboundFreight" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Shipping / Freight to Amazon Warehouse ($/unit)</label>
-<input class="form-input" id="inboundFreight" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="1.20"/>
 </div>
 <div class="form-group" style="margin-bottom: 14px;">
 <label for="category" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Product Category (Referral Fee)</label>
@@ -596,6 +607,12 @@
 <option value="0.45">Amazon Device Accessories (45%)</option>
 <option value="0.15">Everything Else (15%)</option>
 </select>
+</div>
+<details class="cw-advanced-details">
+<summary>Advanced — fees, dimensions &amp; advertising</summary>
+<div class="form-group" style="margin-bottom: 14px;">
+<label for="inboundFreight" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Shipping / Freight to Amazon Warehouse ($/unit)</label>
+<input class="form-input" id="inboundFreight" min="0" oninput="calculateFBA()" step="0.01" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="1.20"/>
 </div>
 <h2 style="font-size: 1.15rem; font-weight: 700; margin: 24px 0 16px 0; border-bottom: 1px solid var(--border); padding-bottom: 8px;">
             2. Dimensions, Weight &amp; FBA Tier
@@ -657,16 +674,17 @@
 <label for="returnRate" style="display: block; font-size: 0.85rem; font-weight: 600; margin-bottom: 6px;">Expected Customer Return Rate (%)</label>
 <input class="form-input" id="returnRate" max="100" min="0" oninput="calculateFBA()" step="0.1" style="width: 100%; padding: 10px 12px; border-radius: 8px; border: 1px solid var(--border); background: var(--bg-input); color: var(--text-main); font-size: 1rem;" type="number" value="3.5"/>
 </div>
+</details>
 </div>
 <!-- RIGHT: RESULTS PANEL (SIDE ME) -->
 <div class="tool-results-card" style="padding: 24px; position: sticky; top: 80px; align-self: start;">
 <div style="text-align: center; margin-bottom: 16px;">
 <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); font-weight: 600;">Net Profit Per Unit</span>
-<div id="kpiNetProfit" style="font-size: 2.2rem; font-weight: 900; color: #10b981; font-family: monospace; margin: 4px 0;">$6.42</div>
+<div id="kpiNetProfit" style="font-size: 2.2rem; font-weight: 900; color: #10b981; font-family: monospace; margin: 4px 0;">$7.42</div>
 <div class="cw-disclaimer-card" style="margin-top: 18px; padding: 14px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary); font-size: 0.83rem; color: var(--text-muted); line-height: 1.5;">
   <strong style="color: var(--text-main);">Financial Estimate Disclaimer:</strong> Calculations produced by this tool are mathematical estimates designed for planning and comparison purposes only. Final loan payments, interest charges, tax liabilities, and payroll withholdings vary according to your lender terms, tax filing status, and applicable federal, state, and local laws. Consult a certified financial planner or CPA for professional advice.
 </div>
-<div id="marginSub" style="font-size: 0.82rem; color: var(--text-muted);">Net Margin: 25.7% | ROI: 95.8%</div>
+<div id="marginSub" style="font-size: 0.82rem; color: var(--text-muted);">Net Margin: 29.7% | ROI: 110.7%</div>
 </div>
 <!-- Smart One-Click Copy Calculation Summary -->
 <div style="margin: 0 0 16px 0;">
@@ -676,11 +694,11 @@
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 16px;">
 <div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
 <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Total Amazon Fees</div>
-<div id="kpiTotalFees" style="font-size: 1.15rem; font-weight: 700; color: #ef4444; font-family: monospace;">$8.85</div>
+<div id="kpiTotalFees" style="font-size: 1.15rem; font-weight: 700; color: #ef4444; font-family: monospace;">$8.37</div>
 </div>
 <div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
 <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">FBA Fulfillment</div>
-<div id="kpiFulfillmentFee" style="font-size: 1.15rem; font-weight: 700; color: #f59e0b; font-family: monospace;">$4.76</div>
+<div id="kpiFulfillmentFee" style="font-size: 1.15rem; font-weight: 700; color: #f59e0b; font-family: monospace;">$4.60</div>
 </div>
 <div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
 <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Referral Fee (15%)</div>
@@ -688,7 +706,7 @@
 </div>
 <div style="background: var(--bg-subtle); padding: 10px; border-radius: 8px; border: 1px solid var(--border); text-align: center;">
 <div style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase;">Break-Even Price</div>
-<div id="kpiBreakEven" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); font-family: monospace;">$18.57</div>
+<div id="kpiBreakEven" style="font-size: 1.15rem; font-weight: 700; color: var(--text-main); font-family: monospace;">$16.27</div>
 </div>
 </div>
 <!-- Breakdown Table -->
@@ -699,11 +717,13 @@
 <tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Product Cost (COGS)</td><td class="amount" id="rowCOGS" style="text-align: right; color: #ef4444;">-$5.50</td></tr>
 <tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Inbound Freight</td><td class="amount" id="rowFreight" style="text-align: right; color: #ef4444;">-$1.20</td></tr>
 <tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Amazon Referral Fee</td><td class="amount" id="rowReferral" style="text-align: right; color: #ef4444;">-$3.75</td></tr>
-<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">FBA Fulfillment Fee</td><td class="amount" id="rowFulfillment" style="text-align: right; color: #ef4444;">-$4.76</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">FBA Fulfillment Fee</td><td class="amount" id="rowFulfillment" style="text-align: right; color: #ef4444;">-$4.60</td></tr>
 <tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">PPC Advertising Spend</td><td class="amount" id="rowPPC" style="text-align: right; color: #ef4444;">-$2.50</td></tr>
-<tr style="font-weight: 700;"><td style="padding: 8px 0; color: var(--text-main);">Net Take-Home Cash</td><td class="amount" id="rowNetProfit" style="text-align: right; color: #10b981;">$6.42</td></tr>
+<tr><td style="padding: 6px 0; color: var(--text-muted); border-bottom: 1px solid var(--border);">Total Amazon Fees</td><td class="amount" id="rowTotalFees" style="text-align: right; color: #ef4444;">-$8.37</td></tr>
+<tr style="font-weight: 700;"><td style="padding: 8px 0; color: var(--text-main);">Net Take-Home Cash</td><td class="amount" id="rowNetProfit" style="text-align: right; color: #10b981;">$7.42</td></tr>
 </tbody>
 </table>
+<p id="feesNote" style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.55; margin: 10px 0 0 0;">Total Amazon Fees ($8.37) = Referral Fee $3.75 + FBA Fulfillment Fee $4.60 (pick &amp; pack $4.25 + inbound placement $0.27 + storage $0.08) + return cost $0.03.</p>
 </div>
 </div>
 <!-- Contextual Internal Linking Section (ABOVE FAQ & FOOTER) -->
@@ -1088,6 +1108,23 @@
     calculateFBA();
   }
 
+  // One-click presets: set the price/cost/size fields, keep category, inbound
+  // placement and storage season as-is, then recalculate.
+  function applyFBAPreset(btn, price, cogs, freight, dimL, dimW, dimH, weight, ppc, returnRate) {
+    document.getElementById('sellingPrice').value = price;
+    document.getElementById('cogs').value = cogs;
+    document.getElementById('inboundFreight').value = freight;
+    document.getElementById('dimL').value = dimL;
+    document.getElementById('dimW').value = dimW;
+    document.getElementById('dimH').value = dimH;
+    document.getElementById('unitWeight').value = weight;
+    document.getElementById('ppcSpend').value = ppc;
+    document.getElementById('returnRate').value = returnRate;
+    document.querySelectorAll('.preset-chip').forEach(function (c) { c.classList.remove('active'); });
+    if (btn) btn.classList.add('active');
+    calculateFBA();
+  }
+
   function calculateFBA() {
     try {
       const price = parseFloat(document.getElementById('sellingPrice')?.value) || 0;
@@ -1104,19 +1141,22 @@
       const referralFee = price * refRate;
 
       let fulfillmentFee = 0;
+      let basePickPack = 0, placementFee = 0, storageFee = 0, fbmShip = 0, fbmPack = 0;
       if (activeMethod === 'fba') {
         const weight = parseFloat(document.getElementById('unitWeight')?.value) || 1.2;
         const inboundPlacement = parseFloat(document.getElementById('inboundPlacement')?.value) || 0.27;
         const storageSeason = parseFloat(document.getElementById('storageSeason')?.value) || 0.08;
 
-        let basePickPack = 4.25;
+        basePickPack = 4.25;
         if (isLowPrice) basePickPack = 3.48;
         else if (weight > 2.0) basePickPack = 5.40;
+        placementFee = inboundPlacement;
+        storageFee = storageSeason;
 
         fulfillmentFee = basePickPack + inboundPlacement + storageSeason;
       } else {
-        const fbmShip = parseFloat(document.getElementById('fbmShippingCost')?.value) || 5.80;
-        const fbmPack = parseFloat(document.getElementById('fbmPackaging')?.value) || 0.75;
+        fbmShip = parseFloat(document.getElementById('fbmShippingCost')?.value) || 5.80;
+        fbmPack = parseFloat(document.getElementById('fbmPackaging')?.value) || 0.75;
         fulfillmentFee = fbmShip + fbmPack;
       }
 
@@ -1146,6 +1186,18 @@
       setTxt('rowReferral', '-$' + referralFee.toFixed(2));
       setTxt('rowFulfillment', '-$' + fulfillmentFee.toFixed(2));
       setTxt('rowPPC', '-$' + ppc.toFixed(2));
+      setTxt('rowTotalFees', '-$' + totalFees.toFixed(2));
+
+      // Label the Total Amazon Fees figure with its composition, so it reconciles
+      // with the rows above (referral + fulfillment + return cost).
+      const feesNote = document.getElementById('feesNote');
+      if (feesNote) {
+        if (activeMethod === 'fba') {
+          feesNote.textContent = 'Total Amazon Fees ($' + totalFees.toFixed(2) + ') = Referral Fee $' + referralFee.toFixed(2) + ' + FBA Fulfillment Fee $' + fulfillmentFee.toFixed(2) + ' (pick & pack $' + basePickPack.toFixed(2) + ' + inbound placement $' + placementFee.toFixed(2) + ' + storage $' + storageFee.toFixed(2) + ') + return cost $' + returnCost.toFixed(2) + '.';
+        } else {
+          feesNote.textContent = 'Total Amazon Fees ($' + totalFees.toFixed(2) + ') = Referral Fee $' + referralFee.toFixed(2) + ' + Merchant Fulfillment $' + fulfillmentFee.toFixed(2) + ' (shipping $' + fbmShip.toFixed(2) + ' + packaging $' + fbmPack.toFixed(2) + ') + return cost $' + returnCost.toFixed(2) + '.';
+        }
+      }
 
       const rowNet = document.getElementById('rowNetProfit');
       if (rowNet) {
@@ -1169,8 +1221,8 @@
     if (shareBtn) {
       shareBtn.addEventListener('click', async () => {
         const price = document.getElementById('sellingPrice')?.value || '24.99';
-        const profit = document.getElementById('kpiNetProfit')?.textContent || '$6.42';
-        const fees = document.getElementById('kpiTotalFees')?.textContent || '$8.85';
+        const profit = document.getElementById('kpiNetProfit')?.textContent || '$7.42';
+        const fees = document.getElementById('kpiTotalFees')?.textContent || '$8.37';
 
         const shareText = `📦 CalcWorker — Amazon FBA Profit Breakdown:\n` +
           `• Price: $${price}\n` +

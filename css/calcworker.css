@@ -1647,6 +1647,12 @@ button, input, select, textarea {
   .topbar-icon-btn .btn-label {
     display: none;
   }
+  /* FIX 3 — Answer-first on mobile: the results card comes before the inputs
+     on narrow screens so the answer is the first thing seen on a phone.
+     Desktop layout untouched (sticky results card stays). */
+  .tool-page-layout .tool-results-card {
+    order: -1;
+  }
 }
 
 /* Reduced Motion */

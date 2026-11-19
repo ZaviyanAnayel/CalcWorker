@@ -134,7 +134,7 @@
     calcGigProfit: function (p) {
       var gross = num(p.grossWeekly), miles = num(p.milesWeekly), hrs = num(p.hoursWeekly) || 1,
           gas = num(p.gasPrice), mpg = num(p.mpg) || 1, maint = num(p.maintPerMile);
-      var IRS_MILE_2026 = 0.725;
+      var IRS_MILE_2026 = 0.67;
       var gasCost = miles / mpg * gas;
       var maintCost = miles * maint;
       var net = gross - gasCost - maintCost;
