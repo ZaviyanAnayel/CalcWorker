@@ -1,0 +1,193 @@
+================================================================================
+                    GOOGLE PLAY STORE LISTING ASSETS & METADATA
+                                CalcWorker Android
+                  Package Name: com.zaviyanllc.calcworker
+                        Developer: Zaviyan LLC
+================================================================================
+
+--------------------------------------------------------------------------------
+1. MAIN STORE LISTING DETAILS (Copy & Paste directly into Play Console)
+--------------------------------------------------------------------------------
+
+[APP NAME] (Limit: 30 characters)
+CalcWorker: 100+ Calculators
+
+(Alternative App Name):
+CalcWorker: Financial Calc
+
+
+[SHORT DESCRIPTION] (Limit: 80 characters)
+100+ Financial, Mortgage, Tax, Business & Daily Calculators. 100% Offline.
+
+
+[FULL DESCRIPTION] (Limit: 4000 characters)
+CalcWorker is your all-in-one professional computation workstation. Designed with a luxury, high-contrast fintech interface, CalcWorker combines over 100 specialized calculators across finance, real estate, taxes, creator tools, health, and daily mathematics into a single fast, offline-first application.
+
+NO SUBSCRIPTIONS. ZERO TELEMETRY. 100% PRIVATE.
+
+All calculations execute natively on your device. Your financial data, net worth figures, loan amounts, and personal calculations never touch an external server.
+
+========================================
+KEY CALCULATOR CATEGORIES
+========================================
+
+1. FINANCIAL & INVESTING
+* Compound Interest & Future Value
+* Investment Return (ROI & CAGR)
+* 401(k), IRA & Retirement Planning
+* Rule of 72 & Doubling Time
+* CD Ladder & High-Yield Savings
+* Inflation & Purchasing Power
+* Net Worth Tracker & Asset Allocator
+
+2. REAL ESTATE & MORTGAGES
+* Mortgage Payment & Amortization Schedule
+* Refinance Break-Even
+* Rental Property Cash Flow & Cap Rate
+* Cash-on-Cash Return & BRRRR Strategy
+* Home Affordability & Debt-to-Income (DTI)
+* Rent vs. Buy Analysis
+* 1031 Exchange & Capital Gains Estimator
+
+3. LOANS, LEASES & DEBT REPAYMENT
+* Auto Loan & Car Lease Comparison
+* Student Loan Payoff & Amortization
+* Credit Card Payoff & Debt Snowball / Avalanche
+* Personal Loan & APR to APY Converter
+* Extra Payment Payoff Acceleration
+
+4. TAXES & PAYROLL
+* Salary & Take-Home Pay Estimator
+* Self-Employment & 1099 Tax Estimator
+* W-4 Withholding Assistant
+* Capital Gains & Bonus Tax Estimator
+* Sales Tax & Tip Splitter
+
+5. BUSINESS & CREATOR SUITE
+* Break-Even Point & Profit Margin
+* CAC & LTV Unit Economics
+* SaaS Burn Rate & Runway Projection
+* YouTube CPM & Channel Revenue
+* TikTok Coins & Creator Payout Estimator
+* Freelance Hourly Rate Calculator
+
+6. HEALTH & DAILY TOOLS
+* BMI & Calorie Needs (TDEE & BMR)
+* Macro Split & Target Heart Rate
+* Fuel Cost & Commute Trip Estimator
+* Unit Price Comparison & Discount Savings
+
+7. OMNICALC & CURRENCY
+* Universal dynamic expression solver with live tape history
+* Real-time currency conversion with offline caching
+
+========================================
+BUILT FOR SPEED & ACCURACY
+========================================
+- Native Jetpack Compose UI: Smooth 120Hz scrolling with ultra-low battery drain.
+- Instant Live Results: Results calculate in real time as you adjust inputs.
+- Clean Dark Mode: Engineered for low-light productivity and battery savings.
+- Offline Reliability: Fully operational without an internet connection.
+
+Privacy Policy: https://calcworker.com/privacy.html
+Website: https://calcworker.com
+Support & Feedback: support@calcworker.com
+
+CalcWorker is developed by Zaviyan LLC.
+
+
+--------------------------------------------------------------------------------
+2. STORE SETTINGS & CATEGORIZATION
+--------------------------------------------------------------------------------
+- App Category: Finance (or Tools / Productivity)
+- Tags:
+  * Financial calculator
+  * Mortgage calculator
+  * Investment
+  * Loan calculator
+  * Budgeting
+- Contact Email: support@calcworker.com (or your personal business email)
+- Website URL: https://calcworker.com
+- Privacy Policy URL: https://calcworker.com/privacy.html
+
+
+--------------------------------------------------------------------------------
+3. APP CONTENT & MANDATORY DECLARATIONS (Policy Questionnaire)
+--------------------------------------------------------------------------------
+
+[1. Privacy Policy]
+URL: https://calcworker.com/privacy.html
+
+[2. Ads Declaration]
+Select: "No, my app does not contain ads" 
+(Note: If you activate AdMob in the future, change this to "Yes")
+
+[3. App Access]
+Select: "All functionality is available without special access"
+(No login credentials or demo accounts needed)
+
+[4. Content Rating (IARC)]
+Answer Questionnaire:
+- Category: Utility, Productivity, Communication or Other
+- Violence: No
+- Sexuality: No
+- Offensive Language: No
+- Controlled Substance: No
+- Miscellaneous: No
+Expected Rating: PEGI 3 / Everyone (ESRB)
+
+[5. Target Audience & Content]
+- Target age group: 18 and over (or 13+)
+- Could appeal to children: No
+
+[6. News App]
+Select: "No"
+
+[7. COVID-19 Contact Tracing & Status Apps]
+Select: "My app is not a publicly available COVID-19 contact tracing or status app"
+
+[8. Data Safety Questionnaire]
+- Does your app collect or share any user data? 
+  Select: "NO" 
+  (CalcWorker runs 100% on-device client-side computations. It does not collect names, locations, financial accounts, or device identifiers).
+
+[9. Government Apps]
+Select: "No"
+
+[10. Financial Features (New Google Play Requirement)]
+- Does your app provide financial services or features?
+  Select: "Financial planning and management" -> "Calculator / Educational tool only"
+  Clarify: "CalcWorker provides offline financial formula calculators. It does not provide banking, loans, credit scoring, investment brokerage, or cryptocurrency transactions."
+
+
+--------------------------------------------------------------------------------
+4. GRAPHIC ASSETS REQUIRED FOR STORE LISTING
+--------------------------------------------------------------------------------
+1. App Icon:
+   - 512 x 512 px (32-bit PNG, transparent or dark background, max 1MB)
+2. Feature Graphic:
+   - 1024 x 500 px (JPEG or 24-bit PNG, no alpha, max 15MB)
+3. Phone Screenshots:
+   - Minimum 2 screenshots, Recommended 4-8 screenshots
+   - Aspect ratio 16:9 or 9:16 (e.g. 1080 x 2400 px or 1080 x 1920 px)
+   - Show:
+     1) Home Screen (Category Grid)
+     2) Mortgage & Amortization Calculator
+     3) Compound Interest / Investment Screen
+     4) OmniCalc live tape interface
+     5) Currency Converter Screen
+
+
+--------------------------------------------------------------------------------
+5. BUILD & RELEASE DETAILS (For Production / Closed Testing)
+--------------------------------------------------------------------------------
+- Package Name: com.zaviyanllc.calcworker
+- Version Name: 2.0.5
+- Version Code: 9
+- Min SDK: 24 (Android 7.0+)
+- Target SDK: 36 (Android 15+)
+- Artifact Type: Android App Bundle (.aab)
+- Build Command:
+  cd "C:\Users\ZAVIYAN\Desktop\ALL_WEBSITES\CalcWorker-Android"
+  .\gradlew bundleRelease
+================================================================================

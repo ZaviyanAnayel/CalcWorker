@@ -281,6 +281,27 @@ class CalcWorkerApp {
         });
       });
     }
+
+    // Interactive Input Auto-Select on Focus
+    document.addEventListener('focusin', (e) => {
+      if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) {
+        if (e.target.type === 'number' || e.target.type === 'text') {
+          setTimeout(() => { try { e.target.select(); } catch(err){} }, 50);
+        }
+      }
+    });
+
+    // Global Hotkey (Cmd+K / Ctrl+K or '/') for Quick Search
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === 'k' && (e.metaKey || e.ctrlKey)) || (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA')) {
+        const sInput = document.getElementById('searchToolsInput') || document.getElementById('cwShareUrlInput');
+        if (sInput) {
+          e.preventDefault();
+          sInput.focus();
+          try { sInput.select(); } catch(err){}
+        }
+      }
+    });
   }
 
   toggleTheme() {
