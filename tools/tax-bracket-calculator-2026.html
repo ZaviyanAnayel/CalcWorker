@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>2026 Federal Tax Bracket Calculator — Marginal & Effective Rates</title>
+<meta content="Calculate your 2026 federal income tax liability using official IRS tax brackets. See marginal rate, effective rate, tax owed by bracket, and take-home pay after standard/itemized deductions." name="description"/>
+<meta content="2026 tax brackets, federal income tax calculator, marginal tax rate, effective tax rate calculator, IRS tax brackets 2026, tax liability estimator" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/tax-bracket-calculator-2026.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/tax-bracket-calculator-2026.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="2026 Federal Tax Bracket Calculator — Marginal & Effective Rates" property="og:title"/>
+<meta content="Calculate your 2026 federal income tax liability using official IRS tax brackets. See marginal rate, effective rate, tax owed by bracket, and take-home pay after standard/itemized deductions." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026.4" rel="stylesheet"/>
+<style>
+    .tax-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .tax-kpi-box {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 12px;
+      text-align: center;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .tax-kpi-box:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
+    .tax-kpi-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .tax-kpi-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .tax-kpi-val.tax { color: #fb7185; }
+    .tax-kpi-val.rate { color: #38bdf8; }
+    .tax-kpi-val.effective { color: #34d399; }
+    .tax-kpi-val.takehome { color: #fbbf24; }
+    .bracket-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; margin: 16px 0; }
+    .bracket-table th { background: var(--bg-subtle); padding: 10px; text-align: right; color: var(--text-main); font-weight: 600; border-bottom: 2px solid var(--border); }
+    .bracket-table th:first-child, .bracket-table th:nth-child(2) { text-align: left; }
+    .bracket-table td { padding: 10px; text-align: right; border-bottom: 1px solid var(--border); }
+    .bracket-table td:first-child, .bracket-table td:nth-child(2) { text-align: left; }
+    .bracket-table tr:nth-child(even) td { background: var(--bg-subtle); }
+    .bracket-table .your-bracket { background: rgba(56, 189, 248, 0.15); }
+    .bracket-table .your-bracket td { border-left: 3px solid var(--brand-primary); }
+    .bracket-row .bracket-range { font-family: monospace; font-weight: 600; color: var(--text-main); }
+    .bracket-row .bracket-rate { color: var(--text-muted); }
+    .bracket-row .bracket-tax { font-weight: 700; color: #fb7185; }
+    .bracket-row .bracket-tax.your-bracket { color: var(--brand-primary); }
+    .deduction-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; margin: 16px 0; }
+    .deduction-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); }
+    .deduction-row:last-child { border-bottom: none; }
+    .deduction-row .lbl { color: var(--text-muted); }
+    .deduction-row .val { font-weight: 700; color: var(--text-main); font-family: monospace; }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 16px 0; }
+    .comparison-table th { background: var(--bg-subtle); padding: 12px; text-align: left; color: var(--text-main); font-weight: 600; border-bottom: 2px solid var(--border); }
+    .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .comparison-table tr:nth-child(even) td { background: var(--bg-subtle); }
+    .ad-slot { margin: 24px 0; text-align: center; }
+    .guide-section { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin: 32px 0; line-height: 1.7; }
+    .guide-section h2 { color: var(--brand-primary); font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin-top: 24px; color: var(--text-main); }
+    .guide-section h4 { font-size: 1.05rem; margin-top: 16px; color: var(--text-main); }
+    .guide-section p { color: var(--text-muted); font-size: 0.95rem; margin: 12px 0; }
+    .guide-section ul { color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; margin: 12px 0; }
+    .guide-section li { margin: 8px 0; }
+    .guide-section .formula-box { background: var(--bg-subtle); border-left: 4px solid var(--brand-primary); padding: 16px; margin: 16px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-family: monospace; font-size: 0.9rem; }
+    .guide-section .highlight-box { background: var(--accent-amber-light); border: 1px solid var(--accent-amber); border-radius: var(--radius-md); padding: 16px; margin: 16px 0; }
+    .guide-section .bracket-reference { background: var(--bg-input); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 16px; margin: 16px 0; font-size: 0.85rem; }
+    .related-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 16px; }
+    .related-tool-link { display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease; }
+    .related-tool-link:hover { border-color: var(--brand-primary); transform: translateY(-2px); }
+    .related-tool-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .related-tool-icon { font-size: 1.35rem; }
+    .related-tool-badge { font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px; }
+    .related-tool-title { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .related-tool-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0; }
+    .related-tool-cta { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary); }
+    .filing-status-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .filing-btn { padding: 10px 16px; border-radius: var(--radius-md); border: 2px solid var(--border); background: var(--bg-subtle); color: var(--text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .filing-btn.active { border-color: var(--brand-primary); background: var(--brand-light); color: var(--brand-primary); }
+    .filing-btn:hover:not(.active) { border-color: var(--border-hover); color: var(--text-main); }
+  </style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "2026 Federal Tax Bracket Calculator",
+    "url": "https://calcworker.com/tools/tax-bracket-calculator-2026.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What are the 2026 federal income tax brackets?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "For 2026, the seven federal tax rates remain 10%, 12%, 22%, 24%, 32%, 35%, and 37%. Bracket thresholds are adjusted annually for inflation. Single filers: 10% up to $11,925; 12% to $48,475; 22% to $103,350; 24% to $197,300; 32% to $250,525; 35% to $626,350; 37% above $626,350. Married filing jointly brackets are roughly double at lower rates."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the difference between marginal and effective tax rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Your marginal rate is the tax rate on your last dollar of income (your top bracket). Your effective rate is total tax divided by total income — always lower because lower brackets are taxed at lower rates. A single filer with $100,000 taxable income has a 22% marginal rate but ~17% effective rate."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the 2026 standard deduction?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "2026 standard deduction: Single $14,600, Married Filing Jointly $29,200, Head of Household $21,900. Additional amounts for age 65+ or blind: $1,950 (single/HOH) or $1,550 (married) per qualifying condition."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How do tax brackets work — is all my income taxed at my top rate?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. The U.S. uses a progressive marginal system. Only income within each bracket is taxed at that bracket's rate. If you're in the 24% bracket, you still pay 10% on your first dollars, 12% on the next chunk, 22% on the next, and only 24% on income above the 22% bracket ceiling. This is why effective rate is always lower than marginal rate."
+        }
+      }
+    ]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+<meta name="geo.region" content="US-CA"/>
+<meta name="geo.placename" content="San Francisco"/>
+<meta name="geo.position" content="37.7749;-122.4194"/>
+<meta name="ICBM" content="37.7749, -122.4194"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav"></div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+      <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+        <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+      </svg>
+      <span class="btn-label">Share</span>
+    </button>
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" x2="12" y1="1" y2="3"></line>
+        <line x1="12" x2="12" y1="21" y2="23"></line>
+        <line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+        <line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+        <line x1="1" x2="3" y1="1" y2="12"></line>
+        <line x1="21" x2="23" y1="12" y2="12"></line>
+        <line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+        <line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+      </svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+<main class="page-container">
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>›</span>
+  <a href="/tax-calculators" style="color: var(--text-muted); text-decoration: none;">Tax Calculators</a>
+  <span>›</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">2026 Federal Tax Brackets</span>
+</div>
+
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(56, 189, 248, 0.12); color: var(--brand-primary); font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>🏛️</span> IRS 2026 Tax Year
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        2026 Federal Tax Bracket Calculator
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Calculate your exact federal income tax liability using official 2026 IRS tax brackets. See marginal rate, effective rate, tax owed per bracket, and take-home pay after standard or itemized deductions.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>👤</span> Filing Status</h3>
+    <div class="filing-status-btns" id="filingStatusBtns">
+      <button class="filing-btn active" data-status="single" onclick="setFilingStatus('single')">Single</button>
+      <button class="filing-btn" data-status="mfj" onclick="setFilingStatus('mfj')">Married Filing Jointly</button>
+      <button class="filing-btn" data-status="mfs" onclick="setFilingStatus('mfs')">Married Filing Separately</button>
+      <button class="filing-btn" data-status="hoh" onclick="setFilingStatus('hoh')">Head of Household</button>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Gross Annual Income</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="grossIncome" min="0" step="1000" type="number" value="100000"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Age (for additional standard deduction)</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="age" max="100" min="0" step="1" type="number" value="35"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+        <input type="checkbox" id="blindCheck" style="width: 18px; height: 18px; accent-color: var(--brand-primary);"/>
+        <span>Legally Blind</span>
+      </label>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Deduction Method</label>
+      <div class="filing-status-btns" style="margin-top: 8px;">
+        <button class="filing-btn active" data-deduction="standard" onclick="setDeductionMethod('standard')">Standard Deduction</button>
+        <button class="filing-btn" data-deduction="itemized" onclick="setDeductionMethod('itemized')">Itemized Deduction</button>
+      </div>
+    </div>
+    
+    <div class="form-group" id="itemizedGroup" style="display: none;">
+      <label class="form-label">Total Itemized Deductions</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="itemizedDeductions" min="0" step="100" type="number" value="20000"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Medical >7.5% AGI, SALT (capped $10k), mortgage interest, charity, etc.</p>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>💰</span> Additional Income & Adjustments</h3>
+    
+    <div class="form-group">
+      <label class="form-label">Long-Term Capital Gains / Qualified Dividends</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="ltcgIncome" min="0" step="100" type="number" value="0"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Taxed at preferential 0%/15%/20% rates separately</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Short-Term Capital Gains / Ordinary Dividends</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="stcgIncome" min="0" step="100" type="number" value="0"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Taxed as ordinary income at your marginal rate</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Above-the-Line Deductions (IRA, HSA, Student Loan Interest, etc.)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="aboveLineDeductions" min="0" step="100" type="number" value="0"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Reduces AGI before standard/itemized deduction</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Tax Credits (Child Tax Credit, Education, Energy, etc.)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="taxCredits" min="0" step="100" type="number" value="0"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Direct dollar-for-dollar reduction of tax liability</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Federal Tax Withheld (YTD)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="withheld" min="0" step="100" type="number" value="0"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">From W-2s, 1099s, estimated payments</p>
+    </div>
+  </div>
+</div>
+
+<div class="calc-card" style="margin-bottom: 24px;">
+  <button class="calc-btn" id="calcBtn" onclick="calcTax()" style="width: 100%; padding: 16px; font-size: 1.05rem;">📊 Calculate 2026 Tax Liability</button>
+</div>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7358272532329016" data-ad-slot="8923456789" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section id="resultsSection" style="display: none;">
+  <div class="tax-kpi-grid" id="kpiGrid"></div>
+
+  <div class="deduction-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>📋</span> Income & Deduction Summary</h3>
+    <div class="deduction-row"><span class="lbl">Gross Income</span><span class="val" id="resGross">—</span></div>
+    <div class="deduction-row"><span class="lbl">Above-the-Line Deductions</span><span class="val" id="resAboveLine">—</span></div>
+    <div class="deduction-row"><span class="lbl">Adjusted Gross Income (AGI)</span><span class="val" id="resAGI">—</span></div>
+    <div class="deduction-row"><span class="lbl">Standard / Itemized Deduction</span><span class="val" id="resDeduction">—</span></div>
+    <div class="deduction-row"><span class="lbl">Taxable Ordinary Income</span><span class="val" id="resTaxableOrdinary">—</span></div>
+    <div class="deduction-row"><span class="lbl">Long-Term Capital Gains</span><span class="val" id="resLTCG">—</span></div>
+    <div class="deduction-row"><span class="lbl">Total Taxable Income</span><span class="val" id="resTotalTaxable">—</span></div>
+  </div>
+
+  <div class="deduction-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>📊</span> Tax Calculation by Bracket</h3>
+    <div style="overflow-x:auto;">
+      <table class="bracket-table" id="bracketTable">
+        <thead>
+          <tr>
+            <th>Bracket</th>
+            <th>Income Range</th>
+            <th>Rate</th>
+            <th>Amount in Bracket</th>
+            <th>Tax This Bracket</th>
+          </tr>
+        </thead>
+        <tbody id="bracketBody"></tbody>
+      </table>
+    </div>
+    <div style="margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+      <div style="text-align: center; min-width: 140px;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Total Ordinary Tax</div>
+        <div class="tax-kpi-val tax" id="resOrdinaryTax" style="font-size: 1.5rem;">—</div>
+      </div>
+      <div style="text-align: center; min-width: 140px;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">LTCG / Qual Div Tax</div>
+        <div class="tax-kpi-val tax" id="resLTCGTax" style="font-size: 1.5rem;">—</div>
+      </div>
+      <div style="text-align: center; min-width: 140px;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Total Tax Before Credits</div>
+        <div class="tax-kpi-val tax" id="resTotalTaxBeforeCredits" style="font-size: 1.5rem;">—</div>
+      </div>
+      <div style="text-align: center; min-width: 140px;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Tax Credits Applied</div>
+        <div class="tax-kpi-val" style="color: #34d399; font-size: 1.5rem;" id="resCreditsApplied">—</div>
+      </div>
+      <div style="text-align: center; min-width: 140px;">
+        <div style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Net Tax Liability</div>
+        <div class="tax-kpi-val tax" id="resNetTax" style="font-size: 1.5rem;">—</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="deduction-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>💵</span> Final Results</h3>
+    <div class="deduction-row"><span class="lbl">Net Federal Tax Liability</span><span class="val tax" id="resFinalTax">—</span></div>
+    <div class="deduction-row"><span class="lbl">Federal Tax Withheld</span><span class="val" id="resWithheld">—</span></div>
+    <div class="deduction-row"><span class="lbl">Refund / (Balance Due)</span><span class="val" id="resRefundDue" style="font-size: 1.2rem;">—</span></div>
+    <div class="deduction-row"><span class="lbl">Marginal Tax Rate (Top Bracket)</span><span class="val rate" id="resMarginalRate">—</span></div>
+    <div class="deduction-row"><span class="lbl">Effective Tax Rate (Total Tax / Gross Income)</span><span class="val effective" id="resEffectiveRate">—</span></div>
+    <div class="deduction-row"><span class="lbl">Take-Home Pay (Annual)</span><span class="val takehome" id="resTakeHomeAnnual">—</span></div>
+    <div class="deduction-row"><span class="lbl">Take-Home Pay (Monthly)</span><span class="val takehome" id="resTakeHomeMonthly">—</span></div>
+    <div class="deduction-row"><span class="lbl">Take-Home Pay (Bi-Weekly)</span><span class="val takehome" id="resTakeHomeBiweekly">—</span></div>
+  </div>
+</section>
+
+<article class="guide-section">
+  <h2>📖 Complete Guide to 2026 Federal Tax Brackets & Calculation</h2>
+  
+  <p>The U.S. federal income tax system uses a <strong>progressive marginal bracket structure</strong> — your income is taxed in "layers," with each layer taxed at a higher rate. This calculator uses the official 2026 IRS inflation-adjusted brackets (Rev. Proc. 2024-40) to compute your exact liability.</p>
+
+  <h3>2026 Federal Tax Brackets (Inflation-Adjusted)</h3>
+  
+  <div class="bracket-reference">
+    <h4 style="margin-bottom: 12px; color: var(--text-main);">Single Filers</h4>
+    <div style="font-family: monospace; font-size: 0.8rem; line-height: 1.8;">
+      10%: $0 – $11,925<br/>
+      12%: $11,925 – $48,475<br/>
+      22%: $48,475 – $103,350<br/>
+      24%: $103,350 – $197,300<br/>
+      32%: $197,300 – $250,525<br/>
+      35%: $250,525 – $626,350<br/>
+      37%: Over $626,350
+    </div>
+    <h4 style="margin: 16px 0 12px; color: var(--text-main);">Married Filing Jointly</h4>
+    <div style="font-family: monospace; font-size: 0.8rem; line-height: 1.8;">
+      10%: $0 – $23,850<br/>
+      12%: $23,850 – $96,950<br/>
+      22%: $96,950 – $206,700<br/>
+      24%: $206,700 – $394,600<br/>
+      32%: $394,600 – $501,050<br/>
+      35%: $501,050 – $751,600<br/>
+      37%: Over $751,600
+    </div>
+    <h4 style="margin: 16px 0 12px; color: var(--text-main);">Head of Household</h4>
+    <div style="font-family: monospace; font-size: 0.8rem; line-height: 1.8;">
+      10%: $0 – $17,000<br/>
+      12%: $17,000 – $64,850<br/>
+      22%: $64,850 – $103,350<br/>
+      24%: $103,350 – $197,300<br/>
+      32%: $197,300 – $250,500<br/>
+      35%: $250,500 – $626,350<br/>
+      37%: Over $626,350
+    </div>
+    <h4 style="margin: 16px 0 12px; color: var(--text-main);">Married Filing Separately</h4>
+    <div style="font-family: monospace; font-size: 0.8rem; line-height: 1.8;">
+      10%: $0 – $11,925<br/>
+      12%: $11,925 – $48,475<br/>
+      22%: $48,475 – $103,350<br/>
+      24%: $103,350 – $197,300<br/>
+      32%: $197,300 – $250,525<br/>
+      35%: $250,525 – $375,800<br/>
+      37%: Over $375,800
+    </div>
+  </div>
+
+  <h3>2026 Standard Deductions</h3>
+  <ul>
+    <li><strong>Single:</strong> $14,600 (+$1,950 if 65+ or blind)</li>
+    <li><strong>Married Filing Jointly:</strong> $29,200 (+$1,550 per spouse 65+ or blind)</li>
+    <li><strong>Head of Household:</strong> $21,900 (+$1,950 if 65+ or blind)</li>
+    <li><strong>Married Filing Separately:</strong> $14,600 (+$1,550 if 65+ or blind)</li>
+  </ul>
+
+  <h3>Marginal vs. Effective Tax Rate — The Critical Distinction</h3>
+  
+  <p>Your <strong>marginal tax rate</strong> is the rate on your last dollar of taxable income — the bracket you "land in." Your <strong>effective tax rate</strong> is your total tax divided by your total income. <strong>Effective rate is always lower</strong> because only the portion of income in each bracket is taxed at that bracket's rate.</p>
+
+  <div class="formula-box">
+    Effective Rate = Total Federal Tax ÷ Gross Income × 100<br/>
+    Marginal Rate = Tax Rate on Last Dollar of Taxable Income
+  </div>
+
+  <p><strong>Example:</strong> Single filer, $100,000 gross income, standard deduction $14,600 → $85,400 taxable.</p>
+  <ul>
+    <li>First $11,925 @ 10% = $1,193</li>
+    <li>Next $36,550 @ 12% = $4,386</li>
+    <li>Remaining $36,925 @ 22% = $8,124</li>
+    <li>Total tax = $13,703 | Effective rate = 13.7% | Marginal rate = 22%</li>
+  </ul>
+
+  <h3>Long-Term Capital Gains & Qualified Dividends (2026)</h3>
+  <p>LTCG and qualified dividends are taxed at preferential rates <strong>separately</strong> from ordinary income, based on <strong>total taxable income including the gains</strong>:</p>
+  <ul>
+    <li><strong>0% rate:</strong> Taxable income up to $48,350 (Single) / $96,700 (MFJ) / $64,750 (HOH)</li>
+    <li><strong>15% rate:</strong> Up to $533,400 (Single) / $600,050 (MFJ) / $566,700 (HOH)</li>
+    <li><strong>20% rate:</strong> Above those thresholds</li>
+    <li><strong>3.8% NIIT:</strong> Additional on investment income if MAGI > $200k (Single) / $250k (MFJ)</li>
+  </ul>
+
+  <h3>Key 2026 Tax Provisions & Changes</h3>
+  <ul>
+    <li><strong>TCJA provisions sunset after 2025:</strong> 2026 is the first year where many Tax Cuts and Jobs Act provisions revert — standard deduction halves, personal exemptions return, top rate returns to 39.6%, SALT cap removed, child tax credit drops to $1,000. <strong>This calculator uses CURRENT LAW (post-TCJA sunset) brackets.</strong></li>
+    <li><strong>Inflation indexing:</strong> All brackets, standard deduction, phase-outs adjusted annually via Chained CPI</li>
+    <li><strong>Kiddie Tax:</strong> Unearned income >$2,600 for children <19 (or <24 if student) taxed at parent's rate</li>
+    <li><strong>AMT Exemption 2026:</strong> $85,700 (Single) / $133,300 (MFJ) — phases out at $609,350 / $1,218,700</li>
+  </ul>
+
+  <h3>Above-the-Line Deductions (Reduce AGI)</h3>
+  <p>These reduce Adjusted Gross Income <em>before</em> standard/itemized deduction, making them more valuable:</p>
+  <ul>
+    <li>Traditional IRA contribution (up to $7,000 / $8,000 if 50+)</li>
+    <li>HSA contribution ($4,300 self / $8,550 family + $1,000 catch-up 55+)</li>
+    <li>Student loan interest (up to $2,500, phases out MAGI $80k-$95k single)</li>
+    <li>Self-employed health insurance, SEP/SIMPLE contributions</li>
+    <li>Educator expenses ($300), moving expenses (military only)</li>
+  </ul>
+
+  <h3>Common Itemized Deductions (Schedule A)</h3>
+  <ul>
+    <li><strong>Medical/Dental:</strong> Only amount exceeding 7.5% of AGI</li>
+    <li><strong>State & Local Taxes (SALT):</strong> Capped at $10,000 ($5,000 MFS)</li>
+    <li><strong>Mortgage Interest:</strong> On $750k acquisition debt ($1M if pre-12/15/2017)</li>
+    <li><strong>Charitable Contributions:</strong> Up to 60% AGI (cash), 30% (appreciated assets)</li>
+    <li><strong>Casualty/Theft Losses:</strong> Only in federally declared disaster areas</li>
+  </ul>
+
+  <h3>Tax Credits vs. Deductions</h3>
+  <p><strong>Deductions</strong> reduce taxable income (worth your marginal rate). <strong>Credits</strong> reduce tax dollar-for-dollar (worth 100%). A $1,000 credit saves $1,000; a $1,000 deduction in the 24% bracket saves $240.</p>
+  <ul>
+    <li><strong>Child Tax Credit:</strong> $2,000 per qualifying child <17 (phases out $200k/$400k MAGI)</li>
+    <li><strong>Credit for Other Dependents:</strong> $500 per non-child dependent</li>
+    <li><strong>Education Credits:</strong> AOTC $2,500 (40% refundable), Lifetime Learning $2,000</li>
+    <li><strong>Clean Energy Credits:</strong> Residential solar 30%, EV up to $7,500, heat pumps $2,000</li>
+    <li><strong>Saver's Credit:</strong> 10-50% of retirement contributions (AGI limits)</li>
+  </ul>
+
+  <h3>Estimated Tax Payments & Safe Harbor</h3>
+  <p>If you owe >$1,000 at filing, you may face underpayment penalties. Avoid by paying 100% of prior year tax (110% if AGI > $150k) or 90% of current year tax via quarterly estimates (Apr 15, Jun 15, Sep 15, Jan 15).</p>
+</article>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7358272532329016" data-ad-slot="9876543210" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<article class="guide-section">
+  <h2>🔬 Mathematical Deep-Dive: Progressive Tax Calculation Algorithm</h2>
+  
+  <h3>How the Bracket-by-Bracket Calculation Works</h3>
+  <p>The algorithm iterates through each bracket, calculating tax only on income within that bracket's range:</p>
+
+  <div class="formula-box">
+    For each bracket i with range [lower_i, upper_i] and rate r_i:<br/>
+    taxable_in_bracket = min(taxable_income, upper_i) - lower_i<br/>
+    tax_in_bracket = max(0, taxable_in_bracket) × r_i<br/>
+    Total Tax = Σ tax_in_bracket for all brackets
+  </div>
+
+  <h3>2026 vs 2025 Bracket Comparison (Single Filer)</h3>
+  <table class="comparison-table">
+    <thead>
+      <tr><th>Bracket</th><th>2025 Range</th><th>2026 Range</th><th>Change</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>10%</td><td>$0 – $11,600</td><td>$0 – $11,925</td><td>+$325</td></tr>
+      <tr><td>12%</td><td>$11,600 – $47,150</td><td>$11,925 – $48,475</td><td>+$1,325</td></tr>
+      <tr><td>22%</td><td>$47,150 – $100,525</td><td>$48,475 – $103,350</td><td>+$2,825</td></tr>
+      <tr><td>24%</td><td>$100,525 – $191,950</td><td>$103,350 – $197,300</td><td>+$5,350</td></tr>
+      <tr><td>32%</td><td>$191,950 – $243,725</td><td>$197,300 – $250,525</td><td>+$6,800</td></tr>
+      <tr><td>35%</td><td>$243,725 – $609,350</td><td>$250,525 – $626,350</td><td>+$17,000</td></tr>
+      <tr><td>37%</td><td>Over $609,350</td><td>Over $626,350</td><td>+$17,000</td></tr>
+    </tbody>
+  </table>
+
+  <p>The ~2.8% inflation adjustment means a single filer earning $100,000 pays ~$280 less federal tax in 2026 vs 2025 purely from bracket creep relief.</p>
+
+  <h3>Marginal Rate Cliff Effects</h3>
+  <p>Certain income thresholds create effective marginal rates far above statutory brackets due to phase-outs:</p>
+  <ul>
+    <li><strong>Child Tax Credit phase-out:</strong> $50 credit lost per $1,000 over $200k (single) / $400k (MFJ) = +5% effective marginal rate</li>
+    <li><strong>Student loan interest deduction phase-out:</strong> $2,500 deduction lost over $15k range = +16-17% effective rate on that slice</li>
+    <li><strong>AMT crossover:</strong> Can add 26-28% on income above exemption phase-out</li>
+    <li><strong>NIIT 3.8%:</strong> Kicks in at $200k/$250k MAGI on investment income</li>
+    <li><strong>Medicare surtax 0.9%:</strong> On wages >$200k (single) / $250k (MFJ)</li>
+  </ul>
+
+  <h3>Optimization Strategies for 2026</h3>
+  <ul>
+    <li><strong>Bracket management:</strong> Defer income / accelerate deductions to stay in lower bracket</li>
+    <li><strong>Roth conversions:</strong> Fill up lower brackets in low-income years</li>
+    <li><strong>Tax-loss harvesting:</strong> Offset gains + $3,000 ordinary income annually</li>
+    <li><strong>Qualified Charitable Distributions (QCD):</strong> Age 70½+, up to $105k/year from IRA directly to charity — excludes from AGI</li>
+    <li><strong>529 superfunding:</strong> 5-year gift tax election for education savings</li>
+    <li><strong>HSA as stealth IRA:</strong> Max contribution, invest, reimburse later tax-free</li>
+  </ul>
+</article>
+
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+      <span>🔗</span> Related Precision Calculators
+    </h3>
+    <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+  </div>
+  <div class="related-tools-grid">
+    <a class="related-tool-link" href="/tools/paycheck-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">💵</span>
+          <span class="related-tool-badge">PAYROLL</span>
+        </div>
+        <div class="related-tool-title">Paycheck Calculator (2026)</div>
+        <p class="related-tool-desc">Net take-home pay with federal, state, FICA, and local withholding. Per-paycheck breakdown.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/capital-gains-tax-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">📈</span>
+          <span class="related-tool-badge">INVEST</span>
+        </div>
+        <div class="related-tool-title">Capital Gains Tax Calculator (2026)</div>
+        <p class="related-tool-desc">LTCG/STCG rates, NIIT, collectibles, Section 1250 recapture, home sale exclusion.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/freelance-tax-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">💼</span>
+          <span class="related-tool-badge">1099</span>
+        </div>
+        <div class="related-tool-title">Freelance 1099 Tax Estimator</div>
+        <p class="related-tool-desc">Self-employment tax (15.3%), quarterly 1040-ES, QBI deduction, business write-offs.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/state-tax-relocation-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">🚚</span>
+          <span class="related-tool-badge">RELOCATE</span>
+        </div>
+        <div class="related-tool-title">State Tax Relocation (50 States)</div>
+        <p class="related-tool-desc">Compare total tax burden across all 50 states. Income, property, sales, estate taxes.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+  </div>
+</section>
+
+<footer style="background: var(--bg-surface); border-top: 1px solid var(--border); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial & business computational workstation. 137 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Tax Calculators</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tax-bracket-calculator-2026.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">2026 Federal Tax Brackets</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Child Tax Credit & EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tax-withholding.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Tax Withholding (2026)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate & Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Mortgage & PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/extra-mortgage-payment-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Extra Payment Payoff</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amortization-schedule.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Amortization Schedule</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth & Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">401(k) & IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators & Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">AI Prompt & Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Shopify Fee & Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">YouTube Money & RPM</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company & Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted);">
+      <strong style="color: #cbd5e1;">Regulatory & Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <div style="border-top: 1px solid var(--border); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.4"></script>
+<script>
+// 2026 Tax Brackets (Inflation-adjusted per Rev. Proc 2024-40)
+const BRACKETS_2026 = {
+  single: [
+    {min: 0, max: 11925, rate: 0.10},
+    {min: 11925, max: 48475, rate: 0.12},
+    {min: 48475, max: 103350, rate: 0.22},
+    {min: 103350, max: 197300, rate: 0.24},
+    {min: 197300, max: 250525, rate: 0.32},
+    {min: 250525, max: 626350, rate: 0.35},
+    {min: 626350, max: Infinity, rate: 0.37}
+  ],
+  mfj: [
+    {min: 0, max: 23850, rate: 0.10},
+    {min: 23850, max: 96950, rate: 0.12},
+    {min: 96950, max: 206700, rate: 0.22},
+    {min: 206700, max: 394600, rate: 0.24},
+    {min: 394600, max: 501050, rate: 0.32},
+    {min: 501050, max: 751600, rate: 0.35},
+    {min: 751600, max: Infinity, rate: 0.37}
+  ],
+  mfs: [
+    {min: 0, max: 11925, rate: 0.10},
+    {min: 11925, max: 48475, rate: 0.12},
+    {min: 48475, max: 103350, rate: 0.22},
+    {min: 103350, max: 197300, rate: 0.24},
+    {min: 197300, max: 250525, rate: 0.32},
+    {min: 250525, max: 375800, rate: 0.35},
+    {min: 375800, max: Infinity, rate: 0.37}
+  ],
+  hoh: [
+    {min: 0, max: 17000, rate: 0.10},
+    {min: 17000, max: 64850, rate: 0.12},
+    {min: 64850, max: 103350, rate: 0.22},
+    {min: 103350, max: 197300, rate: 0.24},
+    {min: 197300, max: 250500, rate: 0.32},
+    {min: 250500, max: 626350, rate: 0.35},
+    {min: 626350, max: Infinity, rate: 0.37}
+  ]
+};
+
+const STANDARD_DEDUCTION_2026 = {
+  single: 14600,
+  mfj: 29200,
+  mfs: 14600,
+  hoh: 21900
+};
+
+const ADDITIONAL_STANDARD_2026 = {
+  single: 1950,
+  mfj: 1550,
+  mfs: 1550,
+  hoh: 1950
+};
+
+const LTCG_BRACKETS_2026 = {
+  single: [
+    {max: 48350, rate: 0.00},
+    {max: 533400, rate: 0.15},
+    {max: Infinity, rate: 0.20}
+  ],
+  mfj: [
+    {max: 96700, rate: 0.00},
+    {max: 600050, rate: 0.15},
+    {max: Infinity, rate: 0.20}
+  ],
+  mfs: [
+    {max: 48350, rate: 0.00},
+    {max: 300000, rate: 0.15},
+    {max: Infinity, rate: 0.20}
+  ],
+  hoh: [
+    {max: 64750, rate: 0.00},
+    {max: 566700, rate: 0.15},
+    {max: Infinity, rate: 0.20}
+  ]
+};
+
+let currentFilingStatus = 'single';
+let currentDeductionMethod = 'standard';
+
+function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});}
+function fmtD(n){return '$'+fmt(n);}
+function fmtD2(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function setFilingStatus(status) {
+  currentFilingStatus = status;
+  document.querySelectorAll('#filingStatusBtns .filing-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.status === status);
+  });
+}
+
+function setDeductionMethod(method) {
+  currentDeductionMethod = method;
+  document.querySelectorAll('[data-deduction]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.deduction === method);
+  });
+  document.getElementById('itemizedGroup').style.display = method === 'itemized' ? 'block' : 'none';
+}
+
+function calcTax() {
+  const grossIncome = parseFloat(document.getElementById('grossIncome').value) || 0;
+  const age = parseFloat(document.getElementById('age').value) || 0;
+  const isBlind = document.getElementById('blindCheck').checked;
+  const ltcgIncome = parseFloat(document.getElementById('ltcgIncome').value) || 0;
+  const stcgIncome = parseFloat(document.getElementById('stcgIncome').value) || 0;
+  const aboveLineDeductions = parseFloat(document.getElementById('aboveLineDeductions').value) || 0;
+  const taxCredits = parseFloat(document.getElementById('taxCredits').value) || 0;
+  const withheld = parseFloat(document.getElementById('withheld').value) || 0;
+  const itemizedDeductions = parseFloat(document.getElementById('itemizedDeductions').value) || 0;
+
+  if (grossIncome <= 0) {
+    alert('Please enter a valid gross income.');
+    return;
+  }
+
+  // Calculate AGI
+  const agi = grossIncome - aboveLineDeductions;
+
+  // Calculate standard/itemized deduction
+  let standardDeduction = STANDARD_DEDUCTION_2026[currentFilingStatus];
+  if (age >= 65) standardDeduction += ADDITIONAL_STANDARD_2026[currentFilingStatus];
+  if (isBlind) standardDeduction += ADDITIONAL_STANDARD_2026[currentFilingStatus];
+
+  const deduction = currentDeductionMethod === 'standard' ? standardDeduction : Math.max(standardDeduction, itemizedDeductions);
+
+  // Taxable ordinary income (includes STCG, excludes LTCG)
+  const ordinaryIncome = Math.max(0, agi - deduction + stcgIncome);
+  
+  // Calculate ordinary tax by brackets
+  const brackets = BRACKETS_2026[currentFilingStatus];
+  let ordinaryTax = 0;
+  let marginalRate = 0;
+  let bracketDetails = [];
+  let remainingOrdinary = ordinaryIncome;
+
+  for (let i = 0; i < brackets.length; i++) {
+    const b = brackets[i];
+    const bracketWidth = b.max - b.min;
+    const amountInBracket = Math.min(remainingOrdinary, bracketWidth);
+    if (amountInBracket <= 0) {
+      bracketDetails.push({
+        bracket: i + 1,
+        range: `$${fmt(b.min)} – ${b.max === Infinity ? '∞' : '$' + fmt(b.max)}`,
+        rate: (b.rate * 100).toFixed(0) + '%',
+        amount: 0,
+        tax: 0,
+        isCurrent: false
+      });
+      continue;
+    }
+    const taxInBracket = amountInBracket * b.rate;
+    ordinaryTax += taxInBracket;
+    remainingOrdinary -= amountInBracket;
+    bracketDetails.push({
+      bracket: i + 1,
+      range: `$${fmt(b.min)} – ${b.max === Infinity ? '∞' : '$' + fmt(b.max)}`,
+      rate: (b.rate * 100).toFixed(0) + '%',
+      amount: amountInBracket,
+      tax: taxInBracket,
+      isCurrent: remainingOrdinary <= 0 && i === brackets.length - 1 ? false : remainingOrdinary <= 0
+    });
+    if (remainingOrdinary <= 0) {
+      marginalRate = b.rate * 100;
+      break;
+    }
+  }
+
+  // If no ordinary income taxed, marginal rate is 0%
+  if (ordinaryIncome <= 0) marginalRate = 0;
+
+  // Calculate LTCG tax
+  const totalTaxableForLTCG = ordinaryIncome + ltcgIncome;
+  const ltcgBrackets = LTCG_BRACKETS_2026[currentFilingStatus];
+  let ltcgTax = 0;
+  let remainingLTCG = ltcgIncome;
+  let ltcgBracketUsed = 0;
+
+  // Determine how much of each LTCG bracket is used by ordinary income first
+  let ordinaryRemaining = ordinaryIncome;
+  const ltcgBracketUsage = ltcgBrackets.map(b => {
+    const used = Math.min(ordinaryRemaining, b.max - ltcgBracketUsage);
+    ordinaryRemaining -= used;
+    ltcgBracketUsage += used;
+    return {max: b.max, rate: b.rate, usedByOrdinary: used};
+  });
+
+  // Now apply LTCG to remaining bracket space
+  for (const bracket of ltcgBrackets) {
+    const spaceUsed = ltcgBracketUsage.find(u => u.max === bracket.max)?.usedByOrdinary || 0;
+    const spaceAvailable = bracket.max - spaceUsed;
+    const amountInBracket = Math.min(remainingLTCG, spaceAvailable);
+    if (amountInBracket <= 0) continue;
+    ltcgTax += amountInBracket * bracket.rate;
+    remainingLTCG -= amountInBracket;
+    ltcgBracketUsed++;
+    if (remainingLTCG <= 0) break;
+  }
+
+  // NIIT 3.8% on investment income if MAGI > threshold
+  const niitThreshold = (currentFilingStatus === 'mfj') ? 250000 : 200000;
+  let niit = 0;
+  if (agi > niitThreshold) {
+    const investmentIncome = ltcgIncome + stcgIncome; // Simplified
+    niit = Math.min(investmentIncome, agi - niitThreshold) * 0.038;
+  }
+
+  const totalTaxBeforeCredits = ordinaryTax + ltcgTax + niit;
+  const creditsApplied = Math.min(taxCredits, totalTaxBeforeCredits);
+  const netTax = Math.max(0, totalTaxBeforeCredits - creditsApplied);
+  
+  const refundDue = withheld - netTax;
+  const effectiveRate = grossIncome > 0 ? (netTax / grossIncome * 100) : 0;
+  const takeHomeAnnual = grossIncome - netTax;
+  const takeHomeMonthly = takeHomeAnnual / 12;
+  const takeHomeBiweekly = takeHomeAnnual / 26;
+
+  // Update KPI Grid
+  document.getElementById('kpiGrid').innerHTML = `
+    <div class="tax-kpi-box">
+      <div class="tax-kpi-label">Net Federal Tax</div>
+      <div class="tax-kpi-val tax">${fmtD(netTax)}</div>
+    </div>
+    <div class="tax-kpi-box">
+      <div class="tax-kpi-label">Marginal Rate</div>
+      <div class="tax-kpi-val rate">${marginalRate.toFixed(1)}%</div>
+    </div>
+    <div class="tax-kpi-box">
+      <div class="tax-kpi-label">Effective Rate</div>
+      <div class="tax-kpi-val effective">${effectiveRate.toFixed(1)}%</div>
+    </div>
+    <div class="tax-kpi-box">
+      <div class="tax-kpi-label">Take-Home (Annual)</div>
+      <div class="tax-kpi-val takehome">${fmtD(takeHomeAnnual)}</div>
+    </div>
+    <div class="tax-kpi-box">
+      <div class="tax-kpi-label">Refund / (Due)</div>
+      <div class="tax-kpi-val" style="color: ${refundDue >= 0 ? '#34d399' : '#fb7185'};">${refundDue >= 0 ? '+' : ''}${fmtD(refundDue)}</div>
+    </div>
+    <div class="tax-kpi-box">
+      <div class="tax-kpi-label">LTCG Tax</div>
+      <div class="tax-kpi-val tax">${fmtD(ltcgTax)}</div>
+    </div>
+  `;
+
+  // Income & Deduction Summary
+  document.getElementById('resGross').textContent = fmtD(grossIncome);
+  document.getElementById('resAboveLine').textContent = fmtD(aboveLineDeductions);
+  document.getElementById('resAGI').textContent = fmtD(agi);
+  document.getElementById('resDeduction').textContent = fmtD(deduction) + (currentDeductionMethod === 'standard' ? ' (Standard)' : ' (Itemized)');
+  document.getElementById('resTaxableOrdinary').textContent = fmtD(ordinaryIncome);
+  document.getElementById('resLTCG').textContent = fmtD(ltcgIncome);
+  document.getElementById('resTotalTaxable').textContent = fmtD(ordinaryIncome + ltcgIncome);
+
+  // Bracket Table
+  let bracketHtml = '';
+  bracketDetails.forEach(d => {
+    const rowClass = d.isCurrent ? 'your-bracket' : '';
+    bracketHtml += `<tr class="${rowClass}">
+      <td>${d.bracket}</td>
+      <td class="bracket-range">${d.range}</td>
+      <td class="bracket-rate">${d.rate}</td>
+      <td>${d.amount > 0 ? fmtD(d.amount) : '—'}</td>
+      <td class="bracket-tax ${d.isCurrent ? 'your-bracket' : ''}">${d.tax > 0 ? fmtD2(d.tax) : '—'}</td>
+    </tr>`;
+  });
+  document.getElementById('bracketBody').innerHTML = bracketHtml;
+
+  // Summary tax amounts
+  document.getElementById('resOrdinaryTax').textContent = fmtD2(ordinaryTax);
+  document.getElementById('resLTCGTax').textContent = fmtD2(ltcgTax);
+  document.getElementById('resTotalTaxBeforeCredits').textContent = fmtD2(totalTaxBeforeCredits);
+  document.getElementById('resCreditsApplied').textContent = fmtD2(creditsApplied);
+  document.getElementById('resNetTax').textContent = fmtD2(netTax);
+
+  // Final Results
+  document.getElementById('resFinalTax').textContent = fmtD2(netTax);
+  document.getElementById('resWithheld').textContent = fmtD2(withheld);
+  document.getElementById('resRefundDue').textContent = (refundDue >= 0 ? '💚 Refund: ' : '🔴 Balance Due: ') + fmtD2(Math.abs(refundDue));
+  document.getElementById('resRefundDue').style.color = refundDue >= 0 ? '#34d399' : '#fb7185';
+  document.getElementById('resMarginalRate').textContent = marginalRate.toFixed(1) + '%';
+  document.getElementById('resEffectiveRate').textContent = effectiveRate.toFixed(1) + '%';
+  document.getElementById('resTakeHomeAnnual').textContent = fmtD(takeHomeAnnual);
+  document.getElementById('resTakeHomeMonthly').textContent = fmtD(takeHomeMonthly);
+  document.getElementById('resTakeHomeBiweekly').textContent = fmtD(takeHomeBiweekly);
+
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('resultsSection').scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+// Auto-calculate on load
+document.addEventListener('DOMContentLoaded', () => {
+  calcTax();
+});
+</script>
+</body>
+</html>

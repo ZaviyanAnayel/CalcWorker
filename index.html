@@ -1157,66 +1157,6 @@
 </div>
 <h1 class="hero-heading">High-Precision Computational Tools for <span class="gradient-text">High-Stakes Decisions</span></h1>
 <p class="hero-subheading">137 calibrated financial, tax, real estate, creator, and business calculators engineered specifically for US entrepreneurs, freelancers, homebuyers, and small business owners. 100% free, private, device-local, and zero signup required.</p>
-<style>
-.tc-quick{background:var(--bg-subtle);border:1px solid var(--border);border-radius:14px;padding:14px 16px;margin:18px 0 4px;max-width:640px}
-.tc-quick h2{font-size:1rem;margin:0 0 4px;color:var(--text-main)}
-.tc-quick p.tc-sub{margin:0 0 10px;font-size:.85rem;color:var(--text-muted)}
-.tc-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
-.tc-quick input[type=number]{width:140px;padding:8px 10px;border-radius:8px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--text-main);font-size:1rem}
-.tc-toggle{display:inline-flex;border:1px solid var(--border);border-radius:999px;overflow:hidden}
-.tc-toggle button{background:transparent;border:0;padding:8px 14px;font-size:.85rem;font-weight:600;color:var(--text-muted);cursor:pointer}
-.tc-toggle button.active{background:var(--brand-primary);color:#fff}
-.tc-result{margin:10px 0 0;font-size:.95rem;color:var(--text-main)}
-.tc-result strong{color:var(--brand-primary)}
-.tc-quick a.tc-full{display:inline-block;margin-top:8px;font-size:.85rem;color:var(--brand-primary);text-decoration:none}
-.quick-chips{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 2px}
-.quick-chip{display:inline-block;padding:5px 13px;border-radius:999px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--text-main);font-size:.82rem;font-weight:600;text-decoration:none}
-.quick-chip:hover{border-color:var(--brand-primary);color:var(--brand-primary)}
-</style>
-<div class="tc-quick">
-<h2>&#129297; TikTok Coins Quick Converter</h2>
-<p class="tc-sub">Instant answer: how much coins cost &amp; what the creator keeps.</p>
-<div class="tc-row">
-<label for="tcCoins" style="font-size:.9rem;color:var(--text-main)">Coins</label>
-<input id="tcCoins" type="number" min="0" step="1" value="1000" inputmode="numeric" aria-label="Number of TikTok coins" />
-<div class="tc-toggle" role="group" aria-label="Purchase channel">
-<button type="button" id="tcWeb" class="active" aria-pressed="true">Web &middot; ~1.05&cent;/coin</button>
-<button type="button" id="tcApp" aria-pressed="false">App &middot; ~1.50&cent;/coin</button>
-</div>
-</div>
-<p class="tc-result" id="tcResult" aria-live="polite"></p>
-<a class="tc-full" href="/tools/tiktok-coins-calculator.html">Open full TikTok Coins Calculator &rarr;</a>
-</div>
-<script>
-(function(){
-  var input=document.getElementById('tcCoins');
-  var webBtn=document.getElementById('tcWeb');
-  var appBtn=document.getElementById('tcApp');
-  var out=document.getElementById('tcResult');
-  var channel='web';
-  function fmt(n){return '$'+n.toFixed(2);}
-  function render(){
-    var coins=Math.max(0,Math.floor(Number(input.value)||0));
-    var rate=channel==='web'?0.0105:0.0150;
-    var cost=coins*rate;
-    var diamonds=coins*0.5;
-    var net=diamonds*0.005;
-    out.innerHTML='<strong>'+coins.toLocaleString('en-US')+' coins on '+(channel==='web'?'Web':'App')+'</strong> = Cost '+fmt(cost)+', Creator gets '+diamonds.toLocaleString('en-US')+' diamonds &asymp; '+fmt(net)+' net';
-  }
-  function setChannel(c){
-    channel=c;
-    webBtn.classList.toggle('active',c==='web');
-    appBtn.classList.toggle('active',c==='app');
-    webBtn.setAttribute('aria-pressed',c==='web'?'true':'false');
-    appBtn.setAttribute('aria-pressed',c==='app'?'true':'false');
-    render();
-  }
-  webBtn.addEventListener('click',function(){setChannel('web');});
-  appBtn.addEventListener('click',function(){setChannel('app');});
-  input.addEventListener('input',render);
-  render();
-})();
-</script>
 <!-- Search Box -->
 <div class="hero-search-wrapper">
 <span class="search-icon-left">🔍</span>
@@ -1225,12 +1165,14 @@
 <div id="heroSearchDropdown" class="hero-search-dropdown" style="display: none;"></div>
 </div>
 <div class="quick-chips" aria-label="Popular searches">
-<a class="quick-chip" href="/tools/tiktok-coins-calculator.html">TikTok coins</a>
-<a class="quick-chip" href="/tools/mortgage-calculator.html">Mortgage</a>
-<a class="quick-chip" href="/tools/paycheck-calculator.html">Paycheck</a>
+<a class="quick-chip" href="/tools/mortgage-calculator.html">Mortgage PITI</a>
+<a class="quick-chip" href="/tools/paycheck-calculator.html">Paycheck 2026</a>
+<a class="quick-chip" href="/tools/freelance-tax-calculator.html">1099 Tax</a>
+<a class="quick-chip" href="/tools/auto-loan.html">Auto Loan</a>
+<a class="quick-chip" href="/tools/compound-interest.html">Compound Growth</a>
 <a class="quick-chip" href="/tools/amazon-fba-calculator.html">Amazon FBA</a>
 <a class="quick-chip" href="/tools/gig-profit.html">Gig Profit</a>
-<a class="quick-chip" href="/tools/tire-size-calculator.html">Tire Size</a>
+<a class="quick-chip" href="/tools/omnicalc.html">OmniCalc Ultra</a>
 </div>
 <!-- Category Filter Pills -->
 <div class="category-filter-row">

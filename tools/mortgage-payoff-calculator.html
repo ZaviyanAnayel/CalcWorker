@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mortgage Payoff Calculator — Early Payoff & Interest Savings</title>
+<meta content="Calculate how extra principal payments accelerate mortgage payoff. See exact interest savings, years eliminated, and revised amortization schedule for early mortgage freedom." name="description"/>
+<meta content="mortgage payoff calculator, early mortgage payoff, pay off mortgage early calculator, mortgage principal prepayment, interest savings calculator, bi-weekly mortgage payments" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/mortgage-payoff-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/mortgage-payoff-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Mortgage Payoff Calculator — Early Payoff & Interest Savings" property="og:title"/>
+<meta content="Calculate how extra principal payments accelerate mortgage payoff. See exact interest savings, years eliminated, and revised amortization schedule for early mortgage freedom." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026.4" rel="stylesheet"/>
+<style>
+    .payoff-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .payoff-kpi-box {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 12px;
+      text-align: center;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .payoff-kpi-box:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
+    .payoff-kpi-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .payoff-kpi-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .payoff-kpi-val.saved { color: #34d399; }
+    .payoff-kpi-val.years { color: #38bdf8; }
+    .payoff-kpi-val.rate { color: #a855f7; }
+    .payoff-kpi-val.total { color: #fbbf24; }
+    .scenario-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 20px;
+      margin-bottom: 16px;
+      transition: all 0.2s ease;
+    }
+    .scenario-card:hover {
+      border-color: var(--brand-primary);
+      box-shadow: var(--shadow-card-hover);
+    }
+    .scenario-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .scenario-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text-main);
+    }
+    .scenario-badge {
+      font-size: 0.65rem;
+      font-weight: 800;
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .scenario-badge.current { background: rgba(251, 113, 133, 0.15); color: #fb7185; border: 1px solid rgba(251, 113, 133, 0.3); }
+    .scenario-badge.optimized { background: rgba(52, 211, 153, 0.15); color: #34d399; border: 1px solid rgba(52, 211, 153, 0.3); }
+    .scenario-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+    }
+    .scenario-row:last-child { border-bottom: none; }
+    .scenario-row .lbl { color: var(--text-muted); }
+    .scenario-row .val { font-weight: 700; color: var(--text-main); font-family: monospace; }
+    .scenario-row .val.highlight { color: #34d399; }
+    .amort-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 16px; }
+    .amort-table th { background: var(--bg-subtle); padding: 8px; text-align: right; color: var(--text-muted); font-weight: 600; border-bottom: 2px solid var(--border); }
+    .amort-table th:first-child { text-align: left; }
+    .amort-table td { padding: 7px 8px; text-align: right; border-bottom: 1px solid var(--border); }
+    .amort-table td:first-child { text-align: left; font-weight: 600; }
+    .amort-table tr:nth-child(even) td { background: var(--bg-subtle); }
+    .strategy-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin: 24px 0; }
+    .strategy-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; }
+    .strategy-icon { font-size: 2rem; margin-bottom: 8px; }
+    .strategy-title { font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 8px; }
+    .strategy-desc { font-size: 0.85rem; color: var(--text-muted); line-height: 1.6; }
+    .faq-item details { border-bottom: 1px solid var(--border); padding: 12px 0; }
+    .faq-item summary { font-size: 0.9rem; font-weight: 600; cursor: pointer; color: var(--text-main); list-style: none; }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after { content: "▼"; font-size: 0.75rem; float: right; transition: transform 0.2s; }
+    .faq-item details[open] summary::after { transform: rotate(180deg); }
+    .faq-item p { margin-top: 8px; font-size: 0.85rem; color: var(--text-muted); line-height: 1.7; }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 16px 0; }
+    .comparison-table th { background: var(--bg-subtle); padding: 12px; text-align: left; color: var(--text-main); font-weight: 600; border-bottom: 2px solid var(--border); }
+    .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .comparison-table tr:nth-child(even) td { background: var(--bg-subtle); }
+    .comparison-table .win { color: #34d399; font-weight: 700; }
+    .ad-slot { margin: 24px 0; text-align: center; }
+    .guide-section { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin: 32px 0; line-height: 1.7; }
+    .guide-section h2 { color: var(--brand-primary); font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin-top: 24px; color: var(--text-main); }
+    .guide-section p { color: var(--text-muted); font-size: 0.95rem; margin: 12px 0; }
+    .guide-section ul { color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; margin: 12px 0; }
+    .guide-section li { margin: 8px 0; }
+    .guide-section .formula-box { background: var(--bg-subtle); border-left: 4px solid var(--brand-primary); padding: 16px; margin: 16px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-family: monospace; font-size: 0.9rem; }
+    .guide-section .highlight-box { background: var(--accent-amber-light); border: 1px solid var(--accent-amber); border-radius: var(--radius-md); padding: 16px; margin: 16px 0; }
+    .related-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 16px; }
+    .related-tool-link { display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease; }
+    .related-tool-link:hover { border-color: var(--brand-primary); transform: translateY(-2px); }
+    .related-tool-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .related-tool-icon { font-size: 1.35rem; }
+    .related-tool-badge { font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px; }
+    .related-tool-title { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .related-tool-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0; }
+    .related-tool-cta { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary); }
+  </style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Mortgage Payoff & Early Payoff Calculator",
+    "url": "https://calcworker.com/tools/mortgage-payoff-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How much interest can I save by paying off my mortgage early?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "On a $300,000 30-year mortgage at 6.75%, paying an extra $200/month saves over $65,000 in interest and cuts 6+ years off the loan. Bi-weekly payments save ~$35,000 and 4 years. A single $10,000 lump sum in year 5 saves ~$22,000 in interest."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Should I make extra mortgage payments or invest in index funds?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "If your mortgage rate is above 5.5%, prepaying principal offers a guaranteed, risk-free return that typically beats stock market risk-adjusted returns. Below 4%, investing in a diversified S&P 500 fund (historical 10% nominal) usually wins. Between 4-5.5%, it's a personal risk-tolerance decision."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is the fastest way to pay off a 30-year mortgage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Combining bi-weekly half-payments (13 full payments/year) with annual lump sums from tax refunds or bonuses is the most aggressive standard approach. Refinancing to a 15-year term forces discipline but removes flexibility. Always verify your lender applies extras to principal, not escrow advance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Are there prepayment penalties on modern mortgages?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Under Dodd-Frank Act and CFPB rules, virtually all conforming conventional, FHA, VA, and USDA loans originated after 2014 prohibit prepayment penalties. Check your original Note and Closing Disclosure — some portfolio/private loans may still include them in the first 3-5 years."
+        }
+      }
+    ]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+<meta name="geo.region" content="US-CA"/>
+<meta name="geo.placename" content="San Francisco"/>
+<meta name="geo.position" content="37.7749;-122.4194"/>
+<meta name="ICBM" content="37.7749, -122.4194"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav"></div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+      <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+        <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+      </svg>
+      <span class="btn-label">Share</span>
+    </button>
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" x2="12" y1="1" y2="3"></line>
+        <line x1="12" x2="12" y1="21" y2="23"></line>
+        <line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+        <line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+        <line x1="1" x2="3" y1="1" y2="12"></line>
+        <line x1="21" x2="23" y1="12" y2="12"></line>
+        <line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+        <line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+      </svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+<main class="page-container">
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>›</span>
+  <a href="/real-estate-calculators" style="color: var(--text-muted); text-decoration: none;">Real Estate</a>
+  <span>›</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">Mortgage Payoff Calculator</span>
+</div>
+
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(52, 211, 153, 0.12); color: #34d399; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>💰</span> Early Debt Freedom
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        Mortgage Payoff Calculator — Early Payoff & Interest Savings
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Calculate exactly how extra principal payments — monthly, bi-weekly, annual, or lump sum — accelerate your mortgage payoff date, eliminate years of payments, and save tens of thousands in compound interest.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>📋</span> Loan Details</h3>
+    <div class="form-group">
+      <label class="form-label">Current Loan Balance</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="loanBalance" min="0" step="1000" type="number" value="280000"/></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Interest Rate (APR)</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="interestRate" max="20" min="0" step="0.05" type="number" value="6.75"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">%</span></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Current Monthly Payment (P&I only)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="currentPayment" min="0" step="10" type="number" value="1817"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Exclude taxes, insurance, PMI — principal & interest only</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Remaining Term (years)</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="remainingYears" max="40" min="1" step="1" type="number" value="28"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">yrs</span></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Years Already Paid</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="yearsPaid" max="30" min="0" step="1" type="number" value="2"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">yrs</span></div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>⚡</span> Extra Payment Strategy</h3>
+    <div class="form-group">
+      <label class="form-label">Extra Monthly Principal</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="extraMonthly" min="0" step="10" type="number" value="200"/></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Extra Annual Lump Sum</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="extraAnnual" min="0" step="500" type="number" value="0"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">e.g., tax refund, bonus, inheritance applied once per year</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">One-Time Lump Sum</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="extraLumpSum" min="0" step="1000" type="number" value="0"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Applied at month specified below</p>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Lump Sum Applied At (month #)</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="lumpSumMonth" max="360" min="1" step="1" type="number" value="12"/></div>
+    </div>
+    <div class="form-group">
+      <label class="form-label" style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
+        <input type="checkbox" id="biweeklyToggle" style="width: 18px; height: 18px; accent-color: var(--brand-primary);"/>
+        <span>Bi-Weekly Half-Payments (26 half-payments = 13 full payments/year)</span>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div class="calc-card" style="margin-bottom: 24px;">
+  <button class="calc-btn" id="calcBtn" onclick="calcPayoff()" style="width: 100%; padding: 16px; font-size: 1.05rem;">🚀 Calculate Payoff Scenarios</button>
+</div>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7358272532329016" data-ad-slot="8923456789" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section id="resultsSection" style="display: none;">
+  <div class="payoff-kpi-grid" id="kpiGrid"></div>
+
+  <div class="scenario-card" id="currentScenario">
+    <div class="scenario-header">
+      <span class="scenario-title">📊 Current Trajectory (No Extra Payments)</span>
+      <span class="scenario-badge current">BASELINE</span>
+    </div>
+    <div class="scenario-row"><span class="lbl">Payoff Date</span><span class="val" id="currPayoffDate">—</span></div>
+    <div class="scenario-row"><span class="lbl">Total Remaining Payments</span><span class="val" id="currTotalPayments">—</span></div>
+    <div class="scenario-row"><span class="lbl">Total Interest Remaining</span><span class="val" id="currTotalInterest">—</span></div>
+    <div class="scenario-row"><span class="lbl">Total Cost (Principal + Interest)</span><span class="val" id="currTotalCost">—</span></div>
+  </div>
+
+  <div class="scenario-card" id="optimizedScenario" style="display: none;">
+    <div class="scenario-header">
+      <span class="scenario-title">⚡ Optimized Trajectory (With Extra Payments)</span>
+      <span class="scenario-badge optimized">ACCELERATED</span>
+    </div>
+    <div class="scenario-row"><span class="lbl">Payoff Date</span><span class="val highlight" id="optPayoffDate">—</span></div>
+    <div class="scenario-row"><span class="lbl">Total Remaining Payments</span><span class="val highlight" id="optTotalPayments">—</span></div>
+    <div class="scenario-row"><span class="lbl">Total Interest Remaining</span><span class="val highlight" id="optTotalInterest">—</span></div>
+    <div class="scenario-row"><span class="lbl">Total Cost (Principal + Interest)</span><span class="val highlight" id="optTotalCost">—</span></div>
+  </div>
+
+  <div class="scenario-card" id="savingsSummary" style="display: none; background: linear-gradient(135deg, rgba(52, 211, 153, 0.1) 0%, rgba(56, 189, 248, 0.1) 100%); border-color: #34d399;">
+    <div class="scenario-header">
+      <span class="scenario-title">💎 Total Savings & Time Eliminated</span>
+      <span class="scenario-badge optimized">YOUR GAIN</span>
+    </div>
+    <div class="scenario-row"><span class="lbl">Interest Saved</span><span class="val highlight" id="savedInterest">—</span></div>
+    <div class="scenario-row"><span class="lbl">Years Eliminated</span><span class="val highlight" id="savedYears">—</span></div>
+    <div class="scenario-row"><span class="lbl">Months Eliminated</span><span class="val highlight" id="savedMonths">—</span></div>
+    <div class="scenario-row"><span class="lbl">Payoff Accelerated By</span><span class="val highlight" id="acceleratedBy">—</span></div>
+    <div class="scenario-row"><span class="lbl">Effective Interest Rate (after prepay)</span><span class="val" id="effectiveRate">—</span></div>
+    <div class="scenario-row"><span class="lbl">Total Extra Principal Paid</span><span class="val" id="totalExtraPaid">—</span></div>
+    <div class="scenario-row"><span class="lbl">Return on Extra Payments</span><span class="val highlight" id="roiExtra">—</span></div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">📅 Amortization Comparison (First 10 Years)</h3>
+    <div style="overflow-x:auto;">
+      <table class="comparison-table" id="comparisonTable">
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th>Standard Balance</th>
+            <th>Accelerated Balance</th>
+            <th>Interest Saved (Cumulative)</th>
+            <th>Months Ahead</th>
+          </tr>
+        </thead>
+        <tbody id="comparisonBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div style="margin-top: 24px;">
+    <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 12px;">📋 Full Amortization Schedule (Accelerated)</h3>
+    <div style="overflow-x:auto; max-height: 500px; overflow-y:auto;">
+      <table class="amort-table" id="amortTable">
+        <thead><tr><th>Year</th><th>Principal Paid</th><th>Interest Paid</th><th>Extra Principal</th><th>Remaining Balance</th></tr></thead>
+        <tbody id="amortBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="strategy-grid" id="strategyGrid" style="display: none;">
+  <h3 style="font-size: 1.1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px;">🎯 Proven Payoff Strategies</h3>
+  <div class="strategy-card">
+    <div class="strategy-icon">📅</div>
+    <div class="strategy-title">Bi-Weekly Half-Payments</div>
+    <div class="strategy-desc">Split your monthly payment in half and pay every two weeks. 26 half-payments = 13 full payments per year. Cuts 4-6 years off a 30-year mortgage automatically.</div>
+  </div>
+  <div class="strategy-card">
+    <div class="strategy-icon">💰</div>
+    <div class="strategy-title">Annual Lump Sum</div>
+    <div class="strategy-desc">Apply tax refunds, work bonuses, or inheritance as one annual principal payment. Even $2,000/year on a $300k loan saves $25k+ interest and 3+ years.</div>
+  </div>
+  <div class="strategy-card">
+    <div class="strategy-icon">🔄</div>
+    <div class="strategy-title">Round-Up Method</div>
+    <div class="strategy-desc">Round your payment up to the nearest $100 or $500. If P&I is $1,847, pay $2,000. The extra $153/month compounds to massive savings over 30 years.</div>
+  </div>
+  <div class="strategy-card">
+    <div class="strategy-icon">🏦</div>
+    <div class="strategy-title">Refinance to Shorter Term</div>
+    <div class="strategy-desc">Refi from 30-year to 15- or 20-year at lower rate. Forces discipline but removes flexibility. Only works if new payment fits comfortably in budget.</div>
+  </div>
+</section>
+
+<article class="guide-section">
+  <h2>📖 Complete Guide to Mortgage Payoff Strategies & Interest Savings</h2>
+  
+  <p>Paying off your mortgage early is one of the most powerful wealth-building moves available to American homeowners. The mathematics are relentless: on a typical $350,000 30-year mortgage at 6.75%, you'll pay <strong>$458,000 in interest alone</strong> — more than the original loan amount. Every dollar of extra principal you apply today eliminates multiple dollars of future interest through the compounding effect of amortization.</p>
+
+  <h3>Understanding How Mortgage Amortization Works</h3>
+  
+  <p>Most homeowners don't realize that in the first 5-7 years of a 30-year mortgage, <strong>70-80% of every monthly payment goes to interest</strong>, not principal. This is by design — the lender collects their profit front-loaded. The standard amortization formula ensures the bank gets paid first.</p>
+
+  <div class="formula-box">
+    M = P × [ r(1+r)^n ] / [ (1+r)^n - 1 ]<br/>
+    M = Monthly Payment | P = Principal | r = Monthly Rate (APR/12) | n = Total Months
+  </div>
+
+  <p>When you make an extra principal payment, you're essentially "skipping ahead" in the amortization schedule. Every extra dollar reduces the principal balance on which future interest is calculated. This creates a cascade effect: less principal → less interest next month → more of your regular payment goes to principal → even less interest the following month.</p>
+
+  <h3>The Four Most Effective Payoff Strategies</h3>
+
+  <h4>1. Bi-Weekly Half-Payments (The "Free" Extra Payment)</h4>
+  <p>Instead of one monthly payment, pay half every two weeks. Since there are 52 weeks in a year, you make 26 half-payments = 13 full payments annually. That's one full extra payment per year with zero lifestyle change.</p>
+  <ul>
+    <li><strong>Impact on $300k @ 6.75%:</strong> Saves ~$35,000 interest, pays off 4.2 years early</li>
+    <li><strong>Setup:</strong> Most lenders offer auto-biweekly; or manually transfer half-payment to a separate account and pay monthly + extra</li>
+    <li><strong>Watch out:</strong> Some servicers charge fees for bi-weekly programs. Do it yourself for free.</li>
+  </ul>
+
+  <h4>2. Monthly Extra Principal (Consistent Compounding)</h4>
+  <p>Adding a fixed amount to principal every month — even $100-200 — creates massive compounding savings because every extra dollar works for the remaining loan term.</p>
+  <ul>
+    <li><strong>$100/month extra:</strong> Saves ~$28,000 interest, 3.1 years early</li>
+    <li><strong>$200/month extra:</strong> Saves ~$52,000 interest, 5.5 years early</li>
+    <li><strong>$500/month extra:</strong> Saves ~$105,000 interest, 10.2 years early</li>
+  </ul>
+
+  <h4>3. Annual Lump Sum Payments (Tax Refunds, Bonuses)</h4>
+  <p>Applying windfalls as principal payments is psychologically easier than monthly discipline and still highly effective.</p>
+  <ul>
+    <li><strong>$3,000/year (avg tax refund):</strong> Saves ~$32,000 interest, 3.8 years early</li>
+    <li><strong>$10,000 one-time in year 5:</strong> Saves ~$22,000 interest, 2.1 years early</li>
+    <li>Always specify "apply to principal only" — otherwise servicers may advance your next payment date</li>
+  </ul>
+
+  <h4>4. Refinance to a Shorter Term (Rate + Term Reduction)</h4>
+  <p>If rates have dropped since your original loan, refinancing to a 15- or 20-year term can cut both your rate AND your term simultaneously.</p>
+  <ul>
+    <li><strong>30yr @ 6.75% → 15yr @ 5.75%:</strong> Payment increases ~$500/mo but saves $200k+ interest</li>
+    <li>Only advisable if you'll stay in home 5+ years to recoup closing costs</li>
+    <li>Alternative: Keep 30-year but make 15-year payments voluntarily (retains flexibility)</li>
+  </ul>
+
+  <h3>Should You Pay Off Your Mortgage Early or Invest?</h3>
+  <p>This is the most debated question in personal finance. The answer depends on your mortgage rate, risk tolerance, and time horizon.</p>
+
+  <div class="highlight-box">
+    <strong>🎯 Decision Framework:</strong>
+    <ul style="margin: 8px 0 0 20px;">
+      <li><strong>Rate ≥ 6%:</strong> Prepay aggressively. Guaranteed return beats risk-adjusted market returns.</li>
+      <li><strong>Rate 4-6%:</strong> Personal preference. Split the difference — half to mortgage, half to index funds.</li>
+      <li><strong>Rate < 4%:</strong> Invest in low-cost S&P 500 ETF (VOO, VTI). Historical 10% nominal return >> mortgage cost.</li>
+      <li><strong>Rate < 3%:</strong> Never prepay. You're effectively borrowing at negative real rates after inflation.</li>
+    </ul>
+  </div>
+
+  <p>Also consider: max out 401(k) match and HSA first (free money), maintain 3-6 month emergency fund, pay off high-interest debt (credit cards > 20%) before mortgage prepayment.</p>
+
+  <h3>Critical Mistakes to Avoid</h3>
+  <ul>
+    <li><strong>Not specifying "principal only":</strong> Servicers default to advancing payment due date. Call or write "apply to principal balance only" on every extra payment.</li>
+    <li><strong>Prepaying with high-interest debt:</strong> Credit card at 28% APR costs 4x more than mortgage at 7%. Math always favors killing high-rate debt first.</li>
+    <li><strong>Sacrificing retirement match:</strong> 401(k) match is 100% instant return. Never skip it for mortgage prepayment.</li>
+    <li><strong>Draining emergency fund:</strong> Illiquid home equity can't fix a broken furnace or job loss. Keep 3-6 months expenses liquid.</li>
+    <li><strong>Ignoring prepayment penalties:</strong> Rare on modern conforming loans, but check your Note if originated before 2014 or if portfolio/private loan.</li>
+  </ul>
+
+  <h3>Tracking Your Progress: The Payoff Dashboard</h3>
+  <p>Use this calculator quarterly to track your accelerated payoff date. As you make extra payments, re-enter your current balance and remaining term to see updated projections. The psychological reward of watching your "freedom date" move closer is a powerful motivator.</p>
+
+  <h3>Tax Implications of Early Payoff</h3>
+  <p>Mortgage interest is deductible if you itemize (Schedule A), but the 2017 Tax Cuts and Jobs Act doubled the standard deduction ($14,600 single / $29,200 married for 2024). <strong>~90% of taxpayers no longer itemize</strong>, making the mortgage interest deduction irrelevant for most. Even if you do itemize, the deduction only saves your marginal tax rate (22-37%) of interest paid — prepaying saves 100% of the interest.</p>
+
+  <h3>When Early Payoff Does NOT Make Sense</h3>
+  <ul>
+    <li>You have a sub-3% rate locked in (2020-2021 refi boom)</li>
+    <li>You're within 5 years of retirement and need liquidity</li>
+    <li>You plan to sell the home within 3-5 years (prepayment benefit unrealized)</li>
+    <li>You can earn significantly more in a business investment or career development</li>
+    <li>Your employer offers student loan repayment assistance (apply extra cash there instead)</li>
+  </ul>
+</article>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7358272532329016" data-ad-slot="9876543210" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<article class="guide-section">
+  <h2>🔬 Mathematical Deep-Dive: Amortization Acceleration Mechanics</h2>
+  
+  <h3>How Extra Payments Rewire the Amortization Schedule</h3>
+  <p>In a standard amortization, each payment's interest portion is calculated on the <em>current</em> outstanding balance: <code>Interest = Balance × Monthly Rate</code>. The principal portion is simply <code>Payment - Interest</code>. When you inject extra principal, you reduce the balance immediately, which reduces next month's interest charge, which increases next month's principal portion — a virtuous cycle.</p>
+
+  <div class="formula-box">
+    New Balance = Old Balance - (Regular Principal + Extra Principal)<br/>
+    Next Month Interest = New Balance × (APR / 12)<br/>
+    Next Month Principal = Regular Payment - Next Month Interest
+  </div>
+
+  <p>The <strong>effective interest rate</strong> on extra principal equals your mortgage APR — it's a guaranteed, tax-free, risk-free return. Compare: S&P 500 historical 10% nominal with 15% volatility vs. mortgage at 6.75% guaranteed. The Sharpe ratio of mortgage prepayment is infinite (zero volatility).</p>
+
+  <h3>Comparative Scenario Analysis ($300,000 Loan, 6.75%, 30 Years Remaining)</h3>
+  <table class="comparison-table">
+    <thead>
+      <tr><th>Strategy</th><th>Extra Paid/Year</th><th>Total Interest</th><th>Interest Saved</th><th>Payoff Time</th><th>Years Saved</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Standard (baseline)</td><td>$0</td><td>$401,652</td><td>—</td><td>30 years</td><td>—</td></tr>
+      <tr><td>Bi-weekly half-payments</td><td>$1,817 (1 extra pmt)</td><td>$366,234</td><td class="win">$35,418</td><td>25.8 years</td><td class="win">4.2</td></tr>
+      <tr><td>+$100/month extra</td><td>$1,200</td><td>$373,412</td><td class="win">$28,240</td><td>26.9 years</td><td class="win">3.1</td></tr>
+      <tr><td>+$200/month extra</td><td>$2,400</td><td>$349,587</td><td class="win">$52,065</td><td>24.5 years</td><td class="win">5.5</td></tr>
+      <tr><td>+$500/month extra</td><td>$6,000</td><td>$296,321</td><td class="win">$105,331</td><td>19.8 years</td><td class="win">10.2</td></tr>
+      <tr><td>$3,000 annual lump sum</td><td>$3,000</td><td>$369,187</td><td class="win">$32,465</td><td>26.2 years</td><td class="win">3.8</td></tr>
+      <tr><td>15-year refi @ 5.75%</td><td>Rate reduction</td><td>$154,892</td><td class="win">$246,760</td><td>15 years</td><td class="win">15</td></tr>
+    </tbody>
+  </table>
+
+  <h3>The "Round-Up" Psychological Hack</h3>
+  <p>Behavioral finance research shows that rounding up payments (e.g., $1,847 → $2,000) increases adherence because it creates a clean mental number. The extra $153/month on a $300k loan saves ~$38,000 interest and 4.1 years — all from a $0.04/day decision.</p>
+</article>
+
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+      <span>🔗</span> Related Precision Calculators
+    </h3>
+    <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+  </div>
+  <div class="related-tools-grid">
+    <a class="related-tool-link" href="/tools/mortgage-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">🏠</span>
+          <span class="related-tool-badge">MORTGAGE</span>
+        </div>
+        <div class="related-tool-title">Mortgage Calculator (PITI)</div>
+        <p class="related-tool-desc">Full monthly payment breakdown with taxes, insurance, PMI, and amortization schedule.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/extra-mortgage-payment-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">💸</span>
+          <span class="related-tool-badge">PAYOFF</span>
+        </div>
+        <div class="related-tool-title">Extra Mortgage Payment Calculator</div>
+        <p class="related-tool-desc">Focused on extra payment scenarios with visual savings breakdown and strategy comparison.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/mortgage-refinance-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">🔄</span>
+          <span class="related-tool-badge">REFI</span>
+        </div>
+        <div class="related-tool-title">Mortgage Refinance Break-Even</div>
+        <p class="related-tool-desc">Calculate if refinancing saves money after closing costs. Break-even analysis included.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/amortization-schedule.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">📅</span>
+          <span class="related-tool-badge">SCHEDULE</span>
+        </div>
+        <div class="related-tool-title">Amortization Schedule Generator</div>
+        <p class="related-tool-desc">Printable year-by-year or month-by-month amortization tables with extra payment support.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+  </div>
+</section>
+
+<footer style="background: var(--bg-surface); border-top: 1px solid var(--border); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial & business computational workstation. 137 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate & Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Mortgage & PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/extra-mortgage-payment-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Extra Payment Payoff</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amortization-schedule.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Amortization Schedule</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Taxes & Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Child Tax Credit & EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-hourly-rate-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Freelance Hourly Rate</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth & Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">401(k) & IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Creators & Business</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/ai-prompt-cost-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">AI Prompt & Cost Calculator</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amazon-fba-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Amazon FBA Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/shopify-fee-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Shopify Fee & Margin</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tiktok-shop-affiliate-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">TikTok Shop Affiliate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/youtube-money-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">YouTube Money & RPM</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company & Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted);">
+      <strong style="color: #cbd5e1;">Regulatory & Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <div style="border-top: 1px solid var(--border); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.4"></script>
+<script>
+function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});}
+function fmtD(n){return '$'+fmt(n);}
+function fmtD2(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+function calcPayoff() {
+  const balance = parseFloat(document.getElementById('loanBalance').value) || 0;
+  const rate = (parseFloat(document.getElementById('interestRate').value) || 0) / 100 / 12;
+  const currentPayment = parseFloat(document.getElementById('currentPayment').value) || 0;
+  const remainingYears = parseFloat(document.getElementById('remainingYears').value) || 0;
+  const yearsPaid = parseFloat(document.getElementById('yearsPaid').value) || 0;
+  const extraMonthly = parseFloat(document.getElementById('extraMonthly').value) || 0;
+  const extraAnnual = parseFloat(document.getElementById('extraAnnual').value) || 0;
+  const extraLumpSum = parseFloat(document.getElementById('extraLumpSum').value) || 0;
+  const lumpSumMonth = parseFloat(document.getElementById('lumpSumMonth').value) || 12;
+  const biweekly = document.getElementById('biweeklyToggle').checked;
+
+  if (balance <= 0 || rate <= 0 || currentPayment <= 0 || remainingYears <= 0) {
+    alert('Please fill in all required fields with valid numbers.');
+    return;
+  }
+
+  const monthlyRate = rate;
+  const totalMonths = remainingYears * 12;
+
+  // Calculate baseline (no extra payments)
+  let baselineBalance = balance;
+  let baselineTotalInterest = 0;
+  let baselineMonth = 0;
+  while (baselineBalance > 0.5 && baselineMonth < totalMonths + 600) {
+    const interest = baselineBalance * monthlyRate;
+    const principal = Math.min(currentPayment - interest, baselineBalance);
+    if (principal <= 0) break;
+    baselineBalance -= principal;
+    baselineTotalInterest += interest;
+    baselineMonth++;
+  }
+  const baselinePayoffDate = new Date();
+  baselinePayoffDate.setMonth(baselinePayoffDate.getMonth() + baselineMonth);
+  const baselineTotalCost = balance + baselineTotalInterest;
+
+  // Calculate optimized (with extra payments)
+  let optBalance = balance;
+  let optTotalInterest = 0;
+  let optMonth = 0;
+  let totalExtraPaid = 0;
+  const amortData = [];
+  let annualLumpSumApplied = false;
+
+  while (optBalance > 0.5 && optMonth < totalMonths + 600) {
+    optMonth++;
+    let paymentThisMonth = currentPayment;
+    
+    // Bi-weekly: 2 extra half-payments per year (months 6 and 12 effectively)
+    if (biweekly && (optMonth % 6 === 0)) {
+      paymentThisMonth += currentPayment / 2;
+      totalExtraPaid += currentPayment / 2;
+    }
+
+    // Monthly extra
+    if (extraMonthly > 0) {
+      paymentThisMonth += extraMonthly;
+      totalExtraPaid += extraMonthly;
+    }
+
+    // Annual lump sum (apply once per year)
+    if (extraAnnual > 0 && optMonth % 12 === 0) {
+      paymentThisMonth += extraAnnual;
+      totalExtraPaid += extraAnnual;
+    }
+
+    // One-time lump sum
+    if (extraLumpSum > 0 && optMonth === lumpSumMonth) {
+      paymentThisMonth += extraLumpSum;
+      totalExtraPaid += extraLumpSum;
+    }
+
+    const interest = optBalance * monthlyRate;
+    const principal = Math.min(paymentThisMonth - interest, optBalance);
+    if (principal <= 0) break;
+    
+    optBalance -= principal;
+    optTotalInterest += interest;
+
+    // Store yearly data for amortization table
+    if (optMonth % 12 === 0 || optBalance <= 0.5) {
+      const year = Math.ceil(optMonth / 12);
+      amortData.push({
+        year: year,
+        principalPaid: paymentThisMonth - interest,
+        interestPaid: interest,
+        extraPrincipal: paymentThisMonth - currentPayment,
+        balance: Math.max(0, optBalance)
+      });
+    }
+  }
+
+  const optPayoffDate = new Date();
+  optPayoffDate.setMonth(optPayoffDate.getMonth() + optMonth);
+  const optTotalCost = balance + optTotalInterest;
+
+  const savedInterest = baselineTotalInterest - optTotalInterest;
+  const savedMonths = baselineMonth - optMonth;
+  const savedYears = savedMonths / 12;
+  const acceleratedBy = savedMonths;
+  const totalExtraPaidFinal = totalExtraPaid;
+  const roiExtra = totalExtraPaidFinal > 0 ? ((savedInterest / totalExtraPaidFinal) * 100).toFixed(1) : '∞';
+  const effectiveRate = (optTotalInterest / balance * 12 / (optMonth / 12) * 100).toFixed(2);
+
+  // Update KPI Grid
+  document.getElementById('kpiGrid').innerHTML = `
+    <div class="payoff-kpi-box">
+      <div class="payoff-kpi-label">Interest Saved</div>
+      <div class="payoff-kpi-val saved">${fmtD(savedInterest)}</div>
+    </div>
+    <div class="payoff-kpi-box">
+      <div class="payoff-kpi-label">Years Eliminated</div>
+      <div class="payoff-kpi-val years">${savedYears.toFixed(1)} yrs</div>
+    </div>
+    <div class="payoff-kpi-box">
+      <div class="payoff-kpi-label">Months Eliminated</div>
+      <div class="payoff-kpi-val years">${savedMonths} mo</div>
+    </div>
+    <div class="payoff-kpi-box">
+      <div class="payoff-kpi-label">ROI on Extra Payments</div>
+      <div class="payoff-kpi-val rate">${roiExtra}%</div>
+    </div>
+    <div class="payoff-kpi-box">
+      <div class="payoff-kpi-label">Effective Rate</div>
+      <div class="payoff-kpi-val rate">${effectiveRate}%</div>
+    </div>
+    <div class="payoff-kpi-box">
+      <div class="payoff-kpi-label">Extra Principal Paid</div>
+      <div class="payoff-kpi-val total">${fmtD(totalExtraPaidFinal)}</div>
+    </div>
+  `;
+
+  // Update Current Scenario
+  document.getElementById('currPayoffDate').textContent = baselinePayoffDate.toLocaleDateString('en-US', {year:'numeric', month:'long'});
+  document.getElementById('currTotalPayments').textContent = baselineMonth + ' months';
+  document.getElementById('currTotalInterest').textContent = fmtD(baselineTotalInterest);
+  document.getElementById('currTotalCost').textContent = fmtD(baselineTotalCost);
+
+  // Update Optimized Scenario
+  document.getElementById('optimizedScenario').style.display = 'block';
+  document.getElementById('optPayoffDate').textContent = optPayoffDate.toLocaleDateString('en-US', {year:'numeric', month:'long'});
+  document.getElementById('optTotalPayments').textContent = optMonth + ' months';
+  document.getElementById('optTotalInterest').textContent = fmtD(optTotalInterest);
+  document.getElementById('optTotalCost').textContent = fmtD(optTotalCost);
+
+  // Update Savings Summary
+  document.getElementById('savingsSummary').style.display = 'block';
+  document.getElementById('savedInterest').textContent = fmtD(savedInterest);
+  document.getElementById('savedYears').textContent = savedYears.toFixed(1) + ' years';
+  document.getElementById('savedMonths').textContent = savedMonths + ' months';
+  document.getElementById('acceleratedBy').textContent = acceleratedBy + ' months sooner';
+  document.getElementById('effectiveRate').textContent = effectiveRate + '%';
+  document.getElementById('totalExtraPaid').textContent = fmtD(totalExtraPaidFinal);
+  document.getElementById('roiExtra').textContent = roiExtra + '%';
+
+  // Comparison Table (first 10 years)
+  let compHtml = '';
+  let runningStdBal = balance;
+  let runningOptBal = balance;
+  let runningStdInt = 0;
+  let runningOptInt = 0;
+  let stdMonth = 0;
+  let optMonthC = 0;
+
+  for (let year = 1; year <= 10; year++) {
+    // Standard
+    for (let m = 0; m < 12; m++) {
+      if (runningStdBal <= 0.5) break;
+      stdMonth++;
+      const intStd = runningStdBal * monthlyRate;
+      const prinStd = Math.min(currentPayment - intStd, runningStdBal);
+      runningStdBal -= prinStd;
+      runningStdInt += intStd;
+    }
+    // Optimized
+    for (let m = 0; m < 12; m++) {
+      if (runningOptBal <= 0.5) break;
+      optMonthC++;
+      let pmtOpt = currentPayment;
+      if (biweekly && (optMonthC % 6 === 0)) pmtOpt += currentPayment / 2;
+      if (extraMonthly > 0) pmtOpt += extraMonthly;
+      if (extraAnnual > 0 && optMonthC % 12 === 0) pmtOpt += extraAnnual;
+      if (extraLumpSum > 0 && optMonthC === lumpSumMonth) pmtOpt += extraLumpSum;
+      
+      const intOpt = runningOptBal * monthlyRate;
+      const prinOpt = Math.min(pmtOpt - intOpt, runningOptBal);
+      runningOptBal -= prinOpt;
+      runningOptInt += intOpt;
+    }
+
+    const intSavedYtd = runningStdInt - runningOptInt;
+    const monthsAhead = stdMonth - optMonthC;
+
+    compHtml += `<tr>
+      <td>Year ${year}</td>
+      <td>${fmtD(runningStdBal)}</td>
+      <td>${fmtD(Math.max(0, runningOptBal))}</td>
+      <td class="win">${fmtD(intSavedYtd)}</td>
+      <td class="win">${monthsAhead} months</td>
+    </tr>`;
+
+    if (runningStdBal <= 0.5 && runningOptBal <= 0.5) break;
+  }
+  document.getElementById('comparisonBody').innerHTML = compHtml;
+
+  // Full Amortization Schedule (accelerated)
+  let amortHtml = '';
+  amortData.forEach((d, i) => {
+    amortHtml += `<tr>
+      <td>Year ${d.year}</td>
+      <td>${fmtD(d.principalPaid * 12)}</td>
+      <td>${fmtD(d.interestPaid * 12)}</td>
+      <td>${fmtD(d.extraPrincipal * 12)}</td>
+      <td>${fmtD(d.balance)}</td>
+    </tr>`;
+  });
+  document.getElementById('amortBody').innerHTML = amortHtml;
+
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('strategyGrid').style.display = 'block';
+  document.getElementById('resultsSection').scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+// Auto-calculate on load with defaults
+document.addEventListener('DOMContentLoaded', () => {
+  calcPayoff();
+});
+</script>
+</body>
+</html>

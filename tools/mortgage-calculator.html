@@ -102,15 +102,17 @@
 <link href="/css/calcworker.css?v=2026.4" rel="stylesheet"/>
 <meta content="#090d16" name="theme-color"/>
 <script defer="" src="../js/analytics.js"></script>
+<!-- Chart.js v4 via CDN -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 <style>
     .term-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px;}
     .term-btn{padding:8px 18px;border-radius:20px;border:2px solid var(--border);background:var(--bg-subtle);color:var(--text-muted);font-size:0.88rem;font-weight:600;cursor:pointer;transition:all 0.18s;}
     .term-btn.active{border-color:var(--brand-primary);background:var(--brand-primary);color:#fff;}
-    .result-big{font-size:2rem;font-weight:800;color:var(--brand-primary);font-family:monospace;}
-    .calc-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.9rem;}
-    .calc-row:last-child{border-bottom:none;}
-    .calc-row .lbl{color:var(--text-muted);}
-    .calc-row .val{font-weight:700;color:var(--text-main);font-family:monospace;}
+    .mort-result-big{font-size:2rem;font-weight:800;color:var(--brand-primary);font-family:monospace;}
+    .mort-row{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);font-size:0.9rem;}
+    .mort-row:last-child{border-bottom:none;}
+    .mort-row .lbl{color:var(--text-muted);}
+    .mort-row .val{font-weight:700;color:var(--text-main);font-family:monospace;}
     .amort-table{width:100%;border-collapse:collapse;font-size:0.82rem;margin-top:16px;}
     .amort-table th{background:var(--bg-subtle);padding:8px;text-align:right;color:var(--text-muted);font-weight:600;border-bottom:2px solid var(--border);}
     .amort-table th:first-child{text-align:left;}
@@ -154,16 +156,16 @@
       <ul class="nav-links">
         <li><a class="nav-link active" href="/tools/mortgage-calculator.html"><span class="nav-link-icon">🏠</span><span class="nav-link-text">Mortgage & Amortization</span></a></li>
         <li><a class="nav-link" href="/tools/mortgage-refinance-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Mortgage Refinance Break-Even</span></a></li>
-        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dti-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Debt-to-Income (DTI)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/closing-costs-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Closing Costs</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/extra-mortgage-payment-calculator.html"><span class="nav-link-icon">💸</span><span class="nav-link-text">Extra Mortgage Payment</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/property-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Property Tax & Mill Rate</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/fha-vs-conventional-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">FHA vs Conventional Loan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/home-equity-loan-calculator.html"><span class="nav-link-icon">🏡</span><span class="nav-link-text">Home Equity Loan vs HELOC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/heloc-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">HELOC & Credit Line</span></a></li>
         <li><a class="nav-link" href="/tools/rent-vs-buy.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Rent vs Buy Decision</span></a></li>
         <li><a class="nav-link" href="/tools/prorated-rent-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">Prorated Rent Calculator</span></a></li>
-        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/nnn-lease-calculator.html"><span class="nav-link-icon">🏢</span><span class="nav-link-text">Triple Net (NNN) Lease</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/auto-loan.html"><span class="nav-link-icon">🚘</span><span class="nav-link-text">Auto Loan Calculator</span></a></li>
         <li><a class="nav-link" href="/tools/car-lease-calculator.html"><span class="nav-link-icon">🏎️</span><span class="nav-link-text">Car Lease Payment</span></a></li>
       </ul>
@@ -172,12 +174,12 @@
       <div class="nav-group-title">Taxes & IRS Regulations</div>
       <ul class="nav-links">
         <li><a class="nav-link" href="/tools/paycheck-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">Paycheck Net Take-Home (2026)</span></a></li>
-        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/capital-gains-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Capital Gains Tax (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/freelance-tax-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelance 1099 Tax Estimator</span></a></li>
         <li><a class="nav-link" href="/tools/state-tax-relocation-calculator.html"><span class="nav-link-icon">🚚</span><span class="nav-link-text">State Tax Relocation (50 States)</span></a></li>
-        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/child-tax-credit-calculator.html"><span class="nav-link-icon">👶</span><span class="nav-link-text">Child Tax Credit & EITC</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/estate-tax-calculator.html"><span class="nav-link-icon">📜</span><span class="nav-link-text">Estate & Lifetime Gift Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hsa-fsa-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HSA vs FSA Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/tax-withholding.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Tax Withholding (2026)</span></a></li>
         <li><a class="nav-link" href="/tools/sales-tax-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">US State Sales Tax</span></a></li>
       </ul>
@@ -185,13 +187,13 @@
     <div>
       <div class="nav-group-title">Banking, Loans & Credit</div>
       <ul class="nav-links">
-        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/personal-loan-calculator.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Personal Loan Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/credit-card-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Credit Card Payoff</span></a></li>
         <li><a class="nav-link" href="/tools/debt-payoff.html"><span class="nav-link-icon">💳</span><span class="nav-link-text">Debt Snowball & Avalanche</span></a></li>
-        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/payday-loan-calculator.html"><span class="nav-link-icon">⚠️</span><span class="nav-link-text">Payday Loan APR Trap</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/apr-to-apy-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">APR vs APY Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/savings-goal-calculator.html"><span class="nav-link-icon">🎯</span><span class="nav-link-text">Savings Goal & Sinking Fund</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/emergency-fund-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">Emergency Fund Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/cd-ladder-calculator.html"><span class="nav-link-icon">🪜</span><span class="nav-link-text">CD Ladder Yield Calculator</span></a></li>
       </ul>
     </div>
@@ -199,14 +201,14 @@
       <div class="nav-group-title">Investments & Retirement</div>
       <ul class="nav-links">
         <li><a class="nav-link" href="/tools/compound-interest.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Compound Interest & Savings</span></a></li>
-        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/simple-interest-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Simple vs Compound Interest</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/inflation-retirement-calculator.html"><span class="nav-link-icon">⏳</span><span class="nav-link-text">Inflation & Retirement (4% Rule)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/social-security-calculator.html"><span class="nav-link-icon">👴</span><span class="nav-link-text">Social Security Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/retirement-401k.html"><span class="nav-link-icon">🏖️</span><span class="nav-link-text">401(k) Retirement Savings</span></a></li>
-        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/401k-rmd-calculator.html"><span class="nav-link-icon">📅</span><span class="nav-link-text">401(k) & IRA RMD (2026)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/roth-ira-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Roth IRA Tax-Free Growth</span></a></li>
-        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/roth-conversion-calculator.html"><span class="nav-link-icon">🔄</span><span class="nav-link-text">Roth Conversion Tax</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/net-worth-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Personal Net Worth</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/crypto-profit-calculator.html"><span class="nav-link-icon">🪙</span><span class="nav-link-text">Crypto Profit & ROI</span></a></li>
         <li><a class="nav-link" href="/tools/inflation-calculator.html"><span class="nav-link-icon">💵</span><span class="nav-link-text">US Inflation & Purchasing Power</span></a></li>
         <li><a class="nav-link" href="/tools/solar-roi.html"><span class="nav-link-icon">☀️</span><span class="nav-link-text">Solar Panel ROI Estimator</span></a></li>
@@ -219,24 +221,24 @@
         <li><a class="nav-link" href="/tools/hourly-rate.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Freelancer Hourly Rate</span></a></li>
         <li><a class="nav-link" href="/tools/gig-profit.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Gig Worker Net Profit</span></a></li>
         <li><a class="nav-link" href="/tools/overtime-calculator.html"><span class="nav-link-icon">⏱️</span><span class="nav-link-text">Overtime & 1.5x Pay</span></a></li>
-        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/sales-commission-calculator.html"><span class="nav-link-icon">📈</span><span class="nav-link-text">Sales Commission & Quota</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cost-of-living-calculator.html"><span class="nav-link-icon">🏙️</span><span class="nav-link-text">Cost of Living & Relocation</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/job-offer-comparison-calculator.html"><span class="nav-link-icon">💼</span><span class="nav-link-text">Job Offer Comparison</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/commute-cost-calculator.html"><span class="nav-link-icon">🚗</span><span class="nav-link-text">Commute Cost & WFH Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/student-loan.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">Student Loan Repayment</span></a></li>
-        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/student-loan-pslf-calculator.html"><span class="nav-link-icon">🏛️</span><span class="nav-link-text">Student Loan PSLF vs Standard</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/529-college-savings-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">529 College Savings Plan</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/gpa-calculator.html"><span class="nav-link-icon">🎓</span><span class="nav-link-text">College & High School GPA</span></a></li>
       </ul>
     </div>
     <div>
       <div class="nav-group-title">Business, Legal & E-Commerce</div>
       <ul class="nav-links">
-        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/llc-vs-scorp-calculator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">LLC vs S-Corp Tax Savings</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/break-even.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">Business Break-Even Point</span></a></li>
-        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/markup-vs-margin-calculator.html"><span class="nav-link-icon">🏷️</span><span class="nav-link-text">Markup vs Margin Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cac-ltv-calculator.html"><span class="nav-link-icon">📊</span><span class="nav-link-text">CAC to LTV Ratio</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/invoice-factoring-calculator.html"><span class="nav-link-icon">🧾</span><span class="nav-link-text">Invoice Factoring (2/10 Net 30)</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/ecommerce-profit-comparator.html"><span class="nav-link-icon">⚖️</span><span class="nav-link-text">Multi-Platform Profit Comparator</span></a></li>
         <li><a class="nav-link" href="/tools/amazon-fba-calculator.html"><span class="nav-link-icon">📦</span><span class="nav-link-text">Amazon FBA Fee Calculator</span></a></li>
         <li><a class="nav-link" href="/tools/shopify-fee-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">Shopify Fee & Margin</span></a></li>
@@ -247,7 +249,7 @@
     <div>
       <div class="nav-group-title">Creators & Social Media</div>
       <ul class="nav-links">
-        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge badge-new">HOT</span></a></li>
+        <li><a class="nav-link" href="/tools/ai-prompt-cost-calculator.html"><span class="nav-link-icon">🤖</span><span class="nav-link-text">AI Prompt & Cost Calculator</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">HOT</span></a></li>
         <li><a class="nav-link" href="/tools/substack-calculator.html"><span class="nav-link-icon">📰</span><span class="nav-link-text">Substack Newsletter Revenue</span></a></li>
         <li><a class="nav-link" href="/tools/tiktok-shop-affiliate-calculator.html"><span class="nav-link-icon">🛍️</span><span class="nav-link-text">TikTok Shop Affiliate</span></a></li>
         <li><a class="nav-link" href="/tools/tiktok-money-calculator.html"><span class="nav-link-icon">🎵</span><span class="nav-link-text">TikTok Money Calc</span></a></li>
@@ -261,8 +263,8 @@
     <div>
       <div class="nav-group-title">Healthcare & Insurance</div>
       <ul class="nav-links">
-        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/hdhp-out-of-pocket-calculator.html"><span class="nav-link-icon">🏥</span><span class="nav-link-text">HDHP vs PPO Out-of-Pocket</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/cobra-insurance-calculator.html"><span class="nav-link-icon">🛡️</span><span class="nav-link-text">COBRA Health Insurance</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
       </ul>
     </div>
     <div>
@@ -281,12 +283,12 @@
     <div>
       <div class="nav-group-title">Lifestyle, Auto & Everyday Math</div>
       <ul class="nav-links">
-        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge badge-new">NEW</span></a></li>
-        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge badge-new">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/ev-vs-gas-calculator.html"><span class="nav-link-icon">⚡</span><span class="nav-link-text">EV vs Gas True Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/unit-price-calculator.html"><span class="nav-link-icon">🛒</span><span class="nav-link-text">Grocery Unit Price</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/electricity-cost-calculator.html"><span class="nav-link-icon">💡</span><span class="nav-link-text">Appliance Electricity Cost</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/tire-size-calculator.html"><span class="nav-link-icon">🛞</span><span class="nav-link-text">Tire Size & Speedometer</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/dog-cat-age-calculator.html"><span class="nav-link-icon">🐾</span><span class="nav-link-text">Pet Biological Age</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
+        <li><a class="nav-link" href="/tools/kitchen-recipe-converter.html"><span class="nav-link-icon">🍳</span><span class="nav-link-text">Recipe Measurement Scaler</span><span class="nav-link-badge" style="background:#2563eb;color:#fff;font-size:0.58rem;font-weight:800;padding:2px 6px;border-radius:6px;margin-left:auto;flex-shrink:0;">NEW</span></a></li>
         <li><a class="nav-link" href="/tools/flooring-calculator.html"><span class="nav-link-icon">🪵</span><span class="nav-link-text">Flooring & Tile Cost</span></a></li>
         <li><a class="nav-link" href="/tools/percentage-calculator.html"><span class="nav-link-icon">🔢</span><span class="nav-link-text">Percentage Calculator</span></a></li>
         <li><a class="nav-link" href="/tools/age-calculator.html"><span class="nav-link-icon">🎂</span><span class="nav-link-text">Exact Age & Date Calculator</span></a></li>
@@ -411,7 +413,7 @@
 <div class="tool-results-panel">
 <div class="result-card" style="text-align:center;padding:24px;">
 <div style="font-size:0.82rem;color:var(--text-muted);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Monthly Payment (PITI)</div>
-<div class="result-big" id="resPITI">$2,247</div>
+<div class="mort-result-big" id="resPITI">$2,247</div>
 <div id="resLoanLabel" style="font-size:0.82rem;color:var(--text-muted);margin-top:4px;">30-yr @ 6.80% on $280,000 loan</div>
 </div>
 <!-- Smart One-Click Copy Calculation Summary -->
@@ -419,18 +421,23 @@
 <button class="btn btn-secondary" id="shareBtn" style="width: 100%; padding: 11px 16px; margin-top: 14px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; border-radius: var(--radius-md);" type="button"><span>📋</span> <span id="shareBtnText">Copy Calculation Summary</span></button>
 </div>
 <div class="result-card" style="margin-top:14px;">
-<div class="calc-row"><span class="lbl">🏦 Principal &amp; Interest</span><span class="val" id="resPandI">$1,817</span></div>
-<div class="calc-row"><span class="lbl">🏛️ Property Tax /mo</span><span class="val" id="resTax">$350</span></div>
-<div class="calc-row"><span class="lbl">🛡️ Insurance /mo</span><span class="val" id="resIns">$125</span></div>
-<div class="calc-row" id="resPMIRow"><span class="lbl">⚠️ PMI /mo</span><span class="val" id="resPMI">$0</span></div>
-<div class="calc-row"><span class="lbl">💰 Loan Amount</span><span class="val" id="resLoanAmt">$280,000</span></div>
-<div class="calc-row"><span class="lbl">📊 LTV Ratio</span><span class="val" id="resLTV">80.0%</span></div>
-<div class="calc-row"><span class="lbl">💸 Total Interest Paid</span><span class="val" id="resTotalInt">$373,810</span></div>
-<div class="calc-row"><span class="lbl">🧾 Total Cost of Loan</span><span class="val" id="resTotalCost">$653,810</span></div>
+<div class="mort-row"><span class="lbl">🏦 Principal &amp; Interest</span><span class="val" id="resPandI">$1,817</span></div>
+<div class="mort-row"><span class="lbl">🏛️ Property Tax /mo</span><span class="val" id="resTax">$350</span></div>
+<div class="mort-row"><span class="lbl">🛡️ Insurance /mo</span><span class="val" id="resIns">$125</span></div>
+<div class="mort-row" id="resPMIRow"><span class="lbl">⚠️ PMI /mo</span><span class="val" id="resPMI">$0</span></div>
+<div class="mort-row"><span class="lbl">💰 Loan Amount</span><span class="val" id="resLoanAmt">$280,000</span></div>
+<div class="mort-row"><span class="lbl">📊 LTV Ratio</span><span class="val" id="resLTV">80.0%</span></div>
+<div class="mort-row"><span class="lbl">💸 Total Interest Paid</span><span class="val" id="resTotalInt">$373,810</span></div>
+<div class="mort-row"><span class="lbl">🧾 Total Cost of Loan</span><span class="val" id="resTotalCost">$653,810</span></div>
 </div>
 <!-- Amortization -->
 <div style="margin-top:20px;">
 <div style="font-size:0.9rem;font-weight:700;margin-bottom:4px;">📅 Amortization Schedule</div>
+<!-- Amortization Chart -->
+<div class="chart-container" style="position:relative;height:300px;margin-bottom:20px;background:var(--bg-subtle);border:1px solid var(--border);border-radius:12px;padding:16px;">
+  <canvas id="amortChart"></canvas>
+  <button id="downloadMortgageChart" class="btn btn-secondary" style="position:absolute;top:12px;right:12px;padding:6px 12px;font-size:0.75rem;">📥 Download PNG</button>
+</div>
 <div style="overflow-x:auto;">
 <table class="amort-table" id="amortTable">
 <thead><tr><th>Year</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
@@ -442,18 +449,8 @@
 </div>
 <!-- Comprehensive SEO Guide & FAQ Section -->
 <section class="tool-guide-section" style="margin-top:48px;padding:28px;background:var(--bg-surface,#ffffff);border:1px solid var(--border-subtle,#e5e7eb);border-radius:12px;line-height:1.7;color:var(--text-main,#1f2937);">
-<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:12px;">How to Calculate Your Monthly Mortgage Payment (PITI) — 2026 Complete Guide</h2>
+<h2 style="color:var(--brand-primary,#2563eb);font-size:1.5rem;margin-bottom:12px;">How to Calculate Your Monthly Mortgage Payment (PITI)</h2>
 <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.75;margin-bottom:18px;">Purchasing a home is the largest capital acquisition most Americans make. Your monthly payment is not just loan principal and interest; it includes mandatory property taxes, insurance, and private mortgage insurance (PMI). These components combine into the industry-standard acronym <strong>PITI</strong>.</p>
-
-<!-- Real-Life Case Study -->
-<div style="background: linear-gradient(135deg, rgba(37,99,235,0.08), rgba(16,185,129,0.08)); border: 1px solid var(--brand-primary); border-radius: 12px; padding: 20px; margin: 24px 0;">
-<h3 style="color:var(--brand-primary);font-size:1.1rem;margin-bottom:12px;">📋 Real-Life Example: Sarah & Mike's First Home Purchase in Austin, Texas</h3>
-<p style="font-size:0.9rem;line-height:1.7;margin-bottom:12px;">Sarah (32) and Mike (34), both software engineers in Austin, were approved for a $450,000 conventional loan in March 2026. With their combined income of $185,000/year, they qualified for a 6.75% interest rate. They had $63,000 saved for down payment (14%), but their lender recommended putting exactly 20% ($90,000) to avoid PMI.</p>
-<p style="font-size:0.9rem;line-height:1.7;margin-bottom:12px;"><strong>Their Decision:</strong> They used $90,000 for 20% down, leaving $27,000 for closing costs and emergency fund. Their monthly PITI: <strong>$2,847</strong> ($2,389 principal+interest + $312 property tax + $146 insurance). No PMI required.</p>
-<div style="background: rgba(16,185,129,0.1); border-left: 4px solid #10b981; padding: 12px; border-radius: 6px; margin-top: 12px;">
-<strong style="color: #059669;">💡 Key Takeaway:</strong> By waiting 8 months to save the extra $27,000, they eliminated $187/month PMI permanently — saving $67,320 over 30 years.
-</div>
-</div>
 <h3 style="margin-top:20px;font-size:1.2rem;">Understanding the Components of PITI</h3>
 <ul style="padding-left:20px;margin-top:8px;color:var(--text-muted,#4b5563);font-size:0.9rem;">
 <li><strong>Principal:</strong> The money that directly repays your borrowed loan balance.</li>
@@ -857,21 +854,116 @@ function calcMortgage(){
   else{pmiNote.style.display='none';}
 
   var bal=loan;var tbody=document.getElementById('amortBody');tbody.innerHTML='';
-  for(var yr=1;yr<=loanYears;yr++){
-    var yPrinc=0,yInt=0;
-    for(var mo=0;mo<12;mo++){
-      var intPay=bal*r;var princPay=pi-intPay;
-      yPrinc+=princPay;yInt+=intPay;bal-=princPay;if(bal<0)bal=0;
+    var chartLabels=[], chartPrincipal=[], chartInterest=[], chartBalance=[];
+    for(var yr=1;yr<=loanYears;yr++){
+      var yPrinc=0,yInt=0;
+      for(var mo=0;mo<12;mo++){
+        var intPay=bal*r;var princPay=pi-intPay;
+        yPrinc+=princPay;yInt+=intPay;bal-=princPay;if(bal<0)bal=0;
+      }
+      chartLabels.push('Year '+yr);
+      chartPrincipal.push(yPrinc);
+      chartInterest.push(yInt);
+      chartBalance.push(Math.max(0,bal));
+      var tr=document.createElement('tr');
+      tr.innerHTML='<td>Year '+yr+'</td><td>'+fmtD(yPrinc)+'</td><td>'+fmtD(yInt)+'</td><td>'+fmtD(Math.max(0,bal))+'</td>';
+      tbody.appendChild(tr);
+      if(bal<=0)break;
     }
-    var tr=document.createElement('tr');
-    tr.innerHTML='<td>Year '+yr+'</td><td>'+fmtD(yPrinc)+'</td><td>'+fmtD(yInt)+'</td><td>'+fmtD(Math.max(0,bal))+'</td>';
-    tbody.appendChild(tr);
-    if(bal<=0)break;
-  }
-}
-calcMortgage();
 
-// Share & Copy Calculation Logic
+    // Render Amortization Chart
+    renderAmortizationChart(chartLabels, chartPrincipal, chartInterest);
+  }
+  calcMortgage();
+
+  // Amortization Chart Rendering
+  var amortChartInstance = null;
+  function renderAmortizationChart(labels, principalData, interestData) {
+    var ctx = document.getElementById('amortChart').getContext('2d');
+    if (amortChartInstance) { amortChartInstance.destroy(); }
+  
+    var primaryColor = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#38bdf8';
+    var accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-emerald').trim() || '#34d399';
+    var textColor = getComputedStyle(document.documentElement).getPropertyValue('--text-main').trim() || '#f8fafc';
+    var mutedColor = getComputedStyle(document.documentElement).getPropertyValue('--text-muted').trim() || '#94a3b8';
+    var gridColor = getComputedStyle(document.documentElement).getPropertyValue('--border').trim() || '#1e293b';
+    var bgColor = getComputedStyle(document.documentElement).getPropertyValue('--bg-surface').trim() || '#0a0e17';
+
+    amortChartInstance = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: labels,
+        datasets: [
+          {
+            label: 'Principal Paid',
+            data: principalData,
+            backgroundColor: primaryColor,
+            borderRadius: 4,
+            maxBarThickness: 40
+          },
+          {
+            label: 'Interest Paid',
+            data: interestData,
+            backgroundColor: accentColor,
+            borderRadius: 4,
+            maxBarThickness: 40
+          }
+        ]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { intersect: false, mode: 'index' },
+        plugins: {
+          legend: { 
+            display: true, 
+            position: 'top',
+            labels: { color: textColor, font: { size: 12 }, usePointStyle: true, padding: 20 }
+          },
+          tooltip: {
+            backgroundColor: bgColor,
+            titleColor: textColor,
+            bodyColor: textColor,
+            borderColor: gridColor,
+            borderWidth: 1,
+            padding: 12,
+            displayColors: true,
+            callbacks: {
+              label: function(context) {
+                return context.dataset.label + ': $' + context.parsed.y.toLocaleString();
+              }
+            }
+          }
+        },
+        scales: {
+          x: {
+            stacked: true,
+            grid: { color: gridColor, drawBorder: false },
+            ticks: { color: mutedColor, font: { size: 11 }, maxRotation: 45, minRotation: 45 }
+          },
+          y: {
+            stacked: true,
+            grid: { color: gridColor, drawBorder: false },
+            ticks: { 
+              color: mutedColor, 
+              font: { size: 11 },
+              callback: function(value) { return '$' + value.toLocaleString(); }
+            }
+          }
+        }
+      }
+    });
+  }
+
+  // Download Chart as PNG
+  document.getElementById('downloadMortgageChart').addEventListener('click', function() {
+    if (amortChartInstance) {
+      var link = document.createElement('a');
+      link.download = 'mortgage-amortization-chart.png';
+      link.href = amortChartInstance.toBase64Image('image/png', 1.0);
+      link.click();
+    }
+  });
 document.getElementById('shareBtn').addEventListener('click', async () => {
   const piti = document.getElementById('resPITI').textContent;
   const loan = document.getElementById('resLoanAmt').textContent;

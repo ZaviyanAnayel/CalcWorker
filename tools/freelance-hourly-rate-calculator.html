@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html data-theme="dark" lang="en">
+<head>
+<link href="/manifest.json" rel="manifest"/>
+<meta content="#1d4ed8" name="theme-color"/>
+<meta content="yes" name="apple-mobile-web-app-capable"/>
+<meta content="black-translucent" name="apple-mobile-web-app-status-bar-style"/>
+<meta content="CalcWorker" name="apple-mobile-web-app-title"/>
+<script>
+    (function(){
+      try {
+        if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+        var t = 'dark';
+        document.documentElement.setAttribute('data-theme', t);
+        var calcT = (t === 'light') ? 'nordic' : (localStorage.getItem('omnicalc_theme') || 'onyx');
+        document.documentElement.setAttribute('data-calc-theme', calcT);
+      } catch(e){}
+    })();
+  </script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Freelance Hourly Rate Calculator — Convert Salary to Billable Rate</title>
+<meta content="Calculate your minimum freelance hourly rate to match a target salary. Accounts for unpaid time off, health insurance, self-employment tax, business expenses, and profit margin. 2026 tax rates." name="description"/>
+<meta content="freelance hourly rate calculator, billable rate calculator, salary to hourly converter, consulting rate calculator, freelance pricing, 1099 hourly rate" name="keywords"/>
+<meta content="CalcWorker" name="author"/>
+<meta content="index, follow, max-image-preview:large" name="robots"/>
+<link href="https://calcworker.com/tools/freelance-hourly-rate-calculator.html" rel="canonical"/>
+<meta content="website" property="og:type"/>
+<meta content="https://calcworker.com/tools/freelance-hourly-rate-calculator.html" property="og:url"/>
+<meta content="CalcWorker" property="og:site_name"/>
+<meta content="Freelance Hourly Rate Calculator — Convert Salary to Billable Rate" property="og:title"/>
+<meta content="Calculate your minimum freelance hourly rate to match a target salary. Accounts for unpaid time off, health insurance, self-employment tax, business expenses, and profit margin. 2026 tax rates." property="og:description"/>
+<meta content="https://calcworker.com/assets/logo.svg" property="og:image"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<link href="/assets/favicon.png" rel="icon" type="image/png"/>
+<script async="" crossorigin="anonymous" src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7358272532329016"></script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-1QCQNSCVQM"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-1QCQNSCVQM');
+  </script>
+<link href="/css/calcworker.css?v=2026.4" rel="stylesheet"/>
+<style>
+    .rate-kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .rate-kpi-box {
+      background: var(--bg-subtle, rgba(255, 255, 255, 0.03));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 16px 12px;
+      text-align: center;
+      transition: transform 0.15s ease, border-color 0.15s ease;
+    }
+    .rate-kpi-box:hover {
+      border-color: var(--brand-primary);
+      transform: translateY(-2px);
+    }
+    .rate-kpi-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+    }
+    .rate-kpi-val {
+      font-size: 1.45rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .rate-kpi-val.rate { color: #38bdf8; }
+    .rate-kpi-val.salary { color: #fbbf24; }
+    .rate-kpi-val.cost { color: #fb7185; }
+    .rate-kpi-val.profit { color: #34d399; }
+    .breakdown-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 20px; margin: 16px 0; }
+    .breakdown-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border-subtle); font-size: 0.9rem; }
+    .breakdown-row:last-child { border-bottom: none; }
+    .breakdown-row .lbl { color: var(--text-muted); }
+    .breakdown-row .val { font-weight: 700; color: var(--text-main); font-family: monospace; }
+    .breakdown-row .val.cost { color: #fb7185; }
+    .breakdown-row .val.benefit { color: #34d399; }
+    .breakdown-row.total { font-size: 1.05rem; font-weight: 800; border-top: 2px solid var(--border); margin-top: 8px; padding-top: 16px; }
+    .scenario-tabs { display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+    .scenario-tab { padding: 10px 16px; border-radius: var(--radius-md); border: 2px solid var(--border); background: var(--bg-subtle); color: var(--text-muted); font-size: 0.85rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .scenario-tab.active { border-color: var(--brand-primary); background: var(--brand-light); color: var(--brand-primary); }
+    .scenario-tab:hover:not(.active) { border-color: var(--border-hover); color: var(--text-main); }
+    .scenario-panel { display: none; }
+    .scenario-panel.active { display: block; animation: fadeIn 0.2s ease; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+    .comparison-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin: 16px 0; }
+    .comparison-table th { background: var(--bg-subtle); padding: 12px; text-align: left; color: var(--text-main); font-weight: 600; border-bottom: 2px solid var(--border); }
+    .comparison-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); }
+    .comparison-table tr:nth-child(even) td { background: var(--bg-subtle); }
+    .comparison-table .highlight { color: #34d399; font-weight: 700; }
+    .ad-slot { margin: 24px 0; text-align: center; }
+    .guide-section { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 28px; margin: 32px 0; line-height: 1.7; }
+    .guide-section h2 { color: var(--brand-primary); font-size: 1.5rem; margin-bottom: 16px; }
+    .guide-section h3 { font-size: 1.2rem; margin-top: 24px; color: var(--text-main); }
+    .guide-section h4 { font-size: 1.05rem; margin-top: 16px; color: var(--text-main); }
+    .guide-section p { color: var(--text-muted); font-size: 0.95rem; margin: 12px 0; }
+    .guide-section ul { color: var(--text-muted); font-size: 0.9rem; padding-left: 20px; margin: 12px 0; }
+    .guide-section li { margin: 8px 0; }
+    .guide-section .formula-box { background: var(--bg-subtle); border-left: 4px solid var(--brand-primary); padding: 16px; margin: 16px 0; border-radius: 0 var(--radius-md) var(--radius-md) 0; font-family: monospace; font-size: 0.9rem; }
+    .guide-section .highlight-box { background: var(--accent-amber-light); border: 1px solid var(--accent-amber); border-radius: var(--radius-md); padding: 16px; margin: 16px 0; }
+    .related-tools-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 16px; }
+    .related-tool-link { display: flex; flex-direction: column; justify-content: space-between; background: var(--bg-surface); border: 1px solid var(--border); border-radius: 12px; padding: 16px 18px; text-decoration: none; transition: all 0.2s ease; }
+    .related-tool-link:hover { border-color: var(--brand-primary); transform: translateY(-2px); }
+    .related-tool-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px; }
+    .related-tool-icon { font-size: 1.35rem; }
+    .related-tool-badge { font-size: 0.65rem; font-weight: 800; background: rgba(37,99,235,0.12); color: #60a5fa; border: 1px solid rgba(37,99,235,0.25); padding: 2px 7px; border-radius: 9999px; }
+    .related-tool-title { font-size: 0.95rem; font-weight: 700; color: var(--text-main); margin-bottom: 4px; }
+    .related-tool-desc { font-size: 0.8rem; color: var(--text-muted); line-height: 1.45; margin: 0 0 12px 0; }
+    .related-tool-cta { display: flex; align-items: center; font-size: 0.8rem; font-weight: 600; color: var(--brand-primary); }
+    .preset-btns { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .preset-btn { padding: 8px 14px; border-radius: var(--radius-md); border: 2px solid var(--border); background: var(--bg-subtle); color: var(--text-muted); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all 0.15s; }
+    .preset-btn.active { border-color: var(--brand-primary); background: var(--brand-light); color: var(--brand-primary); }
+    .preset-btn:hover:not(.active) { border-color: var(--border-hover); color: var(--text-main); }
+  </style>
+<script type="application/ld+json">
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Freelance Hourly Rate Calculator",
+    "url": "https://calcworker.com/tools/freelance-hourly-rate-calculator.html",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "Web",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "How do I calculate my freelance hourly rate from a salary target?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Target Annual Income + Business Expenses + Taxes + Benefits Cost, divided by (Billable Hours/Week × Weeks Worked/Year), multiplied by (1 + Profit Margin). This accounts for unpaid vacation, health insurance, self-employment tax (15.3%), and non-billable admin time."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Why is my freelance rate so much higher than salary ÷ 2,080?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Employees get paid for 2,080 hours but freelancers only bill 1,000-1,500 hours/year. You must cover: employer half of FICA (7.65%), health insurance ($6k-$25k), unpaid vacation/sick (4-6 weeks), business expenses, retirement contributions, and non-billable time (marketing, admin, sales)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What should I include in business expenses?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Software/SaaS subscriptions, equipment (laptop, phone), home office (rent portion or $5/sq ft simplified), professional insurance (E&O, liability), legal/accounting fees, marketing/website, continuing education, coworking space, business travel, bank fees, payment processing (2.9% Stripe)."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What profit margin should freelancers target?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "15-25% for established freelancers, 10-15% for new freelancers building portfolio. This is above your 'replacement salary' — it's the entrepreneurial premium for risk, client acquisition cost, income volatility, and lack of employer benefits. Agency rates typically carry 50-100% margins."
+        }
+      }
+    ]
+  }
+]
+</script>
+<script defer="" src="/js/sidebar.js?v=2026-v26"></script>
+<link href="/css/ai-widget.css?v=2026-v26" rel="stylesheet"/>
+<meta name="geo.region" content="US-CA"/>
+<meta name="geo.placename" content="San Francisco"/>
+<meta name="geo.position" content="37.7749;-122.4194"/>
+<meta name="ICBM" content="37.7749, -122.4194"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+<meta name="googlebot" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1"/>
+</head>
+<body>
+<div class="app-shell">
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand"><a aria-label="CalcWorker Home" href="/" title="CalcWorker Home"><img alt="CalcWorker Logo" class="sidebar-logo" src="/assets/logo.png"/></a></div>
+  <div class="sidebar-nav"></div>
+  <div class="sidebar-footer"><span>CalcWorker • Zaviyan LLC</span><span>USA 2026</span></div>
+</aside>
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+<div class="main-viewport">
+<header class="topbar">
+  <div class="topbar-left">
+    <button aria-label="Toggle Sidebar Navigation" class="topbar-icon-btn sidebar-toggle-btn" id="sidebarToggleBtn" type="button">
+      <svg fill="none" height="18" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="18"><line x1="3" x2="21" y1="12" y2="12"></line><line x1="3" x2="21" y1="6" y2="6"></line><line x1="3" x2="21" y1="18" y2="18"></line></svg>
+    </button>
+  </div>
+  <div class="topbar-right">
+    <button aria-label="Share Calculator" class="topbar-icon-btn" onclick="openCalcWorkerShareModal()" title="Share Calculator" type="button">
+      <svg fill="none" height="14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="14">
+        <circle cx="18" cy="5" r="3"></circle>
+        <circle cx="6" cy="12" r="3"></circle>
+        <circle cx="18" cy="19" r="3"></circle>
+        <line x1="8.59" x2="15.42" y1="13.51" y2="17.49"></line>
+        <line x1="15.41" x2="8.59" y1="6.51" y2="10.49"></line>
+      </svg>
+      <span class="btn-label">Share</span>
+    </button>
+    <button aria-label="Toggle dark/light theme" class="topbar-icon-btn theme-toggle-btn" id="themeToggleBtn" title="Toggle Theme" type="button">
+      <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" style="color:#f59e0b;" viewbox="0 0 24 24" width="15">
+        <circle cx="12" cy="12" r="5"></circle>
+        <line x1="12" x2="12" y1="1" y2="3"></line>
+        <line x1="12" x2="12" y1="21" y2="23"></line>
+        <line x1="4.22" x2="5.64" y1="4.22" y2="5.64"></line>
+        <line x1="18.36" x2="19.78" y1="18.36" y2="19.78"></line>
+        <line x1="1" x2="3" y1="1" y2="12"></line>
+        <line x1="21" x2="23" y1="12" y2="12"></line>
+        <line x1="4.22" x2="5.64" y1="19.78" y2="18.36"></line>
+        <line x1="18.36" x2="19.78" y1="5.64" y2="4.22"></line>
+      </svg>
+      <span class="btn-label">Light</span>
+    </button>
+  </div>
+</header>
+<main class="page-container">
+<div class="breadcrumb" style="display: flex; align-items: center; gap: 8px; font-size: 0.8rem; color: var(--text-muted); margin-bottom: 16px;">
+  <a href="/" style="color: var(--text-muted); text-decoration: none;">Dashboard</a>
+  <span>›</span>
+  <a href="/business-calculators" style="color: var(--text-muted); text-decoration: none;">Business</a>
+  <span>›</span>
+  <span style="color: var(--brand-primary); font-weight: 600;">Freelance Hourly Rate</span>
+</div>
+
+<section class="calc-card" style="margin-bottom: 24px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 16px;">
+    <div>
+      <div style="display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 9999px; background: rgba(168, 85, 247, 0.12); color: #a855f7; font-size: 0.75rem; font-weight: 700; margin-bottom: 8px;">
+        <span>💼</span> 1099 Pricing Engine
+      </div>
+      <h1 style="font-size: clamp(1.45rem, 2.4vw, 1.95rem); font-weight: 800; color: var(--text-main); margin: 0 0 8px 0; letter-spacing: -0.02em;">
+        Freelance Hourly Rate Calculator
+      </h1>
+      <p style="margin: 0; font-size: 0.92rem; color: var(--text-muted); max-width: 820px; line-height: 1.6;">
+        Calculate the minimum billable hourly rate to replace a target salary. Accounts for unpaid time off, health insurance, self-employment tax, business expenses, retirement savings, and profit margin. Based on 2026 tax rates.
+      </p>
+    </div>
+  </div>
+</section>
+
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>🎯</span> Target Income</h3>
+    
+    <div class="preset-btns">
+      <button class="preset-btn active" data-preset="50k" onclick="applyPreset('50k')">$50k</button>
+      <button class="preset-btn" data-preset="75k" onclick="applyPreset('75k')">$75k</button>
+      <button class="preset-btn" data-preset="100k" onclick="applyPreset('100k')">$100k</button>
+      <button class="preset-btn" data-preset="150k" onclick="applyPreset('150k')">$150k</button>
+      <button class="preset-btn" data-preset="200k" onclick="applyPreset('200k')">$200k</button>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Target Annual Take-Home Income</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="targetIncome" min="0" step="1000" type="number" value="100000"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Profit Margin / Entrepreneurial Premium</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="profitMargin" max="100" min="0" step="1" type="number" value="20"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">%</span></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Above replacement salary — covers risk, client acquisition, income volatility</p>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>⏱️</span> Billable Capacity</h3>
+    
+    <div class="form-group">
+      <label class="form-label">Billable Hours per Week</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="billableHoursWeek" max="40" min="1" step="1" type="number" value="25"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Hours clients actually pay for (excludes admin, marketing, learning)</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Weeks Worked per Year</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="weeksWorked" max="52" min="1" step="1" type="number" value="46"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">52 minus vacation, sick, holidays, slow periods (typical: 46-48)</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Utilization Rate</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="utilizationRate" max="100" min="1" step="1" type="number" value="75"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">%</span></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">% of available weeks with billable work (accounts for gaps between contracts)</p>
+    </div>
+  </div>
+</div>
+
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>🏥</span> Benefits & Insurance (Annual Cost)</h3>
+    
+    <div class="form-group">
+      <label class="form-label">Health Insurance Premium (Annual)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="healthInsurance" min="0" step="500" type="number" value="12000"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Marketplace/private plan for individual/family. Employer plans avg $8k-$25k</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Dental / Vision / Life Insurance</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="otherInsurance" min="0" step="100" type="number" value="1200"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Retirement Contribution Target (Solo 401k / SEP IRA)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="retirementContribution" min="0" step="1000" type="number" value="15000"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">You fund 100% — no employer match. Solo 401k limit $69k (2026)</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Professional Insurance (E&O, Liability, Cyber)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="profInsurance" min="0" step="100" type="number" value="1500"/></div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>💼</span> Business Expenses (Annual)</h3>
+    
+    <div class="form-group">
+      <label class="form-label">Software, SaaS, Subscriptions</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="softwareCosts" min="0" step="100" type="number" value="3000"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Equipment & Hardware (Laptop, Phone, Monitor)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="equipmentCosts" min="0" step="100" type="number" value="2500"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Home Office / Coworking Space</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="officeCosts" min="0" step="100" type="number" value="3600"/></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">Rent portion or $5/sq ft simplified (max $1,500) or coworking $200-$600/mo</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Marketing, Website, Professional Development</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="marketingCosts" min="0" step="100" type="number" value="2000"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Legal, Accounting, Tax Prep, Banking Fees</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="professionalFees" min="0" step="100" type="number" value="2000"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Payment Processing Fees (Stripe 2.9% + $0.30, etc.)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="processingFees" min="0" step="100" type="number" value="2000"/></div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Travel, Meals, Entertainment (50% deductible)</label>
+      <div class="input-prefix-wrap"><span class="input-prefix">$</span>
+      <input class="form-input input-with-prefix" id="travelCosts" min="0" step="100" type="number" value="1500"/></div>
+    </div>
+  </div>
+</div>
+
+<div class="calc-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px; margin-bottom: 32px;">
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>🏛️</span> Tax Configuration (2026)</h3>
+    
+    <div class="form-group">
+      <label class="form-label">Filing Status</label>
+      <div class="preset-btns" style="margin-top: 8px;">
+        <button class="preset-btn active" data-tax="single" onclick="setTaxStatus('single')">Single</button>
+        <button class="preset-btn" data-tax="mfj" onclick="setTaxStatus('mfj')">Married Filing Jointly</button>
+        <button class="preset-btn" data-tax="hoh" onclick="setTaxStatus('hoh')">Head of Household</button>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">State Income Tax Rate</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="stateTaxRate" max="15" min="0" step="0.1" type="number" value="5"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">%</span></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">0% for FL, TX, WA, NV, etc. | 9-13% for CA, NY, NJ, OR</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">Self-Employment Tax Rate</label>
+      <div class="input-prefix-wrap"><input class="form-input" id="seTaxRate" max="20" min="0" step="0.1" type="number" value="15.3"/><span style="position:absolute;right:10px;top:50%;transform:translateY(-50%);color:var(--text-muted);">%</span></div>
+      <p style="font-size: 0.75rem; color: var(--text-dim); margin-top: 4px;">12.4% Social Security (capped $176,100) + 2.9% Medicare. 0.9% addl >$200k</p>
+    </div>
+    
+    <div class="form-group">
+      <label class="form-label">QBI Deduction (20% of Qualified Business Income)</label>
+      <div class="form-group" style="display: flex; align-items: center; gap: 10px; margin-top: 8px;">
+        <input type="checkbox" id="qbiEligible" checked style="width: 18px; height: 18px; accent-color: var(--brand-primary);"/>
+        <span>Eligible for 20% QBI deduction (phases out $191,950 single / $383,900 MFJ)</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="calc-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>📊</span> Quick Comparison Scenarios</h3>
+    <div class="scenario-tabs" id="scenarioTabs">
+      <button class="scenario-tab active" data-scenario="conservative" onclick="showScenario('conservative')">🛡️ Conservative (Low Utilization)</button>
+      <button class="scenario-tab" data-scenario="realistic" onclick="showScenario('realistic')">⚖️ Realistic (Default)</button>
+      <button class="scenario-tab" data-scenario="aggressive" onclick="showScenario('aggressive')">🚀 Aggressive (High Utilization)</button>
+      <button class="scenario-tab" data-scenario="agency" onclick="showScenario('agency')">🏢 Agency Rate (50% Margin)</button>
+    </div>
+    
+    <div class="scenario-panel active" id="panel-conservative"></div>
+    <div class="scenario-panel" id="panel-realistic"></div>
+    <div class="scenario-panel" id="panel-aggressive"></div>
+    <div class="scenario-panel" id="panel-agency"></div>
+  </div>
+</div>
+
+<div class="calc-card" style="margin-bottom: 24px;">
+  <button class="calc-btn" id="calcBtn" onclick="calcRate()" style="width: 100%; padding: 16px; font-size: 1.05rem;">💰 Calculate My Hourly Rate</button>
+</div>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7358272532329016" data-ad-slot="8923456789" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<section id="resultsSection" style="display: none;">
+  <div class="rate-kpi-grid" id="kpiGrid"></div>
+
+  <div class="breakdown-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>📋</span> Annual Cost Breakdown</h3>
+    <div class="breakdown-row"><span class="lbl">Target Take-Home Income</span><span class="val benefit" id="brTargetIncome">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Profit Margin / Premium</span><span class="val benefit" id="brProfitMargin">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Health & Insurance</span><span class="val cost" id="brHealthIns">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Retirement Contributions</span><span class="val cost" id="brRetirement">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Business Expenses (Software, Equipment, Office, etc.)</span><span class="val cost" id="brBizExpenses">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Self-Employment Tax (15.3%)</span><span class="val cost" id="brSETax">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Federal Income Tax (Estimated)</span><span class="val cost" id="brFedTax">—</span></div>
+    <div class="breakdown-row"><span class="lbl">State Income Tax (Estimated)</span><span class="val cost" id="brStateTax">—</span></div>
+    <div class="breakdown-row total"><span class="lbl">Total Annual Revenue Required</span><span class="val" id="brTotalRevenue">—</span></div>
+  </div>
+
+  <div class="breakdown-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>⏱️</span> Billable Capacity Analysis</h3>
+    <div class="breakdown-row"><span class="lbl">Theoretical Billable Hours/Year</span><span class="val" id="brTheoreticalHours">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Effective Billable Hours (with Utilization)</span><span class="val" id="brEffectiveHours">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Non-Billable Hours (Admin, Marketing, Learning)</span><span class="val cost" id="brNonBillable">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Weeks Off (Vacation, Sick, Holidays, Slow)</span><span class="val" id="brWeeksOff">—</span></div>
+  </div>
+
+  <div class="breakdown-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>💵</span> Rate Calculations</h3>
+    <div class="breakdown-row"><span class="lbl">Minimum Hourly Rate (Break-Even)</span><span class="val rate" id="brMinRate">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Target Hourly Rate (With Profit Margin)</span><span class="val rate" id="brTargetRate">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Daily Rate (8 hrs)</span><span class="val" id="brDailyRate">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Weekly Rate (40 hrs)</span><span class="val" id="brWeeklyRate">—</span></div>
+    <div class="breakdown-row"><span class="lbl">Monthly Retainer Equivalent</span><span class="val" id="brMonthlyRetainer">—</span></div>
+    <div class="breakdown-row total"><span class="lbl">Project Rate (40-hr week)</span><span class="val" id="brProjectRate">—</span></div>
+  </div>
+
+  <div class="breakdown-card">
+    <h3 style="font-size: 1rem; font-weight: 700; color: var(--text-main); margin-bottom: 16px; display: flex; align-items: center; gap: 8px;"><span>📈</span> Salary Equivalency Comparison</h3>
+    <div style="overflow-x:auto;">
+      <table class="comparison-table" id="salaryComparisonTable">
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th>Your Freelance Rate</th>
+            <th>W-2 Salary Equivalent</th>
+            <th>Difference</th>
+          </tr>
+        </thead>
+        <tbody id="salaryComparisonBody"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<article class="guide-section">
+  <h2>📖 Complete Guide to Freelance Hourly Rate Calculation</h2>
+  
+  <p>Most freelancers severely underprice because they calculate: <code>Desired Salary ÷ 2,080 hours = Hourly Rate</code>. This ignores the fundamental reality: <strong>freelancers only bill 1,000-1,500 hours/year</strong> vs. 2,080 paid hours for employees. The rest is unpaid admin, marketing, learning, and gaps between contracts.</p>
+
+  <h3>The Complete Freelance Rate Formula</h3>
+  
+  <div class="formula-box">
+    Hourly Rate = (Target Income + Business Expenses + Taxes + Benefits + Retirement) × (1 + Profit Margin)
+                  ----------------------------------------------------------
+                              Billable Hours × Weeks × Utilization
+  </div>
+
+  <p>Every component matters. Missing just health insurance ($12k) and self-employment tax (7.65% employer half) on a $100k target adds $40+/hour to your required rate.</p>
+
+  <h3>Billable vs. Non-Billable Hours — The Hidden Killer</h3>
+  <p>Employees get paid for:</p>
+  <ul>
+    <li>40 hrs/week × 52 weeks = 2,080 paid hours</li>
+    <li>Vacation, sick, holidays = paid</li>
+    <li>Meetings, training, admin = paid</li>
+    <li>Health insurance, 401k match = employer-paid</li>
+  </ul>
+  <p>Freelancers only get paid for:</p>
+  <ul>
+    <li>Actual client-facing work (typically 20-30 hrs/week)</li>
+    <li>Zero paid vacation/sick/holidays</li>
+    <li>All admin, marketing, proposals, invoicing, learning = UNPAID</li>
+    <li>100% of benefits, taxes, retirement = SELF-FUNDED</li>
+  </ul>
+  <p><strong>Realistic billable capacity: 25 hrs/week × 46 weeks × 75% utilization = ~860 hours/year</strong></p>
+
+  <h3>2026 Tax Burden for Freelancers</h3>
+  <ul>
+    <li><strong>Self-Employment Tax:</strong> 15.3% on 92.35% of net earnings (12.4% SS up to $176,100 + 2.9% Medicare, +0.9% >$200k)</li>
+    <li><strong>Federal Income Tax:</strong> Progressive brackets 10%-37% (see Tax Bracket Calculator)</li>
+    <li><strong>State Income Tax:</strong> 0-13.3% depending on state</li>
+    <li><strong>QBI Deduction:</strong> 20% of qualified business income (phases out $191,950 single / $383,900 MFJ)</li>
+    <li><strong>Estimated Payments:</strong> Quarterly due Apr 15, Jun 15, Sep 15, Jan 15</li>
+  </ul>
+
+  <div class="highlight-box">
+    <strong>💡 Pro Tip:</strong> Your "hourly rate" is a floor, not a ceiling. Charge per project/value whenever possible. A $150/hr rate on a 40-hr project = $6,000. If you complete it in 30 hours via expertise/tools, your effective rate = $200/hr. Value pricing decouples income from hours.
+  </div>
+
+  <h3>Business Expense Categories (All Deductible)</h3>
+  <ul>
+    <li><strong>Software/SaaS:</strong> Adobe, Figma, GitHub, Notion, CRM, project tools</li>
+    <li><strong>Equipment:</strong> Laptop (depreciate or Section 179), phone, monitors, ergonomic chair</li>
+    <li><strong>Home Office:</strong> $5/sq ft × 300 sq ft max = $1,500 simplified, or actual % of rent/mortgage/utilities</li>
+    <li><strong>Insurance:</strong> E&O ($500-3,000), General Liability ($400-1,500), Cyber ($300-1,000)</li>
+    <li><strong>Professional Services:</strong> CPA ($1,500-5,000), lawyer (contracts), bookkeeping</li>
+    <li><strong>Marketing:</strong> Website, portfolio, LinkedIn Premium, ads, networking events</li>
+    <li><strong>Education:</strong> Courses, certifications, conferences, books</li>
+    <li><strong>Payment Processing:</strong> 2.9% + $0.30 (Stripe), 3.49% + $0.49 (PayPal)</li>
+    <li><strong>Travel/Meals:</strong> 50% deductible for business meals, 100% for travel</li>
+  </ul>
+
+  <h3>Health Insurance Options for Freelancers (2026)</h3>
+  <ul>
+    <li><strong>ACA Marketplace:</strong> $400-1,200/mo individual, $1,200-3,000/mo family (subsidies if AGI < 400% FPL)</li>
+    <li><strong>Association Health Plans:</strong> Industry groups, chambers of commerce — sometimes cheaper</li>
+    <li><strong>Health Sharing Ministries:</strong> $200-500/mo — not insurance, no ACA protections</li>
+    <li><strong>Spouse's Employer Plan:</strong> Often cheapest if available</li>
+    <li><strong>HSA-Eligible HDHP:</strong> $4,300/$8,550 contribution limits — triple tax advantage</li>
+  </ul>
+
+  <h3>Retirement Vehicles for Solo Freelancers</h3>
+  <ul>
+    <li><strong>Solo 401(k):</strong> $23,000 employee + 25% employer (up to $69k total) — best for high earners</li>
+    <li><strong>SEP IRA:</strong> 25% of net earnings up to $69k — simpler, no employee contribution</li>
+    <li><strong>Traditional/Roth IRA:</strong> $7,000 ($8,000 50+) — income limits for Roth</li>
+    <li><strong>Defined Benefit Plan:</strong> $200k+ contribution possible for high, consistent income</li>
+  </ul>
+
+  <h3>Pricing Models Beyond Hourly</h3>
+  <ul>
+    <li><strong>Project-Based:</strong> Fixed scope, fixed price — rewards efficiency, transfers risk to client</li>
+    <li><strong>Value-Based:</strong> Price = % of client revenue/cost savings — highest ceiling, requires trust</li>
+    <li><strong>Monthly Retainer:</strong> Reserved capacity, predictable revenue — discount 10-15% for commitment</li>
+    <li><strong>Day Rate:</strong> $1,200-3,000/day — simpler than hourly, minimum engagement</li>
+    <li><strong>Hybrid:</strong> Retainer base + project overages — best of both worlds</li>
+  </ul>
+
+  <h3>Rate Negotiation Framework</h3>
+  <ol>
+    <li><strong>Never give a range</strong> — state your rate confidently: "My rate is $175/hr"</li>
+    <li><strong>Anchor high</strong> — start 15-20% above minimum; you can discount, can't increase</li>
+    <li><strong>Offer options</strong> — "Option A: $175/hr T&M. Option B: $8,000 fixed scope. Option C: $6,500/mo retainer."</li>
+    <li><strong>Explain the math</strong> — "This covers my full benefits, taxes, and business costs so I can focus 100% on your project"</li>
+    <li><strong>Walk away threshold</strong> — know your floor; below it, you're subsidizing the client</li>
+  </ol>
+</article>
+
+<div class="ad-slot">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-7358272532329016" data-ad-slot="9876543210" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
+<article class="guide-section">
+  <h2>🔬 Mathematical Deep-Dive: Rate Calculation Algorithm</h2>
+  
+  <h3>Step-by-Step Calculation</h3>
+  <ol>
+    <li><strong>Total Annual Costs =</strong> Target Income + Profit Margin + Health Insurance + Other Insurance + Retirement + Professional Insurance + Software + Equipment + Office + Marketing + Professional Fees + Processing + Travel</li>
+    <li><strong>Taxable Income =</strong> Total Annual Costs (for SE tax calc) — above-line deductions</li>
+    <li><strong>Self-Employment Tax =</strong> Taxable Income × 92.35% × 15.3% (with SS cap)</li>
+    <li><strong>Federal Income Tax =</strong> Progressive brackets on (Taxable Income - 50% SE Tax - QBI Deduction)</li>
+    <li><strong>State Income Tax =</strong> Taxable Income × State Rate</li>
+    <li><strong>Total Revenue Required =</strong> Total Annual Costs + SE Tax + Federal Tax + State Tax</li>
+    <li><strong>Effective Billable Hours =</strong> Billable Hrs/Week × Weeks Worked × Utilization%</li>
+    <li><strong>Hourly Rate =</strong> Total Revenue Required ÷ Effective Billable Hours</li>
+  </ol>
+
+  <h3>Example: $100k Target, Default Inputs</h3>
+  <table class="comparison-table">
+    <thead><tr><th>Component</th><th>Amount</th></tr></thead>
+    <tbody>
+      <tr><td>Target Take-Home</td><td class="highlight">$100,000</td></tr>
+      <tr><td>Profit Margin (20%)</td><td class="highlight">$20,000</td></tr>
+      <tr><td>Health Insurance</td><td>$12,000</td></tr>
+      <tr><td>Other Insurance</td><td>$1,200</td></tr>
+      <tr><td>Retirement (Solo 401k)</td><td>$15,000</td></tr>
+      <tr><td>Business Expenses</td><td>$14,600</td></tr>
+      <tr><td><strong>Subtotal Before Tax</strong></td><td><strong>$162,800</strong></td></tr>
+      <tr><td>Self-Employment Tax (~14.1% effective)</td><td>$22,955</td></tr>
+      <tr><td>Federal Income Tax (est.)</td><td>$24,500</td></tr>
+      <tr><td>State Tax (5%)</td><td>$8,140</td></tr>
+      <tr><td><strong>Total Revenue Required</strong></td><td class="highlight"><strong>$218,395</strong></td></tr>
+      <tr><td>Effective Billable Hours (25×46×75%)</td><td>863</td></tr>
+      <tr><td><strong>Hourly Rate</strong></td><td class="highlight"><strong>$253/hr</strong></td></tr>
+    </tbody>
+  </table>
+
+  <p><strong>Compare to naive calculation:</strong> $100,000 ÷ 2,080 = $48/hr. The real rate is 5.3× higher. This is why "charge 2-3× your salary rate" is standard advice — it's mathematically grounded.</p>
+
+  <h3>Utilization Sensitivity Analysis</h3>
+  <table class="comparison-table">
+    <thead><tr><th>Utilization</th><th>Effective Hours</th><th>Required Rate</th><th>Annual Revenue</th></tr></thead>
+    <tbody>
+      <tr><td>50% (Conservative)</td><td>575</td><td class="highlight">$380/hr</td><td>$218,395</td></tr>
+      <tr><td>75% (Realistic)</td><td>863</td><td class="highlight">$253/hr</td><td>$218,395</td></tr>
+      <tr><td>90% (Aggressive)</td><td>1,035</td><td class="highlight">$211/hr</td><td>$218,395</td></tr>
+      <tr><td>100% (Impossible)</td><td>1,150</td><td class="highlight">$190/hr</td><td>$218,395</td></tr>
+    </tbody>
+  </table>
+</article>
+
+<section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
+  <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
+    <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">
+      <span>🔗</span> Related Precision Calculators
+    </h3>
+    <span style="font-size: 0.72rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em;">Recommended For You</span>
+  </div>
+  <div class="related-tools-grid">
+    <a class="related-tool-link" href="/tools/freelance-tax-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">💼</span>
+          <span class="related-tool-badge">1099 TAX</span>
+        </div>
+        <div class="related-tool-title">Freelance 1099 Tax Estimator</div>
+        <p class="related-tool-desc">Quarterly estimated tax (1040-ES), self-employment tax, QBI deduction, write-offs.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/gig-profit.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">🚗</span>
+          <span class="related-tool-badge">GIG</span>
+        </div>
+        <div class="related-tool-title">Gig Worker Net Profit Calculator</div>
+        <p class="related-tool-desc">Uber, DoorDash, Instacart — mileage, depreciation, gas, platform fees, net hourly.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/sales-commission-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">📈</span>
+          <span class="related-tool-badge">SALES</span>
+        </div>
+        <div class="related-tool-title">Sales Commission & Quota Calculator</div>
+        <p class="related-tool-desc">Tiered commissions, accelerators, draws, quota attainment, OTE modeling.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+
+    <a class="related-tool-link" href="/tools/job-offer-comparison-calculator.html">
+      <div>
+        <div class="related-tool-header">
+          <span class="related-tool-icon">💼</span>
+          <span class="related-tool-badge">OFFERS</span>
+        </div>
+        <div class="related-tool-title">Job Offer Comparison Calculator</div>
+        <p class="related-tool-desc">Total comp: salary, equity, bonus, benefits, 401k match, tax impact, COL adjustment.</p>
+      </div>
+      <div class="related-tool-cta"><span>Open Calculator</span> <span style="margin-left: 4px;">→</span></div>
+    </a>
+  </div>
+</section>
+
+<footer style="background: var(--bg-surface); border-top: 1px solid var(--border); padding: 56px 0 32px 0; margin-top: 64px; color: var(--text-main); font-size: 0.88rem;">
+  <div style="max-width: 1280px; margin: 0 auto; padding: 0 24px;">
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 40px;">
+      <div style="min-width: 200px;">
+        <a href="/" style="display: inline-flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 14px;">
+          <img src="/assets/favicon.png" alt="CalcWorker" width="34" height="34" style="border-radius: 8px; box-shadow: 0 2px 8px rgba(37, 99, 235, 0.3);">
+          <span style="font-size: 1.25rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">CalcWorker</span>
+        </a>
+        <p style="margin: 0 0 14px 0; color: var(--text-muted); font-size: 0.84rem; line-height: 1.55;">
+          High-precision, device-local financial & business computational workstation. 137 client-side calculators engineered for US professionals, homebuyers, and entrepreneurs.
+        </p>
+        <div style="font-size: 0.82rem; font-weight: 600; color: #60a5fa; margin-bottom: 8px;">
+          Founded by Zaviyan &bull; Operated by Zaviyan LLC
+        </div>
+        <div style="font-size: 0.82rem; margin-bottom: 14px;">
+          Direct Inquiries: <a href="mailto:business@zaviyanllc.com" style="color: #38bdf8; text-decoration: none; font-weight: 600;">business@zaviyanllc.com</a>
+        </div>
+        <div style="display: flex; flex-wrap: wrap; gap: 8px; font-size: 0.75rem;">
+          <span style="background: rgba(37, 99, 235, 0.12); color: #60a5fa; border: 1px solid rgba(37, 99, 235, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">🔒 Zero Telemetry</span>
+          <span style="background: rgba(16, 185, 129, 0.12); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.25); padding: 3px 8px; border-radius: 6px; font-weight: 600;">⚡ 100% Client-Side</span>
+        </div>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Business & Career</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-hourly-rate-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Freelance Hourly Rate</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/freelance-tax-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">1099 Freelance Tax</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/gig-profit.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Gig Worker Net Profit</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/sales-commission-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Sales Commission & Quota</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/job-offer-comparison-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Job Offer Comparison</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/llc-vs-scorp-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">LLC vs S-Corp Tax Savings</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/break-even.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Business Break-Even</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Tax Calculators</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tax-bracket-calculator-2026.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">2026 Federal Tax Brackets</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/paycheck-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Paycheck Take-Home (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/capital-gains-tax-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Capital Gains Tax (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/state-tax-relocation-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">State Tax Relocation (50 States)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/child-tax-credit-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Child Tax Credit & EITC</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/tax-withholding.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Tax Withholding (2026)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Real Estate & Loans</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Mortgage & PITI</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/mortgage-refinance-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Refinance Break-Even</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/extra-mortgage-payment-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Extra Payment Payoff</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/amortization-schedule.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Amortization Schedule</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/auto-loan.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Auto Loan Payment</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/rent-vs-buy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Rent vs Buy Analysis</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/heloc-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">HELOC Line of Credit</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Wealth & Savings</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/compound-interest.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Compound Interest Growth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/social-security-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Social Security Benefits</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/401k-rmd-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">401(k) & IRA RMD (2026)</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/cd-ladder-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">CD Ladder Yield Planner</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/roth-ira-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Roth IRA Tax-Free Wealth</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/tools/emergency-fund-calculator.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Emergency Fund (3-6 Mos)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div style="font-size: 0.82rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #fff; margin-bottom: 14px;">Company & Legal</div>
+        <ul style="list-style: none !important; margin: 0 !important; padding: 0 !important; display: flex; flex-direction: column; gap: 9px;">
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/about.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">About CalcWorker</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/contact.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Contact Engineering</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/privacy.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Privacy Policy</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/terms.html" style="color: var(--text-muted); text-decoration: none; font-size: 0.84rem;">Terms of Service</a></li>
+          <li style="list-style: none !important; margin: 0 !important; padding: 0 !important;"><a href="/disclaimer.html" style="color: #60a5fa; text-decoration: none; font-size: 0.84rem; font-weight: 600;">Financial Disclaimer</a></li>
+          <li style="list-style: none !important; margin-top: 6px !important; padding: 0 !important;">
+            <a href="https://webdevworker.com" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; gap: 6px; color: #38bdf8; text-decoration: none; font-size: 0.82rem; font-weight: 600; background: rgba(56, 189, 248, 0.08); border: 1px solid rgba(56, 189, 248, 0.25); padding: 5px 10px; border-radius: 6px;">
+              <span>WebDevWorker (Sister Suite)</span> <span>↗</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="background: rgba(15, 23, 42, 0.6); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; margin-bottom: 32px; font-size: 0.78rem; line-height: 1.6; color: var(--text-muted);">
+      <strong style="color: #cbd5e1;">Regulatory & Financial Calculation Notice:</strong> All computational suites, mortgage schedules, tax brackets, and investment projections provided across CalcWorker are designed strictly for educational and informational modeling purposes. CalcWorker and Zaviyan LLC do not provide certified public accounting (CPA), legal, fiduciary investment, or licensed mortgage brokerage services. In accordance with IRS Circular 230 and state taxation frameworks, calculations should be verified with licensed financial and tax professionals before executing contractual commitments.
+    </div>
+
+    <div style="border-top: 1px solid var(--border); padding-top: 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; font-size: 0.8rem;">
+      <div>&copy; 2026 CalcWorker. Founded and engineered by Zaviyan. Operated by Zaviyan LLC. All Rights Reserved.</div>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap; color: var(--text-muted);">
+        <span>🔒 100% Client-Side Sandbox</span>
+        <span>⚡ Zero Telemetry Guaranteed</span>
+        <span>📲 Offline PWA Capable</span>
+      </div>
+    </div>
+  </div>
+</footer>
+</main>
+</div>
+</div>
+<script src="/js/calcworker-common.js?v=2026.4"></script>
+<script>
+function fmt(n){return n.toLocaleString('en-US',{minimumFractionDigits:0,maximumFractionDigits:0});}
+function fmtD(n){return '$'+fmt(n);}
+function fmtD2(n){return '$'+n.toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+
+const PRESETS = {
+  '50k': {target: 50000, billable: 20, weeks: 44, util: 70, health: 8000, retirement: 5000},
+  '75k': {target: 75000, billable: 22, weeks: 45, util: 72, health: 10000, retirement: 10000},
+  '100k': {target: 100000, billable: 25, weeks: 46, util: 75, health: 12000, retirement: 15000},
+  '150k': {target: 150000, billable: 28, weeks: 47, util: 78, health: 15000, retirement: 20000},
+  '200k': {target: 200000, billable: 30, weeks: 48, util: 80, health: 18000, retirement: 25000}
+};
+
+function applyPreset(key) {
+  const p = PRESETS[key];
+  document.getElementById('targetIncome').value = p.target;
+  document.getElementById('billableHoursWeek').value = p.billable;
+  document.getElementById('weeksWorked').value = p.weeks;
+  document.getElementById('utilizationRate').value = p.util;
+  document.getElementById('healthInsurance').value = p.health;
+  document.getElementById('retirementContribution').value = p.retirement;
+  document.querySelectorAll('.preset-btn[data-preset]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.preset === key);
+  });
+  calcRate();
+}
+
+let taxStatus = 'single';
+function setTaxStatus(status) {
+  taxStatus = status;
+  document.querySelectorAll('.preset-btn[data-tax]').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.tax === status);
+  });
+  calcRate();
+}
+
+function showScenario(scenario) {
+  document.querySelectorAll('.scenario-tab').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.scenario === scenario);
+  });
+  document.querySelectorAll('.scenario-panel').forEach(panel => {
+    panel.classList.toggle('active', panel.id === 'panel-' + scenario);
+  });
+}
+
+function calcRate() {
+  // Inputs
+  const targetIncome = parseFloat(document.getElementById('targetIncome').value) || 0;
+  const profitMargin = (parseFloat(document.getElementById('profitMargin').value) || 0) / 100;
+  const billableHoursWeek = parseFloat(document.getElementById('billableHoursWeek').value) || 0;
+  const weeksWorked = parseFloat(document.getElementById('weeksWorked').value) || 0;
+  const utilizationRate = (parseFloat(document.getElementById('utilizationRate').value) || 0) / 100;
+  
+  const healthInsurance = parseFloat(document.getElementById('healthInsurance').value) || 0;
+  const otherInsurance = parseFloat(document.getElementById('otherInsurance').value) || 0;
+  const retirementContribution = parseFloat(document.getElementById('retirementContribution').value) || 0;
+  const profInsurance = parseFloat(document.getElementById('profInsurance').value) || 0;
+  
+  const softwareCosts = parseFloat(document.getElementById('softwareCosts').value) || 0;
+  const equipmentCosts = parseFloat(document.getElementById('equipmentCosts').value) || 0;
+  const officeCosts = parseFloat(document.getElementById('officeCosts').value) || 0;
+  const marketingCosts = parseFloat(document.getElementById('marketingCosts').value) || 0;
+  const professionalFees = parseFloat(document.getElementById('professionalFees').value) || 0;
+  const processingFees = parseFloat(document.getElementById('processingFees').value) || 0;
+  const travelCosts = parseFloat(document.getElementById('travelCosts').value) || 0;
+  
+  const stateTaxRate = (parseFloat(document.getElementById('stateTaxRate').value) || 0) / 100;
+  const seTaxRate = (parseFloat(document.getElementById('seTaxRate').value) || 15.3) / 100;
+  const qbiEligible = document.getElementById('qbiEligible').checked;
+
+  if (targetIncome <= 0 || billableHoursWeek <= 0 || weeksWorked <= 0) {
+    alert('Please fill in target income, billable hours/week, and weeks worked.');
+    return;
+  }
+
+  // Business expenses total
+  const bizExpenses = softwareCosts + equipmentCosts + officeCosts + marketingCosts + professionalFees + processingFees + travelCosts;
+  
+  // Benefits total
+  const benefitsTotal = healthInsurance + otherInsurance + retirementContribution + profInsurance;
+  
+  // Pre-tax subtotal
+  const preTaxSubtotal = targetIncome * (1 + profitMargin) + benefitsTotal + bizExpenses;
+  
+  // Self-employment tax calculation
+  // SE tax base = 92.35% of net earnings
+  const seTaxBase = preTaxSubtotal * 0.9235;
+  const ssCap = 176100; // 2026 SS wage base
+  const ssTax = Math.min(seTaxBase, ssCap) * 0.124;
+  const medicareTax = seTaxBase * 0.029;
+  const additionalMedicare = Math.max(0, seTaxBase - 200000) * 0.009;
+  const seTax = ssTax + medicareTax + additionalMedicare;
+  
+  // Federal income tax estimation (simplified progressive)
+  const fedTaxable = preTaxSubtotal - (seTax * 0.5); // 50% SE tax deductible
+  const qbiDeduction = qbiEligible ? Math.min(fedTaxable * 0.20, fedTaxable * 0.20) : 0; // Simplified
+  const fedTaxableAfterQBI = Math.max(0, fedTaxable - qbiDeduction);
+  
+  // 2026 brackets (single filer as baseline, adjust for status)
+  let brackets = [
+    {max: 11925, rate: 0.10},
+    {max: 48475, rate: 0.12},
+    {max: 103350, rate: 0.22},
+    {max: 197300, rate: 0.24},
+    {max: 250525, rate: 0.32},
+    {max: 626350, rate: 0.35},
+    {max: Infinity, rate: 0.37}
+  ];
+  
+  if (taxStatus === 'mfj') {
+    brackets = [
+      {max: 23850, rate: 0.10},
+      {max: 96950, rate: 0.12},
+      {max: 206700, rate: 0.22},
+      {max: 394600, rate: 0.24},
+      {max: 501050, rate: 0.32},
+      {max: 751600, rate: 0.35},
+      {max: Infinity, rate: 0.37}
+    ];
+  } else if (taxStatus === 'hoh') {
+    brackets = [
+      {max: 17000, rate: 0.10},
+      {max: 64850, rate: 0.12},
+      {max: 103350, rate: 0.22},
+      {max: 197300, rate: 0.24},
+      {max: 250500, rate: 0.32},
+      {max: 626350, rate: 0.35},
+      {max: Infinity, rate: 0.37}
+    ];
+  }
+  
+  let fedTax = 0;
+  let remaining = fedTaxableAfterQBI;
+  let prevMax = 0;
+  for (const b of brackets) {
+    const taxableInBracket = Math.min(remaining, b.max - prevMax);
+    if (taxableInBracket <= 0) break;
+    fedTax += taxableInBracket * b.rate;
+    remaining -= taxableInBracket;
+    prevMax = b.max;
+    if (remaining <= 0) break;
+  }
+  
+  // State tax
+  const stateTax = fedTaxableAfterQBI * stateTaxRate;
+  
+  // Total revenue required
+  const totalRevenue = preTaxSubtotal + seTax + fedTax + stateTax;
+  
+  // Billable hours
+  const theoreticalHours = billableHoursWeek * weeksWorked;
+  const effectiveHours = theoreticalHours * utilizationRate;
+  const nonBillableHours = (40 * weeksWorked) - theoreticalHours;
+  const weeksOff = 52 - weeksWorked;
+  
+  // Rates
+  const minRate = preTaxSubtotal / effectiveHours; // break-even before tax
+  const targetRate = totalRevenue / effectiveHours;
+  const dailyRate = targetRate * 8;
+  const weeklyRate = targetRate * 40;
+  const monthlyRetainer = targetRate * billableHoursWeek * 4.33; // avg weeks/month
+  const projectRate = targetRate * 40; // 40-hr project week
+  
+  // Salary equivalency
+  const w2SalaryEquiv = targetRate * 2080; // What W-2 salary equals this hourly
+  const employerBenefitsValue = 0.3 * w2SalaryEquiv; // ~30% benefits
+  const totalCompEquiv = w2SalaryEquiv + employerBenefitsValue;
+  
+  // Update KPI Grid
+  document.getElementById('kpiGrid').innerHTML = `
+    <div class="rate-kpi-box">
+      <div class="rate-kpi-label">Target Hourly Rate</div>
+      <div class="rate-kpi-val rate">${fmtD2(targetRate)}/hr</div>
+    </div>
+    <div class="rate-kpi-box">
+      <div class="rate-kpi-label">Break-Even Rate</div>
+      <div class="rate-kpi-val rate">${fmtD2(minRate)}/hr</div>
+    </div>
+    <div class="rate-kpi-box">
+      <div class="rate-kpi-label">Annual Revenue Needed</div>
+      <div class="rate-kpi-val salary">${fmtD(totalRevenue)}</div>
+    </div>
+    <div class="rate-kpi-box">
+      <div class="rate-kpi-label">W-2 Salary Equivalent</div>
+      <div class="rate-kpi-val salary">${fmtD(w2SalaryEquiv)}</div>
+    </div>
+    <div class="rate-kpi-box">
+      <div class="rate-kpi-label">Total Comp Equivalent</div>
+      <div class="rate-kpi-val profit">${fmtD(totalCompEquiv)}</div>
+    </div>
+    <div class="rate-kpi-box">
+      <div class="rate-kpi-label">Effective Billable Hrs</div>
+      <div class="rate-kpi-val">${fmt(effectiveHours)} hrs/yr</div>
+    </div>
+  `;
+
+  // Breakdown
+  document.getElementById('brTargetIncome').textContent = fmtD(targetIncome);
+  document.getElementById('brProfitMargin').textContent = fmtD(targetIncome * profitMargin);
+  document.getElementById('brHealthIns').textContent = fmtD(healthInsurance + otherInsurance + profInsurance);
+  document.getElementById('brRetirement').textContent = fmtD(retirementContribution);
+  document.getElementById('brBizExpenses').textContent = fmtD(bizExpenses);
+  document.getElementById('brSETax').textContent = fmtD(seTax);
+  document.getElementById('brFedTax').textContent = fmtD(fedTax);
+  document.getElementById('brStateTax').textContent = fmtD(stateTax);
+  document.getElementById('brTotalRevenue').textContent = fmtD(totalRevenue);
+  
+  document.getElementById('brTheoreticalHours').textContent = fmt(theoreticalHours) + ' hrs/yr';
+  document.getElementById('brEffectiveHours').textContent = fmt(effectiveHours) + ' hrs/yr';
+  document.getElementById('brNonBillable').textContent = fmt(nonBillableHours) + ' hrs/yr';
+  document.getElementById('brWeeksOff').textContent = weeksOff + ' weeks';
+  
+  document.getElementById('brMinRate').textContent = fmtD2(minRate) + '/hr';
+  document.getElementById('brTargetRate').textContent = fmtD2(targetRate) + '/hr';
+  document.getElementById('brDailyRate').textContent = fmtD(dailyRate);
+  document.getElementById('brWeeklyRate').textContent = fmtD(weeklyRate);
+  document.getElementById('brMonthlyRetainer').textContent = fmtD(monthlyRetainer) + '/mo';
+  document.getElementById('brProjectRate').textContent = fmtD(projectRate) + '/wk';
+
+  // Salary Comparison Table
+  let compHtml = `
+    <tr>
+      <td>Hourly Rate</td>
+      <td class="highlight">${fmtD2(targetRate)}</td>
+      <td>${fmtD2(w2SalaryEquiv / 2080)}</td>
+      <td class="highlight">+${fmtD2(targetRate - w2SalaryEquiv / 2080)}/hr</td>
+    </tr>
+    <tr>
+      <td>Annual Income (2,080 hrs)</td>
+      <td class="highlight">${fmtD(w2SalaryEquiv)}</td>
+      <td>${fmtD(targetIncome)}</td>
+      <td class="highlight">+${fmtD(w2SalaryEquiv - targetIncome)}</td>
+    </tr>
+    <tr>
+      <td>Employer Benefits Value (est. 30%)</td>
+      <td>Included in rate</td>
+      <td class="highlight">${fmtD(employerBenefitsValue)}</td>
+      <td>Freelancer self-funds</td>
+    </tr>
+    <tr>
+      <td>Total Compensation Equivalent</td>
+      <td class="highlight">${fmtD(totalCompEquiv)}</td>
+      <td>${fmtD(targetIncome + employerBenefitsValue)}</td>
+      <td class="highlight">+${fmtD(totalCompEquiv - targetIncome - employerBenefitsValue)}</td>
+    </tr>
+    <tr>
+      <td>Self-Employment Tax (Employer Half)</td>
+      <td>Paid by client via rate</td>
+      <td class="highlight">${fmtD(seTax * 0.5)}</td>
+      <td>Employer pays 7.65%</td>
+    </tr>
+    <tr>
+      <td>Health Insurance (Annual)</td>
+      <td>Paid by client via rate</td>
+      <td class="highlight">${fmtD(healthInsurance)}</td>
+      <td>Employer pays ~70%</td>
+    </tr>
+    <tr>
+      <td>Retirement (Employer Match)</td>
+      <td>Self-funded 100%</td>
+      <td class="highlight">${fmtD(w2SalaryEquiv * 0.04)}</td>
+      <td>Typical 4% match</td>
+    </tr>
+    <tr>
+      <td>Paid Vacation/Sick (3-4 wks)</td>
+      <td>Unpaid - built into rate</td>
+      <td class="highlight">${fmtD(w2SalaryEquiv * 0.077)}</td>
+      <td>Employer pays</td>
+    </tr>
+  `;
+  document.getElementById('salaryComparisonBody').innerHTML = compHtml;
+
+  // Scenario Panels
+  const scenarios = {
+    conservative: {util: 0.50, label: 'Conservative (50% Utilization)'},
+    realistic: {util: utilizationRate, label: 'Realistic (Current Inputs)'},
+    aggressive: {util: 0.90, label: 'Aggressive (90% Utilization)'},
+    agency: {util: utilizationRate, margin: 0.50, label: 'Agency Rate (50% Margin)'}
+  };
+  
+  Object.entries(scenarios).forEach(([key, s]) => {
+    const u = s.margin !== undefined ? s.margin : profitMargin;
+    const util = s.util;
+    const effHrs = theoreticalHours * util;
+    const preTax = targetIncome * (1 + u) + benefitsTotal + bizExpenses;
+    const seBase = preTax * 0.9235;
+    const ssT = Math.min(seBase, ssCap) * 0.124;
+    const medT = seBase * 0.029;
+    const addMed = Math.max(0, seBase - 200000) * 0.009;
+    const seT = ssT + medT + addMed;
+    const fedTx = preTax * 0.22; // rough estimate
+    const stateTx = preTax * stateTaxRate;
+    const totRev = preTax + seT + fedTx + stateTx;
+    const rate = totRev / effHrs;
+    
+    document.getElementById('panel-' + key).innerHTML = `
+      <div class="breakdown-row"><span class="lbl">${s.label}</span><span class="val rate">${fmtD2(rate)}/hr</span></div>
+      <div class="breakdown-row"><span class="lbl">Effective Billable Hours</span><span class="val">${fmt(effHrs)} hrs/yr</span></div>
+      <div class="breakdown-row"><span class="lbl">Annual Revenue Required</span><span class="val salary">${fmtD(totRev)}</span></div>
+      <div class="breakdown-row"><span class="lbl">Daily Rate (8 hrs)</span><span class="val">${fmtD(rate * 8)}</span></div>
+      <div class="breakdown-row"><span class="lbl">Monthly Retainer</span><span class="val">${fmtD(rate * billableHoursWeek * 4.33)}/mo</span></div>
+    `;
+  });
+
+  document.getElementById('resultsSection').style.display = 'block';
+  document.getElementById('resultsSection').scrollIntoView({behavior: 'smooth', block: 'start'});
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  calcRate();
+});
+</script>
+</body>
+</html>
