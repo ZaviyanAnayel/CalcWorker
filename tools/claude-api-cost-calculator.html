@@ -24,7 +24,7 @@
 <title>Claude API Cost Calculator — Anthropic Token Pricing Estimator</title>
 <meta content="Estimate Claude API costs: pick a model (Opus, Sonnet, Haiku), enter tokens, and factor in 90%-off prompt cache hits." name="description"/>
 <meta content="Claude API cost calculator, Anthropic API pricing, Sonnet vs Haiku cost, Claude prompt caching discount, Claude token price" name="keywords"/>
-<meta content="index, follow" name="robots"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 <link href="https://www.calcworker.com/tools/claude-api-cost-calculator" rel="canonical"/>
 <meta content="Claude API Cost Calculator — Anthropic Token Pricing Estimator" property="og:title"/>
 <meta content="Estimate Claude API costs: pick a model (Opus, Sonnet, Haiku), enter tokens, and factor in 90%-off prompt cache hits." property="og:description"/>
@@ -40,12 +40,43 @@
     "name": "Claude API Cost Calculator",
     "url": "https://www.calcworker.com/tools/claude-api-cost-calculator",
     "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
+    "operatingSystem": "Web",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    }
+    },
+    "description": "Estimate Claude API costs: pick a model (Opus, Sonnet, Haiku), enter tokens, and factor in 90%-off prompt cache hits.",
+    "author": {
+      "@type": "Person",
+      "name": "Muhammad Waseem",
+      "url": "https://www.calcworker.com/about",
+      "jobTitle": "Founder, Zaviyan LLC",
+      "description": "Founder of Zaviyan LLC and creator of CalcWorker."
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CalcWorker",
+      "url": "https://www.calcworker.com/",
+      "logo": "https://www.calcworker.com/assets/favicon.png",
+      "description": "Provider of free precision financial and business calculators.",
+      "sameAs": [
+        "https://www.facebook.com/calcworker/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@calcworker.com",
+        "contactType": "customer support"
+      }
+    },
+    "featureList": [
+      "Free to use",
+      "No sign-up required",
+      "Instant results",
+      "Private — calculations run on your device"
+    ],
+    "dateModified": "2026-11-26",
+    "inLanguage": "en"
   },
   {
     "@context": "https://schema.org",
@@ -97,7 +128,7 @@
 </script>
 <link href="/assets/favicon.png" rel="icon" type="image/png"/>
 <!-- Google AdSense — Auto Ads -->
-<link href="/css/calcworker.css?v=2026.5" rel="stylesheet"/>
+<link href="/css/calcworker.css?v=2026.6" rel="stylesheet"/>
 <meta content="#090d16" name="theme-color"/>
 <script defer="" src="../js/analytics.js"></script>
 <style>
@@ -358,6 +389,7 @@
 <main class="page-container">
 <div class="tool-header-block">
 <h1 class="tool-header-title"><span>🧠</span> Claude API Cost Calculator</h1>
+<p class="cw-author-line" style="font-size:0.82rem;color:var(--text-muted);margin:6px 0 0;">By <a href="/about" style="color:var(--brand-primary);">Muhammad Waseem</a> · Founder, Zaviyan LLC</p>
 <p class="tool-header-desc">Claude pricing rewards prompt caching — cached input tokens cost ~90% less. Model your real workload here.</p>
 </div>
 <div class="tool-page-layout">
@@ -403,8 +435,9 @@
 <div class="faq-item" style="margin-top:12px;">
 <details><summary>How does Claude prompt caching work?</summary><p>Mark stable prompt prefixes (system prompt, few-shot examples, tool schemas) as cacheable; repeat requests hit the cache and bill at ~10% of input price. Cache writes cost extra but pay off within a few hits.</p></details><details><summary>Sonnet vs Haiku — which should I use?</summary><p>Sonnet for general production quality; Haiku for high-volume simple tasks (classification, extraction, moderation) at ~⅓ the price. Benchmark both on your evals before deciding.</p></details><details><summary>When is Opus worth it?</summary><p>For the hardest reasoning — complex agentic coding, deep research, difficult math. Most apps use Opus selectively (fallback tier) with Sonnet as the default.</p></details><details><summary>How much can caching save?</summary><p>With 80%+ cache hit rates on long prompts, input costs drop 70%+. Agentic loops re-sending tool definitions are the biggest winners.</p></details><details><summary>Claude vs GPT-4o on cost?</summary><p>Comparable flagships: Sonnet 4.5 ($3/$15) vs GPT-4o ($2.50/$10) — GPT-4o is slightly cheaper sticker-price, but Claude's deeper cache discount can flip the comparison on cacheable workloads.</p></details>
 </div>
-<p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);">Last updated: September 2026</p>
+<p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);">Last updated: November 26, 2026</p>
 </section>
+<div class="cw-sources-box" style="margin: 28px 0; padding: 16px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary);"><p style="margin: 0 0 8px 0; font-weight: 700; color: var(--text-main);">Sources &amp; further reading</p><ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);"><li><a href="https://openai.com/api/pricing/" target="_blank" rel="noopener">OpenAI API Pricing</a> — Official per-token pricing for OpenAI models.</li><li><a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic Pricing</a> — Official pricing for Claude models.</li><li><a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">Google AI Pricing</a> — Official pricing for Google's Gemini models.</li></ul><p style="margin: 8px 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Figures on this page are planning estimates. Check the official source above for the current rules and rates.</p></div>
 <section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
 <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">

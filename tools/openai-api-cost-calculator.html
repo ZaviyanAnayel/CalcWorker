@@ -24,7 +24,7 @@
 <title>OpenAI API Cost Calculator — GPT Token Pricing Estimator</title>
 <meta content="Estimate OpenAI API costs: pick a model (GPT-5, GPT-4o, o1, minis), enter input/output tokens, and see per-request and monthly costs." name="description"/>
 <meta content="OpenAI API cost calculator, GPT-4o pricing calculator, GPT-5 API cost, OpenAI token cost estimator, how much does GPT API cost" name="keywords"/>
-<meta content="index, follow" name="robots"/>
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
 <link href="https://www.calcworker.com/tools/openai-api-cost-calculator" rel="canonical"/>
 <meta content="OpenAI API Cost Calculator — GPT Token Pricing Estimator" property="og:title"/>
 <meta content="Estimate OpenAI API costs: pick a model (GPT-5, GPT-4o, o1, minis), enter input/output tokens, and see per-request and monthly costs." property="og:description"/>
@@ -40,12 +40,43 @@
     "name": "OpenAI API Cost Calculator",
     "url": "https://www.calcworker.com/tools/openai-api-cost-calculator",
     "applicationCategory": "FinanceApplication",
-    "operatingSystem": "All",
+    "operatingSystem": "Web",
     "offers": {
       "@type": "Offer",
       "price": "0",
       "priceCurrency": "USD"
-    }
+    },
+    "description": "Estimate OpenAI API costs: pick a model (GPT-5, GPT-4o, o1, minis), enter input/output tokens, and see per-request and monthly costs.",
+    "author": {
+      "@type": "Person",
+      "name": "Muhammad Waseem",
+      "url": "https://www.calcworker.com/about",
+      "jobTitle": "Founder, Zaviyan LLC",
+      "description": "Founder of Zaviyan LLC and creator of CalcWorker."
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "CalcWorker",
+      "url": "https://www.calcworker.com/",
+      "logo": "https://www.calcworker.com/assets/favicon.png",
+      "description": "Provider of free precision financial and business calculators.",
+      "sameAs": [
+        "https://www.facebook.com/calcworker/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "support@calcworker.com",
+        "contactType": "customer support"
+      }
+    },
+    "featureList": [
+      "Free to use",
+      "No sign-up required",
+      "Instant results",
+      "Private — calculations run on your device"
+    ],
+    "dateModified": "2026-11-26",
+    "inLanguage": "en"
   },
   {
     "@context": "https://schema.org",
@@ -97,7 +128,7 @@
 </script>
 <link href="/assets/favicon.png" rel="icon" type="image/png"/>
 <!-- Google AdSense — Auto Ads -->
-<link href="/css/calcworker.css?v=2026.5" rel="stylesheet"/>
+<link href="/css/calcworker.css?v=2026.6" rel="stylesheet"/>
 <meta content="#090d16" name="theme-color"/>
 <script defer="" src="../js/analytics.js"></script>
 <style>
@@ -358,6 +389,7 @@
 <main class="page-container">
 <div class="tool-header-block">
 <h1 class="tool-header-title"><span>🤖</span> OpenAI API Cost Calculator</h1>
+<p class="cw-author-line" style="font-size:0.82rem;color:var(--text-muted);margin:6px 0 0;">By <a href="/about" style="color:var(--brand-primary);">Muhammad Waseem</a> · Founder, Zaviyan LLC</p>
 <p class="tool-header-desc">API bills scale with tokens. Pick your model, enter token volumes, and see exactly what OpenAI will charge.</p>
 </div>
 <div class="tool-page-layout">
@@ -404,8 +436,9 @@
 <div class="faq-item" style="margin-top:12px;">
 <details><summary>How much does the GPT-4o API cost?</summary><p>About $2.50 per million input tokens and $10 per million output tokens. A typical short chat request (500 in / 200 out) costs roughly $0.003.</p></details><details><summary>What is the cheapest OpenAI model?</summary><p>The mini models (GPT-4o mini, GPT-4.1 mini) at ~$0.15–$0.40 input per 1M tokens — roughly 15× cheaper than flagships, and sufficient for classification, extraction, and simple chat.</p></details><details><summary>Do cached tokens cost less?</summary><p>Yes — OpenAI's prompt caching discounts repeated prompt prefixes by 50%+ automatically once cached. Design prompts with stable prefixes to maximize cache hits.</p></details><details><summary>Input vs output tokens — which costs more?</summary><p>Output tokens, typically 2–4× the input price. Long generations (reports, code) dominate bills — constrain max_tokens where quality allows.</p></details><details><summary>How do I reduce my OpenAI API bill?</summary><p>Use mini models where quality suffices, enable prompt caching, use the Batch API for offline work (50% off), trim system prompts, and set max_tokens caps.</p></details>
 </div>
-<p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);">Last updated: September 2026</p>
+<p style="margin-top:20px;font-size:0.78rem;color:var(--text-muted);">Last updated: November 26, 2026</p>
 </section>
+<div class="cw-sources-box" style="margin: 28px 0; padding: 16px 18px; border-radius: var(--radius-md); background: var(--bg-subtle); border-left: 3px solid var(--brand-primary);"><p style="margin: 0 0 8px 0; font-weight: 700; color: var(--text-main);">Sources &amp; further reading</p><ul style="margin: 0; padding-left: 20px; font-size: 0.88rem; line-height: 1.7; color: var(--text-muted);"><li><a href="https://openai.com/api/pricing/" target="_blank" rel="noopener">OpenAI API Pricing</a> — Official per-token pricing for OpenAI models.</li><li><a href="https://www.anthropic.com/pricing" target="_blank" rel="noopener">Anthropic Pricing</a> — Official pricing for Claude models.</li><li><a href="https://ai.google.dev/pricing" target="_blank" rel="noopener">Google AI Pricing</a> — Official pricing for Google's Gemini models.</li></ul><p style="margin: 8px 0 0 0; font-size: 0.8rem; color: var(--text-muted);">Figures on this page are planning estimates. Check the official source above for the current rules and rates.</p></div>
 <section class="related-tools-section" style="margin-top: 40px; margin-bottom: 30px;">
 <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 8px;">
 <h3 style="font-size: 1.15rem; font-weight: 800; color: var(--text-main); display: flex; align-items: center; gap: 8px; margin: 0;">

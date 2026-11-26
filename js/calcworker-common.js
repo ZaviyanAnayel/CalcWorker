@@ -1470,6 +1470,14 @@ window.cwApp = new CalcWorkerApp();
     }
 
     updateCategoryPillCounts();
+    // Honour ?q= (advertised by the homepage SearchAction schema): prefill + filter on load
+    try {
+      var qParam = new URLSearchParams(window.location.search).get('q');
+      if (qParam && searchInput) {
+        searchInput.value = qParam;
+        searchQuery = qParam;
+      }
+    } catch (e) {}
     // Guarantee all cards are visible on initial load
     updateFilter();
   }
