@@ -20,7 +20,7 @@ window.cwSidebarGroups = [
       {
         "icon": "🧮",
         "label": "OmniCalc Ultra (6-in-1)",
-        "href": "/tools/omnicalc.html"
+        "href": "/tools/omnicalc"
       }
     ]
   },
@@ -30,79 +30,79 @@ window.cwSidebarGroups = [
       {
         "icon": "🏠",
         "label": "Mortgage & Amortization",
-        "href": "/tools/mortgage-calculator.html"
+        "href": "/tools/mortgage-calculator"
       },
       {
         "icon": "🔄",
         "label": "Mortgage Refinance Break-Even",
-        "href": "/tools/mortgage-refinance-calculator.html"
+        "href": "/tools/mortgage-refinance-calculator"
       },
       {
         "icon": "⚖️",
         "label": "Debt-to-Income (DTI)",
-        "href": "/tools/dti-calculator.html",
+        "href": "/tools/dti-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🏡",
         "label": "Home Closing Costs",
-        "href": "/tools/closing-costs-calculator.html",
+        "href": "/tools/closing-costs-calculator",
         "badge": "NEW"
       },
       {
         "icon": "💸",
         "label": "Extra Mortgage Payment",
-        "href": "/tools/extra-mortgage-payment-calculator.html",
+        "href": "/tools/extra-mortgage-payment-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🏛️",
         "label": "Property Tax & Mill Rate",
-        "href": "/tools/property-tax-calculator.html",
+        "href": "/tools/property-tax-calculator",
         "badge": "NEW"
       },
       {
         "icon": "⚖️",
         "label": "FHA vs Conventional Loan",
-        "href": "/tools/fha-vs-conventional-calculator.html",
+        "href": "/tools/fha-vs-conventional-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🏡",
         "label": "Home Equity Loan vs HELOC",
-        "href": "/tools/home-equity-loan-calculator.html",
+        "href": "/tools/home-equity-loan-calculator",
         "badge": "NEW"
       },
       {
         "icon": "💳",
         "label": "HELOC & Credit Line",
-        "href": "/tools/heloc-calculator.html"
+        "href": "/tools/heloc-calculator"
       },
       {
         "icon": "⚖️",
         "label": "Rent vs Buy Decision",
-        "href": "/tools/rent-vs-buy.html"
+        "href": "/tools/rent-vs-buy"
       },
       {
         "icon": "📅",
         "label": "Prorated Rent Calculator",
-        "href": "/tools/prorated-rent-calculator.html"
+        "href": "/tools/prorated-rent-calculator"
       },
       {
         "icon": "🏢",
         "label": "Triple Net (NNN) Lease",
-        "href": "/tools/nnn-lease-calculator.html",
+        "href": "/tools/nnn-lease-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🚘",
         "label": "Auto Loan Calculator",
-        "href": "/tools/auto-loan.html"
+        "href": "/tools/auto-loan"
       },
       {
         "icon": "🏎️",
         "label": "Car Lease Payment",
-        "href": "/tools/car-lease-calculator.html"
+        "href": "/tools/car-lease-calculator"
       }
     ]
   },
@@ -112,51 +112,51 @@ window.cwSidebarGroups = [
       {
         "icon": "💵",
         "label": "Paycheck Net Take-Home (2026)",
-        "href": "/tools/paycheck-calculator.html"
+        "href": "/tools/paycheck-calculator"
       },
       {
         "icon": "🏛️",
         "label": "Capital Gains Tax (2026)",
-        "href": "/tools/capital-gains-tax-calculator.html",
+        "href": "/tools/capital-gains-tax-calculator",
         "badge": "NEW"
       },
       {
         "icon": "💼",
         "label": "Freelance 1099 Tax Estimator",
-        "href": "/tools/freelance-tax-calculator.html"
+        "href": "/tools/freelance-tax-calculator"
       },
       {
         "icon": "🚚",
         "label": "State Tax Relocation (50 States)",
-        "href": "/tools/state-tax-relocation-calculator.html"
+        "href": "/tools/state-tax-relocation-calculator"
       },
       {
         "icon": "👶",
         "label": "Child Tax Credit & EITC",
-        "href": "/tools/child-tax-credit-calculator.html",
+        "href": "/tools/child-tax-credit-calculator",
         "badge": "NEW"
       },
       {
         "icon": "📜",
         "label": "Estate & Lifetime Gift Tax",
-        "href": "/tools/estate-tax-calculator.html",
+        "href": "/tools/estate-tax-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🏥",
         "label": "HSA vs FSA Tax Savings",
-        "href": "/tools/hsa-fsa-calculator.html",
+        "href": "/tools/hsa-fsa-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🏛️",
         "label": "Tax Withholding (2026)",
-        "href": "/tools/tax-withholding.html"
+        "href": "/tools/tax-withholding"
       },
       {
         "icon": "🏛️",
         "label": "US State Sales Tax",
-        "href": "/tools/sales-tax-calculator.html"
+        "href": "/tools/sales-tax-calculator"
       }
     ]
   },
@@ -166,47 +166,47 @@ window.cwSidebarGroups = [
       {
         "icon": "💳",
         "label": "Personal Loan Calculator",
-        "href": "/tools/personal-loan-calculator.html",
+        "href": "/tools/personal-loan-calculator",
         "badge": "NEW"
       },
       {
         "icon": "💳",
         "label": "Credit Card Payoff",
-        "href": "/tools/credit-card-payoff.html"
+        "href": "/tools/credit-card-payoff"
       },
       {
         "icon": "💳",
         "label": "Debt Snowball & Avalanche",
-        "href": "/tools/debt-payoff.html"
+        "href": "/tools/debt-payoff"
       },
       {
         "icon": "⚠️",
         "label": "Payday Loan APR Trap",
-        "href": "/tools/payday-loan-calculator.html",
+        "href": "/tools/payday-loan-calculator",
         "badge": "NEW"
       },
       {
         "icon": "📈",
         "label": "APR vs APY Calculator",
-        "href": "/tools/apr-to-apy-calculator.html",
+        "href": "/tools/apr-to-apy-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🎯",
         "label": "Savings Goal & Sinking Fund",
-        "href": "/tools/savings-goal-calculator.html",
+        "href": "/tools/savings-goal-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🛡️",
         "label": "Emergency Fund Calculator",
-        "href": "/tools/emergency-fund-calculator.html",
+        "href": "/tools/emergency-fund-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🪜",
         "label": "CD Ladder Yield Calculator",
-        "href": "/tools/cd-ladder-calculator.html"
+        "href": "/tools/cd-ladder-calculator"
       }
     ]
   },
@@ -216,73 +216,73 @@ window.cwSidebarGroups = [
       {
         "icon": "📈",
         "label": "Compound Interest & Savings",
-        "href": "/tools/compound-interest.html"
+        "href": "/tools/compound-interest"
       },
       {
         "icon": "📊",
         "label": "Simple vs Compound Interest",
-        "href": "/tools/simple-interest-calculator.html",
+        "href": "/tools/simple-interest-calculator",
         "badge": "NEW"
       },
       {
         "icon": "⏳",
         "label": "Inflation & Retirement (4% Rule)",
-        "href": "/tools/inflation-retirement-calculator.html",
+        "href": "/tools/inflation-retirement-calculator",
         "badge": "NEW"
       },
       {
         "icon": "👴",
         "label": "Social Security Calculator",
-        "href": "/tools/social-security-calculator.html",
+        "href": "/tools/social-security-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🏖️",
         "label": "401(k) Retirement Savings",
-        "href": "/tools/retirement-401k.html"
+        "href": "/tools/retirement-401k"
       },
       {
         "icon": "📅",
         "label": "401(k) & IRA RMD (2026)",
-        "href": "/tools/401k-rmd-calculator.html",
+        "href": "/tools/401k-rmd-calculator",
         "badge": "NEW"
       },
       {
         "icon": "📈",
         "label": "Roth IRA Tax-Free Growth",
-        "href": "/tools/roth-ira-calculator.html"
+        "href": "/tools/roth-ira-calculator"
       },
       {
         "icon": "🔄",
         "label": "Roth Conversion Tax",
-        "href": "/tools/roth-conversion-calculator.html",
+        "href": "/tools/roth-conversion-calculator",
         "badge": "NEW"
       },
       {
         "icon": "⚖️",
         "label": "Personal Net Worth",
-        "href": "/tools/net-worth-calculator.html",
+        "href": "/tools/net-worth-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🪙",
         "label": "Crypto Profit & ROI",
-        "href": "/tools/crypto-profit-calculator.html"
+        "href": "/tools/crypto-profit-calculator"
       },
       {
         "icon": "💵",
         "label": "US Inflation & Purchasing Power",
-        "href": "/tools/inflation-calculator.html"
+        "href": "/tools/inflation-calculator"
       },
       {
         "icon": "☀️",
         "label": "Solar Panel ROI Estimator",
-        "href": "/tools/solar-roi.html"
+        "href": "/tools/solar-roi"
       },
       {
         "icon": "🛡️",
         "label": "Life Insurance Needs (DIME)",
-        "href": "/tools/life-insurance-calculator.html"
+        "href": "/tools/life-insurance-calculator"
       }
     ]
   },
@@ -292,63 +292,63 @@ window.cwSidebarGroups = [
       {
         "icon": "💼",
         "label": "Freelancer Hourly Rate",
-        "href": "/tools/hourly-rate.html"
+        "href": "/tools/hourly-rate"
       },
       {
         "icon": "🚗",
         "label": "Gig Worker Net Profit",
-        "href": "/tools/gig-profit.html"
+        "href": "/tools/gig-profit"
       },
       {
         "icon": "⏱️",
         "label": "Overtime & 1.5x Pay",
-        "href": "/tools/overtime-calculator.html"
+        "href": "/tools/overtime-calculator"
       },
       {
         "icon": "📈",
         "label": "Sales Commission & Quota",
-        "href": "/tools/sales-commission-calculator.html",
+        "href": "/tools/sales-commission-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🏙️",
         "label": "Cost of Living & Relocation",
-        "href": "/tools/cost-of-living-calculator.html",
+        "href": "/tools/cost-of-living-calculator",
         "badge": "NEW"
       },
       {
         "icon": "💼",
         "label": "Job Offer Comparison",
-        "href": "/tools/job-offer-comparison-calculator.html",
+        "href": "/tools/job-offer-comparison-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🚗",
         "label": "Commute Cost & WFH Savings",
-        "href": "/tools/commute-cost-calculator.html",
+        "href": "/tools/commute-cost-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🎓",
         "label": "Student Loan Repayment",
-        "href": "/tools/student-loan.html"
+        "href": "/tools/student-loan"
       },
       {
         "icon": "🏛️",
         "label": "Student Loan PSLF vs Standard",
-        "href": "/tools/student-loan-pslf-calculator.html",
+        "href": "/tools/student-loan-pslf-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🎓",
         "label": "529 College Savings Plan",
-        "href": "/tools/529-college-savings-calculator.html",
+        "href": "/tools/529-college-savings-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🎓",
         "label": "College & High School GPA",
-        "href": "/tools/gpa-calculator.html"
+        "href": "/tools/gpa-calculator"
       }
     ]
   },
@@ -358,56 +358,56 @@ window.cwSidebarGroups = [
       {
         "icon": "⚖️",
         "label": "LLC vs S-Corp Tax Savings",
-        "href": "/tools/llc-vs-scorp-calculator.html",
+        "href": "/tools/llc-vs-scorp-calculator",
         "badge": "NEW"
       },
       {
         "icon": "📊",
         "label": "Business Break-Even Point",
-        "href": "/tools/break-even.html"
+        "href": "/tools/break-even"
       },
       {
         "icon": "🏷️",
         "label": "Markup vs Margin Calculator",
-        "href": "/tools/markup-vs-margin-calculator.html",
+        "href": "/tools/markup-vs-margin-calculator",
         "badge": "NEW"
       },
       {
         "icon": "📊",
         "label": "CAC to LTV Ratio",
-        "href": "/tools/cac-ltv-calculator.html",
+        "href": "/tools/cac-ltv-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🧾",
         "label": "Invoice Factoring (2/10 Net 30)",
-        "href": "/tools/invoice-factoring-calculator.html",
+        "href": "/tools/invoice-factoring-calculator",
         "badge": "NEW"
       },
       {
         "icon": "⚖️",
         "label": "Multi-Platform Profit Comparator",
-        "href": "/tools/ecommerce-profit-comparator.html"
+        "href": "/tools/ecommerce-profit-comparator"
       },
       {
         "icon": "📦",
         "label": "Amazon FBA Fee Calculator",
-        "href": "/tools/amazon-fba-calculator.html"
+        "href": "/tools/amazon-fba-calculator"
       },
       {
         "icon": "🛍️",
         "label": "Shopify Fee & Margin",
-        "href": "/tools/shopify-fee-calculator.html"
+        "href": "/tools/shopify-fee-calculator"
       },
       {
         "icon": "📦",
         "label": "eBay Seller Fee & Profit",
-        "href": "/tools/ebay-fee-calculator.html"
+        "href": "/tools/ebay-fee-calculator"
       },
       {
         "icon": "🛍️",
         "label": "Etsy Seller Fee & Profit",
-        "href": "/tools/etsy-profit.html"
+        "href": "/tools/etsy-profit"
       }
     ]
   },
@@ -417,48 +417,48 @@ window.cwSidebarGroups = [
       {
         "icon": "🤖",
         "label": "AI Prompt & Cost Calculator",
-        "href": "/tools/ai-prompt-cost-calculator.html",
+        "href": "/tools/ai-prompt-cost-calculator",
         "badge": "HOT"
       },
       {
         "icon": "📰",
         "label": "Substack Newsletter Revenue",
-        "href": "/tools/substack-calculator.html"
+        "href": "/tools/substack-calculator"
       },
       {
         "icon": "🛍️",
         "label": "TikTok Shop Affiliate",
-        "href": "/tools/tiktok-shop-affiliate-calculator.html"
+        "href": "/tools/tiktok-shop-affiliate-calculator"
       },
       {
         "icon": "🎵",
         "label": "TikTok Money Calc",
-        "href": "/tools/tiktok-money-calculator.html"
+        "href": "/tools/tiktok-money-calculator"
       },
       {
         "icon": "🪙",
         "label": "TikTok Coins & Gifts to USD",
-        "href": "/tools/tiktok-coins-calculator.html"
+        "href": "/tools/tiktok-coins-calculator"
       },
       {
         "icon": "▶️",
         "label": "YouTube Money & CPM",
-        "href": "/tools/youtube-money-calculator.html"
+        "href": "/tools/youtube-money-calculator"
       },
       {
         "icon": "📸",
         "label": "Instagram Sponsored Rate",
-        "href": "/tools/instagram-money-calculator.html"
+        "href": "/tools/instagram-money-calculator"
       },
       {
         "icon": "🎙️",
         "label": "Podcast Ad Sponsorship",
-        "href": "/tools/podcast-sponsorship-calculator.html"
+        "href": "/tools/podcast-sponsorship-calculator"
       },
       {
         "icon": "🚀",
         "label": "Channel Milestone Tracker",
-        "href": "/tools/channel-growth-calculator.html"
+        "href": "/tools/channel-growth-calculator"
       }
     ]
   },
@@ -468,13 +468,13 @@ window.cwSidebarGroups = [
       {
         "icon": "🏥",
         "label": "HDHP vs PPO Out-of-Pocket",
-        "href": "/tools/hdhp-out-of-pocket-calculator.html",
+        "href": "/tools/hdhp-out-of-pocket-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🛡️",
         "label": "COBRA Health Insurance",
-        "href": "/tools/cobra-insurance-calculator.html",
+        "href": "/tools/cobra-insurance-calculator",
         "badge": "NEW"
       }
     ]
@@ -485,42 +485,42 @@ window.cwSidebarGroups = [
       {
         "icon": "💱",
         "label": "Currency Converter (Live Rates)",
-        "href": "/tools/currency-converter.html"
+        "href": "/tools/currency-converter"
       },
       {
         "icon": "💶",
         "label": "USD to EUR (Euro)",
-        "href": "/tools/usd-to-eur.html"
+        "href": "/tools/usd-to-eur"
       },
       {
         "icon": "💷",
         "label": "USD to GBP (British Pound)",
-        "href": "/tools/usd-to-gbp.html"
+        "href": "/tools/usd-to-gbp"
       },
       {
         "icon": "🍁",
         "label": "USD to CAD (Canadian Dollar)",
-        "href": "/tools/usd-to-cad.html"
+        "href": "/tools/usd-to-cad"
       },
       {
         "icon": "🌮",
         "label": "USD to MXN (Mexican Peso)",
-        "href": "/tools/usd-to-mxn.html"
+        "href": "/tools/usd-to-mxn"
       },
       {
         "icon": "🇮🇳",
         "label": "USD to INR (Indian Rupee)",
-        "href": "/tools/usd-to-inr.html"
+        "href": "/tools/usd-to-inr"
       },
       {
         "icon": "💴",
         "label": "USD to JPY (Japanese Yen)",
-        "href": "/tools/usd-to-jpy.html"
+        "href": "/tools/usd-to-jpy"
       },
       {
         "icon": "🇵🇰",
         "label": "USD to PKR (Pakistani Rupee)",
-        "href": "/tools/usd-to-pkr.html"
+        "href": "/tools/usd-to-pkr"
       }
     ]
   },
@@ -530,93 +530,93 @@ window.cwSidebarGroups = [
       {
         "icon": "⚡",
         "label": "EV vs Gas True Cost",
-        "href": "/tools/ev-vs-gas-calculator.html",
+        "href": "/tools/ev-vs-gas-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🛒",
         "label": "Grocery Unit Price",
-        "href": "/tools/unit-price-calculator.html",
+        "href": "/tools/unit-price-calculator",
         "badge": "NEW"
       },
       {
         "icon": "💡",
         "label": "Appliance Electricity Cost",
-        "href": "/tools/electricity-cost-calculator.html",
+        "href": "/tools/electricity-cost-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🛞",
         "label": "Tire Size & Speedometer",
-        "href": "/tools/tire-size-calculator.html",
+        "href": "/tools/tire-size-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🐾",
         "label": "Pet Biological Age",
-        "href": "/tools/dog-cat-age-calculator.html",
+        "href": "/tools/dog-cat-age-calculator",
         "badge": "NEW"
       },
       {
         "icon": "🍳",
         "label": "Recipe Measurement Scaler",
-        "href": "/tools/kitchen-recipe-converter.html",
+        "href": "/tools/kitchen-recipe-converter",
         "badge": "NEW"
       },
       {
         "icon": "🪵",
         "label": "Flooring & Tile Cost",
-        "href": "/tools/flooring-calculator.html"
+        "href": "/tools/flooring-calculator"
       },
       {
         "icon": "🔢",
         "label": "Percentage Calculator",
-        "href": "/tools/percentage-calculator.html"
+        "href": "/tools/percentage-calculator"
       },
       {
         "icon": "🎂",
         "label": "Exact Age & Date Calculator",
-        "href": "/tools/age-calculator.html"
+        "href": "/tools/age-calculator"
       },
       {
         "icon": "📅",
         "label": "Date & Days Calculator",
-        "href": "/tools/date-calculator.html"
+        "href": "/tools/date-calculator"
       },
       {
         "icon": "⚖️",
         "label": "BMI & Body Composition",
-        "href": "/tools/bmi-calculator.html"
+        "href": "/tools/bmi-calculator"
       },
       {
         "icon": "🔥",
         "label": "Calorie & TDEE Deficit",
-        "href": "/tools/calorie-calculator.html"
+        "href": "/tools/calorie-calculator"
       },
       {
         "icon": "💧",
         "label": "Daily Water Intake",
-        "href": "/tools/water-intake-calculator.html"
+        "href": "/tools/water-intake-calculator"
       },
       {
         "icon": "🚶",
         "label": "Steps to Miles & Kilometers",
-        "href": "/tools/steps-to-miles.html"
+        "href": "/tools/steps-to-miles"
       },
       {
         "icon": "🏋️",
         "label": "Bench Press & 1RM Max",
-        "href": "/tools/bench-press-calculator.html"
+        "href": "/tools/bench-press-calculator"
       },
       {
         "icon": "⛽",
         "label": "Fuel Cost & Trip Mileage",
-        "href": "/tools/fuel-cost-calculator.html"
+        "href": "/tools/fuel-cost-calculator"
       },
       {
         "icon": "🍽️",
         "label": "Tip Calculator & Splitter",
-        "href": "/tools/tip-calculator.html"
+        "href": "/tools/tip-calculator"
       }
     ]
   }

@@ -1653,11 +1653,12 @@ button, input, select, textarea {
   .topbar-icon-btn .btn-label {
     display: none;
   }
-  /* FIX 3 — Answer-first on mobile: the results card comes before the inputs
-     on narrow screens so the answer is the first thing seen on a phone.
-     Desktop layout untouched (sticky results card stays). */
+  /* SEO audit 2026-11-26 — inputs first on mobile: visitors must see where to
+     enter their numbers before a pre-computed default result. Reverses the
+     Nov 2026 "answer-first" choice (order: -1) on user-approved P1+P2 fixes.
+     Desktop layout untouched. */
   .tool-page-layout .tool-results-card {
-    order: -1;
+    order: 2;
   }
 }
 
@@ -3332,4 +3333,22 @@ button, input, select, textarea {
     border-radius: var(--radius-full);
     text-transform: uppercase;
     margin-left: 8px;
+}
+
+/* SEO audit 2026-11-26 — compact cookie consent on mobile so the search box
+   and calculator stay visible on first visit (was covering ~40-45% of viewport). */
+@media (max-width: 768px) {
+  #calcworker-cookie-banner > div {
+    left: 12px !important;
+    right: 12px !important;
+    bottom: 12px !important;
+    max-width: none !important;
+    max-height: 34vh !important;
+    overflow-y: auto !important;
+    padding: 14px !important;
+    font-size: 12px !important;
+  }
+  #calcworker-cookie-banner > div p {
+    margin-bottom: 10px !important;
+  }
 }
