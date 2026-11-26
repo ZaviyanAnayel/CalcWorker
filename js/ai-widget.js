@@ -5,7 +5,7 @@
  * OWNER: Zaviyan
  * OPERATED BY: Zaviyan LLC
  * OFFICIAL CONTACT: business@zaviyanllc.com
- * TRAINED ON: All 137 CalcWorker Tools, Formulas, Usages, and US Regulations
+ * TRAINED ON: All 140 CalcWorker Tools, Formulas, Usages, and US Regulations
  */
 (function () {
   "use strict";
@@ -22,8 +22,8 @@
     mission: "CalcWorker was founded and built by Zaviyan (Zaviyan LLC) to provide the world with 100% private, zero-latency, client-side financial, creator, business, and health calculators with full offline capabilities."
   };
 
-  // 2. Complete 137-Tool Database (Formulas, Step-by-Step Usage, Inputs, and Pro Tips)
-    // 2.1 Complete Guides Mapping for All 137 Tools
+  // 2. Complete 140-Tool Database (Formulas, Step-by-Step Usage, Inputs, and Pro Tips)
+    // 2.1 Complete Guides Mapping for All 140 Tools
   const GUIDES_MAP = {
   "/tools/age-calculator.html": {
     "guide_url": "/articles/age-calculator-guide-2026.html",
@@ -933,7 +933,7 @@
           `• <strong>Hisab Kitab:</strong> Koi bhi equation likhein (maslan <em>"20% of 1500"</em> ya <em>"5000 / 12"</em>)<br>` +
           `• <strong>Calculator Dhoondein:</strong> Maslan <em>"debt to income"</em>, <em>"mortgage payment"</em>, <em>"freelance tax"</em>, <em>"car loan"</em><br>` +
           `• <strong>Guides &amp; Articles:</strong> Detailed guide parhney ke liye <em>"guides"</em> likhein<br>` +
-          `• <strong>Tamam 137 Tools:</strong> Saari list dekhne ke liye <em>"sare tools dikhao"</em> likhein!`;
+          `• <strong>Tamam 140 Tools:</strong> Saari list dekhne ke liye <em>"sare tools dikhao"</em> likhein!`;
       }
       return `👋 <strong>Hello! Welcome to CalcWorker!</strong><br><br>` +
         `I am your 100% private, client-side financial &amp; computational AI assistant.<br><br>` +
@@ -941,13 +941,13 @@
         `• <strong>Solve Math Instantly:</strong> e.g., <em>"what is 18% of 450"</em> or <em>"2500 * 12"</em><br>` +
         `• <strong>Find Any Calculator:</strong> e.g., <em>"debt to income"</em>, <em>"mortgage payment"</em>, <em>"1099 tax"</em>, <em>"car lease"</em>, <em>"401k match"</em><br>` +
         `• <strong>In-Depth Guides:</strong> Type <em>"guides"</em> to access our complete Guides Hub<br>` +
-        `• <strong>Browse All 137 Tools:</strong> Type <em>"show all tools"</em> to explore the full directory!`;
+        `• <strong>Browse All 140 Tools:</strong> Type <em>"show all tools"</em> to explore the full directory!`;
     }
 
     // 5.0.1 Gratitude & Appreciation Intent
     if (isThanks(cleanQ)) {
       return `😊 <strong>You're very welcome!</strong><br><br>` +
-        `I'm always here to help you calculate and optimize your decisions across all 137 tools. Feel free to ask anytime!`;
+        `I'm always here to help you calculate and optimize your decisions across all 140 tools. Feel free to ask anytime!`;
     }
 
     // 5.0.2 Capabilities & Help Intent
@@ -963,13 +963,13 @@
     // 5.0.3 Guides & Articles Hub Intent
     if (cleanQ === "guides" || cleanQ === "guide" || cleanQ === "articles" || cleanQ === "article" || cleanQ.includes("guides hub") || cleanQ.includes("all guides")) {
       return `📚 <strong>CalcWorker Guides &amp; Research Hub:</strong><br><br>` +
-        `We feature <strong>137 comprehensive, mathematically verified calculation guides</strong> complete with worked numerical examples, formulas, and benchmark tables.<br><br>` +
+        `We feature <strong>140 comprehensive, mathematically verified calculation guides</strong> complete with worked numerical examples, formulas, and benchmark tables.<br><br>` +
         `• 🏠 <a href="/articles/mortgage-piti-calculation-guide-2026.html">Mortgage PITI Calculation Guide (2026)</a><br>` +
         `• 🏛️ <a href="/articles/1099-freelance-quarterly-tax-guide-2026.html">1099 Freelance &amp; Quarterly Tax Guide</a><br>` +
         `• 📈 <a href="/articles/roth-ira-calculator-guide-2026.html">Roth IRA Wealth Accumulator Guide</a><br>` +
         `• 💼 <a href="/articles/amazon-fba-calculator-guide-2026.html">Amazon FBA Fee &amp; Profit Guide</a><br>` +
         `• 🎬 <a href="/articles/youtube-money-calculator-guide-2026.html">YouTube AdSense &amp; RPM Guide</a><br><br>` +
-        `<a href="/articles/" class="cw-msg-btn">Explore All 137 Guides in Hub →</a>`;
+        `<a href="/articles/" class="cw-msg-btn">Explore All 140 Guides in Hub →</a>`;
     }
 
     // 5.1 Owner & Founder Queries
@@ -981,7 +981,7 @@
         `• <strong>Founder:</strong> Zaviyan<br>` +
         `• <strong>Operating Entity:</strong> Zaviyan LLC (United States)<br>` +
         `• <strong>Official Inquiries:</strong> <a href="mailto:${CW_INFO.email}">${CW_INFO.email}</a><br>` +
-        `• <strong>Platform Architecture:</strong> 100% Client-Side Sandbox, zero tracking, zero data storage, and certified offline PWA execution across all 137 tools.`;
+        `• <strong>Platform Architecture:</strong> 100% Client-Side Sandbox, zero tracking, zero data storage, and certified offline PWA execution across all 140 tools.`;
     }
 
     // 5.2 Contact & Support Queries
@@ -1002,7 +1002,7 @@
         `CalcWorker operates with a <strong>Zero-Telemetry, Client-Side Only</strong> security model:<br><br>` +
         `1. <strong>Local Sandbox:</strong> Every mathematical formula executes 100% inside your browser's V8/JavaScript engine.<br>` +
         `2. <strong>Zero Data Ingestion:</strong> Your salaries, tax returns, debt balances, and mortgage amounts NEVER transmit over the wire.<br>` +
-        `3. <strong>PWA Offline Engine:</strong> Once loaded, you can disconnect Wi-Fi or cellular service and every one of the 137 calculators remains fully functional.`;
+        `3. <strong>PWA Offline Engine:</strong> Once loaded, you can disconnect Wi-Fi or cellular service and every one of the 140 calculators remains fully functional.`;
     }
 
     // 5.4 Tool Count & Verification Queries
@@ -1010,13 +1010,13 @@
         cleanQ.includes("count") || cleanQ.includes("102") || cleanQ.includes("137") || cleanQ.includes("kitne tools") || cleanQ.includes("kitne calculator") || 
         cleanQ.includes("total calculator") || cleanQ === "tools" || cleanQ === "total" || cleanQ === "total tools" || 
         cleanQ.includes("all tools count") || cleanQ.includes("kitne tools hain") || cleanQ.includes("total kitne")) {
-      return `📊 <strong>Total Calculator Suite: Exactly 137 Tools!</strong><br><br>` +
-        `CalcWorker features <strong>137 distinct, production-grade calculators</strong> divided across 8 core disciplines:<br><br>` +
-        `• 🏠 <strong>Mortgages &amp; Real Estate:</strong> 18 calculators<br>` +
+      return `📊 <strong>Total Calculator Suite: Exactly 140 Tools!</strong><br><br>` +
+        `CalcWorker features <strong>140 distinct, production-grade calculators</strong> divided across 8 core disciplines:<br><br>` +
+        `• 🏠 <strong>Mortgages &amp; Real Estate:</strong> 19 calculators<br>` +
         `• 💳 <strong>Personal Finance &amp; Loans:</strong> 17 calculators<br>` +
-        `• 🏛️ <strong>Taxes &amp; Payroll:</strong> 18 calculators<br>` +
+        `• 🏛️ <strong>Taxes &amp; Payroll:</strong> 19 calculators<br>` +
         `• 📈 <strong>Retirement &amp; Wealth:</strong> 13 calculators<br>` +
-        `• 💼 <strong>Business, E-Commerce &amp; Creator Economy:</strong> 39 calculators<br>` +
+        `• 💼 <strong>Business, E-Commerce &amp; Creator Economy:</strong> 40 calculators<br>` +
         `• 💱 <strong>Currencies &amp; Forex:</strong> 8 calculators<br>` +
         `• ⚖️ <strong>Health, Fitness &amp; Everyday Math:</strong> 24 calculators<br><br>` +
         `Type <em>"show all tools"</em> or <em>"sare tools dikhao"</em> to explore the full directory!`;
@@ -1027,17 +1027,17 @@
         cleanQ.includes("list of tools") || cleanQ.includes("show tools") || cleanQ.includes("directory") || 
         cleanQ.includes("tamam tools") || cleanQ.includes("sabhi tools") || cleanQ.includes("list tools") ||
         cleanQ === "tools" || cleanQ === "list" || cleanQ === "menu") {
-      return `📚 <strong>Master Directory: All 137 CalcWorker Tools</strong><br><br>` +
+      return `📚 <strong>Master Directory: All 140 CalcWorker Tools</strong><br><br>` +
         `<strong>🏠 Mortgages &amp; Real Estate:</strong><br>` +
-        `• <a href="/tools/mortgage-calculator.html">Mortgage Payment</a> | <a href="/tools/mortgage-refinance-calculator.html">Refinance Break-Even</a> | <a href="/tools/fha-vs-conventional-calculator.html">FHA vs Conv</a> | <a href="/tools/heloc-calculator.html">HELOC</a> | <a href="/tools/home-equity-loan-calculator.html">Home Equity</a> | <a href="/tools/closing-costs-calculator.html">Closing Costs</a> | <a href="/tools/rent-vs-buy.html">Rent vs Buy</a> | <a href="/tools/extra-mortgage-payment-calculator.html">Extra Payments</a> | <a href="/tools/property-tax-calculator.html">Property Tax</a> | <a href="/tools/prorated-rent-calculator.html" | <a href="/tools/brrrr-calculator.html">BRRRR</a> | <a href="/tools/cap-rate-calculator.html">Cap Rate</a> | <a href="/tools/cash-flow-rental-calculator.html">Rental Cash Flow</a> | <a href="/tools/cash-on-cash-return-calculator.html">Cash-on-Cash</a> | <a href="/tools/dscr-calculator.html">DSCR</a> | <a href="/tools/house-affordability-calculator.html">Affordability</a> | <a href="/tools/real-estate-commission-calculator.html">Commission</a> | <a href="/tools/airbnb-profit-calculator.html">Airbnb Profit</a><br><br>` +
+        `• <a href="/tools/mortgage-calculator.html">Mortgage Payment</a> | <a href="/tools/mortgage-refinance-calculator.html">Refinance Break-Even</a> | <a href="/tools/fha-vs-conventional-calculator.html">FHA vs Conv</a> | <a href="/tools/heloc-calculator.html">HELOC</a> | <a href="/tools/home-equity-loan-calculator.html">Home Equity</a> | <a href="/tools/closing-costs-calculator.html">Closing Costs</a> | <a href="/tools/rent-vs-buy.html">Rent vs Buy</a> | <a href="/tools/extra-mortgage-payment-calculator.html">Extra Payments</a> | <a href="/tools/mortgage-payoff-calculator.html">Mortgage Payoff</a> | <a href="/tools/property-tax-calculator.html">Property Tax</a> | <a href="/tools/prorated-rent-calculator.html" | <a href="/tools/brrrr-calculator.html">BRRRR</a> | <a href="/tools/cap-rate-calculator.html">Cap Rate</a> | <a href="/tools/cash-flow-rental-calculator.html">Rental Cash Flow</a> | <a href="/tools/cash-on-cash-return-calculator.html">Cash-on-Cash</a> | <a href="/tools/dscr-calculator.html">DSCR</a> | <a href="/tools/house-affordability-calculator.html">Affordability</a> | <a href="/tools/real-estate-commission-calculator.html">Commission</a> | <a href="/tools/airbnb-profit-calculator.html">Airbnb Profit</a><br><br>` +
         `<strong>💳 Personal Finance &amp; Loans:</strong><br>` +
         `• <a href="/tools/auto-loan.html">Auto Loan</a> | <a href="/tools/car-lease-calculator.html">Car Lease</a> | <a href="/tools/personal-loan-calculator.html">Personal Loan</a> | <a href="/tools/credit-card-payoff.html">Credit Card Payoff</a> | <a href="/tools/debt-payoff.html">Debt Avalanche/Snowball</a> | <a href="/tools/student-loan.html">Student Loan</a> | <a href="/tools/student-loan-pslf-calculator.html">PSLF / SAVE</a> | <a href="/tools/payday-loan-calculator.html">Payday APR</a> | <a href="/tools/emergency-fund-calculator.html">Emergency Fund</a> | <a href="/tools/savings-goal-calculator.html">Savings Goal</a> | <a href="/tools/cd-ladder-calculator.html">CD Ladder</a> | <a href="/tools/dti-calculator.html">DTI Ratio</a> | <a href="/tools/apr-to-apy-calculator.html">APR to APY</a> | <a href="/tools/simple-interest-calculator.html">Simple Interest</a> | <a href="/tools/compound-interest.html">Compound Interest</a> | <a href="/tools/life-insurance-calculator.html" | <a href="/tools/credit-score-simulator.html">Credit Score Simulator</a><br><br>` +
         `<strong>🏛️ Taxes &amp; Payroll:</strong><br>` +
-        `• <a href="/tools/paycheck-calculator.html">Paycheck Take-Home</a> | <a href="/tools/tax-withholding.html">W-4 Withholding</a> | <a href="/tools/state-tax-relocation-calculator.html">State Tax Relocation</a> | <a href="/tools/freelance-tax-calculator.html">1099 Self-Employment</a> | <a href="/tools/capital-gains-tax-calculator.html">Capital Gains</a> | <a href="/tools/child-tax-credit-calculator.html">Child Tax Credit</a> | <a href="/tools/estate-tax-calculator.html">Estate Tax</a> | <a href="/tools/sales-tax-calculator.html">Sales Tax</a> | <a href="/tools/overtime-calculator.html">FLSA Overtime</a> | <a href="/tools/job-offer-comparison-calculator.html" | <a href="/tools/bonus-tax-calculator.html">Bonus Tax</a> | <a href="/tools/llc-tax-calculator.html">LLC Tax</a> | <a href="/tools/quarterly-tax-calculator.html">Quarterly Tax</a> | <a href="/tools/rsu-tax-calculator.html">RSU Tax</a> | <a href="/tools/s-corp-tax-savings-calculator.html">S-Corp Savings</a> | <a href="/tools/self-employment-tax-calculator.html">SE Tax</a> | <a href="/tools/tax-refund-estimator.html">Refund Estimator</a> | <a href="/tools/w-4-withholding-calculator.html">W-4 Fix</a><br><br>` +
+        `• <a href="/tools/paycheck-calculator.html">Paycheck Take-Home</a> | <a href="/tools/tax-bracket-calculator-2026.html">2026 Tax Brackets</a> | <a href="/tools/tax-withholding.html">W-4 Withholding</a> | <a href="/tools/state-tax-relocation-calculator.html">State Tax Relocation</a> | <a href="/tools/freelance-tax-calculator.html">1099 Self-Employment</a> | <a href="/tools/capital-gains-tax-calculator.html">Capital Gains</a> | <a href="/tools/child-tax-credit-calculator.html">Child Tax Credit</a> | <a href="/tools/estate-tax-calculator.html">Estate Tax</a> | <a href="/tools/sales-tax-calculator.html">Sales Tax</a> | <a href="/tools/overtime-calculator.html">FLSA Overtime</a> | <a href="/tools/job-offer-comparison-calculator.html" | <a href="/tools/bonus-tax-calculator.html">Bonus Tax</a> | <a href="/tools/llc-tax-calculator.html">LLC Tax</a> | <a href="/tools/quarterly-tax-calculator.html">Quarterly Tax</a> | <a href="/tools/rsu-tax-calculator.html">RSU Tax</a> | <a href="/tools/s-corp-tax-savings-calculator.html">S-Corp Savings</a> | <a href="/tools/self-employment-tax-calculator.html">SE Tax</a> | <a href="/tools/tax-refund-estimator.html">Refund Estimator</a> | <a href="/tools/w-4-withholding-calculator.html">W-4 Fix</a><br><br>` +
         `<strong>📈 Retirement &amp; Wealth:</strong><br>` +
         `• <a href="/tools/retirement-401k.html">401(k) Growth</a> | <a href="/tools/401k-rmd-calculator.html">401(k) RMD</a> | <a href="/tools/roth-ira-calculator.html">Roth IRA</a> | <a href="/tools/roth-conversion-calculator.html">Roth Conversion</a> | <a href="/tools/social-security-calculator.html">Social Security (PIA/FRA)</a> | <a href="/tools/net-worth-calculator.html">Net Worth</a> | <a href="/tools/529-college-savings-calculator.html">529 College Savings</a> | <a href="/tools/hsa-fsa-calculator.html">HSA vs FSA</a> | <a href="/tools/inflation-calculator.html">CPI Inflation</a> | <a href="/tools/inflation-retirement-calculator.html">Inflation Retirement</a> | <a href="/tools/crypto-profit-calculator.html">Crypto ROI</a> | <a href="/tools/solar-roi.html" | <a href="/tools/fire-calculator.html">FIRE</a><br><br>` +
         `<strong>💼 Business, E-Commerce &amp; Creator Economy:</strong><br>` +
-        `• <a href="/tools/ai-prompt-cost-calculator.html">AI Prompt &amp; Token Cost</a> | <a href="/tools/llc-vs-scorp-calculator.html">LLC vs S-Corp</a> | <a href="/tools/break-even.html">Break-Even Point</a> | <a href="/tools/amazon-fba-calculator.html">Amazon FBA</a> | <a href="/tools/shopify-fee-calculator.html">Shopify Fees</a> | <a href="/tools/ebay-fee-calculator.html">eBay Fees</a> | <a href="/tools/etsy-profit.html">Etsy Profit</a> | <a href="/tools/ecommerce-profit-comparator.html">E-Commerce Comparator</a> | <a href="/tools/cac-ltv-calculator.html">CAC / LTV</a> | <a href="/tools/invoice-factoring-calculator.html">Invoice Factoring</a> | <a href="/tools/nnn-lease-calculator.html">Triple Net (NNN) Lease</a> | <a href="/tools/sales-commission-calculator.html">Sales Commission</a> | <a href="/tools/markup-vs-margin-calculator.html">Markup vs Margin</a> | <a href="/tools/youtube-money-calculator.html">YouTube Money</a> | <a href="/tools/tiktok-money-calculator.html">TikTok Rewards</a> | <a href="/tools/tiktok-coins-calculator.html">TikTok Coins</a> | <a href="/tools/tiktok-shop-affiliate-calculator.html">TikTok Shop</a> | <a href="/tools/instagram-money-calculator.html">Instagram Deals</a> | <a href="/tools/podcast-sponsorship-calculator.html">Podcast CPM</a> | <a href="/tools/substack-calculator.html">Substack MRR</a> | <a href="/tools/channel-growth-calculator.html">Channel Growth</a> | <a href="/tools/gig-profit.html" | <a href="/tools/affiliate-commission-calculator.html">Affiliate Commission</a> | <a href="/tools/ai-token-calculator.html">AI Token Counter</a> | <a href="/tools/claude-api-cost-calculator.html">Claude API Cost</a> | <a href="/tools/openai-api-cost-calculator.html">OpenAI API Cost</a> | <a href="/tools/customer-ltv-calculator.html">Customer LTV</a> | <a href="/tools/saas-mrr-calculator.html">SaaS MRR</a> | <a href="/tools/saas-churn-calculator.html">SaaS Churn</a> | <a href="/tools/startup-runway-calculator.html">Startup Runway</a> | <a href="/tools/stripe-fee-calculator.html">Stripe Fees</a> | <a href="/tools/newsletter-valuation-calculator.html">Newsletter Value</a> | <a href="/tools/tiktok-shop-profit-calculator.html">TikTok Shop Profit</a> | <a href="/tools/instagram-engagement-rate-calculator.html">IG Engagement</a> | <a href="/tools/tiktok-rpm-calculator.html">TikTok RPM</a> | <a href="/tools/youtube-shorts-earnings-calculator.html">Shorts Earnings</a> | <a href="/tools/youtube-channel-valuation-calculator.html">Channel Valuation</a> | <a href="/tools/ugc-creator-rate-calculator.html">UGC Rates</a> | <a href="/tools/sponsorship-pricing-calculator.html">Sponsor Pricing</a><br><br>` +
+        `• <a href="/tools/ai-prompt-cost-calculator.html">AI Prompt &amp; Token Cost</a> | <a href="/tools/llc-vs-scorp-calculator.html">LLC vs S-Corp</a> | <a href="/tools/break-even.html">Break-Even Point</a> | <a href="/tools/amazon-fba-calculator.html">Amazon FBA</a> | <a href="/tools/shopify-fee-calculator.html">Shopify Fees</a> | <a href="/tools/ebay-fee-calculator.html">eBay Fees</a> | <a href="/tools/etsy-profit.html">Etsy Profit</a> | <a href="/tools/ecommerce-profit-comparator.html">E-Commerce Comparator</a> | <a href="/tools/cac-ltv-calculator.html">CAC / LTV</a> | <a href="/tools/invoice-factoring-calculator.html">Invoice Factoring</a> | <a href="/tools/nnn-lease-calculator.html">Triple Net (NNN) Lease</a> | <a href="/tools/sales-commission-calculator.html">Sales Commission</a> | <a href="/tools/markup-vs-margin-calculator.html">Markup vs Margin</a> | <a href="/tools/youtube-money-calculator.html">YouTube Money</a> | <a href="/tools/tiktok-money-calculator.html">TikTok Rewards</a> | <a href="/tools/tiktok-coins-calculator.html">TikTok Coins</a> | <a href="/tools/tiktok-shop-affiliate-calculator.html">TikTok Shop</a> | <a href="/tools/instagram-money-calculator.html">Instagram Deals</a> | <a href="/tools/podcast-sponsorship-calculator.html">Podcast CPM</a> | <a href="/tools/substack-calculator.html">Substack MRR</a> | <a href="/tools/channel-growth-calculator.html">Channel Growth</a> | <a href="/tools/gig-profit.html" | <a href="/tools/affiliate-commission-calculator.html">Affiliate Commission</a> | <a href="/tools/ai-token-calculator.html">AI Token Counter</a> | <a href="/tools/claude-api-cost-calculator.html">Claude API Cost</a> | <a href="/tools/openai-api-cost-calculator.html">OpenAI API Cost</a> | <a href="/tools/customer-ltv-calculator.html">Customer LTV</a> | <a href="/tools/saas-mrr-calculator.html">SaaS MRR</a> | <a href="/tools/saas-churn-calculator.html">SaaS Churn</a> | <a href="/tools/startup-runway-calculator.html">Startup Runway</a> | <a href="/tools/stripe-fee-calculator.html">Stripe Fees</a> | <a href="/tools/newsletter-valuation-calculator.html">Newsletter Value</a> | <a href="/tools/tiktok-shop-profit-calculator.html">TikTok Shop Profit</a> | <a href="/tools/instagram-engagement-rate-calculator.html">IG Engagement</a> | <a href="/tools/tiktok-rpm-calculator.html">TikTok RPM</a> | <a href="/tools/youtube-shorts-earnings-calculator.html">Shorts Earnings</a> | <a href="/tools/youtube-channel-valuation-calculator.html">Channel Valuation</a> | <a href="/tools/ugc-creator-rate-calculator.html">UGC Rates</a> | <a href="/tools/sponsorship-pricing-calculator.html">Sponsor Pricing</a> | <a href="/tools/freelance-hourly-rate-calculator.html">Freelance Hourly Rate</a><br><br>` +
         `<em>Click any tool name above to launch immediately!</em>`;
     }
 
@@ -1059,7 +1059,7 @@
     const fullPhrase = expanded.join(' ');
     const tokens = expanded.filter(t => !STOP_WORDS.has(t));
     if (tokens.length === 0) {
-      return `I can help you calculate that! Try asking for a specific calculator like <em>"debt to income"</em>, <em>"mortgage payment"</em>, <em>"1099 tax"</em>, or type <em>"show all tools"</em> to explore all 137 tools.`;
+      return `I can help you calculate that! Try asking for a specific calculator like <em>"debt to income"</em>, <em>"mortgage payment"</em>, <em>"1099 tax"</em>, or type <em>"show all tools"</em> to explore all 140 tools.`;
     }
 
     const SYN_MAP = {
@@ -1164,7 +1164,7 @@
     }
 
     // 5.8 General Fallback Guidance (when score < 40)
-    return `I can help you calculate that! CalcWorker features <strong>137 precision financial, creator, and business calculators</strong> engineered by Zaviyan (${CW_INFO.company}).<br><br>` +
+    return `I can help you calculate that! CalcWorker features <strong>140 precision financial, creator, and business calculators</strong> engineered by Zaviyan (${CW_INFO.company}).<br><br>` +
       `Here are popular tools you can explore right now:<br>` +
       `• <a href="/tools/mortgage-calculator.html">Mortgage Payment &amp; Amortization</a><br>` +
       `• <a href="/tools/dti-calculator.html">Debt-to-Income (DTI) Ratio</a><br>` +
@@ -1172,7 +1172,7 @@
       `• <a href="/tools/freelance-tax-calculator.html">1099 Freelance Tax Calculator</a><br>` +
       `• <a href="/tools/auto-loan.html">Auto Loan &amp; Car Finance</a><br>` +
       `• <a href="/tools/youtube-money-calculator.html">YouTube AdSense &amp; RPM</a><br><br>` +
-      `You can ask me for formulas, step-by-step instructions for any of the 137 tools, or type <em>"show all tools"</em> to see the complete directory!`;
+      `You can ask me for formulas, step-by-step instructions for any of the 140 tools, or type <em>"show all tools"</em> to see the complete directory!`;
   }
 
 
@@ -1263,7 +1263,7 @@
         <div class="cw-ai-messages" id="cwAiMessages">
           <div class="cw-msg bot">
             👋 <strong>Hello! I am CalcWorker AI.</strong><br><br>
-            Owned and built by <strong>Zaviyan</strong> (${CW_INFO.company}). I am fully trained on all 137 calculators, formulas, step-by-step usages, and business details.<br><br>
+            Owned and built by <strong>Zaviyan</strong> (${CW_INFO.company}). I am fully trained on all 140 calculators, formulas, step-by-step usages, and business details.<br><br>
             Ask me how to use any tool, for formulas, owner info, or contact email!
           </div>
         </div>

@@ -828,7 +828,7 @@ window.cwApp = new CalcWorkerApp();
 
 /* ==========================================================
    OFFLINE ENGINE & UNIVERSAL TOP NOTIFICATION STRIP (PWA)
-   Renders prominent offline-ready banner on Dashboard & all 137 tools
+   Renders prominent offline-ready banner on Dashboard & all 140 tools
    ========================================================== */
 (function() {
   function isPwaInstalled() {
@@ -971,7 +971,7 @@ window.cwApp = new CalcWorkerApp();
             '<span id="cwOfflineBadgeText">⚡ 100% Offline App</span>' +
           '</span>' +
           '<span class="cw-offline-headline" id="cwOfflineHeadline">' +
-            '📲 <strong>Get the CalcWorker App:</strong> all 137 precision calculators in your pocket — free forever, works 100% offline.' +
+            '📲 <strong>Get the CalcWorker App:</strong> all 140 precision calculators in your pocket — free forever, works 100% offline.' +
           '</span>' +
         '</div>' +
         '<div class="cw-offline-right">' +
@@ -1012,7 +1012,7 @@ window.cwApp = new CalcWorkerApp();
         }
         if (badge) badge.classList.remove('offline-mode');
         if (badgeText) badgeText.textContent = '⚡ 100% Offline App';
-        if (headline) headline.innerHTML = '📲 <strong>Get the CalcWorker App:</strong> all 137 precision calculators in your pocket — free forever, works 100% offline.';
+        if (headline) headline.innerHTML = '📲 <strong>Get the CalcWorker App:</strong> all 140 precision calculators in your pocket — free forever, works 100% offline.';
       } else {
         if (stripEl) stripEl.style.display = 'block';
         if (badge) badge.classList.add('offline-mode');
