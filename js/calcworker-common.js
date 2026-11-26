@@ -376,6 +376,26 @@ window.cwApp = new CalcWorkerApp();
 (function () {
   "use strict";
 
+  // Local copies of the sidebar helpers. sidebar.js keeps its own copies
+  // IIFE-scoped, so they are NOT globals — renderGlobalSidebar used to call
+  // them bare and throw ReferenceError, which (with the script deferred)
+  // aborted this whole file and silently killed the homepage search,
+  // cookie consent and PWA suite. These local copies make it self-contained.
+  function normalizePath(path) {
+    if (!path) return "/";
+    var clean = path.split("?")[0].split("#")[0];
+    if (clean === "/index.html") return "/";
+    if (clean.length > 1 && clean.endsWith("/")) clean = clean.slice(0, -1);
+    return clean || "/";
+  }
+
+  function escapeHtml(val) {
+    return String(val)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
+
     const sidebarGroups = window.cwSidebarGroups || [
   {
     "title": "Overview",
@@ -1529,19 +1549,22 @@ window.cwApp = new CalcWorkerApp();
     } catch(e) {}
   }
 
-    // Hook into initialization
+    // Hook into initialization — each step guarded, so one failing init can
+  // never again kill the rest of the file (one throw here used to silently
+  // disable the homepage search, cookie consent and PWA suite).
+  function safeInit(fn) {
+    try { fn(); } catch (e) { console.warn('[CalcWorker] init step failed:', e); }
+  }
+  function runAllInits() {
+    safeInit(applyPWAOfflineSuite);
+    safeInit(initSpotlightCards);
+    safeInit(initToolSearchAndFilters);
+    safeInit(initCookieConsent);
+  }
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', function() {
-      applyPWAOfflineSuite();
-      initSpotlightCards();
-      initToolSearchAndFilters();
-      initCookieConsent();
-    });
+    document.addEventListener('DOMContentLoaded', runAllInits);
   } else {
-    applyPWAOfflineSuite();
-    initSpotlightCards();
-    initToolSearchAndFilters();
-    initCookieConsent();
+    runAllInits();
   }
 
 })();
